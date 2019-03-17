@@ -1,0 +1,10096 @@
+rm main*
+rustup
+rustup show
+rustup update
+nvim main.rs
+rustc main.rs
+nvim main.rs
+rustc main.rs
+rm main*
+ssh -p 26731 root@51.68.124.91
+ssh -p 26731 root@51.68.124.91
+ssh -p 26731 root@51.68.124.91
+ssh -p 26731 root@51.68.124.91
+ls
+ssh -p 26731 root@51.68.124.91
+now
+ssh -p 26731 root@51.68.124.91
+cd projects/ambient_it/rust
+ls
+zathura programme.pdf&!
+nvim day1.html
+nvim day1.html
+cat day1.html| xclip -selection clipboard
+p social/snapchat
+file /usr/bin/zathura
+go help fix
+startx
+sudo ip link set enp61s0 down
+cd projects/go/src/mudalike
+ls
+cat embed.go
+godoc
+godoc -http=:8080
+ls
+cat main.go
+cat main.go | grep famille
+nvim auto_plip.go
+cd projects/go
+ls
+cd src/mudalike
+ls
+cp main.go auto_plip.go
+nvim auto_plip.go
+go run auto_plip.go
+nvim auto_plip.go
+go run auto_plip.go
+nvim auto_plip.go
+go run auto_plip.go
+nvim auto_plip.go
+go run auto_plip.go
+nvim auto_plip.go
+go run auto_plip.go
+nvim auto_plip.go
+go run auto_plip.go
+nvim auto_plip.go
+go run auto_plip.go
+nvim auto_plip.go
+go run auto_plip.go
+go run auto_plip.go
+go run auto_plip.go
+go run auto_plip.go
+go run auto_plip.go
+go run auto_plip.go
+startx
+cd projects/go/src/mudalike
+go run auto_plip.go
+yay fsck
+yay chkdsk
+yay -S fsck
+sudo su
+startx
+df -h
+gparted
+sudo gparted
+yay -S gpart
+gpart
+ls
+mount /dev/sda mnt
+ls
+sudo fdisk /dev/sda
+sudo dmesg
+sudo dmesg
+sudo dmesg
+sudo dmesg
+sudo dd if=/dev/sda of=disk.img
+ls
+rm disk.img
+sudo dd if=/dev/sda of=disk.img status=progress
+sudo fsck /dev/sda
+sudo fsck.ntfs /dev/sda
+sudo fsck.exfat /dev/sda
+sudo fsck.fat /dev/sda
+sudo su
+sudo fsck -A
+yay -S gparted
+yay testdisk
+sudo testdisk /dev/sda
+ls -l /dev/sda
+groups
+sudo gpasswd -a babariviere disk
+su babariviere
+st
+startx
+ls mnt
+cd mnt
+ls
+ls recup_dir.
+ls recup_dir.1
+ls recup_dir.3
+ls recup_dir.2
+sudo su
+yay -S nautilus
+cd mnt/recup_dir.3
+paplay f37988608.mp3
+ls
+yay -R nautilus
+photorec --help
+rm -rf mnt
+ls
+mkdir recovered
+photorec disk.img
+testdisk disk.img
+ls recovered/recup_dir.1/
+cd recovered/recup_dir.1
+cat report.xml
+cd
+ls
+fsck.fat disk.img
+sudo fsck.fat disk.img
+sudo fsck.ntfs disk.img
+sudo ntfsfix disk.img
+sudo fsck.exfat disk.img
+sudo fsck.fat disk.img
+sudo fsck.msdos disk.img
+sudo fsck.vfat disk.img
+photorec disk.img
+photorec disk.img
+ls
+ls
+hexdump -C disk.img
+hexdump -C disk.img | grep DOC
+hexdump -C disk.img | grep -i DOC
+ls
+rm -rf recovered/* photorec.ses
+ls
+photorec disk.img
+cd recovered/mo3
+cd recovered/mp3
+ls
+exiftool
+yay exiftool
+ls
+yay mp3
+yay id3v2
+id3tag f37988608.mp3
+id3tag /data/Music/Toradora/01\ -\ Startup.mp3
+ls
+id3tag -2 /data/Music/Toradora/01\ -\ Startup.mp3
+ls
+id3info f37988608.mp3
+id3info f37994336.mp3
+id3info /data/Music/Toradora/01\ -\ Startup.mp3
+id3tag
+id3tag help
+id3tag --help
+cd recovered
+ls
+ls recup_dir.1
+zathura recup_dir.1/f35626240_Pr_sentation_PowerPoint.pdf
+zathura recup_dir.1/f35632896_Biologie_cellulaire_Communication_cellulaire-r_cepteur-m_diateurs.pdf
+ls
+mkdir pdf
+mv recup_dir.1/* pdf
+mkdir swf
+ls
+mv recup_dir.1
+ls recup_dir.1
+ls recup_dir.2
+yay find_dup
+yay find
+ls
+ls swf
+ls recup_dir.1
+ls recup_dir.2
+ls recup_dir.3
+ls recup_dir.4
+ls
+mv */*.swc swf
+ls swf
+ls
+mkdir exe
+mv */*.exe exe
+ls
+rm */*.xml
+ls
+mkdir mp3
+mkdir mov
+ls
+mv */*.mp3 mp3
+mv */*.mov mov
+mv */*.mp4 mov
+ls
+rm -rf recup_dir.*
+ls
+ls swf
+ls exe
+ls
+cd exe
+diff f33139072_SAFlashPlayer.exe f33335680_SAFlashPlayer.exe
+ls
+cd
+ls
+mkdir mnt
+mount /dev/sdb1 mnt
+sudo mount /dev/sdb1 mnt
+l
+sudo cp recovered mnt
+sudo cp -r recovered mnt
+ls mnt
+sudo rm -rf mnt/recovered
+sudo umount mnt
+sudo mount /dev/sdb1 mnt
+sudo cp -r recovered mnt
+ls mnt
+sudo umount mnt
+ls
+photorec disk.img
+sudo testdisk /dev/sda
+startx
+startx
+photorec disk.img
+ls
+rm help
+ls
+ls
+mkdir recov2
+photorec disk.img
+yay fdupes
+yay -R flint
+yay -R fslint
+cd recov
+cd recov2
+ls
+fdupes
+fdupes .
+ls
+fdupes . -r -f .
+nvim gen_dedup.sh
+chmod +x gen_dedup.sh
+./gen_dedup.sh
+ls
+cat rm-dups.sh
+ls
+git clone https://github.com/tfrdidi/sort-PhotorecRecoveredFiles ../sorter
+python ../sorter/recovery.py . sorted
+rm -rf ../sorter
+ls
+nvim sort.sh
+chmod +x sort.sh
+./sort.sh .
+ls
+ls recup_dir.1
+./sort.sh sorted .
+./sort.sh recup_dir.1
+ls
+ls recup_dir.1.by_ext
+ls recup_dir.1
+rm -rf recup_dir.1.by_ext
+ls
+ls recup_dir.1
+./sort.sh recup_dir.1
+./sort.sh recup_dir.2
+./sort.sh recup_dir.3
+ls
+mkdir sorted
+mv recup_dir.1.by_ext/* sorted
+rm -rf recup_dir.1.by_ext
+ls
+mv recup_dir.2.by_ext/* sorted
+mv -r recup_dir.2.by_ext/* sorted
+mv --help
+ls recup_dir.2.by_ext
+ls recup_dir.2.by_ext/exe
+ls recup_dir.2.by_ext/swc
+mv -r recup_dir.2.by_ext/* sorted
+mv recup_dir.2.by_ext/* sorted
+yay -S rsync
+rsync -a recup_dir.2.by_ext/ sorted
+rsync -a recup_dir.3.by_ext/ sorted
+rm -rf *.by_ext
+ls
+ls sorted
+ls sorted/exe
+ls -al sorted/exe
+ls -al sorted/swc
+ls -al sorted/pdf
+ls
+rm -rf sorted
+ls
+./sort.sh recup_dir.1
+./sort.sh recup_dir.2
+./sort.sh recup_dir.3
+mkdir sorted
+rsync -a -t recup_dir.1.by_ext sorted
+rsync -a -t recup_dir.2.by_ext sorted
+rsync -a -t recup_dir.3.by_ext sorted
+rm -rf *.by_ext
+ls
+cd sorted
+ls
+ls recup_dir.2.by_ext
+ls recup_dir.2.by_ext/exe
+ls
+cd ..
+rm -rf sorted
+mkdir sorted
+rsync -a -t recup_dir.1.by_ext/ sorted/
+ls sorted
+ls
+rsync --help
+rsync -a recup_dir.1.by_ext/ sorted
+rsync -a recup_dir.1.by_ext sorted/
+ls sorted
+ls
+./sort.sh recup_dir.1
+./sort.sh recup_dir.2
+./sort.sh recup_dir.3
+rsync -a -t recup_dir.1.by_ext/ sorted/
+ls sorted
+rsync -a -t recup_dir.2.by_ext/ sorted/
+rsync -a -t recup_dir.3.by_ext/ sorted/
+ls
+rm -rf *.by_ext
+cd sorted
+l
+l exe
+l swc
+l xml
+l pdf
+cd ..
+ls
+./gen_dedup.sh
+rm rm-dups.sh
+./gen_dedup.sh
+./rm-dups.sh
+ls
+ls recup_dir.1
+rm -rf recup_dir.*
+ls
+ls sorted
+ls sorted/exe
+ls sorted/exe
+ls -al sorted/mp3
+nvim sort.sh
+ls
+rm -rf sorted
+mkdir sorted
+ls
+./sort.sh recup_dir.1
+ls
+nvim sort.sh
+./sort.sh recup_dir.1
+./sort.sh recup_dir.2
+ls
+rm *.swc
+ls
+rm -rf *
+l
+ls recup_dir.1
+mv --help
+ls
+nvim sort.sh
+ls
+sh sort.sh recup_dir.1
+ls
+mv recup_dir.1.by_ext sorted
+ls
+cd sorted
+ls
+ls -al mp3
+ls -al exe
+ls -al swc
+ls
+cd ..
+ls
+rm -rf recup_dir.1
+ls
+nvim dedup.sh
+sh dedup.sh
+./rm-dups.sh
+l
+cd sorted/swc
+ls
+for f in *.swc; do mv $f "${f%.*}.swf"; done
+ls
+cd ..
+ls
+mv swc swf
+ls
+rm -rf xml
+ls
+cat txt/f35620736.txt
+cat txt/f35645824.txt
+cat txt/f35620736.txt
+cat txt/f35647360.txt
+rm -rf txt
+ls
+startx
+photorec disk.img
+photorec disk.img
+cd recov2
+ls
+ls sorted
+cd ..
+rm -rf recov2
+cd recovered
+ls
+ls mov
+ls mp3
+ls pdf
+ls swf
+for f in *.swc; do mv $f "${f%.*}.swf"; done
+cd swf
+for f in *.swc; do mv $f "${f%.*}.swf"; done
+ls
+cd ..
+ls
+yay -S fslint
+cd ..
+ls
+yay -S zip
+zip help
+zip recovered.zip recovered
+ls
+rm recovered
+rm recovered.zip
+zip -h
+zip -r recovered.zip recovered
+ls
+ls
+rm photorec.ses
+ls
+cd projects/ambient_it/rust
+ls
+nvim day1.html
+ls
+mv day1.html cours.html
+nvim cours.html
+startx
+l /
+yay screencast
+yay screencast
+yay obs
+htop
+htop
+cd projects/go/src/lemonscript
+go build
+go build
+rg nothing
+rg Update
+rg Update(
+rg "Update("
+rg "Update\("
+go build
+go build
+go build
+rg Update
+rg Update
+rg Update
+rg Updat
+ls
+go build
+go build
+go build
+go build
+go build
+go build
+go build
+go build
+go build
+go build
+cd projects/go/src/lemonscript
+ls
+nvim widget.go
+rg Update
+nvim i3.go
+nvim main.go
+cd 
+cd projects/ambient_it/rust
+ls
+nvim cours.html
+cd projects/go/src/lemonscript
+git add .
+git commit -m "[opti] tick + needs redraw implementation"
+git push
+nvcc --help
+nvim .zshrc
+nvcc --help
+yay nvenc
+yay nvenc
+yay ffmpeg
+yay -S ffmpeg-full
+nvcc
+yay nvcc
+yay -S ffmpeg-full
+ls /usr/local/bin
+export PATH=.:$PATH
+yay -S ffmpeg-full
+find /usr -name "nvcc"
+which nvcc
+source /etc/profile
+which nvcc
+yay -S ffmpeg-full
+startx
+yay zathura
+ls
+nvim .config/nvim/init.vim
+xrdb -merge .Xresources
+xrdb -merge .Xresources
+xrdb -merge .Xresources
+xrdb -merge .Xresources
+rofi --help
+rofi --help | grep -i
+rofi --help | grep "-i"
+rofi --help | grep -- "-i"
+rofi --help | grep -- "fuzzy"
+yay -R rofi rofi-dmenu 
+yay -S dmenu
+rm .bin/dmenu_run
+nvim .bin/dmenu_mpc
+yay dmenu
+yay dmenu fuzzy
+dmenu --help
+man dmenu
+nvim .bin/dmenu
+nvim .bin/dmenu_mpc
+dmenu -z
+man dmenu
+dmenu -z -i
+nvim .bin/dmenu
+nvim .bin/dmenu_mpc
+dmenu_run -z
+dmenu_run -z -i
+nvim .bin/dmenu_mpc
+nvim .bin/dmenu_mpc
+yay dmenu
+yay dmenu fuzzy
+yay -R dmenu
+yay -R dmenux-git
+yay rofi
+yay -S rofi rofi-dmenu
+dmenu_run 
+dmenu
+rofi -dump-Xresources
+cat .xres/rofi
+rofi -dump-Xresources > .xres/rofi
+nvim .xres/rofi
+nvim .xres/rofi
+nvim .xres/rofi
+man dmenu
+ls
+nvim
+cd projects/go/src/lemonscript
+nvim main.go
+cat ~/.config/termite/config
+nvim ~/.xres/urxvt
+export TERM=xterm-termite
+nvim main.go
+cd projects/go/src/lemonscript
+nvim main.go
+export TERM=xterm-termite
+nvim main.go
+ls
+ls -alh
+ls
+ls -alh
+nvim .xres/xst
+xrdb -merge .Xresources
+nvim .Xresources
+mv .xres/xst .xres/st
+ls -alh
+cal
+calc
+nvim .xres/st
+ls
+echo $0
+ls
+echo $TERM
+xrdb -merge .Xresources
+nvim .xres/palenight
+yay -R st-bloated-git
+cd src
+ls
+ls st
+rm -rf st
+git clone https://github.com/LukeSmithxyz/st 
+cd st
+ls
+make
+sudo make install
+cd
+nvim .Xresources
+nvim .xres/st
+xrdb -merge .Xresources
+ls -alh
+cd src/st
+sudo make uninstall
+ls
+cd ..
+rm -rf st
+nvim .config/termite/config
+nvim .config/i3/config
+ls
+nvim .bin/dmenu_run
+chmod +x .bin/dmenu_run
+ls
+nvim .config/i3/config
+nvim .bin/dmenu
+nvim .bin/dmenu_mpc
+nvim .bin/dmenu
+xdotool search --onlyvisible --classname URxvtFuzzy windowunmap \\
+  || xdotool search --classname URxvtFuzzy windowmap \\
+  || urxvtc -name URxvtFuzzy -geometry 40x8+297+1 -e sh -c 'compgen -c | sort -u | fzf | sh'
+yay -S xdotool
+xdotool search --onlyvisible --classname URxvtFuzzy windowunmap \\
+  || xdotool search --classname URxvtFuzzy windowmap \\
+  || urxvtc -name URxvtFuzzy -geometry 40x8+297+1 -e sh -c 'compgen -c | sort -u | fzf | sh'
+urxvtd
+urxvtd --help
+urxvtd -h
+man urxvtd
+urxvtd -f
+xdotool search --onlyvisible --classname URxvtFuzzy windowunmap \\
+  || xdotool search --classname URxvtFuzzy windowmap \\
+  || urxvtc -name URxvtFuzzy -geometry 40x8+297+1 -e sh -c 'compgen -c | sort -u | fzf | sh'
+ls
+compgen -c
+compgen -c | sort -u
+killall urxvtd
+termite --name test
+man termite
+man termite.config
+urxvtd -f
+echo $?
+echo $0
+echo $TERM
+ls
+yay rxvt-unicodqe
+yay rxvt-unicode
+yay st
+yay -R rxvt-unicode-*
+yay -R rxvt-unicode-256xresources rxvt-unicode-terminfo
+yay st
+yay simple terminal
+yay evilvte
+yay -R evilvte
+yay simple terminal
+ls
+nvim .config/termite/config
+yay -S rxvt-unicode
+nvim
+nvim .config/termite/config
+export TERM=rxvt-256color
+nvim .config/termite/config
+tput setab 160 && echo fooâƒ¦µ
+tput setab 160 && echo foo
+unset TERM
+nvim .config/termite/config
+echo $TERM
+echo $TERM
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
+nvim .config/termite/config
+export NVIM_TUI_ENABLE_TRUE_COLOR=0
+nvim .config/termite/config
+export TERM=rxvt-unicode-256color
+nvim .config/termite/config
+ls /usr/share/terminfo/r/rxvt-unicode-256color
+cat /usr/share/terminfo/r/rxvt-unicode-256color
+export TERM=xterm-256color
+nvim .config/termite/config
+nvim .config/termite/config
+nvim .config/termite/config
+\:q
+tmux
+printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"
+yay -S tmux
+yay tmux
+yay -S tmux
+printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"
+yay rxvt-unicode color
+yay rxvt-unicode true
+yay aminal
+yay -R aminal-git
+startx
+ls -alh
+nvim .config/aminal/config.toml
+aminal --help
+yay -Syu --devel
+free -h
+sensors
+sudo sensors-detect
+sensors
+sensors
+notify-send --help
+man lemonbar
+startx
+wpa_cli
+sudo systemctl status wpa_supplicant@wlo1.service
+sudo systemctl start wpa_supplicant@wlo1.service
+sudo systemctl status wpa_supplicant@wlo1.service
+cd /etc/wpa_supplicant
+ls
+cat wpa_supplicant.conf
+sudo mv wpa_supplicant.conf wpa_supplicant-wlo1.conf
+sudo systemctl status wpa_supplicant@wlo1.service
+sudo systemctl start wpa_supplicant@wlo1.service
+ls
+cd 
+ls
+wpa_cli
+wpa_cli -iwlo1
+sudo systemctl status wpa_supplicant@wlo1.service
+wpa_cli -iwlo1
+wpa_cli -iwlo1
+wpa_cli -iwlo1
+wpa_cli -iwlo1
+[A
+wpa_cli -iwlo1
+wpa_cli -iwlo1
+wpa_cli
+sudo systemctl status wpa_supplicant@wlo1.service
+ls /var/run/wpa_supplicant
+sudo wpa_cli
+sudo ls /var/run/wpa_supplicant
+sudo ls -l /var/run/wpa_supplicant
+sudo nvim /etc/wpa_supplicant/wpa_supplicant-wlo1.conf
+sudo nvim /etc/wpa_supplicant/wpa_supplicant-wlo1.conf
+sudo systemctl restart wpa_supplicant@wlo1.service
+groups
+wpa_cli
+pdftk /data/paper/CI.pdf cat 1 output /data/paper/CI_recto.pdf
+pdftk /data/paper/CI.pdf cat 2 output /data/paper/CI_verso.pdf
+zathura /data/paper/RIB\ Shine.pdf
+zathura /data/paper/RIB\ Shine.pdf
+zathura /data/paper/CI.pdf
+yay -S pdftk
+nvim .config/zathura/zathurarc
+ls /etc/ssh
+ls /data/ssh/windows_key
+ssh-copy-id -i .ssh/windows_key -p 26731 root@51.68.124.91
+cd dotfiles
+ls
+nvim dotfiles.list
+./dotfiles.go store dotfiles.list
+yay -S chromium-widevine
+cd projects/go/src/fuyu
+ls
+cat auth/auth.go
+cd src
+git clone git://git.suckless.org/dmenu\
+
+cd dmenu
+ls
+nvim dmenu.c
+ls
+cd
+cd projects/go/src/fuyu
+ls
+cat example_config.json
+ssh -p 26731 root@51.68.124.91
+sudo mount /dev/nvme0n1p4 /mnt
+sudo umount mnt
+sudo umount /mnt
+cat .ssh/id_rsa.pub
+nvim .ssh/windows_key
+nvim .ssh/windows_key.pub
+ssh-copy-id -i .ssh/windows_key -p 26731 git@51.68.124.91
+lsblk
+sudo nvim /dev/nvme0n1p4 /mnt
+sudo mount /dev/nvme0n1p4 /mnt
+ls
+cd /mnt
+ls
+cd Users/Baba
+ls
+nvim .ssh/id_rsa.pub
+ls
+cd
+sudo umount /mnt
+ssh-keygen -c -f .ssh/windows_key -C "windows@lapws"
+nvim .ssh/windows_key.pub
+ssh-keygen -c -f .ssh/windows_key -C "test@lapws"
+nvim .ssh/windows_key.pub
+ssh-keygen -c -f .ssh/windows_key -C "windows@lapws"
+ssh-copy-id -i .ssh/windows_key -p 26731 git@51.68.124.91
+ssh -p 26731 git@51.68.124.91
+ssh-copy-id -i .ssh/windows_key -p 26731 git@51.68.124.91
+cp .ssh/windows_key* /data/ssh/
+cp .ssh/windows_key /mnt/Users/Baba/.ssh/id_rsa
+cp .ssh/windows_key.pub /mnt/Users/Baba/.ssh/id_rsa.pub
+cat .ssh/windows_key
+ssh-keygen -c -f .ssh/windows_key -C "windows@lapw"
+cat .ssh/windows_key
+ssh-keygen -c -f .ssh/windows_key -C "windows@lapws"
+cat .ssh/windows_key
+ping 8.8.8.8
+calc
+go get -u https://github.com/stamblerre/gocode
+go get -u github.com/stamblerre/gocode
+cd projects/
+rustup version
+rustup update
+cd go/src/fuyu
+ls
+rg TODO
+go build
+go build ...
+ls
+ls proto/payload
+cd proto/payload
+ls
+nvim transmission.go
+ls
+nvim ssh.go
+ls
+cd ../..
+ls
+cd cmd/fuyu
+ls
+nvim main.go
+nvim git/git.go
+mkdir ssh
+nvim ssh/ssh.go
+cd ../..
+ls
+nvim common/user.go
+ls
+cd proto/payload
+ls
+nvim ssh.go
+nvim ssh.go
+nvim ssh.go
+nvim ssh.go
+cd ..
+ls
+nvim message.go
+mkdir const
+mv const.go const
+ls
+nvim message.go
+cd payload
+ls
+nvim ssh.go
+nvim ../const/const.go
+cd ..
+mv const pconst
+cd payload
+nvim ssh
+nvim ssh.go
+ls
+nvim wrapper.go
+nvim payload.go
+nvim ssh.go
+ls
+cd ..
+ls
+cd ..
+ls
+cd proto/payload
+nvim ssh.go
+nvim ssh.go
+ls
+cd ../..
+ls
+cd cmd/fuyud
+ls
+nvim main.go
+nvim main.go
+cd ../..
+ls
+nvim proto/message.go
+cd cmd/fuyud
+nvim main.go
+cd ../fuyu
+ls
+nvim ssh/ssh.go
+nvim ssh/add.go
+nvim ssh/ssh.go
+nvim main.go
+nvim git/git.go
+nvim git/git.go
+nvim ssh/ssh.go
+nvim ssh/add.go
+cd ../fuyud
+nvim main.go
+cd ../fuyu
+ls
+go run *.go help
+nvim main.go
+go run *.go help
+go run *.go help ssh
+nvim ssh/ssh.go
+go run *.go help ssh
+go run *.go help ssh addd
+go run *.go ssh help add
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub "this is a test"
+go run *.go ssh add babariviere ~/.ssh/id_rsa "this is a test"
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub "this is a test"
+nvim ssh/ssh.go
+nvim ssh/add.go
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub "this is a test"
+nvim ssh/add.go
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub "this is a test"
+nvim ssh/add.go
+ls
+git add .
+git commit -m "[ssh] add ssh command"
+ls
+cd ../fuyud
+ls
+nvim main.go
+ls
+git add .
+git status
+cd ../..
+ls
+nvim .gitignore
+cd cmd/fuyud
+ls
+rm fuyud
+git add .
+git add ../..
+ls
+git status
+git commit -m "[ssh] ssh command with ssh handling"
+cd ../..
+ls
+nvim services/transmission/transmission.go
+rg git
+nvim cmd/fuyud/main.go
+cd ../fuyu
+ls
+nvim cmd/fuyud/main.go
+nvim cmd/fuyud/main.go
+cd cmd/fuyud
+nvim main.go
+nvim main.go
+nvim main.go
+go build
+ls
+go build
+nvim main.go
+go mod
+go mod download
+ls
+nvim main.go
+nvim main.go
+ls
+cd .ssh
+ls
+touch authorized_keys
+cat authorized_keys
+rm authorized_keys
+ls
+ls
+cat authorized_keys
+cat authorized_keys
+rm authorized_keys
+cd
+ls
+gocode close && gocode -s -debug
+gocode close && gocode -s -debug
+gocode close && gocode -s -debug
+gocode -s -debug
+gocode -s -debug -builtin -cache -fallback-to-source
+gocode -s -debug -builtin -source
+gocode -s -debug -builtin -source -fallback-to-source
+gocode -s -debug -builtin -source -fallback-to-source
+killall gocode
+gocode -s -debug -builtin -source -fallback-to-source
+gocode close
+gocode -s -debug -builtin -source -fallback-to-source
+gocode -s -debug -builtin -source -fallback-to-source
+gocode -s -debug -builtin -source -fallback-to-source
+gocode -s -debug -builtin -source -fallback-to-source
+gocode -s -debug -builtin -source -fallback-to-source
+gocode -s -debug -builtin -source -fallback-to-source
+gocode -s -debug -builtin -source -fallback-to-source
+gocode -s -debug -builtin -source -fallback-to-source
+gocode -s -debug -builtin -source -fallback-to-source
+gocode -s -debug -builtin -source -fallback-to-source
+ls /tmp
+rm /tmp/gocode-daemon.babariviere
+gocode -s -debug -builtin -source -fallback-to-source
+gocode -s -debug -builtin -cache -fallback-to-source
+gocode -s -debug -builtin -ignore-case 
+gocode close
+gocode -s -debug -builtin -ignore-case -unimported-packages
+htop
+gocode close
+ls
+cd projects/go/src/fuyu
+ls
+cat proto/payload/ssh.go
+go get -u golang.org/x/crypto/ssh
+rg Endian
+nvim proto/message.go
+cd proto/payload
+ls
+go test
+go test
+go test
+go test
+go test
+go test
+go test
+go test
+go test
+rg print
+rg Print
+go test
+git add .
+git commit -m "[ssh] use key instead of value"
+go test
+go test
+cat ssh.go
+nvim ssh.go
+nvim ssh_test.go
+cat ssh.go
+ls
+cd ../..
+ls
+cd cmd/fuyud
+ls
+./run.sh
+./run.sh
+./run.sh
+./run.sh
+./run.sh
+ls
+rls
+rls --version
+cd projects
+ls
+cargo new --lib fuyu
+cd fuyu
+ls
+nvim src
+cd ..
+rm -rf fuyu
+cd go/src/fuyu
+ls
+yay gcc-go
+gccgo
+cd cmd/fuyu
+ls
+gccgo *.go
+ls
+go build
+ls
+rm fuyu
+gccgo .
+yay -S go
+ls
+cd ../fuyud
+ls
+cat main.go
+nvim main.go
+go get -u golang.org/pkg/crypto/rsa/
+go build
+go build
+cd ../fuyu
+ls
+cat git/git.go
+cat git/create.go
+cat git/create.go
+go run *.go
+go run *.go
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+cd ../fuyuadm
+ls
+go run *.go help
+go run *.go add 
+go run *.go hash
+go run *.go add 98d6c28b8f1b4c6a942b59a851e37489b6b7a9e1f665de21e2a8510d3a8fa36b
+ls
+go run *.go perm
+go run *.go perm add
+go run *.go perm add babariviere 98d6c28b8f1b4c6a942b59a851e37489b6b7a9e1f665de21e2a8510d3a8fa36b
+cd ../fuyu
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go env
+gocode --help
+startx
+zathura Downloads/D082\ FORMATION\ RUST\ 1.29.x.pdf
+ls
+cd Documents
+ls
+cd cv
+ls
+yay tex
+yay texlive
+yay -S texlive-most texlive-lang
+yay tectonic
+yay -S tectonic
+tectonic --help
+nvim .bin/compiler
+tectonic --help
+ls Downloads
+cd Downloads
+unzip Europecv.zip
+nvim europecv.tex
+nvim europecv.tex
+ls
+nvim ecvfr.def
+unzip -d out cv_10.zip
+cd out
+ls
+nvim cv_10.tex
+cd ..
+rm -rf *
+rg vim:
+nvim .config/nvim/init.vim
+cat -v
+cat -h
+man cat
+cd Downloads
+ls
+unzip cv_10.zip
+ls
+nvim cv_10.tex
+kpathsea
+nvim .zsh/rc
+ls
+cd Downloads
+ls
+cat friggeri-cv.cls
+mv friggeri-cv.cls ~/libs/tex/cx.cls
+cp cv_10.tex ~/Documents/cv/new_cv.tex
+cd ~/Documents/cv/
+source ~/.zshrc
+nvim new_cv.tex
+kpsepath --help[
+kpsepath --help
+kpsepath tex
+nvim ~/.zshrc
+yay Helvetica
+yay -R adobe-base-14-fonts
+yay -S ttf-ms-fonts
+fc-match Helvetica
+yay -R ttf-ms-fonts
+pacman -Rns $(pacman -Qtdq)
+yay -S xorg-fonts
+yay -S xorg-fonts-100dpi
+fc-cache -f
+fc-match Helvetica
+fc-list | grep Hel
+yay -R xorg-fonts-100dpi
+fc-list | grep Roboto
+cd Documents/cv
+echo $TEXINPUTS
+nvim new_cv.tex
+ls
+cd Documents
+ls
+cd ..
+ls
+mkdir libs
+ls
+cd libs
+ls
+mkdir tex
+cd tex
+ls
+nvim cv
+nvim cx.cls
+mv cx.cls cv.cls
+nvim cv.cls
+mv cv.cls baba-cv.cls
+nvim baba-cv.cls
+ls ~/Downloads
+kpsewhich article.cls
+kpsepath
+kpsepath tex
+kpsexpand
+kpsexpand tex
+kpsexpand article.cls
+nvim baba-cv.cls
+cd vm
+ls
+nvim windows.yml
+cd ~/projects/go/src/github.com/babariviere/vmctl
+ls
+nvim cmd/vmctl/config.go
+cd cmd/vmctl
+go install .
+nvim create.go
+nvim config.go
+go install .
+nvim config.go
+go install .
+nvim config.go
+go install .
+nvim ~/.config/vmctl/windows.yml
+git add .
+git commit -m "[config] fix path"
+git push
+mkdir ~/vm/windows
+ls ~/vm/windows
+ls
+killall fcrackzip
+yay wordlist
+yay unzip
+yay wordlists
+curl -O https :// blackarch .org/strap.sh\
+sha1sum strap.sh # doit etre egal a 86eb4efb68918dbfdd1e22862a48fda20a8145ff\
+sudo ./ strap.sh
+ls
+curl -O https://blackarch.org/strap.sh\
+sha1sum strap.sh # doit etre egal a 86eb4efb68918dbfdd1e22862a48fda20a8145ff\
+sudo ./ strap.sh
+ls
+sha1sum strap.sh
+sudo ./strap.sh
+cat strap.sh
+chmod +x strap.sh
+sudo ./strap.sh
+yay wordlists
+yay wordlist
+wordlistctl
+wordlistctl -?
+wordlistctl ?
+wordlistctl "?"
+wordlistctl "-?"
+wordlistctl -f "?"
+wordlistctl -f "?" | grep rock
+wordlistctl -f 2
+sudo wordlistctl -f 2
+sudo wordlistctl -f 2 -X
+sudo wordlistctl -f 2 -h -X
+sudo chmod 644 /usr/share/wordlists/rockyou.txt
+ls ~/Downloads
+nvim .config/nvim/init.vim
+yay radare2
+yay wine
+cd projects/go/src/fuyu
+ls
+cd cmd/fuyu
+ls
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+rm ~/.ssh/authorized_keys
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+rm ~/.ssh/authorized_keys
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+rm ~/.ssh/authorized_keys
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+cat ~/.ssh/authorized_keys
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+rm ~/.ssh/authorized_keys
+rm ~/.ssh/authorized_keys
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+cat ~/.ssh/authorized_keys
+ls
+ls
+nvim ~/.config/fuyu/config.json
+ls
+ls ~/.config/fuyu
+cd projects/go/src/fuyu
+ls
+rg TODO
+ls
+cd cmd/fuyud
+./run.sh
+./run.sh
+./run.sh
+./run.sh
+./run.sh
+./run.sh
+./run.sh
+nvim NOTE.md
+nvim NOTE.md
+ls
+mkdir Documentws
+mkdir Documents
+rm -rf Documentws
+ls
+cd Downloads
+ls
+unzip Designer\'s\ CV.zip
+ls
+mv designers-cv-howtotex.tex ../Documents
+cd ../Do
+cd ../Documents
+ls
+mkdir cv
+mv designers-cv-howtotex.tex cv
+l
+cd cv
+ls
+nvim designers-cv-howtotex.tex
+nvim designers-cv-howtotex.tex
+nvim designers-cv-howtotex.tex
+nvim designers-cv-howtotex.tex
+nvim designers-cv-howtotex.tex
+nvim designers-cv-howtotex.tex
+nvim designers-cv-howtotex.tex
+nvim designers-cv-howtotex.tex
+nvim ~/.config/nvim/init.vim
+nvim designers-cv-howtotex.tex
+nvim ~/.config/nvim/init.vim
+nvim designers-cv-howtotex.tex
+nvim designers-cv-howtotex.tex
+nvim designers-cv-howtotex.tex
+ls
+mv ~/Downloads/photo.pdf .
+ls
+nvim designers-cv-howtotex.tex
+ls
+zathura photo.pdf
+nvim designers-cv-howtotex.
+nvim designers-cv-howtotex.pdf
+nvim designers-cv-howtotex.tex
+ls
+nvim designers-cv-howtotex.
+nvim designers-cv-howtotex.tex
+mv photo.pdf _empty.pdf
+mv medium_briviere.jpg photo.jpg
+nvim designers-cv-howtotex.tex
+ls
+mv designers-cv-howtotex.tex cv.tex
+ls
+rm designers-cv-howtotex.*
+ls
+nvim cv.tex
+nvim ~/.bin/compiler
+yay -R tectonic
+yay -S texlive-most
+nvim cv.tex
+ls
+nvim cv.tex
+ls
+rm cv.aux
+nvim cv.tex
+nvim new_cv.tex
+rm new_cv.
+rm new_cv.*
+cd
+cd projects/go/src/fuyu
+ls
+cd cmd/fuyud
+ls
+nvim main.go
+ls
+cd ../..
+cd cmd/
+git add .
+git commit -m "[ssh] handle duplicate"
+cd fuyu
+ls
+nvim main.go
+nvim main.go
+cd ../fuyud
+ls
+nvim main.go
+cd ../..
+nvim config/config.go
+cd cmd/fuyud
+ls
+nvim main.go
+ls
+nvim ../../config/config.go
+ls
+nvim main.go
+cd ../..
+ls
+nvim common/common.go
+ls
+cd projects/hackthebox/easypass
+ls
+file EasyPass.exe
+cd projects/go/src/github.com/babariviere/vmctl
+ls
+go install
+ls
+rm a
+ls
+git status
+ls ~/projects/go/bin/
+go install .
+ls ~/projects/go/bin/
+go install --help
+go install .
+go build
+ls
+go install cmd/vmctl
+cd cmd/vmctl
+go install .
+vmctl
+nvim main.go
+ls
+nvim main.go
+ls
+cd ../..
+ls
+cd cmd/vmctl
+go install .
+vmctl
+nvim main.go
+git add .
+git commit -m "fix usage"
+git push
+vmctl create
+nvim create.go
+nvim run.go
+git add .
+git commit --amend
+git push -f
+cd
+ls
+cd vm
+ls
+nvim kali.
+nvim kali.yml
+vmctl create Windows
+ls
+ls ~/.config/vmctl
+ls
+mv windows.yml ~/.config/vmctl
+vmctl create Windows
+vmctl create Windows
+vmctl create Windows
+vmctl create Windows
+vmctl create Windows
+vmctl create Windows
+vmctl create Windows
+vmctl create Windows
+yay qemu
+vmctl create Windows
+vmctl create Windows OS
+p hacking/hackthebox
+cd
+cd Downloads
+ls
+unzip EasyPass.zip
+ls
+file EasyPass.zip
+yay -S 7zip
+yay -S 7z
+yay 7z
+7z x EasyPass.zip
+ls
+ls
+cat EasyPass.
+file EasyPass.exe
+rm EasyPass.exe
+ls
+nvim EasyPass.zip
+hexdump -C EasyPass.zip
+hexdump -C EasyPass.zip | grep HTB
+ls
+strings EazyPass.zip
+strings EasyPass.zip
+strings EasyPass.zip | head
+yay fcrackzip
+fcrackzip EasyPass.zip
+ls
+fcrackzip -u EasyPass.zip
+ls /usr/share/wordlists
+ls /usr/share/wordlistctl
+ls /usr/share/wordlists
+fcrackzip -u -D -p '/usr/share/wordlists/rockyou.txt'  EasyPass.zip
+fcrackzip -u -D -p '/usr/share/wordlists/rockyou.txt'  EasyPass.zip
+fcrackzip -D -p '/usr/share/wordlists/rockyou.txt'  EasyPass.zip
+fcrackzip
+fcrackzip --help
+fcrackzip -u -D -p '/usr/share/wordlists/rockyou.txt'  EasyPass.zip
+ls
+yay -R fcrackzip
+ls
+unzip EasyPass.zip
+ls
+cd ~/projects/hackthebox/easypass
+ls
+strings EasyPass.exe
+strings EasyPass.exe | less
+yay ollydbg
+yay wine
+sudo nvim /etc/pacman.conf
+yay -Syuu
+yay -Syuu --devel
+r2 EasyPass.exe
+ls
+r2 ==he;[
+r2 -D gdb -d EasyPass.exe gdb://localhost:43883
+r2 -D gdb -d EasyPass.exe gdb://localhost:43883
+r2 -a x86 -b 32 -D gdb -d EasyPass.exe gdb://localhost:43883
+r2 -a x86 -b 32 -D gdb  gdb://localhost:43883
+r2 -a x86 -b 32 -D gdb -d EasyPass.exe gdb://localhost:43883
+r2 -a x86 -b 32 -D gdb gdb://localhost:43883
+r2 -a x86 -b 32 -D gdb gdb://localhost:53265
+objdump -D EasyPass.exe
+objdump -D EasyPass.exe | less
+r2 -a x86 -b 32 -D gdb gdb://localhost:53265
+r2 -a x86 -b 32 -D gdb gdb://localhost:60203
+r2 -a x86 -b 32 -D gdb gdb://localhost:49165
+r2 -a x86 -b 32 -D gdb gdb://localhost:49165
+r2 -a x86 -b 32 -D gdb gdb://localhost:38455
+r2 -a x86 -b 32 -D gdb gdb://localhost:35889
+cd projects/hackthebox/easypass
+rabin2 -z EasyPass.exe
+winedbg --no-start --gdb EasyPass.exe
+winedbg --gdb --no-start  EasyPass.exe
+winedbg --gdb --no-start  EasyPass.exe
+winedbg --no-start  EasyPass.exe
+man winedbg
+winedbg --no-start  EasyPass.exe
+winedbg --gdb --no-start  EasyPass.exe
+winedbg --gdb --no-start  EasyPass.exe
+winedbg --gdb --no-start  EasyPass.exe
+winedbg --gdb --no-start  EasyPass.exe
+cd projects/hackthebox/easypass
+r2 -a x86 -b 32 -D gdb gdb://localhost:58015
+cd projects/hackthebox/easypass
+winedbg --gdb --no-start  EasyPass.exe
+cd projects/hackthebox/easypass
+ls
+rabin2 -z EasyPass.exe | grep Good
+la
+rabin2 --help
+rabin2 -b 32 -z EasyPass.exe | grep Good
+rabin2 -a x86 -b 32 -z EasyPass.exe | grep Good
+rabin2 -a x86 -b 32 -zz EasyPass.exe | grep Good
+winedbg --gdb --no-start  EasyPass.exe
+winedbg --gdb --no-start  EasyPass.exe
+winedbg --gdb --no-start  EasyPass.exe
+winedbg --gdb --no-start  EasyPass.exe
+winedbg --gdb --no-start  EasyPass.exe
+winedbg --gdb --no-start  EasyPass.exe
+winedbg --gdb --no-start  EasyPass.exe
+winedbg --gdb --no-start  EasyPass.exe
+winedbg --gdb --no-start  EasyPass.exe
+cd projects/hackthebox/easypass
+ls
+r2 EasyPass.
+r2 EasyPass.exe
+cd projects/hackthebox/easypass
+ls
+r2 -a x86 -b 32 -D gdb gdb://localhost:58015
+r2 -a x86 -b 32 -D gdb gdb://localhost:51101
+r2 -a x86 -b 32 -d EasyPass.exe -D gdb gdb://localhost:51101
+man r2
+r2 -a x86 -b 32 -D gdb gdb://localhost:51101
+r2 -a x86 -b 32 -D gdb gdb://localhost:44925
+r2 -a x86 -b 32 -e dbg.exe.path=EasyPass.exe -D gdb gdb://localhost:44925
+r2 -a x86 -b 32 -e dbg.exe.path=EasyPass.exe -d gdb://localhost:44925
+r2 -a x86 -b 32 -e dbg.exe.path=EasyPass.exe -d gdb://localhost:38393
+r2 -e dbg.exe.path=./EasyPass.exe -d gdb://localhost:37123
+r2 -e dbg.exe.path=./EasyPass.exe- B 0x7b466051 -d gdb://localhost:37123
+r2 -e dbg.exe.path=./EasyPass.exe- B 0x7b466051 -d gdb://localhost:55335
+r2 -e dbg.exe.path=./EasyPass.exe -B 0x7b466051 -d gdb://localhost:55335
+r2 -e dbg.exe.path=./EasyPass.exe -e bin.baddr=0x00454450 -d gdb://localhost:56611
+r2 -e bin.baddr=0x00454450 -e dbg.exe.path=./EasyPass.exe -A -d gdb://localhost:44931
+r2 -e bin.baddr=0x00454450 -e dbg.exe.path=./EasyPass.exe -A gdb://localhost:40893
+r2 -a x86 -b 32 -e dbg.exe.path=./EasyPass.exe -A -d gdb://localhost:40133
+r2 -a x86 -b 32 -A -d gdb://localhost:40133 ./EasyPass.exe
+startx
+ls
+sudo modprobe kvm_intel
+cd vm/windows
+ls
+ls -al
+cat /etc/group
+ls
+vmctl run Windows
+nvim .config/vmctl/windows.yml
+vmctl run Windows
+ls vm/windows
+ls Downloads
+mv Downloads/Win10_1809Oct_English_x64.iso vm/windows/windows.iso
+vmctl run Windows
+cat /etc/group
+vmctl run Windows
+nvim .config/vmctl/windows.yml
+vmctl run Windows
+nvim .config/vmctl/windows.yml
+vmctl run Windows
+nvim .config/vmctl/windows.yml
+cd projects/go/src/github.com/babariviere/vmctl
+cd cmd/vmctl
+ls
+nvim config.go
+cd ../..
+ls
+nvim vm.go
+vmctl run Windows
+vmctl run Windows
+cd projects/go/src/github.com/babariviere/vmctl
+nvim README.md
+cd
+nvim .config/nvim/init.vim
+nvim .config/vmctl/windows.yml
+startx
+ls
+cd projects/go/src/github.com/babariviere/vmctl
+nvim drive.go
+ls
+cd cmd/vmctl
+go install .
+git add .
+git commit -m "[disk] fix cdrom arguments"
+git add ../..
+git commit -m "[disk] fix cdrom arguments"
+git pusH
+git push
+nvim .config/vmctl/windows.yml
+killall vmctl
+htop
+cd projects/go/src/github.com/babariviere/vmctl
+nvim vga.go
+ls
+nvim vm.go
+nvim vm.yml
+nvim ~/.config/vmctl/windows.yml
+ls
+nvim README.md
+nvim ~/.config/vmctl/windows.yml
+vmctl run Windows
+vmctl run Windows
+vmctl run Windows
+lsof -i
+lsof -i :1234
+nvim ~/.config/vmctl/windows.yml
+lsof -i :1234
+lsof -i :1234
+lsof -i :1234
+r2 -
+r2 -
+r2 -
+r2 -
+r2 -
+cd Downloads
+ls
+unzip TearORDear.zip
+ls
+rm TearORDear.exe
+vmctl run Windows
+qemu-system-x86_64 -drive file=/home/babariviere/vm/windows/os.qcow2,format=qcow2,if=ide,media=disk,cache=writeback -drive file=/home/babariviere/vm/windows/windows.iso,if=virtio,media=cdrom,cache=writeback -smp 4 -cpu host -m 8G -vga std --enable-kvm
+qemu-system-x86_64 -drive file=/home/babariviere/vm/windows/os.qcow2,format=qcow2,if=ide,media=disk,cache=writeback -cdrom /home/babariviere/vm/windows/windows.iso -smp 4 -cpu host -m 8G -vga std --enable-kvm
+vmctl run Windows
+vmctl run Windows
+vmctl run Windows
+cd projects/go/src/github.com/babariviere/vmctl
+nvim vm.go
+nvim net.go
+nvim vm.go
+ls
+nvim vm.go
+nvim README.md
+git add .
+git commit -m "[net] add port redirection"
+git push
+cd cmd/vmctl
+git install .
+go install .
+cd ../..
+nvim net.go
+git add .
+git commit --amend
+git push -f
+cd cmd/vmctl
+go install .
+cd ../..
+nvim net.go
+nvim README.md
+ls
+git add .
+git commit -m "[net] change net forward"
+git push
+cd cmd/vmctl
+go install .
+vmctl run Windows
+cd ..
+ls
+cd ..
+ls
+nvim net.go
+cd cmd/vmctl
+go install .
+vmctl run Windows
+nvim ~/.config/vmctl/windows.yml
+vmctl run Windows
+nvim ~/.config/vmctl/windows.yml
+cd ../..
+ls
+nvim net.go
+cd cmd/vmctl
+go install .
+vmctl run Windows
+ls
+cd ../..
+git add .
+git commit --amend
+git push -f
+st
+startx
+ls
+cat NOTE.md
+ls
+rm NOTE.md
+vmctl run Windows
+cd projects/go/src/github.com/babariviere/vmctl
+nvim net.go
+nvim ~/.config/vmctl/windows.yml
+nvim net.go
+cd cmd/vmctl
+go install .
+vmctl run Windows
+ls
+cd ..
+cd ..
+ls
+cd projects/go/src/github.com/babariviere/vmctl
+git add .
+git commit -m "[net] small fix to enable network if port redirection"
+git push
+nvim vm.go
+ls
+nvim vm.yml
+nvim README.md
+nvim ~/.config/vmctl/windows.yml
+ls
+git add .
+git commit -m "[snapshot] add temporary snapshot"
+cd cmd/vmctl
+go install .
+cd ../..
+git push
+vmctl run Windows
+startx
+startx
+startx
+cd Documents/cv
+ls
+nvim cv.tex
+nvi new_cv.tex
+nvim new_cv.tex
+startx
+cd Documents/cv
+nvim new_cv.tex
+cd 
+cd libs/tex
+ls
+nvim baba-cv.cls
+nvim baba-cv.cls
+man zathurarc
+cd Documents/cv
+ls
+cat cv.tex
+cat ~/.config/nvim/init.vim
+nvim new_cv.tex
+nvim ~/libs/tex/baba-cv.cls
+nvim new_cv.tex
+nvim ~/libs/tex/baba-cv.cls
+cd Documents/cv
+ls
+cat cv.tex
+cat new_cv.
+cat new_cv.tex
+nvim new_cv.tex
+nvim ~/.zshrc
+nvim new_cv.tex
+cd Documents/cv
+nvim new_cv.tex
+startx
+cd Documents/cv
+nvim new_cv.tex
+ls
+ls
+mv cv.tex cv.old.tex
+ls
+mv cv.old.tex old_cv.tex
+rm cv.*
+ls
+mv new_cv.tex cv.tex
+rm new_cv.*
+ls
+nvim cv.tex
+cat .bin/dmenu_mpc
+dmenu_mpc
+ls
+nvim .bin/dmenu_mpc
+startx
+cd Documents/cv
+zathura cv.pdf
+startx
+nvim projects/go/src/fuyu
+cd projects/go/src/fuyu
+ls
+rg TODO
+cd me
+ls
+cd proto
+ls
+nvim message.go
+cd ../
+ls
+cd cmd/fuyud
+ls
+nvim main.go
+ls
+cd ../fuyu
+ls
+nvim main.go
+cd ../..
+s
+ls
+nvim config/config.go
+ls
+cd cmd/fuyud
+ls
+nvim main.go
+nvim ../../proto/message.go
+nvim main.go
+cd ../fuyu
+nvim main.go
+cd ../..
+git add .
+git commit -m "[response] implements response message"
+cd projects/go/src/fuyu/cmd/fuyud
+ls
+./run.sh
+nvim ~/.config/fuyu/config.json
+./run.sh
+./run.sh
+./run.sh
+./run.sh
+./run.sh
+./run.sh
+cd projects/go/src/fuyu
+ls
+cat proto/payload/ssh.go
+go build
+cd cmd/fuyu
+ls
+go build
+cd ../..
+ls
+git add proto/message.go
+git commit -m "[response] simplify response"
+cat proto/message.go
+cat proto/message.go
+cd cmd/fuyu
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+cat ../../proto/message.go 
+cat ../../proto/message.go 
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+go run *.go ssh add babariviere ~/.ssh/id_rsa.pub
+startx
+st
+startx
+ip addr show
+ip addr show
+wpa_cli
+wpa_cli -iwlo1
+ip addr show
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ip addr show
+xkill
+killall Discord
+killall Discord
+killall discord
+startx
+adb reboot recovery
+adb reboot recovery
+adb reboot recovery
+adb kill-server
+adb reboot recovery
+adb reboot recovery
+cd Downloads
+ls
+adb sideload OnePlus5Oxygen_23_OTA_026_all_1812052331_0af7ef93dd8f4c.zip
+adb sideload OnePlus5Oxygen_23_OTA_026_all_1812052331_0af7ef93dd8f4c.zip
+ls /data/android
+ls /data/android/op5
+adb sideload /data/android/op5/Oxygen_15_Beta.zip
+adb sideload /data/android/op5/Oxygen_15_Beta.zip
+cd Downloads
+ls
+unzip OnePlus5Oxygen_23_OTA_026_all_1812052331_0af7ef93dd8f4c.zip
+ls
+adb sideload OnePlus5Oxygen_23_OTA_026_all_1812052331_0af7ef93dd8f4c.zip
+adb sideload OnePlus5Oxygen_23_OTA_026_all_1812052331_0af7ef93dd8f4c.zip
+adb sideload OnePlus5Oxygen_23_OTA_026_all_1812052331_0af7ef93dd8f4c.zip
+rm OnePlus5Oxygen_23_OTA_026_all_1812052331_0af7ef93dd8f4c.zip
+ls
+rm *
+l
+rm -rf *
+ls
+startx
+startx
+ls /data/gnupg
+ls
+go-mtpfs mnt
+ls
+cp /data/gnupg/private.key mnt/Internal\ shared\ storage/
+ls
+fusermount -u mnt
+startx
+ls
+nvim /etc/bumblebee/xorg.conf.nvidia
+sudo nvim /etc/bumblebee/xorg.conf.nvidia
+yay intel-virtual-output
+yay intel
+yay -S xf86-video-intel
+intel-virtual-output
+DISPLAY=:8 intel-virtual-output
+optirun intel-virtual-output
+export DISPLAY=:8
+optirun intel-virtual-output
+intel-virtual-output :8
+intel-virtual-output -f
+DISPLAY=:0 intel-virtual-output -f
+sudo nvim /etc/bumblebee/xorg.conf.nvidia
+startx
+startx
+intel-virtual-output 
+export DISPLAY=:8
+intel-virtual-output 
+optirun intel-virtual-output
+sudo intel-virtual-output
+sudo nvim /etc/bumblebee/xorg.conf.nvidia
+sudo nvim /usr/share/X11/xorg.conf.d/20-intel.conf
+intel-virtual-output 
+killall intel-virtual-output
+export DISPLAY=:8
+intel-virtual-output 
+intel-virtual-output -f
+export DISPLAY=:0
+intel-virtual-output -f
+xrandr
+xrandr --output eDP1 --output VIRTUAL1
+xrandr --output eDP1 --output VIRTUAL1 --same-as eDP1
+ps axu | grep intel-virtual
+intel-virtual-output
+intel-virtual-output
+ls
+xrandr 
+optirun intel-virtual-output -f
+sudo nvim /etc/bumblebee/bumblebee.conf
+sudo rm /usr/share/X11/xorg.conf.d/20-intel.conf
+sudo nvim /etc/bumblebee/bumblebee.conf
+ls
+xrandr
+intel-virtual-output
+sudo nvim /etc/bumblebee/xorg.conf.nvidia
+intel-virtual-output
+ls
+xrandr
+export DISPLAY=:8 LD_LIBRARY_PATH=/usr/lib/nvidia-current:$LD_LIBRARY_PATH\
+\
+
+nvtop
+yay nvtop
+intel-virtual-output
+ls
+nvtop
+sudo nvim /etc/bumblebee/bumblebee.conf
+sudo nvim /usr/share/X11/xorg.conf.d/20-intel.conf
+sudo nvim /etc/bumblebee/xorg.conf.nvidia
+startx
+startx
+sudo systemctl restart bumblebeed
+startx
+startx
+htop
+nvtop
+lspci -s1
+lspci -s1
+lspci -s
+lspci
+htop
+intel-virtual-output -f
+xrandr
+xrandr --output eDP1 --output VIRTUAL1 --same-as eDP1
+xrandr --output eDP1 --mode 1920x1080 --output VIRTUAL1 --mode 1920x1080 --same-as eDP1
+xrandr --output eDP1 --mode 1920x1080 --output VIRTUAL1 --mode VIRTUAL1.447-1920x1080 --same-as eDP1
+startx
+st
+startx
+cat /etc/wpa_supplicant/wpa_supplicant-wlo1.conf
+wpa_cli -iwlo1
+ls
+wpa_cli -iwlo1
+go get -u github.com/99designs/gqlgen
+go get -u go get -u github.com/golang/protobuf/protoc-gen-go
+go get -u github.com/golang/protobuf/protoc-gen-go
+go get -u google.golang.org/grpc
+go get google.golang.org/grpc
+grpc
+protoc
+yay protoc
+ls
+go get -d -u github.com/golang/protobuf/protoc-gen-go\
+
+go install github.com/golang/protobuf/protoc-gen-go\
+
+find . -name "protoc"
+ls
+cd projects/go/src/github.com/golang/protobuf
+ls
+ls protoc-gen-go
+ls
+ls proto
+yay protobuf
+protoc
+ls
+cd projects/easymovie/test_api
+ls
+cat go/src/server/user/user.go
+yay graphql
+yay gql
+ls
+go get -u "github.com/99designs/gqlgen/cmd"
+ls
+cd go/src
+ls
+go run server/scripts/gqlgen.go
+cd ../..
+ls
+nvim generate.sh
+ls
+sh generate.sh
+ls
+nvim generate.sh
+ls
+sh generate.sh
+nvim generate.sh
+ls
+ls $GOPATH/src/server
+nvim generate.sh
+sh generate.sh
+ls
+cd go/src
+ls
+cd ../..
+ls
+ls
+cd go/src
+ls
+cd server
+ls
+cd graphql/server
+ls
+nvim server.go
+ls
+cd ../..
+ls
+cd ../..
+ls
+cd ..
+ls
+nvim run.sh
+chmod +x *.sh
+ls
+./run.sh
+./run.sh graphql
+./run.sh projects
+ls
+cd go/src
+ls
+cd server
+ls
+ls
+ls
+nvim project/project.go
+nvim user/user.go
+ls
+mkdir -p cmd/{project/user}
+ls
+ls
+ls
+cd graphql
+ls
+ls
+cd ..
+ls
+rm -rf cmd
+ls
+cd project
+ls
+mkdir server
+cd ../user
+ls
+mkdir server
+ls
+cd ..
+ls
+nvim graphql/models_gen.go
+ls
+cat graphql/models_gen.go 
+ls
+cd graphql
+ls
+cat resolver.go
+nvim resolver.go
+ls
+cd ..
+ls
+nvim project/project.go
+ls
+nvim user/user.go
+ls
+nvim graphql/resolver.go
+ls
+cd ..
+ls
+mkdir client\\
+ls
+ls
+rm clientls
+rm -rf clientls
+mkdir client
+ls
+cd server
+ls
+nvim graphql/resolver.go
+ls
+nvim graphql/resolver.go
+ls
+ls
+cd project
+ls
+ls
+cd ../../exo/project
+ls
+mv project.proto ../../exo_server/project
+ls
+cd ../..
+ls
+mv exo_server/project/project.proto exo/project
+ls
+cd exo/project
+ls
+protoc -I. --go_out=grpc:.
+ls
+cd ..
+ls
+cd ../exo_server/graphql
+ls
+cat schema.graphql
+go get github.com/golang/protobuf/proto
+go get google.golang.org/grpc
+ls
+cd ../..
+ls
+cd exo/project
+ls
+cd pb
+ls
+rm project.pb.go
+ls
+pwd
+ls
+ls
+nvim project.pb.go
+ls
+cat project.proto
+nvim project.pb.go
+nvim project.pb.go
+cd ../..
+ls
+cd ../exo_server/project
+ls
+nvim server_test.go
+go test
+nvim server_test.go
+go test
+nvim server_test.go
+go test
+nvim server_test.go
+go test
+nvim server_test.go
+go test
+nvim server_test.go
+go test
+nvim server_test.go
+ls
+cd ..
+ls
+cd ../exo/project
+ks
+ls
+cat pb/project.proto
+nvim pb/project.proto
+ls
+cd ../..
+ls
+cd exo_server
+ls
+cd project
+go generate
+ls
+cd ../..
+ls
+cd exo/project/pb
+ls
+nvim project.pb.go
+ls
+cd ../..
+ls
+cd ..
+ls
+cd exo_server
+ls
+cat project/main.go
+nvim user/main.go
+cd user
+go generate
+nvim main.go
+cd
+ls
+cd projects/easymovie/test_api
+ls
+cd src
+ls
+cat exo/go.mod
+ls
+ls exo_server
+rm exo_client
+ls
+ls
+cd ..
+ls
+ls go/pkg/mod
+nvim .envrc
+ls
+direnv allow
+ls
+mv go go_
+ls
+mkdir go
+mv go_ go/go
+ls
+mv pkg go
+mv src go
+ls
+cd go/src
+ls
+cd exo_server
+ls
+cd ../..
+ls
+cd ..
+ls
+make generate
+make generate
+ls
+nvim Makefile
+ls
+ls pkg
+ls
+rm -rf pkg
+ls
+ls -al
+ls -al pkg
+ls -al pkg/mod/
+ls -al pkg/mod/github.com
+ls
+pamixer mute
+ls
+cd projects
+ls
+mkdir easymovie
+cd easymovie
+ls
+mkdir test_api
+cd test_api
+ls
+nvim .envrc
+direnv allow
+echo $GOPATH
+mkdir go
+nvim .envrc
+nvim .envrc
+ls
+direnv allow
+echo $GOPATH
+cd go
+ls
+mkdir -p src/
+cd src
+ls
+ls
+mkdir -p server/{project,user}
+ls
+cd server
+ls
+mkdir graphql
+ls
+cd project
+ls
+nvim project.go
+ls
+cd ..
+ls
+nvim user/user.go
+ls
+nvim graphql/schema.graphql
+nvim user/user.go
+ls
+nvim graphql/schema.graphql
+cd graphql
+ls
+gqlgen init
+nvim schema.graphql
+gqlgen init
+ls
+nvim gqlgen.yml
+ls
+gqlgen
+gqlgen help
+gqlgen generate
+ls
+rm gqlgen.yml
+gqlgen init
+ls
+ls
+cd ..
+ls
+mkdir scripts
+cd scripts
+ls
+nvim gqlgen.go
+cd ../graphql
+ls
+rm gqlgen.yml
+nvim schema.graphql
+ls
+go generate
+nvim schema.graphql
+gqlgen init
+ls
+nvim schema.graphql
+nvim schema.graphql
+gqlgen init
+ls
+ls
+rm gqlgen.yml
+gqlgen init
+ls
+cat server/server.go
+ls
+ls
+cd server
+ls
+nvim server.go
+ls
+go generate
+ls
+cd ..
+ls
+cd server
+ls
+nvim server.go
+go generate
+ls
+cd ..
+ls
+rm gqlgen.yml
+ls
+go generate ./server/server.go
+cd server
+go generate 
+cd ..
+ls
+gqlgen init
+ls
+cd server
+nvim server.go
+go generate 
+ls
+cd ../..
+ls
+ls
+nvim graphql/gqlgen.yml
+ls
+cat project/project.go
+ls
+cd project
+ls
+nvim ls
+ls
+cd ../..
+ls
+mv server exo_server
+ls
+mv client exo_client
+ls
+mkdir exo
+ls
+ls
+ls
+ls
+cd exo
+ls
+mv ../exo_server/project/project.go 
+ls
+ls
+mkdir {project,user}
+mv ../exo_server/project/project.go project
+mv ../exo_server/user/user.go user
+ls
+cd ../exo_server
+ls
+nvim graphql/gqlgen.yml
+nvim graphql/server/server.go
+ls
+ks
+ls
+cd project
+ls
+ls server
+rm -rf server
+ls
+nvim main.go
+cd ../user
+ls
+rm -rf server
+nvim main.go
+ls
+cd ../.
+cd ..
+ls
+ls
+cd exs
+cd exo
+ls
+cd project
+ls
+nvim project.proto
+ls
+protoc
+ls
+protoc
+ls
+protoc --go_out:grpc. project.proto
+protoc --go_out=:grpc. project.proto
+protoc --go_out=:grpc:. project.proto
+protoc --go_out=grpc:. project.proto
+protoc --go_out=plugins=grpc:. project.proto
+protoc -I .--go_out=plugins=grpc:. project.proto
+protoc -I . --go_out=plugins=grpc:. project.proto
+protoc --go_out=plugins=grpc:. project.proto proto
+protoc --go_out=plugins=grpc:. project.proto
+ls
+nvim project.proto
+ls
+protoc --go_out=plugins=grpc:. project.proto
+lxs
+ls
+nvim project.pb.go
+ls
+nvim project.pb.go
+ls
+mkdir pb
+;s
+ls
+rm project.pb.go 
+mv project.proto pb
+ls
+cd pb
+ls
+nvim project.proto
+protoc --go_out=plugins=grpc:. project.proto
+ls
+nvim project.pb.go
+ls
+go generate
+ls
+nvim project.p
+nvim project.pb.go
+ls
+cd ../..
+ls
+cd ..
+ls
+ls
+cd exo_server
+ls
+cd project
+ls
+nvim main.go
+l
+ls
+go generate
+nvim main.go
+go generate
+nvim main.go
+go generate
+ls
+nvim main.go
+ls
+go generate
+nvim main.go
+nvim ../graphql/server/server.go
+ls
+nvim main.go
+go build
+nvim main.go
+go build
+nvim main.go
+ls
+cd ../..
+ls
+nvim exo/project/project.go
+ls
+cd exo_server/project
+ls
+nvim main.go
+ls
+ls
+nvim main.go
+ls
+cd ../../
+ls
+ls
+cd exo_server
+ls
+cd project
+ls
+nvim server_test.go
+ls
+nvim main.go
+nvim server_test.go
+ls
+nvim main.go
+nvim ../../exo/project/p
+nvim ../../exo/project/project.go
+ls
+ls
+go test
+go test
+go test
+go test
+go test
+;s
+go test
+go test
+go test
+go test
+go test
+ls
+cd ../../
+ls
+cd exo
+ls
+cd user
+ls
+nvim user.go
+ls
+mkdir pb
+ls
+cd pb
+ls
+nvim user.proto
+rg pb
+nvim user.proto
+ls
+ls
+ls
+cd ../..
+ls
+cd ../exo_server/project
+ls
+cat main.go
+cd ..
+ls
+cd ../exo
+ls
+nvim user/user.go
+ls
+ls
+git init
+ls
+git add project/
+ls
+git commit -m "[project] add project protobuf"
+git add user/
+git commit -m "[user] add user protobuf"
+ls
+ls
+nvim project/project.go
+ls
+git add project/project.go
+git commit -m "[project] remove all projects"
+git commit --amend
+ls
+cd ../..
+cd src/
+ls
+ls
+ls
+cd exo
+ls
+go mod
+go mod init
+ls
+cd ..
+l
+export GO111MODULE=on
+go mod init
+ls
+cd exo
+go mod init
+ls
+nvim go.mod
+ls
+ls
+cd ../..
+ls
+cd ..
+ls
+mkdir src
+ls
+nvim .envrc
+rm .envrc
+ls
+mv go/src/exo* src
+ls
+ls go/src
+rm -rf go
+ls
+cd src
+ls
+cd exo_client
+go mod init
+export GO111MODULE=on
+go mod init
+ls
+export GO111MODULE=off
+go mod init
+export GO111MODULE=on
+go mod init
+ls
+cd ../exo_server
+go mod init
+echo $GOPATH
+ls
+go build
+go build ./...
+ls
+nvim go.mod
+ls
+go mod init
+ls
+go build
+go build ./...
+ls
+nvim go.mod o
+nvim go.mod 
+go build ./...
+ls
+nvim go.mod 
+go build ./...
+ls
+nvim go.mod 
+ls
+cd ..
+ls
+nvim go.mod
+ls
+cd exo_server
+l
+nvim go.mod
+cd exo_server
+ls
+go build ./...
+cd graphql/server
+ls
+nvim server.go
+ls
+cd ../..
+cd graphql/server
+cd ..
+..
+ls
+cd ..
+go build ./...
+rg server/
+cd graphql
+ls
+cd server
+ls
+go generate
+nvim server.go
+go generate
+ls ../..
+nvim server.go
+go generate
+ls
+cd ../..
+ls
+cd graphql/server
+ls
+export GOPATH=~/projects/easymovie/test_api/src
+ls
+export GOPATH=~/projects/easymovie/test_api
+go generate
+echo $GO111MODULE
+nvim server.go
+cd projects/easymovie/test_api
+ls
+./generate.sh
+pamixer
+pamixer -m
+pamixer --get-volume
+pamixer --set-volume 0
+./generate.sh
+ls
+nvim generate.sh
+ls
+./generate.sh
+./generate.sh
+ls
+ls
+nvim Makefile
+ls
+cat generate.sh
+nvim Makefile
+ls
+rm generate.sh
+ls
+nvim Makefile
+ls
+make help
+ls
+nvim Makefile
+ls
+make help
+nvim Makefile
+make help
+nvim Makefile
+make help
+nvim Makefile
+make help
+nvim Makefile
+ls
+cd go/src/exo_server
+ls
+rg pb
+nvim project/main.go
+nvim project/server_test.go
+ls
+ls
+git init
+ls
+git add graphql/
+git commit -m "[graphql] create graphql server"
+git commit --amend
+ls
+nvim scripts/gqlgen.go
+git add scripts/gqlgen.go
+git commit --amend
+ls
+ls
+git add project/
+git commit -m "[project] creation of project microservice"
+cd projects/go/bin
+ls
+go get -u github.com/golang/proto
+go get -u github.com/golang/protobuf/proto
+protoc
+protoc --help
+protoc-gen-go --help
+protoc-gen-go
+protoc-gen-go --help
+make --help
+wpa_cli -iwlo1
+ls
+cd projects/easymovie/test_api
+ls
+make generate
+ls
+rm -rf pkg
+ls
+ls -al pkg/mod/golang.org/x/sys@v0.0.0-20180830151530-49385e6e1522/windows/svc/example/beep.go
+ls
+cd go
+ls
+rm -rf go pkg
+sudo rm -rf go pkg
+ls
+cd ..
+ls
+sudo rm -rf pkg
+ls
+cd go/src
+go generate exo_server/...
+ls
+cd exo
+cd ../exo_server
+ls
+ls
+cd graphql/server
+go generate 
+cd ../..
+ls
+ls scripts
+nvim project/server_test.go
+nvim project/server_test.go
+cd ../..
+ls
+cd ..
+ls
+cat .envrc
+nvim .envrc
+ls
+direnv allow
+sudo rm -rf pkg
+ls
+ls go
+ls
+cd go/src/exo_server
+ls
+go generate ./...
+rm -rf .git
+ls
+cd ..
+ls
+find . -name ".git"
+rm -rf exo/.git
+ls
+ls
+ls
+ls
+cd ..
+ls
+cd src/exo
+ls
+go generate ./...
+ls
+go build ./...
+nvim go.mod
+ls
+cd ../exo_server
+ls
+go build ./...
+nvim graphql/resolver.go
+ls
+nvim graphql/resolver.go
+rg Resolver
+nvim go.mod
+go build ./...
+ls
+nvim go.mod
+rm go.mod
+rm go.sum
+go mod init
+ls
+go build ./...
+nvim go.mod
+go build ./...
+ls
+nvim go.mod
+nvim go.mod
+cd ../exo
+ls
+go build ./...
+go generate ./...
+ls
+go generate ./...
+go build ./...
+ls
+cd ../exo_server
+ls
+nvim project/main.go
+ls
+cd ../exo
+ls
+ls
+cd project
+ls
+rm pb/project.pb.go
+ls
+cd ../user
+rm pb/user.p
+rm pb/user.pb.go
+cd ..
+ls
+nvim Gopkg.toml
+nvim Gopkg.toml
+cd ../exo_server
+ls
+nvim project/main.go
+cd ..
+ls
+nvim exo_server/Gopkg.toml
+ls
+ls
+nvim exo_server/Gopkg.toml
+ls
+cd exo_server
+ls
+rm Gopkg.*
+ls
+cd ../exo
+ls
+rm Gopkg.*
+ls
+rm -rf vendor
+cd ../exo_server
+ls
+rm -rf vendor
+ls
+go get ./...
+cd ..
+ls
+ls
+ls
+cd exo_server
+ls
+cd user
+ls
+nvim main.go
+ls
+cp ../project/server_test.go .
+nvim server_test.go
+go test
+ls
+cd ../..
+ls
+ls
+git add exo*
+git commit -m "[server] add servers"
+nvim exo_server/graphql/gqlgen.yml
+ls
+cd exo_server
+ls
+ls
+ls
+nvim graphql/resolver.go
+ls
+rg Resolver
+nvim graphql/server/server.go
+i3lock
+nvim graphql/server/server.go
+ls
+nvim graphql/resolver.go
+cd graphql
+go build
+ls
+nvim resolver.go
+cd projects/easymovie/test_api
+ls
+echo $GO111MODULE
+make generate
+ls
+nvim Makefile
+ls
+make generate
+git init
+ls
+git add Makefile run.sh
+git commit -m "[scripts] add scripts to make, build and run"
+nvim .gitignore
+ls
+ls go
+cd sr
+ls
+make generate
+nvim Makefile
+make generate
+nvim Makefile
+make generate
+nvim Makefile
+make generate
+ls
+nvim Makefile
+make generate
+nvim Makefile
+make generate
+cd go/src/exo/project
+ls
+nvim pb/project.proto
+nvim project.go
+cd ../../exo_server
+ls
+nvim graphql/resolver.go
+nvim graphql/server/server.go
+cd ../..
+ls
+cd ..
+ls
+nvim Makefile
+l
+nvim tutos.txt
+make generate
+nvim Makefile
+make generate
+make
+ls
+nvim Makefile
+make
+make generate
+nvim Makefile
+make generate
+nvim Makefile
+make generate
+ls
+echo $GOPATH
+nvim Makefile
+make generate
+nvim Makefile
+ls
+cd go
+ls
+make -C..
+go generate exo_server/...
+ls
+cd src
+go generate exo_server/...
+ls
+nvim exo_server/go.mod
+ls
+nvim exo_server/go.mod
+ls
+cat exo/go.mod
+go generate exo_server/...
+ls
+ls
+cd exo_server
+ls
+nvim go.mod
+ls
+cd ../
+ls
+nvim exo/go.mod
+rg exo
+ls
+ls
+go generate exo_server/...
+cd exo_server
+go generate exo_server/...
+go generate exo_server/...
+cd ../..
+ls
+cd ..
+ls
+nvim Makefile
+make generate
+ls
+nvim .envrc
+echo $GOPATH
+sudo rm -rf pkg
+go generate exo_server/...
+make generate
+nvim Makefile
+ls
+cd go/src/exo
+ls
+rm go.mod go.sum
+ls
+cd ../exo_server
+ls
+rm go.mod go.sum
+ls
+cd ../..
+ls
+cd ..
+nvim Makefile
+ls
+make generate
+ls
+ls go
+rm -rf go/pkg
+sudo rm -rf go/pkg
+ls
+make generate
+echo $GOPATH
+nvim .envrc
+ls
+make generate
+go mod init
+nvim Makefile
+dep
+nvim Makefile
+make 
+nvim Makefile
+make 
+ls
+nvim Gopkg.toml
+dep init
+cd go/src/exo
+ls
+dep init
+ls
+cd ../..
+ls
+cd ..
+ls
+make dependencies
+ls
+dep -help
+dep help ensure
+nvim Makefile
+dep help ensure
+make 
+make generate
+nvim go/src/exo/project/pb/project.pb.go
+nvim Makefile
+make
+make
+ls
+git status
+make
+ls go/bin
+ls
+cat go/src/exo_server/project/main.go
+git status
+git status
+git add .gitignore .envrc
+git commit -m "add envrc and gitignore"
+ls
+cd go/src/exo_server
+ls
+cat project/server_test.go
+nvim project/server_test.go
+cd projects/easymovie/test_api/go/src
+ls
+cat exo/Gopkg.toml
+ls
+cd exo_server
+dep init
+make
+cd ../../..
+ls
+make
+make
+make
+make
+make
+make
+make
+make
+nvim .gitin
+nvim .gitignore
+i3lock
+startx
+obs
+yay -Syu --devel
+dot
+ls
+cd Documents
+ls
+mkdir dot
+cd dot
+ls
+nvim exo.dot
+dot exo.dot -o out.jpg
+ls
+nvim exo.dot
+dot exo.dot -o out.jpg
+ls
+nvim exo.dot
+dot exo.dot -o out.jpg
+ls
+display out.jpg
+ls
+cat out.jpg
+dot -Tps exo.dot -o out.jpg
+ls
+cat out.jpg
+display out.jpg
+dot -Tjpg exo.dot -o out.jpg
+ls
+cat out.jpg
+display out.jpg
+cd projects/easymovie/test_api/go/src
+ls
+cd ../..
+ls
+git add tutos.txt
+git commit -m "add tutorials"
+cd go/src
+ls
+cd exo_server
+ls
+cd ../..
+ls
+cd ..
+nvim README.md
+ls
+ghostwriter README.md
+ls
+git add README.md
+git commit -m "add readme"
+cd go/src/exo_server
+ls
+nvim graphql/resolver.go
+ls
+nvim graphql/resolver.go
+cd graphql
+ls
+nvim server/server.go
+nvim resolver.go
+ls
+cd ../..
+l
+cd ../..
+ls
+git add .
+git status
+git add .
+git commit -m "[graphql] do not return error if grpc server is down"
+cd go/src/exo_server
+ls
+nvim graphql/resolver.go
+nvim graphql/resolver.go
+cd graphql/server
+ls
+nvim server.go
+cd ../../..
+cd ../..
+ls
+nvim README.md
+git add README.md
+git commit -m "update readme"
+git push
+nvim README.md
+git add README.md
+git commit --amend
+git push -f
+cd projects/easymovie/test_api/go/src
+ls
+cd exo_server
+ls
+cd graphql
+ls
+nvim resolver.go
+nvim resolver.go
+ls
+ls
+cd ../..
+ls
+cd ../..
+ls
+make
+cd go/src
+ls
+rm -rf exo_client
+ls
+cd ../..
+ls
+nvim Makefile
+./go/bin/server
+cd go/src
+ls
+nvim exo_server/project/main.go
+cd ../..
+make
+make graphql
+git add Makefile
+git commit -m "update Makefile"
+make graphql
+ls
+make graphql
+make graphql
+make graphql
+make graphql
+make graphql
+make graphql
+make graphql
+make graphql
+make graphql
+cd projects/easymovie/test_api/go/src
+ls
+cd ../..
+git status
+git add go/ Makefile
+git commit -m "[graphql] add handles to graphql server"
+ls
+make
+make
+./go/bin/project
+make project
+make project
+cd projects/easymovie/test_api
+ls
+./go/bin/user
+git add go/
+git commit -m "[project+user] print listening url"
+ls
+nvim Makefile
+make user
+make user
+make user
+cd go/src/exo_server
+nvim graphql/resolver.go
+ls
+make user
+cd ../../..
+ls
+make user
+make user
+make user
+git remote add origin git@github.com:babariviere/simple_graphql.git
+git status
+git push --set-upstream origin master
+i3lock
+htop
+startx
+ls
+cat /etc/fstab
+sudo mount /dev/nvme1n1p2 -o subvol=arch /mnt
+ls /mnt
+sudo su
+startx
+xbps-query -Rs termite
+ls
+xbps-query -Rs termite
+xbps-query -help
+xbps-query -RS termite
+xbps-query -Rs termite
+sudo xbps-install compton
+ls
+cat .config/i3/config
+cat .config/i3/config | grep term
+xbps-query -Rs termite
+wpa_cli -iwlo1
+xbps-query -Rs termite
+xbps-query -Rs termite
+xbps-install -Syu
+sudo xbps-install -Syu
+reboot
+sudo reboot
+ls
+cd .config
+ls
+cd
+ls
+cd projects/go/src/lemonscript
+ls
+go build
+./lemonscript
+nvim mpd.go
+ls
+systemctl status mpd
+systemctl --user status mpd
+systemctl --user start mpd
+systemctl --user status mpd
+systemctl --user status mpd
+systemctl --user start mpd
+systemctl --user start mpd
+systemctl --user restart mpd
+yay -Syu --devel
+ls
+wpa_cli -iwlo1
+cd Documents/dot
+ls
+display out.jpg
+yay libfdk
+chromium
+ls
+yay -h
+yay -Sh
+yay -Sc
+yay -S libfdk_aac
+yay libfdk
+yay -Scc
+yay libfdk
+chromium
+ls
+yay libfdk
+yay -S ffmpeg
+systemctl --user restart mpd
+pacman -Rns $(pacman -Qtdq)
+yay -Rns $(yay -Qtdq)
+cd projects/go/src/lemonscript
+cd 
+cd projects/easymovie/test_api
+make project 
+ls
+go get github.com/golang/protobuf@master
+git push
+make
+make
+make
+make
+nvim Makefile
+make user
+nvim Makefile
+make user
+ls
+make user
+nvim Makefile
+make user
+nvim Makefile
+make user
+nvim Makefile
+ls
+ls user/
+nvim Makefile
+ls
+nvim Makefile
+go build -help
+nvim Makefile
+make user
+nvim Makefile
+make user
+ls
+ls bin
+nvim .gitignore
+ls
+ls
+nvim Makefile
+make test
+git add .
+git commit -m "[makefile] update makefile"
+git push
+nvim README.md
+git add .
+git commit -m "remove .envrc'
+git commit -m "remove .envrc"
+git push
+nvim Makefile
+make generate
+rg ../..
+rg "\.\./\.\."
+ls
+make generate
+ls
+ln --help
+nvim Makefile
+make generate
+ls
+nvim Makefile
+nvim Makefile
+ls
+make generate
+ls
+nvim Makefile
+make
+make
+ls
+ln --help
+nvim Makefile
+make generate
+make generate
+nvim Makefile
+make generate
+nvim Makefile
+make generate
+ls
+make generate
+nvim Makefile
+ls
+gqlgen --help
+ls
+cd server/
+ls
+cd scripts
+ls
+nvim gqlgen.go
+cd ../..
+ls
+make generate
+ls
+nvim server/scripts/gqlgen.go
+make generate
+nvim server/scripts/gqlgen.go
+make generate
+nvim server/scripts/gqlgen.go
+make generate
+nvim server/scripts/gqlgen.go
+nvim server/scripts/gqlgen.go
+make generate
+nvim server/scripts/gqlgen.go
+make generate
+nvim server/scripts/gqlgen.go
+nvim server/scripts/gqlgen.go
+cd projects/easymovie/test_api
+ls
+cat run.sh
+rm run.sh
+ls
+git add .
+git commit -m "remove run script"
+ls
+ls
+make graphql
+ls
+ls
+nvim .envrc
+rm .envrc
+ls
+ls
+mv go/src/exo* .
+ls
+nvim go.mod
+ls
+ls
+mv exo/* .
+ls
+ls go
+sudo rm -rf go
+ls
+mv exo_server server
+ls
+rm -rf exo
+ls
+rg exo_server
+ls
+cd server/graphql/server
+nvim server.go
+ls
+cd ..
+cd ..
+ls
+cd ..
+ls
+ls
+go build ./...
+nvim go.mod
+ls
+nvim go.mod
+nvim go.mod
+go build ./...
+ls
+ls
+ls server/graphql/
+cd server/graphql/server
+ls
+go build
+ls
+./server
+ls
+rm server
+ls
+cd ../..
+ls
+cd ..
+ls
+git add .
+nvim .gitignore
+ls
+rm .gitignore
+git add .
+git commit -m 
+git commit -m "use go modules for dependencies"
+nvim Makefile
+rg GOPATH
+nvim server/project/main.go
+nvim server/user/main.go
+nvim server/graphql/server/server.go
+nvim server/project/main.go
+nvim server/user/main.go
+nvim server/graphql/server/server.go
+nvim server/graphql/server/server.go
+nvim server/graphql/server/server.go
+rg schema.graphql
+cd projects/easymovie/test_api
+ls
+make user
+make user
+cd
+cd projects/go/src/exo
+ls
+cd exo
+ls
+cd ..
+rm exo
+ls
+ls
+ls exo
+ls
+ls exo
+ls exo/test_api
+rm exo
+ls
+ls
+ls exo/test_api
+rm exo/test_api
+ls
+ls exo/
+ls
+ls
+ls exo
+;s
+ls
+rm exo
+ls
+cd exo
+startx
+mount
+mount | grep test
+echo $?
+mount | grep dev
+echo $?
+ls
+cd projects/easymovie/test_api
+make generate
+cd projects/easymovie/test_api
+ls
+rm ~/projects/go/src/exo
+ls
+nvim Makefile
+make generate
+nvim server/scripts/gqlgen.go
+make generate
+nvim Makefile
+ls
+make generate
+nvim Makefile
+make generate
+ls
+git status
+git add .
+git commit -m "allow gqlgen to be used in module"
+git push
+make
+nvim server/graphql/server/server.go
+make
+make
+nvim Makefile
+make
+lws
+ls
+ls
+./bin/graphql & ./bin/project & ./bin/user &
+ls
+ps
+jobs
+kill %1-3
+kill %2
+kill %3
+startx
+ls
+yay unifont
+polybar example
+yay siji
+yay pms
+yay -S sonata
+yay -R sonata
+yay -Syu --devel
+polybar example
+cat projects/go/src/lemonscript/main.go
+polybar example
+ls
+nvim .xres/xft
+nvim .xres/palenight
+polybar example
+fc-match fixed
+fc-match unifont
+fc-match siji
+polybar example
+yay fontawesome
+yay font-awesome
+yay material
+yay polybar
+install -Dm644 /usr/share/doc/polybar/config $HOME/.config/polybar/config
+ls
+nvim .config/polybar/config
+polybar example
+nvim .config/polybar/config
+yay -Yc
+yay -Ps
+ls
+cd .bin
+ls
+git status
+ls
+git init
+git add .
+git commit -m "add scripts"
+nvim serv
+nvim serv
+ls
+nvim serv
+serv
+ls
+chmod +x .bin/serv
+serv
+serv ssh-copy
+serv ssh-copy git .ssh/windows_key
+serv ssh-copy git .ssh/windows_key
+serv ssh root
+serv ssh root
+serv ssh root
+pass git
+pass git remote show
+pass git remote show origin
+serv git-create test/aaaa
+serv git-create test/aaaa
+serv ssh git
+ls
+serv git-delete test/aaaa
+echo "serv.git"
+echo "serv.git" | sed 's/\.git$//'
+serv help git-list
+serv git-list
+serv git-list
+cat .bin/serv| xclip -selection clipboard
+startx
+yay visual-studio
+clear && bash "/home/babariviere/.vscode/extensions/ms-vsliveshare.vsliveshare-0.3.709/out/deps/linux-prereqs.sh" && exit 0
+cd projects/avis_manga
+ls
+flutter run
+flutter run
+flutter help run
+startx
+keytool -exportcert -list -v -alias avismanga -keystore ~/.android/debug.keystore
+keytool -exportcert -list -v  -keystore ~/.android/debug.keystore
+keytool -exportcert -list -v -alias androiddebugkey -keystore ~/.android/debug.keystore
+keytool -exportcert -list -v -alias androiddebugkey -keystore ~/.android/debug.keystore | grep SHA1
+keytool -exportcert -list -v -alias androiddebugkey -keystore ~/.android/debug.keystore | grep "SHA1: "
+flutter run
+flutter run
+flutter run
+mkdir assets
+mv ~/Downloads/icons8-google-48.png assets/google-48.png
+ls
+flutter run
+startx
+yay whois
+whois google.com
+whois google.fr
+whois discord.com
+whois discord.fr
+whois github.com
+cd projects/easymovie/test_api/
+ls
+nvim Makefile
+ls
+mkdir src
+ls
+mv project server user src go.mod go.sum src
+mv project server user go.mod go.sum src
+ls
+ls src
+nvim Makefile
+ls
+make
+nvim Makefile
+make
+nvim Makefile
+make
+nvim Makefile
+make
+ls
+cd src
+ls
+mkdir exo
+mv * exo
+ls
+cd ..
+make
+make dependencies
+nvim Makefile
+ls
+cd src/exo
+ls
+go build ./...
+ls
+go get ./...
+ls
+cd ../..
+ls
+cd src/exo
+rm go.sum
+ls
+go build ./...
+ls
+cat go.sum
+ls
+rm go.sum
+ls
+cd ../..
+ls
+nvim .envrc
+direnv allow
+ls
+make
+cd src/exo
+ls
+go build ./...
+go get ./...
+cd ../..
+ls
+nvim .envrc
+nvim Makefile
+nvim Makefile
+make
+ls
+make
+nvim Makefile
+nvim .envrc
+make
+nvim Makefile
+ls
+go get ./src/exo/...
+ls
+cd src/exo
+ls
+go get ./src/exo/...
+go get ./...
+ls
+nvim go.mod
+rm go.mod
+ls
+cd ..
+ls
+rm -rf github.com
+ls
+cd ..
+ls
+ls
+cat go.mod
+rm go.mod
+ls
+make
+ls
+nvim Makefile
+ls
+rm go.mod
+ls
+nvim Makefile
+make
+ls
+nvim src/exo/server/graphql/server/server.go
+ls
+cd src/exo
+ls
+cd ..
+ls
+cd ..
+ls
+nvim Makefile
+l
+nvim .envrc
+nvim Makefile
+ls
+rm go.mod
+make
+nvim Makefile
+cd src/exo
+ls
+go get ./...
+ls
+go build ./...
+ls
+go test ./...
+ls
+cd ../..
+nvim Makefile
+ls
+cd src
+ls
+cd
+cd Downloads
+ls
+pamixer Voloco_Recording_1545305550311.m4a
+paplay Voloco_Recording_1545305550311.m4a
+ls
+yay mpv
+mpv Voloco_Recording_1545305550311.m4a
+mpv Voloco_Recording_1545305550311.m4a
+mpv Voloco_Recording_1545305550311.m4a
+mpv Voloco_Recording_1545305550311.m4a
+mpv Voloco_Recording_1545305550311.m4a
+mpv Voloco_Recording_1545306299276.m4a
+mpv Voloco_Recording_1545307156258.m4a
+cd
+sudo mount /dev/sda mnt
+ls
+ls recovered
+sudo cfdisk /dev/sda
+sudo mkfs.ntfs /dev/sda
+ls /dev
+ls /dev/sda
+sudo cfdisk /dev/sda
+sudo cfdisk /dev/sda
+ls /dev/sda 
+sudo gparted
+cd projects/easymovie/test_api
+ls
+make generate
+git status
+nvim .gitignore
+git status
+cd src
+git status
+git add exo/
+ls
+git status
+cd ..
+ls
+git add .
+git status
+git commit -m "switch back to gopath"
+git push
+make test
+nvim Makefile
+ls
+nvim Makefile
+cd
+cd Downloads
+ks
+ls
+mpv Voloco_Recording_1545310879187.m4a
+htop
+ls
+du -s recovered
+du -hs recovered
+cd Documents/dot
+ls
+cat exo.dot
+cd
+cd projects/easymovie/test_api
+ls
+cd src/exo/server
+ls
+cat graphql/server/server.go
+ls
+cat project/main.go
+cd projects/easymovie/test_api
+ls
+rm bin/*
+ls
+make
+ls bin
+nvim Makefile
+make 
+make generate
+make generate
+ls
+nvim Makefile
+make
+rm bin
+rm -rf bin
+make
+ls
+ls bin
+rm server
+nvim Makefile
+rm -rf bin
+make graphql
+ls bin
+ls
+nvim Makefile
+ls
+nvim Makefile
+make
+ls
+rm -rf bin
+make
+ls bin
+go help get
+go help get | grep install
+go help get | grep -B2 install
+nvim Makefile
+rm -rf bin
+make
+ls
+ls bin
+git add .
+nvim Makefile
+git add .
+git commit -m "update Makefile"
+git pusH
+git push
+cd src/
+ls
+cd exo
+ls
+cat project/pb/project.pb.go
+cd ..
+ls
+cd exo/server
+cd ../../..
+ls
+nvim generate.dot
+dot -Tjpg generate.dot -o out.jpg
+nvim generate.dot
+dot -Tjpg generate.dot -o out.jpg
+nvim generate.dot
+dot -Tjpg generate.dot -o out.jpg
+nvim generate.dot
+dot -Tjpg generate.dot -o out.jpg
+ls
+display out.jpg
+nvim generate.dot
+dot -Tjpg generate.dot -o out.jpg
+nvim generate.dot
+dot -Tjpg generate.dot -o out.jpg
+display out.jpg
+mv out.jpg ~/generate.jpg
+startx
+flutter run --release
+flutter run --release
+flutter run --release
+flutter run --release
+startx
+cd projects/avis_manga
+flutter build --release apk
+flutter build -h
+flutter build apk -h
+flutter build apk --release
+startx
+yay systemd
+yay -R systemd-boot-pacman-hook
+yay -Syu --devel
+passwd
+pass git push
+sudo passwd
+p help
+p --help
+man pass
+p help
+nvim .zshrc 
+nvim .zsh/aliases
+ls
+p
+pass help
+pass generate -n -i global 8
+ls
+pass generate -n global 8
+pass generate -n global 16
+pass generate global 8
+p services/google
+p services/google/babariviere
+pass generate -n global 16
+pass git pull
+ls
+pass generate -n global 16
+pass generate -n global 16
+pass generate -n global 16
+pass generate -n global 16
+pass generate -n global 16
+gpg --edit Bastien
+gpg --edit-key Bastien
+gpg2 --edit-key Bastien
+p global
+cp /data/gnupg/private.key mnt/Internal\ shared\ storage/
+p global
+fusermount -u mnt
+gpg2 --edit-key Bastien
+ls
+gpg2 --export-secret-keys > /data/gnupg/private.key
+ls
+gpg --edit-key Bastien
+gpg --edit-key Bastien
+p global
+gpg2 --export-secret-keys > /data/gnupg/private.key
+ls
+go-mtpfs mnt
+go-mtpfs mnt
+pg log
+ls
+pass delete log
+pass git log
+pass git diff 4452ad43b3a5dd971058c38cf375b123167ce369
+ls -al
+man zsh
+killall lemonbar
+nvim .bin/clip
+chmod +x .bin/clip
+cd .bin
+ls
+git add clip
+ls
+git push
+git commit -m "add clip"
+fc-match "ðƒ¿ƒ®ƒ¼"
+fc-scan
+fc-list 'charset=ðƒ¿ƒ®ƒ¼'
+fc-list 'charset='9ff0'
+fc-list 'charset=9ff0'
+fc-list 'charset=9c8e'
+fc-list 'charset=f08e'
+fc-list 'charset=9f8e'
+fc-list ':charset=9f8e'
+fc-list ':charset=f08e'
+ls
+p global
+ls
+cat /usr/share/doc/polybar/config
+cat /usr/share/doc/polybar/config | grep font
+yay -R xorg-fonts-misc
+yay -R xorg-fonts-misc
+yay -S siji-git
+fc-cache -f
+yay -R ttf-material-icons
+killall chardup
+ls -alh
+yay iosevka
+ls -alh
+fc-match Iosevka
+rm -rf .fonts/iosevka-custom
+ls
+ls -alh
+nvim .xres/palenight
+entr
+yay entr
+ls -alg
+nvim .config/polybar/config
+ls -alh
+nvim .config/polybar/config
+nvim .config/polybar/config
+yay MaterialIcons
+yay Material
+yay termsynu
+yay termsyn
+fc-match awesome
+fc-list | grep awesome
+yay font-awesome
+yay -R ttf-font-awewsome
+yay -R ttf-font-awesome
+fc-match FontAwesome
+fc-match "Font Awesome"
+echo -ne "\uf11c" | clip
+echo -ne "\uf04b" | clip
+echo -ne "\uf04c" | clip
+echo -ne "\uf048" | clip
+echo -ne "\uf049" | clip
+echo -ne "\uf04a" | clip
+echo -ne "\uf051" | clip
+echo -ne "\uf04d" | clip
+echo -ne "\uf049" | clip
+echo -ne "\uf052" | clip
+echo -ne "\uf050" | clip
+ðƒ¿ƒ®ƒ¼
+echo -ne ðƒ¿ƒ®ƒ¼
+echo -ne ðƒ¿ƒ®ƒ¼ | hexdump
+printf ðƒ¿ƒ®ƒ¼  | hexdump
+echo -ne "\uf39c" | clip
+echo -ne "\u1f39c" | clip
+echo -ne "\u1f39" | clip
+echo -ne "\uf39c" | clip
+echo -ne "\uf08e" | clip
+echo -ne "\u9f8e" | clip
+echo -ne "\u9c8e" | clip
+echo -ne "\uf001" | clip
+echo -ne "\uf185" | clip
+echo -ne "\uf2db" | clip
+echo -ne "\uf080" | clip
+yay xorg-fonts-misc
+fc-match fixed
+fc-match unifont
+fc-match siji
+fc-match siji
+fc-match siji
+ls /etc/fonts/conf.avail
+ls /etc/fonts/conf.avail | grep siji
+cd /etc/fonts
+ls
+rg siji
+fc-match siji
+fc-match siji
+fc-list | grep siji
+fc-match 'wifi-strength
+fc-match 'wifi-strength'
+ls
+ls conf.avail
+ls conf.avail | grep robo
+ls -l conf.avail | grep robo
+ls -l conf.d
+sudo rm conf.d/*nimbus*
+ls
+fc-match 'wifi-strength'
+echo -ne "\uf92e" | clip
+echo -ne "\uf97a" | clip
+yay material
+fc-match MaterialIcons
+yay charmap
+cd
+cd Downloads
+ls
+unzip material-design-icons-3.0.1.zip
+ls
+mv material-design-icons-3.0.1/iconfont/MaterialIcons-Regular.ttf ../.fonts
+ls
+rm -rf *
+fc-cache -f
+mv flUhRq6tzZclQEJ-Vdg-IuiaDsNZ\ \(1\).ttf ~/.fonts/MaterialIcons-Regular.ttf
+fc-cache -f
+yay -S wget
+wget https://fonts.gstatic.com/s/materialicons/v41/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2
+ls
+mv flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2 MaterialIcons.ttf
+ls
+mv MaterialIcons.ttf MaterialIcons.woff2
+yay woff2
+woff2_decompress MaterialIcons.woff2
+ls
+mv MaterialIcons.ttf ~/.fonts/MaterialIcons-Regular.ttf
+fc-cache -f
+cd
+nvim .config/termite/config
+yay nerd
+echo -ne "\uf11c" | clip
+echo -ne "\ufaa9" | clip
+echo -ne "\ufaa8" | clip
+yay nerd iosevka
+fc-match Iosevka Nerd
+fc-match "Iosevka Nerd"
+fc-list | grep Iosevka
+fc-list | grep Nerd
+fc-list | grep nerd
+fc-cache -f
+fc-list | grep Nerd
+fc-list | grep Iosevka
+yay -R nerd-fonts-iosevka
+yay nerd
+fc-list | grep Iosevk
+fc-list | grep Iosevk | grep Nerd
+fc-match "Iosevka Nerd"
+fc-list | grep Iosevk | grep Nerd | grep Regular
+fc-match "Iosevka Term Nerd"
+fc-match "Iosevka Term"
+fc-list | grep Iosevk | grep Nerd | grep Regular | grep Mono
+nvim .config/polybar/config
+nvim .config/termite/config
+ls
+ls /usr/share/fonts
+ls /usr/share/fonts/nerd-fonts-complete/ttf
+ls /usr/share/fonts/nerd-fonts-complete/ttf | grep Io
+nvim .config/polybar/config
+ls
+nvim .config/polybar/config
+nvim .config/polybar/config
+nvim .bin/launch_polybar
+nvim .config/i3/config
+chmod +x .bin/*
+cd .bin
+ls
+git add .
+git commit -m "add launch polybar"
+git push
+ls
+serv git-create scripts origin
+git push --set-upstream origin master
+l
+echo -ne "\uf6ff" | clip
+echo -ne "\ufb19" | clip
+echo -ne "\uf85a" | clip
+echo -ne "\uf64f" | clip
+echo -ne "\ufc5d" | clip
+echo -ne "\ufa7e" | clip
+echo -ne "\ufa71" | clip
+echo -ne "\ufa7f" | clip
+echo -ne "\ufa7d" | clip
+echo -ne "\uf578" | clip
+echo -ne "\uf579" | clip
+echo -ne "\uf57a" | clip
+echo -ne "\uf57b" | clip
+echo -ne "\uf57c" | clip
+echo -ne "\uf57d" | clip
+echo -ne "\uf57e" | clip
+echo -ne "\uf57f" | clip
+echo -ne "\uf580" | clip
+echo -ne "\uf581" | clip
+echo -ne "\uf588" | clip
+echo -ne "\uf578" | clip
+echo -ne "\uf2cb" | clip
+echo -ne "\uf2ca" | clip
+echo -ne "\uf2c9" | clip
+echo -ne "\uf2c8" | clip
+echo -ne "\uf2c7" | clip
+polybar example
+nvim .xres/palenight
+xrdb -merge .Xresources
+polybar example
+xrdb -merge .Xresources
+nvim .xres/palenight
+xrdb -merge .Xresources
+polybar example
+polybar example
+polybar example
+ls
+ls
+nvim .zsh/profile
+nvim .zshrc
+nvim .zshrc
+nvim .zshrc
+nvim .zshrc
+ls -al
+rm .xprofile
+ls
+ln -s $HOME/.profile $HOME/.xprofile
+ls -al | grep profile
+cat .bash
+cat .bash_profile
+rm .bash_profile
+ls
+ln -s $HOME/.profile $HOME/.bash_profile
+ls
+man polybar
+polybar -r example
+polybar -r top
+killall lemonbar
+polybar -r top
+polybar -r top
+polybar -r top
+polybar -r top
+polybar -r top
+nvim .config/polybar/config
+cat .xres/palenight
+nvim .config/polybar/config
+cd projects/
+ls
+mkdir yuki
+cd yuki
+serv
+git init
+serv git-create yuki origin
+git remote show
+git remote show origin
+nvim go.mod
+ls
+mkdir ast
+nvim ast/ast.go
+go build ./...
+ls
+ls ast
+git push
+git push --set-upstream origin master
+ls
+git status
+git add go.mod
+git commit -m "initial commit"
+git push --set-upstream origin master
+ls
+startx
+htop
+cd projects/aki/
+ls
+cat spec.md
+ls
+ls
+ls src
+ls repl
+ls
+cargo run
+ls
+cd ..
+find . -name "*.aki"
+cd go/src/aki/examples
+ls
+cat fibonacci.aki
+cd ..
+ls
+go run
+go run main.go
+go run main.go examples/fibonacci.aki
+ls
+go run main.go examples/fibonacci.aki 10
+nvim examples/fibonacci.aki
+ls
+go run main.go examples/fibonacci_opti.aki
+nvim main.go
+go run main.go eval examples/fibonacci.aki
+go run main.go eval examples/fibonacci_opti.aki
+cat examples/fibonacci_opti.aki
+whois excluminute.fr
+whois marcaria.com
+whois -h excluminute.fr
+whois excluminute.fr -h
+whois excluminute.fr
+whois excluminute.fr | clip
+cat .config/dunst/dunstrc
+cd projects/yuki
+go mod verify
+ls
+go mod why
+ls
+go mod graph
+yay -Syu --devel
+flutter upgrade
+dart_language_server --help
+nvim .config/polybar/config
+nvim .config/polybar/config
+pub global activate dart_language_server
+dart_language_server --help
+nvim .config/nvim/init.vim
+nvim .config/termite/config
+ls
+nvim .config/nvim/init.vim
+cd projects/yuki
+ls
+cd ast
+ls
+nvim ast.go
+nvim token.go
+rm to
+ls
+cd ..
+ls
+mkdir token
+mkdir lexer
+nvim token/token.go
+nvim token/token.go
+cd token
+nvim token.go
+nvim
+nvim token.go
+go build
+ls
+go vet
+ls
+go lint
+golint
+ls
+nvim token.go
+nvim token.go
+ls
+nvim token.go
+cd ..
+ls
+cd lexer
+ls
+nvim lexer.go
+nvim ../token/token.go
+nvim lexer.go
+nvim ../token/token.go
+nvim lexer.go
+nvim lexer.go
+cd projects/go/src/aki
+ls
+cat ast/ast.go
+ls
+cat token/token.go
+cat lexer/lexer
+cat lexer/lexer.go
+go get -u github.com/stamblerre/gocode
+go mod
+ls
+cat .bin/display
+yay -S gmpc
+nvim .config/polybar/config
+df -h
+du -h
+du -h -d1
+rm -rf .minikube
+du -h -d1 | sort -h
+du -h -d1 | sort -h
+du -h -d1 | sort -h
+du -h -d1 | sort -h
+du -h -d1 / | sort -h
+df -h
+rm -rf .AndroidStudio3.1 .wine .xargo .opam .cargo .abduco .vscode* 
+df -h
+du -d1 -h .cache
+rm -rf .cache/yarn
+rm -rf .cache/spotify
+rm -rf .cache/yay
+du -d1 -h .cache
+du -d1 -h .config
+ls images
+rm -rf images/kali-linux-2018-3-vm-amd64-7z/
+ls vm/windows/
+rm -rf vm/windows/
+ls
+rm -rf vm/kali.qcow2
+ls
+rm -rf void-packages .rustup .gradle
+du -d1 -h /home | sort -h
+du -d1 -h /home/babariviere | sort -h
+ls ~/.bin/
+cat ~/.bin/batmon.sh
+nvim test.sh
+cd projects/yuki
+nvim lexer/lexer.go
+nvim lexer/lexer.go
+nvim token/token.go
+ls
+nvim lexer/lexer.go
+cd lexer
+ls
+nvim lexer_test.go
+l
+nvim lexer_test.go
+ls
+cd ..
+cd lexer
+ls
+nvim lexer
+nvim lexer_test.go
+ls
+nvim lexer_test.go
+nvim ../token/token.go
+nvim lexer_test.go
+nvim ../token/token.go
+nvim lexer_test.go
+ls
+cd ..
+git add .
+git commit -m "[lexer+token] add more token"
+git push
+go test -help
+go test -cover ./...
+l
+nvim Makefile
+make
+ls
+mkdir parser
+ls
+nvim token/token.go 
+nvim lexer/lexer_test.go
+nvim lexer/lexer_test.go
+nvim lexer/lexer.go
+nvim token/token.go
+nvim lexer/lexer_test.go
+nvim token/token.go
+ls
+nvim parser/parser.go
+mkdir ast
+nvim ast/ast.go
+nvim token/token.go
+nvim lexer/lexer_test.go
+nvim lexer/lexer_test.go
+nvim ast/ast.go
+ls
+git status
+git add lexer/ token/
+git commit -m "[lexer+token] add more token"
+ls
+mkdir vim
+cd vim
+ls
+nvim ~/.config/nvim/init.vim
+ls
+nvim
+cd projects/yuki
+rm -rf ~/.config/fuyu
+nvim ~/.config/nvim/init.vim
+nvim ~/.config/nvim/init.vim
+cat ~/projects/go/src/aki/lexer/lexer.go
+ls
+ls
+git add token/token.go
+git commit -m "[token] add a small list of token"
+cat token/token.go
+cat ~/projects/go/src/aki/lexer/lexer.go
+cat ~/projects/go/src/aki/token/token.go
+cat ~/projects/go/src/aki/lexer/lexer_test.go
+ls
+cd lexer
+ls
+go test
+go test
+ls
+go test --help
+go test -cpuprofile=prof.out
+ls
+go tool pprof lexer.test prof.out
+ls
+rm lexer.test prof.out
+ls
+cat ../token/token.go
+go test -cpuprofile=prof.out
+ls
+go tool pprof lexer.test prof.out
+ls
+ls
+rm lexer.test prof.out
+ls
+go test -bench=.
+go test -bench=.
+go test -bench=. -cpuprofile=prof.out
+ls
+go test -bench=. -cpuprofile=prof.out
+go tool pprof lexer.test prof.out
+ls
+display profile001.png 
+ls
+rm prof* lexer.test
+ls
+git add .
+git commit -m "[lexer] implements lexer"
+git push
+nvim ../token/token.go
+go test
+ls
+nvim ../token/token.go
+go test
+go test
+go test
+cat ../token/token.go
+go test
+go test
+go test
+go test
+make
+cd ..
+make
+make
+git add .
+git commit -m "[lexer+token] add missing token"
+git push
+make
+ls
+cd ..
+ls
+cat go/src/lemonscript/combined.go
+ls
+cd yuki
+ls
+mkdir exemples
+ls
+mv exemples examples
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+cd examples
+ls
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+nvim batmon.yk
+cd projects/go/src/aki
+ls
+cat parser/parser
+cat parser/parser.go
+cat ast/ast.go
+ls
+cat /usr/share/nvim/runtime/syntax/go.vim
+ls ~/projects/yuki/vim
+cat /usr/share/nvim/runtime/syntax/make.vim
+nvim /usr/share/nvim/runtime/syntax/make.vim
+ls
+nvim .config/nvim/init.vim
+nvim .config/nvim/init.vim
+nvim .config/nvim/init.vim
+nvim .config/nvim/init.vim
+nvim .config/nvim/init.vim
+cd projects/yuki
+ls
+cd vim
+ls
+mkdir ftdetect
+ls
+cd ftdetect
+ls
+nvim yuki.vim
+cd ..
+mkdir ftplugin
+nvim ftplugin/yuki.vim
+mkdir syntax
+nvim syntax/yuki.vim
+nvim ftdetect/yuki.vim
+cat ftdetect/yuki.vim
+nvim ftdetect/yuki.vim
+mkdir plugin
+nvim plugin/yuki.vim
+ls plugin
+touch plugin/yuki.vim
+ls
+rm -rf plugin
+ls
+nvim ftplugin/yuki.vim
+nvim ftdetect/yuki.vim
+nvim ftdetect/yuki.vim
+ls
+nvim syntax/yuki.vim
+nvim ~/.config/nvim/init.vim
+nvim
+nvim test.yk
+nvim
+nvim ~/.config/nvim/init.vim
+nvim ~/.config/nvim/init.vim
+nvim ~/.config/nvim/init.vim
+ls
+mkdir plugin
+mkdir autoload
+nvim autoload/yuki.vim
+nvim plugin/yuki.vim
+nvim ~/.config/nvim/init.vim
+rm -rf plugin autoload
+ls
+nvim syntax/yuki.vim
+nvim syntax/yuki.vim
+ls ~/.config/nvim
+ls ~/.local/share/nvim/plugged/rust.vim
+cat ~/.local/share/nvim/plugged/rust.vim/autoload/rust.vim
+ls
+nvim .config/nvim/init.vim
+nvim 
+nvim /usr/share/nvim/runtime/syntax/sh.vim
+startx
+vim
+nvim
+cd projects/yuki
+cd vim
+nvim syntax/yuki.vim
+ls
+nvim
+cd projects/yuki
+ls
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim examples/batmon.yk
+nvim vim/syntax/yuki.vim
+nvim examples/batmon.yk
+ls
+nvim ast/ast.go
+nvim examples/batmon.yk
+ls
+nvim ast/ast.go
+nvim token/token.go
+nvim token/token.go
+nvim ast/ast.go
+ls
+nvim token/token.go
+nvim lexer/lexer.go
+nvim token/token.go
+ls
+nvim lexer/lexer.go
+nvim lexer/lexer_test.go
+nvim lexer/lexer.go
+git add lexer/ token/
+git commit -m "[lexer+token] add comment"
+ls
+git add vim/
+git commit -m "[vim] create vim plugin"
+ls
+git add examples/
+git commit -m "[examples] battery monitor sample"
+ls
+git status
+cat go.mod
+git add go.*
+git commit -m "[mod] go mod update"
+l
+nvim parser/parser.go
+nvim parser/parser.go
+nvim ast/ast.go
+nvim parser/parser.go
+nvim lexer/lexer
+nvim lexer/lexer.go
+nvim parser/parser.go
+nvim lexer/lexer.go
+nvim ast/ast.go
+cd projects/go/src/aki
+ls
+cat ast/ast.go
+cat parser/parser
+cat parser/parser.go
+cd projects/yuki
+make
+go test ./lexer
+go test ./lexer
+go test ./lexer
+go test ./lexer
+go test ./lexer
+go test ./lexer
+go test ./lexer
+go test ./lexer
+cd lexer
+ls
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go tool pprof lexer.test prof.out
+display profile001.png 
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go tool pprof lexer.test prof.out
+ls
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go tool pprof lexer.test prof.out
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go test -bench=. -cpuprofile=prof.out
+go tool pprof lexer.test prof.out
+go test -bench=. -cpuprofile=prof.out
+go tool pprof lexer.test prof.out
+go tool pprof lexer.test prof.out
+go test -bench=. -cpuprofile=prof.out
+go tool pprof lexer.test prof.out
+go test -bench=. -cpuprofile=prof.out
+ls
+rm lexer.test prof.out profile001.png
+ls
+git add .
+git commit -m "[lexer] small optimisation"
+go test
+go test
+go test
+go test
+go test
+go test
+go test
+go test
+go test -bench=. -cpuprofile=prof.out
+rm lexer.test prof.out profile001.png
+ls
+git add .
+git commit -m "[lexer] position fix"
+git push
+git push
+go test
+go test
+git add .
+git commit -m "[lexer] code cleaning"
+git push
+startx
+yay traceroute
+traceroute 8.8.8.8
+traceroute 8.8.8.8
+reboot
+yay -Syu --devel
+ping 8.8.8.8
+traceroute 8.8.8.8
+tracert
+yay tracert
+traceroute --help
+yay tracert
+traceroute 8.8.8.8
+go get github.com/matryer/is
+ping 8.8.8.8
+ping 8.8.8.8
+cd projects/yuki
+nvim parser/parser.go
+nvim ast/ast.go
+ls
+go test parser
+go test ./parser
+nvim parser/parser.go
+ls
+cd projects/yuki
+cat ast/ast.go
+go test ./parser
+git add ast/
+git commit -m "[ast] starting ast"
+git add parser/
+git commit -m "[parser] starting parser"
+git push
+go test ./parser
+go test ./parser
+go test ./parser
+git add ast/ parser/
+git commit -m "[parser] add parseInt"
+git push
+git status
+git add go.*
+git commit -m "[mod] update modules"
+git push
+cd projects/go/src/aki
+cat parser/parser.go
+cat ast/ast.go
+cat parser/parser.go
+ping 8.8.8.8
+startx
+curl 'https://www.metmuseum.org/art/collection/search' -H 'authority: www.metmuseum.org' -H 'cache-control: max-age=0' -H 'upgrade-insecure-requests: 1' -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36' -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' -H 'accept-encoding: gzip, deflate, br' -H 'accept-language: en-US,en;q=0.9,fr;q=0.8' -H 'cookie: visid_incap_1661922=a8axNeerTM2+IT3yLm/QrE6RIlwAAAAAQUIPAAAAAABDf+4km6v7UDZPPM3Ol6e1; incap_ses_340_1661922=8rqUD4cJwFoAKBrEBu23BE6RIlwAAAAAO23XsYlLBfWT98EvyS5eNA==; ASP.NET_SessionId=qmgzdbzkhu1m0c51lodlhelo; SC_ANALYTICS_GLOBAL_COOKIE=b2532f3e0c834d5cb2537ad3a64eb756|False; __RequestVerificationToken=VuvXFxxaUnl3aAPxsjWiy33U4_YaPc8Jn51mwR5PBxvmmMeziTyGZK9xyoEoke_wUHcWJL9-ai6hHkTziKvbw4qy0So1; visid_incap_1661977=SvjPqtdXQaGFhLf/Y67NkE+RIlwAAAAAQUIPAAAAAADTsQOUAGjAWfeUWH/CjF7G; incap_ses_340_1661977=9YFyVTVJdCaDKRrEBu23BE+RIlwAAAAACOvKf7tdlHYItqUF4CUyDg==' --compressed
+nvim script.sh
+sh script.sh
+sh script.sh | nvim
+p show gaming/origin
+curl 'https://www.metmuseum.org/mothra/dist/met.js?v=201812201349' --compressed
+startx
+nvim .zsh/aliases
+ls
+mkdir -p .config/mopidy
+nvim .config/mopidy/mopidy.conf
+ls
+nvim .config/mopidy/mopidy.conf
+systemctl --user status mopidy
+systemctl --user status mopidy
+systemctl --user status mopidy
+journalctl -u mopidy -f
+journalctl -u user@1000.service
+find . -print0 | xargs -P8 -0 grep "TODO"
+find . -type f -print0 | xargs -P8 -0 grep "TODO"
+grep -r "TODO" .
+grep -h
+grep --help
+nvim .zsh/aliases
+ls
+rm -rf disk.img recovered*
+ls
+cat strap.sh
+rm strap.sh
+ls
+rm generate.jpg script.sh
+ls
+ls ctf
+ls ctf/google/2018
+ls ctf/google/2018/admin
+yay mopidy
+yay mopidy
+mopidy config
+mopidy config >> .config/mopidy/mopidy.conf
+nvim .config/mopidy/mopidy.conf
+ls
+mopidy local scan
+mopidy local scan
+mopidy local scan
+systemctl --user start mopidy
+ls
+ls /usr/lib/sysctl.d
+ls /usr/lib/systemd
+ls /usr/lib/systemd/network
+ls /var/lib/systemd/catalog/database 
+find /var -name "*.service"
+find /usr -name "*.service"
+ls /usr/lib/systemd/user
+yay mopidy
+mopidyctl config
+cat /usr/lib/systemd/system/mopidy.service
+mkdir -p ~/.config/systemd/user
+cp /usr/lib/systemd/system/mopidy.service ~/.config/systemd/user/
+nvim .config/systemd/user/mopidy.service
+systemctl --user start mopidy
+ls
+systemctl --user status mopidy
+nvim .config/systemd/user/mopidy.service
+nvim .config/systemd/user/mopidy.service
+systemctl --user status mopidy
+systemctl --user start mopidy
+systemctl --user status mopidy
+systemctl --user restart mopidy
+systemctl --user daemon-reload
+systemctl --user status mopidy
+nvim .config/systemd/user/mopidy.service
+systemctl --user daemon-reload
+systemctl --user status mopidy
+systemctl --user restart mopidy
+systemctl --user status mopidy
+journalctl -x
+systemctl --user restart mopidy
+systemctl --user restart mopidy
+killall mopidy
+ls
+systemctl --user restart mopidy
+systemctl --user start mopidy
+systemctl --user status mopidy
+cat .config/mopidy/mopidy.conf
+yay ncmpcpp
+ncmpcpp
+systemctl --user start mopidy
+systemctl --user status mopidy
+systemctl --user status mopidy
+systemctl --user status mopidy
+systemctl --user status mopidy
+systemctl --user status mopidy
+systemctl --user status mopidy
+systemctl --user status mopidy
+systemctl --user status mopidy
+systemctl --user status mopidy
+htop
+htop
+ls
+ncmpcpp
+systemctl --user stop mpd
+systemctl --user disable mpd
+p show music/spotify
+ls /data/Music
+nvim .config/mopidy/mopidy.conf
+systemctl --user status mopidy
+systemctl --user status mopidy
+mopidy config
+ls
+ls
+find . -name "mopidy.log"
+find /usr -name "mopidy.log"
+find / -name "mopidy.log"
+find /var -name "mopidy.log"
+ls /tmp
+find /tmp -name "mopidy.log"
+systemctl --user status mopidy
+systemctl --user status mopidy
+systemctl --user status mopidy
+yay mopidy
+find /usr -name "*iris*"
+ls /usr/lib/python2.7/site-packages/mopidy_iris
+/usr/lib/python2.7/site-packages/mopidy_iris/system.sh
+ls
+cat /usr/lib/python2.7/site-packages/mopidy_iris/system.
+cat /usr/lib/python2.7/site-packages/mopidy_iris/system.sh
+systemctl --user restart mopidy
+systemctl --user status mopidy
+yay iris
+yay -R mopidy-iris
+yay pip
+pip2 install --user configobj
+pip2 install --user Mopidy-Material-Webclient\
+
+nvim .config/mopidy/mopidy.conf
+systemctl --user restart mopidy
+cat .config/mopidy/mopidy.conf
+cat /etc/mopidy/mopidy.conf
+ls
+systemctl --user stop mopidy
+rm -rf .config/systemd/user/mopidy.service
+ls
+sudo systemctl start mopidy
+sudo cp .config/mopidy/mopidy.conf /etc/mopidy/mopidy.conf
+sudo systemctl restart mopidy
+pip2 uninstall --user Mopidy-Material-Webclient
+pip2 uninstall Mopidy-Material-Webclient
+yay mopidy
+ls
+sudo systemctl restart mopidy
+sudo mopidyctl local scan
+sudo gpasswd -a mopidy data
+sudo systemctl restart mopidy
+sudo mopidyctl local scan
+yay mopidy
+sudo systemctl restart mopidy
+yay -R mopidy*
+yay -R mopidy mopidy-iris mopidy-local-images mopidy-moped mopidy-soundcloud mopidy-spotify
+sudo rm -rf /etc/mopidy
+pacman -Rns $(pacman -Qtdq)
+visudo
+sudo visudo
+ls
+ls
+ls
+htop
+htop
+sudo killall -9 mopidy
+find /usr -name "*iris*"
+ls /usr/lib/python2.7/site-packages/mopidy_iris
+ls /usr/lib/python2.7/site-packages/mopidy_iris/static
+ls /var
+sudo ls /var
+sudo killall -9 mopidy
+sudo killall -9 mopidy
+rm -rf .config/mopidy
+ls
+nvim .zsh/aliases
+go list
+go list
+go list os
+go list os/exec
+go list -f '{{.GoFiles}}' os/exec
+nvim .config/dunst/dunstrc
+wpa_cli -iwlo1
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+cd projects/yuki
+rg TODO
+yay ripgrep
+grep 'TODO' **/*
+find . -type f -exec grep "TODO" {} \;
+egrep TODO
+grep TODO
+grep -E TODO
+grep --help
+grep -r TODO .
+grep -r --color=always TODO .
+nvim ~/.zsh/aliases
+source ~/.zshrc
+grep -r TODO .
+ls
+nvim parser/parser
+nvim parser/parser.go
+ls
+nvim lexer/lexer
+nvim lexer/lexer.go
+nvim parser/parser.go
+nvim lexer/lexer.go
+nvim lexer/lexer.go
+nvim parser/parser.go
+nvim lexer/lexer.go
+ls
+cat vim/ftdetect/yuki.vim
+nvim vim/ftdetect/yuki.vim 
+nvim vim/ftdetect/yuki.vim 
+nvim lexer/lexer.go
+make
+ls
+nvim cmd/parser/parser.go
+make
+nvim cmd/parser/parser.go
+nvim Makefile
+make
+ls
+./bin/lexer examples/batmon.yk
+nvim lexer/lexer.go
+git status
+git add ast/ parser/
+git commit -m "[parser] add if condition"
+git push
+cp cmd/lexer/lexer.go cmd/parser/parser.go
+nvim cmd/parser/parser.go
+nvim ast/ast.go 
+nvim ast/ast.go 
+cd projects/yuki
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./lexer
+go test ./parser
+git add lexer/
+git commit -m "[lexer] add string lexing"
+go test ./parser
+git add parser/
+git commit -m "[parser] add parseString"
+git push
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+git add parser/
+git commit -m "[parser] add bool parsing"
+git push
+source ~/.zshrc
+rg TOOD
+rg TODO
+go test ./parser
+go test ./parser
+go test ./parser
+cat parser/parser.go
+cat token/token.go
+cat parser/parser.go
+go test ./parser
+git add parser/
+git commit -m "[parser] add infix operator"
+git push
+mkdir -p cmd/{lexer,parser}
+ls
+nvim Makefile
+ls
+nvim cmd/lexer/lexer.go
+ls
+nvim parser/parser.go
+ls
+rg NewString
+find . -type f -print0 | xargs -0 sed 's/NewString/FromString/'
+find . -type f -print0 | xargs -0 sed -i 's/NewString/FromString/'
+find . -type f -print0 | xargs -0 sed -i 's/NewFile/FromFile/'
+go test ./parser
+go test ./parser
+./bin/lexer examples/batmon.yk
+cat examples/fibonacci_opti.aki
+cat examples/batmon.yk
+go build
+make
+./bin/lexer examples/batmon.yk
+git add parser/ Makefile
+git status
+git checkout parser
+git add lexer/ token/
+nvim .gitignore
+git status
+git add *
+git add .
+git commit -m "[lexer] fix parser string lexing + add lexer command"
+git add parser/
+git commit -m "[parser] add parse function"
+git push
+go test ./parser
+fzf --help
+go test ./parser
+nvim cmd/lexer/lexer.go
+go test ./parser
+go test ./parser
+git status
+git add .
+git commit -m "[parser] add paren expression"
+git push
+p
+p --help
+go test ./parser
+make cover
+make cover
+cat ast/ast.go
+cat ast/ast.go
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+dlv test ./parser
+go test ./parser
+dlv test ./parser
+go test ./parser
+go test ./parser
+dlv test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+ls
+go test ./parser
+make
+ls
+./bin/parser examples/batmon.yk
+ls
+make
+./bin/parser examples/batmon.yk
+make
+./bin/parser examples/batmon.yk
+cat examples/batmon.yk
+make
+./bin/parser examples/batmon.yk
+make
+./bin/parser examples/batmon.yk
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+git add parser/
+git commit -m "[parser] fix parseDecl"
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+git commit --amend
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+go test ./parser
+git statuss
+git status
+git add parser/
+git commit --amend
+ls
+go test ./parser
+ls
+cd projects/go/src/aki
+nvim parser/parser.go
+nvim parser/parser.go
+nvim parser/parser.go
+startx
+launch_polybar
+yay -S polybar
+cd projects/yuki
+rg print
+rg Print
+nvim parser/parser.go
+nvim parser/parser.go
+nvim lexer/lexer.go
+nvim lexer/lexer.go
+cd projects/yuki
+ls
+make
+./bin/parser examples/batmon.yk
+make
+./bin/parser examples/batmon.yk
+./bin/parser examples/batmon.yk
+make
+./bin/parser examples/batmon.yk
+make
+./bin/parser examples/batmon.yk
+nvim examples/batmon.yk
+cat examples/batmon.yk
+cat vim/syntax/yuki.vim
+make
+make
+make
+make
+make
+make
+make
+make
+make
+make
+make
+make
+ls
+git status
+git add lexer/ token/
+git commit -m "[lexer] add path"
+make
+go vet
+go vet ./...
+ls
+nvim Makefile
+make lint
+nvim Makefile
+make
+make
+make
+ls
+nvim Makefile
+make
+nvim Makefile
+make
+nvim Makefile
+make
+nvim Makefile
+nvim Makefile
+make
+l
+nvim Makefile
+make
+l
+nvim Makefile
+make
+make test_parser
+nvim Makefile
+make test_parser
+make 
+nvim Makefile
+make 
+nvim Makefile
+ls prof
+rm -rf prof
+make
+ls prof
+nvim Makefile
+rm -rf prof
+make
+ls prof
+nvim Makefile
+make
+l
+nvim Makefile
+rm lexer.test parser.test 
+ls
+make
+ls prof/lexer
+cd prof/lexer
+ls
+go tool pprof lexer.test mem.out
+go tool pprof lexer.test cpu.out
+go tool cover -html=cover.out
+cd ../..
+ls
+make
+nvim Makefile
+make
+git add Makefile
+git commit -m "[makefile] add mem test and else"
+nvim Makefile
+make cpu_lexer
+nvim Makefile
+make mem_lexer
+make mem_parser
+make
+git add Makefile
+git commit --amend
+ls
+git status
+git diff
+nvim .gitignore
+git add .gitignore
+git commit -m "update gitignore"
+git push
+git diff
+git status
+git add lexer/
+git add token/
+git commit -m "[lexer] add command"
+git push
+go test -help
+cd projects/yuki
+ls
+make
+make
+make
+make
+make
+make
+make
+startx
+startx
+ping 8.8.8.8
+ping 8.8.8.8
+yay -Syu --devel
+yay -Syu --devel
+yay -Syu --devel
+nvim .config/polybar/config
+ls
+cd dotfiles
+ls
+nvim dotfiles.list
+./dotfiles.go store dotfiles.list
+nvim dotfiles.list
+./dotfiles.go store dotfiles.list
+startx
+startx
+cd Downloads
+trm -a Nichijou.torrent
+trm -h
+trm -t 3 -rad
+p show torrent/yggtorrent
+trm 
+ls
+trm -a Downloads/BATTLE\ PROGRAMMER\ Shirase.torrent
+yay transmission
+trm -a Downloads/BATTLE\ PROGRAMMER\ Shirase.torrent
+cd Downloads
+ks
+ls
+mv BATTLE\ PROGRAMMER\ Shirase.torrent BPS.torrent
+trm -a BPS.torrent
+trm -l
+trm -l
+watch trm -l
+startx
+p freelance/net-entreprises
+p edit freelance/net-entreprises
+p freelance/impots
+p freelance/net-entreprises
+p find impots
+p find ameli
+p perso/ameli 
+p generate perso/idn_poste 12
+p generate perso/idn_poste 16
+p generate -h
+p generate perso/idn_poste 16
+p edit perso/idn_poste
+ls /data/paper
+cd /data/paper
+convert -density 300 CI_recto.pdf CI_recto.jpg
+pdfimages -j CI_recto.pdf CI
+ls
+display CI-000.jpg
+mv CI-000.jpg CI_recto.jpg
+ls
+pdfimages -j CI_verso.pdf CI_verso
+mv CI_verso-000.jpg CI_verso.jpg 
+display CI_verso.pdf
+zathura CI_verso.pdf
+cd projects/yuki
+ls
+rg TODO
+nvim parser/parser.go
+cd projects/yuki
+git diff
+git add parser/
+git commit -m "[parser] show position"
+git push
+git add cmd/
+git commit -m "[cmd] add parser"
+git push
+cd Downloads
+ls
+unzip final-src-osc10e.zip
+cd final-src-osc10e
+ls
+cd ch19
+ls
+cat DNSLookUp.java
+cd ..
+ls -R
+ls ch7/
+ls ch7/project-1
+ls ch7/project-1/posix
+go build -help
+go help build
+go help buildmode
+startx
+yay -Syu --devel
+nvim ideas.md
+nvim ideas.md
+ls
+cd .bin
+ls
+cat display
+nvim ~/.config/nvim/init.vim
+nvim opout
+open
+mv opout open
+nvim ~/.config/nvim/init.vim
+nvim open
+cd projects/akisame
+ls
+mkdir dot
+ls
+c ddo
+cd dot
+ls
+nvim nodes.dot
+ls
+dot --help
+dot -T
+man dot
+nvim nodes.dot
+ls
+rm nodes.*
+ls
+nvim peer.dot
+open peer.jpg
+open peer.jpg
+killall open
+ls
+open peer.jpg
+display peer.jpg
+open peer.jpg
+display peer.jpg
+open peer.jpg
+open peer.jpg
+open peer.jpg
+open peer.jpg
+~/.bin/open peer.jpg
+~/.bin/open peer.dot
+~/.bin/open peer.dot
+cd projects
+ls
+mkdir akisame
+ls
+cd akisame
+ls
+cd ..
+ls
+mv aki _aki
+ls
+cd akisame
+ls
+ls ~/projects/ambient_it
+ls
+ls ../anili
+ls ../anili/src
+cat ../anili/src/main.rs
+ls
+cd ..
+mv akisame yau
+ls
+mv yau akisame
+cd akisame
+ls
+nvim go.mod
+ls
+mkdir -p peer/{client,server}
+ls
+cd peer
+ls
+rm -rf *
+ls
+nvim .bin/compiler
+cd projects/akisame/dot
+ls
+nvim peer.dot
+nvim peer.dot
+yay graphviz
+pip2 install --user graphviz
+yay pip3
+yay python3-pip
+yay pip
+pip3 install --user graphviz
+ls
+cd projects/akisame
+cd dot
+ls
+cat peer.dot
+ls
+rm peer peer.* Untitled.ipynb
+ls
+ls
+nvim peer.dot
+yay jupyter
+jupyter notebook
+jupyter notebook
+ls
+startx
+cd projects/
+ls
+rm -rf akisame
+ls
+p generate 42/login 12
+yay -Syu --devel
+man yay
+yay --devel --save
+yay --no-confirm
+yay --noconfirm
+yay --noconfirm --save
+cd
+nvim .config/yay/config.json
+ls
+time cat
+time read
+yay signal
+yay signal desktop
+yay signal desktop
+nvim
+cd projects/yuki
+ls
+nvim lexer/lexer.go
+yay signal cli
+ping 8.8.8.8
+nvim .config/nvim/init.vim
+mv .bin/compiler .bin/compile
+ls
+nvim .config/nvim/init.vim
+nvim +PlugInstall
+nvim .config/nvim/init.vim
+echo $BROWSER
+yay zathura
+yay zathura markdown
+yay mupdf
+yay markdown
+nvim .bin/open
+nvim .bin/open
+nvim .bin/compile
+yay pandoc
+nvim .bin/compile
+nvim .bin/compile
+cd projects/att/doc
+ls
+nvim ~/.config/termite/config
+cd projects/att/doc
+grip arch.md
+man termite.config
+cd projects/att/doc
+grip arch.md
+killall open
+killall grip
+open arch.md
+killall grip
+ls
+open arch.md
+killall grip
+killall grip
+killall grip
+ls
+cat log
+pgrep grip
+pgrep grip
+pgrep grip
+pgrep grip
+killall grip
+pgrep grip
+pgrep grip
+pgrep grip
+pgrep grip
+killall grip
+nvim ~/.config/nvim/init.vim
+shuf
+grip --help
+chromium --help
+man chromium
+yay m2pdf
+yay markdown2pdf
+yay markdown
+yay markdown pdf
+m2pdf
+markdown2pdf
+m2pdf
+yay -R m2pdf
+yay -R md2pdf
+yay -S md2pdf
+yay -R md2pdf
+yay markdown pdf
+yay
+pip install Markdown2PDF
+pip install --user Markdown2PDF
+pip3 install --user Markdown2PDF
+pip2 install --user Markdown2PDF
+pip uninstall Markdown2PDF
+pandoc -h
+pandoc -h | grep github
+yay grip
+grip
+grip --help
+nvim .bin/display
+grip --help
+man setsid
+grip --help
+yay -R python-grip
+yay markdown pdf
+yay -S python-grip
+nvim .config/nvim/init.vim
+nvim .config/nvim/init.vim
+nvim .bin/open
+man yay
+yay -Sh
+yay -S --noconfirm --save
+nvim .config/yay/config.json
+nvim .config/yay/config.json
+yay -Syu
+nvim .bin/compile
+cd projects/att/doc
+ls
+nvim plugin.md
+nvim plugin.md
+ls
+cd ..
+ls
+mkdir -p cmd/loader_test
+make
+ls
+make all
+make build
+ls
+nvim Makefile
+make
+make
+make
+make
+make
+make
+make
+make
+make
+make
+make
+make
+make
+make
+nvim go.mod 
+make
+make
+make
+make
+make
+make
+make
+make
+make
+make
+ls
+./build/bin/loader_test
+ls
+ls
+./build/bin/loader_test
+make
+./build/bin/loader_test
+make
+./build/bin/loader_test
+ls
+make
+make
+./build/bin/loader_test
+ls
+nvim ~/.bin/serv
+cd projects
+ls
+ls ocaml
+ls babaos/
+cd babaos
+ls
+make
+ls
+cd ..
+ls
+mkdir att
+ls
+cd att
+ls
+git init
+ls
+ls
+mkdir plugins
+ls
+ls
+mkdir doc
+cd doc
+ls
+nvim arch.dot
+l
+cd
+cd projects/att
+ls
+cd doc
+ls
+compile arch.dot
+ls
+nvim arch.md
+ghostwriter arch.md
+nvim arch.md
+ls
+rm arch
+nvim arch.md
+grip arch.md
+nvim arch.md
+nvim arch.md
+nvim arch.md
+nvim arch.md
+nvim arch.md
+nvim arch.md
+nvim arch.md
+nvim arch.md
+nvim arch.md
+nvim arch.md
+nvim arch.md
+ls
+nvim ../.gitignore
+git status
+cd do
+cd doc
+ls
+git add arch.md
+nvim ../.gitignore
+ls
+ls
+rm *.jpg *.html log
+ls
+rm arch.pdf
+ls
+git add .
+git commit -m "[doc] add arch documentation"
+cd ..
+ls
+git add .gitignore
+git commit -m "[git] update gitignore"
+ls
+mv plugins
+mv plugins plugin
+nvim plugin/manager.go
+ls
+mkdir plugin/hello
+nvim plugin/hello/hello.go
+ls
+cd ..
+mv att fuu
+cd fuu/
+ls
+find . -type f -print0 | xargs -0 sed -i 's/att/fuu/'
+ls
+nvim doc/plugin.md
+nvim plugin/plugin.go
+nvim plugin/hello/hello.go 
+nvim go.mod
+nvim plugin/hello/hello.go 
+nvim .envrc
+direnv allow
+ls
+ls
+nm -D build/plugins/hello.so
+nm -D build/plugins/hello.so | less
+nvim plugin/hello/hello.go
+ls
+git add .
+git commit -m "[plugin] plugin manager + loader for testing"
+serv git-create fuu origin
+git push
+git push --set-upstream origin master
+go help buildmode
+go help build
+yay upx
+upx --help
+curl https://pikomit.com/search
+curl https://pikomit.com/search#
+curl https://pikomit.com/search/#
+seq 0 10 2
+seq 0 2 10
+nvim .zshrc
+curl -X POST https://pikomit.com/search --header "Content-Type: application/json" -d "{token: null, limit: 100000, type: \"user\", query: null}" 
+curl -X POST https://pikomit.com/search --header "Content-Type: application/json;charset=UTF-8" --header "Origin: https://pikomit.com" --header "Referer: https://pikomit.com/search"  -d "{token: null, limit: 100000, type: \"user\", query: null}" 
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":1000,"type":"user","query":"abc"}' --compressed
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":1000,"type":"user","query":null}' --compressed
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":1000,"type":"user","query":""}' --compressed
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":1000,"type":"user","query":""}' --compressed
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":1000,"type":"user","query":""}'
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":1000,"type":"user","query":""}'
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":30,"type":"user","query":""}'
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":100,"type":"user","query":""}'
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":1000,"type":"user","query":""}'
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":500,"type":"user","query":""}'
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":200,"type":"user","query":""}'
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":300,"type":"user","query":""}'
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":400,"type":"user","query":""}'
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":450,"type":"user","query":""}'
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":430,"type":"user","query":""}'
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":420,"type":"user","query":""}'
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":410,"type":"user","query":""}'
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":410,"type":"user","query":""}' | jq
+yay jq
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":410,"type":"user","query":""}' | jq
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":10,"type":"user","query":""}' | jq
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":10,"type":"user","query":""}' 
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":30,"type":"user","query":""}' 
+curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":30,"type":"user","query":""}'  | jq
+for i in `seq 0 30 100000`; do
+for i in `seq 30 30 100000`; do\
+res=$(curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":$i,"type":"user","query":""}' | jq length)\
+((a=a+res))\
+done
+for i in `seq 30 30 100000`; do\
+res=$(curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":$i,"type":"user","query":""}' | jq length)\
+((a=a+res))\
+done
+for i in `seq 30 30 100000`; do\
+res=$(curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":$i,"type":"user","query":""}' | jq length)\
+((a=a+res))\
+done
+nvim .zshrc
+ls
+for i in `seq 30 30 100000`; do\
+    res=$(curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":$i,"type":"user","query":""}' | jq length)\
+    ((a=a+res))\
+    if [ $res = 0 ]; then\
+        break\
+    fi\
+done
+for i in `seq 30 30 100000`; do\
+    res=$(curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":$i,"type":"user","query":""}' | jq length)\
+    ((a=a+res))\
+    echo $res\
+    if [ $res = 0 ]; then\
+        break\
+    fi\
+done
+for i in `seq 30 30 100000`; do\
+    res=$(curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":$i,"type":"user","query":""}' | jq length)\
+    ((a=a+res))\
+    if [ $res = 0 ] || [ -z $res ]; then\
+        break\
+    fi\
+done
+for i in `seq 30 30 100000`; do\
+    res=$(curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":$i,"type":"user","query":""}')\
+    ((a=a+res))\
+    if [ $res = 0 ] || [ -z $res ]; then\
+        break\
+    fi\
+done
+for i in `seq 30 30 100000`; do\
+    res=$(curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*' -H 'Referer: https://pikomit.com/search' -H 'Origin: https://pikomit.com' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":null,"limit":$i,"type":"user","query":""}')\
+    ((a=a+res))\
+    echo $res\
+    if [ $res = 0 ] || [ -z $res ]; then\
+        break\
+    fi\
+done
+for i in `seq 30 30 100000`; do\
+    res=$(curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*'\\
+        -H 'Referer: https://pikomit.com/search'\\
+        -H 'Origin: https://pikomit.com'\\
+        -H 'Content-Type: application/json;charset=UTF-8'\\
+        --data-binary "{\"token\":null,\"limit\":$i,\"type\":\"user\",\"query\":\"\"}" | jq length)\
+    ((a=a+res))\
+    echo $res\
+    if [ $res = 0 ] || [ -z $res ]; then\
+        break\
+    fi\
+done
+for i in `seq 30 30 100000`; do\
+    res=$(curl 'https://odinzeus.com/search' -H 'Accept: application/json, text/plain, */*'\\
+        -H 'Referer: https://pikomit.com/search'\\
+        -H 'Origin: https://pikomit.com'\\
+        -H 'Content-Type: application/json;charset=UTF-8'\\
+        --data-binary "{\"token\":null,\"limit\":$i,\"type\":\"user\",\"query\":\"\"}" | jq length)\
+    ((a=a+res))\
+    echo $res\
+    if [ $res = 0 ] || [ -z $res ]; then\
+        echo $a\
+        break\
+    fi\
+done
+bindkey -v
+nvim .zshrc
+ls
+cd dotfiles
+ls
+cd
+cd .zsh
+ls
+nvim prompt.go
+go build prompt.go
+ls
+ls
+./prompt
+nvim theme
+nvim rc
+ls
+cd ..
+nvim .zshrc
+ls
+ls
+ls -al
+ls
+nvim .zsh/theme
+nvim .zshrc
+ls
+ls
+nvim .zshrc
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls -alH ~/.config/
+ls
+ls
+nvim .zsh/theme
+nvim .zsh/theme
+nvim .zsh/theme
+nvim .zsh/vim
+nvim .zshrc
+nvim .zsh/vim
+ls
+cd projects/fuu
+ls
+nvim doc/arch.md
+ls
+cd projects/fuu
+ls
+nm -D build/plugins/hello.so | less
+ls
+du -h build/plugins
+du -h build/plugins/hello.so
+du -h cmd/loader_test/main.go
+du -h build/bin/loader_test
+ls
+strip build/plugins/hello.so
+ls
+du -h build/plugins/hello.so
+nvim Makefile
+make
+nvim Makefile
+make
+ls
+du -h build/plugins/hello.so
+nvim Makefile
+make
+du -h build/plugins/hello.so
+make
+nvim Makefile
+make
+du -h build/bin/loader_test
+nvim Makefile
+make
+du -h build/bin/loader_test
+nvim Makefile
+make
+du -h build/bin/loader_test
+nvim Makefile
+make
+make strip
+l
+nvim Makefile
+make strip
+upx --help
+nm -D build/bin/loader_test
+./build/bin/loader_test
+ls
+make
+nvim Makefile
+make strip
+./build/bin/loader_test
+make
+./build/bin/loader_test
+nvim .config/polybar/config
+cd dotfiles
+./dotfiles.go store dotfiles.list
+startx
+cat .inputrc
+cd src
+ls
+git clone https://github.com/golang/go
+ls
+nvim .config/polybar/config
+cd projects/fuu
+ls
+make
+./build/bin/loader_test
+ls
+nvim plugin/manager.go
+serv ssh git
+serv git-delete fuu
+ls
+cd ..
+rm -rf fuu
+ls
+cd projects/fuu
+make
+./build/bin/loader_test
+nvim Makefile
+make run_loader
+nvim Makefile
+make run_loader
+nvim Makefile
+make
+make run_loader
+make
+make run_loader
+git diff
+git add .
+git commit -m "[plugin] add loadall and unload"
+cat plugin/manager.go
+make run_loader
+make run_loader
+make run_loader
+make run_loader
+make run_loader
+make run_loader
+cat doc/arch.md
+startx
+ls /data/42/sys/
+nvim
+nvim ~/.config/nvim/init.vim
+nvim ~/.config/nvim/init.vim
+nasm
+nasm -h
+nvim
+nasm --help
+nvim ~/.bin/compile
+ls
+nvim bzero.c
+gcc bzero.c
+r2 a.out
+gcc -O3 bzero.c
+ls
+r2 a.out
+gcc -g bzero.c
+r2 a.out
+clang -g bzero.c
+ls
+r2 a.out
+nvim bzero.c
+r2 a.out
+clang -g bzero.c
+r2 -A a.out
+./align
+./a.out
+nvim bzero.c
+make
+clang -g bzero.c
+nvim bzero.c
+clang -g bzero.c
+r2 -A a.out
+yay radare2
+rabin2 a.out
+rabin2 ./a.out
+rabin2 -a x86_64 ./a.out
+rabin2 -zz ./a.out
+rabin2 -i ./a.out
+rabin2 -h ./a.out
+rabin2 -I ./a.out
+r2 -a x86 -A a.out
+yay radare2
+r2  -A a.out
+clang -g -Og bzero.c
+ls
+r2  -A a.out
+r2  -AA a.out
+objdump -D a.out
+clang -g -O- bzero.c
+clang -g -O0 bzero.c
+objdump -D a.out
+r2  -AA a.out
+ls
+rm a.out bzero.c
+ls
+nvim .gdbinit
+nvim dotfiles/dotfiles.list
+cd projects/c/libft
+ls
+man memset
+cd projects
+ls
+mkdir libasm
+cd libasm
+ls
+ls
+nvim Makefile
+mkdir src
+ls
+nvim M
+nvim Makefile
+make
+ls
+nvim src/bzero.s
+cd src
+ls
+mv bzero.s bzero.asm
+nvim bzero.asm
+mv bzero.asm bzero.s
+ls
+nvim bzero.s
+compile bzero.s
+ls
+rm bzero
+ls
+nvim ~/.config/nvim/init.vim
+nvim bzero.s
+nvim ~/.config/nvim/init.vim
+nvim bzero.s
+nvim ~/.config/nvim/init.vim
+nvim bzero.s
+nvim ~/.config/nvim/init.vim
+nvim bzero.s
+nvim ~/.config/nvim/init.vim
+nvim bzero.s
+mkdir test
+ls
+nvim test/bzero.c
+ls
+nvim M
+mv test ..
+ls
+cd ..
+ls
+nvim src/libasm.h
+ls
+nvim Makefile
+la
+make test
+nvim Makefile
+make
+make test
+ls
+yay -S clang
+make test
+nvim test/bzero.c
+ls
+mv src/libasm.h .
+ls
+nvim test/bzero.c
+nvim libasm.
+nvim libasm.h
+ls
+mv libasm.h src
+ls
+mkdir include
+mv src/libasm.h include
+ls
+nvim test/bzero.c
+ls
+mv include/libasm.h src
+lr
+ls
+rm -rf include
+ls
+yay -S bear
+bear make test
+nvim test/bzero.c
+bear make test
+nvim test/bzero.c
+ls
+rm compile_commands.json
+ls
+nvim .envrc
+direnv allow
+nvim test/bzero.c
+nvim src/libasm.h
+nvim test/bzero.c
+ls
+nvim src/libasm.h
+nvim src/bzero.s
+nvim src/bzero.s
+make
+ls
+make test
+ls
+ls test
+nvim Makefile
+make test
+ls
+rm libasm.a
+ls
+make test
+ls
+objdump -D libasm.a
+ls
+nvim Makefile
+make 
+ls
+make re
+ls
+objdump -D libasm.a
+make test
+ls
+objdump -D test/bzero
+nvim Makefile
+make test
+ls
+rm test/bzero
+ls
+make test
+ls
+objdump -D test/bzero
+objdump -D test/bzero | grep bzero
+nvim test/bzero.c
+nvim test/bzero.c
+make test
+nvim Makefile
+make
+ls
+nvim src/bzero.s
+make
+make re
+objdump -D libasm.a
+ls
+cat libasm.a
+nvim Makefile
+nvim Makefile
+make re
+objdump -D libasm.a
+ls
+nvim m
+nvim Makefile
+make
+nvim Makefile
+make
+ls
+objdump -D libasm.a
+ls
+make test
+ls
+nvim src/libasm.h
+make
+make re
+make test
+nvim Makefile
+nvim Makefile
+make re
+ls
+make test
+l
+objdump -D libasm.a
+ls
+nvim Makefile
+ls
+make re
+ls
+nm libasm.a
+make test
+nvim src/libasm.h
+nvim Makefile
+ls
+rm libfts.a
+ls
+make
+ls
+nvim Makefile
+make test
+ls
+nvim Makefile
+make re
+make test
+nvim Makefile
+nvim src/bzero.s
+make
+make re
+nm libasm.a
+ls
+nvim Makefile
+nvim Makefile
+make test
+nvim Makefile
+make test
+ls
+nvim Makefile
+make test
+nvim Makefile
+ls
+nvim Makefile
+make test
+make test
+ls
+ls test
+nvim Makefile
+make test
+ls
+./test/bzero
+ls
+nvim src/bzero.s
+nvim Makefile
+nvim src/bzero.s
+nvim test/bzero.c
+nvim test/bzero.c
+ls
+rm -rf test
+nvim Makefile
+nvim test/test.c
+ls
+nvim .gitignore
+ls
+git init
+git remote add origin git@github.com:babariviere/libasm.git\
+git push -u origin master
+git add .
+git commit -m "bzero implementation"
+git push
+git remote add origin git@github.com:babariviere/libasm.git\
+git push -u origin master
+cp src/bzero.s src/memset.s
+nvim src/memset.s
+nvim src/memset.s
+ls
+cat src/bzero.s
+nvim src/memset.s
+find . -name libft
+cd projects/c/libft
+ls
+cat Makefile
+yay -S nasm
+yay
+cat ~/projects/yuki/vim/ftdetect/yuki.vim
+man bzero
+ls
+cd
+cd projects/libasm
+ls
+make fclean
+make
+make test
+make test
+make test
+nm /usr/lib/libanl.a /usr/lib/libasm.a /usr/lib/libbfd.a /usr/lib/libBrokenLocale.a /usr/lib/libbrotlicommon-static.a /usr/lib/libbrotlidec-static.a /usr/lib/libbrotlienc-static.a /usr/lib/libbsd-ctor.a /usr/lib/libc.a /usr/lib/libcapstone.a /usr/lib/libc++fs.a /usr/lib/libc_nonshared.a /usr/lib/libcrypt.a /usr/lib/libdl.a /usr/lib/libdw.a /usr/lib/libebl.a /usr/lib/libelf.a /usr/lib/libg.a /usr/lib/libgamin_shared.a /usr/lib/libglslang.a /usr/lib/libHLSL.a /usr/lib/libiberty.a /usr/lib/libjansson.a /usr/lib/libjasper.a /usr/lib/libjemalloc_pic.a /usr/lib/libjsoncpp.a /usr/lib/libm-2.28.a /usr/lib/libm.a /usr/lib/libmcheck.a /usr/lib/libmvec.a /usr/lib/libmvec_nonshared.a /usr/lib/libnetlink.a /usr/lib/libOGLCompiler.a /usr/lib/libopcodes.a /usr/lib/libOSDependent.a /usr/lib/libpopt.a /usr/lib/libpthread.a /usr/lib/libQt5AccessibilitySupport.a /usr/lib/libQt5Bootstrap.a /usr/lib/libQt5DeviceDiscoverySupport.a /usr/lib/libQt5EdidSupport.a /usr/lib/libQt5EglSupport.a /usr/lib/libQt5EventDispatcherSupport.a /usr/lib/libQt5FbSupport.a /usr/lib/libQt5FontDatabaseSupport.a /usr/lib/libQt5GlxSupport.a /usr/lib/libQt5InputSupport.a /usr/lib/libQt5KmsSupport.a /usr/lib/libQt5LinuxAccessibilitySupport.a /usr/lib/libQt5OpenGLExtensions.a /usr/lib/libQt5PacketProtocol.a /usr/lib/libQt5PlatformCompositorSupport.a /usr/lib/libQt5QmlDebug.a /usr/lib/libQt5QmlDevTools.a /usr/lib/libQt5ServiceSupport.a /usr/lib/libQt5ThemeSupport.a /usr/lib/libQt5VulkanSupport.a /usr/lib/libresolv.a /usr/lib/libr_shlr.a /usr/lib/librt.a /usr/lib/libSDL2main.a /usr/lib/libshaderc.a /usr/lib/libshaderc_combined.a /usr/lib/libshaderc_util.a /usr/lib/libSPIRV.a /usr/lib/libSPIRV-Tools.a /usr/lib/libSPIRV-Tools-link.a /usr/lib/libSPIRV-Tools-opt.a /usr/lib/libSPVRemapper.a /usr/lib/libstdc++.a /usr/lib/libstdc++fs.a /usr/lib/libsupc++.a /usr/lib/libtz.a /usr/lib/libutil.a /usr/lib/liby.a /usr/lib/libyajl_s.a /usr/lib/libz.a /usr/lib/libzmq.a 
+make test
+gcc -h
+gcc --help
+gcc --help | grep l
+gcc --help 
+ls
+make
+make test
+make re
+make test
+./test/bzero
+yay -S gdb
+gdb ./test/bzero
+make test
+nvim Makefile
+make test
+make test
+nvim ~/.config/nvim/init.vim
+make test
+make test
+make test
+make test
+make test
+make test
+ls
+make test
+ls test
+nvim Makefile
+ls
+make
+make test
+./test/bzero
+gdb ./test/bzero
+gdb ./test/bzero
+make test
+gdb ./test/bzero
+make test
+nvim Makefile
+make test
+make test
+make test
+nm libasm.a
+make test
+ls
+ls test
+nvim test/bzero.c 
+make test
+make
+make test
+mkdir test
+man memset
+man memcpy
+man 3 write
+make
+make test
+nvim Makefile
+make test
+make test
+man memcpy
+make test
+make test
+make test
+make test
+make test
+man strcat
+man memset
+make
+make test
+make test
+make test
+make test
+gdb ./test/test
+make test
+gdb ./test/test
+make test
+make test
+make test
+man calloc
+calc
+make test
+make test
+make test
+make test
+make test
+make test
+make test
+make test
+make test
+make test
+make test
+make test
+make test
+make test
+git add .
+git commit -m "memset implementation + fix for bzero"
+git push
+make test
+git add .
+git commit -m "documentation + small changes for bzero"
+git push
+startx
+yay
+cd /tmp
+ls
+mkdir waka
+cd waka
+ls
+mkdir -p a/include b/incldue
+rm -rf b
+mkdir -p a/include b/include
+touch a/include/a.h
+touch b/include/b.h
+tree
+bc
+cal
+yay cpupower
+sudo nvim /etc/acpi/handler.sh
+sudo nvim /etc/default/cpupower
+ls
+cat /etc/acpi/handler.sh
+sudo mount /dev/nvme1n1p2 /mnt
+cat /mnt/gentoo/etc/acpi/default.sh
+cat /mnt/void/etc/acpi/handler.sh
+cpupower
+cpupower frequency-set
+sudo cpupower frequency-set
+sudo cpupower frequency-set 3.0GHz
+journalctl --since=today
+sudo systemctl enable cpupower
+sudo systemctl start cpupower
+sudo systemctl status cpupower
+sudo systemctl status cpupower
+sudo systemctl start cpupower
+sudo systemctl status cpupower
+cpupower frequency-info
+sudo systemctl start cpupower
+sudo systemctl status cpupower
+cpupower frequency-info
+sudo cpupower frequency-set 3.0GHz
+sudo cpupower frequency-set -f 3.0GHz
+lsmod
+lsmod | grep cpu
+sudo cpupower frequency-info
+sudo cpupower frequency-set -g userspace
+ls /usr/lib/modules/$(uname -r)/kernel/drivers/cpufreq/
+cat /usr/lib/systemd/scripts/cpupower
+sudo systemctl edit cpupower
+cat /etc/systemd/system/cpupower.service
+cat /usr/lib/systemd/system/cpupower.service
+ls /usr/lib/modules/$(uname -r)/kernel/drivers/cpufreq/
+sudo modprobe cpufreq_userspace
+sudo systemctl start cpupower
+sudo systemctl status cpupower
+sudo cpupower frequency-set -g userspace
+sudo cpupower frequency-set -g userspace
+sudo modprobe cpufreq_ondemand
+sudo cpupower frequency-set -g userspace
+sudo cpupower frequency-set -g ondemand
+startx
+sudo systemctl enable acpid.service
+sudo systemctl start acpid.service
+sudo systemctl start cpupower
+sudo systemctl disable acpid.service
+sudo systemctl stop acpid.service
+sudo systemctl start cpupower
+sudo modprobe acpi-cpufreq
+sudo systemctl start cpupower
+sudo systemctl status cpupower
+cpupower frequency-info --governors
+yay cpupower
+sudo cpupower frequency-set --governor performance
+sudo cpupower frequency-set --governor powersave
+sudo cpupower frequency-set -f 3.0GHz
+lsmod
+lsmod | grep acpi
+sudo modprobe acpi-cpufreq
+lsmod | grep acpi
+lsmod | grep cpufreq
+cd /etc/modules-load.d
+ls
+man modules-load.d
+sudo mv module.conf cpupower.conf
+nvim cpupower.conf
+sudo nvim cpupower.conf
+systemctl status cpupower.service
+sudo cpupower frequency-set -g ondemand
+sudo nvim /etc/modules-load.d/module.conf
+sudo nvim /etc/modules-load.d/module.conf
+sudo modprobe intel_pstate
+lsmod | grep pst
+startx
+startx
+lsmod | grep acpi
+sudo cpupower frequency-set -g ondemand
+cat /etc/default/grub
+yay acpi
+yay cpufreq
+ls
+lsmod | grep cpufreq
+sudo nvim /etc/default/grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+sudo reboot
+startx
+systemctl status cpupower.service
+sudo reboot
+htop
+killall Discord
+killall ld
+killall discord
+killall Discord
+cd $GOPATH/src/llvm.org/llvm/
+ls
+cd bindings/go
+ls
+./build.sh
+nvim build.sh
+ls
+ls llvm
+ls llvm/workdir
+ls llvm/workdir/llvm_build
+rm -rf llvm/workdir/llvm_build
+yay ninja
+which ninja
+./build.sh
+cd 
+cd projects/go/src
+ls
+rm -rf llvm.org
+go get -d llvm.org/llvm/bindings/go/llvm
+cd llvm.org/llvm/bindings/go
+./build.sh
+htop
+systemctl status earlyoom.service
+systemctl status earlyoom.service
+killall ld
+mount
+ls /tmp
+yay -R ninja
+yay -S earlyoom
+sudo systemctl start earlyoom
+systemctl status --watch earlyoom
+journalctl -xu earlyoom
+journalctl -xfu earlyoom
+sudo systemctl stop earlyoom.service
+sudo swapoff /dev/nvme0n1p1
+ls
+cat /etc/fstab
+lsblk
+sudo swapoff /dev/nvme1n1p1
+dmesg
+ls -al /usr/bin/ld
+ls -al /usr/bin/ld.gold
+ls -al /usr/bin/ld
+ls -al /usr/bin/ld.bfd
+ld --help
+cd projects/orora
+ls
+nvim exemples/design.ora
+ls
+cd ..
+mv orora reiu
+ls
+cd reiu
+ls
+cd exemples
+ls
+mv design.ora design.re
+ls
+nvim design.re
+cd. .
+cd ..
+ls
+serv ssh git
+ls
+git remote show origin
+serv ssh git
+git remote remove origin
+serv git-create reiu
+ls
+git push
+git push --set-upstream origin master
+ls
+serv git-create reiu
+git push --set-upstream origin master
+ls
+git remote show origin
+nvim ~/.bin/serv
+serv git-create reiu origin
+rg orora
+nvim readme.md
+git add .
+git commit -m "project rename"
+git push
+yay llvm
+ls
+go run play/llvm1.go
+ls
+htop
+go run play/llvm1.go
+nvim play/llvm1.go
+go run play/llvm1.go
+time go run play/llvm1.go
+ls
+export LD=ld.gold
+go run play/llvm1.go
+ls
+startx
+cd projects/go/src/llvm.org/llvm/bindings/go
+ls
+./build.sh
+./build.sh
+ls llvm/workdir/llvm_build
+rm -rf llvm/workdir/llvm_build
+./build.sh
+go build
+ls
+rm go
+ls
+nvim build.sh
+rm -rf llvm/workdir/llvm_build
+./build.sh
+nvim build.sh
+./build.sh
+nvim build.sh
+./build.sh
+htop
+htop
+ld
+htop
+yay -S ninja
+ls
+ls llvm/workdir/llvm_build
+ls
+./build.sh
+rm -rf llvm/workdir/llvm_build
+./build.sh
+cd llvm/workdir/llvm_build
+ls
+ninja
+ls
+ninja
+cat ../../../build.sh
+ninja llvm-config llvm-go
+./bin/llvm-go print-components
+ninja
+ls
+llvm_go="$llvm_builddir/bin/llvm-go"\
+
+llvm_config="$llvm_builddir/bin/llvm-config"\
+
+  llvm_components="$($llvm_go print-components)"\
+
+llvm_builddir=$workdir/llvm_build\
+
+llvm_config="$llvm_builddir/bin/llvm-config"\
+
+llvm_go="$llvm_builddir/bin/llvm-go"\
+
+  llvm_components="$($llvm_go print-components)"\
+
+llvm_builddir=.
+llvm_builddir=$(pwd)
+llvm_config="$llvm_builddir/bin/llvm-config"\
+
+llvm_go="$llvm_builddir/bin/llvm-go"\
+
+  llvm_components="$($llvm_go print-components)"\
+
+  llvm_buildtargets="$($llvm_config --libs $llvm_components | sed -e 's/-l//g')"\
+
+$llvm_config --libs all-targets
+ninja all-targets
+ls
+cat build.ninja
+ninja
+pass git pull
+pass git push
+ls
+sudo nvim /etc/default/cpupower
+sudo reboot
+sudo systemctl disable cpupower.service
+cd projects/reiu
+ls
+go run play/llvm1.go
+cd
+cd projects/go/src/llvm.org/llvm/bindings/go
+ls
+./build.sh
+ls
+rm -rf llvm/workdir/llvm_build
+nvim build.sh
+./build.sh
+cd ..
+cd ..
+cd ..
+cd ..
+rm -rf llvm.org
+btrfs check
+yay
+htop
+htop
+ping 8.8.8.8
+ping youtube.com
+startx
+sudo nvim /etc/systemd/system.conf
+journalctl -xf
+journalctl -f
+journalctl -x
+less /var/log/syslog
+sudo less /var/log/syslog
+sudo less /var/local
+last reboot
+systemctl --state=failed
+systemctl --state=masked,not-found,failed
+nvim .profile
+ls
+emerge -s kpsepath
+equery b kpsepath
+emerge -s texlive
+equery u texlive
+equery u texlive | less
+equery -P n u texlive | less
+equery -N u texlive | less
+sudo emerge texlive
+sudo su
+nvim .zsh/aliases
+emerge -s direnv
+sudo layman -a go-overlay
+sudo emerge direnv
+htop
+pacman -Ss xorg
+source /etc/profile
+pacman -Ss xorg
+ls /usr/bin/pacman
+ping 8.8.8.8
+sudo systemctl enable dhcpcd
+sudo systemctl start dhcpcd
+ping 8.8.8.8
+ping 8.8.8.8
+p show server/ovh/vps/603095/root
+cd .ssh
+ls
+rm id_rsa*
+ssh-keygen -t rsa
+ls
+cat id_rsa.pub
+ls .ssh
+ls -al .ssh
+ls -al /data/ssh
+nvim .bin/backup
+ls
+sudo mount /dev/sda mnt
+ls mnt
+ls -al mnt
+ls -al mnt/backup
+ls -al mnt/backup/home
+cp /data/ssh/windows_key* .ssh
+cd .ssh
+ls
+mv windows_key id_rsa
+mv windows_key.pub id_rsa.pub
+serv help
+serv ssh root
+serv ssh git
+cd ..
+chmod -R 0700 .ssh
+serv ssh git
+serv ssh git
+serv ssh root
+yay -S thefuck texlive
+yay -S thefuck texlive
+yay -S thefuck texlive
+yay texlive
+yay -S texlive-most
+yay ssh
+yay --color y ssh
+yay --help
+yay --help | grep color
+man yay
+sudo nvim /etc/pacman.conf
+yay ssh
+p show freelance/net-entreprises
+p help
+p insert tmp/urssaf
+gpg2 --import /data/gnupg/private.key
+gpg2 --edit-key Bastien
+p insert tmp/urssaf
+pass init Bastien
+p insert tmp/urssaf
+p tmp/urssaf
+p freelance/impots
+p freelance/net-entreprises
+yay ocaml
+sudo umount mnt
+cd projects/go/src/llvm.org/llvm/bindings/go
+ls
+./build.sh
+rm -rf llvm/workdir/llvm_build
+./build.sh
+yay -S notify-send
+ls
+cd projects/reiu
+ls
+cd play
+ls
+cd ..
+ls
+ls exemples
+ls
+ls
+cd play
+ls
+rm llvm1.go
+nvim lexer.ml
+ls
+rm lexer.ml
+nvim llvm1.cpp
+git checkout llvm1.go
+ls
+go run llvm1.go
+rm llvm1.go
+ls
+cd projects/go/src/llvm.org/llvm/bindings/go
+ls
+go get -d llvm.org/llvm/bindings/go/llvm
+yay -S svn
+go get -d llvm.org/llvm/bindings/go/llvm
+rm -rf $GOPATH/src/llvm.org
+startx
+sudo systemctl enable ntpd
+sudo timedatectl set-local-rtc 1
+sudo timedatectl set-ntp true
+sudo systemctl enable systemd-timesyncd
+sudo systemctl start systemd-timesyncd
+sudo systemctl restart systemd-timesyncd
+timedatectl status
+sudo timedatectl status
+sudo timedatectl set-local-rtc 0
+timedatectl status
+sudo nvim /etc/ntp.conf
+sudo nvim /etc/systemd/timesyncd.conf
+startx
+startx
+cd /data/anime/
+ls
+serv ssh root
+mpv /data/anime/Bleach.S01.e001-020/Bleach.015.FRENCH.720p.AC3.x264-RaToN.mkv
+trm -h
+yay transmission
+trm -h
+trm -l
+trm -t 4 -rad
+trm -t 2 -rad
+cd Downloads
+trm -a Bleach.S02.e021-041.torrent
+cd /data/anime
+ls
+mv Bleach.S01.e001-020 Bleach
+ls -al
+groups
+mv Bleach.S01.e001-020 Bleach
+nvim /etc/fstab
+sudo nvim /etc/fstab
+sudo mv Bleach.S01.e001-020 Bleach
+ls
+sudo nvim /etc/fstab
+cd
+sudo umount /data
+sudo umount /data
+sudo mount /data
+sudo modprobe fuse
+yay fuse
+ls /dev/fuse
+ls -al /dev/fuse
+sudo mount /data
+yay
+yay -S mpv
+yay
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+yay ntfs
+startx
+sudo nvim /etc/wpa_supplicant/wpa_supplicant-wlo1.conf
+sudo nvim /etc/wpa_supplicant/wpa_supplicant-wlo1.conf
+sudo nvim /etc/wpa_supplicant/wpa_supplicant-wlo1.conf
+cd /data/anime
+mv Bleach.S01.e001-020 Bleach
+ls
+rm Cowboy\ Bebop Tanaka-kun\ wa\ Itsumo\ Kedaruge
+rm -rf Cowboy\ Bebop Tanaka-kun\ wa\ Itsumo\ Kedaruge
+ls
+ls phone_sync
+yay -S syncthing
+systemctl --user enable syncthing
+systemctl --user start syncthing
+sudo systemctl enable wpa_supplicant@wlo1
+sudo systemctl start wpa_supplicant@wlo1
+wpa_cli -iwlo1
+wpa_cli -iwlo1
+sudo systemctl status wpa_supplicant@wlo1
+sudo systemctl restart wpa_supplicant@wlo1
+sudo systemctl status wpa_supplicant@wlo1
+sudo systemctl restart wpa_supplicant@wlo1
+sudo systemctl status wpa_supplicant@wlo1
+sudo systemctl status wpa_supplicant@wlo1
+sudo systemctl restart wpa_supplicant@wlo1
+sudo systemctl status wpa_supplicant@wlo1
+sudo systemctl status wpa_supplicant@wlo1
+sudo systemctl restart wpa_supplicant@wlo1
+trm -l
+man wpa_supplicant.conf
+wpa_cli -iwlo1
+sudo wpa_cli -iwlo1
+wpa_cli -iwlo1
+wpa_cli -iwlo1
+wpa_cli -iwlo1
+wpa_cli -iwlo1
+wpa_cli 
+wpa_cli -iwlo1
+wpa_cli -iwlo1
+wpa_cli -iwlo1
+scp --help
+serv ssh root
+ls /data/anime/Bleach
+trm -l
+nvim .bin/serv
+cd .bin
+ls
+git add .
+ls
+git status
+ls
+ls -al
+ls .bin
+rm -rf .bin
+git add .
+git commit -m "serv scp"
+git config --global user.email "babathriviere@gmail.com"
+git config --global user.name "babariviere"
+git commit -m "serv scp"
+git push
+man mpv
+xbacklight -set 10
+yay acpi
+xbacklight -set 10
+xbacklight -set 10
+xbacklight -set 10
+sudo chown -R :video /sys/class/backlight/intel_backlight/brightness
+xbacklight -set 10
+group
+groups
+ls /sys/class/backlight/intel_backlight/brightness
+ls -l /sys/class/backlight/intel_backlight/brightness
+sudo chmod g+w /sys/class/backlight/intel_backlight/brightness
+xbacklight -set 10
+xbacklight -set 50
+base64 --decode aHR0cDovL2xpbmtzLnNuYWhwLml0LzkxOGJsZWFjaG9zdHM=
+echo aHR0cDovL2xpbmtzLnNuYWhwLml0LzkxOGJsZWFjaG9zdHM= | base64 --decode
+transmission-cli --helP
+transmission-cli --help
+cd Downloads
+transmission-cli -w /data/Music/Bleach Bleach\ Soundtrack\ Collection\ \(FLAC\).torrent
+trm -a World\ Destruction.torrent
+mv World\ Destruction.torrent WD.torrent
+trm -a WD.torrent
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+serv scp root:test
+serv scp root:test
+serv scp root:test test
+serv scp root:test test
+serv scp test test
+scp --help
+serv scp root:test test
+serv scp root:test test
+trm -l
+serv scp "root:/data/torrents/Bleach.S02.e021-041/*" /data/anime/Bleach/
+man mpv
+man mpv
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+ls /data/Music/Bleach
+ls /data/Music/Bleach/Bleach\ Soundtrack\ Collection\ \(FLAC\)
+ls /data/Music/Bleach/Bleach\ Soundtrack\ Collection\ \(FLAC\)/BLEACH\ 5th\ Anniversary\ BOX\ Bonus\ CD\ \&\ DVD
+ls /data/Music/Bleach/Bleach\ Soundtrack\ Collection\ \(FLAC\)/BLEACH\ 5th\ Anniversary\ BOX\ Bonus\ CD\ \&\ DVD/Bonus\ CD\ 1
+ls /data/Music/Bleach/Bleach\ Soundtrack\ Collection\ \(FLAC\)/Bleach\ Original\ Soundtrack\ 1
+ls /data/Music/Bleach/Bleach\ Soundtrack\ Collection\ \(FLAC\)/BLEACH\ 5th\ Anniversary\ BOX\ Bonus\ CD\ \&\ DVD/Bonus\ CD\ 1
+cd /data/Music/Bleach
+tree
+cat Bleach\ Soundtrack\ Collection\ \(FLAC\)/info.nfo
+mpv /data/anime/Bleach/Bleach.016.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv /data/anime/Bleach/Bleach.017.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv --help
+mpv /data/anime/Bleach/Bleach.018.FRENCH.720p.AC3.x264-RaToN.mkv
+cd /data/anime/Bleach
+ls
+mpv Bleach.019.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.020.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.021.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.022.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.023.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.024.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.025.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.026.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.027.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.028.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.029.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.030.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.031.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.032.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.033.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.034.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.035.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.036.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.037.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.038.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.039.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.040.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.041.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.042.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.043.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.044.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.045.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.046.FRENCH.720p.AC3.x264-RaToN.mkv
+serv ssh root
+serv scp "root:/data/torrents/Bleach.S02.e042-063/*" /data/anime/Bleach/
+serv scp "root:/data/torrents/Bleach.S03.e042-063/*" /data/anime/Bleach/
+trm -l
+startx
+df -h
+cd /data/anime/Bleach
+ls
+cd ..
+cp Bleach/Bleach.047.FRENCH.720p.AC3.x264-RaToN.mkv Bleach/Bleach.048.FRENCH.720p.AC3.x264-RaToN.mkv Bleach/Bleach.049.FRENCH.720p.AC3.x264-RaToN.mkv phone_sync
+df -h
+ls
+rm Bleach/Bleach.00*
+rm Bleach/Bleach.01*
+rm Bleach/Bleach.02*
+ls
+cp Bleach/Bleach.047.FRENCH.720p.AC3.x264-RaToN.mkv Bleach/Bleach.048.FRENCH.720p.AC3.x264-RaToN.mkv Bleach/Bleach.049.FRENCH.720p.AC3.x264-RaToN.mkv phone_sync/
+ls Bleach
+cp Bleach/Bleach.050.FRENCH.720p.AC3.x264-RaToN.mkv Bleach/Bleach.051.FRENCH.720p.AC3.x264-RaToN.mkv Bleach/Bleach.052.FRENCH.720p.AC3.x264-RaToN.mkv phone_sync
+rm Bleach/Bleach.03*
+df -h
+serv scp "root:/data/torrents/Bleach.S03.e042-063/*" /data/anime/Bleach/
+startx
+calc
+yay -S calc
+calc
+serv ssh root
+calc
+cat .config/dunst/dunstrc
+serv ssh root
+trm -l
+trm -l
+trm -l
+trm -t 7 -rad
+trm -a Downloads/Bleach.S04.e064-091.torrent
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -t 1 -rad
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -h
+trm -t 8 -s
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -t 8 -s
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+pass git pull
+pass git init
+pass git pull
+pass git remote help
+pass git remote add origin ssh://git@51.68.124.91:26731/srv/git/pass.git
+pass git pull
+pass git pull origin master
+pass git pull -f origin master
+pass git reset --hard origin/master
+pass git pull origin master
+pass generate misc/sncf 16
+pass git push
+pass git push --set-upstream origin master
+pass generate --help misc/sncf 
+pass generate -n misc/sncf 16
+pass git push
+cat .bin/serv| grep origin
+cat .bin/serv| grep add
+nvim .bin/serv
+cd Downloads
+ls
+mv \[VLSC\]\ Microsoft\ Office\ 2016\ Edition\ Standard\ FR.torrent mo.torrent
+trm -a mo.torrent
+cat .ssh/id_rsa.pub | clip
+rm -rf /data/anime/Bleach
+cd projects/reiu
+lws
+cat exemples/design.re
+cd vim
+ls
+nvim syntax/reiu.vim
+cd projects/yuki
+ls
+cd vim
+ls
+cat ftdetect/yuki.vim
+cat syntax/yuki.vim
+ cat /usr/share/nvim/runtime/syntax/rust.vim
+ cat /usr/share/nvim/runtime/syntax/rust.vim | grep i8
+ cat /usr/share/nvim/runtime/syntax/rust.vim | grep rustType
+ cat /usr/share/nvim/runtime/syntax/rust.vim | grep String
+ cat /usr/share/nvim/runtime/syntax/rust.vim | grep Comment
+cd /data/anime/Bleach
+ls
+rm Bleach.04*
+ls
+cd ..
+rm phone_sync/*
+cd Bleach/
+mpv Bleach.053.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.054.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.055.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.056.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.057.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.058.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv Bleach.059.FRENCH.720p.AC3.x264-RaToN.mkv
+cd
+cd projects/reiu
+ls
+ls
+rm -rf play
+ls
+nvim exemples/design.re
+git remote add github git@github.com:babariviere/reiu.git
+git push github master
+git push github master
+ls
+nvim exemples/design.re
+ls
+mkdir -p vim/syntax
+cd vim
+ls
+mkdir ftdetect
+nvim ftdetect/reiu.vim
+nvim syntax/reiu.vim
+nvim ~/.config/nvim/init.vim
+nvim ../exemples/design.re
+nvim ../exemples/design.re
+nvim ../exemples/design.re\
+nvim ../exemples/design.re
+nvim ../exemples/design.re
+nvim ../exemples/design.re
+nvim ../exemples/design.re
+nvim ../exemples/design.re
+nvim ../exemples/design.re
+cd ..
+git add exemples/ play/
+git commit -m "[prototype] improving prototype"
+git push github master
+git add vim/
+git commit -m "[vim] add vim syntax"
+git push
+git push github master
+cd projects
+ls
+cd
+cd src
+ls
+git clone https://github.com/HackerPoet/PySpace
+cd PySpace
+ls
+cat Run.bat
+python ray_marcher_demo.py
+python3 ray_marcher_demo.py
+python2 ray_marcher_demo.py
+ls
+cat R
+cat README.md
+yay pygame
+yay pygame
+python2 ray_marcher_demo.py
+yay numpy
+python2 ray_marcher_demo.py
+yay opengl
+python2 ray_marcher_demo.py
+optirun python2 ray_marcher_demo.py
+cat ray_marcher_demo.py
+optirun python2 ray_marcher_demo.py
+nvim ray_marcher_demo.py
+optirun python2 ray_marcher_demo.py
+nvim pyspace/camera.py
+nvim ray_marcher_demo.py
+optirun python2 ray_marcher_demo.py
+nvim ray_marcher_demo.py
+optirun python2 ray_marcher_demo.py
+nvim ray_marcher_demo.py
+nvim pyspace/camera.py
+nvim ray_marcher_demo.py
+optirun python2 ray_marcher_demo.py
+nvim ray_marcher_demo.py
+optirun python2 ray_marcher_demo.py
+cd
+cd Downloads
+ls
+mpv Mob\ Pyscho\ 100\ II\ \ 02.mkv
+rm  Mob\ Pyscho\ 100\ II\ \ 02.mkv
+trm -l
+trm -l
+p music/spotify
+trm -l
+trm -t 1 -rad
+cd Downloads
+ls
+trm -a Macross\ Frontier.torrent
+mv Macross\ Frontier.torrent mf.torrent
+trm -a mf.torrent
+watch trm -l
+yay -S spotify
+cat /usr/share/nvim/runtime/syntax/rust.vim| grep function
+cat /usr/share/nvim/runtime/syntax/rust.vim| grep -I function
+cat /usr/share/nvim/runtime/syntax/rust.vim| grep -I Function
+cat /usr/share/nvim/runtime/syntax/rust.vim| grep -I Func
+cat /usr/share/nvim/runtime/syntax/rust.vim| grep -I Enum
+cat /usr/share/nvim/runtime/syntax/rust.vim| grep -i Enum
+cat /usr/share/nvim/runtime/syntax/rust.vim| grep -i enum
+cat /usr/share/nvim/runtime/syntax/rust.vim| grep -i ident
+cat /usr/share/nvim/runtime/syntax/rust.vim| grep -i int
+cat /usr/share/nvim/runtime/syntax/rust.vim| grep -i num
+cat /usr/share/nvim/runtime/syntax/rust.vim| grep -i ident
+cat /usr/share/nvim/runtime/syntax/rust.vim| grep -i float
+cat /usr/share/nvim/runtime/syntax/c.vim| grep -i float
+cat /usr/share/nvim/runtime/syntax/c.vim| grep -i ident
+cat /usr/share/nvim/runtime/syntax/c.vim| grep -i name
+cat /usr/share/nvim/runtime/syntax/c.vim| grep -i func
+nvim /usr/share/nvim/runtime/syntax/c.vim
+cat /usr/share/nvim/runtime/syntax/rust.vim| grep -i ident
+cat /usr/share/nvim/runtime/syntax/cpp.vim | grep -i ident
+cat /usr/share/nvim/runtime/syntax/go.vim | grep -i ident
+nvim /usr/share/nvim/runtime/syntax/go.vim
+calc 
+yay
+rm -rf .config/discord
+yay
+yay -Ss discord
+p show social/discord
+go get -d llvm.org/llvm/bindings/go/llvm
+go get -d llvm.org/llvm/bindings/go/llvm
+cd $GOPATH/src/llvm.org/llvm/
+ls
+svn cleanup
+cd $GOPATH/src/llvm.org/llvm/
+go get -d llvm.org/llvm/bindings/go/llvm
+cd
+ls
+mkdir discord
+cd discord
+ls
+nvim PKGBUILD
+makepkg -si
+cd ..
+rm -rf discord
+git clone https://aur.archlinux.org/discord.git
+cd discord
+ls
+nvim PKGBUILD
+makepkg -si
+ls
+md5sum discord-0.0.7.tar.gz
+nvim PKGBUILD
+makepkg -si
+yay -S ninja
+yay -S llvm
+llc --help
+go get -d llvm.org/llvm/bindings/go/llvm
+cd $GOPATH/src/llvm.org/llvm/
+ls
+ls
+cd bindings/go
+ls
+ls
+svn help
+svn update
+svn list
+svn log
+svn log | head
+./build.sh
+svn ls -v ^/tags
+cat README.txt
+ls
+cd ../..
+cd ../..
+ls
+rm -rf llvm.org
+go get github.com/llir/llvm
+go get github.com/llir/llvm/...
+ls
+cd
+yay -S clementine
+yay rythm
+yay rythmbox
+yay music
+gnome-music
+nvim .profile
+source .profile
+gnome-music
+nvim .profile
+echo $XDG_MUSIC_DIR
+mkdir Music
+gnome-music
+echo $XDG_MUSIC_DIR
+ls /data/Music
+yay -S xdg-user-dirs
+xdg-user-dir
+xdg-user-dir Music
+xdg-user-dir MUSIC
+gnome-music
+gnome-music --help
+gnome-music -d
+yay -R gnome-music
+yay liri
+yay music
+yay -R rhythmbox
+yay tomahawk
+yay tomahawk
+yay music
+yay babe
+yay lolly
+yay elisa
+yay -R elisa
+yay -S clementine
+cat .gtkrc-2.0
+nvim .xinitrc
+nvim .profile
+clementine
+clementine
+clementine
+clementine
+nvim .profile
+yay -R clementine
+qtconfig-qt4
+yay -S clementine
+qtconfig-qt4
+nvim .config/Trolltech.conf
+yay -S dconf-editor
+dconf-editor
+yay -S qt5-styleplugins
+qtconfig-qt4
+yay -R clementine lollypop
+clementine
+yay sudo
+sudo visudo
+sudo EDITOR=nvim visudo
+sudo
+sudo ls
+man sudo.conf
+go get -d llvm.org/llvm.v70/bindings/go/llvm
+go get -d llvm.org/llvm.v701/bindings/go/llvm
+ls $GOPATH/src
+llvm-ar --version
+cd projects/reiu
+ls
+nvim exemples/pseudo_rand.re
+nvim exemples/design.re
+ls
+nvim vim/syntax/reiu.vim
+nvim exemples/design.re
+nvim vim/syntax/reiu.vim
+nvim exemples/design.re
+nvim vim/syntax/reiu.vim
+nvim exemples/design.re
+nvim vim/syntax/reiu.vim
+nvim exemples/design.re
+nvim vim/syntax/reiu.vim
+man clang
+cd projects/reiu
+nvim vim/syntax/reiu.vim
+cat exemples/design.re
+cat vim/syntax/reiu.vim
+ls
+cd exemples
+ls
+nvim pseudo_rand.c
+clang -emit-llvm pseudo_rand.c
+clang -S -emit-llvm pseudo_rand.c
+ls
+cat pseudo_rand.ll 
+clang -S pseudo_rand.c
+ls
+nvim pseudo_rand.s
+rm pseudo_rand.s
+ls
+cd projects/reiu
+cat exemples/pseudo_rand.re
+cd projects
+ls
+cd reiu
+ls
+nvim 
+nvim exemples/design.re
+nvim exemples/design.re
+nvim exemples/design.re
+nvim exemples/design.re
+nvim exemples/design.re
+nvim exemples/design.re
+nvim exemples/design.re
+nvim exemples/design.re
+nvim exemples/design.re
+nvim exemples/design.re
+nvim exemples/design.re
+ls
+git add .
+git commit -m "[prototype] small improvement + better vim syntax"
+git push
+mkdir src
+ls
+cd src
+ls
+nvim go.mod
+nvim go.mod
+ls
+nvim .envrc
+ls
+direnv allow
+mkdir token
+nvim token/token.go
+startx
+yay
+dotfiles help
+ls
+dotfiles
+nvim .zsh/function
+nvim .zsh/function
+dotfiles help
+ls
+cd dotfiles
+./dotfiles.go store dotfiles.list
+man read
+p show social/discord
+mpv /data/anime/Zombieland_Saga/Zombieland\ Saga\ -\ 03\ -\ VOSTFR\ 1080p\ \(TV\).mkv
+yay -S rhythmbox
+yay -R rhythmbox
+yay -S gnome-music
+yay -R gnome-music
+yay qmpp
+yay qm
+yay -R qmmp
+yay music
+yay -S clementine
+ls
+git --help
+git add --help
+cd dotfiles
+ls
+git log
+git ls-files -m
+git ls-files -h
+git ls-files
+git status
+rm -rf dotfiles
+ls
+nvim clang-format
+git status
+git ls-files -m
+git status -uno
+date
+git log
+cd ~/Downloads
+ls
+mv badziochst_16-01-2019_12-23-23.pdf contrat.pdf
+serv ssh root
+serv scp "root:/data/torrents/Zombieland Saga [SOFTSUB]/*" /data/anime/Zombieland_Saga
+serv scp "root:/data/torrents/Zombieland\ Saga\ [SOFTSUB]/*" /data/anime/Zombieland_Saga
+serv scp "root:/data/torrents/Zombieland Saga [SOFTSUB]/*" /data/anime/Zombieland_Saga
+nvim ~/.bin/serv
+serv scp "root:/data/torrents/Zombieland Saga [SOFTSUB]/*" /data/anime/Zombieland_Saga
+serv scp "root:/data/torrents/Zombieland\ Saga\ [SOFTSUB]/*" /data/anime/Zombieland_Saga
+nvim ~/.bin/serv
+nvim ~/.bin/serv
+serv scp "root:/data/torrents/Zombieland\ Saga\ [SOFTSUB]/*" /data/anime/Zombieland_Saga
+serv scp "root:/data/torrents/Zombieland Saga [SOFTSUB]/*" /data/anime/Zombieland_Saga
+nvim ~/.bin/serv
+serv scp "root:/data/torrents/Zombieland Saga [SOFTSUB]/*" /data/anime/Zombieland_Saga
+nvim ~/.bin/serv
+serv scp "root:/data/torrents/Zombieland Saga [SOFTSUB]/*" /data/anime/Zombieland_Saga
+nvim ~/.bin/serv
+serv scp "root:/data/torrents/Zombieland Saga [SOFTSUB]/*" /data/anime/Zombieland_Saga
+nvim ~/.bin/serv
+serv scp "root:/data/torrents/Zombieland Saga [SOFTSUB]/*" /data/anime/Zombieland_Saga
+nvim ~/.bin/serv
+serv scp "root:/data/torrents/Zombieland Saga [SOFTSUB]/*" /data/anime/Zombieland_Saga
+nvim ~/.bin/serv
+nvim ~/.bin/serv
+serv scp "root:/data/torrents/Zombieland Saga [SOFTSUB]/*" /data/anime/Zombieland_Saga
+mkdir /data/anime/Zombieland_Saga
+serv scp "root:/data/torrents/Zombieland Saga [SOFTSUB]/*" /data/anime/Zombieland_Saga
+serv scp "root:/data/torrents/Zombieland\ Saga\ [SOFTSUB]/*" /data/anime/Zombieland_Saga
+nvim ~/.bin/serv
+serv scp "root:/data/torrents/Zombieland\ Saga\ [SOFTSUB]/*" /data/anime/Zombieland_Saga
+nvim ~/.bin/serv
+serv scp "root:/data/torrents/Zombieland\ Saga\ [SOFTSUB]/*" /data/anime/Zombieland_Saga
+nvim ~/.bin/serv
+serv scp "root:/data/torrents/Zombieland\ Saga\ [SOFTSUB]/*" /data/anime/Zombieland_Saga
+serv ssh root
+nvim ~/.bin/serv
+serv scp "root:/data/torrents/Zombieland Saga [SOFTSUB]/*" /data/anime/Zombieland_Saga
+nvim ~/.bin/serv
+serv scp "root:/data/torrents/Zombieland Saga [SOFTSUB]/*" /data/anime/Zombieland_Saga
+nvim ~/.bin/serv
+serv scp "root:/data/torrents/Zombieland\ Saga\ [SOFTSUB]/*" /data/anime/Zombieland_Saga
+nvim ~/.bin/serv
+serv scp "root:/data/torrents/Zombieland\ Saga\ [SOFTSUB]/*" /data/anime/Zombieland_Saga
+serv ssh root
+serv scp "root:/data/torrents/Zombieland\ Saga\ [SOFTSUB]/*" /data/anime/Zombieland_Saga
+serv scp "root:/data/torrents/Zombieland\ Saga\ [SOFTSUB]/" /data/anime/Zombieland_Saga
+serv scp "root:/data/torrents/Zombieland\ Saga\ [SOFTSUB]" /data/anime/Zombieland_Saga
+serv scp "root:/data/torrents/Zombieland\ Saga\ [SOFTSUB]/*" /data/anime/Zombieland_Saga
+serv scp "root:/data/torrents/Zombieland\ Saga\ [SOFTSUB]/\*" /data/anime/Zombieland_Saga
+serv scp "root:/data/torrents/Zombieland\ Saga\ [SOFTSUB]/*" /data/anime/Zombieland_Saga
+serv scp "root:/data/torrents/Zombieland*/*" /data/anime/Zombieland_Saga
+trm -l
+cd Downloads
+ls
+mv Zombieland\ Saga\ \[SOFTSUB\].torrent ZS.torrent
+trm -a ZS.torrent
+trm -l
+trm -l
+watch trm -l
+serv ssh root
+serv ssh root
+man cmake
+cmake --find-package
+cmake --find-package --help
+echo "OpenCV" | cmake --find-package
+cmake --find-package -DNAME=OpenCV
+cmake --find-package -DNAME=pkg-config
+cmake --find-package -DNAME=Qt5
+cmake --find-package -DNAME=git
+cmake --find-package -DNAME=Git
+cmake --find-package -DNAME=Boost
+cmake --find-package -DNAME=ALSA
+cmake --find-package -DNAME=Boost -DCOMPILER_ID=GNU -DLANGUAGE=C -DMODE=EXIST
+cmake --find-package -DNAME=ALSA -DCOMPILER_ID=GNU -DLANGUAGE=C -DMODE=EXIST
+cmake --find-package -DNAME=ALSA -DMODE=EXIST
+cmake --find-package -DNAME=ALSA -DLANGUAGE=C -DMODE=EXIST
+cmake --find-package -DNAME=ALSA -DCOMPILER_ID=GNU -DLANGUAGE=C -DMODE=EXIST
+cmake --help -D
+man cmake
+cmake --help-full
+cmake --help-full | grep COMPILER
+cmake --find-package -DNAME=ALSA -DCOMPILER_ID= -DLANGUAGE=C -DMODE=EXIST
+cmake --find-package -DNAME=ALSA -DCOMPILER_ID=GNU -DLANGUAGE=C -DMODE=EXIST
+cmake --find-package -DNAME=OpenCV -DCOMPILER_ID=GNU -DLANGUAGE=C -DMODE=EXIST
+ls /usr/lib/cmake/
+ls /usr/share/cmake*/Modules/Find*.cmake
+cat /usr/share/cmake-3.13/Modules/FindALSA.cmake 
+cmake --help
+cmake --help | grep path
+cmake --help | grep find
+cmake --find-package opencv
+cmake --find-package pkgconfig
+man cmake
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+yay -S teamviewer
+sudo systemctl start teamviewerd
+teamviewer
+teamviewer
+teamviewer
+sudo systemctl start teamviewerd
+sudo systemctl status teamviewerd
+teamviewer --help
+teamviewer daemon start
+teamviewer daemon status
+teamviewer 
+killall teamviewer
+teamviewer 
+teamviewer 
+teamviewer 
+teamviewer 
+cd projects
+ls
+mkdir unixbot
+cd unixbot
+ls
+nvim go.mod
+nvim .envrc
+ls
+direnv allow
+rm go.mod .envrc
+ls
+nvim main.go
+go get main.go
+go get -d main.go
+ls
+go get -d ./...
+nvim main.go
+go run main.go
+nvim main.go
+go run main.go
+nvim main.go
+go run main.go
+nvim main.go
+go run main.go
+nvim main.go
+go run main.go
+nvim main.go
+go run main.go
+nvim main.go
+go run main.go
+nvim main.go
+go run main.go
+nvim main.go
+go run main.go
+nvim main.go
+go run main.go
+nvim main.go
+go run main.go
+cd ../go/src/mudalike
+ls
+cat embed.go
+go run main.go
+cd
+cd projects/unixbot
+go run main.go
+ls
+go build main.go
+ls
+mv main unixbot
+ls
+serv scp unixbot root:/root/unixbot
+cd ~/projects/reiu
+ls
+cat src/token/token.go
+yay teamviewer
+yay -R teamviewer
+ls /run
+cd projects/reiu
+s
+ls
+nvim exemples/design.re
+nvim exemples/pseudo_rand.re
+nvim vim/syntax/reiu.vim
+nvim exemples/pseudo_rand.re
+go get -d github.com/jasonlvhit/gocron
+cd
+cd projects/unixbot
+ls
+go run main.go
+go run main.go
+nvim main.go
+cd
+cd projects/reiu
+ls
+cd src
+ls
+nvim token/token.go
+git add token/
+git commit -m "[token] implements token"
+git push
+mkdir lexer
+nvim lexer/lexer.go
+yay chrome
+crd --setup
+crd --restart
+crd 
+yay -R chrome-remote-desktop
+rm -rf .config/chrome-remote-desktop
+rm -rf .chrome-remote-desktop-session
+yay lib32-freetype
+cd Downloads
+sudo pacman -U lib32-freetype2-2.8-2-x86_64.pkg.tar.xz
+sudo pacman -U lib32-freetype2-2.8-2-x86_64.pkg.tar.xz
+sudo systemctl restart teamviewerd.service
+yay -S chromium-widevine
+yay nacl
+yay chromium
+sudo nvim /etc/pacman.conf
+yay
+startx
+yay teamviewer
+teamviewer 
+teamviewer 
+cd Downloads
+sudo pacman -U lib32-freetype2-2.8-2-x86_64.pkg.tar.xz
+teamviewer 
+sudo systemctl restart teamviewerd.service
+yay -R teamviewer12
+sudo systemctl restart teamviewerd.service
+teamviewer 
+teamviewer 
+teamviewer 
+teamviewer 
+sudo systemctl restart teamviewerd.service
+sudo systemctl restart teamviewerd.service
+teamviewer 
+cd Downloads
+sudo pacman -U lib32-freetype2-2.8-2-x86_64.pkg.tar.xz
+sudo systemctl restart teamviewerd.service
+teamviewer 
+yay
+teamviewer 
+sudo pacman -U lib32-freetype2-2.8-2-x86_64.pkg.tar.xz
+teamviewer 
+yay teamviewer
+yay teamviewer
+yay teamviewer
+startx
+p show music/spotify
+yay clementine
+whereis git
+dotfiles add .gdbinit
+dotfiles log
+rm -rf dotfiles
+mkdir dotfiles
+dotfiles init --bare
+cd dotfiles
+ls
+git init --bare
+cd 
+dotfiles add .gdbinit
+rm -rf dotfiles
+mkdir dotfiles
+cd dotfiles
+git init --bare
+git remote add github git@github.com:babariviere/reiu.git
+ls do
+ls dotfiles
+dotfiles help
+/usr/bin/git
+ls
+cd dotfiles
+cd ..
+rm -rf dotfiles
+ls
+mkdir dotfiles 
+cd dotfiles
+git init --bare
+git remote add origin git@github.com:babariviere/dotfiles.git
+cd
+ls
+dotfiles add .gdbinit
+cat .zsh/function
+nvim .zsh/function
+nvim .zsh/function
+dotfiles add .gdbinit
+nvim .zsh/function
+nvim .zsh/function
+rm -rf dotfiles
+mkdir dotfiles 
+cd dotfiles
+git init --bare
+git remote add origin git@github.com:babariviere/dotfiles.git
+dotfiles add .gdbinit
+git log
+dotfiles log
+dotfiles .zsh
+dotfiles add .zsh .config/alacritty .config/dunst .config/fish .config/i3 .config/i3blocks .config/nvim .config/termite .clang-format .Xresources .xres .config/zathura .config/polybar .profile .zshrc
+dotfiles add .zsh .config/alacritty .config/dunst .config/fish .config/i3 .config/i3blocks .config/nvim .config/termite .clang-format .Xresources .xres .config/zathura .config/polybar .profile .zshrc
+cat .bin/serv
+dotfiles add .zsh .config/alacritty .config/dunst .config/fish .config/i3 .config/i3blocks .config/nvim .config/termite .clang-format .Xresources .xres .config/zathura .config/polybar .profile .zshrc
+dotfiles add .zsh .config/alacritty .config/dunst .config/fish .config/i3 .config/i3blocks .config/nvim .config/termite .clang-format .Xresources .xres .config/zathura .config/polybar .profile .zshrc
+dotfiles add .zsh .config/alacritty .config/dunst .config/fish .config/i3 .config/i3blocks .config/nvim .config/termite .clang-format .Xresources .xres .config/zathura .config/polybar .profile .zshrc
+cat .bin/serv
+dotfiles add .zsh .config/alacritty .config/dunst .config/fish .config/i3 .config/i3blocks .config/nvim .config/termite .clang-format .Xresources .xres .config/zathura .config/polybar .profile .zshrc
+dotfiles push -f --set-upstream origin master
+dotfiles config --local status.showUntrackedFiles no
+dotfiles status
+dotfiles add
+dotfiles push
+nvim .gitignore
+ls
+dotfiles
+dotfiles status
+dotfiles add .zsh/history
+dotfiles rm --cached .zsh/history
+dotfiles status
+dotfiles push
+dotfiles add .gitignore
+dotfiles push
+dotfiles filter-branch --force --index-filter 'git rm --cached --ignore-unmatch .zsh/history' --prune-empty --tag-name-filter cat -- --all
+dotfiles push -f
+dotfiles init
+ls
+dotfiles ac .zsh .config/alacritty .config/dunst .config/fish .config/i3 .config/i3blocks .config/nvim .config/termite .clang-format .Xresources .xres .config/zathura .config/polybar .profile .zshrc .gitignore .config/yay
+dotfiles acp
+dotfiles acp .config/yay/config.json .config/yay/config.json
+rm -rf dotfiles
+mkdir dotfiles 
+cd dotfiles
+git init --bare
+git remote add origin git@github.com:babariviere/dotfiles.git
+cd ..
+dotfiles ac .zsh .config/alacritty .config/dunst .config/fish .config/i3 .config/i3blocks .config/nvim .config/termite .clang-format .Xresources .xres .config/zathura .config/polybar .profile .zshrc .gitignore .config/yay
+dotfiles config --local status.showUntrackedFiles no
+dotfiles push -f --set-upstream origin master
+dotfiles rm --cached .zsh/prompt
+dotfiles commit --amend
+dotfiles commit --amend
+nvim .gitignore
+rm -rf dotfiles
+mkdir dotfiles 
+dotfiles init
+dotfiles ac .zsh .config/alacritty .config/dunst .config/fish .config/i3 .config/i3blocks .config/nvim .config/termite .clang-format .Xresources .xres .config/zathura .config/polybar .profile .zshrc .gitignore .config/yay
+dotfiles log
+dotfiles init
+dotfiles ac .zsh .config/alacritty .config/dunst .config/fish .config/i3 .config/i3blocks .config/nvim .config/termite .clang-format .Xresources .xres .config/zathura .config/polybar .profile .zshrc .gitignore .config/yay
+dotfiles log
+dotfiles init
+dotfiles ac .zsh .config/alacritty .config/dunst .config/fish .config/i3 .config/i3blocks .config/nvim .config/termite .clang-format .Xresources .xres .config/zathura .config/polybar .profile .zshrc .gitignore .config/yay
+dotfiles push -f --set-upstream origin master
+dotfiles log
+rm -rf dotfiles
+dotfiles init
+dotfiles ac .zsh .config/alacritty .config/dunst .config/fish .config/i3 .config/i3blocks .config/nvim .config/termite .clang-format .Xresources .xres .config/zathura .config/polybar .profile .zshrc .gitignore .config/yay
+dotfiles log
+rm -rf dotfiles
+rm -rf dotfiles
+rm -rf dotfiles
+dotfiles log
+nvim .zsh/function
+nvim .zsh/function
+ls
+dotfiles status
+dotfiles .zshrc
+dotfiles acp .zshrc
+nvim .zsh/function
+dotfiles acp .zshrc
+cd projects/reiu
+yay teamviewer
+cd src
+ls
+ls
+mkdir -p cmd/lexer
+nvim go.mod
+go run cmd/lexer/lexer.go ../exemples/pseudo_rand.re
+go run cmd/lexer/lexer.go ../exemples/pseudo_rand.re
+go run cmd/lexer/lexer.go ../exemples/pseudo_rand.re
+go run cmd/lexer/lexer.go ../exemples/pseudo_rand.re
+go run cmd/lexer/lexer.go ../exemples/pseudo_rand.re
+go run cmd/lexer/lexer.go ../exemples/pseudo_rand.re
+go run cmd/lexer/lexer.go ../exemples/pseudo_rand.re
+nvim ../exemples/pseudo_rand.re
+go run cmd/lexer/lexer.go ../exemples/pseudo_rand.re
+ls
+git add .
+git commit -m "[lexer] implements lexer"
+git push
+git push github master
+pgrep unixbot
+cd projects/unixbot
+ls
+serv ssh root
+curl scroller.com/API/random/winterporn
+curl scroller.com/api/random/winterporn
+htop
+pacman -Rns $(pacman -Qtdq)
+yay
+curl https://www.reddit.com/r/unixporn.rss
+curl https://www.reddit.com/r/unixporn.rss
+curl https://www.reddit.com/r/unixporn.rss
+curl https://www.reddit.com/r/unixporn.rss
+curl https://www.reddit.com/r/unixporn.rss
+curl https://www.reddit.com/r/unixporn
+curl -A "Mozilla/5.0" https://www.reddit.com/r/unixporn
+curl -A "Mozilla/5.0" https://www.reddit.com/r/unixporn.rss
+curl https://www.reddit.com/r/unixporn
+dmesg
+ping 8.8.8.8
+ping 8.8.8.8
+ping 8.8.8.8
+systemctl status dhcpcd.service
+systemctl restart dhcpcd.service
+xkill
+yay -S xorg-xkill
+xkill
+cd projects/reiu
+ls
+git push github master
+git add exemples/
+git commit -m "[exemples] add exemples"
+git push
+git status
+git push
+git add vim/
+git commit -m "[vim] syntax improvement"
+git push
+git push github master
+curl https://www.reddit.com/r/unixporn
+curl https://www.reddit.com/r/unixporn.rss
+curl https://www.reddit.com/r/unixporn
+curl -A "Mozilla/5.0" https://www.reddit.com/r/unixporn.json | jq '.'
+curl -A "Mozilla/5.0" https://www.reddit.com/r/unixporn.json | jq '.' > file.json
+nvim file.json
+curl -A "Mozilla/5.0" https://www.reddit.com/r/unixporn.json | jq '.data.children[].preview'
+curl -A "Mozilla/5.0" https://www.reddit.com/r/unixporn.json | jq '.data.children[]'
+curl -A "Mozilla/5.0" https://www.reddit.com/r/unixporn.json | jq '.data.children[].data.preview'
+curl -A "Mozilla/5.0" https://www.reddit.com/r/unixporn.json | jq '.data.children[].data.preview' > file.json
+nvim file.json
+rm file.json
+serv ssh root
+ls
+ls CMakeFiles
+rm -rf CMakeFiles
+ls
+ls Templates
+rm -rf Templates Desktop
+ls
+rm -rf Public Sync
+ls
+trm -l
+trm -l
+trm -l
+cd projects/unixbot
+./upload.sh
+ssh --help
+man ssh
+./upload.sh
+nvim ~/.bin/serv
+serv ssh root -t
+nvim ~/.bin/serv
+ssh --help
+man ssh
+serv ssh root 
+serv ssh root 
+yay -S jq
+go get -u github.com/babariviere/geddit
+cd $GOPATH/src/github.com/babariviere/geddit
+ls
+nvim submission.go
+ls
+pwd
+nvim example_test.go
+sed 's/jzelinskie/babariviere/g' *.go
+sed -i 's/jzelinskie/babariviere/g' *.go
+nvim example_test.go
+nvim example_test.go
+git add .
+git commit -m "add preview to submission"
+git push
+git remote set-url origin git@github.com:babariviere/geddit.git
+git push
+curl https://www.reddit.com/r/unixporn/comments/ag6qqi/openbox_dark_and_comfy.json | jq '.'
+curl -A "Mozilla/5.0" https://www.reddit.com/r/unixporn/comments/ag6qqi/openbox_dark_and_comfy.json | jq '.'
+curl -A "Mozilla/5.0" https://www.reddit.com/r/unixporn/comments/agcj2c/i3gaps_setup_i_have_been_using_for_a_long_time_on.json | jq '.'
+cd /data
+ls
+cd anime
+ls
+cp -r Zombieland_Saga phone_sync
+yay
+cat .config/fish/config.fish
+cat .config/fish/fishd.gentoo
+cat .config/fish/functions/fish_prompt.fish
+cat .config/fish/functions/fish_user_key_bindings.fish
+cd projects/reiu
+cd src
+ls
+nvim lexer/lexer.go
+cd
+cd projects/unixbot
+ls
+ls
+nvim upload.sh
+ls
+mv main.go unixbot.go
+nvim upload.sh
+chmod +x upload.sh
+./upload.sh
+nvim upload.sh
+./upload.sh
+serv ssh root
+nvim upload.sh
+nvim upload.sh
+./upload.sh
+serv ssh root
+nvim upload.sh
+./upload.sh
+nvim upload.sh
+./upload.sh
+nvim upload.sh
+./upload.sh
+nvim upload.sh
+serv ssh root
+./upload.sh
+serv ssh root
+serv ssh root
+./upload.sh
+serv ssh root
+./upload.sh
+serv ssh root
+serv ssh root
+nvim upload.sh
+./upload.sh
+nvim upload.sh
+./upload.sh
+nvim upload.sh
+./upload.sh
+sh --help
+man sh
+sh -l
+nvim upload.sh
+./upload.sh
+bash
+nvim upload.sh
+./upload.sh
+nvim upload.sh
+./upload.sh
+nvim upload.sh
+./upload.sh
+serv ssh root
+nvim upload.sh
+./upload.sh
+nvim upload.sh
+./upload.sh
+nvim upload.sh
+./upload.sh
+killall ssh
+nvim upload.sh
+./upload.sh
+nvim upload.sh
+./upload.sh
+nvim upload.sh
+./upload.sh
+ls
+nvim upload.sh
+nvim unixbot.go
+ls
+nvim go.mod
+ls
+nvim .envrc
+direnv allow
+ls
+mkdir -p cmd/unixbot/
+nvim cmd/unixbot/unixbot.go
+ls
+nvim upload.sh
+./upload.sh
+ls
+nvim unixbot.go
+mkdir cmd/feed
+nvim cmd/feed/feed.go
+go run cmd/feed/feed.go unixporn top
+yay -S go
+go run cmd/feed/feed.go unixporn top
+nvim .envrc
+direnv allow
+go run cmd/feed/feed.go unixporn top
+ls
+nvim go.mod
+nvim cmd/feed/feed.go
+go run cmd/feed/feed.go unixporn top
+nvim cmd/feed/feed.go
+go run cmd/feed/feed.go unixporn top
+nvim cmd/feed/feed.go
+go run cmd/feed/feed.go unixporn top
+nvim cmd/feed/feed.go
+go run cmd/feed/feed.go unixporn top
+nvim cmd/feed/feed.go
+go run cmd/feed/feed.go unixporn top
+nvim cmd/feed/feed.go
+go run cmd/feed/feed.go unixporn top
+nvim cmd/feed/feed.go
+go run cmd/feed/feed.go unixporn top t=day
+nvim unixbot.go
+go run cmd/feed/feed.go unixporn top
+go run cmd/feed/feed.go unixporn top t=day
+nvim unixbot.go
+nvim unixbot.go
+nvim cmd/feed/feed.go
+go run cmd/feed/feed.go unixporn top t=day
+go run cmd/feed/feed.go unixporn top
+nvim cmd/feed/feed.go
+go run cmd/feed/feed.go unixporn top
+go run cmd/feed/feed.go unixporn top t=day
+go run cmd/feed/feed.go unixporn top t=day
+nvim cmd/feed/feed.go
+nvim cmd/feed/feed.go
+go run cmd/feed/feed.go unixporn top t=day
+go run cmd/feed/feed.go unixporn top t=day
+nvim unixbot.go
+go run cmd/feed/feed.go unixporn top t=day
+nvim unixbot.go
+go run cmd/feed/feed.go unixporn top t=day
+nvim unixbot.go
+go run cmd/feed/feed.go unixporn top t=day
+go run cmd/feed/feed.go unixporn top t=day
+go run cmd/feed/feed.go unixporn top t=day
+go run cmd/feed/feed.go unixporn top 
+go run cmd/feed/feed.go all
+go run cmd/feed/feed.go all top
+mkdir cmd/tapi
+nvim cmd/tapi/main.go
+go run cmd/tapi/main.go
+nvim cmd/tapi/main.go
+go run cmd/tapi/main.go
+nvim cmd/tapi/main.go
+go run cmd/tapi/main.go
+nvim cmd/tapi/main.go
+go run cmd/tapi/main.go
+nvim cmd/tapi/main.go
+go run cmd/tapi/main.go
+nvim cmd/tapi/main.go
+go run cmd/tapi/main.go
+nvim cmd/tapi/main.go
+go run cmd/tapi/main.go
+nvim cmd/tapi/main.go
+go run cmd/tapi/main.go
+nvim cmd/tapi/main.go
+nvim cmd/tapi/main.go
+nvim cmd/tapi/main.go
+go run cmd/tapi/main.go
+go run cmd/tapi/main.go
+go run cmd/tapi/main.go
+nvim cmd/tapi/main.go
+go run cmd/tapi/main.go
+go run cmd/tapi/main.go
+go run cmd/tapi/main.go
+nvim cmd/tapi/main.go
+nvim go.mod
+nvim cmd/tapi/main.go
+go run cmd/tapi/main.go
+nvim cmd/tapi/main.go
+nvim go.mod
+ls
+ls
+go run cmd/tapi/main.go
+nvim go.mod
+rm go.sum
+go run cmd/tapi/main.go
+go run cmd/tapi/main.go
+nvim go.mod
+go run cmd/tapi/main.go
+ls
+nvim cmd/tapi/main.go
+nvim unixbot.go
+nvim cmd/unixbot/unixbot.go
+nvim unixbot.go
+mv cmd/unixbot/unixbot.go
+mv cmd/unixbot/unixbot.go unixbot.go
+ls
+rm -rf cmd
+nvim unixbot.go
+nvim upload.sh
+ls
+nvim unixbot.go
+rm go.* .envrc
+nvim unixbot.go
+ls
+git init
+git add .
+git commit -m "working bot"
+cd projects/unixbot
+cat unixbot.go
+cat cmd/unixbot/unixbot.go
+p social/reddit
+go run unixbot.go
+go get github.com/jzelinskie/geddit
+go run unixbot.go
+go run unixbot.go
+go run unixbot.go
+./upload.sh
+nvim upload.sh
+./upload.sh
+serv ssh root
+nvim upload.sh
+serv ssh root 
+trm -l
+yay syncthing
+startx
+l
+launch_polybar
+yay -S polybar
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+cd /data/anime
+ls
+cd Zombieland_Saga
+ls
+mpv Zombieland\ Saga\ -\ 07\ -\ VOSTFR\ 1080p\ \(TV\).mkv
+mpv Zombieland\ Saga\ -\ 08\ -\ VOSTFR\ 1080p\ \(TV\).mkv
+cd projects/reiu
+ls
+cat exemples/pseudo_rand.re
+nvim exemples/pseudo_rand.re
+ls
+cd src
+ls
+nvim lexer/lexer.go 
+ls
+cd ..
+nvim exemples/pseudo_rand.ll
+startx
+serv ssh root 
+cd projects/unixbot
+ls
+nvim unixbot.go
+serv ssh root 
+ls
+cat upload.sh
+./upload.sh
+sudo reboot
+serv ssh root 
+cat .ssh/id_rsa.pub | clip
+cd projects/unixbot
+go run unixbot.go
+go run unixbot.go
+go run unixbot.go
+go run unixbot.go
+ls
+nvim unixbot.go
+ls
+./upload.sh
+serv ssh root 
+cd projects/unixbot
+nvim unixbot.go
+cat upload.sh
+nvim unixbot.service
+ls
+serv scp unixbot.service root:/root/unixbot.service
+nvim unixbot.service
+nvim upload.sh
+serv scp unixbot.service root:/root/unixbot.service
+./upload.sh
+cd projects/go/src/github.com/babariviere
+git clone git@github.com:babariviere/geddit.git
+ls
+rm -rf geddit
+git clone git@github.com:babariviere/geddit.git
+cd geddit
+ls
+nvim submission.go
+cd projects/unixbot
+ls
+cp unixbot.go unixbot_test.go
+nvim unixbot_test.go
+ls
+mkdir testing
+mv unixbot_test.go testing/unixbot.go
+cd testing
+ls
+nvim unixbot.go
+go run unixbot.go
+curl -A "Mozilla/5.0" https://www.reddit.com//r/unixporn/comments/agoq57/i3gaps_my_first_i3_rice.json | jq '.'
+curl -A "Mozilla/5.0" https://www.reddit.com//r/unixporn/comments/agoq57/i3gaps_my_first_i3_rice.json | jq '.[0].data.children[0]'
+go run unixbot.go
+cd ..
+ls
+nvim unixbot.
+nvim unixbot.go
+ls
+nvim unixbot.go
+./upload.sh
+nvim unixbot.go
+./upload.sh
+nvim unixbot.go
+serv ssh root 
+cd projects/unixbot
+nvim upload.sh
+startx
+cd
+startx
+serv ssh root 
+serv ssh root 
+cd projects/unixbot
+nvim unixbot.go
+nvim unixbot.go
+./upload.sh
+startx
+mpv Downloads/Mob\ Pyscho\ 100\ II\ \ 03.mkv
+nvim 
+man 3 open
+cat projects/unixbot/unixbot.go
+yay
+yay
+yay
+pacman -Rns $(pacman -Qtdq)
+yay -S jsoncpp
+time
+date
+date
+date
+date
+date
+trm -l
+cd Downloads
+ls
+mv Saint\ Seiya\ \(2018\)\ Saintia\ Sho\ -\ 004\ \[ADN\].mp4.torrent SS4.torrent
+mv Saint\ Seiya\ \(2018\)\ Saintia\ Sho\ -\ 005\ \[ADN\].mp4.torrent SS5.torrent
+trm -a SS4.torrent
+trm -a SS5.torrent
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+cd projects/reiu
+ls
+mkdir -p std/os
+cd std/os
+ls
+nvim syscall_unix.re
+mkdir unix
+nvim unix/syscall.re
+cd unix
+ls
+cd ..
+ls
+cd unix
+ks
+ls
+mv syscall.re syscall_linux_amd64.re
+nvim syscall_linux_amd64.re
+nvim syscall_linux_amd64.re
+nvim syscall_linux_amd64.re\
+nvim syscall_linux_amd64.re
+nvim syscall_linux_amd64.re
+ls
+cd ..
+mkdir linux
+ls
+mv unix/syscall_linux_amd64.re linux/syscall_amd64.re
+ls
+rm -rf unix
+ls
+nvim linux/syscall_amd64.re
+ls
+cd linux
+ls
+ls
+nvim syscall_amd64.re
+nvim syscall_amd64.re
+nvim syscall_amd64.re
+cd ..
+ls
+cd ..
+ls
+mkdir math
+cd math
+ls
+cd ..
+ls
+ls
+cd math
+ls
+nvim abs.re
+nvim abs.re
+nvim ../types.re
+nvim ../types.re
+cd ..
+nvim math/abs.re
+nvim math/abs.re
+nvim math/abs.re
+nvim math/abs.re
+ls
+nvim types.re
+nvim math/abs.re
+nvim types.re
+lsa
+ls
+mkdir io
+cd io
+ls
+nvim io.re
+nvim io.re
+ls
+cd ..
+ls
+git add .
+git commit -m "[std] starting std to \"visualise\" language features"
+git push
+cd ..
+ls
+git add vim/
+git commit -m "[vim] syntax improvement"
+git push
+git add doc/
+git commit -m "[doc] starting documentation"
+git push
+ls
+git add exemples/
+ls
+cat exemples/design.re
+git status
+git commit -m "[exemples] exemples fixes"
+ls
+git push
+git push github master
+nvim std/types.re
+git add std/ exemples/
+git commit -m "[std] cast: reverse arguments order"
+git push github master
+cd src
+ls
+cd ..
+ls
+nvim exemples/design.re
+ls
+git add exemples/design.re
+git commit -m "[exemples] trying out new idea"
+git push
+nvim doc/module.md
+nvim exemples/mod.rec
+nvim std/io/io.re
+cd projects/reiu
+ls
+nvim exemples/design.re
+nvim src/token/token.go
+nvim vim/syntax/reiu.vim
+nvim exemples/design.re
+ls
+mkdir doc
+nvim doc/interface.md
+nvim vim/syntax/reiu.vim
+nvim doc/types.md
+man 3 read
+nvim vim/syntax/reiu.vim
+ls
+man 3 read
+cat /usr/share/nvim/runtime/syntax/rust.vim| grep -i "#"
+cat /usr/share/nvim/runtime/syntax/rust.vim| grep -i Attribute
+cd projects/reiu
+ls
+cat exemples/design.re
+nvim exemples/pseudo_rand.ll
+nvim exemples/pseudo_rand.re
+nvim exemples/design.re 
+nvim vim/syntax/reiu.vim
+nvim
+ls
+nvim exemples/design.re 
+nvim exemples/design.re 
+startx
+cd Downloads
+ls
+trm -a Bleach.S04.e064-091.torrent
+mkdir /data/anime/Bleach
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -t 2 -rad
+trm -t 8 -s
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -l
+trm -t 3 -rad
+trm -t 8 -s
+trm -l
+cd
+nvim .zsh/rc
+ls
+trm -l
+trm -l
+trm -t 4 -rad
+trm -t 8 -s
+serv ssh root 
+yay emoji
+man mpv
+serv scp "root:/data/torrents/Bleach.S03.e064-091/*" /data/anime/Bleach/
+serv scp "root:/data/torrents/Bleach.S04.e064-091/*" /data/anime/Bleach/
+rm /data/anime/Bleach/Bleach.075.FRENCH.720p.AC3.x264-RaToN.mkv
+trm -l
+startx
+rm playlist
+ls /data/anime/Bleach
+ls -1 /data/anime/Bleach
+mpv /data/anime/Bleach/Bleach.066.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv /data/anime/Bleach/Bleach.067.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv /data/anime/Bleach/Bleach.068.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv /data/anime/Bleach/Bleach.069.FRENCH.720p.AC3.x264-RaToN.mkv
+mpv /data/anime/Bleach/Bleach.070.FRENCH.720p.AC3.x264-RaToN.mkv
+trm -l
+ls -l /data/anime/Bleach > playlist
+nvim playlist
+serv scp "root:/data/torrents/Bleach.S04.e064-091/*" /data/anime/Bleach/
+cd src
+ls
+git clone https://github.com/golang/go
+cd go
+ls
+cd src
+ls
+cd go
+ls
+nvim token/token.go
+trm -l
+cat .bin/batmon.sh
+printf
+./.bin/batmon.sh
+yay -S bc
+./.bin/batmon.sh
+cd projects/reiu
+git remote remove github
+ls
+cd src
+ls
+nvim token/token.go
+ls
+mkdir parser ast
+ls
+nvim ast/ast.go 
+ls
+nvim ast/ast.go 
+ls
+cd ..
+rm -rf src
+ls
+mkdir src
+ls
+cd src
+ls
+git add .
+git commit -m "[compiler] restarting code"
+nvim .envrc
+direnv allow
+ls
+mkdir token ast scanner parser
+ls
+git log
+git reset --hard master 5b7fd5cc346633f308a60d06b0a7ac6564db53e0
+cd ..
+git reset --hard master 5b7fd5cc346633f308a60d06b0a7ac6564db53e0
+ls
+git status
+git reset --hard 5b7fd5cc346633f308a60d06b0a7ac6564db53e0
+ls
+cd src
+ls
+nvim ast/ast.go 
+cd projects/yuki
+cat ast/ast.go 
+serv ssh root 
+cd projects/reiu
+crontab -e
+yay -S cronie
+sudo systemctl enable cronie
+sudo systemctl start cronie
+ls
+sudo systemctl start cron
+ls
+crontab -e
+echo $PATH
+cd android/android
+ls
+ls sdk
+mv sdk/* ../sdk
+cd ..
+rm -rf android
+ls
+cd ..
+android
+nvim .zsh/rc
+nvim .profile
+yay adb
+mkdir -p android/sdk
+keytool -exportcert -list -v -alias androiddebugkey -keystore ~/.android/debug.keystore | grep "SHA1: "
+android
+sdkmanager
+android list sdk
+sdkmanager
+cd android/sdk
+ls
+./tools/bin/sdkmanager
+yay openjdk
+sdkmanager
+mpv /data/anime/Bleach/Bleach.071.FRENCH.720p.AC3.x264-RaToN.mkv
+trm -l
+sdkmanager --help
+sdkmanager --update
+yay android-studio
+yay -S android-studio
+cd projects/unixbot
+ls
+nvim unixbot.go
+ls
+nvim unixbot.go
+./upload.sh
+nvim unixbot.go
+./upload.sH
+./upload.sh
+nvim unixbot.go
+./upload.sh
+serv ssh root 
+nvim unixbot.go
+./upload.sh
+nvim unixbot.go
+go run unixbot.go
+nvim unixbot.go
+go run unixbot.go
+./upload.sh
+nvim unixbot.go
+./upload.sh
+nvim unixbot.go
+./upload.sh
+nvim unixbot.go
+./upload.sh
+nvim unixbot.go
+go run unixbot.go
+nvim unixbot.go
+go run unixbot.go
+nvim unixbot.go
+./upload.sh
+nvim unixbot.go
+./upload.sh
+nvim unixbot.go
+./upload.sh
+nvim upload.sh
+./upload.sh
+git add .
+git commit -m "better commands"
+serv ssh root 
+startx
+trm -l
+cd projects/reiu
+nvim cd src
+cd src
+ls
+nvim lexer/lexer.go
+nvim ast/ast.go
+nvim parser/parser.go
+cd projects/reiu
+ls
+cd src
+ls
+cat token/token.go
+p show browser/firefox/babariviere 
+p edit browser/firefox/babariviere
+p show famille/drive
+yay -S firefox
+yay -S hunspell-en_US hunspell-fr_FR
+yay hunspell
+yay hunspell-jp
+yay
+nvim .pr
+nvim .profile
+echo $BROWSER
+cd projects/go/src/rayt
+ls
+nvim README.md
+ls
+git add README.md
+git commit -m "add readme"
+git push
+go get -u github.com/mdempsky/gocode
+go get -u github.com/stamblerre/gocode
+cat .profile
+cd projects/reiu
+ls
+cd src
+ls
+nvim parser/parser.go
+killall gocode
+nvim parser/parser.go
+cd cmd/lexer
+ls
+cat lexer.go
+cd ..
+mkdir parser
+nvim lexer/lexer.go
+cp lexer/lexer.go parser/parser.go
+nvim parser/parser.go
+cd ..
+nvim parser/parser.go
+ls
+nvim test.re
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+cd parser
+ls
+nvim tracing.go
+go run cmd/parser/parser.go test.re
+cd ..
+go run cmd/parser/parser.go test.re
+nvim cmd/parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/tracing.go
+go run cmd/parser/parser.go test.re
+nvim ast/ast.go
+go run cmd/lexer/lexer.go test.re
+nvim lexer/lexer.go
+go run cmd/lexer/lexer.go test.re
+nvim lexer/lexer.go
+go run cmd/lexer/lexer.go test.re
+nvim lexer/lexer.go
+go run cmd/lexer/lexer.go test.re
+nvim lexer/lexer.go
+go run cmd/lexer/lexer.go test.re
+nvim lexer/lexer.go
+go run cmd/lexer/lexer.go test.re
+nvim lexer/lexer.go
+go run cmd/lexer/lexer.go test.re
+nvim lexer/lexer.go
+go run cmd/lexer/lexer.go test.re
+nvim lexer/lexer.go
+go run cmd/lexer/lexer.go test.re
+nvim lexer/lexer.go
+go run cmd/lexer/lexer.go test.re
+nvim lexer/lexer.go
+go run cmd/lexer/lexer.go test.re
+nvim lexer/lexer.go
+cat test.re
+nvim lexer/lexer.go
+go run cmd/lexer/lexer.go test.re
+nvim lexer/lexer.go
+go run cmd/lexer/lexer.go test.re
+nvim lexer/lexer.go
+go run cmd/lexer/lexer.go test.re
+nvim lexer/lexer.go
+go run cmd/lexer/lexer.go test.re
+nvim lexer/lexer.go
+go run cmd/lexer/lexer.go test.re
+nvim lexer/lexer.go
+go run cmd/lexer/lexer.go test.re
+nvim lexer/lexer.go
+go run cmd/lexer/lexer.go test.re
+git add lexer/lexer.go
+git commit -m "fix lexer parsing"
+git push
+git commit --amend
+ls
+go run cmd/parser/parser.go test.re
+nvim lexer/lexer.go
+go run cmd/parser/parser.go test.re
+nvim lexer/lexer.go
+go run cmd/parser/parser.go test.re
+nvim lexer/lexer.go
+go run cmd/parser/parser.go test.re
+nvim lexer/lexer.go
+nvim parser/tracing.go
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim token/token.go
+go run cmd/parser/parser.go test.re
+nvim token/token.go
+go run cmd/parser/parser.go test.re
+nvim token/token.go
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim cmd/parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim cmd/parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim cmd/parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+nvim test.re
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim ast/ast.go
+go run cmd/parser/parser.go test.re
+nvim ast/ast.go
+go run cmd/parser/parser.go test.re
+nvim token/token.go
+nvim test.re
+go run cmd/parser/parser.go test.re
+ls
+git add parser/ 
+git add ast/
+git commit -m "[parser] basic implementation of parser"
+git add cmd/
+git commit -m "[cmd] lexer and parser commands"
+ls
+git status
+rm test.re
+ls
+git add go.*
+git commit -m "gomod"
+ls
+git status
+git add token/
+git commit -m "[token] add more token"
+git push
+git push -f 
+ls scanner
+ls
+rm -rf scanner
+ls
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+nvim test.re
+go run cmd/parser/parser.go test.re
+nvim test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim ast/ast.go
+go run cmd/parser/parser.go test.re
+nvim ast/ast.go
+nvim cmd/parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim cmd/parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim cmd/parser/parser.go
+go run cmd/parser/parser.go test.re
+nvim test.re 
+cd ..
+mkdir test
+ls
+mv src/.envrc .envrc
+direnv allow
+nvim .envrc
+ls
+ls test
+mv src/test.re test/function.re
+nvim test/function.re
+go run src/cmd/parser/parser.go test/function.re
+cd src
+go run cmd/parser/parser.go ../test/function.re
+nvim parser/parser.go
+nvim cmd/parser/parser.go
+go run cmd/parser/parser.go ../test/function.re
+nvim cmd/parser/parser.go
+go run cmd/parser/parser.go ../test/function.re
+nvim ast/ast.go
+go run cmd/parser/parser.go ../test/function.re
+nvim cmd/parser/parser.go
+go run cmd/parser/parser.go ../test/function.re
+nvim cmd/parser/parser.go
+go run cmd/parser/parser.go ../test/function.re
+git add .
+git commit -m "[parser] add function parsing"
+nvim parser/parser.go
+cd projects/reiu/src
+cat ~/projects/yuki/parser/parser.go
+cat ast/ast.go
+cat token/token.go
+cat parser/parser.go
+cat lexer/lexer.go
+cat ast/ast.go
+cat token/token.go
+cat ast/ast.go
+cd projects/go/src/aki
+ls
+cat parser/parser
+cat parser/parser.go
+ls
+cat parser/parser_tracing.go
+startx
+cd projects/reiu/src
+nvim ../test/var.re
+cat ast/ast.go
+go run cmd/parser/parser.go ../test/var.re
+nvim ../test/var.re
+go run cmd/parser/parser.go ../test/var.re
+nvim ../test/main.re
+go run cmd/parser/parser.go ../test/main.re
+nvim ../test/main.re
+ls
+nvim ../test/main.re
+cd ..
+nvim vim/syntax/reiu.vim
+cd projects/reiu
+ls
+cd src
+nvim parser/parser.go
+git status
+git add .
+git commit -m "[parser] add var declaration parsing"
+nvim lexer/lexer.go
+git add lexer/
+git commit -m "[lexer] add string lexing"
+git push
+cd ../std
+nvim types.re
+nvim os/linux
+nvim math/abs.re
+nvim io/io.re
+ls
+git add .
+git commit -m "[design] switching to a more general purpose generic"
+nvim types.re
+git add types.re
+git commit -m "[design] change cast design"
+ls
+cd ../
+ls
+nvim readme.md
+nvim test/var.re
+nvim exemples/design.re
+nvim std/os/linux/syscall_amd64.re
+nvim exemples/pseudo_rand.re
+ls
+git add exemples/ std/
+git commit -m "[design] remove useless ,"
+ls
+l
+cat doc/module.md
+cat doc/types.md
+git add doc/
+git commit -m "[doc] add some doc"
+ls
+git status
+git add vim/
+git commit -m "[vim] update syntax"
+git push
+git add .envrc test/
+git commit -m "[test] add some test file for parser"
+git push
+cd projects/go/src/github.com/
+ls
+cd llir/llvv
+cd llir/llvm
+ls
+cat README.md
+ping 8.8.8.8
+cd projects/reiu
+rg result
+nvim exemples/design.re
+git add exemples/
+git commit -m "[design] fix generic"
+git push
+rls
+rustup component add rls
+rustup component add rust-rls
+rustup add rls
+rustup component add rls
+rustup default nightly-2019-01-26
+rustup component add rls rust-analysis rust-src rustfmt clippy
+yay -S fish
+cd projects/_aki
+ls
+cat token/src/lib.rs
+cd projects/reiu
+ls
+nvim test/function.re
+cd projects/reiu
+mv src src-go
+yay cargo
+rustup default nightly
+llvm-config --version
+rustup component
+rustup component list
+rustup component add rustfmt
+rustup component add rust-analysis
+rustup component add clippy
+rustup component add rust-src
+cat src-go/token/token.go
+nvim ~/.config/nvim/init.vim
+cargo build
+cargo test
+cat src-go/token/token.go
+cargo test
+ls
+cargo test
+git add src
+git commit -m "[compiler] restarting code with rust"
+git push
+cargo clippy
+cargo clean
+cargo clippy
+cat src/token.rs 
+cat src/input.rs
+cat src-go/token/token.go
+cat src-go/lexer/lexer.go
+cat src-go/token/token.go
+cat src-go/lexer/lexer.go
+cargo clippy
+cargo clippyl
+cargo clippy
+ls
+cat Cargo.toml
+cargo run --bin lexer test/function.re
+ls
+cargo run --bin lexer test/function.re
+rustc --explain E0502
+cargo run --bin lexer test/function.re
+cargo run --bin lexer test/function.re --verbose
+cargo run --bin lexer --verbose test/function.re 
+cargo clippy
+cargo run --bin lexer --verbose test/function.re 
+cargo test
+hexdump -C test/function.re
+cargo run --bin lexer --verbose test/function.re 
+cargo test
+cargo run --bin lexer --verbose test/function.re 
+cd projects/reiu
+ls
+mkdir src
+ls
+cd src
+ls
+cd ..
+ls
+rm -rf src
+ls
+cargo init --bin
+ls
+nvim Cargo.toml
+cargo build
+nvim Cargo.toml
+cargo build
+cd src
+ls
+touch lexer.rs token.rs
+ls
+touch ast.rs parser.rs
+nvim token.rs
+nvim main.rs
+nvim ../Cargo.
+cd ..
+nvim src/lexer.rs
+nvim Cargo.toml
+nvim src/lexer.rs
+cd src
+ls
+mv main.rs lib.rs
+nvim lib.rs
+ls
+cd ..
+ls
+mkdir bin/
+nvim bin/lexer.rs
+ls
+mv bin src
+nvim src/bin/lexer.rs
+nvim src/token.rs
+nvim src/bin/lexer.rs
+git add src src-go/
+ls
+git add .
+git commit -m "[compiler] implements lexer"
+git push
+startx
+p show anime/anilist
+trm -l
+cd .config/nvim/in
+cd .config/nvim/
+nvim init.vim
+llvm-config --help
+`llvm-config --libs core jit native --cxxflags --ldflags`
+llvm-config --libs core jit native --cxxflags --ldflags
+llvm-config --libs core native --cxxflags --ldflags
+basename src/Iosevka.zip
+dirname src/Iosevka.zip
+cd projects/c/libft
+ls
+cat Makefile 
+yay ccls
+yay llvm
+yay
+cd projects/reiu
+ls
+git status
+rm -rf src*
+ls
+mkdir src
+rm Cargo.*
+rm -rf target
+ls
+git add .
+git commit -m "[compiler] rewrite in flex/bison
+git commit -m "[compiler] rewrite in flex/bison"
+ls
+cd src
+ls
+nvim token.l
+nvim node.h
+cd ..
+nvim Makefile
+cd src
+ls
+mv node.h node.hpp
+cd ..
+nvim Makefile
+touch src/{main.cpp,codegen.cpp}
+make
+touch src/parser.y
+touch src/token.l
+make
+cd src
+ls
+nvim node.hpp
+cd ..
+nvim Makefile
+yay -S bear
+bear make
+nvim src/node.hpp
+nvim src/parser.y
+bear make
+nvim src/parser.y
+cat src/parser.cpp
+nvim src/parser.y
+ls
+nvim Makefile
+nvim CMakeLists.txt
+mkdir build
+ls
+rm -rf obj
+cd build
+cmake ..
+nvim ../CMakeLists.txt
+cmake ..
+yay flex
+nvim ../CMakeLists.txt
+cmake ..
+ls
+rm -rf *
+cmake ..
+nvim ../CMakeLists.txt
+make
+cmake ..
+make
+nvim ../CMakeLists.txt
+make
+cd ..
+ls
+nvim src/main.cpp
+ls
+rm -rf Makefile compile_commands.json
+ls
+rm -rf build
+ls
+nvim compile
+chmod +x compile
+compile
+ls
+./compile
+l
+ls build
+nvim compile
+ls
+./compile
+l
+cat compile
+cat compile_commands.json
+nvim src/node.hpp
+./compile
+nvim src/node.hpp
+nvim CMakeLists.txt
+cd projects
+ls
+cd reiu
+ls
+cd src
+ls
+rm parser.cpp parser.hpp
+ls
+cd src
+git clone https://github.com/TheDan64/inkwell
+cd inkwell
+cargo run --bin kaleidoscope
+cargo run --example kaleidoscope
+git checkout llvm7-0
+cargo run --example kaleidoscope
+cargo run --example kaleidoscope --dc --dp --dl
+cargo run --example kaleidoscope -- --dc --dp --dl
+nvim .config/nvim/init.vim
+nvim +PlugInstall
+cd projects/reiu
+ls
+nvim src/bin/reiuc.rs
+htop
+cd projects/github/
+git clone git@github.com:babariviere/inkwell.git
+cd inkwell
+ls
+cd src
+ls
+cd types
+ls
+nvim traits.rs
+cd projects/github/inkwell
+nvim src/types/traits.rs
+cat .config/nvim/init.vim
+nvim .clang-format
+cd projects/reiu
+cat exemples/
+cat exemples/design.re
+cat src/token.l
+cat src/node.hpp
+make
+cat src/node.hpp
+make
+cat src/node.hpp
+make
+nvim src/node.hpp
+ls src
+nvim src/main.cpp
+ls
+nvim src/token.l
+ls
+rm -rf build compile compile_commands.json src CMakeLists.txt
+ls
+cargo init
+cd src
+ls
+mv main.rs lib.rs
+nvim lib.rs
+touch ast.rs
+ls
+touch parser.rs
+cd ..
+ls
+nvim Cargo.toml
+nvim src/ast.rs
+rm src/parser.rs
+nvim src/parser.pest
+nvim src/bin.rs
+mkdir src/bin
+mv src/bin.rs src/bin/reiuc
+cd src/bin
+ls
+mv reiuc reiuc.rs
+nvim reiuc.rs
+cd ../..
+nvim src/lib.rs
+nvim .gitignore
+git add .
+git commit -m "[compiler] implements parser + ast"
+git push
+nvim src/parser.rs
+ls
+git add .
+git commit -m "[parser] working on ast building"
+git push
+nvim src/parser.rs
+nvim src/parser.pest
+nvim src/codegen.rs
+nvim Cargo.toml
+nvim src/codegen.rs
+cargo build
+nvim src/codegen.rs
+cargo build
+cargo clean
+cargo build
+nvim Cargo.toml
+rm Cargo.lock
+cargo build
+nvim src/codegen.rs
+rm Cargo.lock
+cargo build
+nvim src/codegen.rs
+cd projects/github/inkwell
+ls
+cat Cargo.toml
+cargo build
+git checkout llvm7-0
+cargo build
+git add .
+git commit -m "[types] add new trait to avoid using enum"
+cat src/types/traits.rs
+cargo build
+git add .
+git commit --amend
+git push
+nvim src/types/mod.rs
+git add .
+git commit -m "[types] expose convert type trait:
+git commit -m "[types] expose convert type trait"
+git push
+nvim src/types/mod.rs
+nvim src/types/traits.rs
+cargo build
+git add .
+nvim src/types/fn_type.rs
+git add .
+git commit -m "[types] add doc"
+git push
+nvim src/types/mod.rs
+cargo doc --open
+cd projects/reiu
+./compile
+rm -rf build
+./compile
+make
+./compile
+cat src/node.hpp
+make
+./compile
+nvim src/parser.rs
+cargo build
+nvim src/parser.rs
+cargo build
+cargo run --bin reiuc test/function.re
+cat test/function.re
+cargo run --bin reiuc test/function.re
+nvim test/function.re
+cargo run --bin reiuc test/function.re
+cargo run --bin reiuc test/main.re
+cargo run --bin reiuc test/function.re
+cargo run --bin reiuc test/var.re
+cargo run --bin reiuc test/function.re
+cat src/bin/reiuc.rs
+cargo run --bin reiuc test/function.re
+cat test/function.re
+cargo run --bin reiuc test/function.re
+RUST_BACKTRACE=1 cargo run --bin reiuc test/function.re
+RUST_BACKTRACE=1 cargo run --bin reiuc test/main.re
+RUST_BACKTRACE=1 cargo run --bin reiuc test/main.re | grep -C 5 "54"
+RUST_BACKTRACE=1 cargo run --bin reiuc test/main.re
+nvim test/function.re
+RUST_BACKTRACE=1 cargo run --bin reiuc test/main.re
+nvim test/function.re
+RUST_BACKTRACE=1 cargo run --bin reiuc test/main.re
+cargo run --bin reiuc test/main.re
+cargo run --bin reiuc test/main.re | less
+cargo run --bin reiuc test/main.re
+cargo run --bin reiuc test/pointer.re
+cd /usr/lib/clang/7.0.1/
+ls
+ls include
+cd /usr/include/llvm
+ls
+find . -name Verifier.h
+find . -name Print*
+find . -name "Print*"
+find . -name "Module*"
+find . -name "Reader*"
+find . -name "*Module*"
+find . -name "*Calling*"
+find . -name "*Derived*"
+find . -name "*JIT*"
+find . -name "*Providee*"
+find . -name "*Provider*"
+find . -name "*Target*"
+cd
+cd projects/reiu
+cat test/function.re
+nvim test/function.re
+nvim test/main.re
+cat src/ast.rs
+cat test/function.rE
+cat test/function.re
+cat src/ast.rs
+cat src/parser.pest
+cat test/main.re
+nvim test/pointer.rs
+nvim test/pointer.re
+cd projects/github/inkwell
+ls
+rg ParamValueIter
+cd src
+rg ParamValueIter
+nvim values/fn_value.rs
+nvim values/traits.rs
+git add .
+git commit -m "[values] add trait to get/set name"
+nvim values/mod.rs
+git add .
+git commit --amend
+git push
+nvim values/mod.rs
+git push
+cd projects/github/inkwell
+nvim src/types/traits.rs
+cargo build
+yay
+cargo doc --help
+cd projects/reiu
+cargo doc --open --document-private-items
+cd projects/reiu
+nvim src/codegen.rs
+cd projects/reiu
+ls
+cargo build
+nvim Cargo.toml
+cargo doc --open
+cargo build
+cargo doc --open
+cargo build
+cat src/ast.rs
+cargo build
+nvim Cargo.toml
+cargo build
+cargo doc --open
+cat ast/ast.go
+cat src/ast.rs
+cargo build
+cat src/codegen.rs
+cargo build
+cargo doc --open
+cargo run --bin reiuc test/pointer.re
+RUST_BACKTRACE=1 cargo run --bin reiuc test/pointer.re
+RUST_BACKTRACE=1 cargo run --bin reiuc test/main.re
+cat test/main.re
+cargo run --bin reiuc test/pointer.re
+cargo run --bin reiuc test/main.re
+cat src/ast.rs
+cargo run --bin reiuc test/main.re
+nvim Cargo.toml
+cat src/ast.rs
+cat src/parser.pest
+cargo run --bin reiuc test/main.re
+cargo run --bin reiuc test/main.re | less
+cargo run --bin reiuc test/main.re
+git add .
+git commit -m "[compiler] lot of work, currently working on compiler"
+cargo run --bin reiuc test/main.re
+nvim test/main.re
+cargo run --bin reiuc test/main.re | less
+nvim test/main.re
+nvim test/function.re
+cargo run --bin reiuc test/function.re | less
+cat src/parser.pest | clip
+cat test/function.re| clip
+cargo run --bin reiuc test/function.re 
+cargo doc --open
+cargo run --bin reiuc test/function.re 
+cargo run --bin reiuc test/main.re
+cat src/ast.rs
+cargo run --bin reiuc test/main.re
+startx
+cd projects/reiu
+cargo doc --open
+man puts
+cd projects/reiu
+nvim src/bin/reiuc.rs
+p show freelance/wemind
+cd projects/reiu
+nvim src/codegen.rs
+nvim TODO
+cd projects/reiu
+cargo run --bin reiuc test/main.re
+cat src/ast.rs
+cargo run --bin reiuc test/main.re
+cargo run --bin reiuc test/pointer.re
+cargo run --bin reiuc test/var.re
+cat test/var.re
+cargo run --bin reiuc test/main.re
+nvim test/simple.re
+cargo run --bin reiuc test/simple.re
+git add .
+git commit -m "[compiler] add optional function compilation"
+cargo run --bin reiuc test/simple.re
+nvim test/simple.re
+cargo run --bin reiuc test/simple.re
+ls
+clang main.o
+clang -fPIC main.o
+cargo run --bin reiuc test/simple.re
+clang main.o
+./main.o
+ls
+./a.out
+rm a.out main.o
+git add .
+git commit -m "[compiler] hello world is working"
+git push
+yay tokei
+cd src
+tokei
+cd ..
+cargo run --bin reiuc test/main.re
+cat test/simple.re
+cat test/simple.re | clip
+cat src/ast.rs
+nvim test/main.re
+cargo run --bin reiuc test/main.re
+cat src/ast.rs
+cat src/codegen.rs|grep block
+cat src/codegen.rs|grep append
+cat src/codegen.rs|grep Block
+less src/codegen.rs
+cat src/ast.rs
+cargo run --bin reiuc test/main.re
+nvim test/main.re
+cargo run --bin reiuc test/main.re
+nvim test/main.re
+cargo run --bin reiuc test/main.re
+rust-lldb
+yay -S lldb
+rust-lldb
+rust-lldb target/debug/reiuc
+cargo run --bin reiuc test/main.re
+cat test/main.re
+rust-lldb target/debug/reiuc
+cargo run --bin reiuc test/main.re
+rust-lldb target/debug/reiuc
+cargo run --bin reiuc test/main.re
+clang main.o -o main
+./main
+nvim test/main.re
+yay -S zathura-pdf-mupdf
+zathura Downloads/contrat
+zathura Downloads/contrat.pdf
+man printf
+man 3 printf
+man malloc
+man puts
+man putn
+man putp
+nvim test.c
+clang -emit-llvm test.c
+clang -emit-llvm -S test.c
+ls
+nvim test.ll
+rm test.*
+ls
+htop
+cd .config/fish
+ls
+rm fishd.gentoo
+ls
+nvim conf.d
+ls conf.d
+ls functions
+nvim functions/fish_prompt.fish
+fish
+fish
+ls -al
+ocaml build
+ocaml --help
+ocamlbuild
+yay ocamlbuild
+cd projects/srpm
+cd
+cd src/llvm
+ls
+sudo nvim /usr/local/bin/fishlogin
+sudo chmod +x /usr/local/bin/fishlogin
+echo /usr/local/bin/fishlogin | sudo tee -a /etc/shells
+sudo usermod -s /usr/local/bin/fishlogin $USER
+cd src
+git clone https://github.com/camlp5/camlp5
+cd camlp5
+make html
+cat INSTALL
+./configure 
+make
+make html
+ls
+ls 
+l
+ls boot
+find . -type d -name "html"
+firefox doc/html
+cd doc
+ls
+cd htmlp
+ls
+make
+cd
+cd src
+ls
+git clone https://github.com/llvm-mirror/llvm
+cd projects/reiu
+ls
+cargo run --bin reiuc test/main.re
+less src/codegen.rs
+cargo run --bin reiuc test/main.re
+nvim expect.ll
+cargo run --bin reiuc test/main.re
+clang main.o -o main
+./main
+nvim test/main.re
+cargo run --bin reiuc test/main.re
+cat src/parser.pest
+nvim test/main.re
+cargo run --bin reiuc test/main.re
+clang main.o -o main
+./main
+rm main*
+git add .
+git commit -m "[compiler] fizzbuzz working"
+cat src/parser.pest
+nvim test/main.re
+cargo run --bin reiuc test/main.re
+cat src/parser.pest
+cargo run --bin reiuc test/main.re
+nvim test/malloc.re
+cargo run --bin reiuc test/malloc.re
+cat src/ast.rs
+cat src/codegen.rs
+cargo run --bin reiuc test/malloc.re
+dotfiles acp
+cargo run --bin reiuc test/malloc.re
+nvim test/malloc.re
+cargo run --bin reiuc test/malloc.re
+nvim test/malloc.re
+cargo run --bin reiuc test/malloc.re
+nvim test/malloc.re
+cargo run --bin reiuc test/malloc.re
+clang main.o -o main
+./main
+nvim test/malloc.re
+cargo run --bin reiuc test/malloc.re
+nvim test/malloc.re
+cargo run --bin reiuc test/malloc.re
+clang main.o -o main
+./main
+nvim test/malloc.re
+clang main.o -o main
+cargo run --bin reiuc test/malloc.re
+clang main.o -o main
+./main
+nvim test/malloc.re
+clang main.o -o main
+cargo run --bin reiuc test/malloc.re
+clang main.o -o main
+./main
+ls
+cargo run --bin reiuc test/malloc.re
+nvim test/malloc.re
+cargo run --bin reiuc test/malloc.re
+rust-lldb target/debug/reiuc
+nvim test/malloc.re
+cargo run --bin reiuc test/malloc.re
+clang main.o -o main
+./main
+nvim test/malloc.re
+cargo run --bin reiuc test/malloc.re
+clang main.o -o main
+./main
+rm main*
+git add .
+git commit -m "[compiler] add automatic pointer casting and int casting"
+git push
+ls
+nvim test/malloc.re
+nvim test/itoa.re
+cargo run --bin reiuc test/itoa.re
+nvim test/itoa.re
+cargo run --bin reiuc test/itoa.re
+clang main.o -o main
+nvim test/itoa.re
+man itoa
+man itol
+cat projects/c/libft/src/ft_itoa.c
+cd projects/reiu
+ls
+cargo run --bin reiuc test/itoa.re
+cat src/ast.rs
+cargo run --bin reiuc test/itoa.re
+sudo visudo
+cd projects/reiu
+nvim src/codegen.rs
+startx
+cat .zsh/history | grep rclone

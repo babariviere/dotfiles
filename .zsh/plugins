@@ -1,0 +1,11 @@
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+
+robbyrussell/oh-my-zsh path:plugins/adb
+robbyrussell/oh-my-zsh path:plugins/cargo
+robbyrussell/oh-my-zsh path:plugins/command-not-found
+robbyrussell/oh-my-zsh path:plugins/git
+robbyrussell/oh-my-zsh path:plugins/rust
+robbyrussell/oh-my-zsh path:plugins/thefuck

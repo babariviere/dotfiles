@@ -1,0 +1,44 @@
+#!/bin/zsh
+
+source /etc/profile
+
+SAVEHIST=10000
+HISTSIZE=10000
+HISTFILE=~/.zsh/history
+setopt appendhistory
+setopt histignoredups
+
+bindkey -v
+export KEYTIMEOUT=1
+
+autoload -Uz compinit
+compinit
+
+source <($HOME/projects/go/bin/antibody init)
+antibody bundle < ~/.zsh/plugins
+
+source ~/.zsh/aliases
+source ~/.zsh/function
+source ~/.zsh/theme
+source ~/.zsh/vim
+source ~/.profile
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+unsetopt share_history
+
+# OPAM configuration
+. /home/babariviere/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(direnv hook zsh)"
+
+alias rot13="tr 'A-Za-z' 'N-ZA-Mn-za-m'"
+
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+    eval `ssh-agent`
+    ssh-add
+fi

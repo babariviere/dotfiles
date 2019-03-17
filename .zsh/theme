@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+setopt PROMPT_SUBST
+
+precmd() {
+    PROMPT=`$HOME/.zsh/prompt`
+}
+
+prompt_symbol='>'
+#RPROMPT="%F{red}$(id -un)%f@%F{blue}$(hostname)%f"
+#PROMPT="%(?.%F{magenta}.%F{red})${prompt_symbol}%f"
+#PROMPT="> "

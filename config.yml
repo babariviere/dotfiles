@@ -48,5 +48,8 @@ files:
     recursive: true
   - path: fish/fishfile
     location: config
+  - path: ".zsh"
+    location: home
+    recursive: true
 git: /home/babariviere/.dot/.git
 dot: ~

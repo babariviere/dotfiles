@@ -1,0 +1,35 @@
+#!/bin/zsh
+
+function __dotfiles_git {
+    elem=($@)
+    /usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME $elem
+}
+
+function dotfiles {
+    case $1 in
+        ac)
+            if [ -z $2 ]; then
+                __dotfiles_git add -u
+            else
+                modified=(${@:2})
+                __dotfiles_git add ${modified[@]}
+            fi
+            __dotfiles_git commit -m "update dotfiles $(date)"
+            ;;
+        acp)
+            dotfiles ac "${@:2}"
+            __dotfiles_git push
+            ;;
+        init)
+            rm -rf $HOME/dotfiles
+            mkdir -p $HOME/dotfiles
+            pushd $HOME/dotfiles
+            git init --bare
+            popd
+            __dotfiles_git config --local status.showUntrackedFiles no
+            __dotfiles_git remote add origin git@github.com:babariviere/dotfiles.git
+            ;;
+        *)
+            __dotfiles_git "$@";;
+    esac
+}

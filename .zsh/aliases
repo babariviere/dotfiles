@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+alias ls="ls --color=auto"
+alias l="ls -l"
+alias la="ls -la"
+alias ll="ls -lA"
+
+alias p="pass"
+alias pe="pass edit"
+alias pi="pass insert"
+alias pf="pass find"
+alias pg="pass generate"
+
+alias pacman="yay"
+
+alias grep="grep --color=auto"
+alias rg="find . -type f -print0 | xargs -P12 -0 grep --color=auto"
+
+#alias yay_orphan="yay -Rns $(yay -Qtdq)"
