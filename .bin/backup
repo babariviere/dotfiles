@@ -1,0 +1,31 @@
+#!/bin/sh
+
+if [ -z $1 ]; then
+    echo "usage: backup <dest>"
+fi
+
+dest=$1
+
+function _cp {
+    _tmp_dest=$dest/$1
+    _tmp_src=$HOME/$1
+    if [ ! -z $2 ]; then
+        _tmp_dest=$dest/$2
+    fi
+    echo "=> $_tmp_src -> $_tmp_dest"
+    rm -rf $_tmp_dest
+    cp -r $_tmp_src $_tmp_dest
+}
+
+_cp .bin bin
+_cp dotfiles
+_cp projects
+_cp Documents
+_cp android
+_cp schemes
+_cp vm
+_cp libs
+_cp docs
+_cp ctf
+_cp books
+_cp .ssh ssh

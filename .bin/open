@@ -1,0 +1,11 @@
+#!/bin/sh
+
+basename="${1%.*}"
+
+case "$1" in
+	*.tex|*.rmd|*.ms|*.me|*.mom) "$READER" "$basename".pdf ;;
+	*.html) "$BROWSER" --new-window "$basename".html ;;
+    *.md) grip -b "$1" $(shuf -i 40000-50000 -n 1) ;;
+	*.sent) sent "$1" ;;
+    *.dot) display "$basename".jpg ;;
+esac

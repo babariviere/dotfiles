@@ -1,0 +1,7 @@
+{
+    "coc.preferences.colorSupport": true,
+    "diagnostic.displayByAle": true,
+    "diagnostic.virtualText": true,
+    "diagnostic.virtualTextPrefix": "> ",
+    "codeLens.enable": true
+}

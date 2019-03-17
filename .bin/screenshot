@@ -1,0 +1,5 @@
+#!/bin/sh
+
+filename=$(date +%s).png
+file=$HOME/Pictures/screenshot/$filename
+maim $@ $file && notify-send "Screenshot taken" "saved into $file"

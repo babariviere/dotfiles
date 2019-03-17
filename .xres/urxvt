@@ -1,0 +1,24 @@
+! URxvt config
+URxvt*font: xft:Iosevka Custom:size=10
+!URxvt*font: xft:scientifica:size=11
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+URxvt.scrollBar_floating: false
+URxvt.scrollstyle: plain
+URxvt.depth: 32
+
+!-*- Perl extensions -*-
+URxvt.perl-ext-common: default,selection-to-clipboard,matcher,keyboard-select
+URxvt.keysym.M-u:     perl:url-select:select_next
+URxvt.url-launcher:   /usr/bin/qutebrowser
+URxvt.underlineURLs:  True
+URxvt.matcher.button: 1 
+URxvt.keysym.M-Escape:perl:keyboard-select:activate
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.clipboard.autocopy: false
+
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpot
+
+! vim:ft=xdefaults

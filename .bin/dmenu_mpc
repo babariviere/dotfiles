@@ -1,0 +1,41 @@
+#!/bin/sh
+
+commands="add
+play
+pause
+next
+prev
+stop
+clear
+shuffle
+repeat
+volume up
+volume down
+random
+single
+consume"
+
+lines=10
+result="$(echo "$commands" | dmenu -i -l $lines)"
+
+extract_title() {
+    awk '{split($0,a," - "); print a[2]}'
+}
+
+ask_playlist() {
+    mpc playlist | dmenu -i -l $lines | extract_title
+}
+
+ask_library() {
+    mpc listall | dmenu -i -l $lines
+}
+
+# TODO: check for nil input
+case $result in
+    "play") mpc searchplay "$(ask_playlist)";;
+    "add") mpc add "$(ask_library)";;
+    "volume up") mpc volume +5;;
+    "volume down") mpc volume -5;;
+    "");;
+    *) mpc "$result";;
+esac

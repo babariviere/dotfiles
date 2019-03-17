@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "coc-gocode": "^1.2.1",
+    "coc-highlight": "^1.0.5",
+    "coc-html": "^1.0.7",
+    "coc-json": "^1.0.12",
+    "coc-phpls": "^1.1.1",
+    "coc-rls": "^1.0.9",
+    "coc-vimtex": "^1.0.1",
+    "coc-yaml": "^1.0.0",
+    "ext": "^0.6.1"
+  }
+}

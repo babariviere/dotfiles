@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/usr/bin/dmenu -fn "Roboto-9" -nb "#292d3e" -nf "#959dcb" -sb "#434758" $@

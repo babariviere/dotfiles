@@ -1,0 +1,4 @@
+#!/bin/sh
+
+killall lemonbar
+~/projects/go/src/lemonscript/lemonscript | lemonbar -g "x25" -o 2 -f "Roboto Medium-9" -o -1 -f 'Font Awesome-8' -u 2 | sh

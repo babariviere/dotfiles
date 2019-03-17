@@ -1,0 +1,52 @@
+---
+files:
+  - path: nvim
+    location: config
+    recursive: true
+  - path: ".bin"
+    location: home
+    recursive: true
+  - path: alacritty
+    location: config
+    recursive: true
+  - path: dunst
+    location: config
+    recursive: true
+  - path: i3
+    location: config
+    recursive: true
+  - path: i3blocks
+    location: config
+    recursive: true
+  - path: polybar
+    location: config
+    recursive: true
+  - path: termite
+    location: config
+    recursive: true
+  - path: yay
+    location: config
+    recursive: true
+  - path: zathura
+    location: config
+    recursive: true
+  - path: ".xres"
+    location: home
+    recursive: true
+  - path: ".Xresources"
+    location: home
+  - path: ".clang-format"
+    location: home
+  - path: ".profile"
+    location: home
+  - path: coc/extensions/package.json
+    location: config
+  - path: fish/config.fish
+    location: config
+  - path: fish/local
+    location: config
+    recursive: true
+  - path: fish/fishfile
+    location: config
+git: /home/babariviere/.dot/.git
+dot: ~

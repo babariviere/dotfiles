@@ -1,0 +1,39 @@
+#!/bin/sh
+
+file=$(readlink -f "$1")
+dir=$(dirname "$file")
+base="${file%.*}"
+shebang=$(sed -n 1p "$file")
+
+cd "$dir" || exit
+
+textype() { \
+	command="pdflatex"
+	( sed 5q "$file" | grep -i -q 'xelatex' ) && command="xelatex"
+	$command --output-directory="$dir" "$base" &&
+	grep -i addbibresource "$file" >/dev/null &&
+	biber --input-directory "$dir" "$base" &&
+	$command --output-directory="$dir" "$base" &&
+	$command --output-directory="$dir" "$base"
+}
+
+shebangtest() {
+	case "$shebang" in
+		\#\!*) "$file" ;;
+		*) sent "$file" 2>/dev/null & ;;
+	esac
+}
+
+case "$file" in
+	*\.ms) refer -PS -e "$file" | groff -me -ms -kejpt -T pdf > "$base".pdf ;;
+	*\.mom) refer -PS -e "$file" | groff -mom -kejpt -T pdf > "$base".pdf ;;
+	*\.rmd) echo "require(rmarkdown); render('$file')" | R -q --vanilla ;;
+	*\.tex) textype "$file" ;;
+	#*\.md) grip "$file" --export "$base".html --norefresh ;;
+    *\.c) cc "$file" -o "$base" && "$base" ;;
+    *\.s) nasm -o "$base" "$file" ;;
+	*\.py) python "$file" ;;
+	*\.go) go run "$file" ;;
+    *\.dot) dot -Tjpg "$file" -o "$base".jpg ;;
+	*) shebangtest ;;
+esac
