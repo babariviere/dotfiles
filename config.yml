@@ -51,5 +51,7 @@ files:
   - path: ".zsh"
     location: home
     recursive: true
+  - path: ".cargo/config"
+    location: home
 git: /home/babariviere/.dot/.git
 dot: ~
