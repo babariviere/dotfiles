@@ -87,6 +87,10 @@ set signcolumn=yes
 " set shortmess+=c
 set noshowmode
 
+" Wildmenu
+set wildoptions=pum
+set pumblend=20
+
 inoremap <silent><expr> <C-j>  pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <silent><expr> <C-k>  pumvisible() ? "\<C-p>" : "\<C-k>"
 inoremap <silent><expr> <Up>   pumvisible() ? "\<Esc>ka" : "\<Up>"
