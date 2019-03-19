@@ -28,12 +28,6 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'Shougo/neco-syntax'
 Plug 'Shougo/neco-vim'
-"Plug 'Shougo/neosnippet.vim'
-"Plug 'Shougo/neosnippet-snippets'
-"Plug 'SevereOverfl0w/deoplete-github'
-"
-
-Plug 'ncm2/float-preview.nvim'
 
 Plug 'w0rp/ale'
 
