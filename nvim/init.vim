@@ -37,6 +37,8 @@ Plug 'ncm2/float-preview.nvim'
 
 Plug 'w0rp/ale'
 
+Plug 'hashivim/vim-terraform'
+
 if use_coc
     call CocPlug()
 endif
@@ -171,3 +173,7 @@ call DeopleteSetup(use_deoplete)
 
 " disable gitgutter for now
 let g:gitgutter_enabled = 0
+
+" Terraform
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1

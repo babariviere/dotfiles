@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/babariviere/.config/fish'
 let g:netrw_dirhist_2='/home/babariviere/.config/fish/local'
 let g:netrw_dirhist_3='/home/babariviere/.config/fish'
 let g:netrw_dirhist_4='/home/babariviere/.config/fish/conf.d'
 let g:netrw_dirhist_5='/home/babariviere/projects/dot/src'
+let g:netrw_dirhist_6='/home/bastien/projects/easy_movie/src/em/subtitles/cmd/transcribe_callback'
