@@ -41,8 +41,6 @@ files:
     location: home
   - path: coc/extensions/package.json
     location: config
-  - path: fish/config.fish
-    location: config
   - path: fish/local
     location: config
     recursive: true
@@ -51,7 +49,9 @@ files:
   - path: ".zsh"
     location: home
     recursive: true
+  - path: fish/config.fish
+    location: config
   - path: ".cargo/config"
     location: home
-git: /home/babariviere/.dot/.git
+git: /home/bastien/.dot/.git
 dot: ~
