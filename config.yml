@@ -1,6 +1,18 @@
 ---
 files:
-  - path: nvim
+  - path: nvim/init.vim
+    location: config
+  - path: nvim/coc-settings.json
+    location: config
+  - path: nvim/settings.json
+    location: config
+  - path: nvim/config
+    location: config
+    recursive: true
+  - path: nvim/ftplugin
+    location: config
+    recursive: true
+  - path: nvim/spell
     location: config
     recursive: true
   - path: ".bin"
