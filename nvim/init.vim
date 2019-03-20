@@ -32,6 +32,7 @@ Plug 'Shougo/neco-vim'
 Plug 'w0rp/ale'
 
 Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
 
 if use_coc
     call CocPlug()
@@ -47,7 +48,6 @@ Plug 'farmergreg/vim-lastplace'
 
 Plug 'junegunn/goyo.vim'
 
-Plug 'hashivim/vim-terraform'
 Plug 'pest-parser/pest.vim'
 Plug '~/projects/reiu/vim'
 
