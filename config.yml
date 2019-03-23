@@ -53,5 +53,7 @@ files:
     location: config
   - path: ".cargo/config"
     location: home
-git: /home/bastien/.dot/.git
+git:
+  path: ".dot/.git"
+  location: home
 dot: ~
