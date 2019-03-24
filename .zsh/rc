@@ -7,6 +7,7 @@ HISTSIZE=10000
 HISTFILE=~/.zsh/history
 setopt appendhistory
 setopt histignoredups
+setopt prompt_subst
 
 bindkey -v
 export KEYTIMEOUT=1
@@ -19,7 +20,6 @@ antibody bundle < ~/.zsh/plugins
 
 source ~/.zsh/aliases
 source ~/.zsh/function
-source ~/.zsh/theme
 source ~/.zsh/vim
 source ~/.profile
 
