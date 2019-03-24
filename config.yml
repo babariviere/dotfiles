@@ -48,6 +48,8 @@ files:
   - path: ".zsh"
     location: home
     recursive: true
+    exclude:
+      - history
   - path: fish/config.fish
     location: config
   - path: ".cargo/config"
