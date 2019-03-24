@@ -16,10 +16,11 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+Plug 'RobertAudi/fish.vim'
+Plug 'dmix/elvish.vim', { 'on_ft': ['elvish']}
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'hail2u/vim-css3-syntax'
-Plug 'sheerun/vim-polyglot'
 
 Plug 'rhysd/vim-clang-format'
 

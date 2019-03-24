@@ -1,66 +1,3 @@
-rm main*
-rustup
-rustup show
-rustup update
-nvim main.rs
-rustc main.rs
-nvim main.rs
-rustc main.rs
-rm main*
-ssh -p 26731 root@51.68.124.91
-ssh -p 26731 root@51.68.124.91
-ssh -p 26731 root@51.68.124.91
-ssh -p 26731 root@51.68.124.91
-ls
-ssh -p 26731 root@51.68.124.91
-now
-ssh -p 26731 root@51.68.124.91
-cd projects/ambient_it/rust
-ls
-zathura programme.pdf&!
-nvim day1.html
-nvim day1.html
-cat day1.html| xclip -selection clipboard
-p social/snapchat
-file /usr/bin/zathura
-go help fix
-startx
-sudo ip link set enp61s0 down
-cd projects/go/src/mudalike
-ls
-cat embed.go
-godoc
-godoc -http=:8080
-ls
-cat main.go
-cat main.go | grep famille
-nvim auto_plip.go
-cd projects/go
-ls
-cd src/mudalike
-ls
-cp main.go auto_plip.go
-nvim auto_plip.go
-go run auto_plip.go
-nvim auto_plip.go
-go run auto_plip.go
-nvim auto_plip.go
-go run auto_plip.go
-nvim auto_plip.go
-go run auto_plip.go
-nvim auto_plip.go
-go run auto_plip.go
-nvim auto_plip.go
-go run auto_plip.go
-nvim auto_plip.go
-go run auto_plip.go
-nvim auto_plip.go
-go run auto_plip.go
-go run auto_plip.go
-go run auto_plip.go
-go run auto_plip.go
-go run auto_plip.go
-go run auto_plip.go
 startx
 cd projects/go/src/mudalike
 go run auto_plip.go
@@ -10094,3 +10031,66 @@ cd projects/reiu
 nvim src/codegen.rs
 startx
 cat .zsh/history | grep rclone
+nvim rc
+nvim function
+nvim theme
+rm theme
+antibody list
+nvim plugins
+antibody bundle Tried to print invalid wide character string
+antibody bundle denysdovhan/spaceship-prompt
+l
+cd .zsh
+ls
+nvim plugins
+l
+ls -al
+l
+cd
+cd ~/projects/
+ls
+lolcat
+yay -S lolcat
+nvim ~/.zsh
+antibody update
+nvim ~/.config/termite/config
+cd
+ls
+cd .fonts
+ls
+termite --help
+yay font awesome
+yay powerline
+ls
+cd
+cd ~/.config/fish
+ls
+nvim config.fish
+ls
+antigen theme sepehr/sepshell sepshell
+source ~/.zsh/rc
+antigen theme sepehr/sepshell sepshell
+yay antigen
+antibody bundle sepehr/sepshell
+l
+cd .zsh
+ls
+nvim rc
+ls
+echo $PROMPT
+ls
+source ~/.zsh/rc
+ls
+antibody update
+nvim rc
+ls
+source ~/.zsh/rc
+ls -al
+cd
+cd projects/dot
+ls
+yay -S rxvt-unicode
+yay alacritty
+ls -al
+nvim ~/.config/autostart/keybase_autostart.desktop 
+nvim ~/.config/termite/config
