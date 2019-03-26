@@ -1,4 +1,4 @@
-E:EDTIOR = "nvim"
+E:EDITOR = "nvim"
 E:LC_ALL = "en_US.utf-8"
 
 use epm
