@@ -56,4 +56,6 @@ use github.com/muesli/elvish-libs/git
 #update:curl-timeout = 3
 #update:check-commit &verbose
 
+use direnv
+
 -exports- = (alias:export)
