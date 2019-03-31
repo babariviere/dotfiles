@@ -1,5 +1,5 @@
 ! URxvt config
-URxvt*font: xft:Iosevka Custom:size=10
+URxvt*font: xft:Iosevka Term:size=10
 !URxvt*font: xft:scientifica:size=11
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
