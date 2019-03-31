@@ -19,7 +19,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'RobertAudi/fish.vim'
 Plug 'dmix/elvish.vim', { 'on_ft': ['elvish']}
 Plug 'rust-lang/rust.vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go'
 Plug 'hail2u/vim-css3-syntax'
 
 Plug 'rhysd/vim-clang-format'
