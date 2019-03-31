@@ -2,7 +2,8 @@
 !#include ".xres/ayu_mirage"
 !#include ".xres/gruvbox"
 !#include ".xres/palenight"
-#include ".xres/challenger_deep"
+!#include ".xres/challenger_deep"
+#include ".xres/night_owl"
 
 #include ".xres/rofi"
 #include ".xres/urxvt"

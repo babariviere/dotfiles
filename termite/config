@@ -48,47 +48,86 @@ size_hints = true
 # color7  = #d0d0d0
 # color15 = #ffffff
 
-# Challenger Deep
+# # Challenger Deep
+# [colors]
+# 
+# # special
+# foreground      = #cbe3e7
+# foreground_bold = #cbe3e7
+# cursor          = #cbe3e7
+# background      = #1e1c31
+# 
+# # black
+# color0  = #565575
+# color8  = #100e23
+# 
+# # red
+# color1  = #ff8080
+# color9  = #ff5458
+# 
+# # green
+# color2  = #95ffa4
+# color10 = #62d196
+# 
+# # yellow
+# color3  = #ffe9aa
+# color11 = #ffb378
+# 
+# # blue
+# color4  = #91ddff
+# color12 = #65b2ff
+# 
+# # magenta
+# color5  = #c991e1
+# color13 = #906cff
+# 
+# # cyan
+# color6  = #aaffe4
+# color14 = #63f2f1
+# 
+# # white
+# color7  = #cbe3e7
+# color15 = #a6b3cc
+
 [colors]
 
 # special
-foreground      = #cbe3e7
-foreground_bold = #cbe3e7
-cursor          = #cbe3e7
-background      = #1e1c31
+foreground      = #d6deeb
+foreground_bold = #d6deeb
+cursor          = #d6deeb
+background      = #011627
 
 # black
-color0  = #565575
-color8  = #100e23
+color0  = #011627
+color8  = #575656
 
 # red
-color1  = #ff8080
-color9  = #ff5458
+color1  = #ef5350
+color9  = #ef5350
 
 # green
-color2  = #95ffa4
-color10 = #62d196
+color2  = #22da6e
+color10 = #22da6e
 
 # yellow
-color3  = #ffe9aa
-color11 = #ffb378
+color3  = #addb67
+color11 = #ffeb95
 
 # blue
-color4  = #91ddff
-color12 = #65b2ff
+color4  = #82aaff
+color12 = #82aaff
 
 # magenta
-color5  = #c991e1
-color13 = #906cff
+color5  = #c792ea
+color13 = #c792ea
 
 # cyan
-color6  = #aaffe4
-color14 = #63f2f1
+color6  = #21c7a8
+color14 = #7fdbca
 
 # white
-color7  = #cbe3e7
-color15 = #a6b3cc
-
+color7  = #ffffff
+color15 = #ffffff
 
 
 # vim: ft=dosini cms=#%s

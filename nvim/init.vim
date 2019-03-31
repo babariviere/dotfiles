@@ -13,6 +13,8 @@ Plug 'morhetz/gruvbox'
 Plug 'ayu-theme/ayu-vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'haishanh/night-owl.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -69,8 +71,7 @@ set termguicolors
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
 let ayucolor="mirage"
-"colorscheme palenight
-colorscheme challenger_deep
+colorscheme night-owl
 
 " Transparent background
 "highlight Normal ctermbg=none
@@ -99,7 +100,6 @@ inoremap <silent><expr> <C-k>  pumvisible() ? "\<C-p>" : "\<C-k>"
 inoremap <silent><expr> <Up>   pumvisible() ? "\<Esc>ka" : "\<Up>"
 inoremap <silent><expr> <Down> pumvisible() ? "\<Esc>ja" : "\<Down>"
 " inoremap <silent><expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
-
 
 " Go
 let g:go_fmt_command = "goimports"
