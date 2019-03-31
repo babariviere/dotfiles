@@ -235,7 +235,7 @@ for_window [class="(?i)^qemu"] floating enable
 
 focus_follows_mouse no
 
-exec_always --no-startup-id feh --bg-center ~/Pictures/ceystalhorizon.png
+exec_always --no-startup-id feh --bg-center ~/Pictures/alena-aenami-7p-m-1k.jpg
 exec --no-startup-id dunst
 exec --no-startup-id compton
 exec_always --no-startup-id ~/.bin/launch_polybar
