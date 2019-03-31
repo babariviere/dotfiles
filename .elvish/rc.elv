@@ -6,8 +6,7 @@ use epm
 epm:install                                 \
     &silent-if-installed=$true              \
     github.com/tylerreckart/gondolin        \
-    github.com/zzamboni/elvish-modules      \
-    github.com/zzamboni/elvish-completions  \
+    github.com/zzamboni/elvish-modules      \ github.com/zzamboni/elvish-completions  \
     github.com/muesli/elvish-libs           \
     github.com/iwoloschin/elvish-packages	\
 	github.com/xiaq/edit.elv
@@ -55,5 +54,7 @@ use github.com/muesli/elvish-libs/git
 #use github.com/iwoloschin/elvish-packages/update
 #update:curl-timeout = 3
 #update:check-commit &verbose
+
+use direnv
 
 -exports- = (alias:export)

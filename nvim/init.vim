@@ -126,9 +126,9 @@ let g:rustfmt_autosave = 1
 hi illuminatedWord cterm=none guibg=#404040
 
 " ALE
-let g:ale_enabled = 1
+let g:ale_enabled = 0
 let g:ale_linters = {}
-let g:ale_linters.go = ['gometalinter']
+let g:ale_linters.go = ['golangci-lint']
 let g:ale_linters.fish = []
 let g:ale_linters.cpp = []
 let g:ale_linters.kotlin = []
