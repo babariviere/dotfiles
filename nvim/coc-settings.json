@@ -4,5 +4,5 @@
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextPrefix": "> ",
     "codeLens.enable": true,
-    "json.schemas": [{"fileMatch": ["*/coc-settings.json"]}]
+    "json.enable": false
 }
