@@ -10,7 +10,6 @@ abbr -a pg pass generate
 abbr -a pacman yay
 
 abbr -a grep grep --color=auto
-abbr -a rg "find . -type f -print0 | xargs -P12 -0 grep --color=auto"
 
 abbr -a urle string escape --style=url
 abbr -a urld string unescape --style=url
