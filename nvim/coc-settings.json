@@ -1,8 +1,23 @@
 {
-    "coc.preferences.colorSupport": true,
-    "diagnostic.enable": true,
-    "diagnostic.virtualText": true,
-    "diagnostic.virtualTextPrefix": "> ",
-    "codeLens.enable": true,
-    "json.enable": false
+  "coc.preferences.colorSupport": true,
+  "diagnostic.enable": true,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextPrefix": "> ",
+  "codeLens.enable": true,
+  "json.enable": true,
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "args": [],
+      "rootPatterns": [
+        "go.mod",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "filetypes": [
+        "go"
+      ]
+    }
+  }
 }

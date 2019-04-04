@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "coc-gocode": "^1.2.2",
     "coc-highlight": "^1.0.5",
     "coc-html": "^1.0.7",
     "coc-json": "^1.0.12",
