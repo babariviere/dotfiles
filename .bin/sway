@@ -1,0 +1,6 @@
+#!/bin/sh
+
+source ~/.profile
+ibus-daemon -drx
+xflux -z 77710
+exec sway
