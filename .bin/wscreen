@@ -1,0 +1,16 @@
+#!/bin/fish
+
+set filename (date +%s)'.png'
+set filepath "$HOME/Pictures/screenshot/$filename"
+
+if test (count $argv) = 0
+    set argv "workspace"
+end
+
+mkdir -p $HOME/Pictures/screenshot
+switch $argv[1]
+case select
+    grim -g (slurp) $filepath
+case workspace
+    grim -o (swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $filepath
+end

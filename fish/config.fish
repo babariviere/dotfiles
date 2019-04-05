@@ -1,10 +1,6 @@
 set -xg EDITOR nvim
 set -xg fish_greeting
 
-set -xg GTK_IM_MODULE ibus
-set -xg QT_IM_MODULE ibus
-set -xg XMODIFIERS @im=ibus
-
 if [ (ibus address) = "(null)" ]
 	echo "Starting ibus..."
 	ibus-daemon -drx

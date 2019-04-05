@@ -1,6 +1,9 @@
 #!/bin/sh
 
 source ~/.profile
-ibus-daemon -drx
-xflux -z 77710
-exec sway
+export GDK_BACKEND=wayland
+export CLUTTER_BACKEND=wayland
+export XDG_SESSION_TYPE=wayland
+export QT_QPA_PLATFORM=wayland-egl
+export SDL_VIDEODRIVER=wayland
+exec /usr/bin/sway $@
