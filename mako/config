@@ -1,0 +1,7 @@
+font=Iosevka 10
+background-color=#011627
+text-color=#d6deeb
+border-color=#575656
+border-size=2
+default-timeout=5000
+format=<b>[%a] %s</b>\n%b

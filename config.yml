@@ -70,6 +70,12 @@ files:
     exclude:
       - spell/*
       - ".netrwhist"
+  - path: mako
+    location: config
+    recursive: true
+  - path: sway
+    location: config
+    recursive: true
 git:
   path: ".dot/.git"
   location: home

@@ -14,3 +14,4 @@ case select
 case workspace
     grim -o (swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $filepath
 end
+and notify-send "Screenshot taken" "saved into $filepath"
