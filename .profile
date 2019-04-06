@@ -2,7 +2,7 @@
 #export XMODIFIERS=@im=ibus
 #export QT_IM_MODULE=ibus
 
-export BROWSER="firefox"
+export BROWSER="firefox-nightly"
 export EDITOR="nvim"
 export READER="zathura"
 export VISUAL="nvim"

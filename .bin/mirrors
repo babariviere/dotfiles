@@ -1,0 +1,3 @@
+#!/bin/sh
+
+reflector -c FR | rankmirrors -n 20 - > /etc/pacman.d/mirrorlist

@@ -1,4 +1,3 @@
-set -xg EDITOR nvim
 set -xg fish_greeting
 
 if [ (ibus address) = "(null)" ]
