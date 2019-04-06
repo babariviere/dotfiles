@@ -168,6 +168,10 @@ output * bg ~/Pictures/alena-aenami-sundown.jpg fill
     bindsym --release Print exec wscreen workspace
     bindsym --release Shift+Print exec wscreen select
 
+    bindsym XF86AudioRaiseVolume exec pamixer -i 3 && pkill -RTMIN+1 i3blocks
+    bindsym XF86AudioLowerVolume exec pamixer -d 3 && pkill -RTMIN+1 i3blocks
+    bindsym XF86AudioMute exec pamixer -t && pkill -RTMIN+1 i3blocks
+
 #
 # Scratchpad:
 #
