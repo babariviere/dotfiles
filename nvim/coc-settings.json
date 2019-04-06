@@ -5,6 +5,7 @@
   "diagnostic.virtualTextPrefix": "> ",
   "codeLens.enable": true,
   "json.enable": true,
+  "suggest.enablePreview": true,
   "languageserver": {
     "golang": {
       "command": "gopls",

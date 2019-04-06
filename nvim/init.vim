@@ -25,6 +25,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'jparise/vim-graphql'
+Plug 'neoclide/jsonc.vim'
 
 Plug 'rhysd/vim-clang-format'
 

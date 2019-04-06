@@ -76,6 +76,9 @@ files:
   - path: sway
     location: config
     recursive: true
+  - path: waybar
+    location: config
+    recursive: true
 git:
   path: ".dot/.git"
   location: home
