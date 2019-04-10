@@ -1,7 +1,9 @@
 #!/bin/sh
 
+set -e
+
 tmpbg='/tmp/screen.png'
 
-scrot "$tmpbg"
+grim "$tmpbg"
 convert "$tmpbg" -scale 10% -scale 1000% "$tmpbg"
-i3lock -i "$tmpbg"
+swaylock -i "$tmpbg" -t

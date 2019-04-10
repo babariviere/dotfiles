@@ -25,6 +25,9 @@ font pango:Iosevka 10
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg ~/Pictures/alena-aenami-sundown.jpg fill
+
+output HDMI-A-2 pos 0 0
+output eDP-1 pos 0 1080
 #swaybg_command /home/babariviere/projects/dybg/target/debug/dybg
 #
 # Example configuration:
@@ -243,3 +246,4 @@ bar {
 include /etc/sway/config.d/*
 
 exec mako
+exec ibus-daemon -drx
