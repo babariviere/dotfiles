@@ -17,7 +17,7 @@ charge_percent=$(printf '%.0f' $(echo "$charge_now / $charge_full * 100" | bc -l
 message="Battery running at $charge_percent%!"
 
 if [[ $charge_status == 'Discharging' ]] && [[ $charge_percent -le $THRESHOLD ]]; then
-  /usr/bin/notify-send -u critical "Low battery" "$message"
+  /usr/bin/notify-send -a "battery monitor" -u critical "Low battery" "$message"
 fi
 
 rm -f $lock_path
