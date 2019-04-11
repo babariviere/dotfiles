@@ -18,7 +18,6 @@ export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$HOME/.bin:$HOME/.local
 export NDK_HOME="/opt/android-ndk"
 export WINEDLLOVERRIDES="winemenubuilder.exe=d"
 
-export TEXINPUTS="~/libs/tex:$(kpsepath tex)"
 export KUBECONFIG="$HOME/.kube/config"
 
 export XDG_MUSIC_DIR=/data/Music
