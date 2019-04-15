@@ -24,3 +24,5 @@ export KUBECONFIG="$HOME/.kube/config"
 export XDG_MUSIC_DIR=/data/Music
 export DESKTOP_SESSION=gnome
 export QT_QPA_PLATFORMTHEME=gtk2
+
+export _JAVA_AWT_WM_NONREPARENTING=1
