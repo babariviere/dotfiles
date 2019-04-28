@@ -1,6 +1,7 @@
 // vim: ft=jsonc
 {
     "layer": "top",
+    "height": 30,
     "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
     "modules-center": [],
     "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "backlight", "battery", "clock", "tray"],
