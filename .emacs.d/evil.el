@@ -1,3 +1,9 @@
+(defvar leader-key ",")
+
+(defun leader (keys)
+  "add leader key prefix"
+  (concat leader-key " " keys))
+
 (use-package evil
   :ensure t
   :init
@@ -15,4 +21,4 @@
 
   (defvar leader-map (make-sparse-keymap)
     "Keymap for leader key shortcuts.")
-  (define-key evil-normal-state-map "," leader-map))
+  (define-key evil-normal-state-map leader-key leader-map))

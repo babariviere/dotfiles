@@ -19,10 +19,11 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("28bf1b0a72e3a1e08242d776c5befc44ba67a36ced0e55df27cfc7ae6be6c24d" default)))
+    ("93a0885d5f46d2aeac12bf6be1754faa7d5e28b27926b8aa812840fe7d0b7983" "6b2636879127bf6124ce541b1b2824800afc49c6ccd65439d6eb987dbf200c36" "f0dc4ddca147f3c7b1c7397141b888562a48d9888f1595d69572db73be99a024" "fd944f09d4d0c4d4a3c82bd7b3360f17e3ada8adf29f28199d09308ba01cc092" "28bf1b0a72e3a1e08242d776c5befc44ba67a36ced0e55df27cfc7ae6be6c24d" default)))
+ '(ivy-virtual-abbreviate (quote full))
  '(package-selected-packages
    (quote
-    (org-evil org-mode ivy-rich projectile ivy direnv yasnippet all-the-icons unicode-fonts company company-go go-mode doom-modeline flycheck-rust cargo rust-mode toml-mode flycheck company-lsp lsp-ui lsp-mode use-package company-mode
+    (evil-org rainbow-delimiters go-add-tags go-guru godoctor git-gutter magit counsel-projectile doom-themes org-evil org-mode ivy-rich projectile ivy direnv yasnippet all-the-icons unicode-fonts company company-go go-mode doom-modeline flycheck-rust cargo rust-mode toml-mode flycheck company-lsp lsp-ui lsp-mode use-package company-mode
 	      (evil)
 	      (evil)
 	      night-owl-theme evil))))
@@ -56,13 +57,14 @@
     "flycheck.el" "company.el"
     "yas.el" "direnv.el"
     "ivy.el" "projectile.el"
-    "org.el"
+    "org.el" "git.el"
 
     ;; Languages
     "lsp.el"
     "lisp.el"
     "rust.el"
     "go.el"
+    "markdown.el"
     )
   "A list of custom configuration file name.  Relative to 'user-emacs-directory'.")
 
