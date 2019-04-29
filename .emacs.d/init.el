@@ -22,22 +22,29 @@
     ("28bf1b0a72e3a1e08242d776c5befc44ba67a36ced0e55df27cfc7ae6be6c24d" default)))
  '(package-selected-packages
    (quote
-    (unicode-fonts company company-go go-mode doom-modeline flycheck-rust cargo rust-mode toml-mode flycheck company-lsp lsp-ui lsp-mode use-package company-mode
-		   (evil)
-		   (evil)
-		   night-owl-theme evil))))
+    (org-evil org-mode ivy-rich projectile ivy direnv yasnippet all-the-icons unicode-fonts company company-go go-mode doom-modeline flycheck-rust cargo rust-mode toml-mode flycheck company-lsp lsp-ui lsp-mode use-package company-mode
+	      (evil)
+	      (evil)
+	      night-owl-theme evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#011627" :foreground "#D6DEEB" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 80 :width normal :foundry "CYEL" :family "Iosevka Term")))))
+ '(default ((t (:inherit nil :stipple nil :background "#011627" :foreground "#D6DEEB" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 96 :width normal :foundry "CYEL" :family "Iosevka Term")))))
 
 ;; Set backup directory
 (defvar --backup-directory (concat user-emacs-directory "backups"))
 (if (not (file-exists-p --backup-directory))
         (make-directory --backup-directory t))
 (setq backup-directory-alist `(("." . , --backup-directory)))
+
+;; Set autosave directory
+(defvar --autosave-directory (concat user-emacs-directory "autosaves/"))
+(if (not (file-exists-p --autosave-directory))
+    (make-directory --autosave-directory t))
+(setq auto-save-file-name-transforms
+      `((".*" , --autosave-directory t)))
 
 
 ;; Install use-package
@@ -47,7 +54,9 @@
 (defvar config-files
   '("ui.el" "evil.el"
     "flycheck.el" "company.el"
-    "yas.el"
+    "yas.el" "direnv.el"
+    "ivy.el" "projectile.el"
+    "org.el"
 
     ;; Languages
     "lsp.el"

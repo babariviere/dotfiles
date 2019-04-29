@@ -7,5 +7,6 @@
 	company-idle-delay .3
 	company-echo-delay 0
 	company-begin-commands '(self-insert-command))
+  (define-key company-active-map [tab] 'company-complete)
   (define-key company-active-map (kbd "C-j") #'company-select-next)
   (define-key company-active-map (kbd "C-k") #'company-select-previous))

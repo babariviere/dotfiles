@@ -83,11 +83,12 @@ files:
     location: home
     recursive: true
     exclude:
-      - auto-save-list/*
+      - projectile-bookmarks.eld
+      - projectile.cache
+      - autosaves/*
       - backups/*
       - elpa/*
-      - var/*
-      - snippets/*
+      - ".lsp-session-v1"
 git:
   path: ".dot/.git"
   location: home

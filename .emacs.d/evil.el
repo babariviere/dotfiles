@@ -12,4 +12,7 @@
     (evil-define-key 'normal package-menu-mode-map (kbd "m") #'package-menu-mark-install)
     (evil-define-key 'normal package-menu-mode-map (kbd "u") #'package-menu-mark-unmark)
     (evil-define-key 'normal package-menu-mode-map (kbd "x") #'package-menu-execute))
-   )
+
+  (defvar leader-map (make-sparse-keymap)
+    "Keymap for leader key shortcuts.")
+  (define-key evil-normal-state-map "," leader-map))
