@@ -82,6 +82,11 @@ files:
   - path: ".emacs.d"
     location: home
     recursive: true
+    exclude:
+      - auto-save-list/*
+      - backups/*
+      - elpa/*
+      - var/*
 git:
   path: ".dot/.git"
   location: home
