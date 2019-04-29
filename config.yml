@@ -79,6 +79,9 @@ files:
   - path: waybar
     location: config
     recursive: true
+  - path: ".emacs.d"
+    recursive: true
+    location: home
 git:
   path: ".dot/.git"
   location: home
