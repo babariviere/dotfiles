@@ -47,6 +47,7 @@
 (defvar config-files
   '("ui.el" "evil.el"
     "flycheck.el" "company.el"
+    "yas.el"
 
     ;; Languages
     "lsp.el"

@@ -87,6 +87,7 @@ files:
       - backups/*
       - elpa/*
       - var/*
+      - snippets/*
 git:
   path: ".dot/.git"
   location: home
