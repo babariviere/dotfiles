@@ -1,8 +1,0 @@
-(use-package company
-  :ensure t
-  :bind (("C-SPC". company-complete))
-  :config
-  (global-company-mode)
-  (setq company-require-match nil)
-  (define-key company-active-map (kbd "C-j") #'company-select-next)
-  (define-key company-active-map (kbd "C-k") #'company-select-previous))

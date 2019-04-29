@@ -80,8 +80,8 @@ files:
     location: config
     recursive: true
   - path: ".emacs.d"
-    recursive: true
     location: home
+    recursive: true
 git:
   path: ".dot/.git"
   location: home

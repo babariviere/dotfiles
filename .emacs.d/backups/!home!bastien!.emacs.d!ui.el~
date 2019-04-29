@@ -12,10 +12,11 @@
     :init
     (load-theme 'night-owl))
 
-;; (add-to-list 'default-frame-alist
-;; 	     '(font . "Iosevka Term-10"))
-;; (set-face-attribute 'default nil :font "Iosevka Term" :height 100)
-;; (set-frame-font "Iosevka Term-10" nil t)
+(add-to-list 'default-frame-alist
+	     '(font . "Iosevka Term-10"))
+(set-face-attribute 'default nil :font "Iosevka Term-10")
+(set-face-attribute 'italic nil :font "Iosevka Term-10" :slant 'i)
+(set-frame-font "Iosevka Term-10" nil t)
 
 (use-package all-the-icons
   :ensure t)

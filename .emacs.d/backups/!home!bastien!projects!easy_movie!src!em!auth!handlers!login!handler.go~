@@ -1,0 +1,35 @@
+package login
+
+import (
+	"context"
+	"em/log"
+	"em/payload"
+	"em/repository/user"
+	"em/repository/user/device"
+	"em/result"
+	"em/transport"
+	"em/transport/login"
+	"errors"
+)
+
+func Handler(ctx context.Context, trs transport.Transport,
+	logger login.PasswordTransport, users user.Repository,
+	devices device.Repository) error {
+	var req payload.LoginRequest
+	if err := trs.Body(&req); err != nil {
+		log.WithError(err).Error("failed to parse request")
+		return trs.Fail(result.InvalidRequest)
+	}
+	if !req.Valid() {
+		log.WithError(result.InvalidRequest).Error("request is invalid")
+		return trs.Fail(result.InvalidRequest)
+	}
+
+	tok, err := logger.Login(ctx, req.Email, req.Password)
+	if err != nil {
+		log.WithError(err).Error("cannot log in with given credentials")
+		return trs.Fail(result.InvalidPasswordLogin)
+	}
+
+	return errors.New("not implemented")
+}
