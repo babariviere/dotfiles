@@ -4,7 +4,7 @@
 (scroll-bar-mode -1)
 
 ;; line numbers
-(global-linum-mode 1)
+(global-display-line-numbers-mode 1)
 
 ;; Set theme
 (use-package doom-themes

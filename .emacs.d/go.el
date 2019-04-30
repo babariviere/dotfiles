@@ -8,6 +8,7 @@
 
 (use-package go-mode
   :ensure t
+  :hook (go-mode . lsp)
   :config
   (use-package godoctor
     :ensure t)
@@ -17,11 +18,6 @@
 
   (use-package go-add-tags
     :ensure t)
-
-  (use-package company-go
-    :ensure t
-    :config
-    (add-to-list 'company-backends 'company-go))
   (add-hook 'go-mode-hook
 	    #'go-custom-mode-hook))
 

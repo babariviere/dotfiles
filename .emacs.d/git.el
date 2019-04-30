@@ -3,6 +3,10 @@
   :bind (:map leader-map
 	      ("g s" . magit-status)))
 
+(use-package evil-magit
+  :ensure t
+  :after magit)
+
 (use-package git-gutter
   :ensure t
   :config
