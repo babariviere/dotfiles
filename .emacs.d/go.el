@@ -4,7 +4,8 @@
   (setq truncate-lines t)
   (setq indent-tabs-mode t)
   (setq tab-width 4)
-  (evil-define-key 'normal go-mode-map (kbd (leader "g a")) 'go-add-tags))
+  (evil-define-key 'normal go-mode-map (kbd (leader "g a")) 'go-add-tags)
+  (evil-define-key 'visual go-mode-map (kbd (leader "g a")) 'go-add-tags))
 
 (use-package go-mode
   :ensure t

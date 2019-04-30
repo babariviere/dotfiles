@@ -21,4 +21,5 @@
 
   (defvar leader-map (make-sparse-keymap)
     "Keymap for leader key shortcuts.")
-  (define-key evil-normal-state-map leader-key leader-map))
+  (define-key evil-normal-state-map leader-key leader-map)
+  (define-key evil-visual-state-map leader-key leader-map))
