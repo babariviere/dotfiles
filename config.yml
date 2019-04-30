@@ -92,6 +92,7 @@ files:
       - var/*
       - auto-save-list/*
       - transient/*
+      - eshell/*
 git:
   path: ".dot/.git"
   location: home
