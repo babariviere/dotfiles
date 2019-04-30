@@ -89,6 +89,9 @@ files:
       - backups/*
       - elpa/*
       - ".lsp-session-v1"
+      - var/*
+      - auto-save-list/*
+      - transient/*
 git:
   path: ".dot/.git"
   location: home

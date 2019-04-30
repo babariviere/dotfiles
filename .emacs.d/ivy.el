@@ -1,11 +1,11 @@
 (use-package ivy
   :ensure t
-  :bind (("C-k" . ivy-previous-line)
-	 ("C-j" . ivy-next-line))
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t))
+  (setq enable-recursive-minibuffers t)
+  (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
+  (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line))
 
 (use-package ivy-rich
   :ensure t
