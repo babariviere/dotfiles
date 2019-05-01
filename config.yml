@@ -97,6 +97,8 @@ files:
       - diary
       - private.el
       - recentf
+      - request
+      - request/curl-cookie-jar
 git:
   path: ".dot/.git"
   location: home

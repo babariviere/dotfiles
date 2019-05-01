@@ -79,4 +79,4 @@
 (use-package org-jira
   :after org
   :config
-  (setq jiralib-url (concat "https://" jira-site ".atlassian.net")))
+  (setq jiralib-url (concat "https://" private-jira-site ".atlassian.net")))
