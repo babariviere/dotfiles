@@ -3,7 +3,9 @@
   :after (evil)
   :config
   (projectile-mode +1)
-  (define-key leader-map "p" 'projectile-command-map)
+  (leader-define-key
+    :states 'normal
+    "p" 'projectile-command-map)
   (setq projectile-completion-system 'ivy))
 
 (use-package counsel-projectile

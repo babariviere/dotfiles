@@ -2,11 +2,22 @@
   :ensure t
   :config
   (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-  (evil-define-key 'normal org-mode-map (kbd (leader "o t")) 'org-todo)
-  (setq org-log-done t))
+  (leader-define-key
+   :states 'normal
+   :keymaps 'org-mode-map
+   "t" 'org-todo)
+  (setq org-log-done t)
+  (setq org-todo-keywords
+	'((sequence "TODO" "WORKING" "REVIEW" "DONE")))
+  ;;(setq org-todo-keyword-faces
+  ;;	'(("TODO" . "blue")
+  ;;	  ("WORKING" . "yellow")
+  ;;	  ("REVIEW" . "red")
+  ;;	  ("DONE" . "green")))
+  )
 
 (use-package evil-org
-  :after org
+  :after (org evil)
   :ensure t
   :config
   (add-hook 'org-mode-hook 'evil-org-mode)

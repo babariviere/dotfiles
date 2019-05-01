@@ -1,7 +1,10 @@
 (use-package magit
   :ensure t
-  :bind (:map leader-map
-	      ("g s" . magit-status)))
+  :config
+  (leader-define-key
+   :states 'normal
+   "g s" 'magit-status)
+  )
 
 (use-package evil-magit
   :ensure t

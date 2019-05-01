@@ -1,11 +1,14 @@
 (defun go-custom-mode-hook ()
+  "Create a custom hook for go mode."
   (setq gofmt-command "goimports")
   (add-hook 'before-save-hook 'gofmt-before-save)
   (setq truncate-lines t)
   (setq indent-tabs-mode t)
   (setq tab-width 4)
-  (evil-define-key 'normal go-mode-map (kbd (leader "g a")) 'go-add-tags)
-  (evil-define-key 'visual go-mode-map (kbd (leader "g a")) 'go-add-tags))
+  (leader-define-key
+   :states '(normal visual)
+   :keymaps 'go-mode-map
+   "t" 'go-add-tags))
 
 (use-package go-mode
   :ensure t
@@ -21,4 +24,3 @@
     :ensure t)
   (add-hook 'go-mode-hook
 	    #'go-custom-mode-hook))
-
