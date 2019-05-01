@@ -7,6 +7,7 @@
    "t" 'org-todo
    "s" 'org-schedule
    "d" 'org-deadline
+   "f" 'org-open-at-point
    "S-h" 'org-shiftleft
    "S-l" 'org-shiftright)
   (leader-define-key

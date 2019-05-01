@@ -5,7 +5,7 @@
   (leader-define-key
     :states 'normal
     "p" 'projectile-command-map)
-  (setq projectile-generic-command "fd . -0 -c never --ignore-file .gitignore")
+  (setq projectile-generic-command "fd . -0 -c never --ignore-file .gitignore 2>/dev/null")
   (setq projectile-completion-system 'ivy))
 
 (use-package counsel-projectile
