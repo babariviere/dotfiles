@@ -5,6 +5,8 @@
    :states 'normal
    :keymaps 'org-mode-map
    "t" 'org-todo
+   "s" 'org-schedule
+   "d" 'org-deadline
    "S-h" 'org-shiftleft
    "S-l" 'org-shiftright)
   (leader-define-key
@@ -18,7 +20,7 @@
 
   (setq org-directory (expand-file-name "~/org"))
   (setq org-default-notes-file (concat org-directory "/notes.org"))
-  (setq org-agenda-files '(org-directory))
+  (setq org-agenda-files (list org-directory))
 
   (setq org-agenda-skip-deadline-if-done t)
   (setq org-agenda-skip-scheduled-if-done t)
@@ -29,14 +31,15 @@
 	  (sequence "IDEA(i)" "TODO(t)" "STARTED(s)" "NEXT(n)" "WAITING(w)" "|" "DONE(d)")
 	  (sequence "|" "CANCELED(c)" "DELEGATED(l)" "SOMEDAY(f)")
 	  ))
+  ;; use :list-colors-display
   (setq org-todo-keyword-faces
 	'(("IDEA" . (:foreground "GoldenRod" :weight bold))
-	  ("NEXT" . (:foreground "IndianRed1" :weight bold))   
+	  ("NEXT" . (:foreground "IndianRed1" :weight bold))
 	  ("STARTED" . (:foreground "OrangeRed" :weight bold))
-	  ("WAITING" . (:foreground "coral" :weight bold)) 
-	  ("CANCELED" . (:foreground "LimeGreen" :weight bold))
-	  ("DELEGATED" . (:foreground "LimeGreen" :weight bold))
-	  ("SOMEDAY" . (:foreground "LimeGreen" :weight bold))
+	  ("WAITING" . (:foreground "coral" :weight bold))
+	  ("CANCELED" . (:foreground "sea green" :weight bold))
+	  ("DELEGATED" . (:foreground "sea green" :weight bold))
+	  ("SOMEDAY" . (:foreground "sea green" :weight bold))
 	  ))
 
   ;; Capture templates

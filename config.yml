@@ -94,6 +94,7 @@ files:
       - transient/*
       - eshell/*
       - forge-database.sqlite
+      - diary
 git:
   path: ".dot/.git"
   location: home
