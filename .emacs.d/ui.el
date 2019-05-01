@@ -13,16 +13,24 @@
   (load-theme 'doom-one t)
   (doom-themes-org-config))
 
+;; all the icons
 (use-package all-the-icons
   :ensure t)
 
+;; modeline
 (use-package doom-modeline
       :ensure t
       :hook (after-init . doom-modeline-mode))
 
+;; delimiters
 (use-package rainbow-delimiters
   :ensure t
   :config
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (show-paren-mode 1)
+
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
