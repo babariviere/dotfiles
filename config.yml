@@ -93,6 +93,7 @@ files:
       - auto-save-list/*
       - transient/*
       - eshell/*
+      - forge-database.sqlite
 git:
   path: ".dot/.git"
   location: home
