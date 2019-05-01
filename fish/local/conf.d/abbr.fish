@@ -14,3 +14,5 @@ abbr -a time time -p
 
 abbr -a urle string escape --style=url
 abbr -a urld string unescape --style=url
+
+abbr -a find fd

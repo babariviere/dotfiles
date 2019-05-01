@@ -65,6 +65,7 @@
     "rust.el"
     "go.el"
     "markdown.el"
+    "fish.el"
     )
   "A list of custom configuration file name.  Relative to 'user-emacs-directory'.")
 
