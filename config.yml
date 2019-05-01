@@ -95,6 +95,8 @@ files:
       - eshell/*
       - forge-database.sqlite
       - diary
+      - private.el
+      - recentf
 git:
   path: ".dot/.git"
   location: home

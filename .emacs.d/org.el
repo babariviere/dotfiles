@@ -1,3 +1,8 @@
+(defun open-notes ()
+  "Open notes files quickly."
+  (interactive)
+  (find-file org-default-notes-file))
+
 (use-package org
   :config
   (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
@@ -14,7 +19,8 @@
     :states 'normal
     "ol" 'org-store-link
     "oa" 'org-agenda
-    "oc" 'org-capture)
+    "oc" 'org-capture
+    "on" 'open-notes)
   (setq org-log-done t)
   (setq org-src-fontify-natively t)
   (setq org-src-window-setup 'current-window)
@@ -68,3 +74,9 @@
   :config
   (setq org-bullets-bullet-list '("∙"))
   (add-hook 'org-mode-hook 'org-bullets-mode))
+
+;; store credentials in ~/.authinfo
+(use-package org-jira
+  :after org
+  :config
+  (setq jiralib-url (concat "https://" jira-site ".atlassian.net")))
