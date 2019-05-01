@@ -23,10 +23,10 @@
  '(ivy-virtual-abbreviate (quote full))
  '(package-selected-packages
    (quote
-    (fish-mode general go-mode-load evil-magit confluence org-bullets evil-org rainbow-delimiters go-add-tags go-guru godoctor git-gutter magit counsel-projectile doom-themes org-evil org-mode ivy-rich projectile ivy direnv yasnippet all-the-icons unicode-fonts company company-go go-mode doom-modeline flycheck-rust cargo rust-mode toml-mode flycheck company-lsp lsp-ui lsp-mode use-package company-mode
-	       (evil)
-	       (evil)
-	       night-owl-theme evil))))
+    (auto-compile evil-surround use-package-ensure gotest fish-mode general go-mode-load evil-magit confluence org-bullets evil-org rainbow-delimiters go-add-tags go-guru godoctor git-gutter magit counsel-projectile doom-themes org-evil org-mode ivy-rich projectile ivy direnv yasnippet all-the-icons unicode-fonts company company-go go-mode doom-modeline flycheck-rust cargo rust-mode toml-mode flycheck company-lsp lsp-ui lsp-mode use-package company-mode
+		  (evil)
+		  (evil)
+		  night-owl-theme evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -51,6 +51,15 @@
 ;; Install use-package
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
+
+;; ensure all packages are installed
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+
+;; auto compile packages
+(use-package auto-compile
+  :config (auto-compile-on-load-mode))
+(setq load-prefer-newer t)
 
 (defvar config-files
   '("ui.el" "evil.el"

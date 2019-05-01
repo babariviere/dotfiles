@@ -1,11 +1,9 @@
 (use-package general
-  :ensure t
   :config
   (general-create-definer leader-define-key
 			  :prefix ","))
 
 (use-package evil
-  :ensure t
   :after general
   :config
   (evil-mode 1)
@@ -22,4 +20,8 @@
      "m" 'package-menu-mark-install
      "u" 'package-menu-mark-unmark
      "x" 'package-menu-execute))
+
+  (use-package evil-surround
+    :config
+    (global-evil-surround-mode 1))
   )

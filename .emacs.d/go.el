@@ -8,19 +8,27 @@
   (leader-define-key
    :states '(normal visual)
    :keymaps 'go-mode-map
-   "t" 'go-add-tags))
+   "t a" #'go-add-tags)
+  (leader-define-key
+    :states 'normal
+    :keymaps 'go-mode-map
+    "t f" #'go-test-current-file
+    "t t" #'go-test-current-test
+    "t p" #'go-test-current-project
+    "t c" #'go-test-current-coverage
+    "b b" #'go-test-current-benchmark
+    "b f" #'go-test-current-file-benchmarks
+    "b p" #'go-test-current-project-benchmarks))
 
 (use-package go-mode
-  :ensure t
   :hook (go-mode . lsp)
   :config
-  (use-package godoctor
-    :ensure t)
+  (use-package godoctor)
 
-  (use-package go-guru
-    :ensure t)
+  (use-package go-guru)
 
-  (use-package go-add-tags
-    :ensure t)
+  (use-package gotest)
+
+  (use-package go-add-tags)
   (add-hook 'go-mode-hook
 	    #'go-custom-mode-hook))

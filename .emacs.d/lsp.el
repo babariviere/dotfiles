@@ -1,12 +1,10 @@
 (use-package lsp-mode
-  :ensure t
   :commands lsp
   :config
   (require 'lsp-clients)
   (setq lsp-prefer-flymake nil))
 
 (use-package lsp-ui
-  :ensure t
   :config
   (setq lsp-ui-doc-enable t
         lsp-ui-sideline-enable t
@@ -19,6 +17,5 @@
 	      (set-face-attribute 'default frame :font "Iosevka Term-10"))))
 
 (use-package company-lsp
-  :ensure t
   :config
   (push 'company-lsp company-backends))

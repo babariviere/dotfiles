@@ -1,5 +1,4 @@
 (use-package company
-  :ensure t
   :bind (("C-SPC". company-complete))
   :config
   (global-company-mode)
