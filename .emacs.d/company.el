@@ -27,3 +27,8 @@
    "C-k" #'company-select-previous)
 
   (setq company-auto-complete-chars nil))
+
+(use-package company-quickhelp
+  :after company
+  :config
+  (company-quickhelp-mode))
