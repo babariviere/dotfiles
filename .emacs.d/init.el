@@ -23,10 +23,10 @@
  '(ivy-virtual-abbreviate (quote full))
  '(package-selected-packages
    (quote
-    (which-key org-jira forge ghub auto-compile evil-surround use-package-ensure gotest fish-mode general go-mode-load evil-magit confluence org-bullets evil-org rainbow-delimiters go-add-tags go-guru godoctor git-gutter magit counsel-projectile doom-themes org-evil org-mode ivy-rich projectile ivy direnv yasnippet all-the-icons unicode-fonts company company-go go-mode doom-modeline flycheck-rust cargo rust-mode toml-mode flycheck company-lsp lsp-ui lsp-mode use-package company-mode
-	       (evil)
-	       (evil)
-	       night-owl-theme evil))))
+    (company-terraform terraform-mode which-key org-jira forge ghub auto-compile evil-surround use-package-ensure gotest fish-mode general go-mode-load evil-magit confluence org-bullets evil-org rainbow-delimiters go-add-tags go-guru godoctor git-gutter magit counsel-projectile doom-themes org-evil org-mode ivy-rich projectile ivy direnv yasnippet all-the-icons unicode-fonts company company-go go-mode doom-modeline flycheck-rust cargo rust-mode toml-mode flycheck company-lsp lsp-ui lsp-mode use-package company-mode
+		       (evil)
+		       (evil)
+		       night-owl-theme evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -79,6 +79,7 @@
     "go.el"
     "markdown.el"
     "fish.el"
+    "terraform.el"
     )
   "A list of custom configuration file name.  Relative to 'user-emacs-directory'.")
 
