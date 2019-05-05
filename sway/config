@@ -176,6 +176,9 @@ output eDP-1 pos 0 1080
     bindsym XF86AudioLowerVolume exec pamixer -d 3 && pkill -RTMIN+1 i3blocks
     bindsym XF86AudioMute exec pamixer -t && pkill -RTMIN+1 i3blocks
 
+    bindsym XF86MonBrightnessDown exec light -U 5%
+    bindsym XF86MonBrightnessUp exec light -A 5%
+
 #
 # Scratchpad:
 #

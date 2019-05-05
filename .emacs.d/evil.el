@@ -20,8 +20,10 @@
      "m" 'package-menu-mark-install
      "u" 'package-menu-mark-unmark
      "x" 'package-menu-execute))
-
   (use-package evil-surround
     :config
     (global-evil-surround-mode 1))
-  )
+
+  (general-define-key
+   :states 'insert
+   "C-k" nil))

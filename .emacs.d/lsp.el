@@ -1,5 +1,7 @@
 (use-package lsp-mode
   :commands lsp
+  :init
+  (setq lsp-auto-guess-root t)
   :config
   (require 'lsp-clients)
   (setq lsp-prefer-flymake nil))
@@ -12,7 +14,11 @@
 	lsp-ui-flycheck-enable t
 	lsp-ui-doc-header t
 	lsp-ui-doc-include-signature t
-	lsp-ui-doc-use-childframe nil)
+	lsp-ui-doc-use-childframe t
+	lsp-ui-doc-max-width 100
+	lsp-ui-doc-header nil)
+  (set-face-attribute 'lsp-ui-doc-background nil :background (face-attribute 'default :background))
+  (setq lsp-ui-doc-border (face-attribute 'default :foreground))
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
   (add-hook 'lsp-ui-doc-frame-hook
@@ -21,4 +27,8 @@
 
 (use-package company-lsp
   :config
-  (push 'company-lsp company-backends))
+  (push 'company-lsp company-backends)
+  (setq company-transformers nil
+	company-lsp-async t
+	company-lsp-cache-candidates 'auto
+	company-lsp-enable-recompletion nil))

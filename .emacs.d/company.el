@@ -5,7 +5,8 @@
   (setq company-require-match nil
 	company-idle-delay .3
 	company-echo-delay 0
-	company-begin-commands '(self-insert-command))
+	company-begin-commands '(self-insert-command)
+	company-auto-complete-chars nil)
   ;; <return> is for windowed Emacs; RET is for terminal Emacs
   (dolist (key '("<return>" "RET"))
     ;; Here we are using an advanced feature of define-key that lets
@@ -24,9 +25,7 @@
    "TAB" #'company-complete-selection
    "SPC" nil
    "C-j" #'company-select-next
-   "C-k" #'company-select-previous)
-
-  (setq company-auto-complete-chars nil))
+   "C-k" #'company-select-previous))
 
 (use-package company-quickhelp
   :after company
@@ -35,25 +34,27 @@
 
 ;; See https://www.emacswiki.org/emacs/CompanyMode#toc10
 (defun check-expansion ()
-    (save-excursion
-      (if (looking-at "\\_>") t
-        (backward-char 1)
-        (if (looking-at "\\.") t
-          (backward-char 1)
-          (if (looking-at "->") t nil)))))
+  (save-excursion
+    (if (looking-at "\\_>") t
+      (backward-char 1)
+      (if (looking-at "\\.") t
+	(backward-char 1)
+	(if (looking-at "->") t nil)))))
 
-  (defun do-yas-expand ()
-    (let ((yas/fallback-behavior 'return-nil))
-      (yas/expand)))
+(defun do-yas-expand ()
+  (let ((yas/fallback-behavior 'return-nil))
+    (yas/expand)))
 
-  (defun tab-indent-or-complete ()
-    (interactive)
-    (if (minibufferp)
-        (minibuffer-complete)
-      (if (or (not yas/minor-mode)
-              (null (do-yas-expand)))
-          (if (check-expansion)
-              (company-complete-common)
-            (indent-for-tab-command)))))
+(defun tab-indent-or-complete ()
+  (interactive)
+  (if (minibufferp)
+      (minibuffer-complete)
+    (if (or (not yas/minor-mode)
+	    (null (do-yas-expand)))
+	(if (check-expansion)
+	    (company-complete-common)
+	  (indent-for-tab-command)))))
 
-  (global-set-key [tab] 'tab-indent-or-complete)
+(general-define-key
+ :keymaps 'yas-minor-mode
+ [tab] #'tab-indent-or-complete)
