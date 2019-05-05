@@ -64,6 +64,9 @@
 ;; GPG config
 (setq epa-pinentry-mode 'loopback)
 
+;; Auto update packages
+(use-package auto-package-update)
+
 (defvar config-files
   '("private.el"
     "ui.el" "evil.el"
