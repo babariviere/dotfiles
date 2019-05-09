@@ -48,10 +48,10 @@
 
 (defvar config-files
   '("private.el"
-    "ui.el" "evil.el"
-    "flycheck.el" "company.el"
-    "yas.el" "direnv.el"
-    "ivy.el" "projectile.el"
+    "ui.el" "keys.el"
+    "check.el" "completion.el"
+    "snippets.el" "direnv.el"
+    "navigation.el"
     "org.el" "git.el"
 
     ;; Languages
@@ -83,9 +83,3 @@
  '(package-selected-packages
    (quote
     (go-add-tags gotest go-guru godoctor dart-mode company-terraform terraform-mode fish-mode go-mode cargo rust-mode toml-mode company-lsp lsp-ui lsp-mode forge ghub git-gutter evil-magit magit org-jira org-bullets evil-org counsel-projectile projectile ivy-rich ivy direnv yasnippet company-quickhelp company flycheck evil-surround evil general nyan-mode which-key rainbow-delimiters doom-modeline doom-themes auto-package-update auto-compile use-package))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

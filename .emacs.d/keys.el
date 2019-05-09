@@ -1,7 +1,11 @@
 (use-package general
   :config
   (general-create-definer leader-define-key
-			  :prefix ","))
+    :prefix ",")
+
+  (leader-define-key
+    :states 'normal
+    "bk" 'kill-buffer))
 
 (use-package evil
   :after general
