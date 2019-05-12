@@ -99,7 +99,6 @@ files:
       - recentf
       - request
       - request/curl-cookie-jar
-      - tramp
 git:
   path: ".dot/.git"
   location: home

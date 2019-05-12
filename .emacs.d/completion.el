@@ -56,5 +56,5 @@
 	  (indent-for-tab-command)))))
 
 (general-define-key
- :keymaps 'yas-minor-mode
- [tab] #'tab-indent-or-complete)
+ [tab] #'tab-indent-or-complete
+ "TAB" #'tab-indent-or-complete)
