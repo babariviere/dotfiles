@@ -64,6 +64,7 @@
     "terraform.el"
     "dart.el"
     "yaml.el"
+    "feature.el"
     )
   "A list of custom configuration file name.  Relative to 'user-emacs-directory'.")
 
@@ -82,7 +83,7 @@
  '(ivy-virtual-abbreviate (quote full))
  '(package-selected-packages
    (quote
-    (go-add-tags gotest go-guru godoctor dart-mode company-terraform terraform-mode fish-mode go-mode cargo rust-mode toml-mode company-lsp lsp-ui lsp-mode forge ghub git-gutter evil-magit magit org-jira org-bullets evil-org counsel-projectile projectile ivy-rich ivy direnv yasnippet company-quickhelp company flycheck evil-surround evil general nyan-mode which-key rainbow-delimiters doom-modeline doom-themes auto-package-update auto-compile use-package))))
+    (feature-mode go-add-tags gotest go-guru godoctor dart-mode company-terraform terraform-mode fish-mode go-mode cargo rust-mode toml-mode company-lsp lsp-ui lsp-mode forge ghub git-gutter evil-magit magit org-jira org-bullets evil-org counsel-projectile projectile ivy-rich ivy direnv yasnippet company-quickhelp company flycheck evil-surround evil general nyan-mode which-key rainbow-delimiters doom-modeline doom-themes auto-package-update auto-compile use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
