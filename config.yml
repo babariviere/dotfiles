@@ -99,7 +99,8 @@ files:
       - recentf
       - request
       - request/curl-cookie-jar
-      - tramp
+  - path: ".xinitrc"
+    location: home
 git:
   path: ".dot/.git"
   location: home
