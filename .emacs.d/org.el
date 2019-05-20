@@ -75,8 +75,8 @@
   (setq org-bullets-bullet-list '("∙"))
   (add-hook 'org-mode-hook 'org-bullets-mode))
 
-;; store credentials in ~/.authinfo
-(use-package org-jira
-  :after org
-  :config
-  (setq jiralib-url (concat "https://" private-jira-site ".atlassian.net")))
+;; ;; store credentials in ~/.authinfo
+;; (use-package org-jira
+;;   :after org
+;;   :config
+;;   (setq jiralib-url (concat "https://" private-jira-site ".atlassian.net")))

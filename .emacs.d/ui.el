@@ -27,6 +27,16 @@
   :config
   (load-theme 'doom-Iosvkem t)
   (doom-themes-org-config))
+;; (use-package cyberpunk-theme
+;;   :config
+;;   (load-theme 'cyberpunk))
+;; (use-package ample-theme
+;;   :config
+;;   (load-theme 'ample-theme))
+;; (use-package moe-theme
+;;   :config
+;;   (load-theme 'moe-dark))
+
 
 ;; all the icons
 (use-package all-the-icons)
@@ -63,3 +73,9 @@
   (setq nyan-wavy-trail t)
   :config
   (nyan-mode))
+
+(use-package whitespace
+  :init
+  (setq whitespace-style '(face trailing))
+  :config
+  (global-whitespace-mode))

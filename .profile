@@ -27,3 +27,4 @@ export DESKTOP_SESSION=gnome
 export QT_QPA_PLATFORMTHEME=gtk2
 
 export _JAVA_AWT_WM_NONREPARENTING=1
+export GPG_TTY=$(tty)
