@@ -27,3 +27,7 @@
   :after evil
   :config
   (evil-collection-init))
+
+(leader-define-key
+  :states 'normal
+  "c" 'compile)
