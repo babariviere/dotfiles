@@ -31,3 +31,7 @@
   (general-define-key
    :states 'insert
    "C-k" nil))
+
+(leader-define-key
+  :states 'normal
+  "c" 'compile)
