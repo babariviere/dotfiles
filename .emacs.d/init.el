@@ -52,6 +52,12 @@
 ;; Increase GC
 (setq gc-cons-threshold 100000000)
 
+;; Limit history length
+(setq history-length 100)
+(put 'minibuffer-history 'history-length 50)
+(put 'evil-ex-history 'history-length 50)
+(put 'kill-ring 'history-length 25)
+
 (defvar config-files
   '("private.el"
     "ui.el" "keys.el"
