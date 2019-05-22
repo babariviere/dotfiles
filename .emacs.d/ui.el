@@ -77,5 +77,6 @@
 (use-package whitespace
   :init
   (setq whitespace-style '(face trailing))
+  (add-hook 'before-save-hook #'delete-trailing-whitespace)
   :config
   (global-whitespace-mode))
