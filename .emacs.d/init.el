@@ -49,6 +49,9 @@
   :config
   (pinentry-start))
 
+;; Increase GC
+(setq gc-cons-threshold 100000000)
+
 (defvar config-files
   '("private.el"
     "ui.el" "keys.el"
