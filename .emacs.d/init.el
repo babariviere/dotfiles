@@ -41,6 +41,9 @@
 ;; Auto update packages
 (use-package auto-package-update)
 
+;; Set tab width
+(setq-default tab-width 4)
+
 ;; Pinentry in emacs
 (use-package pinentry
   :config
@@ -65,6 +68,7 @@
     "dart.el"
     "yaml.el"
     "feature.el"
+    "kotlin.el"
     )
   "A list of custom configuration file name.  Relative to 'user-emacs-directory'.")
 
