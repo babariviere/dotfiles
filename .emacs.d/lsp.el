@@ -1,6 +1,7 @@
 (use-package lsp-mode
   :commands lsp
   :init
+  (setenv "CGO_ENABLED" "0")
   (setq lsp-auto-guess-root t)
   :config
   (require 'lsp-clients)
