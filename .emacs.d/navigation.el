@@ -4,6 +4,7 @@
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
   (setq ivy-count-format "(%d/%d) ")
+  (setq ivy-dynamic-exhibit-delay-ms 250)
   (leader-define-key
     :states 'normal
     "bs" 'ivy-switch-buffer)

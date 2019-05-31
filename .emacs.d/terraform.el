@@ -1,7 +1,7 @@
 (use-package terraform-mode
   :after lsp-mode
   :init
-  ;; (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode)
+  (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode)
   ;; (add-hook 'terraform-mode-hook #'lsp)
   :config
   (lsp-register-client
