@@ -1,7 +1,9 @@
 (use-package toml-mode)
 
 (use-package rust-mode
-  :hook (rust-mode . lsp))
+  :hook (rust-mode . lsp)
+  :init
+  (setq rust-format-on-save t))
 
 (use-package cargo
   :hook (rust-mode . cargo-minor-mode)
