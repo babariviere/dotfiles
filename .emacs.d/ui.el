@@ -25,8 +25,9 @@
 ;; Set theme
 (use-package doom-themes
   :config
-  (load-theme 'doom-Iosvkem t)
-  (doom-themes-org-config))
+  (load-theme 'doom-dracula t)
+  (doom-themes-org-config)
+	(doom-themes-treemacs-config))
 ;; (use-package cyberpunk-theme
 ;;   :config
 ;;   (load-theme 'cyberpunk))
