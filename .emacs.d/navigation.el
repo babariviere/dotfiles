@@ -25,7 +25,7 @@
   (setq ivy-rich-path-style 'abbrev))
 
 (use-package projectile
-  :after (evil)
+  :after evil
   :config
   (projectile-mode +1)
   (leader-define-key
@@ -51,3 +51,10 @@
 		    default-directory
 		    dired-directory))
     ad-do-it))
+
+(use-package ace-window
+	:after evil
+	:config
+	(leader-define-key
+		:states 'normal
+		"w" 'ace-window))

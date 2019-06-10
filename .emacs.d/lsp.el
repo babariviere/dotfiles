@@ -8,6 +8,7 @@
   (setq lsp-prefer-flymake nil))
 
 (use-package lsp-ui
+	:commands lsp-ui
   :config
   (setq lsp-ui-doc-enable t
         lsp-ui-sideline-enable t
@@ -27,9 +28,13 @@
 	      (set-face-attribute 'default frame :font "Iosevka Term-10"))))
 
 (use-package company-lsp
+	:commands company-lsp
   :config
   (push 'company-lsp company-backends)
   (setq company-transformers nil
 	company-lsp-async t
 	company-lsp-cache-candidates 'auto
 	company-lsp-enable-recompletion nil))
+
+(use-package lsp-treemacs
+	:commands lsp-treemacs-errors-list)
