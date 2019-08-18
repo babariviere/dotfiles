@@ -1,12 +1,12 @@
 {
   "dependencies": {
     "coc-highlight": "^1.0.5",
-    "coc-html": "^1.0.7",
+    "coc-html": "^1.2.1",
     "coc-json": "^1.0.17",
     "coc-phpls": "^2.0.3",
     "coc-rls": "^1.0.11",
-    "coc-vimtex": "^1.0.1",
-    "coc-yaml": "^1.0.1",
+    "coc-vimtex": "^1.0.2",
+    "coc-yaml": "^1.0.2",
     "ext": "^0.6.1"
   }
 }
