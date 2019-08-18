@@ -79,29 +79,11 @@ files:
   - path: waybar
     location: config
     recursive: true
-  - path: ".emacs.d"
-    location: home
-    recursive: true
-    exclude:
-      - projectile-bookmarks.eld
-      - projectile.cache
-      - autosaves/*
-      - backups/*
-      - elpa/*
-      - ".lsp-session-v1"
-      - var/*
-      - auto-save-list/*
-      - transient/*
-      - eshell/*
-      - forge-database.sqlite
-      - diary
-      - private.el
-      - recentf
-      - request
-      - request/curl-cookie-jar
-      - tramp
   - path: ".xinitrc"
     location: home
+  - path: ".doom.d"
+    location: home
+    recursive: true
 git:
   path: ".dot/.git"
   location: home
