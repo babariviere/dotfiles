@@ -14,7 +14,7 @@ export ANDROID_ROOT="$HOME/android"
 export ANDROID_HOME="$ANDROID_ROOT/sdk"
 export VULKAN_SDK="$HOME/sdk/vulkan/1.1.82.1/x86_64"
 
-export PATH="$ANDROID_ROOT/studio/bin:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.yarn/bin:$HOME/.pub-cache/bin:$FLUTTER_SDK/bin:$DART_SDK/bin:$GOPATH/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.emacs.d/bin:$ANDROID_ROOT/studio/bin:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.yarn/bin:$HOME/.pub-cache/bin:$FLUTTER_SDK/bin:$DART_SDK/bin:$GOPATH/bin:$HOME/.cargo/bin:$PATH"
 
 export NDK_HOME="/opt/android-ndk"
 export WINEDLLOVERRIDES="winemenubuilder.exe=d"
