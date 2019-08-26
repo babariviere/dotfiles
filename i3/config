@@ -35,6 +35,9 @@ bindsym $mod+Return exec termite
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# lock screen
+bindsym $mod+Shift+x exec ~/.bin/lock
+
 # start dmenu (a program launcher)
 bindsym $mod+d exec i3-dmenu-desktop
 # There also is the (new) i3-dmenu-desktop which only displays applications

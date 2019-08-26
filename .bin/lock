@@ -5,5 +5,4 @@ set -e
 tmpbg='/tmp/screen.png'
 
 maim "$tmpbg"
-convert "$tmpbg" -scale 10% -scale 1000% "$tmpbg"
-i3lock -i "$tmpbg" -t
+betterlockscreen -u "$tmpbg" --off 5 -l blur
