@@ -5,9 +5,17 @@
 (setq
  doom-font (font-spec :family "Iosevka Term" :size 13)
  doom-theme 'doom-dracula
- display-line-numbers-type t
+ display-line-numbers-type t)
 
- ;; lang rust
- rustic-lsp-server 'rust-analyzer)
+;;; :completion ivy
+(setf (alist-get 't ivy-re-builders-alist) #'ivy--regex-plus)
 
+;;; :lang org
+(setq
+ org-log-done 'time)
+
+;;; :lang go
 (add-hook! 'before-save-hook #'gofmt-before-save)
+
+;;; :lang rust
+(setq rustic-lsp-server 'rust-analyzer)
