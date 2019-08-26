@@ -5,4 +5,5 @@ set -e
 tmpbg='/tmp/screen.png'
 
 maim "$tmpbg"
+notify-send "Locking screen..." "applying filters and everything else to create image"
 betterlockscreen -u "$tmpbg" --off 5 -l blur
