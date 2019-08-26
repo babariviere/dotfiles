@@ -9,3 +9,5 @@
 
  ;; lang rust
  rustic-lsp-server 'rust-analyzer)
+
+(add-hook! 'before-save-hook #'gofmt-before-save)
