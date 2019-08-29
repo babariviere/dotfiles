@@ -57,7 +57,8 @@
        snippets          ; my elves. They type so I don't have to
 
        :emacs
-       dired             ; making dired pretty [functional]
+       (dired
+        +icons)          ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
        vc                ; version-control and Emacs, sitting in a tree
 
@@ -146,7 +147,8 @@
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       web               ; the tubes
+       (web
+        +javascript)      ; the tubes
        ;;vala              ; GObjective-C
 
        :email
