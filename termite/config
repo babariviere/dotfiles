@@ -2,7 +2,7 @@
 audible_bell = false
 clickable_url = true
 filter_unmatched_urls = true
-font = Iosevka Term SS07 10
+font = Iosevka Term Baba 10
 scrollback_lines = 1000
 size_hints = true
 

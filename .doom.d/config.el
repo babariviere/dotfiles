@@ -3,7 +3,7 @@
 ;; Place your private configuration here
 
 (setq
- doom-font (font-spec :family "Iosevka Term SS07" :size 13)
+ doom-font (font-spec :family "Iosevka Term Baba" :size 13)
  doom-theme 'doom-dracula
  display-line-numbers-type t)
 
