@@ -87,6 +87,8 @@ files:
   - path: fontconfig
     location: config
     recursive: true
+  - path: src/Iosevka/private-build-plans.toml
+    location: home
 git:
   path: ".dot/.git"
   location: home
