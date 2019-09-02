@@ -17,5 +17,13 @@
 ;;; :lang go
 (add-hook! 'before-save-hook #'gofmt-before-save)
 
+(use-package! go-add-tags
+  :commands go-add-tags)
+
+(after! go-mode
+  (map! :map go-mode-map
+        :localleader
+        "a" #'go-add-tags))
+
 ;;; :lang rust
 (setq rustic-lsp-server 'rust-analyzer)
