@@ -84,6 +84,9 @@ files:
   - path: ".doom.d"
     location: home
     recursive: true
+  - path: fontconfig
+    location: config
+    recursive: true
 git:
   path: ".dot/.git"
   location: home
