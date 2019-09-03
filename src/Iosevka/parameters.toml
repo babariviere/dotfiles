@@ -951,486 +951,510 @@ featureTag = 'XHS0'
 sequence = "::::"
 
 # -----------------------------------------
-# Arrow-like operators
+# Equals
 # -----------------------------------------
 
 [[iosevka.compLig]]
 unicode = 57673 # 0xe149
 featureTag = 'XHS0'
-sequence = "->"
+sequence = "=="
 
 [[iosevka.compLig]]
 unicode = 57674 # 0xe14a
 featureTag = 'XHS0'
-sequence = "->-"
+sequence = "!="
 
 [[iosevka.compLig]]
 unicode = 57675 # 0xe14b
 featureTag = 'XHS0'
-sequence = "->--"
+sequence = "==="
 
 [[iosevka.compLig]]
 unicode = 57676 # 0xe14c
 featureTag = 'XHS0'
-sequence = "->>"
+sequence = "!=="
+
+# -----------------------------------------
+# Arrow-like operators
+# -----------------------------------------
 
 [[iosevka.compLig]]
 unicode = 57677 # 0xe14d
 featureTag = 'XHS0'
-sequence = "->>-"
+sequence = "->"
 
 [[iosevka.compLig]]
 unicode = 57678 # 0xe14e
 featureTag = 'XHS0'
-sequence = "->>--"
+sequence = "->-"
 
 [[iosevka.compLig]]
 unicode = 57679 # 0xe14f
 featureTag = 'XHS0'
-sequence = "->>>"
+sequence = "->--"
 
 [[iosevka.compLig]]
 unicode = 57680 # 0xe150
 featureTag = 'XHS0'
-sequence = "->>>-"
+sequence = "->>"
 
 [[iosevka.compLig]]
 unicode = 57681 # 0xe151
 featureTag = 'XHS0'
-sequence = "->>>--"
+sequence = "->>-"
 
 [[iosevka.compLig]]
 unicode = 57682 # 0xe152
 featureTag = 'XHS0'
-sequence = "-->"
+sequence = "->>--"
 
 [[iosevka.compLig]]
 unicode = 57683 # 0xe153
 featureTag = 'XHS0'
-sequence = "-->-"
+sequence = "->>>"
 
 [[iosevka.compLig]]
 unicode = 57684 # 0xe154
 featureTag = 'XHS0'
-sequence = "-->--"
+sequence = "->>>-"
 
 [[iosevka.compLig]]
 unicode = 57685 # 0xe155
 featureTag = 'XHS0'
-sequence = "-->>"
+sequence = "->>>--"
 
 [[iosevka.compLig]]
 unicode = 57686 # 0xe156
 featureTag = 'XHS0'
-sequence = "-->>-"
+sequence = "-->"
 
 [[iosevka.compLig]]
 unicode = 57687 # 0xe157
 featureTag = 'XHS0'
-sequence = "-->>--"
+sequence = "-->-"
 
 [[iosevka.compLig]]
 unicode = 57688 # 0xe158
 featureTag = 'XHS0'
-sequence = "-->>>"
+sequence = "-->--"
 
 [[iosevka.compLig]]
 unicode = 57689 # 0xe159
 featureTag = 'XHS0'
-sequence = "-->>>-"
+sequence = "-->>"
 
 [[iosevka.compLig]]
 unicode = 57690 # 0xe15a
 featureTag = 'XHS0'
-sequence = "-->>>--"
+sequence = "-->>-"
 
 [[iosevka.compLig]]
 unicode = 57691 # 0xe15b
 featureTag = 'XHS0'
-sequence = ">-"
+sequence = "-->>--"
 
 [[iosevka.compLig]]
 unicode = 57692 # 0xe15c
 featureTag = 'XHS0'
-sequence = ">--"
+sequence = "-->>>"
 
 [[iosevka.compLig]]
 unicode = 57693 # 0xe15d
 featureTag = 'XHS0'
-sequence = ">>-"
+sequence = "-->>>-"
 
 [[iosevka.compLig]]
 unicode = 57694 # 0xe15e
 featureTag = 'XHS0'
-sequence = ">>--"
+sequence = "-->>>--"
 
 [[iosevka.compLig]]
 unicode = 57695 # 0xe15f
 featureTag = 'XHS0'
-sequence = ">>>-"
+sequence = ">-"
 
 [[iosevka.compLig]]
 unicode = 57696 # 0xe160
 featureTag = 'XHS0'
-sequence = ">>>--"
+sequence = ">--"
 
 [[iosevka.compLig]]
 unicode = 57697 # 0xe161
 featureTag = 'XHS0'
-sequence = "=>"
+sequence = ">>-"
 
 [[iosevka.compLig]]
 unicode = 57698 # 0xe162
 featureTag = 'XHS0'
-sequence = "=>="
+sequence = ">>--"
 
 [[iosevka.compLig]]
 unicode = 57699 # 0xe163
 featureTag = 'XHS0'
-sequence = "=>=="
+sequence = ">>>-"
 
 [[iosevka.compLig]]
 unicode = 57700 # 0xe164
 featureTag = 'XHS0'
-sequence = "=>>"
+sequence = ">>>--"
 
 [[iosevka.compLig]]
 unicode = 57701 # 0xe165
 featureTag = 'XHS0'
-sequence = "=>>="
+sequence = "=>"
 
 [[iosevka.compLig]]
 unicode = 57702 # 0xe166
 featureTag = 'XHS0'
-sequence = "=>>=="
+sequence = "=>="
 
 [[iosevka.compLig]]
 unicode = 57703 # 0xe167
 featureTag = 'XHS0'
-sequence = "=>>>"
+sequence = "=>=="
 
 [[iosevka.compLig]]
 unicode = 57704 # 0xe168
 featureTag = 'XHS0'
-sequence = "=>>>="
+sequence = "=>>"
 
 [[iosevka.compLig]]
 unicode = 57705 # 0xe169
 featureTag = 'XHS0'
-sequence = "=>>>=="
+sequence = "=>>="
 
 [[iosevka.compLig]]
 unicode = 57706 # 0xe16a
 featureTag = 'XHS0'
-sequence = "==>"
+sequence = "=>>=="
 
 [[iosevka.compLig]]
 unicode = 57707 # 0xe16b
 featureTag = 'XHS0'
-sequence = "==>="
+sequence = "=>>>"
 
 [[iosevka.compLig]]
 unicode = 57708 # 0xe16c
 featureTag = 'XHS0'
-sequence = "==>=="
+sequence = "=>>>="
 
 [[iosevka.compLig]]
 unicode = 57709 # 0xe16d
 featureTag = 'XHS0'
-sequence = "==>>"
+sequence = "=>>>=="
 
 [[iosevka.compLig]]
 unicode = 57710 # 0xe16e
 featureTag = 'XHS0'
-sequence = "==>>="
+sequence = "==>"
 
 [[iosevka.compLig]]
 unicode = 57711 # 0xe16f
 featureTag = 'XHS0'
-sequence = "==>>=="
+sequence = "==>="
 
 [[iosevka.compLig]]
 unicode = 57712 # 0xe170
 featureTag = 'XHS0'
-sequence = "==>>>"
+sequence = "==>=="
 
 [[iosevka.compLig]]
 unicode = 57713 # 0xe171
 featureTag = 'XHS0'
-sequence = "==>>>="
+sequence = "==>>"
 
 [[iosevka.compLig]]
 unicode = 57714 # 0xe172
 featureTag = 'XHS0'
-sequence = "==>>>=="
+sequence = "==>>="
 
 [[iosevka.compLig]]
 unicode = 57715 # 0xe173
 featureTag = 'XHS0'
-sequence = ">="
+sequence = "==>>=="
 
 [[iosevka.compLig]]
 unicode = 57716 # 0xe174
 featureTag = 'XHS0'
-sequence = ">=="
+sequence = "==>>>"
 
 [[iosevka.compLig]]
 unicode = 57717 # 0xe175
 featureTag = 'XHS0'
-sequence = ">>="
+sequence = "==>>>="
 
 [[iosevka.compLig]]
 unicode = 57718 # 0xe176
 featureTag = 'XHS0'
-sequence = ">>=="
+sequence = "==>>>=="
 
 [[iosevka.compLig]]
 unicode = 57719 # 0xe177
 featureTag = 'XHS0'
-sequence = ">>>="
+sequence = ">="
 
 [[iosevka.compLig]]
 unicode = 57720 # 0xe178
 featureTag = 'XHS0'
-sequence = ">>>=="
+sequence = ">=="
 
 [[iosevka.compLig]]
 unicode = 57721 # 0xe179
 featureTag = 'XHS0'
-sequence = "<-"
+sequence = ">>="
 
 [[iosevka.compLig]]
 unicode = 57722 # 0xe17a
 featureTag = 'XHS0'
-sequence = "-<-"
+sequence = ">>=="
 
 [[iosevka.compLig]]
 unicode = 57723 # 0xe17b
 featureTag = 'XHS0'
-sequence = "--<-"
+sequence = ">>>="
 
 [[iosevka.compLig]]
 unicode = 57724 # 0xe17c
 featureTag = 'XHS0'
-sequence = "<<-"
+sequence = ">>>=="
 
 [[iosevka.compLig]]
 unicode = 57725 # 0xe17d
 featureTag = 'XHS0'
-sequence = "-<<-"
+sequence = "<-"
 
 [[iosevka.compLig]]
 unicode = 57726 # 0xe17e
 featureTag = 'XHS0'
-sequence = "--<<-"
+sequence = "-<-"
 
 [[iosevka.compLig]]
 unicode = 57727 # 0xe17f
 featureTag = 'XHS0'
-sequence = "<<<-"
+sequence = "--<-"
 
 [[iosevka.compLig]]
 unicode = 57728 # 0xe180
 featureTag = 'XHS0'
-sequence = "-<<<-"
+sequence = "<<-"
 
 [[iosevka.compLig]]
 unicode = 57729 # 0xe181
 featureTag = 'XHS0'
-sequence = "--<<<-"
+sequence = "-<<-"
 
 [[iosevka.compLig]]
 unicode = 57730 # 0xe182
 featureTag = 'XHS0'
-sequence = "<--"
+sequence = "--<<-"
 
 [[iosevka.compLig]]
 unicode = 57731 # 0xe183
 featureTag = 'XHS0'
-sequence = "-<--"
+sequence = "<<<-"
 
 [[iosevka.compLig]]
 unicode = 57732 # 0xe184
 featureTag = 'XHS0'
-sequence = "--<--"
+sequence = "-<<<-"
 
 [[iosevka.compLig]]
 unicode = 57733 # 0xe185
 featureTag = 'XHS0'
-sequence = "<<--"
+sequence = "--<<<-"
 
 [[iosevka.compLig]]
 unicode = 57734 # 0xe186
 featureTag = 'XHS0'
-sequence = "-<<--"
+sequence = "<--"
 
 [[iosevka.compLig]]
 unicode = 57735 # 0xe187
 featureTag = 'XHS0'
-sequence = "--<<--"
+sequence = "-<--"
 
 [[iosevka.compLig]]
 unicode = 57736 # 0xe188
 featureTag = 'XHS0'
-sequence = "<<<--"
+sequence = "--<--"
 
 [[iosevka.compLig]]
 unicode = 57737 # 0xe189
 featureTag = 'XHS0'
-sequence = "-<<<--"
+sequence = "<<--"
 
 [[iosevka.compLig]]
 unicode = 57738 # 0xe18a
 featureTag = 'XHS0'
-sequence = "--<<<--"
+sequence = "-<<--"
 
 [[iosevka.compLig]]
 unicode = 57739 # 0xe18b
 featureTag = 'XHS0'
-sequence = "-<"
+sequence = "--<<--"
 
 [[iosevka.compLig]]
 unicode = 57740 # 0xe18c
 featureTag = 'XHS0'
-sequence = "--<"
+sequence = "<<<--"
 
 [[iosevka.compLig]]
 unicode = 57741 # 0xe18d
 featureTag = 'XHS0'
-sequence = "-<<"
+sequence = "-<<<--"
 
 [[iosevka.compLig]]
 unicode = 57742 # 0xe18e
 featureTag = 'XHS0'
-sequence = "--<<"
+sequence = "--<<<--"
 
 [[iosevka.compLig]]
 unicode = 57743 # 0xe18f
 featureTag = 'XHS0'
-sequence = "-<<<"
+sequence = "-<"
 
 [[iosevka.compLig]]
 unicode = 57744 # 0xe190
 featureTag = 'XHS0'
-sequence = "--<<<"
+sequence = "--<"
 
 [[iosevka.compLig]]
 unicode = 57745 # 0xe191
 featureTag = 'XHS0'
-sequence = "<="
+sequence = "-<<"
 
 [[iosevka.compLig]]
 unicode = 57746 # 0xe192
 featureTag = 'XHS0'
-sequence = "=<="
+sequence = "--<<"
 
 [[iosevka.compLig]]
 unicode = 57747 # 0xe193
 featureTag = 'XHS0'
-sequence = "==<="
+sequence = "-<<<"
 
 [[iosevka.compLig]]
 unicode = 57748 # 0xe194
 featureTag = 'XHS0'
-sequence = "<<="
+sequence = "--<<<"
 
 [[iosevka.compLig]]
 unicode = 57749 # 0xe195
 featureTag = 'XHS0'
-sequence = "=<<="
+sequence = "<="
 
 [[iosevka.compLig]]
 unicode = 57750 # 0xe196
 featureTag = 'XHS0'
-sequence = "==<<="
+sequence = "=<="
 
 [[iosevka.compLig]]
 unicode = 57751 # 0xe197
 featureTag = 'XHS0'
-sequence = "<<<="
+sequence = "==<="
 
 [[iosevka.compLig]]
 unicode = 57752 # 0xe198
 featureTag = 'XHS0'
-sequence = "=<<<="
+sequence = "<<="
 
 [[iosevka.compLig]]
 unicode = 57753 # 0xe199
 featureTag = 'XHS0'
-sequence = "==<<<="
+sequence = "=<<="
 
 [[iosevka.compLig]]
 unicode = 57754 # 0xe19a
 featureTag = 'XHS0'
-sequence = "<=="
+sequence = "==<<="
 
 [[iosevka.compLig]]
 unicode = 57755 # 0xe19b
 featureTag = 'XHS0'
-sequence = "=<=="
+sequence = "<<<="
 
 [[iosevka.compLig]]
 unicode = 57756 # 0xe19c
 featureTag = 'XHS0'
-sequence = "==<=="
+sequence = "=<<<="
 
 [[iosevka.compLig]]
 unicode = 57757 # 0xe19d
 featureTag = 'XHS0'
-sequence = "<<=="
+sequence = "==<<<="
 
 [[iosevka.compLig]]
 unicode = 57758 # 0xe19e
 featureTag = 'XHS0'
-sequence = "=<<=="
+sequence = "<=="
 
 [[iosevka.compLig]]
 unicode = 57759 # 0xe19f
 featureTag = 'XHS0'
-sequence = "==<<=="
+sequence = "=<=="
 
 [[iosevka.compLig]]
 unicode = 57760 # 0xe1a0
 featureTag = 'XHS0'
-sequence = "<<<=="
+sequence = "==<=="
 
 [[iosevka.compLig]]
 unicode = 57761 # 0xe1a1
 featureTag = 'XHS0'
-sequence = "=<<<=="
+sequence = "<<=="
 
 [[iosevka.compLig]]
 unicode = 57762 # 0xe1a2
 featureTag = 'XHS0'
-sequence = "==<<<=="
+sequence = "=<<=="
 
 [[iosevka.compLig]]
 unicode = 57763 # 0xe1a3
 featureTag = 'XHS0'
-sequence = "=<"
+sequence = "==<<=="
 
 [[iosevka.compLig]]
 unicode = 57764 # 0xe1a4
 featureTag = 'XHS0'
-sequence = "==<"
+sequence = "<<<=="
 
 [[iosevka.compLig]]
 unicode = 57765 # 0xe1a5
 featureTag = 'XHS0'
-sequence = "=<<"
+sequence = "=<<<=="
 
 [[iosevka.compLig]]
 unicode = 57766 # 0xe1a6
 featureTag = 'XHS0'
-sequence = "==<<"
+sequence = "==<<<=="
 
 [[iosevka.compLig]]
 unicode = 57767 # 0xe1a7
 featureTag = 'XHS0'
-sequence = "=<<<"
+sequence = "=<"
 
 [[iosevka.compLig]]
 unicode = 57768 # 0xe1a8
+featureTag = 'XHS0'
+sequence = "==<"
+
+[[iosevka.compLig]]
+unicode = 57769 # 0xe1a9
+featureTag = 'XHS0'
+sequence = "=<<"
+
+[[iosevka.compLig]]
+unicode = 57770 # 0xe1aa
+featureTag = 'XHS0'
+sequence = "==<<"
+
+[[iosevka.compLig]]
+unicode = 57771 # 0xe1ab
+featureTag = 'XHS0'
+sequence = "=<<<"
+
+[[iosevka.compLig]]
+unicode = 57772 # 0xe1ac
 featureTag = 'XHS0'
 sequence = "==<<<"
 
@@ -1439,42 +1463,42 @@ sequence = "==<<<"
 # -----------------------------------------
 
 [[iosevka.compLig]]
-unicode = 57769 # 0xe1a9
+unicode = 57773 # 0xe1ad
 featureTag = 'XHS0'
 sequence = ">=>"
 
 [[iosevka.compLig]]
-unicode = 57770 # 0xe1aa
+unicode = 57774 # 0xe1ae
 featureTag = 'XHS0'
 sequence = ">->"
 
 [[iosevka.compLig]]
-unicode = 57771 # 0xe1ab
+unicode = 57775 # 0xe1af
 featureTag = 'XHS0'
 sequence = ">-->"
 
 [[iosevka.compLig]]
-unicode = 57772 # 0xe1ac
+unicode = 57776 # 0xe1b0
 featureTag = 'XHS0'
 sequence = ">==>"
 
 [[iosevka.compLig]]
-unicode = 57773 # 0xe1ad
+unicode = 57777 # 0xe1b1
 featureTag = 'XHS0'
 sequence = "<=<"
 
 [[iosevka.compLig]]
-unicode = 57774 # 0xe1ae
+unicode = 57778 # 0xe1b2
 featureTag = 'XHS0'
 sequence = "<-<"
 
 [[iosevka.compLig]]
-unicode = 57775 # 0xe1af
+unicode = 57779 # 0xe1b3
 featureTag = 'XHS0'
 sequence = "<--<"
 
 [[iosevka.compLig]]
-unicode = 57776 # 0xe1b0
+unicode = 57780 # 0xe1b4
 featureTag = 'XHS0'
 sequence = "<==<"
 
@@ -1483,22 +1507,22 @@ sequence = "<==<"
 # -----------------------------------------
 
 [[iosevka.compLig]]
-unicode = 57777 # 0xe1b1
+unicode = 57781 # 0xe1b5
 featureTag = 'XHS0'
 sequence = ">>"
 
 [[iosevka.compLig]]
-unicode = 57778 # 0xe1b2
+unicode = 57782 # 0xe1b6
 featureTag = 'XHS0'
 sequence = ">>>"
 
 [[iosevka.compLig]]
-unicode = 57779 # 0xe1b3
+unicode = 57783 # 0xe1b7
 featureTag = 'XHS0'
 sequence = "<<"
 
 [[iosevka.compLig]]
-unicode = 57780 # 0xe1b4
+unicode = 57784 # 0xe1b8
 featureTag = 'XHS0'
 sequence = "<<<"
 
@@ -1507,92 +1531,92 @@ sequence = "<<<"
 # -----------------------------------------
 
 [[iosevka.compLig]]
-unicode = 57781 # 0xe1b5
+unicode = 57785 # 0xe1b9
 featureTag = 'XHS0'
 sequence = ":+"
 
 [[iosevka.compLig]]
-unicode = 57782 # 0xe1b6
+unicode = 57786 # 0xe1ba
 featureTag = 'XHS0'
 sequence = ":-"
 
 [[iosevka.compLig]]
-unicode = 57783 # 0xe1b7
+unicode = 57787 # 0xe1bb
 featureTag = 'XHS0'
 sequence = ":="
 
 [[iosevka.compLig]]
-unicode = 57784 # 0xe1b8
+unicode = 57788 # 0xe1bc
 featureTag = 'XHS0'
 sequence = "+:"
 
 [[iosevka.compLig]]
-unicode = 57785 # 0xe1b9
+unicode = 57789 # 0xe1bd
 featureTag = 'XHS0'
 sequence = "-:"
 
 [[iosevka.compLig]]
-unicode = 57786 # 0xe1ba
+unicode = 57790 # 0xe1be
 featureTag = 'XHS0'
 sequence = "=:"
 
 [[iosevka.compLig]]
-unicode = 57787 # 0xe1bb
+unicode = 57791 # 0xe1bf
 featureTag = 'XHS0'
 sequence = "=^"
 
 [[iosevka.compLig]]
-unicode = 57788 # 0xe1bc
+unicode = 57792 # 0xe1c0
 featureTag = 'XHS0'
 sequence = "=+"
 
 [[iosevka.compLig]]
-unicode = 57789 # 0xe1bd
+unicode = 57793 # 0xe1c1
 featureTag = 'XHS0'
 sequence = "=-"
 
 [[iosevka.compLig]]
-unicode = 57790 # 0xe1be
+unicode = 57794 # 0xe1c2
 featureTag = 'XHS0'
 sequence = "=*"
 
 [[iosevka.compLig]]
-unicode = 57791 # 0xe1bf
+unicode = 57795 # 0xe1c3
 featureTag = 'XHS0'
 sequence = "=/"
 
 [[iosevka.compLig]]
-unicode = 57792 # 0xe1c0
+unicode = 57796 # 0xe1c4
 featureTag = 'XHS0'
 sequence = "=%"
 
 [[iosevka.compLig]]
-unicode = 57793 # 0xe1c1
+unicode = 57797 # 0xe1c5
 featureTag = 'XHS0'
 sequence = "^="
 
 [[iosevka.compLig]]
-unicode = 57794 # 0xe1c2
+unicode = 57798 # 0xe1c6
 featureTag = 'XHS0'
 sequence = "+="
 
 [[iosevka.compLig]]
-unicode = 57795 # 0xe1c3
+unicode = 57799 # 0xe1c7
 featureTag = 'XHS0'
 sequence = "-="
 
 [[iosevka.compLig]]
-unicode = 57796 # 0xe1c4
+unicode = 57800 # 0xe1c8
 featureTag = 'XHS0'
 sequence = "*="
 
 [[iosevka.compLig]]
-unicode = 57797 # 0xe1c5
+unicode = 57801 # 0xe1c9
 featureTag = 'XHS0'
 sequence = "/="
 
 [[iosevka.compLig]]
-unicode = 57798 # 0xe1c6
+unicode = 57802 # 0xe1ca
 featureTag = 'XHS0'
 sequence = "%="
 
@@ -1601,12 +1625,12 @@ sequence = "%="
 # -----------------------------------------
 
 [[iosevka.compLig]]
-unicode = 57799 # 0xe1c7
+unicode = 57803 # 0xe1cb
 featureTag = 'XHS0'
 sequence = "/\\"
 
 [[iosevka.compLig]]
-unicode = 57800 # 0xe1c8
+unicode = 57804 # 0xe1cc
 featureTag = 'XHS0'
 sequence = "\\/"
 
@@ -1615,31 +1639,21 @@ sequence = "\\/"
 # -----------------------------------------
 
 [[iosevka.compLig]]
-unicode = 57801 # 0xe1c9
+unicode = 57805 # 0xe1cd
 featureTag = 'XHS0'
 sequence = "<>"
 
 [[iosevka.compLig]]
-unicode = 57802 # 0xe1ca
+unicode = 57806 # 0xe1ce
 featureTag = 'XHS0'
 sequence = "<+"
 
 [[iosevka.compLig]]
-unicode = 57803 # 0xe1cb
+unicode = 57807 # 0xe1cf
 featureTag = 'XHS0'
 sequence = "<+>"
 
 [[iosevka.compLig]]
-unicode = 57804 # 0xe1cc
+unicode = 57808 # 0xe1d0
 featureTag = 'XHS0'
 sequence = "+>"
-
-[[iosevka.compLig]]
-unicode = 57805 # 0xe1cc
-featureTag = 'XHS0'
-sequence = ">~>"
-
-[[iosevka.compLig]]
-unicode = 57806 # 0xe1cc
-featureTag = 'XHS0'
-sequence = "<~>"

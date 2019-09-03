@@ -27,3 +27,6 @@
 
 ;;; :lang rust
 (setq rustic-lsp-server 'rust-analyzer)
+
+;;; :ui pretty-code
+(load-file "~/.doom.d/+iosevka.el")
