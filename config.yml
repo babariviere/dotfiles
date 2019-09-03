@@ -91,6 +91,12 @@ files:
     location: home
   - path: src/Iosevka/parameters.toml
     location: home
+  - path: ".fonts/iosevka-baba"
+    location: home
+    recursive: true
+  - path: ".fonts/iosevka-term-baba"
+    location: home
+    recursive: true
 git:
   path: ".dot/.git"
   location: home
