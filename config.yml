@@ -89,6 +89,8 @@ files:
     recursive: true
   - path: src/Iosevka/private-build-plans.toml
     location: home
+  - path: src/Iosevka/parameters.toml
+    location: home
 git:
   path: ".dot/.git"
   location: home
