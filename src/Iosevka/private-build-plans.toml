@@ -1,6 +1,6 @@
 [buildPlans.iosevka-baba]
 family = "Iosevka Baba"
-design = ['v-at-fourfold', 'v-a-singlestorey', 'v-i-zshaped', 'v-g-singlestorey', 'v-l-zshaped', 'v-brace-straight', 'v-numbersign-slanted', 'v-asterisk-hexlow', 'ligset-coq']
+design = ['ligset-haskell', 'v-at-fourfold', 'v-a-singlestorey', 'v-i-zshaped', 'v-g-singlestorey', 'v-l-zshaped', 'v-brace-straight', 'v-numbersign-slanted', 'v-asterisk-hexlow']
 
 [buildPlans.iosevka-term-baba]
 family = "Iosevka Term Baba"
