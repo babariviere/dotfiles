@@ -110,7 +110,7 @@
        emacs-lisp          ; drown in parentheses
        ;;ess               ; emacs speaks statistics
        ;;fsharp            ; ML stands for Microsoft's Language
-       go                  ; the hipster dialect
+       (go +lsp)           ; the hipster dialect
        (haskell +dante +lsp) ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ;
