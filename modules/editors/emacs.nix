@@ -1,15 +1,52 @@
 { config, lib, pkgs, ... }:
 
+with lib;
+let
+  cfg = config.services.emacs;
+  rg = (pkgs.ripgrep.override {withPCRE2 = true;});
+in
 {
-  environment.systemPackages = with pkgs; [
-    (lib.mkIf (config.programs.gnupg.agent.enable) pinentry_emacs)
+  # TODO: install doom config via home-manager
+  options.services.emacs = {
+    editorconfig = mkOption {
+      type = types.bool;
+      description = "Add support for editorconfig";
+      default = true;
+    };
 
-    # Essential
-    emacs
-    editorconfig-core-c            # :tools editorconfig
+    direnv = mkOption {
+      type = types.bool;
+      description = "Add support for direnv";
+      default = true;
+    };
 
-    # Misc
-    direnv                         # :tools direnv
-    texlive.combined.scheme-medium # :lang org
-  ];
+    ripgrep = mkOption {
+      type = types.bool;
+      description = "Add support for ripgrep";
+      default = true;
+    };
+    
+    rls = mkOption {
+      type = types.bool;
+      description = "Add support for rls";
+      default = true;
+    };
+  };
+  
+  config = {
+    environment.systemPackages = with pkgs; [
+      (mkIf (config.programs.gnupg.agent.enable) pinentry_emacs)
+
+      # Essential
+      emacs
+      (mkIf (cfg.editorconfig) editorconfig-core-c) # :tools editorconfig
+
+      # Misc
+      (mkIf (cfg.direnv) direnv) # :tools direnv
+      texlive.combined.scheme-medium # :lang org
+      (mkIf (cfg.ripgrep) rg)
+    ];
+
+    fonts.fonts = [pkgs.emacs-all-the-icons-fonts];
+  };
 }

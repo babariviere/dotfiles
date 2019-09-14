@@ -3,6 +3,9 @@
 {
   imports = [
     ./.
+
+    ./modules/desktop
+    ./modules/editors/emacs.nix
     ./modules/services/syncthing.nix
   ];
 
