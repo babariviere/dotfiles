@@ -19,4 +19,6 @@
       efi.canTouchEfiVariables = true;
     };
   };
+
+  services.dotfiles.name = "Bastien Riviere";
 }

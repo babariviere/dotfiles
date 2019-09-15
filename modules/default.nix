@@ -8,6 +8,16 @@ with lib;
       description = "User used for services";
     };
 
+    email = mkOption {
+      type = types.str;
+      description = "Email of the user";
+    };
+
+    name = mkOption {
+      type = types.str;
+      description = "Name of the user";
+    };
+
     ligature = mkOption {
       type = types.bool;
       description = "Add ligature support to all services";

@@ -16,6 +16,7 @@ in
 
   services.dotfiles = {
     user = user;
+    email = "babathriviere@gmail.com";
   };
 
   users.users."${user}" = {
