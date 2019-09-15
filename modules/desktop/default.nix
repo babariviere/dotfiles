@@ -8,6 +8,7 @@ let
               "v-l-zshaped" "v-brace-straight" "v-numbersign-slanted" "v-asterisk-hexlow"];
     set = "baba";
     family = "Iosevka Baba";
+    # TODO: extraParameters
   });
   iosevkaTermBaba = (pkgs.iosevka.override {
     design = ["term"
@@ -19,9 +20,8 @@ let
 in
 {
   require = [../.];
-  # lib.overrideDerivation pkgs.iosevka { attrs: attrs // { preConfigure = '''' } }
+
   # TODO: generate with IosevkaGenHS
-  # TODO: update iosevka.nix to >=2.0
   fonts.fonts = [
     iosevkaBaba
     iosevkaTermBaba

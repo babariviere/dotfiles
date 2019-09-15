@@ -34,18 +34,28 @@ in
   };
   
   config = {
-    environment.systemPackages = with pkgs; [
-      (mkIf (config.programs.gnupg.agent.enable) pinentry_emacs)
+    environment = {
+      systemPackages = with pkgs; [
+        (mkIf (config.programs.gnupg.agent.enable) pinentry_emacs)
 
-      # Essential
-      emacs
-      (mkIf (cfg.editorconfig) editorconfig-core-c) # :tools editorconfig
+        # Essential
+        emacs
+        (mkIf (cfg.editorconfig) editorconfig-core-c) # :tools editorconfig
 
-      # Misc
-      (mkIf (cfg.direnv) direnv) # :tools direnv
-      texlive.combined.scheme-medium # :lang org
-      (mkIf (cfg.ripgrep) rg)
-    ];
+        # Misc
+        (mkIf (cfg.direnv) direnv) # :tools direnv
+        texlive.combined.scheme-medium # :lang org
+        (mkIf (cfg.ripgrep) rg)
+      ];
+
+      sessionVariables = {
+        EDITOR = "emacs";
+      };
+
+      shellAliases = {
+        e = "emacs";
+      };
+    };
 
     fonts.fonts = [pkgs.emacs-all-the-icons-fonts];
   };
