@@ -28,3 +28,4 @@ export QT_QPA_PLATFORMTHEME=gtk2
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 export GPG_TTY=$(tty)
+if [ -e /home/bastien/.nix-profile/etc/profile.d/nix.sh ]; then . /home/bastien/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
