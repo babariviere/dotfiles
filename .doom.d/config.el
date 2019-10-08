@@ -22,3 +22,35 @@
 
 ;;; :ui pretty-code
 (load! "+iosevka.el")
+(setq +pretty-code-symbols
+  '(;; org
+    :name          "»"
+    :src_block     "»"
+    :src_block_end "«"
+    ;; Functional
+    :lambda        "λ"
+    :def           "ƒ"
+    :composition   "∘"
+    :map           "↦"
+    ;; Types
+    :null          "∅"
+    ;; :true          "𝕋"
+    ;; :false         "𝔽"
+    ;; :int           "ℤ"
+    ;; :float         "ℝ"
+    ;; :str           "𝕊"
+    ;; :bool          "𝔹"
+    ;; Flow
+    :not           "￢"
+    :in            "∈"
+    :not-in        "∉"
+    :and           "∧"
+    :or            "∨"
+    :for           "∀"
+    :some          "∃"
+    :return        "⟼"
+    :yield         "⟻"
+    ;; Other
+    :tuple         "⨂"
+    :pipe          "" ;; FIXME: find a non-private char
+    :dot           "•"))
