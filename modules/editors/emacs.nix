@@ -3,6 +3,7 @@
 with lib;
 let
   cfg = config.services.emacs;
+  dotfiles = config.services.dotfiles;
   rg = (pkgs.ripgrep.override {withPCRE2 = true;});
 in
 {
@@ -47,7 +48,7 @@ in
     fonts.fonts = [pkgs.emacs-all-the-icons-fonts];
 
 
-    home-manager.users."${cfg.user}".xdg.configFile = {
+    home-manager.users."${dotfiles.user}".xdg.configFile = {
       "zsh/rc.d/env.emacs.zsh".source = <config/emacs/env.zsh>;
     };
   };

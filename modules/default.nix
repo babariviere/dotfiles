@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
 with lib;
+let
+  cfg = config.services.dotfiles;
+in
 {
   options.services.dotfiles = {
     user = mkOption {
