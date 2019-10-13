@@ -14,6 +14,7 @@ in
     ./modules/shell/direnv.nix
     ./modules/shell/git.nix
     ./modules/shell/zsh.nix
+    ./modules/social/discord.nix
   ];
 
   services.dotfiles = {
