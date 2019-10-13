@@ -10,6 +10,7 @@ in
     ./modules/desktop
     ./modules/dev/rust.nix
     ./modules/editors/emacs.nix
+    ./modules/media/plex.nix
     ./modules/services/syncthing.nix
     ./modules/shell/direnv.nix
     ./modules/shell/git.nix
