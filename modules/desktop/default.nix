@@ -1,5 +1,6 @@
 { config, lib, pkgs, ... }:
 
+with lib;
 let
   withLigature = config.services.dotfiles.ligature;
   iosevkaBaba = (pkgs.iosevka.override {
@@ -19,11 +20,18 @@ let
   });
 in
 {
-  require = [../.];
+  options.services.desktop = {
+    wm = mkOption {
+      type = types.enum [ "bspwm" ];
+      default = "bspwm";
+    };
+  };
 
-  # TODO: generate with IosevkaGenHS
-  fonts.fonts = [
-    iosevkaBaba
-    iosevkaTermBaba
-  ];
+  config = {
+    # TODO: generate with IosevkaGenHS
+    fonts.fonts = [
+      iosevkaBaba
+      iosevkaTermBaba
+    ];
+  };
 }

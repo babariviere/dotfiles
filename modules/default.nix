@@ -33,5 +33,9 @@ with lib;
       nre = "sudo nixos-rebuild -I config=$HOME/.dotfiles/config";
       ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
     };
+
+    home-manager.users."${cfg.user}" = {
+      xdg.enable = true;
+    };
   };
 }

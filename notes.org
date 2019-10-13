@@ -2,11 +2,11 @@
 
 * Links
 ** NixOS
-Site: https://nixos.org
-Doc: https://nixos.org/nixos/manual
-Pkg Doc: https://nixos.org/nixpkgs/manual
-Lang Doc: https://nixos.org/nix/manual
++ Site: https://nixos.org
++ Doc: https://nixos.org/nixos/manual
++ Pkg Doc: https://nixos.org/nixpkgs/manual
++ Lang Doc: https://nixos.org/nix/manual
 ** Home-Manager
-Site: https://github.com/rycee/home-manager
-Online Doc: https://rycee.gitlab.io/home-manager/options.html
-Local Doc: ~man home-configuration.nix~
++ Site: https://github.com/rycee/home-manager
++ Online Doc: https://rycee.gitlab.io/home-manager/options.html
++ Local Doc: ~man home-configuration.nix~

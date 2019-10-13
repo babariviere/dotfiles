@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, options, pkgs, ... }:
 
 {
   imports = [
@@ -7,6 +7,9 @@
   ];
 
   nix = {
+    nixPath = options.nix.nixPath.default ++ [
+      "config=/etc/dotfiles/config"
+    ];
     autoOptimiseStore = true;
     trustedUsers = [ "root" "@wheel" ];
   };

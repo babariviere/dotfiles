@@ -14,21 +14,9 @@ in
       default = true;
     };
 
-    direnv = mkOption {
-      type = types.bool;
-      description = "Add support for direnv";
-      default = true;
-    };
-
     ripgrep = mkOption {
       type = types.bool;
       description = "Add support for ripgrep";
-      default = true;
-    };
-    
-    rls = mkOption {
-      type = types.bool;
-      description = "Add support for rls";
       default = true;
     };
   };
@@ -43,7 +31,6 @@ in
         (mkIf (cfg.editorconfig) editorconfig-core-c) # :tools editorconfig
 
         # Misc
-        (mkIf (cfg.direnv) direnv) # :tools direnv
         texlive.combined.scheme-medium # :lang org
         (mkIf (cfg.ripgrep) rg)
       ];
@@ -58,5 +45,10 @@ in
     };
 
     fonts.fonts = [pkgs.emacs-all-the-icons-fonts];
+
+
+    home-manager.users."${cfg.user}".xdg.configFile = {
+      "zsh/rc.d/env.emacs.zsh".source = <config/emacs/env.zsh>;
+    };
   };
 }
