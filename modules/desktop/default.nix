@@ -2,36 +2,45 @@
 
 with lib;
 let
+  unstable = import <unstable> {};
   withLigature = config.services.dotfiles.ligature;
-  iosevkaBaba = (pkgs.iosevka.override {
-    design = if withLigature then ["ligset-haskell"] else [] ++ [
-              "v-at-fourfold" "v-a-singlestorey" "v-i-zshaped" "v-g-singlestorey"
-              "v-l-zshaped" "v-brace-straight" "v-numbersign-slanted" "v-asterisk-hexlow"];
+  iosevkaBaba = (unstable.pkgs.iosevka.override {
+    privateBuildPlan = {
+      design = if withLigature then ["ligset-haskell"] else [] ++ [
+        "v-at-fourfold" "v-a-singlestorey" "v-i-zshaped" "v-g-singlestorey"
+        "v-l-zshaped" "v-brace-straight" "v-numbersign-slanted" "v-asterisk-hexlow"];
+      family = "Iosevka Baba";
+    };
+
     set = "baba";
-    family = "Iosevka Baba";
     # TODO: extraParameters
   });
-  iosevkaTermBaba = (pkgs.iosevka.override {
-    design = ["term"
-              "v-at-fourfold" "v-a-singlestorey" "v-i-zshaped" "v-g-singlestorey"
-              "v-l-zshaped" "v-brace-straight" "v-numbersign-slanted" "v-asterisk-hexlow"];
-    set = "term-baba";
-    family = "Iosevka Term Baba";
-  });
-in
-{
-  options.services.desktop = {
-    wm = mkOption {
-      type = types.enum [ "bspwm" ];
-      default = "bspwm";
+  iosevkaTermBaba = (unstable.pkgs.iosevka.override {
+    privateBuildPlan = {
+      design = ["term"
+                "v-at-fourfold" "v-a-singlestorey" "v-i-zshaped" "v-g-singlestorey"
+                "v-l-zshaped" "v-brace-straight" "v-numbersign-slanted" "v-asterisk-hexlow"];
+      family = "Iosevka Term Baba";
     };
+    set = "term-baba";
+  });
+
+in {
+  # options.services.desktop = {
+  #   wm = mkOption {
+  #     type = types.enum [ "bspwm" ];
+  #     default = "bspwm";
+  #   };
+  services.xserver = {
+    enable = true;
+    layout = "us";
+    xkbVariant = "altgr-intl";
+    displayManager.startx.enable = true;
   };
 
-  config = {
-    # TODO: generate with IosevkaGenHS
-    fonts.fonts = [
-      iosevkaBaba
-      iosevkaTermBaba
-    ];
-  };
+  # TODO: generate with IosevkaGenHS
+  fonts.fonts = [
+    iosevkaBaba
+    iosevkaTermBaba
+  ];
 }

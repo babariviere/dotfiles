@@ -5,14 +5,13 @@ let
   cfg = config.services.desktop;
 in
 {
-  environment.systemPackages = with pkgs; [
-    polybar
-  ];
-
   home-manager.users."${gcfg.user}".services.polybar = {
     enable = true;
-    package = {
-      i3GapsSupport = cfg.wm == "i3";
+    package = pkgs.polybar.override {
+      i3GapsSupport = true; # TODO: find a way to variabilise it
+      alsaSupport = true;
     };
+    extraConfig = builtins.readFile <config/polybar/config>; # TODO: use config field
+    script = "polybar main &"; 
   };
 }
