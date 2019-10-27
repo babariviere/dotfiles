@@ -2,18 +2,16 @@
 
 with lib;
 let
-  cfg = config.services.dotfiles;
-in
-{
-  require = [
-    ../.
-  ];
-  
-  services.syncthing = {
-    enable = true;
-    openDefaultPorts = true;
-    user =  "${cfg.user}";
-    configDir = "/home/${cfg.user}/.config/syncthing";
-    dataDir = "/home/${cfg.user}/sync";
+  dotfiles = config.services.dotfiles;
+  cfg = dotfiles.services.syncthing;
+in {
+  config = mkIf cfg.enable {
+    services.syncthing = {
+      enable = true;
+      openDefaultPorts = true;
+      user = "${dotfiles.user}";
+      configDir = "/home/${dotfiles.user}/.config/syncthing";
+      dataDir = "/home/${dotfiles.user}/sync";
+    };
   };
 }

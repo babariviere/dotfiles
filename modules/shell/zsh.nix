@@ -1,29 +1,20 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.services.dotfiles;
-in
-{
-  require = [
-    ../.
-  ];
+  dotfiles = config.services.dotfiles;
+  cfg = dotfiles.shell.zsh;
+in {
+  config = lib.mkIf cfg.enable {
+    environment = {
+      systemPackages = with pkgs; [ zsh nix-zsh-completions fd exa htop tree ];
+    };
 
-  environment = {
-    systemPackages = with pkgs; [
-      zsh
-      nix-zsh-completions
-      fd
-      exa
-      htop
-      tree
-    ];
+    programs.zsh = {
+      enable = true;
+      enableCompletion = true;
+      enableGlobalCompInit = true;
+    };
+
+    users.users."${dotfiles.user}".shell = pkgs.zsh;
   };
-
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    enableGlobalCompInit = true;
-  };
-
-  users.users."${cfg.user}".shell = pkgs.zsh;
 }

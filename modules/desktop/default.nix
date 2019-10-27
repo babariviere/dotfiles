@@ -2,45 +2,78 @@
 
 with lib;
 let
-  unstable = import <unstable> {};
-  withLigature = config.services.dotfiles.ligature;
+  unstable = import /home/babariviere/projects/nixpkgs { };
+  cfg = config.services.dotfiles.desktop;
+  withLigature = cfg.ligature;
   iosevkaBaba = (unstable.pkgs.iosevka.override {
     privateBuildPlan = {
-      design = if withLigature then ["ligset-haskell"] else [] ++ [
-        "v-at-fourfold" "v-a-singlestorey" "v-i-zshaped" "v-g-singlestorey"
-        "v-l-zshaped" "v-brace-straight" "v-numbersign-slanted" "v-asterisk-hexlow"];
+      design = if withLigature then
+        [ "ligset-haskell" ]
+      else
+        [ ] ++ [
+          "v-at-fourfold"
+          "v-a-singlestorey"
+          "v-i-zshaped"
+          "v-g-singlestorey"
+          "v-l-zshaped"
+          "v-brace-straight"
+          "v-numbersign-slanted"
+          "v-asterisk-hexlow"
+        ];
       family = "Iosevka Baba";
     };
 
     set = "baba";
+    extraParameters =
+      if withLigature then builtins.readFile ./iosevka.toml else null;
     # TODO: extraParameters
   });
   iosevkaTermBaba = (unstable.pkgs.iosevka.override {
     privateBuildPlan = {
-      design = ["term"
-                "v-at-fourfold" "v-a-singlestorey" "v-i-zshaped" "v-g-singlestorey"
-                "v-l-zshaped" "v-brace-straight" "v-numbersign-slanted" "v-asterisk-hexlow"];
+      design = [
+        "term"
+        "v-at-fourfold"
+        "v-a-singlestorey"
+        "v-i-zshaped"
+        "v-g-singlestorey"
+        "v-l-zshaped"
+        "v-brace-straight"
+        "v-numbersign-slanted"
+        "v-asterisk-hexlow"
+      ];
       family = "Iosevka Term Baba";
     };
     set = "term-baba";
   });
-
 in {
-  # options.services.desktop = {
-  #   wm = mkOption {
-  #     type = types.enum [ "bspwm" ];
-  #     default = "bspwm";
-  #   };
-  services.xserver = {
-    enable = true;
-    layout = "us";
-    xkbVariant = "altgr-intl";
-    displayManager.startx.enable = true;
-  };
+  imports = [ ./i3.nix ./polybar.nix ];
 
-  # TODO: generate with IosevkaGenHS
-  fonts.fonts = [
-    iosevkaBaba
-    iosevkaTermBaba
-  ];
+  config = mkIf cfg.enable {
+    services.xserver = {
+      enable = true;
+      layout = "us";
+      xkbVariant = "altgr-intl";
+      displayManager.startx.enable = true;
+      libinput = {
+        enable = true;
+        tapping = false;
+        disableWhileTyping = true;
+      };
+    };
+
+    sound.enable = true;
+    hardware.pulseaudio.enable = true;
+
+    environment.systemPackages = with pkgs; [ pamixer pavucontrol ];
+
+    # TODO: generate with IosevkaGenHS
+    fonts = {
+      fonts = [
+        iosevkaBaba
+        iosevkaTermBaba
+        pkgs.nur.repos.babariviere.nerd-font-symbols
+      ];
+      enableDefaultFonts = true;
+    };
+  };
 }
