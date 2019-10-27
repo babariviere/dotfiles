@@ -46,4 +46,6 @@ in {
     hashedPassword =
       lib.removeSuffix "\n" (builtins.readFile ./private/bastien.passwd);
   };
+
+  networking.hostName = "sollys";
 }
