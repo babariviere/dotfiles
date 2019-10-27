@@ -1,12 +1,12 @@
 #+TITLE: todo
 
-* TODO Modules [12/20]
+* TODO Modules [12/25]
 + [-] zsh: missing everything
 + [X] direnv
 + [X] git
 + [-] iosevka: missing generation
 + [X] emacs
-+ [ ] bspwm: switch to it
++ [ ] bspwm: switch to it (with sxhkd)
 + [X] rust
 + [X] go
 + [ ] haskell
@@ -24,6 +24,10 @@
 + [ ] dunst
 + [ ] gpg: agent + keys (private/gpg....)
 + [ ] keybase
++ [ ] compton
++ [ ] ergodox
++ [ ] adb
++ [ ] flutter
 * Inbox
 ** TODO generate example
 [[file:/etc/dotfiles/modules/generate.nix::# TODO: generate example]]
