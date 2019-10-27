@@ -4,7 +4,7 @@ echo "Notice: If you are running on NixOS, you may need to run this command as r
 while true; do
     read -p "Continue? [y/n] " yn
     case $yn in
-        [Yy]* ) make install; break;;
+        [Yy]* ) break;;
         [Nn]* ) exit;;
         * ) echo "Please answer yes or no.";;
     esac
