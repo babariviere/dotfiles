@@ -1,11 +1,11 @@
 { config, lib, pkgs, ... }:
 
 let
-  gcfg = config.services.dotfiles;
-  cfg = gcfg.desktop.polybar;
+  dotfiles = config.services.dotfiles;
+  cfg = dotfiles.desktop.polybar;
 in {
-  config = lib.mkIf cfg.enable {
-    home-manager.users."${gcfg.user}".services.polybar = {
+  config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
+    home-manager.users."${dotfiles.user}".services.polybar = {
       enable = true;
       package = pkgs.polybar.override {
         i3GapsSupport = true; # TODO: find a way to variabilise it

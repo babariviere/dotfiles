@@ -2,7 +2,7 @@
 
 let user = "bastien";
 in {
-  imports = [ ./. ./profiles/nvidia.nix ];
+  imports = [ ./. ./profiles/msi.nix ];
 
   services.dotfiles = {
     user = user;
@@ -10,10 +10,15 @@ in {
     desktop = {
       enable = true;
       i3.enable = true;
+      firefox.enable = true;
       polybar.enable = true;
+      termite.enable = true;
     };
     dev = { go.enable = true; };
-    editors = { emacs.enable = true; };
+    editors = {
+      emacs.enable = true;
+      neovim.enable = true;
+    };
     shell = {
       direnv.enable = true;
       git.enable = true;
@@ -22,8 +27,10 @@ in {
     services = { syncthing.enable = true; };
     social = { slack.enable = true; };
     tools = {
+      aws.enable = true;
       build.enable = true;
       devops.enable = true;
+      insomnia.enable = true;
     };
   };
 

@@ -17,6 +17,7 @@
     autoOptimiseStore = true;
     trustedUsers = [ "root" "@wheel" ];
   };
+
   nixpkgs.config = {
     allowUnfree = true;
     packageOverrides = pkgs: {
@@ -24,12 +25,10 @@
         "https://github.com/nix-community/NUR/archive/master.tar.gz") {
           inherit pkgs;
           repoOverrides = {
-            # babariviere = import (builtins.fetchTarball
-            #   "https://github.com/babariviere/nur-packages/archive/master.tar.gz") {
-            #     inherit pkgs;
-            #   };
-            babariviere =
-              import /home/babariviere/projects/nur-packages { inherit pkgs; };
+            babariviere = import (builtins.fetchTarball
+              "https://github.com/babariviere/nur-packages/archive/master.tar.gz") {
+                inherit pkgs;
+              };
           };
         };
     };
@@ -46,4 +45,6 @@
   environment.systemPackages = with pkgs; [ nixfmt nix-prefetch-scripts ];
 
   services.dotfiles.name = "Bastien Rivière";
+
+  time.timeZone = "Europe/Paris";
 }

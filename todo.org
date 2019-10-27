@@ -1,0 +1,28 @@
+#+TITLE: todo
+
+* TODO Modules [12/20]
++ [-] zsh: missing everything
++ [X] direnv
++ [X] git
++ [-] iosevka: missing generation
++ [X] emacs
++ [ ] bspwm: switch to it
++ [X] rust
++ [X] go
++ [ ] haskell
++ [X] syncthing
++ [X] termite
++ [X] firefox
++ [X] discord
++ [X] plex
++ [ ] rofi
++ [X] i3
++ [ ] ssh
++ [-] aws
++ [X] insomnia
++ [ ] xst (get ride of termite)
+* Inbox
+** TODO generate example
+[[file:/etc/dotfiles/modules/generate.nix::# TODO: generate example]]
+** TODO create aws credentials via nix
+[[file:/etc/dotfiles/modules/tools/aws.nix::# TODO: manage aws/config aws/credentials ?]]

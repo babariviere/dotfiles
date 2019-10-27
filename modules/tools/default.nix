@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./build.nix ./devops.nix ];
+  imports = [ ./aws.nix ./build.nix ./devops.nix ./insomnia.nix ];
 }

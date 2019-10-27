@@ -46,7 +46,7 @@ let
     set = "term-baba";
   });
 in {
-  imports = [ ./i3.nix ./polybar.nix ];
+  imports = [ ./firefox.nix ./i3.nix ./polybar.nix ./termite.nix ];
 
   config = mkIf cfg.enable {
     services.xserver = {

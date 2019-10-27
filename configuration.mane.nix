@@ -2,7 +2,7 @@
 
 let user = "babariviere";
 in {
-  imports = [ ./. ./profiles/nvidia.nix ];
+  imports = [ ./. ./profiles/msi.nix ];
 
   services.dotfiles = {
     user = user;
@@ -10,10 +10,15 @@ in {
     desktop = {
       enable = true;
       i3.enable = true;
+      firefox.enable = true;
       polybar.enable = true;
+      termite.enable = true;
     };
     dev = { rust.enable = true; };
-    editors = { emacs.enable = true; };
+    editors = {
+      emacs.enable = true;
+      neovim.enable = true;
+    };
     media = { plex.enable = true; };
     shell = {
       direnv.enable = true;

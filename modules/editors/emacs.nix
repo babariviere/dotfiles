@@ -29,8 +29,14 @@ in {
 
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
 
-    home-manager.users."${dotfiles.user}".xdg.configFile = {
-      "zsh/rc.d/env.emacs.zsh".source = <config/emacs/env.zsh>;
+    home-manager.users."${dotfiles.user}" = {
+      home.file.".doom.d" = {
+        source = <config/emacs/doom.d>;
+        recursive = true;
+      };
+      xdg.configFile = {
+        "zsh/rc.d/env.emacs.zsh".source = <config/emacs/env.zsh>;
+      };
     };
   };
 }

@@ -4,7 +4,7 @@ let
   dotfiles = config.services.dotfiles;
   cfg = dotfiles.desktop.i3;
 in {
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
     services.xserver.windowManager.i3 = {
       enable = true;
       package = pkgs.i3-gaps;
@@ -18,12 +18,17 @@ in {
       ];
     };
 
-    home-manager.users."${dotfiles.user}".home.file = {
-      ".xinitrc".text = ''
-        #!/bin/sh
+    home-manager.users."${dotfiles.user}".home = {
+      # TODO: find a better way
+      file = {
+        ".xinitrc".text = ''
+          #!/bin/sh
 
-        exec i3 -c ${<config/i3/config>}
-      '';
+          exec i3 -c ${<config/i3/config>}
+        '';
+      };
+
+      # TODO: inject config
     };
   };
 }

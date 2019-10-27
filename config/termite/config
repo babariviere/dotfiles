@@ -1,0 +1,133 @@
+[options]
+audible_bell = false
+clickable_url = true
+filter_unmatched_urls = true
+font = Iosevka Term Baba 10
+scrollback_lines = 1000
+size_hints = true
+
+# # Palenight
+# [colors]
+# 
+# # special
+# foreground      = #959dcb
+# foreground_bold = #959dcb
+# cursor          = #959dcb
+# background      = #292d3e
+# #background      = rgba(41, 45, 62, 0.8)
+# 
+# # black
+# color0  = #292d3e
+# color8  = #434758
+# 
+# # red
+# color1  = #f07178
+# color9  = #ff8b92
+# 
+# # green
+# color2  = #c3e88d
+# color10 = #ddffa7
+# 
+# # yellow
+# color3  = #ffcb6b
+# color11 = #ffe585
+# 
+# # blue
+# color4  = #82aaff
+# color12 = #9cc4ff
+# 
+# # magenta
+# color5  = #c792ea
+# color13 = #e1acff
+# 
+# # cyan
+# color6  = #89ddff
+# color14 = #a3f7ff
+# 
+# # white
+# color7  = #d0d0d0
+# color15 = #ffffff
+
+# # Challenger Deep
+# [colors]
+# 
+# # special
+# foreground      = #cbe3e7
+# foreground_bold = #cbe3e7
+# cursor          = #cbe3e7
+# background      = #1e1c31
+# 
+# # black
+# color0  = #565575
+# color8  = #100e23
+# 
+# # red
+# color1  = #ff8080
+# color9  = #ff5458
+# 
+# # green
+# color2  = #95ffa4
+# color10 = #62d196
+# 
+# # yellow
+# color3  = #ffe9aa
+# color11 = #ffb378
+# 
+# # blue
+# color4  = #91ddff
+# color12 = #65b2ff
+# 
+# # magenta
+# color5  = #c991e1
+# color13 = #906cff
+# 
+# # cyan
+# color6  = #aaffe4
+# color14 = #63f2f1
+# 
+# # white
+# color7  = #cbe3e7
+# color15 = #a6b3cc
+
+[colors]
+
+# special
+foreground      = #d6deeb
+foreground_bold = #d6deeb
+cursor          = #d6deeb
+background      = #011627
+
+# black
+color0  = #011627
+color8  = #575656
+
+# red
+color1  = #ef5350
+color9  = #ef5350
+
+# green
+color2  = #22da6e
+color10 = #22da6e
+
+# yellow
+color3  = #addb67
+color11 = #ffeb95
+
+# blue
+color4  = #82aaff
+color12 = #82aaff
+
+# magenta
+color5  = #c792ea
+color13 = #c792ea
+
+# cyan
+color6  = #21c7a8
+color14 = #7fdbca
+
+# white
+color7  = #ffffff
+color15 = #ffffff
+
+
+# vim: ft=dosini cms=#%s
