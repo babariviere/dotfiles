@@ -39,7 +39,7 @@ in {
     };
 
     environment.shellInit = ''
-      source .profile
+      source $HOME/.profile
     '';
 
     home-manager.users."${cfg.user}" = { xdg.enable = true; };

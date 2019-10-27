@@ -29,6 +29,9 @@
 + [ ] adb
 + [ ] flutter
 * Inbox
+** TODO use rolling-release lorri + module from lorri to install direnv
+
+[[file:/etc/dotfiles/modules/shell/direnv.nix::environment.systemPackages = with pkgs; [ direnv lorri ];]]
 ** TODO generate example
 [[file:/etc/dotfiles/modules/generate.nix::# TODO: generate example]]
 ** TODO create aws credentials via nix
@@ -39,3 +42,8 @@
 ** [?] use home-manager to generate all configs
 
 ** TODO ricing
+
+** TODO write script to generate shell
+Example: generate shell to deploy a static go build
+
+** TODO auto upgrade of doom
