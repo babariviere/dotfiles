@@ -50,7 +50,7 @@ in {
         url = {
           "git@bitbucket.org:" = { insteadOf = "https://bitbucket.org"; };
         };
-      };
+      } // cfg.extraConfig;
       signing = lib.mkIf (cfg.signingKey != null) {
         key = cfg.signingKey;
         signByDefault = true;

@@ -21,6 +21,7 @@
 + [-] aws
 + [X] insomnia
 + [ ] xst (get rid of termite)
++ [ ] dunst
 * Inbox
 ** TODO generate example
 [[file:/etc/dotfiles/modules/generate.nix::# TODO: generate example]]
@@ -28,3 +29,5 @@
 [[file:/etc/dotfiles/modules/tools/aws.nix::# TODO: manage aws/config aws/credentials ?]]
 
 ** TODO generate +iosevka.el for doom.d
+
+** [?] use home-manager to generate all configs
