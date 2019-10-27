@@ -20,9 +20,11 @@
 + [ ] ssh
 + [-] aws
 + [X] insomnia
-+ [ ] xst (get ride of termite)
++ [ ] xst (get rid of termite)
 * Inbox
 ** TODO generate example
 [[file:/etc/dotfiles/modules/generate.nix::# TODO: generate example]]
 ** TODO create aws credentials via nix
 [[file:/etc/dotfiles/modules/tools/aws.nix::# TODO: manage aws/config aws/credentials ?]]
+
+** TODO generate +iosevka.el for doom.d
