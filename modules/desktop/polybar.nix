@@ -15,5 +15,7 @@ in {
         builtins.readFile <config/polybar/config>; # TODO: use config field
       script = "polybar top &";
     };
+
+    fonts.fonts = with pkgs; [ siji ];
   };
 }
