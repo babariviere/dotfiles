@@ -1,0 +1,41 @@
+#+TITLE:   dotfiles
+#+DATE:    October 27, 2019
+
+Repository of my personal dotfiles.
+This is targeted to NixOS's users.
+
+* Table of Contents :TOC_3:noexport:
+- [[#usage][Usage]]
+- [[#description][Description]]
+  - [[#modules][Modules]]
+    - [[#add-new-module][Add new module]]
+- [[#screenshots][Screenshots]]
+
+* Usage
+Clone this repository to ~/etc/dotfiles~.
+Import one of the configuration in your ~/etc/nixos/configuration.nix~.
+Run script ~setup.sh~.
+Enjoy!
+
+* Description
+My configuration into 5 parts:
++ configuration.<system>.nix: this is the main entry point for configuration.
+  each configuration must import ~./default.nix~.
++ config: this folder contains all static/template files. (templates are not
+  done yet).
++ modules: this folder contains all modules. there is a custom generator to
+  create a simple looking configuration.nix file.
++ profiles: specfic configuration for certains machines.
++ themes: this folder contains all my themes. (not done yet)
+
+The only thing that's not included is
+
+** Modules
+
+TODO: describe module options generation system.
+
+*** Add new module
+TODO: document on how to add a new module
+
+* Screenshots
+TODO: include screenshot for each system

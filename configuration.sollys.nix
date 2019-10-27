@@ -2,13 +2,7 @@
 
 let user = "bastien";
 in {
-  imports = [
-    ./.
-
-    ./modules/social/slack.nix
-    ./modules/tools/build.nix
-    ./modules/tools/devops.nix
-  ];
+  imports = [ ./. ./profiles/nvidia.nix ];
 
   services.dotfiles = {
     user = user;
