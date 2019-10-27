@@ -13,7 +13,7 @@ echo "==> Adding home-manager channel"
 nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager
 
 echo "==> Adding unstable channel"
-nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs-unstable
 
 echo "==> Updating all channels"
 nix-channel --update
