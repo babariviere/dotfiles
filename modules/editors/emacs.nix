@@ -7,6 +7,19 @@ let
   rg = (pkgs.ripgrep.override { withPCRE2 = true; });
   unstable = import <nixpkgs-unstable> { };
 in {
+  options.dotfiles.editors.emacs = {
+    editorconfig = mkOption {
+      type = types.bool;
+      description = "Add support for editorconfig";
+      default = true;
+    };
+    ripgrep = mkOption {
+      type = types.bool;
+      description = "Add support for ripgrep";
+      default = true;
+    };
+  };
+
   # TODO: install doom config via home-manager
   config = mkIf cfg.enable {
     environment = {

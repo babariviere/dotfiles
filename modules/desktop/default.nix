@@ -49,7 +49,29 @@ let
     set = "term-baba";
   });
 in {
-  imports = [ ./firefox.nix ./i3.nix ./polybar.nix ./termite.nix ];
+  imports =
+    [ ./compton.nix ./firefox.nix ./i3.nix ./polybar.nix ./termite.nix ];
+
+  options.dotfiles.desktop = {
+    enable = mkEnableOption "desktop";
+
+    ligature = mkOption {
+      type = types.bool;
+      description = "Add ligature support to all services";
+      default = true;
+    };
+
+    # TODO: merge
+    # strategy is to set priorities (enum with value like first, middle, last with priority number)
+    xinitrc = mkOption {
+      type = types.str // {
+        merge = loc: defs:
+          lib.strings.concatMapStringsSep "\n" (x: x.value) defs;
+      };
+      description = ".xinitrc script to install";
+      default = "";
+    };
+  };
 
   config = mkIf cfg.enable {
     services.xserver = {
@@ -57,12 +79,15 @@ in {
       layout = "us";
       xkbVariant = "altgr-intl";
       displayManager.startx.enable = true;
+      desktopManager.xterm.enable = false;
       libinput = {
         enable = true;
         tapping = false;
         disableWhileTyping = true;
       };
     };
+
+    dotfiles.desktop.xinitrc = "test";
 
     sound.enable = true;
     hardware.pulseaudio.enable = true;
@@ -77,6 +102,10 @@ in {
         pkgs.nur.repos.babariviere.nerd-font-symbols
       ];
       enableDefaultFonts = true;
+    };
+    home-manager.users."${config.dotfiles.user}".home = {
+      # TODO: this is just for test, but this will actually replace i3 .xinitrc
+      file = { ".xinitrc.test".text = config.dotfiles.desktop.xinitrc; };
     };
   };
 }

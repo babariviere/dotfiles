@@ -11,12 +11,7 @@ let
       let name = removeSuffix ".nix" file;
       in {
         name = name;
-        value = mkOption {
-          type =
-            types.submodule { options = { enable = mkEnableOption name; }; };
-          # TODO: description
-          default = { };
-        };
+        value = { enable = mkEnableOption name; };
       }) (filterAttrs submoduleP (builtins.readDir mpath));
 in {
   # TODO: generate example
@@ -26,21 +21,6 @@ in {
   options = with lib;
     imports:
     foldl (m: path:
-      let
-        optionsPath = path + /options.nix;
-        extraOptions = if (builtins.pathExists optionsPath) then
-          import optionsPath { inherit lib; }
-        else
-          { };
-        name = builtins.baseNameOf path;
-      in m // {
-        "${name}" = mkOption {
-          type = types.submodule {
-            options = (optionsSubmodules path) // extraOptions;
-          };
-          description = name + " submodule.";
-          # TODO: find a way to add description.
-          default = { };
-        };
-      }) { } imports;
+      let name = builtins.baseNameOf path;
+      in m // { "${name}" = (optionsSubmodules path); }) { } imports;
 }

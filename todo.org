@@ -1,6 +1,6 @@
 #+TITLE: todo
 
-* TODO Modules [12/25]
+* TODO Modules [13/29]
 + [-] zsh: missing everything
 + [X] direnv
 + [X] git
@@ -24,11 +24,16 @@
 + [ ] dunst
 + [ ] gpg: agent + keys (private/gpg....)
 + [ ] keybase
-+ [ ] compton
++ [X] compton
 + [ ] ergodox
 + [ ] adb
 + [ ] flutter
++ [ ] bitwarden
++ [ ] autorandr
 * Inbox
+** TODO override merge with 1. priority 2. concat
+
+[[file:/etc/dotfiles/modules/desktop/default.nix::xinitrc = mkOption {]]
 ** TODO use rolling-release lorri + module from lorri to install direnv
 
 [[file:/etc/dotfiles/modules/shell/direnv.nix::environment.systemPackages = with pkgs; [ direnv lorri ];]]

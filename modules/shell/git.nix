@@ -4,6 +4,19 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.shell.git;
 in {
+  options.dotfiles.shell.git = with lib; {
+    signingKey = mkOption {
+      type = types.nullOr types.str;
+      description = "signing key for commits";
+      default = null;
+    };
+    extraConfig = mkOption {
+      type = types.attrs;
+      description = "extra config for git";
+      default = { };
+    };
+  };
+
   config = lib.mkIf cfg.enable {
     environment = {
       systemPackages = with pkgs; [
