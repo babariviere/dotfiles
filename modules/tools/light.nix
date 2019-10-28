@@ -21,5 +21,8 @@ in {
         }
       ];
     };
+
+    # Add user to video group
+    users.users."${dotfiles.user}" = { extraGroups = [ "video" ]; };
   };
 }
