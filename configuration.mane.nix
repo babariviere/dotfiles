@@ -30,6 +30,7 @@ in {
     tools = {
       build.enable = true;
       devops.enable = true;
+      light.enable = true;
     };
   };
 

@@ -31,6 +31,7 @@ in {
       build.enable = true;
       devops.enable = true;
       insomnia.enable = true;
+      light.enable = true;
     };
   };
 
