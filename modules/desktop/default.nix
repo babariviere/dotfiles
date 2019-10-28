@@ -6,7 +6,7 @@ let
   # TODO: remove me
   unstable = import (builtins.fetchTarball
     "https://github.com/babariviere/nixpkgs/archive/iosevka-v2.3.2.tar.gz") { };
-  cfg = config.services.dotfiles.desktop;
+  cfg = config.dotfiles.desktop;
   withLigature = cfg.ligature;
   iosevkaBaba = (unstable.pkgs.iosevka.override {
     privateBuildPlan = {

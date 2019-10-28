@@ -2,7 +2,7 @@
 
 with lib;
 let
-  dotfiles = config.services.dotfiles;
+  dotfiles = config.dotfiles;
   cfg = dotfiles.editors.emacs;
   rg = (pkgs.ripgrep.override { withPCRE2 = true; });
   unstable = import <nixpkgs-unstable> { };

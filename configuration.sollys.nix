@@ -4,7 +4,7 @@ let user = "bastien";
 in {
   imports = [ ./. ./profiles/msi.nix ];
 
-  services.dotfiles = {
+  dotfiles = {
     user = user;
     email = "bastien.riviere@easy.movie";
     desktop = {

@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let cfg = config.services.dotfiles;
+let cfg = config.dotfiles;
 in {
   config = lib.mkIf cfg.dev.rust.enable {
     nixpkgs.overlays = [

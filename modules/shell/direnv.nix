@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 
-let cfg = config.services.dotfiles.shell.direnv;
+let cfg = config.dotfiles.shell.direnv;
 in {
   config = lib.mkIf cfg.enable {
     nixpkgs.overlays = [

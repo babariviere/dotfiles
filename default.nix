@@ -44,7 +44,7 @@
 
   environment.systemPackages = with pkgs; [ nixfmt nix-prefetch-scripts ];
 
-  services.dotfiles.name = "Bastien Rivière";
+  dotfiles.name = "Bastien Rivière";
 
   time.timeZone = "Europe/Paris";
 

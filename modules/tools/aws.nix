@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  dotfiles = config.services.dotfiles;
+  dotfiles = config.dotfiles;
   cfg = dotfiles.tools.aws;
 in {
   # TODO: manage aws/config aws/credentials ?

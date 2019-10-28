@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  dotfiles = config.services.dotfiles;
+  dotfiles = config.dotfiles;
   cfg = dotfiles.desktop.i3;
 in {
   config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {

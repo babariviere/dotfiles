@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  dotfiles = config.services.dotfiles;
+  dotfiles = config.dotfiles;
   cfg = dotfiles.shell.git;
 in {
   config = lib.mkIf cfg.enable {

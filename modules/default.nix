@@ -4,14 +4,14 @@ with lib;
 
 let
   generate = import ./generate.nix { inherit lib; };
-  cfg = config.services.dotfiles;
+  cfg = config.dotfiles;
   imports =
     [ ./desktop ./dev ./editors ./media ./services ./shell ./social ./tools ];
   options = generate.options imports;
 in {
   inherit imports;
 
-  options.services.dotfiles = {
+  options.dotfiles = {
     user = mkOption {
       type = types.str;
       description = "User used for services";

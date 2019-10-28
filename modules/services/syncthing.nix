@@ -2,7 +2,7 @@
 
 with lib;
 let
-  dotfiles = config.services.dotfiles;
+  dotfiles = config.dotfiles;
   cfg = dotfiles.services.syncthing;
 in {
   config = mkIf cfg.enable {
