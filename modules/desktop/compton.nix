@@ -9,9 +9,10 @@ in {
       enable = true;
       fade = true;
       fadeDelta = 3;
-      backend = "glx";
-      activeOpacity = "1.0";
-      inactiveOpacity = "0.9";
+      # backend = "glx";
+      activeOpacity = "0.98";
+      inactiveOpacity = "0.30";
+      opacityRules = [ ''95:class_g = "Firefox"'' ];
     };
   };
 }

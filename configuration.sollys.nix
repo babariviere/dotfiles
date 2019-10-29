@@ -13,7 +13,7 @@ in {
       firefox.enable = true;
       polybar.enable = true;
       termite.enable = true;
-      compton.enable = true;
+      compton.enable = false;
     };
     dev = { go.enable = true; };
     editors = {
