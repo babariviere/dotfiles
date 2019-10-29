@@ -20,6 +20,11 @@
 ;;; :lang rust
 ;; (setq rustic-lsp-server 'rust-analyzer)
 
+;;; :tools magit
+(defadvice! +magit-invalidate-projectile-cache-a (&rest args)
+  :after '(magit-checkout magit-branch-checkout)
+  (projectile-invalidate-cache nil))
+
 ;;; :ui pretty-code
 (load! "+iosevka.el")
 (setq +pretty-code-symbols
