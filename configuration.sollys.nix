@@ -30,6 +30,7 @@ in {
     tools = {
       aws.enable = true;
       build.enable = true;
+      docker.enable = true;
       devops.enable = true;
       insomnia.enable = true;
       light.enable = true;
