@@ -18,22 +18,35 @@ in {
       description = "Add support for ripgrep";
       default = true;
     };
+    spellcheck = mkOption {
+      type = types.bool;
+      description = "Add support for spellcheck";
+      default = true;
+    };
   };
 
   # TODO: install doom config via home-manager
   config = mkIf cfg.enable {
     environment = {
-      systemPackages = with pkgs; [
-        (mkIf (config.programs.gnupg.agent.enable) pinentry_emacs)
+      systemPackages = with pkgs;
+        [
+          (mkIf (config.programs.gnupg.agent.enable) pinentry_emacs)
 
-        # Essential
-        unstable.emacs
-        (mkIf (cfg.editorconfig) editorconfig-core-c) # :tools editorconfig
+          # Essential
+          unstable.emacs
+          (mkIf (cfg.editorconfig) editorconfig-core-c) # :tools editorconfig
 
-        # Misc
-        texlive.combined.scheme-medium # :lang org
-        (mkIf (cfg.ripgrep) rg)
-      ];
+          # Misc
+          texlive.combined.scheme-medium # :lang org
+          (mkIf (cfg.ripgrep) rg)
+
+        ] ++ (if cfg.spellcheck then [
+          aspell
+          aspellDicts.en
+          aspellDicts.en-computers
+          aspellDicts.fr
+        ] else
+          [ ]);
 
       sessionVariables = { EDITOR = "emacs"; };
 

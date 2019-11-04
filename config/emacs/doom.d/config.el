@@ -20,6 +20,11 @@
 ;;; :lang rust
 ;; (setq rustic-lsp-server 'rust-analyzer)
 
+;;; :tools flyspell
+(setq ispell-aspell-data-dir "/run/current-system/sw/lib/aspell" )
+(setq ispell-aspell-dict-dir ispell-aspell-data-dir)
+(setq ispell-aspell-dictionary-alist '())
+
 ;;; :tools magit
 (defadvice! +magit-invalidate-projectile-cache-a (&rest args)
   :after '(magit-checkout magit-branch-checkout)
