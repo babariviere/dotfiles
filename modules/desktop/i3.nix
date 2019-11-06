@@ -15,6 +15,7 @@ in {
         dmenu
         rofi
         feh
+        maim # for screenshot
       ];
     };
 
