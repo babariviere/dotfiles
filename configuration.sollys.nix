@@ -51,4 +51,5 @@ in {
   };
 
   networking.hostName = "sollys";
+  environment.variables = { HOSTNAME = "sollys"; };
 }

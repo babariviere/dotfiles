@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./syncthing.nix ];
+  imports = [ ./gpg.nix ./ssh.nix ./syncthing.nix ];
 }

@@ -12,6 +12,7 @@ in {
       i3.enable = true;
       firefox.enable = true;
       polybar.enable = true;
+      riot.enable = true;
       termite.enable = true;
       compton.enable = false;
     };
@@ -23,10 +24,17 @@ in {
     media = { plex.enable = true; };
     shell = {
       direnv.enable = true;
-      git.enable = true;
+      git = {
+        enable = true;
+        signingKey = "6BCFEDF322EB0040B5FC4296EECF965F5AAA4E1A";
+      };
       zsh.enable = true;
     };
-    services = { syncthing.enable = true; };
+    services = {
+      gpg.enable = true;
+      ssh.enable = true;
+      syncthing.enable = true;
+    };
     social = { discord.enable = true; };
     tools = {
       build.enable = true;
@@ -49,4 +57,5 @@ in {
   };
 
   networking.hostName = "mane";
+  environment.variables = { HOSTNAME = "mane"; };
 }

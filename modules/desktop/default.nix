@@ -49,8 +49,14 @@ let
     set = "term-baba";
   });
 in {
-  imports =
-    [ ./compton.nix ./firefox.nix ./i3.nix ./polybar.nix ./termite.nix ];
+  imports = [
+    ./compton.nix
+    ./firefox.nix
+    ./i3.nix
+    ./polybar.nix
+    ./riot.nix
+    ./termite.nix
+  ];
 
   options.dotfiles.desktop = {
     enable = mkEnableOption "desktop";
