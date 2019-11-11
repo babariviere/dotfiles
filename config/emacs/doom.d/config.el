@@ -64,3 +64,8 @@
     :tuple         "⨂"
     :pipe          "" ;; FIXME: find a non-private char
     :dot           "•"))
+
+;; misc
+
+(use-package! systemd
+  :defer)
