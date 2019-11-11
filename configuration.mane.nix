@@ -2,7 +2,7 @@
 
 let user = "babariviere";
 in {
-  imports = [ ./. ./profiles/msi.nix ];
+  imports = [ ./. ./profiles/nvidia.nix ];
 
   dotfiles = {
     user = user;
