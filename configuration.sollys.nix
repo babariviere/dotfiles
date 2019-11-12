@@ -34,6 +34,7 @@ in {
       devops.enable = true;
       insomnia.enable = true;
       light.enable = true;
+      sql.enable = true;
     };
   };
 

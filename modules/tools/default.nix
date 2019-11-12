@@ -8,5 +8,6 @@
     ./devops.nix
     ./insomnia.nix
     ./light.nix
+    ./sql.nix
   ];
 }
