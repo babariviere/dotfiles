@@ -25,7 +25,7 @@ in {
       git.enable = true;
       zsh.enable = true;
     };
-    services = { syncthing.enable = true; };
+    services = { ssh.enable = true; };
     social = { slack.enable = true; };
     tools = {
       aws.enable = true;
