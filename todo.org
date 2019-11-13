@@ -55,3 +55,9 @@
 Example: generate shell to deploy a static go build
 
 ** TODO auto upgrade of doom
+** TODO store secrets in /run/keys if any
+** TODO use substituteAllInPlace to inject theme variables
+** TODO take a look at wireguard
+** TODO use zfs instead of lvm
+Clean filesystem like this: https://github.com/grahamc/nixos-config/blob/master/devices/petunia/hardware-configuration.nix
+** TODO custom emacs config/doom with nixos

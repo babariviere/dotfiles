@@ -9,14 +9,19 @@
   ];
 
   nix = {
+    useSandbox = true;
     gc = {
       automatic = true;
+      dates = "*:0/30";
       options = "--delete-older-than 7d";
     };
     nixPath = options.nix.nixPath.default ++ [ "config=/etc/dotfiles/config" ];
     autoOptimiseStore = true;
     trustedUsers = [ "root" "@wheel" ];
   };
+
+  # run gc only if power source is plugged
+  systemd.services.nix-gc.unitConfig.ConditionACPower = true;
 
   nixpkgs.config = {
     allowUnfree = true;
