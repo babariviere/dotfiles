@@ -47,7 +47,13 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ nixfmt nix-prefetch-scripts ];
+  environment.systemPackages = with pkgs; [
+    nixfmt
+    nix-prefetch-scripts
+    killall
+    # sorry, I have to
+    lolcat
+  ];
 
   dotfiles.name = "Bastien Rivière";
 
