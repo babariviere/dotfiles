@@ -69,4 +69,6 @@
     channel = "https://nixos.org/channels/nixos-19.09";
     # TODO: set date ?
   };
+  systemd.services.nixos-upgrade.unitConfig.ConditionACPower = true;
+  systemd.timers.nixos-upgrade.timerConfig.Persistent = true;
 }
