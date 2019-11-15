@@ -1,9 +1,16 @@
 { lib, ... }:
 
 let
-  submoduleP = n: v:
-    v == "regular" && (lib.strings.hasSuffix ".nix" n) && n != "default.nix"
-    && n != "options.nix";
+  submoduleP = path: n: v:
+    if v == "directory" then
+      (builtins.readDir (path + "/${n}")) ? "default.nix"
+    else
+      v == "regular" && (lib.strings.hasSuffix ".nix" n) && n != "default.nix"
+      && n != "options.nix";
+
+  filterSubmodules = path:
+    let files = builtins.readDir path;
+    in lib.filterAttrs (submoduleP path) files;
 
   optionsSubmodules = with lib;
     mpath:
@@ -12,11 +19,9 @@ let
       in {
         name = name;
         value = { enable = mkEnableOption name; };
-      }) (filterAttrs submoduleP (builtins.readDir mpath));
+      }) (filterSubmodules mpath);
 in {
   # TODO: generate example
-  # TODO: better merge for submodule
-  # warning: this does not support path with depth > 1
   # [path] -> set
   options = with lib;
     imports:

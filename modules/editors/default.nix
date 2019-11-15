@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./emacs.nix ./neovim.nix ];
+  imports = [ ./emacs ./neovim.nix ];
 }

@@ -2,10 +2,7 @@
 
 with lib;
 let
-  # unstable =  import <nixpkgs-unstable> {};
-  # TODO: remove me
-  unstable = import (builtins.fetchTarball
-    "https://github.com/babariviere/nixpkgs/archive/iosevka-v2.3.2.tar.gz") { };
+  unstable = import <nixpkgs-unstable> { };
   cfg = config.dotfiles.desktop;
   withLigature = cfg.ligature;
   iosevkaBaba = (unstable.pkgs.iosevka.override {
