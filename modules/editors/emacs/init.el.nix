@@ -134,7 +134,10 @@ in ''
       enable = dotfiles.dev.go.enable;
       flags = [ "lsp" ];
     };
-    # TODO: haskell
+    haskell = {
+      enable = dotfiles.dev.haskell.enable;
+      flags = [ "lsp" ];
+    };
     # TODO: latex
     markdown.enable = true;
     nix.enable = true;
