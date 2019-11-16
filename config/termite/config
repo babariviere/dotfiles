@@ -6,128 +6,48 @@ font = Iosevka Term Baba 10
 scrollback_lines = 1000
 size_hints = true
 
-# # Palenight
-# [colors]
-# 
-# # special
-# foreground      = #959dcb
-# foreground_bold = #959dcb
-# cursor          = #959dcb
-# background      = #292d3e
-# #background      = rgba(41, 45, 62, 0.8)
-# 
-# # black
-# color0  = #292d3e
-# color8  = #434758
-# 
-# # red
-# color1  = #f07178
-# color9  = #ff8b92
-# 
-# # green
-# color2  = #c3e88d
-# color10 = #ddffa7
-# 
-# # yellow
-# color3  = #ffcb6b
-# color11 = #ffe585
-# 
-# # blue
-# color4  = #82aaff
-# color12 = #9cc4ff
-# 
-# # magenta
-# color5  = #c792ea
-# color13 = #e1acff
-# 
-# # cyan
-# color6  = #89ddff
-# color14 = #a3f7ff
-# 
-# # white
-# color7  = #d0d0d0
-# color15 = #ffffff
-
-# # Challenger Deep
-# [colors]
-# 
-# # special
-# foreground      = #cbe3e7
-# foreground_bold = #cbe3e7
-# cursor          = #cbe3e7
-# background      = #1e1c31
-# 
-# # black
-# color0  = #565575
-# color8  = #100e23
-# 
-# # red
-# color1  = #ff8080
-# color9  = #ff5458
-# 
-# # green
-# color2  = #95ffa4
-# color10 = #62d196
-# 
-# # yellow
-# color3  = #ffe9aa
-# color11 = #ffb378
-# 
-# # blue
-# color4  = #91ddff
-# color12 = #65b2ff
-# 
-# # magenta
-# color5  = #c991e1
-# color13 = #906cff
-# 
-# # cyan
-# color6  = #aaffe4
-# color14 = #63f2f1
-# 
-# # white
-# color7  = #cbe3e7
-# color15 = #a6b3cc
+# Dracula theme for termite
+# https://github.com/dracula/termite
+# Copyright 2013-present, All rights reserved
+# Code licensed under the MIT license
 
 [colors]
 
 # special
-foreground      = #d6deeb
-foreground_bold = #d6deeb
-cursor          = #d6deeb
-background      = #011627
+foreground      = #f8f8f2
+foreground_bold = #f8f8f2
+cursor          = #f8f8f2
+background      = #282a36
 
 # black
-color0  = #011627
-color8  = #575656
+color0  = #000000
+color8  = #4d4d4d
 
 # red
-color1  = #ef5350
-color9  = #ef5350
+color1  = #ff5555
+color9  = #ff6e67
 
 # green
-color2  = #22da6e
-color10 = #22da6e
+color2  = #50fa7b
+color10 = #5af78e
 
 # yellow
-color3  = #addb67
-color11 = #ffeb95
+color3  = #f1fa8c
+color11 = #f4f99d
 
 # blue
-color4  = #82aaff
-color12 = #82aaff
+color4  = #bd93f9
+color12 = #caa9fa
 
 # magenta
-color5  = #c792ea
-color13 = #c792ea
+color5  = #ff79c6
+color13 = #ff92d0
 
 # cyan
-color6  = #21c7a8
-color14 = #7fdbca
+color6  = #8be9fd
+color14 = #9aedfe
 
 # white
-color7  = #ffffff
-color15 = #ffffff
+color7  = #bfbfbf
+color15 = #e6e6e6
 
-
-# vim: ft=dosini cms=#%s

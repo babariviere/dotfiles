@@ -1,6 +1,7 @@
 { config, lib, options, pkgs, ... }:
 
-{
+let dotfiles = config.dotfiles;
+in {
   imports = [
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     <home-manager/nixos>
@@ -41,13 +42,24 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    nixfmt
-    nix-prefetch-scripts
-    killall
-    # sorry, I have to
-    lolcat
-  ];
+  home-manager.users."${dotfiles.user}".xdg.enable = true;
+
+  environment = {
+    variables = {
+      XDG_CONFIG_HOME = "$HOME/.config";
+      XDG_CACHE_HOME = "$HOME/.cache";
+      XDG_DATA_HOME = "$HOME/.local/share";
+      XDG_BIN_HOME = "$HOME/.local/bin";
+    };
+
+    systemPackages = with pkgs; [
+      nixfmt
+      nix-prefetch-scripts
+      killall
+      # sorry, I have to
+      lolcat
+    ];
+  };
 
   dotfiles.name = "Bastien Rivière";
 

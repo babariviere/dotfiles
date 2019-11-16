@@ -42,7 +42,7 @@ prompt_init() {
   zle-keymap-select() {
     case $KEYMAP in
       vicmd)      PROMPT_SYMBOL="%F{magenta}« " ;;
-      main|viins) PROMPT_SYMBOL="%(?.%F{green}.%F{red})λ " ;;
+      main|viins) PROMPT_SYMBOL="%(?.%F{green}.%F{red})λ%f " ;;
     esac
     zle reset-prompt
     zle -R
@@ -56,16 +56,12 @@ prompt_init() {
   zstyle ':vcs_info:git*' formats ' %b'
   zstyle ':vcs_info:git*' actionformats ' %b (%a)'
 
-  # show username@host if logged in through SSH
   if [[ -n $SSH_CONNECTION ]]; then
-    prompt_username='%m '
-    if [[ $(whoami) != hlissner ]]; then
-      prompt_username="%n.$prompt_username"
-    fi
+    prompt_ssh='[ssh] '
   fi
 
   RPROMPT='%F{blue}%~%F{magenta}${vcs_info_msg_0_}$(prompt_git_dirty)%f'
-  PROMPT='%F{blue}${prompt_username}%f${PROMPT_SYMBOL:-$ }'
+  PROMPT='%F{blue}${prompt_ssh}%n.%m %f${PROMPT_SYMBOL:-$ }'
 }
 
 prompt_init "$@"
