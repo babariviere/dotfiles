@@ -1,6 +1,6 @@
 #+TITLE: todo
 
-* TODO Modules [13/29]
+* TODO Modules [13/30]
 + [-] zsh: missing everything
 + [X] direnv
 + [X] git
@@ -9,7 +9,8 @@
 + [ ] bspwm: switch to it (with sxhkd)
 + [X] rust
 + [X] go
-+ [ ] haskell
++ [-] haskell
++ [ ] latex
 + [X] syncthing
 + [X] termite
 + [X] firefox
@@ -17,12 +18,14 @@
 + [X] plex
 + [ ] rofi
 + [X] i3
-+ [ ] ssh
++ [-] ssh
+  still needs better password prompt
 + [-] aws
 + [X] insomnia
 + [ ] xst (get rid of termite)
 + [ ] dunst
-+ [ ] gpg: agent + keys (private/gpg....)
++ [-] gpg: agent + keys (private/gpg....)
+  still needs better password prompt
 + [ ] keybase
 + [X] compton
 + [ ] ergodox
@@ -37,7 +40,8 @@
 ** TODO override merge with 1. priority 2. concat
 
 [[file:/etc/dotfiles/modules/desktop/default.nix::xinitrc = mkOption {]]
-** TODO use rolling-release lorri + module from lorri to install direnv
+** DONE use rolling-release lorri + module from lorri to install direnv
+CLOSED: [2019-11-16 Sat 21:04]
 
 [[file:/etc/dotfiles/modules/shell/direnv.nix::environment.systemPackages = with pkgs; [ direnv lorri ];]]
 ** TODO generate example
@@ -47,10 +51,7 @@
 
 ** TODO generate +iosevka.el for doom.d
 
-** [?] use home-manager to generate all configs
-
 ** TODO ricing
-
 ** TODO write script to generate shell
 Example: generate shell to deploy a static go build
 
@@ -60,4 +61,6 @@ Example: generate shell to deploy a static go build
 ** TODO take a look at wireguard
 ** TODO use zfs instead of lvm
 Clean filesystem like this: https://github.com/grahamc/nixos-config/blob/master/devices/petunia/hardware-configuration.nix
-** TODO custom emacs config/doom with nixos
+** DONE custom emacs config/doom with nixos
+CLOSED: [2019-11-16 Sat 21:04]
+** TODO use zsh for nix-shell
