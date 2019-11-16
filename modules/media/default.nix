@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./plex.nix ];
+  imports = [ ./plex.nix ./spotify.nix ];
 }

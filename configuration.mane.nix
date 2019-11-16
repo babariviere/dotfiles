@@ -21,7 +21,10 @@ in {
       emacs.enable = true;
       neovim.enable = true;
     };
-    media = { plex.enable = true; };
+    media = {
+      plex.enable = true;
+      spotify.enable = true;
+    };
     shell = {
       direnv.enable = true;
       git = {
