@@ -15,5 +15,8 @@ nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz ho
 echo "==> Adding unstable channel"
 nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs-unstable
 
+echo "==> Adding unstable nixos channel"
+nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+
 echo "==> Updating all channels"
 nix-channel --update
