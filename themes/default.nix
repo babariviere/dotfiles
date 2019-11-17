@@ -34,10 +34,17 @@ in {
       type = types.attrs;
       description = "Colors defined by theme. This will be overrided by theme.";
     };
+    wallpaper = mkOption {
+      type = types.path;
+      description =
+        "Wallapper defined by theme. This will be overrided by theme.";
+    };
   };
 
   config = {
     dotfiles.colors =
       mkForce (injectAnsi (import (./. + "/${config.dotfiles.theme}")));
+
+    dotfiles.wallpaper = mkForce (./. + "/${config.dotfiles.theme}/wallpaper");
   };
 }

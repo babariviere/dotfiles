@@ -4,7 +4,7 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.desktop.i3;
   configFile = pkgs.mutate <config/i3/config> (dotfiles.colors // {
-    setWallpaper = "${pkgs.feh} --bg-center ${<config/wallpaper.jpg>}";
+    setWallpaper = "${pkgs.feh}/bin/feh --bg-center ${dotfiles.wallpaper}";
   });
 in {
   config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
@@ -23,7 +23,7 @@ in {
     };
 
     # TODO: this causes infinite recursion
-    dotfiles.desktop.xinitrc = "exec i3 -c ${configFile}";
+    dotfiles.desktop.xinitrc = "exec i3";
 
     home-manager.users."${dotfiles.user}" = {
       # TODO: find a better way
@@ -39,7 +39,7 @@ in {
           if command -v dbus-update-activation-environment >/dev/null 2>&1; then
                   dbus-update-activation-environment DISPLAY XAUTHORITY
           fi
-          exec i3 -c ${configFile}
+          exec i3
         '';
       };
 
