@@ -10,6 +10,7 @@
 + [X] rust
 + [X] go
 + [-] haskell
+  ghci -> inject hoogle command
 + [ ] latex
 + [X] syncthing
 + [X] termite
@@ -54,7 +55,7 @@ CLOSED: [2019-11-16 Sat 21:04]
 ** TODO ricing
 ** TODO write script to generate shell
 Example: generate shell to deploy a static go build
-
+** TODO golang: alias for generate shell + generate deps
 ** TODO auto upgrade of doom
 ** TODO store secrets in /run/keys if any
 ** TODO use substituteAllInPlace to inject theme variables
@@ -64,3 +65,4 @@ Clean filesystem like this: https://github.com/grahamc/nixos-config/blob/master/
 ** DONE custom emacs config/doom with nixos
 CLOSED: [2019-11-16 Sat 21:04]
 ** TODO use zsh for nix-shell
+** TODO firefox user.js + extensions

@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib }:
 
 let
   dotfiles = config.dotfiles;
@@ -20,30 +20,36 @@ let
       _hasFlags = feature ? flags;
       hasFlags = if _hasFlags then builtins.length feature.flags > 0 else false;
       surround = cond: s: if cond then "(" + s + ")" else s;
-    in if feature.enable then
+    in if name != "name" && feature.enable then
       "  ${surround hasFlags (name + (generateFeatureFlags " " feature))}"
     else
       "";
 
-  generateSection = name: section:
-    "  :${name}\n" + (concatAttrsToString "\n" generateFeature section);
+  generateSection = section:
+    "  :${section.name}\n" + (concatAttrsToString "\n" generateFeature section);
 
   # Generate sections from map.
   #
   # Example:
-  # {
-  #   input = {
+  # [
+  #   ({
+  #     name = "input";
   #     chinese.enable = true;
   #     company = { enable = true; flags = [ "childframe" ]; };
-  #   };
+  #   })
   # }
   generateSections = sections:
-    concatAttrsToString "\n\n" generateSection sections;
-in ''
-  ;;; init.el -*- lexical-binding: t; -*-
-  (doom!
-'' + generateSections {
-  completion = {
+    lib.concatStringsSep "\n\n" (filterList (map generateSection sections));
+
+in let
+  header = ''
+    ;;; init.el -*- lexical-binding: t; -*-
+    (doom!
+  '';
+
+in header + (generateSections [
+  {
+    name = "completion";
     "${cfg.completion}" = {
       enable = true;
       flags = if cfg.completion == "ivy" then [ "icons" ] else [ ];
@@ -52,9 +58,10 @@ in ''
       enable = true;
       flags = [ "childframe" ];
     };
-  };
+  }
 
-  ui = {
+  {
+    name = "ui";
     doom.enable = true;
     doom-dashboard.enable = true;
     doom-quit.enable = true;
@@ -75,9 +82,10 @@ in ''
     vi-tilde-fringe.enable = true;
     window-select.enable = true;
     workspaces.enable = true;
-  };
+  }
 
-  editor = {
+  {
+    name = "editor";
     evil = {
       enable = true;
       flags = [ "everywhere" ];
@@ -91,20 +99,25 @@ in ''
     multiple-cursors.enable = true;
     rotate-text.enable = true;
     snippets.enable = true;
-  };
+  }
 
-  emacs = {
+  {
+    name = "emacs";
     dired = {
       enable = true;
       flags = [ "icons" ];
     };
     electric.enable = true;
     vc.enable = true;
-  };
+  }
 
-  term."${cfg.terminal}".enable = true;
+  {
+    name = "term";
+    "${cfg.terminal}".enable = true;
+  }
 
-  tools = {
+  {
+    name = "tools";
     ansible.enable = dotfiles.tools.devops.enable;
     debugger.enable = true;
     direnv.enable = dotfiles.shell.direnv.enable;
@@ -124,9 +137,10 @@ in ''
     pdf.enable = true;
     rgb.enable = true;
     terraform.enable = dotfiles.tools.devops.enable;
-  };
+  }
 
-  lang = {
+  {
+    name = "lang";
     cc.enable = true;
     data.enable = true;
     emacs-lisp.enable = true;
@@ -150,14 +164,13 @@ in ''
       flags = [ "lsp" ];
     };
     sh.enable = true;
-  };
+  }
 
-  # email = { };
-
-  # app = { };
-} + "\n\n" + generateSection "config" {
-  default = {
-    enable = true;
-    flags = [ "bindings" "smartparens" ];
-  };
-} + ")"
+  {
+    name = "config";
+    default = {
+      enable = true;
+      flags = [ "bindings" "smartparens" ];
+    };
+  }
+]) + ")"

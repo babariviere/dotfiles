@@ -74,8 +74,7 @@ in {
           recursive = true;
 
         };
-        ".doom.d/init.el".text =
-          import ./init.el.nix { inherit config lib pkgs; };
+        ".doom.d/init.el".text = import ./init.el.nix { inherit config lib; };
       };
       xdg.configFile = {
         "zsh/rc.d/env.emacs.zsh".source = <config/emacs/env.zsh>;

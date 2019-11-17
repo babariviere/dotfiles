@@ -36,6 +36,8 @@ in {
         "sudo nix-channel --update && sudo nixos-rebuild -I config=$HOME/.dotfiles/config switch";
       nre = "sudo nixos-rebuild -I config=$HOME/.dotfiles/config";
       ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
+      nrs = "sudo nixos-rebuild switch";
+      nrst = "sudo nixos-rebuild switch --show-trace";
     };
 
     environment.shellInit = ''

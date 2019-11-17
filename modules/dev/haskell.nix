@@ -13,6 +13,10 @@ in {
       stack
       cabal2nix
       (all-hies.selection { selector = p: { inherit (p) ghc865; }; })
+      haskellPackages.hoogle
     ];
+
+    home-manager.users."${dotfiles.user}".home.file.".ghci".source =
+      <config/ghci>;
   };
 }

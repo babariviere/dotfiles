@@ -56,12 +56,16 @@ prompt_init() {
   zstyle ':vcs_info:git*' formats ' %b'
   zstyle ':vcs_info:git*' actionformats ' %b (%a)'
 
+  if [[ -n $IN_NIX_SHELL ]]; then
+    prompt_nix_shell="%F{yellow}$IN_NIX_SHELL>%f "
+  fi
+
   if [[ -n $SSH_CONNECTION ]]; then
     prompt_ssh='[ssh] '
   fi
 
   RPROMPT='%F{blue}%~%F{magenta}${vcs_info_msg_0_}$(prompt_git_dirty)%f'
-  PROMPT='%F{blue}${prompt_ssh}%n.%m %f${PROMPT_SYMBOL:-$ }'
+  PROMPT='%F{blue}${prompt_ssh}${prompt_nix_shell}%F{blue}%n@%m %f${PROMPT_SYMBOL:-$ }'
 }
 
 prompt_init "$@"

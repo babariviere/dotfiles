@@ -16,7 +16,10 @@ in {
       termite.enable = true;
       compton.enable = false;
     };
-    dev = { rust.enable = true; };
+    dev = {
+      haskell.enable = true;
+      rust.enable = true;
+    };
     editors = {
       emacs.enable = true;
       neovim.enable = true;
