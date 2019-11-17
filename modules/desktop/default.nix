@@ -51,7 +51,7 @@ in {
     ./firefox.nix
     ./i3.nix
     ./polybar.nix
-    ./riot.nix
+    ./rofi.nix
     ./termite.nix
   ];
 
@@ -64,15 +64,9 @@ in {
       default = true;
     };
 
-    # TODO: merge
-    # strategy is to set priorities (enum with value like first, middle, last with priority number)
-    xinitrc = mkOption {
-      type = types.str // {
-        merge = loc: defs:
-          lib.strings.concatMapStringsSep "\n" (x: x.value) defs;
-      };
-      description = ".xinitrc script to install";
-      default = "";
+    xinitCmd = mkOption {
+      type = types.str;
+      description = "launch command for xinitrc";
     };
   };
 
@@ -90,8 +84,6 @@ in {
       };
     };
 
-    dotfiles.desktop.xinitrc = "test";
-
     sound.enable = true;
     hardware.pulseaudio.enable = true;
 
@@ -106,9 +98,28 @@ in {
       ];
       enableDefaultFonts = true;
     };
+
     home-manager.users."${config.dotfiles.user}".home = {
-      # TODO: this is just for test, but this will actually replace i3 .xinitrc
-      file = { ".xinitrc.test".text = config.dotfiles.desktop.xinitrc; };
+      file = {
+        ".xinitrc".text = ''
+          #!/bin/sh
+
+          if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+            eval $(dbus-launch --exit-with-session --sh-syntax)
+          fi
+          systemctl --user import-environment DISPLAY XAUTHORITY
+
+          if command -v dbus-update-activation-environment >/dev/null 2>&1; then
+                  dbus-update-activation-environment DISPLAY XAUTHORITY
+          fi
+
+          for f in $HOME/.Xresources.d/*; do
+              ${pkgs.xorg.xrdb}/bin/xrdb -merge "$f"
+          done
+
+          ${cfg.xinitCmd}
+        '';
+      };
     };
   };
 }

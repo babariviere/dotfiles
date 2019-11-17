@@ -11,7 +11,6 @@ in {
     services.xserver.windowManager.i3 = {
       enable = true;
       package = pkgs.i3-gaps;
-      configFile = <config/i3/config>;
       extraPackages = with pkgs; [
         i3lock-color
         betterlockscreen
@@ -22,27 +21,9 @@ in {
       ];
     };
 
-    # TODO: this causes infinite recursion
-    dotfiles.desktop.xinitrc = "exec i3";
+    dotfiles.desktop.xinitCmd = lib.mkForce "exec i3";
 
     home-manager.users."${dotfiles.user}" = {
-      # TODO: find a better way
-      home.file = {
-        ".xinitrc".text = ''
-          #!/bin/sh
-
-          if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-            eval $(dbus-launch --exit-with-session --sh-syntax)
-          fi
-          systemctl --user import-environment DISPLAY XAUTHORITY
-
-          if command -v dbus-update-activation-environment >/dev/null 2>&1; then
-                  dbus-update-activation-environment DISPLAY XAUTHORITY
-          fi
-          exec i3
-        '';
-      };
-
       xdg.configFile."i3/config".source = configFile;
     };
   };

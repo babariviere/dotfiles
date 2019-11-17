@@ -34,8 +34,9 @@ in {
       ne = "nix-env";
       nu =
         "sudo nix-channel --update && sudo nixos-rebuild -I config=$HOME/.dotfiles/config switch";
-      nre = "sudo nixos-rebuild -I config=$HOME/.dotfiles/config";
       ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
+      nr = "sudo nixos-rebuild";
+      nre = "sudo nixos-rebuild -I config=$HOME/.dotfiles/config";
       nrs = "sudo nixos-rebuild switch";
       nrst = "sudo nixos-rebuild switch --show-trace";
     };

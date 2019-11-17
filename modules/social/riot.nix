@@ -2,9 +2,9 @@
 
 let
   dotfiles = config.dotfiles;
-  cfg = dotfiles.desktop.riot;
+  cfg = dotfiles.social.riot;
 in {
-  config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
+  config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ riot-desktop ];
   };
 }

@@ -1,7 +1,7 @@
 #+TITLE: todo
 
-* TODO Modules [13/30]
-+ [-] zsh: missing everything
+* TODO Modules [16/30]
++ [X] zsh: missing everything
 + [X] direnv
 + [X] git
 + [-] iosevka: missing generation
@@ -9,15 +9,14 @@
 + [ ] bspwm: switch to it (with sxhkd)
 + [X] rust
 + [X] go
-+ [-] haskell
-  ghci -> inject hoogle command
++ [X] haskell
 + [ ] latex
 + [X] syncthing
 + [X] termite
 + [X] firefox
 + [X] discord
 + [X] plex
-+ [ ] rofi
++ [X] rofi
 + [X] i3
 + [-] ssh
   still needs better password prompt
@@ -33,13 +32,11 @@
 + [ ] adb
 + [ ] flutter
 + [ ] bitwarden
-+ [ ] autorandr
 * Inbox
 ** TODO allow import of mysql config
-
 [[file:/etc/dotfiles/modules/dev/mysql.nix::in { config = lib.mkIf cfg.enable { services.mysql = {]]
-** TODO override merge with 1. priority 2. concat
-
+** KILL override merge with 1. priority 2. concat
+CLOSED: [2019-11-17 Sun 18:41]
 [[file:/etc/dotfiles/modules/desktop/default.nix::xinitrc = mkOption {]]
 ** DONE use rolling-release lorri + module from lorri to install direnv
 CLOSED: [2019-11-16 Sat 21:04]
@@ -51,7 +48,6 @@ CLOSED: [2019-11-16 Sat 21:04]
 [[file:/etc/dotfiles/modules/tools/aws.nix::# TODO: manage aws/config aws/credentials ?]]
 
 ** TODO generate +iosevka.el for doom.d
-
 ** TODO ricing
 ** TODO write script to generate shell
 Example: generate shell to deploy a static go build

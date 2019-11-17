@@ -13,9 +13,9 @@ in {
       i3.enable = true;
       firefox.enable = true;
       polybar.enable = true;
-      riot.enable = true;
       termite.enable = true;
       compton.enable = false;
+      rofi.enable = true;
     };
     dev = {
       haskell.enable = true;
@@ -42,7 +42,10 @@ in {
       ssh.enable = true;
       syncthing.enable = true;
     };
-    social = { discord.enable = true; };
+    social = {
+      discord.enable = true;
+      riot.enable = true;
+    };
     tools = {
       build.enable = true;
       devops.enable = true;
