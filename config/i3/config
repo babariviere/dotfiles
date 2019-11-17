@@ -102,8 +102,8 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-bindsym --release Print exec screenshot
-bindsym --release Shift+Print exec screenshot -s
+bindsym --release Print exec @screenshot@
+bindsym --release Shift+Print exec @screenshot@ -s
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.

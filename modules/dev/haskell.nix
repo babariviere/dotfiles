@@ -4,8 +4,7 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.dev.haskell;
   all-hies =
-    import (fetchTarball "https://github.com/infinisil/all-hies/tarball/master")
-    { };
+    import (builtins.fetchGit "https://github.com/infinisil/all-hies") { };
 in {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
