@@ -1,14 +1,11 @@
 [colors]
-background = ${xrdb:background:#222}
-;background = #00000000
-;background = #222
-background-alt = ${xrdb:background:#222}
-;foreground = ${xrdb:foreground:#222}
-foreground = #dfdfdf
-foreground-alt = #dfdfdf
-primary = ${xrdb:color5:#c792ea}
-secondary = ${xrdb:color1:#ef5350}
-alert = ${xrdb:color3:#addb67}
+background = @background@
+background-alt = @background@
+foreground = @foreground@
+foreground-alt = @foreground@
+primary = @color5@
+secondary = @color1@
+alert = @color3@
 
 [bar/top]
 ;monitor = ${env:MONITOR:HDMI-1}

@@ -11,8 +11,8 @@ in {
         i3GapsSupport = true; # TODO: find a way to variabilise it
         alsaSupport = true;
       };
-      extraConfig =
-        builtins.readFile <config/polybar/config>; # TODO: use config field
+      extraConfig = builtins.readFile (pkgs.mutate <config/polybar/config>
+        dotfiles.colors); # TODO: use config field
       script = "polybar top &";
     };
 

@@ -58,7 +58,8 @@ Example: generate shell to deploy a static go build
 ** TODO golang: alias for generate shell + generate deps
 ** TODO auto upgrade of doom
 ** TODO store secrets in /run/keys if any
-** TODO use substituteAllInPlace to inject theme variables
+** DONE use substituteAllInPlace to inject theme variables
+CLOSED: [2019-11-17 Sun 12:56]
 ** TODO take a look at wireguard
 ** TODO use zfs instead of lvm
 Clean filesystem like this: https://github.com/grahamc/nixos-config/blob/master/devices/petunia/hardware-configuration.nix
