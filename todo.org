@@ -66,3 +66,4 @@ CLOSED: [2019-11-16 Sat 21:04]
 ** TODO apply theme to dmenu
 ** TODO emacs daemon: services.emacs
 ** TODO find a better wallpaper for dracula sympa
+** TODO add vcs_info zsh
