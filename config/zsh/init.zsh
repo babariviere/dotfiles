@@ -1,4 +1,4 @@
-source $ZGEN_SOURCE
+source $ZGEN_SOURCE/zgen.zsh
 
 if ! zgen saved; then
   echo "Initializing zgen"

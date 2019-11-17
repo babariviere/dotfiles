@@ -8,8 +8,8 @@ in {
     environment.systemPackages = with pkgs; [ termite ];
 
     home-manager.users."${dotfiles.user}".xdg.configFile = {
-      "termite" = {
-        source = <config/termite>;
+      "termite/config" = {
+        source = pkgs.mutate <config/termite/config> dotfiles.colors;
         recursive = true;
       };
     };

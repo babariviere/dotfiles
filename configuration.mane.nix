@@ -7,6 +7,7 @@ in {
   dotfiles = {
     user = user;
     email = "babathriviere@gmail.com";
+    theme = "dracula";
     desktop = {
       enable = true;
       i3.enable = true;

@@ -14,40 +14,40 @@ size_hints = true
 [colors]
 
 # special
-foreground      = #f8f8f2
-foreground_bold = #f8f8f2
-cursor          = #f8f8f2
-background      = #282a36
+foreground      = @foreground@
+foreground_bold = @foregroundBold@
+cursor          = @cursor@
+background      = @background@
 
 # black
-color0  = #000000
-color8  = #4d4d4d
+color0  = @color0@
+color8  = @color8@
 
 # red
-color1  = #ff5555
-color9  = #ff6e67
+color1  = @color1@
+color9  = @color9@
 
 # green
-color2  = #50fa7b
-color10 = #5af78e
+color2  = @color2@
+color10 = @color10@
 
 # yellow
-color3  = #f1fa8c
-color11 = #f4f99d
+color3  = @color3@
+color11 = @color11@
 
 # blue
-color4  = #bd93f9
-color12 = #caa9fa
+color4  = @color4@
+color12 = @color12@
 
 # magenta
-color5  = #ff79c6
-color13 = #ff92d0
+color5  = @color5@
+color13 = @color17@
 
 # cyan
-color6  = #8be9fd
-color14 = #9aedfe
+color6  = @color6@
+color14 = @color14@
 
 # white
-color7  = #bfbfbf
-color15 = #e6e6e6
+color7  = @color7@
+color15 = @color15@
 

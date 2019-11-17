@@ -11,7 +11,7 @@ in {
         ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
         ZSH_CACHE = "$XDG_CACHE_HOME/zsh";
         ZGEN_DIR = "$XDG_CACHE_HOME/zgen";
-        ZGEN_SOURCE = "${zgen}/zgen.zsh";
+        ZGEN_SOURCE = "${zgen}";
       };
       systemPackages = with pkgs; [ zsh nix-zsh-completions fd exa htop tree ];
     };
