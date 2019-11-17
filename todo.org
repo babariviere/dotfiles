@@ -67,3 +67,4 @@ Clean filesystem like this: https://github.com/grahamc/nixos-config/blob/master/
 CLOSED: [2019-11-16 Sat 21:04]
 ** TODO use zsh for nix-shell
 ** TODO firefox user.js + extensions
+** TODO apply theme to dmenu
