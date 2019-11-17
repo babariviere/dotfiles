@@ -4,6 +4,7 @@ configuration {
     modi:   "window,run,drun,ssh";
     theme:  "@theme@";
     font:   "Iosevka Baba 12";
+    terminal: "@terminal@";
 
     /*  width: 50;*/
     /*  lines: 15;*/
@@ -16,7 +17,6 @@ configuration {
     /*  xoffset: 0;*/
     /*  fixed-num-lines: true;*/
     /*  show-icons: false;*/
-    /*  terminal: "rofi-sensible-terminal";*/
     /*  ssh-client: "ssh";*/
     /*  ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";*/
     /*  run-command: "{cmd}";*/

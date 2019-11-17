@@ -48,6 +48,7 @@ let
 in {
   imports = [
     ./compton.nix
+    ./dunst.nix
     ./firefox.nix
     ./i3.nix
     ./polybar.nix

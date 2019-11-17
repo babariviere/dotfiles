@@ -1,6 +1,6 @@
 #+TITLE: todo
 
-* TODO Modules [16/30]
+* TODO Modules [17/29]
 + [X] zsh: missing everything
 + [X] direnv
 + [X] git
@@ -23,7 +23,7 @@
 + [-] aws
 + [X] insomnia
 + [ ] xst (get rid of termite)
-+ [ ] dunst
++ [X] dunst
 + [-] gpg: agent + keys (private/gpg....)
   still needs better password prompt
 + [ ] keybase
@@ -64,3 +64,4 @@ CLOSED: [2019-11-16 Sat 21:04]
 ** TODO use zsh for nix-shell
 ** TODO firefox user.js + extensions
 ** TODO apply theme to dmenu
+** TODO emacs daemon: services.emacs

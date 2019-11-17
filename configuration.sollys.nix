@@ -14,6 +14,7 @@ in {
       polybar.enable = true;
       termite.enable = true;
       compton.enable = false;
+      dunst.enable = true;
       rofi.enable = true;
     };
     dev = { go.enable = true; };
