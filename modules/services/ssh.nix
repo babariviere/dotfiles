@@ -3,5 +3,5 @@
 with lib;
 let
   dotfiles = config.dotfiles;
-  cfg = dotfiles.services.gpg;
+  cfg = dotfiles.services.ssh;
 in { config = mkIf cfg.enable { programs.ssh = { startAgent = true; }; }; }
