@@ -69,3 +69,6 @@
 
 (use-package! systemd
   :defer)
+
+;; safe variables
+(add-to-list 'safe-local-variable-values '(go-tag-args . ("-transform" "camelcase")))
