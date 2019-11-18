@@ -1,7 +1,11 @@
 #+TITLE: todo
 
-* TODO Modules [17/29]
-+ [X] zsh: missing everything
+* TODO Modules [16/29]
++ [-] zsh: missing everything
+  improve prompt with:
+  + aws profile
+  + fix IN_NIX_SHELL with lorri not being evaluated (only evaluated on init)
+  + use symbol instead of $IN_NIX_SHELL value
 + [X] direnv
 + [X] git
 + [-] iosevka: missing generation
@@ -67,3 +71,4 @@ CLOSED: [2019-11-16 Sat 21:04]
 ** TODO emacs daemon: services.emacs
 ** TODO find a better wallpaper for dracula sympa
 ** TODO add vcs_info zsh
+** TODO fix prompt when IN_NIX_SHELL via lorri
