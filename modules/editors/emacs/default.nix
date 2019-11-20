@@ -9,6 +9,11 @@ let
 
 in {
   options.dotfiles.editors.emacs = {
+    daemon = mkOption {
+      type = types.bool;
+      description = "Enable emacs daemon for each user.";
+      default = true;
+    };
     completion = mkOption {
       type = types.enum [ "ivy" "ido" "helm" ];
       description = "Completion framework to use in emacs.";
@@ -52,17 +57,22 @@ in {
 
           plantuml # :lang plantuml
 
-        ] ++ (if cfg.spellcheck then [
+        ] ++ optionals cfg.spellcheck [
           aspell
           aspellDicts.en
           aspellDicts.en-computers
           aspellDicts.fr
-        ] else
-          [ ]);
+        ];
 
-      sessionVariables = { EDITOR = "emacs"; };
+      shellAliases = {
+        e = if cfg.daemon then config.environment.variables.EDITOR else "emacs";
+      };
+    };
 
-      shellAliases = { e = "emacs"; };
+    services.emacs = mkIf cfg.daemon {
+      enable = true;
+      defaultEditor = true;
+      package = unstable.emacs;
     };
 
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
