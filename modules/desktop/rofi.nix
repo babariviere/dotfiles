@@ -10,7 +10,7 @@ in {
     home-manager.users."${dotfiles.user}".xdg.configFile = {
       "rofi/config.rasi".source = pkgs.mutate <config/rofi/config.rasi> {
         theme = dotfiles.theme;
-        terminal = pkgs.termite;
+        terminal = "${pkgs.termite}/bin/termite";
       };
 
       "rofi/${dotfiles.theme}.rasi".source =
