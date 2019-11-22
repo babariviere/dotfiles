@@ -57,6 +57,8 @@ in {
 
           plantuml # :lang plantuml
 
+          shellcheck # :lang sh
+
         ] ++ optionals cfg.spellcheck [
           aspell
           aspellDicts.en
