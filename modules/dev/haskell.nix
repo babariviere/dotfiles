@@ -11,6 +11,7 @@ in {
       ghc
       stack
       cabal2nix
+      # TODO: hie is a bit slow, switch to dante ?
       (all-hies.selection { selector = p: { inherit (p) ghc865; }; })
       haskellPackages.hoogle
     ];
