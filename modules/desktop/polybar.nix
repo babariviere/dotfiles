@@ -8,13 +8,16 @@ in {
     home-manager.users."${dotfiles.user}".services.polybar = {
       enable = true;
       package = pkgs.polybar.override {
-        i3GapsSupport = true; # TODO: find a way to variabilise it
+        i3GapsSupport = config.dotfiles.desktop.i3.enable;
         alsaSupport = true;
+        pulseSupport = true;
       };
       extraConfig = builtins.readFile (pkgs.mutate <config/polybar/config>
         dotfiles.colors); # TODO: use config field
       script = "polybar top &";
     };
+
+    environment.systemPackages = with pkgs; [ acpi ];
 
     fonts.fonts = with pkgs; [ siji ];
   };

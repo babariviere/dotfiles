@@ -198,7 +198,8 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp62s0
+; TODO: variabilise it with mutate
+interface = wlp82s0
 interval = 3.0
 
 format-connected = 直 <label-connected>
@@ -220,7 +221,8 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = enp61s0
+; TODO idem
+interface = enp0s31f6
 interval = 3.0
 
 ;format-connected-underline = #55aa55
@@ -311,8 +313,8 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
-battery = BAT1
-adapter = ADP1
+battery = BAT0
+adapter = ADP0
 full-at = 100
 
 format-charging = <animation-charging> <label-charging>

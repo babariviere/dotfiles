@@ -46,6 +46,8 @@ in {
       zsh.enable = true;
     };
     services = {
+      bitwarden.enable = true;
+      fwupd.enable = true;
       gpg.enable = true;
       ssh.enable = true;
       syncthing.enable = true;
@@ -77,10 +79,11 @@ in {
   networking.hostName = "mane";
   environment.variables = { HOSTNAME = "mane"; };
 
-  # TODO : clean later
-  services.fwupd.enable = true;
+  ## Custom settings
   services.undervolt = {
     enable = true;
     coreOffset = "-100";
   };
+
+  services.xserver.libinput = { accelSpeed = "0.4"; };
 }

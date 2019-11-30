@@ -60,7 +60,6 @@ in {
       nixfmt
       nix-prefetch-scripts
       nix-index
-      killall
       # sorry, I have to
       lolcat
     ];
