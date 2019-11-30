@@ -7,6 +7,7 @@ in {
   # TODO: if we want support for emacs colors, we need to add this: https://github.com/syl20bnr/spacemacs/wiki/Terminal
   config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
     environment.systemPackages = with pkgs; [ termite ];
+    environment.shellAliases = { ssh = "TERM=xterm ssh"; };
 
     home-manager.users."${dotfiles.user}".xdg.configFile = {
       "termite/config" = {
