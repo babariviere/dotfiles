@@ -2,7 +2,8 @@
 
 let user = "babariviere";
 in {
-  imports = [ ./. ./profiles/nvidia.nix ];
+  imports =
+    [ <nixos-hardware/lenovo/thinkpad/p1/gen2> ./. ./profiles/nvidia.nix ];
 
   dotfiles = {
     user = user;
