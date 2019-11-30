@@ -18,8 +18,5 @@ nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs-unstable
 echo "==> Adding unstable nixos channel"
 nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 
-echo "==> Adding nixos-hardware channel"
-nix-channel --add https://github.com/babariviere/nixos-hardware/archive/master.tar.gz nixos-hardware
-
 echo "==> Updating all channels"
 nix-channel --update

@@ -2,8 +2,14 @@
 
 let user = "babariviere";
 in {
-  imports =
-    [ <nixos-hardware/lenovo/thinkpad/p1/gen2> ./. ./profiles/nvidia.nix ];
+  imports = [
+    ./.
+    ./profiles/intel.nix
+    ./profiles/laptop.nix
+    ./profiles/nvidia.nix
+    ./profiles/ssd.nix
+    ./profiles/thinkpad.nix
+  ];
 
   dotfiles = {
     user = user;
@@ -70,4 +76,11 @@ in {
 
   networking.hostName = "mane";
   environment.variables = { HOSTNAME = "mane"; };
+
+  # TODO : clean later
+  services.fwupd.enable = true;
+  services.undervolt = {
+    enable = true;
+    coreOffset = "-100";
+  };
 }

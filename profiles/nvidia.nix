@@ -1,9 +1,20 @@
 { config, lib, pkgs, ... }:
 
 {
-  # Enable airplane touch
-  boot.kernelParams =
-    [ "blacklist.nouveau=1" "acpi_osi=!" ''acpi_osi="Windows 2009"'' ];
+  boot.kernelParams = [ "blacklist.nouveau=1" ];
 
-  hardware.bumblebee.enable = true;
+  hardware.bumblebee = {
+    enable = true;
+    connectDisplay = true;
+  };
+
+  nixpkgs.overlays = [
+    (self: super: {
+      bumblebee = super.bumblebee.override {
+        extraNvidiaDeviceOptions = ''
+          Option "AllowEmptyInitialConfiguration"
+        '';
+      };
+    })
+  ];
 }
