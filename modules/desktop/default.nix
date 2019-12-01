@@ -89,7 +89,7 @@ in {
     sound.enable = true;
     hardware.pulseaudio.enable = true;
 
-    environment.systemPackages = with pkgs; [ pamixer pavucontrol ];
+    environment.systemPackages = with pkgs; [ xclip pamixer pavucontrol ];
 
     # TODO: generate with IosevkaGenHS
     fonts = {

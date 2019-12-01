@@ -6,6 +6,6 @@ let
   cfg = dotfiles.services.bitwarden;
 in {
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ bitwarden-cli ];
+    environment.systemPackages = with pkgs; [ bitwarden bitwarden-cli ];
   };
 }
