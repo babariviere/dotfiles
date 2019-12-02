@@ -25,10 +25,16 @@ in {
     };
     shell = {
       direnv.enable = true;
-      git.enable = true;
+      git = {
+        enable = true;
+        # signingKey = "C45AE603B0DB35266E0E1BBA7014714FCF05D20E";
+      };
       zsh.enable = true;
     };
-    services = { ssh.enable = true; };
+    services = {
+      gpg.enable = true;
+      ssh.enable = true;
+    };
     social = { slack.enable = true; };
     tools = {
       aws.enable = true;
