@@ -15,6 +15,10 @@ in {
     user = user;
     email = "babathriviere@gmail.com";
     theme = "dracula";
+    network = {
+      eth = "enp0s31f6";
+      wlan = "wlp82s0";
+    };
     desktop = {
       enable = true;
       i3.enable = true;

@@ -13,7 +13,7 @@ in {
         pulseSupport = true;
       };
       extraConfig = builtins.readFile (pkgs.mutate <config/polybar/config>
-        dotfiles.colors); # TODO: use config field
+        (dotfiles.colors // dotfiles.network));
       script = "polybar top &";
     };
 

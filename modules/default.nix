@@ -5,8 +5,17 @@ with lib;
 let
   generate = import ./generate.nix { inherit lib; };
   cfg = config.dotfiles;
-  imports =
-    [ ./desktop ./dev ./editors ./media ./services ./shell ./social ./tools ];
+  imports = [
+    ./desktop
+    ./dev
+    ./editors
+    ./media
+    ./network.nix
+    ./services
+    ./shell
+    ./social
+    ./tools
+  ];
   options = generate.options imports;
 in {
   inherit imports;
@@ -33,12 +42,12 @@ in {
       nix-env = "NIXPKGS_ALLOW_UNFREE=1 nix-env";
       ne = "nix-env";
       nu =
-        "sudo nix-channel --update && sudo nixos-rebuild -I config=$HOME/.dotfiles/config switch";
+        "sudo nix-channel --update && nix build --no-link -f '<nixpkgs/nixos>' config.system.build.toplevel && sudo nixos-rebuild -I config=$HOME/.dotfiles/config switch";
       ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
       ns = "nix-shell";
       nr = "sudo nixos-rebuild";
-      nre = "sudo nixos-rebuild -I config=$HOME/.dotfiles/config";
-      nrs = "sudo nixos-rebuild switch";
+      nrs =
+        "nix build --no-link -f '<nixpkgs/nixos>' config.system.build.toplevel && sudo nixos-rebuild switch";
       nrst = "sudo nixos-rebuild switch --show-trace";
     };
 
