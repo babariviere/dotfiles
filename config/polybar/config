@@ -311,8 +311,8 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
-battery = BAT0
-adapter = ADP0
+battery = @battery@
+adapter = @batteryAdapter@
 full-at = 100
 
 format-charging = <animation-charging> <label-charging>

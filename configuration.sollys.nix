@@ -16,7 +16,11 @@ in {
       enable = true;
       i3.enable = true;
       firefox.enable = true;
-      polybar.enable = true;
+      polybar = {
+        enable = true;
+        battery = "BAT1";
+        batteryAdapter = "ADP1";
+      };
       termite.enable = true;
       compton.enable = false;
       dunst.enable = true;
