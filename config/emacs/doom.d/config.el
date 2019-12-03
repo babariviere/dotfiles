@@ -10,10 +10,6 @@
 ;;; :completion ivy
 (setf (alist-get 't ivy-re-builders-alist) #'ivy--regex-plus)
 
-;;; :lang org
-(setq
- org-log-done 'time)
-
 ;;; :lang go
 (add-hook! 'before-save-hook #'gofmt-before-save)
 
