@@ -8,6 +8,10 @@ in {
     user = user;
     email = "bastien.riviere@easy.movie";
     theme = "dracula";
+    network = {
+      eth = "enp59s0";
+      wlan = "wlo1";
+    };
     desktop = {
       enable = true;
       i3.enable = true;
