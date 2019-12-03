@@ -60,6 +60,7 @@ in {
       nixfmt
       nix-prefetch-scripts
       nix-index
+      nix-review
       # sorry, I have to
       lolcat
     ];
