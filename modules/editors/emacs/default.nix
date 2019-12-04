@@ -59,6 +59,8 @@ in {
 
           shellcheck # :lang sh
 
+          nodePackages.prettier
+
         ] ++ optionals cfg.spellcheck [
           aspell
           aspellDicts.en
