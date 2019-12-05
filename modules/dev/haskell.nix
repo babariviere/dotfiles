@@ -3,6 +3,7 @@
 let
   dotfiles = config.dotfiles;
   cfg = dotfiles.dev.haskell;
+  # TODO: this thing is huge to download.
   all-hies =
     import (builtins.fetchGit "https://github.com/infinisil/all-hies") { };
 in {
@@ -11,8 +12,7 @@ in {
       ghc
       stack
       cabal2nix
-      # TODO: hie is a bit slow, switch to dante ?
-      (all-hies.selection { selector = p: { inherit (p) ghc865; }; })
+      # (all-hies.selection { selector = p: { inherit (p) ghc865; }; })
       haskellPackages.hoogle
     ];
 
