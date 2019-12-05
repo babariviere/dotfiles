@@ -14,7 +14,7 @@ in {
     useSandbox = true;
     gc = {
       automatic = true;
-      dates = "*:0/30";
+      dates = "*:00:00/2";
       options = "--delete-older-than 7d";
     };
     nixPath = options.nix.nixPath.default ++ [ "config=/etc/dotfiles/config" ];
