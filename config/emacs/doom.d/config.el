@@ -10,9 +10,6 @@
 ;;; :completion ivy
 (setf (alist-get 't ivy-re-builders-alist) #'ivy--regex-plus)
 
-;;; :lang go
-(add-hook! 'before-save-hook #'gofmt-before-save)
-
 ;;; :lang rust
 ;; (setq rustic-lsp-server 'rust-analyzer)
 

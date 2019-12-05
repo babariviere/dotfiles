@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./go.nix ./haskell.nix ./mysql.nix ./rust.nix ];
+  imports = [ ./android.nix ./go.nix ./haskell.nix ./mysql.nix ./rust.nix ];
 }

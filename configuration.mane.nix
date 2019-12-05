@@ -30,6 +30,7 @@ in {
       rofi.enable = true;
     };
     dev = {
+      android.enable = true;
       haskell.enable = true;
       rust.enable = true;
     };

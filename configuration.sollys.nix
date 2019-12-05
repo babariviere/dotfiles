@@ -47,7 +47,11 @@ in {
     tools = {
       aws.enable = true;
       build.enable = true;
-      docker.enable = true;
+      docker = {
+        enable = true;
+        arion = true;
+        compose = true;
+      };
       devops.enable = true;
       insomnia.enable = true;
       light.enable = true;
