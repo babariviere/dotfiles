@@ -68,11 +68,6 @@ in {
     };
   };
 
-  networking.wireless = {
-    enable = true;
-    networks = import ./private/networks.nix;
-  };
-
   users.users."${user}" = {
     isNormalUser = true;
     uid = 1000;
