@@ -41,8 +41,7 @@ in {
     environment.shellAliases = {
       nix-env = "NIXPKGS_ALLOW_UNFREE=1 nix-env";
       ne = "nix-env";
-      nu =
-        "sudo nix-channel --update && sudo nixos-rebuild -I config=$HOME/.dotfiles/config switch";
+      nu = "sudo nix-channel --update && sudo nixos-rebuild switch";
       ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
       ns = "nix-shell";
       nr = "sudo nixos-rebuild";
