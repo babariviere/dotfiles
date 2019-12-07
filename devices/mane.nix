@@ -13,7 +13,7 @@ in {
 
   dotfiles = {
     user = user;
-    email = "babathriviere@gmail.com";
+    email = "dev@babariviere.com";
     theme = "dracula";
     network = {
       eth = "enp0s31f6";
