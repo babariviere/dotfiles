@@ -3,12 +3,12 @@
 let user = "babariviere";
 in {
   imports = [
-    ./.
-    ./profiles/intel.nix
-    ./profiles/laptop.nix
-    ./profiles/nvidia.nix
-    ./profiles/ssd.nix
-    ./profiles/thinkpad.nix
+    ../.
+    ../profiles/intel.nix
+    ../profiles/laptop.nix
+    ../profiles/nvidia.nix
+    ../profiles/ssd.nix
+    ../profiles/thinkpad.nix
   ];
 
   dotfiles = {

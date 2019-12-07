@@ -2,7 +2,7 @@
 
 let user = "bastien";
 in {
-  imports = [ ./. ./private/configuration.sollys.nix ./profiles/nvidia.nix ];
+  imports = [ ../. ../private/configuration.sollys.nix ../profiles/nvidia.nix ];
 
   dotfiles = {
     user = user;
