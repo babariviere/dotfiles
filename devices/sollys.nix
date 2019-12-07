@@ -14,7 +14,8 @@ in {
     };
     desktop = {
       enable = true;
-      i3.enable = true;
+      bspwm.enable = true;
+      # i3.enable = true;
       firefox.enable = true;
       polybar = {
         enable = true;
