@@ -64,7 +64,7 @@ in {
     uid = 1000;
     extraGroups = [ "wheel" "video" ];
     hashedPassword =
-      lib.removeSuffix "\n" (builtins.readFile ./private/bastien.passwd);
+      lib.removeSuffix "\n" (builtins.readFile ../private/bastien.passwd);
   };
 
   networking.hostName = "sollys";

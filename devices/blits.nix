@@ -48,7 +48,7 @@ in {
     uid = 1000;
     extraGroups = [ "wheel" "video" ];
     hashedPassword =
-      lib.removeSuffix "\n" (builtins.readFile ./private/babariviere.passwd);
+      lib.removeSuffix "\n" (builtins.readFile ../private/babariviere.passwd);
   };
 
   networking.hostName = "blits";
