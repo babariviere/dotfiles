@@ -87,4 +87,5 @@ in {
   };
 
   services.xserver.libinput = { accelSpeed = "0.4"; };
+  services.zfs.autoScrub.enable = true;
 }
