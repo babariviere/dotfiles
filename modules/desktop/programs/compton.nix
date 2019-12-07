@@ -4,6 +4,8 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.desktop.compton;
 in {
+  options.dotfiles.desktop.compton.enable = lib.mkEnableOption "compton";
+
   config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
     services.compton = {
       enable = true;

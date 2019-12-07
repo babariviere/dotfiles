@@ -5,8 +5,7 @@ let
     if v == "directory" then
       (builtins.readDir (path + "/${n}")) ? "default.nix"
     else
-      v == "regular" && (lib.strings.hasSuffix ".nix" n) && n != "default.nix"
-      && n != "options.nix";
+      v == "regular" && (lib.strings.hasSuffix ".nix" n) && n != "default.nix";
 
   filterSubmodules = path:
     let files = builtins.readDir path;

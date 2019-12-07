@@ -4,12 +4,7 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.desktop.i3;
 
-  screenshot = pkgs.writeShellScriptBin "screenshot" ''
-    filename=$(date '+%Y-%m-%d-%H-%M-%S').png
-    file=$HOME/Pictures/screenshot/$filename
-    mkdir -p $(dirname $file)
-    ${pkgs.maim}/bin/maim $@ $file && ${pkgs.libnotify}/bin/notify-send "Screenshot taken" "saved into $file"
-  '';
+  screenshot = pkgs.callPackage ./scripts/screenshot.nix { };
 
   configFile = pkgs.mutate <config/i3/config> (dotfiles.colors // {
     setWallpaper = "${pkgs.feh}/bin/feh --bg-center ${dotfiles.wallpaper}";

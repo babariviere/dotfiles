@@ -6,6 +6,8 @@ let
   cfg = dotfiles.desktop.polybar;
 in {
   options.dotfiles.desktop.polybar = {
+    enable = mkEnableOption "polybar";
+
     battery = mkOption {
       type = types.str;
       description = "Battery name in /sys/class/power_supply.";
@@ -24,7 +26,7 @@ in {
       enable = true;
       package = pkgs.polybar.override {
         i3GapsSupport = config.dotfiles.desktop.i3.enable;
-        alsaSupport = true;
+        # alsaSupport = true;
         pulseSupport = true;
       };
       extraConfig = builtins.readFile (pkgs.mutate <config/polybar/config>

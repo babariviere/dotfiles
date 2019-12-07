@@ -4,6 +4,8 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.desktop.rofi;
 in {
+  options.dotfiles.desktop.rofi.enable = lib.mkEnableOption "rofi";
+
   config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
     environment.systemPackages = with pkgs; [ rofi ];
 

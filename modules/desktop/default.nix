@@ -47,13 +47,14 @@ let
   });
 in {
   imports = [
-    ./compton.nix
-    ./dunst.nix
-    ./firefox.nix
+    ./bspwm.nix
     ./i3.nix
-    ./polybar.nix
-    ./rofi.nix
-    ./termite.nix
+    ./programs/compton.nix
+    ./programs/dunst.nix
+    ./programs/firefox.nix
+    ./programs/polybar.nix
+    ./programs/rofi.nix
+    ./programs/termite.nix
   ];
 
   options.dotfiles.desktop = {
@@ -76,8 +77,13 @@ in {
       enable = true;
       layout = "us";
       xkbVariant = "altgr-intl";
-      displayManager.startx.enable = true;
+      displayManager.startx.enable =
+        false; # TODO: use services.xserver.windowManager.session
       desktopManager.xterm.enable = false;
+      displayManager.lightdm = {
+        enable = true;
+        # greeters.mini.enable = true; TODO: find a better greeter -> look at webkit
+      };
       libinput = {
         enable = true;
         tapping = false;

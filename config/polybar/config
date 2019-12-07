@@ -3,9 +3,9 @@ background = @background@
 background-alt = @background@
 foreground = @foreground@
 foreground-alt = @foreground@
-primary = @color5@
-secondary = @color1@
-alert = @color3@
+primary = @green@
+secondary = @magenta@
+alert = @red@
 
 [bar/top]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -37,7 +37,8 @@ font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-3 = Wuncon Siji:pixelsize=10;1
 font-4 = Noto:size=10
 
-modules-left = i3
+; TODO: switch to bspwm / i3 from enabled configuration
+modules-left = bspwm
 modules-center = mpd
 modules-right = filesystem backlight-acpi pulseaudio xkeyboard memory cpu wlan eth temperature battery date
 
@@ -46,13 +47,13 @@ tray-padding = 2
 ;tray-transparent = true
 tray-background = ${colors.background}
 
-;wm-restack = bspwm
+wm-restack = bspwm
 ;wm-restack = i3
 
 ;override-redirect = true
 
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
 
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
@@ -89,19 +90,21 @@ label-unmounted-foreground = ${colors.foreground-alt}
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = %index%
+format = <label-state>
+
+label-focused = %name%
 label-focused-background = ${colors.background-alt}
 label-focused-overline= ${colors.primary}
 label-focused-padding = 2
 
-label-occupied = %index%
+label-occupied = %name%
 label-occupied-padding = 2
 
-label-urgent = %index%!
+label-urgent = %name%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-empty = %index%
+label-empty = %name%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
