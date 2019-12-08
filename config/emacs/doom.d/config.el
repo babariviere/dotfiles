@@ -65,3 +65,4 @@
 
 ;; safe variables
 (add-to-list 'safe-local-variable-values '(go-tag-args . ("-transform" "camelcase")))
+(add-to-list 'safe-local-variable-values '(+format-on-save-enabled-modes . ()))
