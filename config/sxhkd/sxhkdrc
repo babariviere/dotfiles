@@ -24,7 +24,7 @@ super + e
 Print
     @screenshot@
 
-super + Print
+shift + Print
       @screenshot@ -s
 
 # bspwm keys
