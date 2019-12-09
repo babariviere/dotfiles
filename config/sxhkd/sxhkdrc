@@ -48,15 +48,6 @@ super + y
 super + g
       bspc node -s biggest
 
-# set the window state
-super + {t,shift + t,s,f}
-      bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-
-# set the node flags
-super + ctrl + {m,x,y,z}
-      bspc node -g {marked,locked,sticky,private}
-
-
 ## Focus and swap
 
 # focus the node in the given direction
