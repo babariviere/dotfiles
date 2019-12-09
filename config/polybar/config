@@ -39,7 +39,7 @@ font-4 = Noto:size=10
 
 ; TODO: switch to bspwm / i3 from enabled configuration
 modules-left = bspwm
-modules-center = mpd
+modules-center =
 modules-right = filesystem backlight-acpi pulseaudio xkeyboard memory cpu wlan eth temperature battery date
 
 tray-position = right
@@ -104,7 +104,7 @@ label-urgent = %name%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-empty = %name%
+label-empty =
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
