@@ -13,7 +13,8 @@ in {
 
   dotfiles = {
     user = user;
-    email = "dev@babariviere.com";
+    # email = "dev@babariviere.com"; TODO: need to fix signing key
+    email = "babathriviere@gmail.com";
     theme = "dracula";
     network = {
       eth = "enp0s31f6";

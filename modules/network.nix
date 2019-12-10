@@ -19,15 +19,19 @@ in {
   };
 
   config = {
-    networking.useDHCP = cfg.eth == "" && cfg.wlan == "";
-    networking.interfaces = mkMerge [ ethCfg wlanCfg ];
-    networking.wireless = mkIf (cfg.wlan != "") {
-      enable = true;
-      networks = import ../private/networks.nix;
-      extraConfig = ''
-        ctrl_interface=/run/wpa_supplicant
-        ctrl_interface_group=wheel
-      '';
+    networking = {
+      useDHCP = cfg.eth == "" && cfg.wlan == "";
+      interfaces = mkMerge [ ethCfg wlanCfg ];
+      wireless = mkIf (cfg.wlan != "") {
+        enable = true;
+        networks = import ../private/networks.nix;
+        extraConfig = ''
+          ctrl_interface=/run/wpa_supplicant
+          ctrl_interface_group=wheel
+        '';
+      };
+
+      nameservers = [ "8.8.8.8" "8.8.4.4" ];
     };
   };
 }
