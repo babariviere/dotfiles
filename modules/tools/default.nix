@@ -10,4 +10,7 @@
     ./light.nix
     ./sql.nix
   ];
+
+  # Universal tools
+  environment.systemPackages = with pkgs; [ zip unzip jq gzip ];
 }
