@@ -167,6 +167,11 @@ in header + (generateSections [
   }
 
   {
+    name = "email";
+    notmuch.enable = dotfiles.services.mail.enable;
+  }
+
+  {
     name = "config";
     default = {
       enable = true;
