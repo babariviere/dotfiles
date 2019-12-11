@@ -107,26 +107,44 @@ in {
       enableDefaultFonts = true;
     };
 
-    home-manager.users."${config.dotfiles.user}".home = {
-      file = {
-        ".xinitrc".text = ''
-          #!/bin/sh
+    home-manager.users."${config.dotfiles.user}" = {
+      home = {
+        file = {
+          ".xinitrc".text = ''
+            #!/bin/sh
 
-          if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-            eval $(dbus-launch --exit-with-session --sh-syntax)
-          fi
-          systemctl --user import-environment DISPLAY XAUTHORITY
+            if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+              eval $(dbus-launch --exit-with-session --sh-syntax)
+            fi
+            systemctl --user import-environment DISPLAY XAUTHORITY
 
-          if command -v dbus-update-activation-environment >/dev/null 2>&1; then
-                  dbus-update-activation-environment DISPLAY XAUTHORITY
-          fi
+            if command -v dbus-update-activation-environment >/dev/null 2>&1; then
+                    dbus-update-activation-environment DISPLAY XAUTHORITY
+            fi
 
-          for f in $HOME/.Xresources.d/*; do
-              ${pkgs.xorg.xrdb}/bin/xrdb -merge "$f"
-          done
+            for f in $HOME/.Xresources.d/*; do
+                ${pkgs.xorg.xrdb}/bin/xrdb -merge "$f"
+            done
 
-          ${cfg.xinitCmd}
-        '';
+            ${cfg.xinitCmd}
+          '';
+
+          ".xprofile" = {
+            executable = true;
+            text = ''
+              #!/bin/sh
+
+              if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+                eval $(dbus-launch --exit-with-session --sh-syntax)
+              fi
+              systemctl --user import-environment DISPLAY XAUTHORITY
+
+              if command -v dbus-update-activation-environment >/dev/null 2>&1; then
+                      dbus-update-activation-environment DISPLAY XAUTHORITY
+              fi
+            '';
+          };
+        };
       };
     };
   };
