@@ -78,8 +78,8 @@ super + {o,i}
       bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift +}{1-9,0}
-      bspc {desktop -f,node -d} {I,II,III,IV,V,VI,VII,VIII,IX,X}
+super + {_,shift +}{1-5}
+      bspc {desktop -f,node -d} '^{1-5}'
 
 # set the window state
 super + {t,shift + t,s,f}

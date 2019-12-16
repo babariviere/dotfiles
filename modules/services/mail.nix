@@ -81,6 +81,7 @@ in {
             ignore = [ "trash" "*.json" ];
             tags = [ "new" ];
           };
+          search.excludeTags = [ "trash" "deleted" "spam" ];
           maildir.synchronizeFlags = true;
         };
       };

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 MONITOR=$(xrandr -q | grep primary | grep ' connected' | cut -d' ' -f1)
-bspc monitor "$MONITOR" -d I II III IV V VI VII VIII IX X
+bspc monitor "$MONITOR" -d I II III IV V
 
 #
 # UI
