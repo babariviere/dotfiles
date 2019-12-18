@@ -53,6 +53,17 @@ in {
       source $HOME/.profile
     '';
 
-    home-manager.users."${cfg.user}" = { xdg.enable = true; };
+    home-manager.users."${cfg.user}" = {
+      xdg.enable = true;
+      xdg.configFile = {
+        "nixpkgs/config.nix".text = ''
+          {
+            allowUnfree = true;
+            allowBroken = true;
+            android_sdk.accept_license = true;
+          }
+        '';
+      };
+    };
   };
 }

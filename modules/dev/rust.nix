@@ -3,12 +3,16 @@
 let cfg = config.dotfiles;
 in {
   config = lib.mkIf cfg.dev.rust.enable {
-    nixpkgs.overlays = [
-      (import (builtins.fetchTarball
-        "https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz"))
+    environment.systemPackages = with pkgs; [
+      rustc
+      rust.packages.stable.clippy
+      rls
+      rustfmt
+      cargo
+      cargo-audit
+      cargo-edit
+      cargo-fuzz
+      cargo-outdated
     ];
-
-    environment.systemPackages = with pkgs;
-      [ latest.rustChannels.nightly.rust ];
   };
 }

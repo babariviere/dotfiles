@@ -10,6 +10,7 @@ in {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       ghc
+      cabal-install
       stack
       cabal2nix
       # (all-hies.selection { selector = p: { inherit (p) ghc865; }; })
@@ -17,6 +18,8 @@ in {
     ];
 
     home-manager.users."${dotfiles.user}".home.file.".ghci".source =
-      <config/ghci>;
+      pkgs.mutate <config/ghci> {
+        hoogle = "${pkgs.haskellPackages.hoogle}/bin/hoogle";
+      };
   };
 }
