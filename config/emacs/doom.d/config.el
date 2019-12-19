@@ -13,6 +13,11 @@
 ;;; :lang rust
 ;; (setq rustic-lsp-server 'rust-analyzer)
 
+;;; :lang org
+(map! :leader
+      "n F" nil
+      :desc "Browse notes" "n n" #'+default/browse-notes)
+
 ;;; :tools flyspell
 (setq ispell-aspell-data-dir "/run/current-system/sw/lib/aspell" )
 (setq ispell-aspell-dict-dir ispell-aspell-data-dir)

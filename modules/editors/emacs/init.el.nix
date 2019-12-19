@@ -157,7 +157,16 @@ in header + (generateSections [
     nix.enable = true;
     org = {
       enable = true;
-      flags = [ "ipython" "pandoc" "present" ];
+      flags = [
+        "brain"
+        "gnuplot"
+        "hugo"
+        "journal"
+        "jupyter"
+        "pandoc"
+        "pomodoro"
+        "present"
+      ];
     };
     rust = {
       enable = dotfiles.dev.rust.enable;

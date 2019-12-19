@@ -20,6 +20,7 @@ in {
     nixPath = options.nix.nixPath.default ++ [ "config=/etc/dotfiles/config" ];
     autoOptimiseStore = true;
     trustedUsers = [ "root" "@wheel" ];
+    binaryCaches = [ "https://aseipp-nix-cache.freetls.fastly.net" ];
   };
 
   # run gc only if power source is plugged

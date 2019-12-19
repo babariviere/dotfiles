@@ -56,8 +56,8 @@ in {
       bitwarden.enable = true;
       fwupd.enable = true;
       gpg.enable = true;
-      keyring.enable = true;
-      mail.enable = true;
+      keyring.enable = false;
+      mail.enable = false;
       ssh.enable = true;
       syncthing.enable = true;
     };
