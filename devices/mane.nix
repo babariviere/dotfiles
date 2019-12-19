@@ -91,4 +91,7 @@ in {
 
   services.xserver.libinput = { accelSpeed = "0.4"; };
   services.zfs.autoScrub.enable = true;
+
+  # enable emulation of certains system
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 }
