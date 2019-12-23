@@ -52,6 +52,8 @@ in {
           (mkIf (cfg.editorconfig) editorconfig-core-c) # :tools editorconfig
 
           # Misc
+          ccls # lang cc
+
           texlive.combined.scheme-medium # :lang org
           (mkIf (cfg.ripgrep) rg)
 

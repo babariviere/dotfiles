@@ -141,7 +141,10 @@ in header + (generateSections [
 
   {
     name = "lang";
-    cc.enable = true;
+    cc = {
+      enable = true;
+      flags = [ "lsp" ];
+    };
     data.enable = true;
     emacs-lisp.enable = true;
     go = {

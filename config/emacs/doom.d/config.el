@@ -12,10 +12,11 @@
 
 ;;; :lang rust
 ;; (setq rustic-lsp-server 'rust-analyzer)
-
+(after! rustic
+  (setq rustic-lsp-server 'rust-analyzer))
 ;;; :lang org
 (map! :leader
-      "n F" nil
+      :desc "Org capture"  "n F" #'org-capture
       :desc "Browse notes" "n n" #'+default/browse-notes)
 
 ;;; :tools flyspell

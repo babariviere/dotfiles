@@ -1,6 +1,25 @@
 { config, lib, pkgs, ... }:
 
-let user = "babariviere";
+let
+  user = "babariviere";
+
+  patchFlutter = pkgs.writeShellScriptBin "patch-flutter" ''
+    isScript() {
+        local fn="$1"
+        local fd
+        local magic
+        exec {fd}< "$fn"
+        read -r -n 2 -u "$fd" magic
+        exec {fd}<&-
+        if [[ "$magic" =~ \#! ]]; then return 0; else return 1; fi
+    }
+
+    stopNest() { true; }
+
+    source ${<nixpkgs/pkgs/build-support/setup-hooks/patch-shebangs.sh>}
+    patchShebangs --build /home/babariviere/flutter/bin/
+    find /home/babariviere/flutter/bin/ -executable -type f -exec ${pkgs.patchelf}/bin/patchelf --set-interpreter ${pkgs.glibc}/lib/ld-linux-x86-64.so.2 {} \;
+  '';
 in {
   imports = [
     ../.
@@ -32,7 +51,10 @@ in {
       rofi.enable = true;
     };
     dev = {
-      android.enable = true;
+      android = {
+        enable = true;
+        studio = true;
+      };
       haskell.enable = true;
       rust.enable = true;
     };
@@ -94,4 +116,6 @@ in {
 
   # enable emulation of certains system
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+  environment.systemPackages = [ patchFlutter pkgs.google-chrome ];
 }
