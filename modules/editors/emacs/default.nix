@@ -5,7 +5,7 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.editors.emacs;
   rg = (pkgs.ripgrep.override { withPCRE2 = true; });
-  unstable = import <nixpkgs-unstable> { };
+  # unstable = import <nixpkgs-unstable> { };
 
 in {
   options.dotfiles.editors.emacs = {
@@ -42,13 +42,20 @@ in {
 
   # TODO: install doom config via home-manager
   config = mkIf cfg.enable {
+    nixpkgs.overlays = [
+      (import (builtins.fetchTarball {
+        url =
+          "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
+      }))
+    ];
+
     environment = {
       systemPackages = with pkgs;
         [
           (mkIf (config.programs.gnupg.agent.enable) pinentry_emacs)
 
           # Essential
-          unstable.emacs
+          emacsGit
           (mkIf (cfg.editorconfig) editorconfig-core-c) # :tools editorconfig
 
           # Misc
@@ -78,7 +85,7 @@ in {
     services.emacs = mkIf cfg.daemon {
       enable = true;
       defaultEditor = true;
-      package = unstable.emacs;
+      package = pkgs.emacsGit;
     };
 
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
