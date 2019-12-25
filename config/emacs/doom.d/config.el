@@ -10,10 +10,14 @@
 ;;; :completion ivy
 (setf (alist-get 't ivy-re-builders-alist) #'ivy--regex-plus)
 
+;;; :lang dart
+(add-to-list 'auto-mode-alist '("\\.dart\\'" . dart-mode))
+
 ;;; :lang rust
 ;; (setq rustic-lsp-server 'rust-analyzer)
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer))
+
 ;;; :lang org
 (map! :leader
       :desc "Org capture"  "n F" #'org-capture
