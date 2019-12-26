@@ -37,6 +37,7 @@ in {
         studio = true;
       };
       haskell.enable = true;
+      latex.enable = true;
       rust.enable = true;
     };
     editors = {

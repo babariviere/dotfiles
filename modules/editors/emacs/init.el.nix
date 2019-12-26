@@ -155,7 +155,7 @@ in header + (generateSections [
       enable = dotfiles.dev.haskell.enable;
       flags = [ "lsp" ];
     };
-    # TODO: latex
+    latex.enable = dotfiles.dev.latex.enable;
     markdown.enable = true;
     nix.enable = true;
     org = {
