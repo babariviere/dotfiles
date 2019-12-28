@@ -104,5 +104,5 @@ in {
     flutter = (import (builtins.fetchTarball
       "https://github.com/babariviere/nixpkgs/archive/flutter-init.tar.gz")
       { }).flutterPackages.beta; # TODO: remove me when official
-  in [ flutter pkgs.google-chrome ];
+  in [ flutter pkgs.google-chrome pkgs.thunderbird ];
 }

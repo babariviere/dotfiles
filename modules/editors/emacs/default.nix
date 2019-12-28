@@ -63,6 +63,7 @@ in {
 
           texlive.combined.scheme-medium # :lang org
           pandoc # :lang org
+          wkhtmltopdf
           (mkIf (cfg.ripgrep) rg)
 
           plantuml # :lang plantuml
