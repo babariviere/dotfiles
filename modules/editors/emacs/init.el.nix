@@ -107,7 +107,7 @@ in header + (generateSections [
       enable = true;
       flags = [ "icons" ];
     };
-    electric.enable = false; # matching pair
+    electric.enable = true; # matching pair
     vc.enable = true;
   }
 
@@ -171,6 +171,7 @@ in header + (generateSections [
         "present"
       ];
     };
+    plantuml.enable = dotfiles.dev.plantuml.enable;
     rust = {
       enable = dotfiles.dev.rust.enable;
       flags = [ "lsp" ];

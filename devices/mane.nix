@@ -38,6 +38,7 @@ in {
       };
       haskell.enable = true;
       latex.enable = true;
+      plantuml.enable = true;
       rust.enable = true;
     };
     editors = {

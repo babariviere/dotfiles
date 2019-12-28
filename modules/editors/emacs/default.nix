@@ -62,6 +62,7 @@ in {
           ccls # lang cc
 
           texlive.combined.scheme-medium # :lang org
+          pandoc # :lang org
           (mkIf (cfg.ripgrep) rg)
 
           plantuml # :lang plantuml

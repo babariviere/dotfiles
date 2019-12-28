@@ -1,6 +1,13 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ ./android.nix ./go.nix ./haskell.nix ./latex.nix ./mysql.nix ./rust.nix ];
+  imports = [
+    ./android.nix
+    ./go.nix
+    ./haskell.nix
+    ./latex.nix
+    ./mysql.nix
+    ./plantuml.nix
+    ./rust.nix
+  ];
 }
