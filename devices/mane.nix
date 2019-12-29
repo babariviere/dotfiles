@@ -65,6 +65,10 @@ in {
       mail.enable = false;
       ssh.enable = true;
       syncthing.enable = true;
+      zerotier = {
+        enable = true;
+        networks = import ../private/zt-networks.nix;
+      };
     };
     social = {
       discord.enable = true;

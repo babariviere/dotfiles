@@ -9,5 +9,6 @@
     ./mail.nix
     ./ssh.nix
     ./syncthing.nix
+    ./zerotier.nix
   ];
 }
