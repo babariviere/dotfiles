@@ -61,7 +61,6 @@ in {
           # Misc
           ccls # lang cc
 
-          texlive.combined.scheme-medium # :lang org
           pandoc # :lang org
           wkhtmltopdf
           (mkIf (cfg.ripgrep) rg)

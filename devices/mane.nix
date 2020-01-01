@@ -102,7 +102,15 @@ in {
   services.zfs.autoScrub.enable = true;
 
   # enable emulation of certains system
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  # boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+  nix.buildMachines = [{
+    hostName = "10.0.222.229";
+    system = "aarch64-linux";
+    maxJobs = 2;
+    speedFactor = 2;
+  }];
+  nix.distributedBuilds = true;
 
   environment.systemPackages = let
     flutter = (import (builtins.fetchTarball
