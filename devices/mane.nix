@@ -68,6 +68,16 @@ in {
       zerotier = {
         enable = true;
         networks = import ../private/zt-networks.nix;
+        nodes = [
+          {
+            name = "rpi4";
+            ip = "10.0.222.229";
+          }
+          {
+            name = "sky";
+            ip = "10.0.222.212";
+          }
+        ];
       };
     };
     social = {
