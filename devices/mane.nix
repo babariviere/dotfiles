@@ -107,8 +107,8 @@ in {
   nix.buildMachines = [{
     hostName = "10.0.222.229";
     system = "aarch64-linux";
-    maxJobs = 2;
-    speedFactor = 2;
+    maxJobs = 4;
+    speedFactor = 4;
   }];
   nix.distributedBuilds = true;
 
