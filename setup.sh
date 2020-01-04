@@ -10,7 +10,7 @@ while true; do
     esac
 done
 echo "==> Adding home-manager channel"
-nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager
+nix-channel --add https://github.com/rycee/home-manager/archive/release-19.09.tar.gz home-manager
 
 echo "==> Adding unstable channel"
 nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs-unstable
