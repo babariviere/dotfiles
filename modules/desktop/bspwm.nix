@@ -15,6 +15,8 @@ let
     terminal = "${pkgs.termite}/bin/termite";
     lock = "${pkgs.betterlockscreen}/bin/betterlockscreen -l";
     screenshot = "${screenshot}/bin/screenshot";
+    polybar = "${pkgs.polybar}/bin/polybar";
+    light = "${pkgs.light}/bin/light";
   };
 in {
   config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {

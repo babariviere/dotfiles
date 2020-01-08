@@ -27,6 +27,23 @@ Print
 shift + Print
       @screenshot@ -s
 
+XF86AudioRaiseVolume
+      @pamixer@ -i 3
+
+XF86AudioLowerVolume
+      @pamixer@ -d 3
+
+XF86AudioMute
+      @pamixer@ -t
+
+## Light
+
+XF86MonBrightnessUp
+      @light@ -A 5
+
+XF86MonBrightnessDown
+      @light@ -U 5
+
 # bspwm keys
 
 super + shift + e
