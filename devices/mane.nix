@@ -40,6 +40,7 @@ in {
         enable = true;
         studio = true;
       };
+      godot.enable = true;
       haskell.enable = true;
       latex.enable = true;
       plantuml.enable = true;
@@ -126,7 +127,7 @@ in {
     speedFactor = 4;
   }
   # {
-  #   hostName = "sky.zt";
+  #   hostName = "sky.zt"; TODO: disable upload
   #   system = "x86_64-linux";
   #   maxJobs = 2;
   #   speedFactor = 2;
