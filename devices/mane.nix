@@ -25,6 +25,7 @@ in {
     desktop = {
       enable = true;
       bspwm.enable = true;
+      chrome.enable = true;
       #i3.enable = true;
       firefox.enable = true;
       polybar.enable = true;
@@ -32,6 +33,7 @@ in {
       compton.enable = false;
       dunst.enable = true;
       rofi.enable = true;
+      thunderbird.enable = true;
     };
     dev = {
       android = {
@@ -85,6 +87,7 @@ in {
     social = {
       discord.enable = true;
       riot.enable = true;
+      signal.enable = true;
     };
     tools = {
       build.enable = true;
@@ -137,10 +140,7 @@ in {
       { }).flutterPackages.beta; # TODO: remove me when official
   in with pkgs; [ # TODO: clean me
     flutter
-    google-chrome
-    thunderbird
     unstable.next
     unstable.bandwhich
-    signal-desktop
   ];
 }

@@ -49,12 +49,14 @@ in {
   imports = [
     ./bspwm.nix
     ./i3.nix
+    ./programs/chrome.nix
     ./programs/compton.nix
     ./programs/dunst.nix
     ./programs/firefox.nix
     ./programs/polybar.nix
     ./programs/rofi.nix
     ./programs/termite.nix
+    ./programs/thunderbird.nix
   ];
 
   options.dotfiles.desktop = {
