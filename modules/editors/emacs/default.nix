@@ -7,6 +7,8 @@ let
   rg = (pkgs.ripgrep.override { withPCRE2 = true; });
   unstable = import <nixpkgs-unstable> { };
 
+  emacs' = unstable.emacs;
+
 in {
   options.dotfiles.editors.emacs = {
     daemon = mkOption {
@@ -56,7 +58,7 @@ in {
 
           # Essential
           # emacsGit
-	  unstable.emacs
+          emacs'
           (mkIf (cfg.editorconfig) editorconfig-core-c) # :tools editorconfig
 
           # Misc
@@ -87,7 +89,7 @@ in {
     services.emacs = mkIf cfg.daemon {
       enable = true;
       defaultEditor = true;
-      package = pkgs.emacsGit;
+      package = emacs';
     };
 
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
