@@ -31,6 +31,7 @@ in {
         gcm = "git commit -m";
         gp = "git push";
         gpl = "git pull --rebase --autostash";
+        git = "hub";
       };
     };
 
