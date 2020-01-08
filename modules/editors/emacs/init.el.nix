@@ -107,7 +107,7 @@ in header + (generateSections [
       enable = true;
       flags = [ "icons" ];
     };
-    electric.enable = true; # matching pair
+    electric.enable = true;
     vc.enable = true;
   }
 

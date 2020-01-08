@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
-let user = "babariviere";
+let
+  user = "babariviere";
+  unstable = import <nixpkgs-unstable> { };
 in {
   imports = [
     ../.
@@ -13,7 +15,7 @@ in {
 
   dotfiles = {
     user = user;
-    # email = "dev@babariviere.com"; TODO: need to fix signing key
+    # email = "me@babariviere.com"; TODO: need to fix signing key
     email = "babathriviere@gmail.com";
     theme = "dracula";
     network = {
@@ -115,16 +117,30 @@ in {
   # boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   nix.buildMachines = [{
-    hostName = "10.0.222.229";
+    hostName = "rpi4.zt";
     system = "aarch64-linux";
     maxJobs = 4;
     speedFactor = 4;
-  }];
+  }
+  # {
+  #   hostName = "sky.zt";
+  #   system = "x86_64-linux";
+  #   maxJobs = 2;
+  #   speedFactor = 2;
+  # }
+    ];
   nix.distributedBuilds = true;
 
   environment.systemPackages = let
     flutter = (import (builtins.fetchTarball
       "https://github.com/babariviere/nixpkgs/archive/flutter-init.tar.gz")
       { }).flutterPackages.beta; # TODO: remove me when official
-  in [ flutter pkgs.google-chrome pkgs.thunderbird ];
+  in with pkgs; [ # TODO: clean me
+    flutter
+    google-chrome
+    thunderbird
+    unstable.next
+    unstable.bandwhich
+    signal-desktop
+  ];
 }

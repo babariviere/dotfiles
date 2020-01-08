@@ -5,7 +5,7 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.editors.emacs;
   rg = (pkgs.ripgrep.override { withPCRE2 = true; });
-  # unstable = import <nixpkgs-unstable> { };
+  unstable = import <nixpkgs-unstable> { };
 
 in {
   options.dotfiles.editors.emacs = {
@@ -55,7 +55,8 @@ in {
           (mkIf (config.programs.gnupg.agent.enable) pinentry_emacs)
 
           # Essential
-          emacsGit
+          # emacsGit
+	  unstable.emacs
           (mkIf (cfg.editorconfig) editorconfig-core-c) # :tools editorconfig
 
           # Misc
