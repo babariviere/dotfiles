@@ -64,7 +64,8 @@ in {
       nix-review
       # sorry, I have to
       lolcat
-      busybox
+      psutils
+      usbutils
     ];
   };
 
