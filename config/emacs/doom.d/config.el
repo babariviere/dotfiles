@@ -4,7 +4,7 @@
 
 (setq
  doom-font (font-spec :family "Iosevka Baba" :size 13)
- doom-theme 'doom-dracula
+ doom-theme '@doomTheme@
  display-line-numbers-type t)
 
 ;;; :completion ivy
@@ -34,7 +34,7 @@
   (projectile-invalidate-cache nil))
 
 ;;; :ui pretty-code
-(load! "+iosevka.el")
+(load! "modules/+iosevka.el")
 (setq +pretty-code-symbols
   '(;; org
     :name          "»"

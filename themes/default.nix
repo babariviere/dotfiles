@@ -31,9 +31,15 @@ in {
       description = "Define theme to use.";
     };
     colors = mkOption {
-      type = types.attrs;
+      type = types.attrsOf (types.strMatching "#[a-f0-9]{6}");
       description = "Colors defined by theme. This will be overrided by theme.";
     };
+
+    doomTheme = mkOption {
+      type = types.str;
+      description = "Emacs Doom theme.";
+    };
+
     wallpaper = mkOption {
       type = types.path;
       description =
@@ -45,6 +51,7 @@ in {
     dotfiles.colors =
       mkForce (injectAnsi (import (./. + "/${config.dotfiles.theme}")));
 
+    dotfiles.doomTheme = "doom-${config.dotfiles.theme}";
     dotfiles.wallpaper = mkForce (./. + "/${config.dotfiles.theme}/wallpaper");
   };
 }

@@ -96,12 +96,16 @@ in {
 
     home-manager.users."${dotfiles.user}" = {
       home.file = {
-        ".doom.d" = {
-          source = <config/emacs/doom.d>;
+        ".doom.d/modules" = {
+          source = <config/emacs/doom.d/modules>;
           recursive = true;
-
         };
+        ".doom.d/config.el".source =
+          pkgs.mutate <config/emacs/doom.d/config.el> {
+            doomTheme = dotfiles.doomTheme;
+          };
         ".doom.d/init.el".text = import ./init.el.nix { inherit config lib; };
+        ".doom.d/packages.el".source = <config/emacs/doom.d/packages.el>;
       };
       xdg.configFile = {
         "zsh/rc.d/env.emacs.zsh".source = <config/emacs/env.zsh>;

@@ -6,7 +6,7 @@
   background = "#282a36";
 
   # Colors
-  black = "#00000";
+  black = "#000000";
   red = "#ff5555";
   green = "#50fa7b";
   yellow = "#f1fa8c";
