@@ -68,9 +68,8 @@ super + g
 ## Focus and swap
 
 # focus the node in the given direction
-super + {_,shift + }{h,j,k,l}
-      bspc node -{f,s} {west,south,north,east}
-
+super + {_,shift + ,ctrl + }{h,j,k,l}
+      bspc node -{f,s,n} {west,south,north,east}
 
 # focus the node for the given path jump
 super + {p,b,comma,period}
