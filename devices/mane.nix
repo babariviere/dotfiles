@@ -40,7 +40,7 @@ in {
         enable = true;
         studio = true;
       };
-      godot.enable = true;
+      godot.enable = false;
       haskell.enable = true;
       latex.enable = true;
       plantuml.enable = true;
