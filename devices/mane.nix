@@ -2,7 +2,7 @@
 
 let
   user = "babariviere";
-  unstable = import <nixpkgs-unstable> { };
+  unstable = import <nixpkgs-unstable> { config = config.nixpkgs.config; };
 in {
   imports = [
     ../.
@@ -144,4 +144,6 @@ in {
     unstable.next
     unstable.bandwhich
   ];
+
+  boot.kernelPackages = unstable.linuxPackages_latest;
 }

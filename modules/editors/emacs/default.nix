@@ -8,7 +8,14 @@ let
   unstable = import <nixpkgs-unstable> { };
 
   emacs' = unstable.emacs;
-
+  editorScript = pkgs.writeScriptBin "emacseditor" ''
+    #!${pkgs.runtimeShell}
+    if [ -z "$1" ]; then
+      exec ${emacs'}/bin/emacsclient --create-frame --alternate-editor ${emacs'}/bin/emacs
+    else
+      exec ${emacs'}/bin/emacsclient --alternate-editor ${emacs'}/bin/emacs "$@"
+    fi
+  '';
 in {
   options.dotfiles.editors.emacs = {
     daemon = mkOption {
@@ -81,14 +88,17 @@ in {
           aspellDicts.fr
         ];
 
-      shellAliases = {
-        e = if cfg.daemon then config.environment.variables.EDITOR else "emacs";
+      shellAliases = { e = "${editorScript}/bin/emacseditor -nw"; };
+
+      variables = {
+        EDITOR = "${editorScript}/bin/emacseditor -nw";
+        VISUAL = "${editorScript}/bin/emacseditor -nw";
       };
     };
 
     services.emacs = mkIf cfg.daemon {
       enable = true;
-      defaultEditor = true;
+      defaultEditor = false;
       package = emacs';
     };
 
