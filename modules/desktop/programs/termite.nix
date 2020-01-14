@@ -11,10 +11,13 @@ in {
     environment.systemPackages = with pkgs; [ termite ];
     environment.shellAliases = { ssh = "TERM=xterm ssh"; };
 
-    home-manager.users."${dotfiles.user}".xdg.configFile = {
-      "termite/config" = {
-        source = pkgs.mutate <config/termite/config> dotfiles.colors;
-        recursive = true;
+    home-manager.users."${dotfiles.user}" = {
+      home.file.".terminfo/t/termite".source = <config/termite/terminfo>;
+      xdg.configFile = {
+        "termite/config" = {
+          source = pkgs.mutate <config/termite/config> dotfiles.colors;
+          recursive = true;
+        };
       };
     };
   };
