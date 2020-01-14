@@ -65,6 +65,7 @@ in {
       # sorry, I have to
       lolcat
       psutils
+      pciutils
       usbutils
     ];
   };
