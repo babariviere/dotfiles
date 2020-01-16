@@ -42,6 +42,7 @@ in {
       };
       godot.enable = false;
       haskell.enable = true;
+      javascript.enable = true;
       latex.enable = true;
       plantuml.enable = true;
       rust.enable = true;

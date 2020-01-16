@@ -6,6 +6,7 @@
     ./go.nix
     ./godot.nix
     ./haskell.nix
+    ./javascript.nix
     ./latex.nix
     ./mysql.nix
     ./plantuml.nix
