@@ -94,6 +94,8 @@ in {
       };
     };
 
+    services.dbus.packages = with pkgs; [ gnome3.dconf ];
+
     sound.enable = true;
     hardware.pulseaudio.enable = true;
 
@@ -146,6 +148,21 @@ in {
               fi
             '';
           };
+        };
+      };
+      gtk = {
+        enable = true;
+        font = {
+          name = "Roboto 12";
+          package = pkgs.roboto;
+        };
+        iconTheme = {
+          package = pkgs.paper-icon-theme;
+          name = "Paper";
+        };
+        theme = {
+          package = pkgs.materia-theme;
+          name = "Materia-dark";
         };
       };
     };

@@ -117,6 +117,13 @@ in header + (generateSections [
   }
 
   {
+    name = "checkers";
+    syntax.enable = true;
+    spell.enable = true;
+    grammar.enable = true;
+  }
+
+  {
     name = "tools";
     ansible.enable = dotfiles.tools.devops.enable;
     debugger.enable = true;
@@ -124,8 +131,6 @@ in header + (generateSections [
     docker.enable = dotfiles.tools.docker.enable;
     editorconfig.enable = true;
     eval.enable = true;
-    flycheck.enable = true;
-    flyspell.enable = true;
     gist.enable = true;
     lookup = {
       enable = true;
