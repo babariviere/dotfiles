@@ -94,6 +94,7 @@ in {
     tools = {
       build.enable = true;
       devops.enable = true;
+      docker.enable = true;
       light.enable = true;
     };
   };
