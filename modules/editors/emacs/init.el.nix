@@ -126,7 +126,7 @@ in header + (generateSections [
   {
     name = "tools";
     ansible.enable = dotfiles.tools.devops.enable;
-    debugger.enable = true;
+    debugger.enable = false;
     direnv.enable = dotfiles.shell.direnv.enable;
     docker.enable = dotfiles.tools.docker.enable;
     editorconfig.enable = true;
