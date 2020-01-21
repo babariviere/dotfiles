@@ -147,5 +147,5 @@ in {
     unstable.bandwhich
   ];
 
-  boot.kernelPackages = unstable.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 }
