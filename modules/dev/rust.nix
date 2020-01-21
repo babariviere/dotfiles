@@ -1,8 +1,10 @@
 { config, lib, pkgs, ... }:
 
-let cfg = config.dotfiles;
+let
+  dotfiles = config.dotfiles;
+  cfg = dotfiles.dev.rust;
 in {
-  config = lib.mkIf cfg.dev.rust.enable {
+  config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       rustc
       rust.packages.stable.clippy
@@ -14,5 +16,11 @@ in {
       cargo-fuzz
       cargo-outdated
     ];
+
+    home-manager.users."${dotfiles.user}" = {
+      xdg.configFile = {
+        "zsh/rc.d/env.rust.zsh".source = <config/rust/env.zsh>;
+      };
+    };
   };
 }
