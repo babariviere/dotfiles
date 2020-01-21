@@ -23,6 +23,10 @@
       :desc "Org capture"  "n F" #'org-capture
       :desc "Browse notes" "n n" #'+default/browse-notes)
 
+(use-package! org-fancy-priorities ; priority icons
+  :hook (org-mode . org-fancy-priorities-mode)
+  :config (setq org-fancy-priorities-list '("■" "■" "■")))
+
 ;;; :tools flyspell
 (setq ispell-aspell-data-dir "/run/current-system/sw/lib/aspell" )
 (setq ispell-aspell-dict-dir ispell-aspell-data-dir)
