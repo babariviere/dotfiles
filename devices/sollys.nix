@@ -27,7 +27,11 @@ in {
       dunst.enable = true;
       rofi.enable = true;
     };
-    dev = { go.enable = true; };
+    dev = {
+      go.enable = true;
+      plantuml.enable = true;
+      rust.enable = true;
+    };
     editors = {
       emacs.enable = true;
       neovim.enable = true;
