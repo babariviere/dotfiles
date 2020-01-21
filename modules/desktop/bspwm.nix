@@ -17,6 +17,7 @@ let
     screenshot = "${screenshot}/bin/screenshot";
     polybar = "${pkgs.polybar}/bin/polybar";
     light = "${pkgs.light}/bin/light";
+    pamixer = "${pkgs.pamixer}/bin/pamixer";
   };
 in {
   config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
