@@ -16,7 +16,8 @@
 ;;; :lang rust
 ;; (setq rustic-lsp-server 'rust-analyzer)
 (after! rustic
-  (setq rustic-lsp-server 'rust-analyzer))
+  (setq rustic-lsp-server 'rust-analyzer
+        lsp-rust-analyzer-server-command '("~/.cargo/bin/ra_lsp_server")))
 
 ;;; :lang org
 (map! :leader
