@@ -16,10 +16,9 @@ in {
         ".terminfo/x/xterm-24bits".source = <config/termite/terminfo>;
       };
       xdg.configFile = {
-        "termite/config" = {
-          source = pkgs.mutate <config/termite/config> dotfiles.colors;
-          recursive = true;
-        };
+        "termite/config".source =
+          pkgs.mutate <config/termite/config> dotfiles.colors;
+        "zsh/rc.d/env.termite.zsh".source = <config/termite/env.zsh>;
       };
     };
   };

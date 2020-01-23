@@ -4,4 +4,3 @@ done
 
 export CHROME_EXECUTABLE=google-chrome-stable
 export TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
-export TERM=xterm-24bits
