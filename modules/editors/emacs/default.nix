@@ -81,6 +81,8 @@ in {
 
           nodePackages.prettier
 
+          languagetool # to speak correctly
+
         ] ++ optionals cfg.spellcheck [
           aspell
           aspellDicts.en
