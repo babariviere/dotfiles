@@ -67,6 +67,7 @@ in {
       psutils
       pciutils
       usbutils
+      lsof
     ];
   };
 

@@ -17,6 +17,13 @@ let
     ./tools
   ];
   options = generate.options imports;
+
+  niv = (import (pkgs.fetchFromGitHub {
+    owner = "nmattia";
+    repo = "niv";
+    rev = "49157afd2298749b8a5062fd21079542a6b2de35";
+    sha256 = "0q7ymfrcgagcsw6kr93kprag7k358qj8znyzyri53ci1mrsak5y1";
+  }) { }).niv;
 in {
   inherit imports;
 
@@ -52,6 +59,8 @@ in {
     environment.shellInit = ''
       source $HOME/.profile
     '';
+
+    environment.systemPackages = [ niv ];
 
     home-manager.users."${cfg.user}" = {
       xdg.enable = true;
