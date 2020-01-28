@@ -1,6 +1,14 @@
 { config, lib, options, pkgs, ... }:
 
-let dotfiles = config.dotfiles;
+let
+  dotfiles = config.dotfiles;
+
+  niv = (import (pkgs.fetchFromGitHub {
+    owner = "nmattia";
+    repo = "niv";
+    rev = "49157afd2298749b8a5062fd21079542a6b2de35";
+    sha256 = "0q7ymfrcgagcsw6kr93kprag7k358qj8znyzyri53ci1mrsak5y1";
+  }) { }).niv;
 in {
   imports = [
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
@@ -62,12 +70,8 @@ in {
       nix-prefetch-scripts
       nix-index
       nix-review
-      # sorry, I have to
-      lolcat
-      psutils
-      pciutils
-      usbutils
-      lsof
+      tealdeer
+      niv
     ];
   };
 

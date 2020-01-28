@@ -12,5 +12,15 @@
   ];
 
   # Universal tools
-  environment.systemPackages = with pkgs; [ zip unzip jq gzip ];
+  environment.systemPackages = with pkgs; [
+    zip
+    unzip
+    jq
+    gzip
+
+    psutils
+    pciutils
+    usbutils
+    lsof
+  ];
 }
