@@ -8,5 +8,7 @@ in {
 
   config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
     environment.systemPackages = with pkgs; [ firefox ];
+
+    environment.variables = { "BROWSER" = "firefox"; };
   };
 }
