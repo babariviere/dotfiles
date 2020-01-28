@@ -181,6 +181,10 @@ in header + (generateSections [
       ];
     };
     plantuml.enable = dotfiles.dev.plantuml.enable;
+    python = {
+      enable = dotfiles.dev.python.enable;
+      flags = [ "lsp" ];
+    };
     rust = {
       enable = dotfiles.dev.rust.enable;
       flags = [ "lsp" ];

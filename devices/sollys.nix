@@ -30,6 +30,7 @@ in {
     dev = {
       go.enable = true;
       plantuml.enable = true;
+      python.enable = true;
       rust.enable = true;
     };
     editors = {

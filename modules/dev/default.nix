@@ -10,6 +10,7 @@
     ./latex.nix
     ./mysql.nix
     ./plantuml.nix
+    ./python.nix
     ./rust.nix
   ];
 }

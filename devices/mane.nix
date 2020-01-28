@@ -45,6 +45,7 @@ in {
       javascript.enable = true;
       latex.enable = true;
       plantuml.enable = true;
+      python.enable = true;
       rust.enable = true;
     };
     editors = {
