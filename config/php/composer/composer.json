@@ -1,6 +1,7 @@
 {
   "require": {
     "d11wtq/boris": "^1.0",
-    "techlivezheng/phpctags": "^0.7.0"
+    "techlivezheng/phpctags": "^0.7.0",
+    "phpactor/phpactor": "^0.13.5"
   }
 }
