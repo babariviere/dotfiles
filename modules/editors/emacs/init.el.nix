@@ -180,6 +180,7 @@ in header + (generateSections [
         "present"
       ];
     };
+    php.enable = dotfiles.dev.php.enable;
     plantuml.enable = dotfiles.dev.plantuml.enable;
     python = {
       enable = dotfiles.dev.python.enable;

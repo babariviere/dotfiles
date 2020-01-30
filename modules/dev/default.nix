@@ -9,6 +9,7 @@
     ./javascript.nix
     ./latex.nix
     ./mysql.nix
+    ./php.nix
     ./plantuml.nix
     ./python.nix
     ./rust.nix

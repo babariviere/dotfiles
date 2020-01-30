@@ -29,6 +29,7 @@ in {
     };
     dev = {
       go.enable = true;
+      php.enable = true;
       plantuml.enable = true;
       python.enable = true;
       rust.enable = true;
