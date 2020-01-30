@@ -3,6 +3,6 @@
 let cfg = config.dotfiles.tools.sql;
 in {
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ dbeaver ];
+    environment.systemPackages = with pkgs; [ dbeaver mysql-client ];
   };
 }
