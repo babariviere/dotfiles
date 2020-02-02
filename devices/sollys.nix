@@ -30,12 +30,12 @@ in {
       rofi.enable = true;
       fonts = {
         mono = {
-          name = "Cascadia Code";
-          package = unstable.cascadia-code;
+          name = "Jetbrains Mono";
+          package = unstable.jetbrains-mono;
         };
         term = {
-          name = "Cascadia Mono";
-          package = unstable.cascadia-code;
+          name = "Jetbrains Mono";
+          package = unstable.jetbrains-mono;
         };
       }; # TODO: move font to theme ?
     };
