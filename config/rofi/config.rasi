@@ -3,7 +3,7 @@
 configuration {
   modi: "window,run,drun,ssh";
   theme: "@theme@";
-  font: "@font@ 12";
+  font: "@font@ 10";
   terminal: "@terminal@";
 
   /*  width: 50;*/
