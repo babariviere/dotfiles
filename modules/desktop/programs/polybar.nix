@@ -32,6 +32,7 @@ in {
       extraConfig = builtins.readFile (pkgs.mutate <config/polybar/config>
         (dotfiles.colors // dotfiles.network // {
           inherit (cfg) battery batteryAdapter;
+          font = dotfiles.desktop.fonts.term.name;
         }));
       script = "polybar top &";
     };

@@ -72,6 +72,39 @@ in {
       type = types.str;
       description = "launch command for xinitrc";
     };
+
+    fonts = let
+      mkFont = name: pkg: desc:
+        mkOption {
+          type = types.submodule {
+            options = {
+              name = mkOption {
+                type = types.str;
+                description = "Font name for ${desc}";
+                default = name;
+              };
+              package = mkOption {
+                type = types.package;
+                description = "Font package for ${desc}";
+                default = pkg;
+              };
+            };
+          };
+          description = "Font for ${desc}";
+          default = {
+            name = name;
+            package = pkg;
+          };
+        };
+    in mkOption {
+      type = types.submodule {
+        options = {
+          term = mkFont "Iosevka Term Baba" iosevkaTermBaba "terminal font";
+          mono = mkFont "Iosevka Baba" iosevkaBaba "monospaced font";
+        };
+      };
+      default = { };
+    };
   };
 
   config = mkIf cfg.enable {
@@ -104,8 +137,8 @@ in {
     # TODO: generate with IosevkaGenHS
     fonts = {
       fonts = [
-        iosevkaBaba
-        iosevkaTermBaba
+        cfg.fonts.mono.package
+        cfg.fonts.term.package
         pkgs.nur.repos.babariviere.nerd-font-symbols
       ];
       enableDefaultFonts = true;

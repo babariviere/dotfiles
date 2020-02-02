@@ -144,7 +144,7 @@ in {
       { }).flutterPackages.beta; # TODO: remove me when official
   in with pkgs; [ # TODO: clean me
     flutter
-    unstable.next # TODO: this makes me compile qt-webengine
+    # unstable.next # TODO: this makes me compile qt-webengine
     unstable.bandwhich
   ];
 

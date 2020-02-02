@@ -115,6 +115,7 @@ in {
         ".doom.d/config.el".source =
           pkgs.mutate <config/emacs/doom.d/config.el> {
             doomTheme = dotfiles.doomTheme;
+            font = dotfiles.desktop.fonts.mono.name;
           };
         ".doom.d/init.el".text = import ./init.el.nix { inherit config lib; };
         ".doom.d/packages.el".source = <config/emacs/doom.d/packages.el>;

@@ -1,6 +1,6 @@
 # -*- mode: conf -*-
 [global]
-font = Iosevka Baba 12
+font = @font@ 12
 
 # Allow a small subset of html markup:
 #   <b>bold</b>
