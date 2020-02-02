@@ -13,6 +13,7 @@ in {
       "rofi/config.rasi".source = pkgs.mutate <config/rofi/config.rasi> {
         theme = dotfiles.theme;
         terminal = "${pkgs.termite}/bin/termite";
+        font = dotfiles.desktop.fonts.mono.name;
       };
 
       "rofi/${dotfiles.theme}.rasi".source =

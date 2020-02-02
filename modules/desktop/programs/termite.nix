@@ -14,8 +14,8 @@ in {
 
     home-manager.users."${dotfiles.user}" = {
       xdg.configFile = {
-        "termite/config".source =
-          pkgs.mutate <config/termite/config> dotfiles.colors;
+        "termite/config".source = pkgs.mutate <config/termite/config>
+          (dotfiles.colors // { font = dotfiles.desktop.fonts.term.name; });
         "zsh/rc.d/env.termite.zsh".source = <config/termite/env.zsh>;
       };
     };

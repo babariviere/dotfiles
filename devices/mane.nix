@@ -34,6 +34,17 @@ in {
       dunst.enable = true;
       rofi.enable = true;
       thunderbird.enable = true;
+
+      fonts = {
+        mono = {
+          name = "Cascadia Code";
+          package = unstable.cascadia-code;
+        };
+        term = {
+          name = "Cascadia Mono";
+          package = unstable.cascadia-code;
+        };
+      }; # TODO: move font to theme ?
     };
     dev = {
       android = {
@@ -41,7 +52,7 @@ in {
         studio = true;
       };
       godot.enable = false;
-      haskell.enable = true;
+      haskell.enable = false;
       javascript.enable = true;
       latex.enable = true;
       plantuml.enable = true;

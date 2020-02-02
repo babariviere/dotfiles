@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
-let user = "bastien";
+let
+  user = "bastien";
+  unstable = import <nixpkgs-unstable> { config = config.nixpkgs.config; };
 in {
   imports = [ ../. ../private/configuration.sollys.nix ../profiles/nvidia.nix ];
 
@@ -26,6 +28,16 @@ in {
       compton.enable = false;
       dunst.enable = true;
       rofi.enable = true;
+      fonts = {
+        mono = {
+          name = "Cascadia Code";
+          package = unstable.cascadia-code;
+        };
+        term = {
+          name = "Cascadia Mono";
+          package = unstable.cascadia-code;
+        };
+      }; # TODO: move font to theme ?
     };
     dev = {
       go.enable = true;

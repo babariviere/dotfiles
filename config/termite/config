@@ -2,7 +2,7 @@
 audible_bell = false
 clickable_url = true
 filter_unmatched_urls = true
-font = Iosevka Term Baba 10
+font = @font@ 10
 scrollback_lines = 1000
 size_hints = true
 
@@ -41,7 +41,7 @@ color12 = @color12@
 
 # magenta
 color5  = @color5@
-color13 = @color17@
+color13 = @color13@
 
 # cyan
 color6  = @color6@
