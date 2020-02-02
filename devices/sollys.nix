@@ -28,16 +28,6 @@ in {
       compton.enable = false;
       dunst.enable = true;
       rofi.enable = true;
-      fonts = {
-        mono = {
-          name = "Jetbrains Mono";
-          package = unstable.jetbrains-mono;
-        };
-        term = {
-          name = "Jetbrains Mono";
-          package = unstable.jetbrains-mono;
-        };
-      }; # TODO: move font to theme ?
     };
     dev = {
       go.enable = true;

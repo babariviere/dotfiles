@@ -34,17 +34,6 @@ in {
       dunst.enable = true;
       rofi.enable = true;
       thunderbird.enable = true;
-
-      fonts = {
-        mono = {
-          name = "Jetbrains Mono";
-          package = unstable.jetbrains-mono;
-        };
-        term = {
-          name = "Jetbrains Mono";
-          package = unstable.jetbrains-mono;
-        };
-      }; # TODO: move font to theme ?
     };
     dev = {
       android = {

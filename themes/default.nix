@@ -47,6 +47,7 @@ in {
     };
   };
 
+  # TODO: configure fonts with theme ?
   config = {
     dotfiles.colors =
       mkForce (injectAnsi (import (./. + "/${config.dotfiles.theme}")));

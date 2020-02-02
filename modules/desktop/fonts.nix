@@ -7,34 +7,6 @@ let
   cfg = dotfiles.desktop.fonts;
   unstable = import <nixpkgs-unstable> { };
 
-  ## Build iosevka
-  mkIosevka = name: set: withLigature:
-    unstable.pkgs.iosevka.override {
-      privateBuildPlan = {
-        design = if withLigature then
-          [ "ligset-haskell" ]
-        else
-          [ "term" ] ++ [
-            "v-at-fourfold"
-            "v-a-singlestorey"
-            "v-i-zshaped"
-            "v-g-singlestorey"
-            "v-l-zshaped"
-            "v-brace-straight"
-            "v-numbersign-slanted"
-            "v-asterisk-hexlow"
-          ];
-        family = name;
-      };
-
-      inherit set;
-      extraParameters =
-        if withLigature then builtins.readFile ./iosevka.toml else null;
-    };
-
-  iosevkaBaba = mkIosevka "Iosevka Baba" "baba" true;
-  iosevkaTermBaba = mkIosevka "Iosevka Term Baba" "term-baba" false;
-
   ## Build options
   mkFont = name: pkg: desc:
     mkOption {
@@ -60,8 +32,9 @@ let
     };
 in {
   options.dotfiles.desktop.fonts = {
-    term = mkFont "Iosevka Term Baba" iosevkaTermBaba "terminal font";
-    mono = mkFont "Iosevka Baba" iosevkaBaba "monospaced font";
+    term = mkFont "Jetbrains Mono" unstable.jetbrains-mono
+      "terminal font (no ligature)";
+    mono = mkFont "Jetbrains Mono" unstable.jetbrains-mono "monospaced font";
     sansSerif = mkFont "Roboto" pkgs.roboto "sans serif font";
     serif = mkFont "Roboto Slab" pkgs.roboto-slab "serif font";
 
