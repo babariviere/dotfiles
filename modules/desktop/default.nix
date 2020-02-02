@@ -4,50 +4,10 @@ with lib;
 let
   unstable = import <nixpkgs-unstable> { };
   cfg = config.dotfiles.desktop;
-  withLigature = cfg.ligature;
-  iosevkaBaba = (unstable.pkgs.iosevka.override {
-    privateBuildPlan = {
-      design = if withLigature then
-        [ "ligset-haskell" ]
-      else
-        [ ] ++ [
-          "v-at-fourfold"
-          "v-a-singlestorey"
-          "v-i-zshaped"
-          "v-g-singlestorey"
-          "v-l-zshaped"
-          "v-brace-straight"
-          "v-numbersign-slanted"
-          "v-asterisk-hexlow"
-        ];
-      family = "Iosevka Baba";
-    };
-
-    set = "baba";
-    extraParameters =
-      if withLigature then builtins.readFile ./iosevka.toml else null;
-    # TODO: extraParameters
-  });
-  iosevkaTermBaba = (unstable.pkgs.iosevka.override {
-    privateBuildPlan = {
-      design = [
-        "term"
-        "v-at-fourfold"
-        "v-a-singlestorey"
-        "v-i-zshaped"
-        "v-g-singlestorey"
-        "v-l-zshaped"
-        "v-brace-straight"
-        "v-numbersign-slanted"
-        "v-asterisk-hexlow"
-      ];
-      family = "Iosevka Term Baba";
-    };
-    set = "term-baba";
-  });
 in {
   imports = [
     ./bspwm.nix
+    ./fonts.nix
     ./i3.nix
     ./programs/chrome.nix
     ./programs/compton.nix
@@ -62,49 +22,11 @@ in {
   options.dotfiles.desktop = {
     enable = mkEnableOption "desktop";
 
-    ligature = mkOption {
-      type = types.bool;
-      description = "Add ligature support to all services";
-      default = true;
-    };
-
     xinitCmd = mkOption {
       type = types.str;
       description = "launch command for xinitrc";
     };
 
-    fonts = let
-      mkFont = name: pkg: desc:
-        mkOption {
-          type = types.submodule {
-            options = {
-              name = mkOption {
-                type = types.str;
-                description = "Font name for ${desc}";
-                default = name;
-              };
-              package = mkOption {
-                type = types.package;
-                description = "Font package for ${desc}";
-                default = pkg;
-              };
-            };
-          };
-          description = "Font for ${desc}";
-          default = {
-            name = name;
-            package = pkg;
-          };
-        };
-    in mkOption {
-      type = types.submodule {
-        options = {
-          term = mkFont "Iosevka Term Baba" iosevkaTermBaba "terminal font";
-          mono = mkFont "Iosevka Baba" iosevkaBaba "monospaced font";
-        };
-      };
-      default = { };
-    };
   };
 
   config = mkIf cfg.enable {
@@ -133,16 +55,6 @@ in {
     hardware.pulseaudio.enable = true;
 
     environment.systemPackages = with pkgs; [ xclip pamixer pavucontrol ];
-
-    # TODO: generate with IosevkaGenHS
-    fonts = {
-      fonts = [
-        cfg.fonts.mono.package
-        cfg.fonts.term.package
-        pkgs.nur.repos.babariviere.nerd-font-symbols
-      ];
-      enableDefaultFonts = true;
-    };
 
     home-manager.users."${config.dotfiles.user}" = {
       home = {
@@ -186,8 +98,8 @@ in {
       gtk = {
         enable = true;
         font = {
-          name = "Roboto 12";
-          package = pkgs.roboto;
+          name = "${cfg.fonts.sansSerif.name} 12";
+          package = cfg.fonts.sansSerif.package;
         };
         iconTheme = {
           package = pkgs.paper-icon-theme;

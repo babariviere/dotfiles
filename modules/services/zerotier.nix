@@ -9,6 +9,8 @@ let
   merge = list: foldl (a: b: a // b) { } list;
 in {
   options.dotfiles.services.zerotier = {
+    enable = mkEnableOption "zerotier";
+
     networks = mkOption {
       type = types.listOf types.str;
       description = "Networks to join";

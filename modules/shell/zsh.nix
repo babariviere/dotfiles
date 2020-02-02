@@ -5,6 +5,8 @@ let
   cfg = dotfiles.shell.zsh;
   zgen = builtins.fetchGit "https://github.com/tarjoilija/zgen";
 in {
+  options.dotfiles.shell.zsh.enable = lib.mkEnableOption "zsh";
+
   config = lib.mkIf cfg.enable {
     environment = {
       variables = {

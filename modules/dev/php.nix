@@ -4,6 +4,8 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.dev.php;
 in {
+  options.dotfiles.dev.php.enable = lib.mkEnableOption "php";
+
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       php

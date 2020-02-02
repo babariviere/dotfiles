@@ -3,7 +3,7 @@
 ;; Place your private configuration here
 
 (setq
- doom-font (font-spec :family "@font@" :size 12)
+ doom-font (font-spec :family "@font@" :size 13)
  doom-theme '@doomTheme@
  display-line-numbers-type t)
 

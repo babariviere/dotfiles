@@ -4,6 +4,8 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.tools.light;
 in {
+  options.dotfiles.tools.light.enable = lib.mkEnableOption "light";
+
   config = lib.mkIf cfg.enable {
     programs.light.enable = true;
     # services.actkbd = {

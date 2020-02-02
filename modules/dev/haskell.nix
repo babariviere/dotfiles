@@ -7,6 +7,8 @@ let
   all-hies =
     import (builtins.fetchGit "https://github.com/infinisil/all-hies") { };
 in {
+  options.dotfiles.dev.haskell.enable = lib.mkEnableOption "haskell";
+
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       ghc

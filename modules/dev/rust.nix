@@ -4,6 +4,8 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.dev.rust;
 in {
+  options.dotfiles.dev.rust.enable = lib.mkEnableOption "rust";
+
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       rustc

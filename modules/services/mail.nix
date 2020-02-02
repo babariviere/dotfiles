@@ -9,6 +9,8 @@ let
   notmuchrc =
     config.home-manager.users."${dotfiles.user}".home.sessionVariables.NOTMUCH_CONFIG;
 in {
+  options.dotfiles.services.mail.enable = lib.mkEnableOption "mail";
+
   config = mkIf cfg.enable {
     environment.variables = {
       NOTMUCH_CONFIG =

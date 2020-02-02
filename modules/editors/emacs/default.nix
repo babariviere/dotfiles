@@ -18,30 +18,37 @@ let
   '';
 in {
   options.dotfiles.editors.emacs = {
+    enable = mkEnableOption "emacs";
+
     daemon = mkOption {
       type = types.bool;
       description = "Enable emacs daemon for each user.";
       default = true;
     };
+
     completion = mkOption {
       type = types.enum [ "ivy" "ido" "helm" ];
       description = "Completion framework to use in emacs.";
       default = "ivy";
     };
+
     terminal = mkOption {
       type = types.enum [ "eshell" "shell" "term" "vterm" ];
       default = "eshell";
     };
+
     editorconfig = mkOption {
       type = types.bool;
       description = "Add support for editorconfig";
       default = true;
     };
+
     ripgrep = mkOption {
       type = types.bool;
       description = "Add support for ripgrep";
       default = true;
     };
+
     spellcheck = mkOption {
       type = types.bool;
       description = "Add support for spellcheck";

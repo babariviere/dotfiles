@@ -5,7 +5,10 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.dev.android;
 in {
-  options.dotfiles.dev.android = { studio = mkEnableOption "android studio"; };
+  options.dotfiles.dev.android = {
+    enable = mkEnableOption "android";
+    studio = mkEnableOption "android studio";
+  };
 
   config = mkIf cfg.enable {
     programs.adb.enable = true;

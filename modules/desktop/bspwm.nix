@@ -20,6 +20,8 @@ let
     pamixer = "${pkgs.pamixer}/bin/pamixer";
   };
 in {
+  options.dotfiles.desktop.bspwm.enable = lib.mkEnableOption "bspwm";
+
   config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
     services.xserver.windowManager.bspwm = { enable = true; };
 

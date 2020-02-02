@@ -5,6 +5,7 @@ let
   cfg = dotfiles.tools.docker;
 in {
   options.dotfiles.tools.docker = {
+    enable = lib.mkEnableOption "docker";
     arion = lib.mkEnableOption "arion";
     compose = lib.mkEnableOption "docker-compose";
   };

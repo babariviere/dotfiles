@@ -5,6 +5,8 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.services.keyring;
 in {
+  options.dotfiles.services.keyring.enable = lib.mkEnableOption "keyring";
+
   config = mkIf cfg.enable {
     services.gnome3.gnome-keyring.enable = true;
 

@@ -2,9 +2,8 @@
 
 with lib;
 
-let
-  generate = import ./generate.nix { inherit lib; };
-  cfg = config.dotfiles;
+let cfg = config.dotfiles;
+in {
   imports = [
     ./desktop
     ./dev
@@ -16,9 +15,6 @@ let
     ./social
     ./tools
   ];
-  options = generate.options imports;
-in {
-  inherit imports;
 
   options.dotfiles = {
     user = mkOption {
@@ -35,7 +31,7 @@ in {
       type = types.str;
       description = "Name of the user";
     };
-  } // options;
+  };
 
   config = {
     environment.shellAliases = {

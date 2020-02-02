@@ -5,6 +5,8 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.services.syncthing;
 in {
+  options.dotfiles.services.syncthing.enable = lib.mkEnableOption "syncthing";
+
   config = mkIf cfg.enable {
     services.syncthing = {
       enable = true;

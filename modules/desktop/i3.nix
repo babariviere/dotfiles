@@ -1,5 +1,6 @@
 { config, lib, pkgs, ... }:
 
+with lib;
 let
   dotfiles = config.dotfiles;
   cfg = dotfiles.desktop.i3;
@@ -11,6 +12,8 @@ let
     screenshot = "${screenshot}/bin/screenshot";
   });
 in {
+  options.dotfiles.desktop.i3.enable = mkEnableOption "i3";
+
   config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
     services.xserver.windowManager.i3 = {
       enable = true;

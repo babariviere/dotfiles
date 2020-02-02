@@ -5,6 +5,8 @@ in {
   disabledModules = [ "services/development/lorri.nix" ];
   imports = [ <nixos-unstable/nixos/modules/services/development/lorri.nix> ];
 
+  options.dotfiles.shell.direnv.enable = lib.mkEnableOption "direnv";
+
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ direnv lorri ];
 
