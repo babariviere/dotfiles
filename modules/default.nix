@@ -1,8 +1,16 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, options, pkgs, ... }:
 
 with lib;
 
-let cfg = config.dotfiles;
+let
+  cfg = config.dotfiles;
+
+  niv = (import (pkgs.fetchFromGitHub {
+    owner = "nmattia";
+    repo = "niv";
+    rev = "49157afd2298749b8a5062fd21079542a6b2de35";
+    sha256 = "0q7ymfrcgagcsw6kr93kprag7k358qj8znyzyri53ci1mrsak5y1";
+  }) { }).niv;
 in {
   imports = [
     ./desktop
@@ -34,20 +42,38 @@ in {
   };
 
   config = {
-    environment.shellAliases = {
-      nix-env = "NIXPKGS_ALLOW_UNFREE=1 nix-env";
-      ne = "nix-env";
-      nu = "sudo nix-channel --update && sudo nixos-rebuild switch";
-      ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
-      ns = "nix-shell";
-      nr = "sudo nixos-rebuild";
-      nrs = "sudo nixos-rebuild switch";
-      nrst = "sudo nixos-rebuild switch --show-trace";
-    };
+    environment = {
+      shellAliases = {
+        nix-env = "NIXPKGS_ALLOW_UNFREE=1 nix-env";
+        ne = "nix-env";
+        nu = "sudo nix-channel --update && sudo nixos-rebuild switch";
+        ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
+        ns = "nix-shell";
+        nr = "sudo nixos-rebuild";
+        nrs = "sudo nixos-rebuild switch";
+        nrst = "sudo nixos-rebuild switch --show-trace";
+      };
 
-    environment.shellInit = ''
-      source $HOME/.profile
-    '';
+      shellInit = ''
+        source $HOME/.profile
+      '';
+
+      systemPackages = with pkgs; [
+        nixfmt
+        nix-prefetch-scripts
+        nix-index
+        nix-review
+        tealdeer
+        niv
+      ];
+
+      variables = {
+        XDG_CONFIG_HOME = "$HOME/.config";
+        XDG_CACHE_HOME = "$HOME/.cache";
+        XDG_DATA_HOME = "$HOME/.local/share";
+        XDG_BIN_HOME = "$HOME/.local/bin";
+      };
+    };
 
     home-manager.users."${cfg.user}" = {
       xdg.enable = true;
@@ -61,5 +87,61 @@ in {
         '';
       };
     };
+
+    nix = {
+      useSandbox = true;
+      gc = {
+        automatic = true;
+        dates = "*-*-* 18:00:00";
+        options = "--delete-older-than 7d";
+      };
+      nixPath = options.nix.nixPath.default
+        ++ [ "config=/etc/dotfiles/config" ];
+      autoOptimiseStore = true;
+      trustedUsers = [ "root" "@wheel" ];
+      binaryCaches = [ "https://aseipp-nix-cache.freetls.fastly.net" ];
+    };
+    # run gc only if power source is plugged
+    systemd.services.nix-gc.unitConfig.ConditionACPower = true;
+
+    nixpkgs = {
+      config = {
+        allowUnfree = true;
+        packageOverrides = pkgs: {
+          nur = import (builtins.fetchTarball
+            "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+              inherit pkgs;
+            };
+        };
+      };
+      overlays = [ (import ../pkgs/overlay.nix) ];
+    };
+
+    # Default boot configuration
+    boot = {
+      cleanTmpDir = true;
+      loader = {
+        systemd-boot.enable = true;
+        efi.canTouchEfiVariables = true;
+      };
+    };
+
+    time.timeZone = "Europe/Paris";
+
+    users.mutableUsers = false;
+
+    # TODO: auto git clone
+
+    # This value determines the NixOS release with which your system is to be
+    # compatible, in order to avoid breaking some software such as database
+    # servers. You should change this only after NixOS release notes say you
+    # should.
+    system.stateVersion = "19.09"; # Did you read the comment?
+    system.autoUpgrade = {
+      enable = true;
+      channel = "https://nixos.org/channels/nixos-19.09";
+    };
+    systemd.services.nixos-upgrade.unitConfig.ConditionACPower = true;
+    systemd.timers.nixos-upgrade.timerConfig.Persistent = true;
   };
 }

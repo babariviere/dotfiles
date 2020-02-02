@@ -74,7 +74,7 @@ in header + (generateSections [
       flags = [ "all" "defaults" ];
     };
     pretty-code = {
-      enable = true;
+      enable = false;
       flags = [ "iosevka" ];
     };
     unicode.enable = true;
