@@ -65,6 +65,7 @@ in {
         nix-review
         tealdeer
         niv
+        file
       ];
 
       variables = {
