@@ -11,7 +11,7 @@ in {
       pkgs.mutate <config/dunst/dunstrc> (dotfiles.colors // {
         rofi = pkgs.rofi;
         browser = pkgs.firefox;
-        font = dotfiles.desktop.fonts.mono.name;
+        font = dotfiles.desktop.fonts.sansSerif.name;
       });
 
     environment.systemPackages = [ pkgs.dunst ];
