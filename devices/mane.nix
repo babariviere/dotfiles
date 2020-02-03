@@ -72,6 +72,7 @@ in {
       mail.enable = false;
       ssh.enable = true;
       syncthing.enable = true;
+      virtualbox.enable = false;
       zerotier = {
         enable = true;
         networks = import ../private/zt-networks.nix;

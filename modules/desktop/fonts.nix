@@ -31,6 +31,8 @@ let
       };
     };
 in {
+  # TODO: use an enum for fonts ?
+  # TODO: add fontconfig for each font. e.g font size for emacs, rofi and else
   options.dotfiles.desktop.fonts = {
     term = mkFont "Jetbrains Mono" unstable.jetbrains-mono
       "terminal font (no ligature)";
