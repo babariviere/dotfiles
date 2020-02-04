@@ -9,3 +9,4 @@
 (package! systemd)
 (package! dart-mode)
 (package! org-fancy-priorities)
+(package! graphql)
