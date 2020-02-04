@@ -186,6 +186,7 @@ in header + (generateSections [
       enable = dotfiles.dev.python.enable;
       flags = [ "lsp" ];
     };
+    rest.enable = true;
     rust = {
       enable = dotfiles.dev.rust.enable;
       flags = [ "lsp" ];
