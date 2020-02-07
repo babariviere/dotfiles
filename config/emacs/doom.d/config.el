@@ -11,7 +11,8 @@
 (setf (alist-get 't ivy-re-builders-alist) #'ivy--regex-plus)
 
 ;;; :lang dart
-(add-to-list 'auto-mode-alist '("\\.dart\\'" . dart-mode))
+(use-package! dart-mode
+  :mode ("\\.dart$" . dart-mode))
 
 ;;; :lang rust
 ;; (setq rustic-lsp-server 'rust-analyzer)
@@ -77,6 +78,9 @@
 
 (use-package! systemd
   :defer)
+
+(use-package! graphql
+  :commands (graphql-query graphql-mutation))
 
 ;; safe variables
 (add-to-list 'safe-local-variable-values '(go-tag-args . ("-transform" "camelcase")))
