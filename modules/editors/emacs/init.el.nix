@@ -62,6 +62,7 @@ in header + (generateSections [
 
   {
     name = "ui";
+    deft.enable = true;
     doom.enable = true;
     doom-dashboard.enable = true;
     doom-quit.enable = true;
@@ -82,6 +83,7 @@ in header + (generateSections [
     vi-tilde-fringe.enable = true;
     window-select.enable = true;
     workspaces.enable = true;
+    zen.enable = true;
   }
 
   {
