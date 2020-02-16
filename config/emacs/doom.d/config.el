@@ -21,9 +21,23 @@
         lsp-rust-analyzer-server-command '("~/.cargo/bin/ra_lsp_server")))
 
 ;;; :lang org
-(map! :leader
-      :desc "Org capture"  "n F" #'org-capture
-      :desc "Browse notes" "n n" #'+default/browse-notes)
+(use-package! org-roam
+  :hook ((org-mode . org-roam-mode)
+         (after-init . org-roam--build-cache-async))
+  :commands (org-roam org-roam-today org-roam-show-graph
+             org-roam-find-file org-roam-insert)
+  :custom
+  (org-roam-directory "~/org"))
+
+(map!
+   :leader
+   (:prefix ("n r" . "roam")
+     "r" #'org-roam
+     "t" #'org-roam-today
+     "f" #'org-roam-find-file
+     "i" #'org-roam-insert
+     "g" #'org-roam-show-graph))
+
 
 (use-package! org-fancy-priorities ; priority icons
   :hook (org-mode . org-fancy-priorities-mode)
@@ -39,6 +53,9 @@
   :after '(magit-checkout magit-branch-checkout)
   (projectile-invalidate-cache nil))
 
+;;; :ui deft
+(after! deft
+  (setq deft-directory "~/org"))
 ;;; :ui pretty-code
 (load! "modules/+iosevka.el")
 (setq +pretty-code-symbols

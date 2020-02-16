@@ -153,6 +153,10 @@ in header + (generateSections [
       flags = [ "lsp" ];
     };
     data.enable = true;
+    elixir = {
+      enable = dotfiles.dev.elixir.enable;
+      # flags = [ "lsp" ]; TODO: find a way to compile elixir_ls: https://github.com/elixir-lsp/elixir-ls
+    };
     emacs-lisp.enable = true;
     go = {
       enable = dotfiles.dev.go.enable;
@@ -172,7 +176,7 @@ in header + (generateSections [
     org = {
       enable = true;
       flags = [
-        "brain"
+        # "brain"
         "gnuplot"
         "hugo"
         "journal"

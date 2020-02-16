@@ -40,6 +40,7 @@ in {
         enable = true;
         studio = true;
       };
+      elixir.enable = true;
       godot.enable = false;
       haskell.enable = false;
       javascript.enable = true;

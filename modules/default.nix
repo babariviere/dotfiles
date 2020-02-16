@@ -52,6 +52,8 @@ in {
         nr = "sudo nixos-rebuild";
         nrs = "sudo nixos-rebuild switch";
         nrst = "sudo nixos-rebuild switch --show-trace";
+
+        cat = "bat";
       };
 
       shellInit = ''
@@ -66,6 +68,7 @@ in {
         tealdeer
         niv
         file
+        bat # cat with more power
       ];
 
       variables = {
