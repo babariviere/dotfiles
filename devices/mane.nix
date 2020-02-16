@@ -71,6 +71,7 @@ in {
       gpg.enable = true;
       keyring.enable = false;
       mail.enable = false;
+      postgres.enable = true;
       ssh.enable = true;
       syncthing.enable = true;
       virtualbox.enable = false;
