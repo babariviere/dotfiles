@@ -26,6 +26,7 @@ in {
         git
         gitAndTools.hub
         gitAndTools.diff-so-fancy
+        gitAndTools.gitflow
       ];
 
       shellAliases = {
