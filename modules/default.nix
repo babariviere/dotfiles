@@ -44,6 +44,7 @@ in {
   config = {
     environment = {
       shellAliases = {
+        # Nix commands
         nix-env = "NIXPKGS_ALLOW_UNFREE=1 nix-env";
         ne = "nix-env";
         nu = "sudo nix-channel --update && sudo nixos-rebuild switch";
@@ -53,6 +54,7 @@ in {
         nrs = "sudo nixos-rebuild switch";
         nrst = "sudo nixos-rebuild switch --show-trace";
 
+        # Utilities
         cat = "bat";
       };
 
@@ -72,10 +74,15 @@ in {
       ];
 
       variables = {
+        # XDG configuration
         XDG_CONFIG_HOME = "$HOME/.config";
         XDG_CACHE_HOME = "$HOME/.cache";
         XDG_DATA_HOME = "$HOME/.local/share";
         XDG_BIN_HOME = "$HOME/.local/bin";
+
+        # Utilities
+        MANPAGER = "/bin/sh -c 'col -bx | ${pkgs.bat}/bin/bat -l map -p'";
+        BAT_THEME = "TwoDark";
       };
     };
 
