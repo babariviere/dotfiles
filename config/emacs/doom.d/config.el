@@ -25,18 +25,18 @@
   :hook ((org-mode . org-roam-mode)
          (after-init . org-roam--build-cache-async))
   :commands (org-roam org-roam-today org-roam-show-graph
-             org-roam-find-file org-roam-insert)
+                      org-roam-find-file org-roam-insert)
   :custom
   (org-roam-directory "~/org"))
 
 (map!
-   :leader
-   (:prefix ("n r" . "roam")
-     "r" #'org-roam
-     "t" #'org-roam-today
-     "f" #'org-roam-find-file
-     "i" #'org-roam-insert
-     "g" #'org-roam-show-graph))
+ :leader
+ (:prefix ("n r" . "roam")
+   "r" #'org-roam
+   "t" #'org-roam-today
+   "f" #'org-roam-find-file
+   "i" #'org-roam-insert
+   "g" #'org-roam-show-graph))
 
 
 (use-package! org-fancy-priorities ; priority icons
@@ -59,37 +59,37 @@
 ;;; :ui pretty-code
 (load! "modules/+iosevka.el")
 (setq +pretty-code-symbols
-  '(;; org
-    :name          "»"
-    :src_block     "»"
-    :src_block_end "«"
-    ;; Functional
-    :lambda        "λ"
-    :def           "ƒ"
-    :composition   "∘"
-    :map           "↦"
-    ;; Types
-    :null          "∅"
-    ;; :true          "𝕋"
-    ;; :false         "𝔽"
-    ;; :int           "ℤ"
-    ;; :float         "ℝ"
-    ;; :str           "𝕊"
-    ;; :bool          "𝔹"
-    ;; Flow
-    :not           "￢"
-    :in            "∈"
-    :not-in        "∉"
-    :and           "∧"
-    :or            "∨"
-    :for           "∀"
-    :some          "∃"
-    :return        "⟼"
-    :yield         "⟻"
-    ;; Other
-    :tuple         "⨂"
-    :pipe          "" ;; FIXME: find a non-private char
-    :dot           "•"))
+      '(;; org
+        :name          "»"
+        :src_block     "»"
+        :src_block_end "«"
+        ;; Functional
+        :lambda        "λ"
+        :def           "ƒ"
+        :composition   "∘"
+        :map           "↦"
+        ;; Types
+        :null          "∅"
+        ;; :true          "𝕋"
+        ;; :false         "𝔽"
+        ;; :int           "ℤ"
+        ;; :float         "ℝ"
+        ;; :str           "𝕊"
+        ;; :bool          "𝔹"
+        ;; Flow
+        :not           "￢"
+        :in            "∈"
+        :not-in        "∉"
+        :and           "∧"
+        :or            "∨"
+        :for           "∀"
+        :some          "∃"
+        :return        "⟼"
+        :yield         "⟻"
+        ;; Other
+        :tuple         "⨂"
+        :pipe          "" ;; FIXME: find a non-private char
+        :dot           "•"))
 
 ;; misc
 
@@ -100,5 +100,7 @@
   :commands (graphql-query graphql-mutation))
 
 ;; safe variables
-(add-to-list 'safe-local-variable-values '(go-tag-args . ("-transform" "camelcase")))
+(add-to-list 'safe-local-variable-values '(go-tag-args . (lambda (x) (pcase x
+                                                                       (`("-transform" ,_) t)
+                                                                       (_ f)))))
 (add-to-list 'safe-local-variable-values '(+format-on-save-enabled-modes . ()))
