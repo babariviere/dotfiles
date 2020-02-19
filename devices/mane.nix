@@ -69,7 +69,7 @@ in {
       bitwarden.enable = true;
       fwupd.enable = true;
       gpg.enable = true;
-      keyring.enable = false;
+      keyring.enable = true;
       mail.enable = false;
       postgres.enable = true;
       ssh.enable = true;
@@ -100,6 +100,7 @@ in {
       devops.enable = true;
       docker.enable = true;
       light.enable = true;
+      sql.enable = true;
     };
   };
 
