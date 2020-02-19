@@ -7,6 +7,11 @@ in {
   options.dotfiles.dev.elixir.enable = lib.mkEnableOption "elixir";
 
   config = lib.mkIf cfg.dev.elixir.enable {
-    environment.systemPackages = with unstable; [ erlang elixir rebar3 ];
+    environment.systemPackages = with unstable; [
+      erlang
+      elixir
+      rebar3
+      inotify-tools
+    ];
   };
 }
