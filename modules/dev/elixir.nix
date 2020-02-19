@@ -1,15 +1,12 @@
 { config, lib, pkgs, ... }:
 
-let cfg = config.dotfiles;
+let
+  cfg = config.dotfiles;
+  unstable = import <nixpkgs-unstable> { };
 in {
   options.dotfiles.dev.elixir.enable = lib.mkEnableOption "elixir";
 
   config = lib.mkIf cfg.dev.elixir.enable {
-    environment.systemPackages = with pkgs; [
-      erlang
-      elixir
-      rebar3
-      beamPackages.hex
-    ];
+    environment.systemPackages = with unstable; [ erlang elixir rebar3 ];
   };
 }
