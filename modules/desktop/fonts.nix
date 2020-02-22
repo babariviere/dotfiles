@@ -34,9 +34,14 @@ in {
   # TODO: use an enum for fonts ?
   # TODO: add fontconfig for each font. e.g font size for emacs, rofi and else
   options.dotfiles.desktop.fonts = {
-    term = mkFont "Jetbrains Mono" unstable.jetbrains-mono
-      "terminal font (no ligature)";
-    mono = mkFont "Jetbrains Mono" unstable.jetbrains-mono "monospaced font";
+    # term = mkFont "Jetbrains Mono" unstable.jetbrains-mono
+    #   "terminal font (no ligature)";
+    #mono = mkFont "Jetbrains Mono" unstable.jetbrains-mono "monospaced font";
+    term = mkFont "JetBrainsMono Nerd Font"
+      (unstable.nerdfonts.override { withFont = "JetBrainsMono"; }) "term font";
+    mono = mkFont "JetBrainsMono Nerd Font"
+      (unstable.nerdfonts.override { withFont = "JetBrainsMono"; })
+      "monospaced font";
     sansSerif = mkFont "Roboto" pkgs.roboto "sans serif font";
     serif = mkFont "Roboto Slab" pkgs.roboto-slab "serif font";
 

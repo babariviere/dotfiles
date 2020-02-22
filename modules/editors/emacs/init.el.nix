@@ -155,7 +155,7 @@ in header + (generateSections [
     data.enable = true;
     elixir = {
       enable = dotfiles.dev.elixir.enable;
-      # flags = [ "lsp" ]; TODO: find a way to compile elixir_ls: https://github.com/elixir-lsp/elixir-ls
+      flags = [ "lsp" ];
     };
     emacs-lisp.enable = true;
     go = {

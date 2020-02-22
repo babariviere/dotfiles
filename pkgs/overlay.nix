@@ -7,5 +7,9 @@ self: super:
   iosevkaTermBaba =
     (self.callPackage ./iosevka { }) "Iosevka Term Baba" "term-baba" false;
 
+  nix-patch = self.callPackage ./nix-patch { };
+
+  nixos-update = self.callPackage ./nixos-update { };
+
   xterm-24bits = self.callPackage ./xterm-24bits { };
 }

@@ -47,12 +47,12 @@ in {
         # Nix commands
         nix-env = "NIXPKGS_ALLOW_UNFREE=1 nix-env";
         ne = "nix-env";
-        nu = "sudo nix-channel --update && sudo nixos-rebuild switch";
+        nu = "sudo nix-channel --update && sudo nixos-update switch";
         ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
         ns = "nix-shell";
-        nr = "sudo nixos-rebuild";
-        nrs = "sudo nixos-rebuild switch";
-        nrst = "sudo nixos-rebuild switch --show-trace";
+        nr = "sudo nixos-update";
+        nrs = "sudo nixos-update switch";
+        nrst = "sudo nixos-updat switch --show-trace";
 
         # Utilities
         cat = "bat";
@@ -67,6 +67,8 @@ in {
         nix-prefetch-scripts
         nix-index
         nix-review
+        nixos-update
+        nix-patch
         tealdeer
         niv
         file
