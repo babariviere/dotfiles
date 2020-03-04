@@ -50,6 +50,7 @@ in {
     };
     services = {
       gpg.enable = true;
+      keyring.enable = true;
       ssh.enable = true;
     };
     social = { slack.enable = true; };
