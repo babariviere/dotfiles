@@ -73,6 +73,7 @@ in {
         niv
         file
         bat # cat with more power
+        cachix
       ];
 
       variables = {
