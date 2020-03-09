@@ -7,7 +7,8 @@ let
   rg = (pkgs.ripgrep.override { withPCRE2 = true; });
   unstable = import <nixpkgs-unstable> { };
 
-  emacs' = unstable.emacs;
+  emacs' = pkgs.emacsGit.overrideAttrs
+    (old: { buildInputs = old.buildInputs ++ [ pkgs.harfbuzz.dev ]; });
   editorScript = pkgs.writeScriptBin "emacseditor" ''
     #!${pkgs.runtimeShell}
     if [ -z "$1" ]; then
