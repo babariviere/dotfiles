@@ -5,9 +5,7 @@
 (setq
  doom-font (font-spec :family "@font@" :size 12)
  doom-theme '@doomTheme@
- display-line-numbers-type t
  display-line-numbers-type 'relative)
-(global-display-line-numbers-mode 1)
 
 ;;; :completion ivy
 (setf (alist-get 't ivy-re-builders-alist) #'ivy--regex-plus)
