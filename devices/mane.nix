@@ -54,7 +54,7 @@ in {
       neovim.enable = true;
     };
     media = {
-      plex.enable = true;
+      plex.enable = false;
       spotify.enable = true;
     };
     shell = {

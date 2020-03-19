@@ -1,8 +1,9 @@
 {
   # Special
   foreground = "#abb2bf";
-  foregroundBold = "#abb2bf";
-  cursor = "#abb2bf";
+  foregroundBold = "#b6bdca";
+  cursor = "#b6bdca";
+  cursorForeground = "#282c34";
   background = "#282c34";
 
   # colors
@@ -22,4 +23,12 @@
   lightMagenta = "#9a52af";
   lightCyan = "#3c909b";
   lightWhite = "#828997";
+
+  # Extra colors
+  color16 = "#d19a66";
+  color17 = "#be5046";
+  color18 = "#353b45";
+  color19 = "#3e4451";
+  color20 = "#565c64";
+  color21 = "#b6bdca";
 }

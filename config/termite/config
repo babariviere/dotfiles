@@ -6,17 +6,13 @@ font = @font@ 9
 scrollback_lines = 1000
 size_hints = true
 
-# Dracula theme for termite
-# https://github.com/dracula/termite
-# Copyright 2013-present, All rights reserved
-# Code licensed under the MIT license
-
 [colors]
 
 # special
 foreground      = @foreground@
 foreground_bold = @foregroundBold@
 cursor          = @cursor@
+cursor          = @cursorForeground@
 background      = @background@
 
 # black
