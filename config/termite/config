@@ -9,11 +9,11 @@ size_hints = true
 [colors]
 
 # special
-foreground      = @foreground@
-foreground_bold = @foregroundBold@
-cursor          = @cursor@
-cursor          = @cursorForeground@
-background      = @background@
+foreground        = @foreground@
+foreground_bold   = @foregroundBold@
+cursor            = @cursor@
+cursor_foreground = @cursorForeground@
+background        = @background@
 
 # black
 color0  = @color0@

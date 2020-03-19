@@ -9,7 +9,7 @@ in {
   dotfiles = {
     user = user;
     email = "bastien.riviere@easy.movie";
-    theme = "one";
+    theme = "one-light";
     network = {
       eth = "enp59s0";
       wlan = "wlo1";
