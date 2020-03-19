@@ -11,5 +11,7 @@ self: super:
 
   nixos-update = self.callPackage ./nixos-update { };
 
+  prime = self.callPackage ./prime { };
+
   xterm-24bits = self.callPackage ./xterm-24bits { };
 }

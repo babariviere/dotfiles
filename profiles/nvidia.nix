@@ -3,18 +3,13 @@
 {
   boot.kernelParams = [ "blacklist.nouveau=1" ];
 
-  hardware.bumblebee = {
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia.optimus_prime = {
     enable = true;
-    connectDisplay = true;
+    nvidiaBusId = "PCI:1:0:0";
+    intelBusId = "PCI:0:2:0";
   };
 
-  nixpkgs.overlays = [
-    (self: super: {
-      bumblebee = super.bumblebee.override {
-        extraNvidiaDeviceOptions = ''
-          Option "AllowEmptyInitialConfiguration"
-        '';
-      };
-    })
-  ];
+  environment.systemPackages = with pkgs; [ prime ];
 }

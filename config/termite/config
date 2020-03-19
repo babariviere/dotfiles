@@ -2,7 +2,7 @@
 audible_bell = false
 clickable_url = true
 filter_unmatched_urls = true
-font = @font@ 9
+font = @font@ 11
 scrollback_lines = 1000
 size_hints = true
 

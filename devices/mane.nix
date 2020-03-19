@@ -115,6 +115,20 @@ in {
   networking.hostName = "mane";
   environment.variables = { HOSTNAME = "mane"; };
 
+  ## Display settings
+  services.xserver.xrandrHeads = [
+    {
+      output = "eDP-1-1";
+      primary = true;
+    }
+    {
+      output = "HDMI-0";
+      monitorConfig = ''
+        Option "Above" "eDP-1-1"
+      '';
+    }
+  ];
+
   ## Custom settings
   services.undervolt = {
     enable = true;
