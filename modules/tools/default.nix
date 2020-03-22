@@ -18,6 +18,7 @@
     jq
     gzip
 
+    inetutils
     psutils
     pciutils
     usbutils
