@@ -17,7 +17,7 @@ in {
     user = user;
     # email = "me@babariviere.com"; TODO: need to fix signing key
     email = "babathriviere@gmail.com";
-    theme = "one";
+    theme = "horizon";
     network = {
       eth = "enp0s31f6";
       wlan = "wlp82s0";
