@@ -1,9 +1,7 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let
-  unstable = import <nixpkgs-unstable> { };
-  cfg = config.dotfiles.desktop;
+let cfg = config.dotfiles.desktop;
 in {
   imports = [
     ./bspwm.nix

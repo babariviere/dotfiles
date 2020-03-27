@@ -3,9 +3,7 @@
 let
   dotfiles = config.dotfiles;
   cfg = dotfiles.dev.haskell;
-  # TODO: this thing is huge to download.
-  all-hies =
-    import (builtins.fetchGit "https://github.com/infinisil/all-hies") { };
+  all-hies = import pkgs.sources.all-hies { };
 in {
   options.dotfiles.dev.haskell.enable = lib.mkEnableOption "haskell";
 

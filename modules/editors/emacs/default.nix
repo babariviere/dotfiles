@@ -5,7 +5,6 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.editors.emacs;
   rg = (pkgs.ripgrep.override { withPCRE2 = true; });
-  unstable = import <nixpkgs-unstable> { };
 
   emacs' = pkgs.emacsGit.overrideAttrs
     (old: { buildInputs = old.buildInputs ++ [ pkgs.harfbuzz.dev ]; });

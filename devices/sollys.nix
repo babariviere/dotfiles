@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let
-  user = "bastien";
-  unstable = import <nixpkgs-unstable> { config = config.nixpkgs.config; };
+let user = "bastien";
 in {
   imports = [ ../. ../private/configuration.sollys.nix ../profiles/nvidia.nix ];
 

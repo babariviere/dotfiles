@@ -14,7 +14,6 @@ This is targeted to NixOS's users.
 * Usage
 Clone this repository to ~/etc/dotfiles~.
 Import one of the configuration in your ~/etc/nixos/configuration.nix~.
-Run script ~setup.sh~.
 Enjoy!
 
 * Description

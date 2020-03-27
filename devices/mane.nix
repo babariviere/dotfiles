@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let
-  user = "babariviere";
-  unstable = import <nixpkgs-unstable> { config = config.nixpkgs.config; };
+let user = "babariviere";
 in {
   imports = [
     ../.
@@ -163,7 +161,7 @@ in {
   in with pkgs; [ # TODO: clean me
     flutter
     # unstable.next # TODO: this makes me compile qt-webengine
-    unstable.bandwhich
+    pkgs.unstable.bandwhich
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
