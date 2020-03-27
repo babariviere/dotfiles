@@ -41,6 +41,13 @@ in {
   # run gc only if power source is plugged
   systemd.services.nix-gc.unitConfig.ConditionACPower = true;
 
+  # force the use of niv's nixpkgs for system packages
+  system.activationScripts.update-channel = ''
+    mkdir -p /nix/var/nix/profiles/per-user/root/channels-system
+    ln -sfn ${sources.nixpkgs} /nix/var/nix/profiles/per-user/root/channels-system/nixos
+    ln -sfn /nix/var/nix/profiles/per-user/root/channels-system /nix/var/nix/profiles/per-user/root/channels
+  '';
+
   # TODO: auto git clone
 
   # This value determines the NixOS release with which your system is to be
