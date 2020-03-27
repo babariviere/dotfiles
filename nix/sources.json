@@ -23,6 +23,30 @@
         "url": "https://github.com/infinisil/all-hies/archive/4b6aab017cdf96a90641dc287437685675d598da.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "arion": {
+        "branch": "master",
+        "description": "Run docker-compose with help from Nix/NixOS",
+        "homepage": "",
+        "owner": "hercules-ci",
+        "repo": "arion",
+        "rev": "7609d3a88dbdd8a98bce6958756cc5902918e8aa",
+        "sha256": "1gzhrf45m93myggqmrxa6wg8a8lxnyasccl7r7x4413yw7ssky9n",
+        "type": "tarball",
+        "url": "https://github.com/hercules-ci/arion/archive/7609d3a88dbdd8a98bce6958756cc5902918e8aa.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "emacs-overlay": {
+        "branch": "master",
+        "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "445f13c639fc94192fdc3c031cd2dc6a9c2779d4",
+        "sha256": "091454h02n2wm4lbz34vqc5glvncdnm1f341cvmhzfkcs244qvvm",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/445f13c639fc94192fdc3c031cd2dc6a9c2779d4.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "home-manager": {
         "branch": "release-19.09",
         "description": "Manage a user environment using Nix",
@@ -65,10 +89,10 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b8bcf8cb4f421bb558bfff9c3fff9cbbdf5fac77",
-        "sha256": "06pfry5wxi86ilqmvc2lb3klcf5g509xiz0yysaz2hx846hrj1db",
+        "rev": "bee6c1a445a622d02dcf3eff2b81e660e23d2bf4",
+        "sha256": "1r0a2gva7slsz56vsg41jrm11fjldjl8xhajchvn5njybhr44m7f",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/b8bcf8cb4f421bb558bfff9c3fff9cbbdf5fac77.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/bee6c1a445a622d02dcf3eff2b81e660e23d2bf4.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "zgen": {

@@ -2,21 +2,11 @@
 
 let
   sources = import ../nix/sources.nix;
-  commonConfig = { allowUnfree = true; };
   cfg = config.dotfiles;
 in {
   nixpkgs = {
-    pkgs = import sources.nixpkgs {
-      config = {
-        packageOverrides = pkgs: {
-          inherit sources;
-
-          nur = import sources.NUR { inherit pkgs; };
-          unstable = import sources.unstable { config = commonConfig; };
-        };
-      } // commonConfig;
-    };
-    overlays = [ (import ../pkgs/overlay.nix) ];
+    pkgs = import sources.nixpkgs { config = { allowUnfree = true; }; };
+    overlays = import ../overlays.nix;
   };
 
   environment = {
@@ -31,7 +21,10 @@ in {
       dates = "*-*-* 18:00:00";
       options = "--delete-older-than 7d";
     };
-    nixPath = options.nix.nixPath.default ++ [ "config=/etc/dotfiles/config" ];
+    nixPath = options.nix.nixPath.default ++ [
+      "config=/etc/dotfiles/config"
+      "nixpkgs-overlays=/etc/dotfiles/overlays.nix"
+    ];
     autoOptimiseStore = true;
     trustedUsers = [ "root" "@wheel" cfg.user ];
     binaryCaches = [

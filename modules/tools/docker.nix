@@ -18,8 +18,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       (lib.mkIf cfg.compose docker-compose)
-      (lib.mkIf cfg.arion (import (builtins.fetchTarball
-        "https://github.com/hercules-ci/arion/tarball/master") { }).arion)
+      (lib.mkIf cfg.arion arion)
     ];
 
     users.users."${dotfiles.user}".extraGroups = [ "docker" ];
