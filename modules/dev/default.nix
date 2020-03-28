@@ -4,6 +4,7 @@
   imports = [
     ./android.nix
     ./elixir.nix
+    ./elm.nix
     ./go.nix
     ./godot.nix
     ./haskell.nix

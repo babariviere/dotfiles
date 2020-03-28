@@ -157,6 +157,10 @@ in header + (generateSections [
       enable = dotfiles.dev.elixir.enable;
       flags = [ "lsp" ];
     };
+    elm = {
+      enable = dotfiles.dev.elm.enable;
+      flags = [ "lsp" ];
+    };
     emacs-lisp.enable = true;
     go = {
       enable = dotfiles.dev.go.enable;

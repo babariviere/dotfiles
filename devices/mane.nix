@@ -39,6 +39,7 @@ in {
         studio = true;
       };
       elixir.enable = true;
+      elm.enable = true;
       godot.enable = false;
       haskell.enable = false;
       javascript.enable = true;
