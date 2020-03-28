@@ -13,5 +13,8 @@ self: super:
 
   prime = self.callPackage ./prime { };
 
+  plymouth-themes =
+    self.callPackage ./plymouth-themes { src = self.sources.plymouth-themes; };
+
   xterm-24bits = self.callPackage ./xterm-24bits { };
 }

@@ -6,6 +6,7 @@ let cfg = config.dotfiles;
 in {
   imports = [
     ./nixpkgs.nix
+    ./boot.nix
     ./desktop
     ./dev
     ./editors
@@ -92,15 +93,6 @@ in {
             android_sdk.accept_license = true;
           }
         '';
-      };
-    };
-
-    # Default boot configuration
-    boot = {
-      cleanTmpDir = true;
-      loader = {
-        systemd-boot.enable = true;
-        efi.canTouchEfiVariables = true;
       };
     };
 
