@@ -188,6 +188,7 @@ in header + (generateSections [
         "pandoc"
         "pomodoro"
         "present"
+        "roam"
       ];
     };
     php.enable = dotfiles.dev.php.enable;
