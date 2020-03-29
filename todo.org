@@ -72,3 +72,12 @@ CLOSED: [2019-11-16 Sat 21:04]
 ** TODO find a better wallpaper for dracula sympa
 ** TODO add vcs_info zsh
 ** TODO fix prompt when IN_NIX_SHELL via lorri
+** TODO colors per program
+
+For example
+#+BEGIN_SRC nix
+getColors = colors:
+  {
+    border = colors.rofi.border or colors.red;
+  }
+#+END_SRC

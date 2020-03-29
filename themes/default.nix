@@ -53,6 +53,9 @@ in {
       mkForce (injectAnsi (import (./. + "/${config.dotfiles.theme}")));
 
     dotfiles.doomTheme = "doom-${config.dotfiles.theme}";
-    dotfiles.wallpaper = mkForce (./. + "/${config.dotfiles.theme}/wallpaper");
+    dotfiles.wallpaper = let
+      path = (./. + "/${config.dotfiles.theme}/wallpaper.nix");
+      expr = pkgs.callPackage path { };
+    in mkForce expr.src;
   };
 }
