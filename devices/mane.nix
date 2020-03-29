@@ -41,12 +41,14 @@ in {
       elixir.enable = true;
       elm.enable = true;
       godot.enable = false;
-      haskell.enable = false;
+      haskell.enable = true;
       javascript.enable = true;
       latex.enable = true;
       plantuml.enable = true;
       python.enable = true;
+      ruby.enable = true;
       rust.enable = true;
+      web.enable = true;
     };
     editors = {
       emacs.enable = true;
@@ -155,15 +157,15 @@ in {
     ];
   nix.distributedBuilds = true;
 
-  environment.systemPackages = let
-    flutter = (import (builtins.fetchTarball
-      "https://github.com/babariviere/nixpkgs/archive/flutter-init.tar.gz")
-      { }).flutterPackages.beta; # TODO: remove me when official
-  in with pkgs; [ # TODO: clean me
-    flutter
-    # unstable.next # TODO: this makes me compile qt-webengine
-    pkgs.unstable.bandwhich
-  ];
+  environment.systemPackages =
+    # flutter = (import (builtins.fetchTarball
+    #   "https://github.com/babariviere/nixpkgs/archive/flutter-init.tar.gz")
+    #   { }).flutterPackages.beta; # TODO: remove me when official
+    with pkgs;
+    [
+      # unstable.next # TODO: this makes me compile qt-webengine
+      pkgs.unstable.bandwhich
+    ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 }

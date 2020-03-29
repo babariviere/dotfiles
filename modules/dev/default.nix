@@ -14,6 +14,8 @@
     ./php.nix
     ./plantuml.nix
     ./python.nix
+    ./ruby.nix
     ./rust.nix
+    ./web.nix
   ];
 }

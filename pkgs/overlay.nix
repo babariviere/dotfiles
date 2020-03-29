@@ -1,6 +1,8 @@
 self: super:
 
 {
+  ert-run = self.callPackage ./ert-run { };
+
   mutate = self.callPackage ./mutate { };
 
   iosevkaBaba = (self.callPackage ./iosevka { }) "Iosevka Baba" "baba" true;

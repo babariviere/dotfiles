@@ -36,6 +36,7 @@ in {
     binaryCachePublicKeys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "all-hies.cachix.org-1:JjrzAOEUsD9ZMt8fdFbzo3jNAyEWlPAwdVuHw4RD43k="
+      "babariviere.cachix.org-1:IZH469NpgfLwJWYS2qv6HsuaKpBP7AwEqfkpcfd/U04="
     ];
   };
   # run gc only if power source is plugged

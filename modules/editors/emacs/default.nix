@@ -68,6 +68,9 @@ in {
           emacs'
           (mkIf (cfg.editorconfig) editorconfig-core-c) # :tools editorconfig
 
+          # For launching emacs lisp tests
+          ert-run
+
           # Misc
           ccls # lang cc
 

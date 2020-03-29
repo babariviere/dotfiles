@@ -197,11 +197,19 @@ in header + (generateSections [
       flags = [ "lsp" ];
     };
     rest.enable = true;
+    ruby = {
+      enable = dotfiles.dev.ruby.enable;
+      flags = [ "lsp" "rails" ];
+    };
     rust = {
       enable = dotfiles.dev.rust.enable;
       flags = [ "lsp" ];
     };
     sh.enable = true;
+    web = {
+      enable = dotfiles.dev.web.enable;
+      flags = [ "lsp" ];
+    };
   }
 
   {

@@ -13,7 +13,7 @@ in {
       cabal-install
       stack
       cabal2nix
-      # (all-hies.selection { selector = p: { inherit (p) ghc865; }; })
+      (all-hies.selection { selector = p: { inherit (p) ghc865; }; })
       haskellPackages.hoogle
     ];
 
