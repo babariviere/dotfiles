@@ -38,6 +38,10 @@ in {
       "all-hies.cachix.org-1:JjrzAOEUsD9ZMt8fdFbzo3jNAyEWlPAwdVuHw4RD43k="
       "babariviere.cachix.org-1:IZH469NpgfLwJWYS2qv6HsuaKpBP7AwEqfkpcfd/U04="
     ];
+    extraOptions = ''
+      # Set TTL to one day
+      tarball-ttl = 86400
+    '';
   };
   # run gc only if power source is plugged
   systemd.services.nix-gc.unitConfig.ConditionACPower = true;
