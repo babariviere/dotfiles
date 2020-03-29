@@ -7,6 +7,7 @@ in {
   imports = [
     ./nixpkgs.nix
     ./boot.nix
+    ./user.nix
     ./desktop
     ./dev
     ./editors
@@ -80,19 +81,6 @@ in {
         # Utilities
         MANPAGER = "/bin/sh -c 'col -bx | ${pkgs.bat}/bin/bat -l map -p'";
         BAT_THEME = "TwoDark";
-      };
-    };
-
-    home-manager.users."${cfg.user}" = {
-      xdg.enable = true;
-      xdg.configFile = {
-        "nixpkgs/config.nix".text = ''
-          {
-            allowUnfree = true;
-            allowBroken = true;
-            android_sdk.accept_license = true;
-          }
-        '';
       };
     };
 
