@@ -38,6 +38,7 @@ in {
         enable = true;
         studio = true;
       };
+      c.enable = true;
       elixir.enable = true;
       elm.enable = true;
       godot.enable = false;

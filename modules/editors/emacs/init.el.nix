@@ -188,8 +188,7 @@ in header + (generateSections [
         "pandoc"
         "pomodoro"
         "present"
-        "roam"
-      ];
+      ] ++ (lib.optional dotfiles.dev.c.enable "roam");
     };
     php.enable = dotfiles.dev.php.enable;
     plantuml.enable = dotfiles.dev.plantuml.enable;

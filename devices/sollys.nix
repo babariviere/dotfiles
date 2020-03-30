@@ -28,6 +28,7 @@ in {
       rofi.enable = true;
     };
     dev = {
+      c.enable = true;
       go.enable = true;
       javascript.enable = true;
       php.enable = true;

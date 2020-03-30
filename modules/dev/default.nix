@@ -3,6 +3,7 @@
 {
   imports = [
     ./android.nix
+    ./c.nix
     ./elixir.nix
     ./elm.nix
     ./go.nix
