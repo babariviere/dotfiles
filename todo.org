@@ -81,3 +81,5 @@ getColors = colors:
     border = colors.rofi.border or colors.red;
   }
 #+END_SRC
+** TODO use xsession from home-manager
+** TODO try to set gnome-keyring with home-manager and xsession

@@ -23,7 +23,7 @@ in {
         download = "$HOME/dwl";
         music = "$HOME/msc";
         pictures = "$HOME/img";
-        publishShare = "$HOME/pub"; # FIXME: will be renamed to publicShare
+        publicShare = "$HOME/pub";
         templates = "$HOME/tmp";
         videos = "$HOME/vid";
       };
