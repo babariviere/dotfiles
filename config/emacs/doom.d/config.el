@@ -25,6 +25,9 @@
   :hook (org-mode . org-fancy-priorities-mode)
   :config (setq org-fancy-priorities-list '("■" "■" "■")))
 
+(after! org-roam
+  (setq org-roam-directory "~/org/braindump"))
+
 ;;; :tools flyspell
 (setq ispell-aspell-data-dir "/run/current-system/sw/lib/aspell" )
 (setq ispell-aspell-dict-dir ispell-aspell-data-dir)
