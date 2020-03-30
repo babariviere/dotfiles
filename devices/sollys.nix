@@ -28,6 +28,7 @@ in {
       rofi.enable = true;
     };
     dev = {
+      android.enable = true;
       c.enable = true;
       go.enable = true;
       javascript.enable = true;
