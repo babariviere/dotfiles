@@ -19,15 +19,11 @@ in {
           settings = {
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           };
-          # TODO: create a userchrome.css to import all other css
+          # userChrome = ''
+          #   @import "${pkgs.sources.firefox-sweet-theme}/userChrome.css";
+          # '';
         };
       };
-
-      # home.file.".mozilla/firefox/profile.main/chrome" = {
-      #   source = pkgs.sources.firefox-sweet-theme; # TODO: replace fonts
-      #   recursive = true;
-      # };
     };
-
   };
 }

@@ -42,8 +42,8 @@ in {
     mono = mkFont "JetBrainsMono Nerd Font"
       (pkgs.unstable.nerdfonts.override { withFont = "JetBrainsMono"; })
       "monospaced font";
-    sansSerif = mkFont "Roboto" pkgs.roboto "sans serif font";
-    serif = mkFont "Roboto Slab" pkgs.roboto-slab "serif font";
+    sansSerif = mkFont "Inter" pkgs.inter "sans serif font";
+    serif = mkFont "Noto Serif" pkgs.noto-fonts "serif font";
 
     ligature = mkEnableOption "ligature";
   };

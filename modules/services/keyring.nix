@@ -9,13 +9,13 @@ in {
 
   config = mkIf cfg.enable {
     services.gnome3.gnome-keyring.enable = true;
+    programs.seahorse.enable = true;
+    security.pam.services.lightdm.enableGnomeKeyring = true;
 
-    environment.systemPackages = with pkgs; [ gnome3.seahorse libsecret ];
+    environment.systemPackages = with pkgs; [ libsecret ];
 
-    programs.ssh = {
-      askPassword = mkIf dotfiles.services.ssh.enable
-        "${pkgs.gnome3.seahorse}/libexec/seahorse/ssh-askpass";
-    };
+    programs.ssh.askPassword =
+      mkIf dotfiles.services.ssh.enable "${pkgs.gnome3.seahorse}/bin/seahorse";
 
     home-manager.users."${dotfiles.user}" = {
       home.file.".gnupg/gpg-agent.conf" = mkIf dotfiles.services.gpg.enable {

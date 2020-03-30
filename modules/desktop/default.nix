@@ -6,6 +6,7 @@ in {
   imports = [
     ./bspwm.nix
     ./fonts.nix
+    ./gtk.nix
     ./i3.nix
     ./programs/chrome.nix
     ./programs/compton.nix
@@ -55,9 +56,29 @@ in {
     environment.systemPackages = with pkgs; [ xclip pamixer pavucontrol ];
 
     home-manager.users."${config.dotfiles.user}" = {
-      home = {
-        file = {
-          ".xinitrc".text = ''
+      home.file = {
+        ".xinitrc".text = ''
+          #!/bin/sh
+
+          if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+            eval $(dbus-launch --exit-with-session --sh-syntax)
+          fi
+          systemctl --user import-environment DISPLAY XAUTHORITY
+
+          if command -v dbus-update-activation-environment >/dev/null 2>&1; then
+                  dbus-update-activation-environment DISPLAY XAUTHORITY
+          fi
+
+          for f in $HOME/.Xresources.d/*; do
+              ${pkgs.xorg.xrdb}/bin/xrdb -merge "$f"
+          done
+
+          ${cfg.xinitCmd}
+        '';
+
+        ".xprofile" = {
+          executable = true;
+          text = ''
             #!/bin/sh
 
             if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
@@ -68,46 +89,10 @@ in {
             if command -v dbus-update-activation-environment >/dev/null 2>&1; then
                     dbus-update-activation-environment DISPLAY XAUTHORITY
             fi
-
-            for f in $HOME/.Xresources.d/*; do
-                ${pkgs.xorg.xrdb}/bin/xrdb -merge "$f"
-            done
-
-            ${cfg.xinitCmd}
           '';
-
-          ".xprofile" = {
-            executable = true;
-            text = ''
-              #!/bin/sh
-
-              if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-                eval $(dbus-launch --exit-with-session --sh-syntax)
-              fi
-              systemctl --user import-environment DISPLAY XAUTHORITY
-
-              if command -v dbus-update-activation-environment >/dev/null 2>&1; then
-                      dbus-update-activation-environment DISPLAY XAUTHORITY
-              fi
-            '';
-          };
         };
       };
-      gtk = {
-        enable = true;
-        font = {
-          name = "${cfg.fonts.sansSerif.name} 12";
-          package = cfg.fonts.sansSerif.package;
-        };
-        iconTheme = {
-          package = pkgs.paper-icon-theme;
-          name = "Paper";
-        };
-        theme = {
-          package = pkgs.materia-theme;
-          name = "Materia-dark";
-        };
-      };
+      # xsession.enable = true;
     };
   };
 }

@@ -47,6 +47,18 @@
         "url": "https://github.com/nix-community/emacs-overlay/archive/78f69fa584382afbe697104d2adaa96a78ed5df8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "firefox-sweet-theme": {
+        "branch": "master",
+        "description": ":candy: A dark and modern theme for firefox with vibrant colors",
+        "homepage": "",
+        "owner": "Brettm12345",
+        "repo": "firefox-sweet-theme",
+        "rev": "e80f4291764b7a86e94828c1a362b8eb18ffd8e2",
+        "sha256": "07y93x6szhl9i2ccsj5k8cmvzl911w80y51nnja3ysdwq692w96h",
+        "type": "tarball",
+        "url": "https://github.com/Brettm12345/firefox-sweet-theme/archive/e80f4291764b7a86e94828c1a362b8eb18ffd8e2.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "home-manager": {
         "branch": "release-19.09",
         "description": "Manage a user environment using Nix",
