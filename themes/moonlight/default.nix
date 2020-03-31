@@ -1,26 +1,26 @@
 rec {
   # Special
-  foreground = lightWhite;
-  foregroundBold = white;
-  cursor = lightBlue;
+  foreground = "#afbeee";
+  foregroundBold = lightWhite;
+  cursor = blue;
   cursorForeground = background;
-  background = black;
+  background = "#212337";
 
   # colors
-  black = "#212337";
+  black = "#2a2e48";
   blue = "#70b0ff";
-  cyan = "#86e1fc";
-  green = "#c3e88d";
-  magenta = "#c099ff";
-  red = "#ff757f";
-  white = "#b4c2f0";
-  yellow = "#ffc777";
-  lightBlack = "#7c85b3";
-  lightBlue = "#70b0ff";
-  lightCyan = "#b4f9f8";
-  lightGreen = "#77e0c6";
-  lightMagenta = "#baacff";
-  lightRed = "#ff98a4";
-  lightWhite = "#c8d3f5";
-  lightYellow = "#ffdb8e";
+  cyan = "#7fdaff";
+  green = "#c7f59b";
+  magenta = "#baacff";
+  red = "#ff5370";
+  white = "#e4f3fa";
+  yellow = "#ffdb8e";
+  lightBlack = "#2e324e";
+  lightBlue = "#7ab6ff";
+  lightCyan = "#89ddff";
+  lightGreen = "#cbf6a4";
+  lightMagenta = "#c2b6ff";
+  lightRed = "#ff5d78";
+  lightWhite = "#ecf7fb";
+  lightYellow = "#ffde97";
 }
