@@ -45,8 +45,15 @@ in {
 
         ruby.symbol = " ";
 
-        hostname.ssh_only = false;
-        username.show_always = true;
+        directory.style = "green";
+        hostname = {
+          style = "yellow";
+          ssh_only = false;
+        };
+        username = {
+          style_user = "blue";
+          show_always = true;
+        };
       };
     };
   };
