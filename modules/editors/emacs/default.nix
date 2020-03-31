@@ -125,6 +125,7 @@ in {
       };
       xdg.configFile = {
         "zsh/rc.d/env.emacs.zsh".source = <config/emacs/env.zsh>;
+        "fish/rc.d/env.emacs.fish".source = <config/emacs/env.fish>;
       };
     };
   };

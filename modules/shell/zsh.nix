@@ -1,12 +1,25 @@
 { config, lib, pkgs, ... }:
 
+with lib;
 let
   dotfiles = config.dotfiles;
   cfg = dotfiles.shell.zsh;
 in {
-  options.dotfiles.shell.zsh.enable = lib.mkEnableOption "zsh";
+  options.dotfiles.shell.zsh = {
+    enable = mkEnableOption "zsh";
+    package = mkOption {
+      type = types.package;
+      description = "Package to use for zsh.";
+      default = pkgs.zsh;
+    };
+    default = mkOption {
+      type = types.bool;
+      description = "Set the shell as default";
+      default = false;
+    };
+  };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     environment = {
       variables = {
         ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
@@ -14,7 +27,7 @@ in {
         ZGEN_DIR = "$XDG_CACHE_HOME/zgen";
         ZGEN_SOURCE = "${pkgs.sources.zgen}";
       };
-      systemPackages = with pkgs; [ zsh nix-zsh-completions fd exa htop tree ];
+      systemPackages = with pkgs; [ cfg.package nix-zsh-completions ];
     };
 
     programs.zsh = {
@@ -23,8 +36,7 @@ in {
       enableGlobalCompInit = true;
       promptInit = "";
     };
-
-    users.users."${dotfiles.user}".shell = pkgs.zsh;
+    users.users."${dotfiles.user}".shell = mkIf cfg.default cfg.package;
 
     home-manager.users."${dotfiles.user}" = {
       programs.zsh = {

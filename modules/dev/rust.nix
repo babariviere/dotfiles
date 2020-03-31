@@ -22,6 +22,7 @@ in {
     home-manager.users."${dotfiles.user}" = {
       xdg.configFile = {
         "zsh/rc.d/env.rust.zsh".source = <config/rust/env.zsh>;
+        "fish/rc.d/env.rust.fish".source = <config/rust/env.fish>;
       };
     };
   };

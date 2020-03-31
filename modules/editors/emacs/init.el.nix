@@ -205,7 +205,10 @@ in header + (generateSections [
       enable = dotfiles.dev.rust.enable;
       flags = [ "lsp" ];
     };
-    sh.enable = true;
+    sh = {
+      enable = true;
+      flags = [ "fish" ];
+    };
     web = {
       enable = dotfiles.dev.web.enable;
       flags = [ "lsp" ];

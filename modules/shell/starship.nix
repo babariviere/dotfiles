@@ -44,6 +44,9 @@ in {
         python.symbol = " ";
 
         ruby.symbol = " ";
+
+        hostname.ssh_only = false;
+        username.show_always = true;
       };
     };
   };

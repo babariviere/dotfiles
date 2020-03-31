@@ -68,6 +68,7 @@ in {
 
       xdg.configFile = {
         "zsh/rc.d/env.termite.zsh".source = <config/termite/env.zsh>;
+        "fish/rc.d/env.termite.fish".source = <config/termite/env.fish>;
       };
     };
   };
