@@ -4,17 +4,16 @@ with lib;
 let
   cfg = config.dotfiles.desktop;
   cursorTheme = {
-    package = pkgs.juno;
-    name = "Juno";
-    size = 24;
+    package = pkgs.bibata-cursors;
+    name = "Bibata Ice";
   };
   iconTheme = {
     package = pkgs.paper-icon-theme;
     name = "Paper";
   };
   theme = {
-    package = pkgs.materia-theme;
-    name = "Materia-dark";
+    package = pkgs.juno;
+    name = "Juno";
   };
 in {
   config = mkIf cfg.enable {
