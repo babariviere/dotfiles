@@ -22,6 +22,7 @@ in {
   config = mkIf cfg.enable {
     environment = {
       variables = {
+        # FIXME: fish ignore variables
         ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
         ZSH_CACHE = "$XDG_CACHE_HOME/zsh";
         ZGEN_DIR = "$XDG_CACHE_HOME/zgen";

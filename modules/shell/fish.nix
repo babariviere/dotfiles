@@ -30,13 +30,14 @@ in {
         enable = true;
         loginShellInit = ''
           set -U fish_greeting
-          for file in $XDG_CONFIG_HOME/fish/rc.d/env.*.fish
-            source $file
-          end
 
           set -x CHROME_EXECUTABLE google-chrome-stable
         '';
         promptInit = ''
+          for file in $XDG_CONFIG_HOME/fish/rc.d/env.*.fish
+            source $file
+          end
+
           ${pkgs.any-nix-shell}/bin/any-nix-shell fish | source
         '';
       };
