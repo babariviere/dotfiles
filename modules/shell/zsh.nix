@@ -15,7 +15,7 @@ in {
     default = mkOption {
       type = types.bool;
       description = "Set the shell as default";
-      default = false;
+      default = true;
     };
   };
 
