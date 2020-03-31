@@ -26,10 +26,28 @@ in {
 
     users.users."${dotfiles.user}".shell = pkgs.zsh;
 
-    home-manager.users."${dotfiles.user}".xdg.configFile = {
-      "zsh" = {
-        source = <config/zsh>;
-        recursive = true;
+    home-manager.users."${dotfiles.user}" = {
+      programs.zsh = {
+        enable = true;
+        dotDir = ".config/zsh";
+        envExtra = ''
+          for file in $XDG_CONFIG_HOME/zsh/rc.d/env.*.zsh(N); do
+            source $file
+          done
+
+          export CHROME_EXECUTABLE=google-chrome-stable
+          export TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
+        '';
+        initExtra = ''
+          ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
+          source $ZDOTDIR/init.zsh
+        '';
+      };
+      xdg.configFile = {
+        "zsh" = {
+          source = <config/zsh>;
+          recursive = true;
+        };
       };
     };
   };

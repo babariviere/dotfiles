@@ -16,16 +16,17 @@ in {
           }
         '';
       };
-      userDirs = {
+      userDirs = let dir = path: "$HOME/usr/${path}";
+      in {
         enable = true;
-        desktop = "$HOME/dsk";
-        documents = "$HOME/doc";
-        download = "$HOME/dwl";
-        music = "$HOME/msc";
-        pictures = "$HOME/img";
-        publicShare = "$HOME/pub";
-        templates = "$HOME/tmp";
-        videos = "$HOME/vid";
+        desktop = dir "dsk";
+        documents = dir "doc";
+        download = dir "dwl";
+        music = dir "msc";
+        pictures = dir "img";
+        publicShare = dir "pub";
+        templates = dir "tmp";
+        videos = dir "vid";
       };
     };
   };

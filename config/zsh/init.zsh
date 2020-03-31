@@ -16,7 +16,7 @@ if ! zgen saved; then
   zgen save
 fi
 
-source $ZDOTDIR/prompt.zsh
+# source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/config.zsh
 source $ZDOTDIR/keybinds.zsh
 for file in $ZDOTDIR/rc.d/aliases.*.zsh(N); do

@@ -3,11 +3,13 @@ self: super:
 {
   ert-run = self.callPackage ./ert-run { };
 
-  mutate = self.callPackage ./mutate { };
-
   iosevkaBaba = (self.callPackage ./iosevka { }) "Iosevka Baba" "baba" true;
   iosevkaTermBaba =
     (self.callPackage ./iosevka { }) "Iosevka Term Baba" "term-baba" false;
+
+  juno = self.callPackage ./juno { src = self.sources.juno; };
+
+  mutate = self.callPackage ./mutate { };
 
   nix-patch = self.callPackage ./nix-patch { };
 

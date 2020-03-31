@@ -36,7 +36,7 @@ in {
     dev = {
       android = {
         enable = true;
-        studio = true;
+        studio = false;
       };
       c.enable = true;
       elixir.enable = true;
@@ -65,6 +65,7 @@ in {
         enable = true;
         signingKey = "6BCFEDF322EB0040B5FC4296EECF965F5AAA4E1A";
       };
+      starship.enable = true;
       zsh.enable = true;
     };
     services = {

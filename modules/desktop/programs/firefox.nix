@@ -17,11 +17,14 @@ in {
         profiles."main" = {
           path = "profile.main";
           settings = {
+            "browser.tabs.drawInTitlebar" = true;
+            "browser.download.dir" =
+              config.home-manager.users."${dotfiles.user}".xdg.userDirs.download;
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           };
-          # userChrome = ''
-          #   @import "${pkgs.sources.firefox-sweet-theme}/userChrome.css";
-          # '';
+          userChrome = ''
+            @import "${pkgs.sources.firefox-sweet-theme}/userChrome.css";
+          '';
         };
       };
     };

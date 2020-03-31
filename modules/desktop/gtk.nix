@@ -4,8 +4,9 @@ with lib;
 let
   cfg = config.dotfiles.desktop;
   cursorTheme = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata Ice";
+    package = pkgs.juno;
+    name = "Juno";
+    size = 24;
   };
   iconTheme = {
     package = pkgs.paper-icon-theme;

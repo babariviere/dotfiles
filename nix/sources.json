@@ -53,10 +53,10 @@
         "homepage": "",
         "owner": "Brettm12345",
         "repo": "firefox-sweet-theme",
-        "rev": "e80f4291764b7a86e94828c1a362b8eb18ffd8e2",
-        "sha256": "07y93x6szhl9i2ccsj5k8cmvzl911w80y51nnja3ysdwq692w96h",
+        "rev": "4231f480a9d467feffce64e8e3774c30bfb216ef",
+        "sha256": "1awrfs7b9xyl9h6bxq60bsa1hvmi9zi7qnfnn9rq2730ri3l9x4g",
         "type": "tarball",
-        "url": "https://github.com/Brettm12345/firefox-sweet-theme/archive/e80f4291764b7a86e94828c1a362b8eb18ffd8e2.tar.gz",
+        "url": "https://github.com/Brettm12345/firefox-sweet-theme/archive/4231f480a9d467feffce64e8e3774c30bfb216ef.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
@@ -65,10 +65,22 @@
         "homepage": "https://rycee.gitlab.io/home-manager/",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "5969551a5cc52f9470b5ff5ca01327bf4bda82c1",
-        "sha256": "0f4kz83a1kp3ci8zi5hvp8fp34wi73arpykl4d9vlywdk6w36bnd",
+        "rev": "dd93c300bbd951776e546fdc251274cc8a184844",
+        "sha256": "0cq6ngagx68rb8w9cyimrl17khr0317m6mazx7fkvqay9qp1pd3y",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/5969551a5cc52f9470b5ff5ca01327bf4bda82c1.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/dd93c300bbd951776e546fdc251274cc8a184844.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "juno": {
+        "branch": "moonlight",
+        "description": "GTK themes inspired by epic vscode themes",
+        "homepage": null,
+        "owner": "Brettm12345",
+        "repo": "Juno",
+        "rev": "e6fe7c54cd45170881ff4d30600eb80aaa3ae3b6",
+        "sha256": "0m5zm64r3qv4ilyiyqbjbislfcx0jh905ckzrvcklrb5pwqqbhrs",
+        "type": "tarball",
+        "url": "https://github.com/Brettm12345/Juno/archive/e6fe7c54cd45170881ff4d30600eb80aaa3ae3b6.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
