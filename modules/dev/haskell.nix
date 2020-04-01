@@ -8,14 +8,14 @@ in {
   options.dotfiles.dev.haskell.enable = lib.mkEnableOption "haskell";
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      ghc
-      cabal-install
-      stack
-      cabal2nix
-      (all-hies.selection { selector = p: { inherit (p) ghc865; }; })
-      haskellPackages.hoogle
-    ];
+    environment.systemPackages = with pkgs;
+      [
+        ghc # TODO: declare version at one place
+        cabal-install
+        stack
+        cabal2nix
+        (all-hies.selection { selector = p: { inherit (p) ghc882; }; })
+      ] ++ (with haskellPackages; [ hoogle brittany hlint ]);
 
     home-manager.users."${dotfiles.user}".home.file.".ghci".source =
       pkgs.mutate <config/ghci> {
