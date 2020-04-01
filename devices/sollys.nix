@@ -49,6 +49,7 @@ in {
         enable = true;
         # signingKey = "C45AE603B0DB35266E0E1BBA7014714FCF05D20E";
       };
+      starship.enable = true;
       zsh.enable = true;
     };
     services = {
