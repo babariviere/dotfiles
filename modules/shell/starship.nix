@@ -45,9 +45,9 @@ in {
 
         ruby.symbol = " ";
 
-        directory.style = "green";
+        directory.style = "yellow";
         hostname = {
-          style = "yellow";
+          style = "blue";
           ssh_only = false;
         };
         username = {
