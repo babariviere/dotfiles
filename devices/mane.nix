@@ -36,7 +36,7 @@ in {
     dev = {
       android = {
         enable = true;
-        studio = false;
+        studio = true;
       };
       c.enable = true;
       elixir.enable = true;

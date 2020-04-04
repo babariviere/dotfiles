@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "f4dd9d93125feea1cc4d1814c0474ae260014067",
-        "sha256": "1bgf94nk0jaf18nvh8746g314qp7agx3ppj14s3xw97b2knpyx7y",
+        "rev": "4e7e8ad49ecd388006ef2e4b11d10da33b36cfca",
+        "sha256": "0f0pfxyi2j5vyjns3aqk0wpigvwhxivdbx3f3dq6q81kgz9wlfdc",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/f4dd9d93125feea1cc4d1814c0474ae260014067.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/4e7e8ad49ecd388006ef2e4b11d10da33b36cfca.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "all-hies": {
@@ -41,10 +41,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "7b26a724929122c1f74d996824744bfcb10bb1f5",
-        "sha256": "08vp3z82f71vcz40bx4j3m869qymbi690mlnvfpvfrizividiwyl",
+        "rev": "4bd97b30b5a02b0d97c6b70b87116a4c24693abb",
+        "sha256": "18b3rzl2dd6p2g7dlgz8zlfkrcrc7yjb5lphy98rw345yp5lgkgh",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/7b26a724929122c1f74d996824744bfcb10bb1f5.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/4bd97b30b5a02b0d97c6b70b87116a4c24693abb.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "firefox-sweet-theme": {
@@ -89,10 +89,10 @@
         "homepage": "https://github.com/nmattia/niv",
         "owner": "nmattia",
         "repo": "niv",
-        "rev": "372f96bff217a7a019de27667d04118cffa9841b",
-        "sha256": "1l0z6162zw60pdcdj03aq64qgf1vyzmf24i9pxca64i4sprl1b7p",
+        "rev": "f73bf8d584148677b01859677a63191c31911eae",
+        "sha256": "0jlmrx633jvqrqlyhlzpvdrnim128gc81q5psz2lpp2af8p8q9qs",
         "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/372f96bff217a7a019de27667d04118cffa9841b.tar.gz",
+        "url": "https://github.com/nmattia/niv/archive/f73bf8d584148677b01859677a63191c31911eae.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -113,10 +113,22 @@
         "homepage": null,
         "owner": "adi1090x",
         "repo": "plymouth-themes",
-        "rev": "bb390bdf7c4d64d969d40fc27d66be9edf4787e8",
-        "sha256": "15v56jlsly1djxfkpinqqwyjvrl35qzck3mb78p3i78h6569sjgg",
+        "rev": "486e2b0a03dd5e6d6d32f12dcc07572f88203e1a",
+        "sha256": "04142bwsbfrd3m51jgl6ss6zxf5pi35kx9qcrjwrw0f7j71m278s",
         "type": "tarball",
-        "url": "https://github.com/adi1090x/plymouth-themes/archive/bb390bdf7c4d64d969d40fc27d66be9edf4787e8.tar.gz",
+        "url": "https://github.com/adi1090x/plymouth-themes/archive/486e2b0a03dd5e6d6d32f12dcc07572f88203e1a.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "snack": {
+        "branch": "master",
+        "description": "Nix-based incremental build tool for Haskell projects",
+        "homepage": "",
+        "owner": "nmattia",
+        "repo": "snack",
+        "rev": "b638463b9a7490867b44d0c33bb02e8f7ca82f29",
+        "sha256": "02h4f0nrjvhsm7hvmrnc4kfi5my48d7yvind0f1kq1lsrcch6iph",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/snack/archive/b638463b9a7490867b44d0c33bb02e8f7ca82f29.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "unstable": {
@@ -125,10 +137,10 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f59308dc2a741b3ea4a112b2ef28917ba673ff55",
-        "sha256": "0yc6apcnxl5h8pcqzny3xj7hkksbw8ba0i1b2phbdpxkqdkga2sd",
+        "rev": "eb0148e90b3e35730dab3c668bf93e4cb5d8e633",
+        "sha256": "0fxgvn3ykxs0c1s85n81hjhwzg6ad4bsr7h7mw8r231wgvw9ivnb",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/f59308dc2a741b3ea4a112b2ef28917ba673ff55.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/eb0148e90b3e35730dab3c668bf93e4cb5d8e633.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "zgen": {

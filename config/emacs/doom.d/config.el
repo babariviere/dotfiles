@@ -26,7 +26,13 @@
   :config (setq org-fancy-priorities-list '("■" "■" "■")))
 
 (after! org-roam
-  (setq org-roam-directory "~/org/braindump"))
+  (setq org-roam-capture-templates
+        '(("d" "default" plain (function org-roam--capture-get-point)
+           "%?"
+           :file-name "${slug}"
+           :head "#+TITLE: ${title}\n"
+           :unnarrowed t
+           :immediate-finish t))))
 
 ;;; :tools flyspell
 (setq ispell-aspell-data-dir "/run/current-system/sw/lib/aspell" )
@@ -41,6 +47,7 @@
 ;;; :ui deft
 (after! deft
   (setq deft-directory "~/org"))
+
 ;;; :ui pretty-code
 (load! "modules/+iosevka.el")
 (setq +pretty-code-symbols
