@@ -10,7 +10,7 @@ stdenv.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/share/plymouth/themes
-    for f in $src/pack_1/*/ $src/pack_2/*/; do
+    for f in $src/pack_1/*/ $src/pack_2/*/ $src/pack_3/*/ $src/pack_4/*/; do
       theme=$(basename $f)
       if [ $theme == "glow" ]; then
         continue

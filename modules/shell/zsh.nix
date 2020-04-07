@@ -27,7 +27,7 @@ in {
         ZGEN_DIR = "$XDG_CACHE_HOME/zgen";
         ZGEN_SOURCE = "${pkgs.sources.zgen}";
       };
-      systemPackages = with pkgs; [ cfg.package nix-zsh-completions ];
+      systemPackages = with pkgs; [ cfg.package h nix-zsh-completions ];
     };
 
     programs.zsh = {
@@ -51,6 +51,7 @@ in {
         '';
         initExtra = ''
           ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
+          eval "$(h --setup ~/src)"
           source $ZDOTDIR/init.zsh
         '';
       };

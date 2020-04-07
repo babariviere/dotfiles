@@ -3,6 +3,7 @@
 let cfg = config.dotfiles;
 in {
   environment.systemPackages = with pkgs; [ xdg-user-dirs ];
+  environment.homeBinInPath = true;
 
   home-manager.users."${cfg.user}" = {
     xdg = {
@@ -16,7 +17,7 @@ in {
           }
         '';
       };
-      userDirs = let dir = path: "$HOME/usr/${path}";
+      userDirs = let dir = path: "/home/${cfg.user}/usr/${path}";
       in {
         enable = true;
         desktop = dir "dsk";

@@ -12,7 +12,7 @@
     # Boot animation
     plymouth = {
       enable = true;
-      theme = "hexagon_dots_alt";
+      theme = "sphere";
       themePackages = [ pkgs.plymouth-themes ];
     };
   };
