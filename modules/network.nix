@@ -33,11 +33,8 @@ in {
 
       nameservers = [ "8.8.8.8" "8.8.4.4" ];
 
-      extraHosts = builtins.readFile (pkgs.fetchurl {
-        url =
-          "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts";
-        sha256 = "1m96qpb67ipl78cck37cw77zmnlz88y392dla1bx6g3lvz4f93f3";
-      });
+      extraHosts = builtins.readFile (builtins.fetchurl
+        "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts");
     };
   };
 }
