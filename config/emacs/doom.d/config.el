@@ -34,6 +34,14 @@
            :unnarrowed t
            :immediate-finish t))))
 
+(after! org-journal
+  (setq org-journal-dir org-directory
+        org-journal-file-format "daily-%Y%m%d.org"
+        org-journal-file-pattern (org-journal-dir-and-format->regex
+                                  org-journal-dir org-journal-file-format))
+
+  (add-to-list 'auto-mode-alist (cons org-journal-file-pattern 'org-journal-mode)))
+
 ;;; :tools flyspell
 (setq ispell-aspell-data-dir "/run/current-system/sw/lib/aspell" )
 (setq ispell-aspell-dict-dir ispell-aspell-data-dir)

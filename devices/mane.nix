@@ -77,7 +77,7 @@ in {
       mail.enable = false;
       postgres.enable = true;
       ssh.enable = true;
-      syncthing.enable = true;
+      syncthing.enable = false;
       virtualbox.enable = false;
       zerotier = {
         enable = true;
