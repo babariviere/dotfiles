@@ -37,10 +37,10 @@ in {
     #   "terminal font (no ligature)";
     #mono = mkFont "Jetbrains Mono" pkgs.unstable.jetbrains-mono "monospaced font";
     term = mkFont "JetBrainsMono Nerd Font"
-      (pkgs.unstable.nerdfonts.override { withFont = "JetBrainsMono"; })
+      (pkgs.unstable.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       "term font";
     mono = mkFont "JetBrainsMono Nerd Font"
-      (pkgs.unstable.nerdfonts.override { withFont = "JetBrainsMono"; })
+      (pkgs.unstable.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       "monospaced font";
     sansSerif = mkFont "Inter" pkgs.inter "sans serif font";
     serif = mkFont "Noto Serif" pkgs.noto-fonts "serif font";
