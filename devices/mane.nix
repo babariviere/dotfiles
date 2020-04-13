@@ -78,6 +78,7 @@ in {
       postgres.enable = true;
       ssh.enable = true;
       syncthing.enable = false;
+      libvirtd.enable = true;
       virtualbox.enable = false;
       zerotier = {
         enable = true;
@@ -159,6 +160,8 @@ in {
   # }
     ];
   nix.distributedBuilds = true;
+  # TODO: find a way to disable sandbox with nixops
+  nix.useSandbox = lib.mkForce false;
 
   environment.systemPackages =
     # flutter = (import (builtins.fetchTarball

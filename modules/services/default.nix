@@ -6,6 +6,7 @@
     ./fwupd.nix
     ./gpg.nix
     ./keyring.nix
+    ./libvirtd.nix
     ./mail.nix
     ./postgres.nix
     ./ssh.nix
