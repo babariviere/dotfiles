@@ -42,6 +42,7 @@ in {
       elixir.enable = true;
       elm.enable = true;
       godot.enable = false;
+      guile.enable = true;
       haskell.enable = true;
       javascript.enable = true;
       latex.enable = true;
@@ -73,6 +74,7 @@ in {
       bitwarden.enable = true;
       fwupd.enable = true;
       gpg.enable = true;
+      guix.enable = true;
       keyring.enable = true;
       mail.enable = false;
       postgres.enable = true;

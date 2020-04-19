@@ -8,6 +8,7 @@
     ./elm.nix
     ./go.nix
     ./godot.nix
+    ./guile.nix
     ./haskell.nix
     ./javascript.nix
     ./latex.nix

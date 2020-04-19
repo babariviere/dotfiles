@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "ba471defef0586acd37e18723c417fab802e4160",
-        "sha256": "1yxgng034c373jf41g2p2qm6vw1lm0nbapbdw4g4zr2ashl2wf46",
+        "rev": "fc6da215caa6f64e383e7a3400e7cb108e9c9785",
+        "sha256": "0j2131hv0azl5z24l495l3lrm8l8ir9pgmq37hl7sqciqv7zj24c",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/ba471defef0586acd37e18723c417fab802e4160.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/fc6da215caa6f64e383e7a3400e7cb108e9c9785.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "all-hies": {
@@ -41,22 +41,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "ab2e1668aedd9c680b07803a88e4cd70494a234c",
-        "sha256": "09jkjp00wf4q341gdxqxxsy02rw3wwdis551kawhmk4h7p68rl4y",
+        "rev": "a3c31f8225454094468344e1c362cf1057a9d962",
+        "sha256": "099lhg9gzjy2ymgf1hrpg0icl9vxzdjwi9zviviy7gcvbipz4kag",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/ab2e1668aedd9c680b07803a88e4cd70494a234c.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "firefox-sweet-theme": {
-        "branch": "master",
-        "description": ":candy: A dark and modern theme for firefox with vibrant colors",
-        "homepage": "",
-        "owner": "Brettm12345",
-        "repo": "firefox-sweet-theme",
-        "rev": "4231f480a9d467feffce64e8e3774c30bfb216ef",
-        "sha256": "1awrfs7b9xyl9h6bxq60bsa1hvmi9zi7qnfnn9rq2730ri3l9x4g",
-        "type": "tarball",
-        "url": "https://github.com/Brettm12345/firefox-sweet-theme/archive/4231f480a9d467feffce64e8e3774c30bfb216ef.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/a3c31f8225454094468344e1c362cf1057a9d962.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
@@ -65,10 +53,10 @@
         "homepage": "https://rycee.gitlab.io/home-manager/",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "f6afd95ef8dd587ca15c7090eb12d3cd3d08b08a",
-        "sha256": "1r386mapkimkxjkvvxvx26za2rh1ra7gyfflnliym12vj605gqri",
+        "rev": "687395ebda1a0c8062dd92daa17758d110ba67c6",
+        "sha256": "06q6bmg7m5j14argwp23mxgsbv1rsgjdhp6p01nzzggv4ybk06fn",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/f6afd95ef8dd587ca15c7090eb12d3cd3d08b08a.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/687395ebda1a0c8062dd92daa17758d110ba67c6.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "juno": {
@@ -81,6 +69,18 @@
         "sha256": "0m5zm64r3qv4ilyiyqbjbislfcx0jh905ckzrvcklrb5pwqqbhrs",
         "type": "tarball",
         "url": "https://github.com/Brettm12345/Juno/archive/e6fe7c54cd45170881ff4d30600eb80aaa3ae3b6.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "moonlight-userChrome": {
+        "branch": "master",
+        "description": "A dark userstyle for Firefox inspired by moonlight-vscode-theme and github-moonlight",
+        "homepage": "",
+        "owner": "eduardhojbota",
+        "repo": "moonlight-userChrome",
+        "rev": "82f2e2b01055ee452f5630569c3094ddaf6f0bf2",
+        "sha256": "00mplnnrxar8cmm8hq71613d6v98qc685y46jl8p147aly97svx1",
+        "type": "tarball",
+        "url": "https://github.com/eduardhojbota/moonlight-userChrome/archive/82f2e2b01055ee452f5630569c3094ddaf6f0bf2.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
@@ -101,10 +101,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs-channels",
-        "rev": "21750051b2686ade738d1eeb80c1955b0234aadd",
-        "sha256": "1102m892xm3zlv8z3h4dyccmsk1cv5lrfcpngcw3l40ldbdm0hyb",
+        "rev": "0f920b05cbcdb8c0f3c5c4a8ea29f1f0065c7033",
+        "sha256": "0bmsv2yfvpifiry3hrv0srf5ax0rh5ffbc5l7v46v8wajjxdrny9",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs-channels/archive/21750051b2686ade738d1eeb80c1955b0234aadd.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs-channels/archive/0f920b05cbcdb8c0f3c5c4a8ea29f1f0065c7033.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "plymouth-themes": {
@@ -137,10 +137,10 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "70ecf83c337947b1ddea4d94359d5101dfc17430",
-        "sha256": "1bkj3h5cnl02am3628x64850z92k8qjj21q2ysprz1m1d7si9w17",
+        "rev": "45b21b38a8ca61fed1b2ea7db3cd1bbe8ff3d848",
+        "sha256": "164f1xia6axd5icl70xcbiqvgc894asna229zj4yb879q4cklc22",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/70ecf83c337947b1ddea4d94359d5101dfc17430.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/45b21b38a8ca61fed1b2ea7db3cd1bbe8ff3d848.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "zgen": {

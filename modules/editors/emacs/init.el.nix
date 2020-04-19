@@ -166,6 +166,7 @@ in header + (generateSections [
       enable = dotfiles.dev.go.enable;
       flags = [ "lsp" ];
     };
+    guile = { enable = dotfiles.dev.guile.enable; };
     haskell = {
       enable = dotfiles.dev.haskell.enable;
       flags = [ "lsp" ];

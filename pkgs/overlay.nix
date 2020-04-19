@@ -3,6 +3,8 @@ self: super:
 {
   ert-run = self.callPackage ./ert-run { };
 
+  guix = self.callPackage ./guix { };
+
   iosevkaBaba = (self.callPackage ./iosevka { }) "Iosevka Baba" "baba" true;
   iosevkaTermBaba =
     (self.callPackage ./iosevka { }) "Iosevka Term Baba" "term-baba" false;

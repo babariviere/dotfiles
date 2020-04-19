@@ -5,6 +5,7 @@
     ./bitwarden.nix
     ./fwupd.nix
     ./gpg.nix
+    ./guix.nix
     ./keyring.nix
     ./libvirtd.nix
     ./mail.nix
