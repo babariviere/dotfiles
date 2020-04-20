@@ -28,7 +28,7 @@ in {
       firefox.enable = true;
       polybar.enable = true;
       termite.enable = true;
-      compton.enable = false;
+      picom.enable = false;
       dunst.enable = true;
       rofi.enable = true;
       thunderbird.enable = true;
@@ -62,7 +62,7 @@ in {
     };
     shell = {
       direnv.enable = true;
-      fish.enable = true;
+      fish.enable = false;
       git = {
         enable = true;
         signingKey = "6BCFEDF322EB0040B5FC4296EECF965F5AAA4E1A";

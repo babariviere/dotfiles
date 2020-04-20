@@ -12,6 +12,7 @@ in {
     ./programs/compton.nix
     ./programs/dunst.nix
     ./programs/firefox.nix
+    ./programs/picom.nix
     ./programs/polybar.nix
     ./programs/rofi.nix
     ./programs/termite.nix

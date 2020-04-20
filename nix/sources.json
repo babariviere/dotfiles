@@ -35,6 +35,18 @@
         "url": "https://github.com/hercules-ci/arion/archive/7609d3a88dbdd8a98bce6958756cc5902918e8aa.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "picom": {
+        "branch": "feature/dual_kawase",
+        "description": "A compositor for X11.",
+        "homepage": "",
+        "owner": "tryone144",
+        "repo": "compton",
+        "rev": "c67d7d7b2c36f29846c6693a2f39a2e191a2fcc4",
+        "sha256": "1y1821islx0cg61z9kshs4mkvcp45bpkmzbll5zpzq84ycnqji2y",
+        "type": "tarball",
+        "url": "https://github.com/tryone144/compton/archive/c67d7d7b2c36f29846c6693a2f39a2e191a2fcc4.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "emacs-overlay": {
         "branch": "master",
         "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",
