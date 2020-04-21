@@ -166,7 +166,6 @@ in header + (generateSections [
       enable = dotfiles.dev.go.enable;
       flags = [ "lsp" ];
     };
-    guile = { enable = dotfiles.dev.guile.enable; };
     haskell = {
       enable = dotfiles.dev.haskell.enable;
       flags = [ "lsp" ];
@@ -175,7 +174,10 @@ in header + (generateSections [
       enable = dotfiles.dev.javascript.enable;
       flags = [ "lsp" ];
     };
-    latex.enable = dotfiles.dev.latex.enable;
+    latex = {
+      enable = dotfiles.dev.latex.enable;
+      flags = [ "fold" ];
+    };
     markdown.enable = true;
     nix.enable = true;
     org = {
@@ -206,6 +208,7 @@ in header + (generateSections [
       enable = dotfiles.dev.rust.enable;
       flags = [ "lsp" ];
     };
+    scheme = { enable = dotfiles.dev.guile.enable; };
     sh = {
       enable = true;
       flags = [ "fish" ];

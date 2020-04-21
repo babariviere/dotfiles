@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "fc6da215caa6f64e383e7a3400e7cb108e9c9785",
-        "sha256": "0j2131hv0azl5z24l495l3lrm8l8ir9pgmq37hl7sqciqv7zj24c",
+        "rev": "8f4803cf3b1ce6f0b688ee49dabd12c62e96204f",
+        "sha256": "19nzcjy9vrwbg8yb1chggfail3s8p5n75ar6gz725xkklw5hqpv1",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/fc6da215caa6f64e383e7a3400e7cb108e9c9785.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/8f4803cf3b1ce6f0b688ee49dabd12c62e96204f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "all-hies": {
@@ -35,28 +35,16 @@
         "url": "https://github.com/hercules-ci/arion/archive/7609d3a88dbdd8a98bce6958756cc5902918e8aa.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "picom": {
-        "branch": "feature/dual_kawase",
-        "description": "A compositor for X11.",
-        "homepage": "",
-        "owner": "tryone144",
-        "repo": "compton",
-        "rev": "c67d7d7b2c36f29846c6693a2f39a2e191a2fcc4",
-        "sha256": "1y1821islx0cg61z9kshs4mkvcp45bpkmzbll5zpzq84ycnqji2y",
-        "type": "tarball",
-        "url": "https://github.com/tryone144/compton/archive/c67d7d7b2c36f29846c6693a2f39a2e191a2fcc4.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "emacs-overlay": {
         "branch": "master",
         "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "a3c31f8225454094468344e1c362cf1057a9d962",
-        "sha256": "099lhg9gzjy2ymgf1hrpg0icl9vxzdjwi9zviviy7gcvbipz4kag",
+        "rev": "dff21018c5cecb9162f2b48ebdea8d47fc78ce62",
+        "sha256": "09r2d5jkl7zsw381m209ijjcc11j8wi337snn8vp670s9jsha6y4",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/a3c31f8225454094468344e1c362cf1057a9d962.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/dff21018c5cecb9162f2b48ebdea8d47fc78ce62.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
@@ -65,10 +53,10 @@
         "homepage": "https://rycee.gitlab.io/home-manager/",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "687395ebda1a0c8062dd92daa17758d110ba67c6",
-        "sha256": "06q6bmg7m5j14argwp23mxgsbv1rsgjdhp6p01nzzggv4ybk06fn",
+        "rev": "3e3de8cee20fb00253927d017e4714f1e5be781e",
+        "sha256": "1135ppj272hk4b94pfh7xsvp7cx4p1j6dxvkfl04n6192h1xhh1w",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/687395ebda1a0c8062dd92daa17758d110ba67c6.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/3e3de8cee20fb00253927d017e4714f1e5be781e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "juno": {
@@ -113,10 +101,22 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs-channels",
-        "rev": "0f920b05cbcdb8c0f3c5c4a8ea29f1f0065c7033",
-        "sha256": "0bmsv2yfvpifiry3hrv0srf5ax0rh5ffbc5l7v46v8wajjxdrny9",
+        "rev": "5272327b81ed355bbed5659b8d303cf2979b6953",
+        "sha256": "0182ys095dfx02vl2a20j1hz92dx3mfgz2a6fhn31bqlp1wa8hlq",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs-channels/archive/0f920b05cbcdb8c0f3c5c4a8ea29f1f0065c7033.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs-channels/archive/5272327b81ed355bbed5659b8d303cf2979b6953.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "picom": {
+        "branch": "feature/dual_kawase",
+        "description": "A compositor for X11.",
+        "homepage": "",
+        "owner": "tryone144",
+        "repo": "compton",
+        "rev": "c67d7d7b2c36f29846c6693a2f39a2e191a2fcc4",
+        "sha256": "1y1821islx0cg61z9kshs4mkvcp45bpkmzbll5zpzq84ycnqji2y",
+        "type": "tarball",
+        "url": "https://github.com/tryone144/compton/archive/c67d7d7b2c36f29846c6693a2f39a2e191a2fcc4.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "plymouth-themes": {
@@ -149,10 +149,10 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "45b21b38a8ca61fed1b2ea7db3cd1bbe8ff3d848",
-        "sha256": "164f1xia6axd5icl70xcbiqvgc894asna229zj4yb879q4cklc22",
+        "rev": "9d81c54b3187e4225713a32dcae82930138e62b7",
+        "sha256": "0l3k00zp33jqhfbfr9yfp80qwv42r6q1maj9nfchwp09jpdyjm7y",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/45b21b38a8ca61fed1b2ea7db3cd1bbe8ff3d848.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/9d81c54b3187e4225713a32dcae82930138e62b7.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "zgen": {
