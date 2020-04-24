@@ -15,6 +15,7 @@ in {
     ./programs/picom.nix
     ./programs/polybar.nix
     ./programs/rofi.nix
+    ./programs/steam.nix
     ./programs/termite.nix
     ./programs/thunderbird.nix
   ];

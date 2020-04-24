@@ -31,6 +31,7 @@ in {
       picom.enable = false;
       dunst.enable = true;
       rofi.enable = true;
+      steam.enable = true;
       thunderbird.enable = true;
     };
     dev = {
