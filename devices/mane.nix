@@ -47,6 +47,7 @@ in {
       haskell.enable = true;
       javascript.enable = true;
       latex.enable = true;
+      ocaml.enable = true;
       plantuml.enable = true;
       python.enable = true;
       ruby.enable = true;

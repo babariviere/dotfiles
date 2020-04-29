@@ -13,6 +13,7 @@
     ./javascript.nix
     ./latex.nix
     ./mysql.nix
+    ./ocaml.nix
     ./php.nix
     ./plantuml.nix
     ./python.nix

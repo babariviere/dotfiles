@@ -180,6 +180,10 @@ in header + (generateSections [
     };
     markdown.enable = true;
     nix.enable = true;
+    ocaml = {
+      enable = dotfiles.dev.ocaml.enable;
+      flags = [ "lsp" ];
+    };
     org = {
       enable = true;
       flags = [
@@ -221,7 +225,10 @@ in header + (generateSections [
 
   {
     name = "email";
-    notmuch.enable = dotfiles.services.mail.enable;
+    mu4e = {
+      enable = dotfiles.services.mail.enable;
+      flags = [ "gmail" ];
+    };
   }
 
   {
