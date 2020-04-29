@@ -5,7 +5,7 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.services.mail;
   lookup = email: domain:
-    "${pkgs.libsecret}/bin/secret-tool lookup email ${email} domain ${domain}";
+    "gpg2 -q --for-your-eyes-only --no-tty -d ~/.authinfo.gpg | awk '/machine imap.${domain} login ${email}/{print $NF}";
   notmuchrc =
     config.home-manager.users."${dotfiles.user}".home.sessionVariables.NOTMUCH_CONFIG;
 in {

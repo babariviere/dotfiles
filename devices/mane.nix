@@ -32,7 +32,7 @@ in {
       dunst.enable = true;
       rofi.enable = true;
       steam.enable = true;
-      thunderbird.enable = true;
+      thunderbird.enable = false;
     };
     dev = {
       android = {
@@ -41,7 +41,7 @@ in {
       };
       c.enable = true;
       elixir.enable = true;
-      elm.enable = true;
+      elm.enable = false;
       godot.enable = false;
       guile.enable = true;
       haskell.enable = true;
@@ -78,7 +78,7 @@ in {
       gpg.enable = true;
       guix.enable = true;
       keyring.enable = true;
-      mail.enable = false;
+      mail.enable = true;
       postgres.enable = true;
       ssh.enable = true;
       syncthing.enable = false;
