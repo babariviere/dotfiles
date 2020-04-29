@@ -7,7 +7,7 @@ let
   screenshot = pkgs.callPackage ./scripts/screenshot.nix { };
 
   bspwmrc = pkgs.mutate <config/bspwm/bspwmrc> (dotfiles.colors // {
-    setWallpaper = "${pkgs.feh}/bin/feh --bg-center ${dotfiles.wallpaper}";
+    setWallpaper = "${pkgs.feh}/bin/feh --bg-fill ${dotfiles.wallpaper}";
     launchPolybar = "polybar top &"; # TODO: make it optional
   });
 

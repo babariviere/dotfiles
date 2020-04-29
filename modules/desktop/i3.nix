@@ -8,7 +8,7 @@ let
   screenshot = pkgs.callPackage ./scripts/screenshot.nix { };
 
   configFile = pkgs.mutate <config/i3/config> (dotfiles.colors // {
-    setWallpaper = "${pkgs.feh}/bin/feh --bg-center ${dotfiles.wallpaper}";
+    setWallpaper = "${pkgs.feh}/bin/feh --bg-fill ${dotfiles.wallpaper}";
     screenshot = "${screenshot}/bin/screenshot";
   });
 in {
