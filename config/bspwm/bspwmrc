@@ -39,6 +39,4 @@ bspc rule -a discord desktop=^3 state=tiled
 bspc rule -a Slack desktop=^3
 bspc rule -a Firefox desktop=^1
 
-pkill polybar
-@launchPolybar@
 @setWallpaper@

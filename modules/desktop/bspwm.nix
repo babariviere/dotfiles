@@ -8,7 +8,6 @@ let
 
   bspwmrc = pkgs.mutate <config/bspwm/bspwmrc> (dotfiles.colors // {
     setWallpaper = "${pkgs.feh}/bin/feh --bg-fill ${dotfiles.wallpaper}";
-    launchPolybar = "polybar top &"; # TODO: make it optional
   });
 
   sxhkdrc = pkgs.mutate <config/sxhkd/sxhkdrc> {
