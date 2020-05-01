@@ -28,8 +28,6 @@ in {
       ];
     };
 
-    dotfiles.desktop.xinitCmd = lib.mkForce "exec i3";
-
     home-manager.users."${dotfiles.user}" = {
       xdg.configFile."i3/config".source = configFile;
     };

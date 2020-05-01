@@ -24,8 +24,6 @@ in {
   config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
     services.xserver.windowManager.bspwm = { enable = true; };
 
-    dotfiles.desktop.xinitCmd = lib.mkForce "exec bspwm";
-
     home-manager.users."${dotfiles.user}" = {
       xdg.configFile."bspwm/bspwmrc".source = bspwmrc;
       xdg.configFile."sxhkd/sxhkdrc".source = sxhkdrc;

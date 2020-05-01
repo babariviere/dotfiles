@@ -4,6 +4,7 @@ with lib;
 let cfg = config.dotfiles.desktop;
 in {
   imports = [
+    ./awesome.nix
     ./bspwm.nix
     ./fonts.nix
     ./gtk.nix
@@ -20,15 +21,7 @@ in {
     ./programs/thunderbird.nix
   ];
 
-  options.dotfiles.desktop = {
-    enable = mkEnableOption "desktop";
-
-    xinitCmd = mkOption {
-      type = types.str;
-      description = "launch command for xinitrc";
-    };
-
-  };
+  options.dotfiles.desktop.enable = mkEnableOption "desktop";
 
   config = mkIf cfg.enable {
     services.xserver = {
@@ -56,45 +49,5 @@ in {
     hardware.pulseaudio.enable = true;
 
     environment.systemPackages = with pkgs; [ xclip pamixer pavucontrol ];
-
-    home-manager.users."${config.dotfiles.user}" = {
-      home.file = {
-        ".xinitrc".text = ''
-          #!/bin/sh
-
-          if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-            eval $(dbus-launch --exit-with-session --sh-syntax)
-          fi
-          systemctl --user import-environment DISPLAY XAUTHORITY
-
-          if command -v dbus-update-activation-environment >/dev/null 2>&1; then
-                  dbus-update-activation-environment DISPLAY XAUTHORITY
-          fi
-
-          for f in $HOME/.Xresources.d/*; do
-              ${pkgs.xorg.xrdb}/bin/xrdb -merge "$f"
-          done
-
-          ${cfg.xinitCmd}
-        '';
-
-        ".xprofile" = {
-          executable = true;
-          text = ''
-            #!/bin/sh
-
-            if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-              eval $(dbus-launch --exit-with-session --sh-syntax)
-            fi
-            systemctl --user import-environment DISPLAY XAUTHORITY
-
-            if command -v dbus-update-activation-environment >/dev/null 2>&1; then
-                    dbus-update-activation-environment DISPLAY XAUTHORITY
-            fi
-          '';
-        };
-      };
-      # xsession.enable = true;
-    };
   };
 }
