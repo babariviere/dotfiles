@@ -26,13 +26,13 @@
   :config (setq org-fancy-priorities-list '("■" "■" "■")))
 
 (after! org-roam
-  (setq org-roam-capture-templates
-        '(("d" "default" plain (function org-roam--capture-get-point)
-           "%?"
-           :file-name "${slug}"
-           :head "#+TITLE: ${title}\n"
-           :unnarrowed t
-           :immediate-finish t))))
+  (setq org-roam-directory org-directory
+        org-roam-capture-templates  '(("d" "default" plain (function org-roam--capture-get-point)
+                                       "%?"
+                                       :file-name "${slug}"
+                                       :head "#+TITLE: ${title}\n"
+                                       :unnarrowed t
+                                       :immediate-finish t))))
 
 (after! org-journal
   (setq org-journal-dir org-directory
