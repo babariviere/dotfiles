@@ -22,6 +22,7 @@ in {
     };
     desktop = {
       enable = true;
+      awesome.enable = true;
       bspwm.enable = true;
       chrome.enable = true;
       #i3.enable = true;
