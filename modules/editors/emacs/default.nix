@@ -111,10 +111,6 @@ in {
 
     home-manager.users."${dotfiles.user}" = {
       home.file = {
-        ".doom.d/modules" = {
-          source = <config/emacs/doom.d/modules>;
-          recursive = true;
-        };
         ".doom.d/config.el".source =
           pkgs.mutate <config/emacs/doom.d/config.el> {
             doomTheme = dotfiles.doomTheme;

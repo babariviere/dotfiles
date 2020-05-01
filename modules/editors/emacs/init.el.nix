@@ -74,10 +74,7 @@ in header + (generateSections [
       enable = true;
       flags = [ "all" "defaults" ];
     };
-    pretty-code = {
-      enable = false;
-      flags = [ "iosevka" ];
-    };
+    pretty-code.enable = true;
     unicode.enable = true;
     vc-gutter.enable = true;
     vi-tilde-fringe.enable = true;
