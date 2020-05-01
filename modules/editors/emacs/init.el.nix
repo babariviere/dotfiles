@@ -178,6 +178,7 @@ in header + (generateSections [
       enable = dotfiles.dev.latex.enable;
       flags = [ "fold" ];
     };
+    lua.enable = dotfiles.dev.lua.enable;
     markdown.enable = true;
     nix.enable = true;
     ocaml = {

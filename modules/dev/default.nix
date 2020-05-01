@@ -12,6 +12,7 @@
     ./haskell.nix
     ./javascript.nix
     ./latex.nix
+    ./lua.nix
     ./mysql.nix
     ./ocaml.nix
     ./php.nix
