@@ -22,7 +22,22 @@ in {
   options.dotfiles.desktop.awesome.enable = lib.mkEnableOption "awesome";
 
   config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
-    services.xserver.windowManager.awesome = { enable = true; };
+    services.xserver.windowManager.awesome = {
+      enable = true;
+      package = pkgs.awesome.overrideAttrs (old: {
+        version = "master";
+        src = pkgs.fetchgit {
+          url = "https://github.com/awesomeWM/awesome.git";
+          rev = "29f6387defd18c1d44b7d2976b48847fe80686b3";
+          sha256 = "01chrpp3pzd6ar31zli30hmgyl5h5igw0lkrq0dbv26sqxivd07k";
+        };
+      });
+    };
+
+    services.acpid.enable = true;
+    services.upower.enable = true;
+
+    environment.systemPackages = with pkgs; [ material-design-icons ];
 
     home-manager.users."${dotfiles.user}" = {
       # xdg.configFile."awesome/awesomerc".source = awesomerc;

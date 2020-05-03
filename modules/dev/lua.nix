@@ -7,6 +7,10 @@ in {
   options.dotfiles.dev.lua.enable = lib.mkEnableOption "lua";
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ lua luarocks ];
+    environment.systemPackages = with pkgs; [
+      lua
+      luarocks
+      nodePackages.lua-fmt
+    ];
   };
 }

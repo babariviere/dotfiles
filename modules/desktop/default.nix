@@ -49,5 +49,9 @@ in {
     hardware.pulseaudio.enable = true;
 
     environment.systemPackages = with pkgs; [ xclip pamixer pavucontrol ];
+
+    home-manager.users.${config.dotfiles.user}.xresources.properties =
+      with lib.attrsets;
+      mapAttrs' (k: v: nameValuePair ("*" + k) v) config.dotfiles.colorsAnsi;
   };
 }

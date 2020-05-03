@@ -13,6 +13,8 @@ self: super:
 
   mutate = self.callPackage ./mutate { };
 
+  nodePackages = super.nodePackages // (self.callPackages ./node-packages { });
+
   nix-patch = self.callPackage ./nix-patch { };
 
   nixos-update = self.callPackage ./nixos-update { };
