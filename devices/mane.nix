@@ -44,12 +44,12 @@ in {
       elixir.enable = true;
       elm.enable = false;
       godot.enable = false;
-      guile.enable = true;
-      haskell.enable = true;
+      guile.enable = false;
+      haskell.enable = false;
       javascript.enable = true;
       latex.enable = true;
       lua.enable = true;
-      ocaml.enable = true;
+      ocaml.enable = false;
       plantuml.enable = true;
       python.enable = true;
       ruby.enable = true;
