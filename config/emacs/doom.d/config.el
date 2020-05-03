@@ -36,12 +36,33 @@
 ;;                                     web-mode-content-type "html")))
 ;; (add-to-list 'auto-mode-alist '("\\.ex\\'" . poly-elixir-mode))
 ;;
-;; (after! web-mode
-;;   (setq web-mode-engines-alist
-;;         '(("elixir"  . "\\.leex\\'")
-;;           ("elixir"  . "\\.eex\\'")
-;;           ("elixir"  . "\\.ex\\'"))
-;;         ))
+
+(after! web-mode
+  (setq web-mode-engines-alist
+        '(("elixir"  . "\\.leex\\'")
+          ("elixir"  . "\\.eex\\'")
+          ("elixir"  . "\\.ex\\'"))
+        ))
+
+(defcustom lsp-elixir-suggest-specs t
+  "Enable spec suggestion for ElixirLS."
+  :type 'boolean
+  :group 'lsp-elixir)
+
+(after! lsp-mode
+  (lsp-register-custom-settings
+   '(("elixirLS.suggestSpecs" lsp-elixir-suggest-specs)))
+
+  (add-hook 'lsp-after-initialize-hook
+            (lambda ()
+              (lsp--set-configuration (lsp-configuration-section "elixirLS"))))
+
+  (require 'avy)
+  (map! :leader
+        :n
+        :desc "Execute Lens" "c l" #'lsp-avy-lens))
+
+
 
 ;;; :lang rust
 ;; (setq rustic-lsp-server 'rust-analyzer)
@@ -118,6 +139,10 @@
         :tuple         "⨂"
         ;; :pipe          "" ;; FIXME: find a non-private char
         :dot           "•"))
+
+;; :ui lsp
+
+(add-hook 'lsp-mode-hook #'lsp-lens-mode)
 
 ;; misc
 

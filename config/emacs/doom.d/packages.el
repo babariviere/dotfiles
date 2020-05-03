@@ -11,3 +11,4 @@
 (package! org-fancy-priorities :pin "819bb993b7")
 (package! graphql :pin "e2b309689f")
 (package! polymode :pin "2a61fb6d3e")
+(package! mmm-mode :pin "ac9a741b96")
