@@ -9,8 +9,7 @@ in {
       go
       gomodifytags
       gotools
-      gocode
-      go-langserver
+      gopls
     ];
   };
 }

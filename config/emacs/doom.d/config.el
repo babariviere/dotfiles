@@ -62,7 +62,11 @@
         :n
         :desc "Execute Lens" "c l" #'lsp-avy-lens))
 
-
+;; :lang go
+(after! lsp-mode
+  (lsp-register-custom-settings
+   '(("gopls.completeUnimported" t t)
+     ("gopls.staticcheck" t t))))
 
 ;;; :lang rust
 ;; (setq rustic-lsp-server 'rust-analyzer)
