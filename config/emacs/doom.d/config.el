@@ -1,4 +1,4 @@
-;;; .doom.d/config.el -*- lexical-binding: t; -*-
+;; .doom.d/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here
 
@@ -7,10 +7,17 @@
  doom-theme '@doomTheme@
  display-line-numbers-type 'relative)
 
-;;; :completion ivy
+;; :completion ivy
 (setf (alist-get 't ivy-re-builders-alist) #'ivy--regex-plus)
 
-;;; :lang dart
+;; :lang data
+;; See commit https://github.com/hlissner/doom-emacs/commit/e24b8cd1d1e4ceb7e4454a267985b639d5e7eb06
+(use-package! graphql-mode
+  :mode "\\.gql\\'"
+  :config (setq-hook! 'graphql-mode-hook tab-width graphql-indent-level))
+
+
+;; :lang dart
 (use-package! dart-mode
   :mode ("\\.dart$" . dart-mode))
 
@@ -68,13 +75,13 @@
    '(("gopls.completeUnimported" t t)
      ("gopls.staticcheck" t t))))
 
-;;; :lang rust
+;; :lang rust
 ;; (setq rustic-lsp-server 'rust-analyzer)
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer
         lsp-rust-analyzer-server-command '("~/.cargo/bin/ra_lsp_server")))
 
-;;; :lang org
+;; :lang org
 (use-package! org-fancy-priorities ; priority icons
   :hook (org-mode . org-fancy-priorities-mode)
   :config (setq org-fancy-priorities-list '("■" "■" "■")))
@@ -96,21 +103,21 @@
 
   (add-to-list 'auto-mode-alist (cons org-journal-file-pattern 'org-journal-mode)))
 
-;;; :tools flyspell
+;; :tools flyspell
 (setq ispell-aspell-data-dir "/run/current-system/sw/lib/aspell" )
 (setq ispell-aspell-dict-dir ispell-aspell-data-dir)
 (setq ispell-aspell-dictionary-alist '())
 
-;;; :tools magit
+;; :tools magit
 (defadvice! +magit-invalidate-projectile-cache-a (&rest args)
   :after '(magit-checkout magit-branch-checkout)
   (projectile-invalidate-cache nil))
 
-;;; :ui deft
+;; :ui deft
 (after! deft
   (setq deft-directory "~/org"))
 
-;;; :ui pretty-code
+;; :ui pretty-code
 (setq +pretty-code-symbols
       '(;; org
         :name          "»"
