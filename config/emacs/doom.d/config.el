@@ -2,10 +2,8 @@
 
 ;; Place your private configuration here
 
-(setq
- doom-font (font-spec :family "@font@" :size 12)
- doom-theme '@doomTheme@
- display-line-numbers-type 'relative)
+(load! "theme.el")
+(setq display-line-numbers-type 'relative)
 
 ;; :completion ivy
 (setf (alist-get 't ivy-re-builders-alist) #'ivy--regex-plus)
@@ -68,6 +66,10 @@
   (map! :leader
         :n
         :desc "Execute Lens" "c l" #'lsp-avy-lens))
+
+(after! elixir-mode
+  (sp-with-modes 'elixir-mode
+    (sp-local-pair "\"\"\"" "\"\"\"")))
 
 ;; :lang go
 (after! lsp-mode
