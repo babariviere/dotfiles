@@ -49,6 +49,7 @@ in {
         nr = "sudo nixos-update";
         nrs = "sudo nixos-update switch";
         nrst = "sudo nixos-update switch --show-trace";
+        nloc = "nix-locate --top-level";
 
         # Utilities
         cat = "bat";
