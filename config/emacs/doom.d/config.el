@@ -20,28 +20,6 @@
   :mode ("\\.dart$" . dart-mode))
 
 ;; :lang elixir
-;; (define-hostmode poly-elixir-hostmode
-;;   :mode 'elixir-mode
-;;   :protect-font-lock nil
-;;   :protect-syntax t)
-;;
-;; (define-innermode poly-elixir-eex-metadata-innermode
-;;   :mode 'web-mode
-;;   :head-matcher "^.*\~L\"\"\"\n"
-;;   :tail-matcher "^.*\"\"\"$"
-;;   :head-mode 'host
-;;   :tail-mode 'host)
-;;
-;; (define-polymode poly-elixir-mode
-;;   :hostmode 'poly-elixir-hostmode
-;;   :innermodes '(poly-elixir-eex-metadata-innermode))
-;;
-;; (add-hook 'poly-elixir-mode (lambda ()
-;;                               (setq web-mode-engine "elixir"
-;;                                     web-mode-content-type "html")))
-;; (add-to-list 'auto-mode-alist '("\\.ex\\'" . poly-elixir-mode))
-;;
-
 (after! web-mode
   (setq web-mode-engines-alist
         '(("elixir"  . "\\.leex\\'")
@@ -179,6 +157,13 @@
                       (user-mail-address      . "babathriviere@gmail.com")
                       (mu4e-compose-signature . "---\nBastien Rivière"))
                     t)
+
+;; keybindings
+
+(map!
+ (:leader
+  (:prefix "o"
+   :desc "Email" :n "m" #'=mu4e)))
 
 ;; misc
 
