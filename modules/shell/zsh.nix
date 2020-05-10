@@ -51,6 +51,7 @@ in {
         '';
         initExtra = ''
           ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
+          source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
           eval "$(h --setup ~/src)"
           source $ZDOTDIR/init.zsh
         '';
