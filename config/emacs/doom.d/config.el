@@ -158,6 +158,10 @@
                       (mu4e-compose-signature . "---\nBastien Rivière"))
                     t)
 
+(after! mu4e
+  (setq mu4e-index-cleanup t
+        mu4e-index-lazy-check nil))
+
 ;; keybindings
 
 (map!
