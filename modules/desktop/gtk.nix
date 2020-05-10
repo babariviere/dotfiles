@@ -12,8 +12,8 @@ let
     name = "Paper";
   };
   theme = {
-    package = pkgs.juno;
-    name = "Juno";
+    package = pkgs.materia-theme;
+    name = "Materia-light";
   };
 in {
   config = mkIf cfg.enable {

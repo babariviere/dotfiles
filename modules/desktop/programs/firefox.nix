@@ -22,9 +22,9 @@ in {
               config.home-manager.users."${dotfiles.user}".xdg.userDirs.download;
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           };
-          userChrome = ''
-            @import "${pkgs.sources.moonlight-userChrome}/userChrome.css";
-          '';
+          # userChrome = ''
+          #   @import "${pkgs.sources.moonlight-userChrome}/userChrome.css";
+          # '';
         };
       };
     };

@@ -169,6 +169,17 @@
 
 (add-hook 'lsp-mode-hook #'lsp-lens-mode)
 
+;; :email
+(set-email-account! "gmail"
+                    '((mu4e-sent-folder       . "/gmail/[Gmail]/Sent Mail")
+                      (mu4e-drafts-folder     . "/gmail/[Gmail]/Drafts")
+                      (mu4e-trash-folder      . "/gmail/[Gmail]/Trash")
+                      (mu4e-refile-folder     . "/gmail/[Gmail]/Archive")
+                      (smtpmail-smtp-user     . "babathriviere@gmail.com")
+                      (user-mail-address      . "babathriviere@gmail.com")
+                      (mu4e-compose-signature . "---\nBastien Rivière"))
+                    t)
+
 ;; misc
 
 (use-package! systemd
