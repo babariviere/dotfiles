@@ -5,13 +5,13 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.services.mail;
   lookup = email: domain:
-    "gpg2 -q --for-your-eyes-only --no-tty -d ~/.authinfo.gpg | awk '/machine imap.${domain} login ${email}/{print $NF}'";
+    "${pkgs.gnupg}/bin/gpg2 -q --for-your-eyes-only --no-tty -d ~/.authinfo.gpg | ${pkgs.gawk}/bin/awk '/machine imap.${domain} login ${email}/{print $NF}'";
   maildir = "${config.users.users.${dotfiles.user}.home}/.mail";
 in {
   options.dotfiles.services.mail.enable = lib.mkEnableOption "mail";
 
   config = mkIf cfg.enable {
-    environment.systemPackages = singleton pkgs.mu;
+    environment.systemPackages = singleton pkgs.unstable.mu;
 
     home-manager.users."${dotfiles.user}" = {
       accounts.email = {
@@ -45,7 +45,8 @@ in {
         frequency = "*:0/15";
 
         preExec = "${pkgs.isync}/bin/mbsync -Ha";
-        postExec = "${pkgs.mu}/bin/mu index -m ${maildir}";
+        # Emacs starts a server, this is useless
+        # postExec = "${pkgs.unstable.mu}/bin/mu index";
       };
     };
   };
