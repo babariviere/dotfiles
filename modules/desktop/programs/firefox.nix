@@ -20,6 +20,13 @@ in {
             "browser.tabs.drawInTitlebar" = true;
             "browser.download.dir" =
               config.home-manager.users."${dotfiles.user}".xdg.userDirs.download;
+            "browser.uidensity" = 1;
+            "identity.fxaccounts.account.device.name" =
+              config.networking.hostName;
+            "privacy.trackingprotection.enabled" = true;
+            "privacy.trackingprotection.socialtracking.enabled" = true;
+            "privacy.trackingprotection.socialtracking.annotate.enabled" = true;
+            "services.sync.engine.passwords" = false;
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           };
           # userChrome = ''
