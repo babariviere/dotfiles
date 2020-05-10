@@ -26,7 +26,7 @@ in {
             mbsync = {
               enable = true;
               create = "both";
-              expunge = "both";
+              # expunge = "both";
               patterns = [ "*" "[Gmail]*" ];
             };
             realName = dotfiles.name;

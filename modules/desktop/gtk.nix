@@ -12,8 +12,8 @@ let
     name = "Paper";
   };
   theme = {
-    package = pkgs.materia-theme;
-    name = "Materia-light";
+    package = pkgs.plata-theme;
+    name = "Plata-Lumine";
   };
 in {
   config = mkIf cfg.enable {
