@@ -7,5 +7,18 @@ let
 in {
   options.dotfiles.services.gpg.enable = lib.mkEnableOption "gpg";
 
-  config = mkIf cfg.enable { programs.gnupg.agent.enable = true; };
+  config = mkIf cfg.enable {
+    home-manager.users.${dotfiles.user} = {
+      services.gpg-agent = {
+        enable = true;
+        enableExtraSocket = true;
+        enableSshSupport = true;
+        defaultCacheTtl = 60 * 20; # 20 minutes
+        extraConfig = ''
+          allow-emacs-pinentry
+          allow-loopback-pinentry
+        '';
+      };
+    };
+  };
 }

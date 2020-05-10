@@ -8,7 +8,6 @@ in {
   options.dotfiles.services.keyring.enable = lib.mkEnableOption "keyring";
 
   config = mkIf cfg.enable {
-    services.gnome3.gnome-keyring.enable = true;
     programs.seahorse.enable = true;
     security.pam.services.lightdm.enableGnomeKeyring = true;
 
@@ -17,10 +16,12 @@ in {
     programs.ssh.askPassword =
       mkIf dotfiles.services.ssh.enable "${pkgs.gnome3.seahorse}/bin/seahorse";
 
+    services.dbus.packages = [ pkgs.gcr ];
+
     home-manager.users."${dotfiles.user}" = {
-      home.file.".gnupg/gpg-agent.conf" = mkIf dotfiles.services.gpg.enable {
-        text = "pinentry-program ${pkgs.pinentry_gnome}/bin/pinentry-gnome3";
-      };
+      services.gnome-keyring.enable = true;
+
+      services.gpg-agent.pinentryFlavor = "gnome3";
 
       programs.git = mkIf dotfiles.shell.git.enable {
         extraConfig = {
