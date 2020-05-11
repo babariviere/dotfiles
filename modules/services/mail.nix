@@ -26,8 +26,14 @@ in {
             mbsync = {
               enable = true;
               create = "both";
-              # expunge = "both";
-              patterns = [ "*" "[Gmail]*" ];
+              expunge = "both";
+              patterns = [
+                "Inbox"
+                "[Gmail]/Sent Mail"
+                "[Gmail]/Drafts"
+                "[Gmail]/Trash"
+                "[Gmail]/All Mail"
+              ];
             };
             realName = dotfiles.name;
             msmtp.enable = true;
