@@ -8,6 +8,8 @@ in {
   options.dotfiles.services.gpg.enable = lib.mkEnableOption "gpg";
 
   config = mkIf cfg.enable {
+    environment.systemPackages = singleton pkgs.gnupg;
+
     home-manager.users.${dotfiles.user} = {
       services.gpg-agent = {
         enable = true;
