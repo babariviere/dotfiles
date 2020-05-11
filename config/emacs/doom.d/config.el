@@ -177,6 +177,9 @@
 (use-package! graphql
   :commands (graphql-query graphql-mutation))
 
+(after! editorconfig
+  (add-to-list 'auto-mode-alist '("\\editorconfig\\'" . editorconfig-conf-mode)))
+
 ;; safe variables
 (add-to-list 'safe-local-variable-values '(go-tag-args . (lambda (x) (pcase x
                                                                        (`("-transform" ,_) t)
