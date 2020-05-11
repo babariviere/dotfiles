@@ -72,10 +72,6 @@ in {
           category = "Reading";
           links = [
             {
-              name = "Instapaper";
-              url = "https://www.instapaper.com/u";
-            }
-            {
               name = "Medium";
               url = "http://medium.com";
             }
