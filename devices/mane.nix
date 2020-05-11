@@ -76,6 +76,7 @@ in {
     };
     services = {
       bitwarden.enable = true;
+      fingerprint.enable = true;
       fwupd.enable = true;
       gpg.enable = true;
       guix.enable = true;

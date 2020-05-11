@@ -3,6 +3,7 @@
 {
   imports = [
     ./bitwarden.nix
+    ./fingerprint.nix
     ./fwupd.nix
     ./gpg.nix
     ./guix.nix
