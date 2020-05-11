@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
-{
+let dotfiles = config.dotfiles;
+in {
   imports = [
     ./android.nix
     ./c.nix
@@ -22,4 +23,8 @@
     ./rust.nix
     ./web.nix
   ];
+
+  home-manager.users."${dotfiles.user}" = {
+    home.file = { ".editorconfig".source = <config/editorconfig>; };
+  };
 }
