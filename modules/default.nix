@@ -52,7 +52,7 @@ in {
         nloc = "nix-locate --top-level";
 
         # Utilities
-        cat = "bat";
+        cat = "bat -p";
       };
 
       shellInit = ''
