@@ -75,6 +75,8 @@
                                        :unnarrowed t
                                        :immediate-finish t))))
 
+(use-package! org-roam-server)
+
 (after! org-journal
   (setq org-journal-dir org-directory
         org-journal-file-format "daily-%Y%m.org"
