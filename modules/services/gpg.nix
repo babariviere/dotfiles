@@ -10,6 +10,8 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = singleton pkgs.gnupg;
 
+    programs.ssh.startAgent = mkForce false;
+
     home-manager.users.${dotfiles.user} = {
       services.gpg-agent = {
         enable = true;
