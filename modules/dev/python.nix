@@ -8,9 +8,8 @@ in {
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      python3
-      python3Packages.python-language-server
-      python3Packages.pip
+      (python3.withPackages
+        (ps: with ps; [ setuptools python-language-server pip ]))
       pipreqs
       pypi2nix
     ];
