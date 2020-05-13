@@ -199,7 +199,7 @@ in header + (generateSections [
     plantuml.enable = dotfiles.dev.plantuml.enable;
     python = {
       enable = dotfiles.dev.python.enable;
-      flags = [ "lsp" ];
+      flags = [ "lsp" "pyenv" ];
     };
     rest.enable = true;
     ruby = {
