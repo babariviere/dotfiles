@@ -11,7 +11,7 @@ in {
 
   environment = {
     etc.nixpkgs.source = sources.nixpkgs;
-    systemPackages = [ (import sources.niv { }).niv ];
+    systemPackages = [ (import sources.niv { }).niv pkgs.nixFlakes ];
   };
 
   nix = {
@@ -41,6 +41,7 @@ in {
     extraOptions = ''
       # Set TTL to one day
       tarball-ttl = 86400
+      experimental-features = nix-command flakes ca-references
     '';
   };
   # run gc only if power source is plugged
