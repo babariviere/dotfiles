@@ -41,9 +41,11 @@
               (lsp--set-configuration (lsp-configuration-section "elixirLS"))))
 
   (require 'avy)
-  (map! :leader
-        :n
-        :desc "Execute Lens" "c l" #'lsp-avy-lens))
+  (map!
+   :leader
+   :prefix "c"
+   :desc "Execute Lens" :n "L" #'lsp-avy-lens))
+
 
 (after! elixir-mode
   (sp-with-modes 'elixir-mode
