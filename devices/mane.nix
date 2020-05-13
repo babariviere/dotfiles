@@ -69,7 +69,7 @@ in {
       fish.enable = false;
       git = {
         enable = true;
-        signingKey = "6BCFEDF322EB0040B5FC4296EECF965F5AAA4E1A";
+        signingKey = "D168892C2E1F486A011F205CB6CA57D2225BB9CE";
       };
       starship.enable = true;
       zsh.enable = true;
