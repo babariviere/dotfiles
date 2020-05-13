@@ -110,8 +110,13 @@ in {
     tools = {
       build.enable = true;
       devops.enable = true;
-      docker.enable = true;
+      docker.enable = false;
       light.enable = true;
+      podman = {
+        enable = true;
+        arion = true;
+        compose = true;
+      };
       sql.enable = true;
     };
   };

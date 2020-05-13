@@ -62,13 +62,18 @@ in {
       aws.enable = true;
       build.enable = true;
       docker = {
-        enable = true;
+        enable = false;
         arion = true;
         compose = true;
       };
       devops.enable = true;
       insomnia.enable = true;
       light.enable = true;
+      podman = {
+        enable = true;
+        arion = true;
+        compose = true;
+      };
       sql.enable = true;
     };
   };

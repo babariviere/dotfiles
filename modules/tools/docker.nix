@@ -4,6 +4,7 @@ let
   dotfiles = config.dotfiles;
   cfg = dotfiles.tools.docker;
 in {
+
   options.dotfiles.tools.docker = {
     enable = lib.mkEnableOption "docker";
     arion = lib.mkEnableOption "arion";

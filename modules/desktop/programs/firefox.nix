@@ -11,106 +11,107 @@ in {
   config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
     environment.variables = { "BROWSER" = "firefox"; };
 
-    dotfiles.desktop.startpage.sui = lib.mkIf dotfiles.tools.docker.enable {
-      enable = true;
-      apps = [
-        {
-          name = "Bitwarden";
-          url = "bw.babariviere.com";
-          icon = "shield-lock-outline";
-        }
-        {
-          name = "Plex";
-          url = "plex.tv";
-          icon = "plex";
-        }
-        {
-          name = "Gitea";
-          url = "git.babariviere.com";
-          icon = "git";
-        }
-        {
-          name = "GitHub";
-          url = "github.com";
-          icon = "github";
-        }
-        {
-          name = "Drone";
-          url = "ci.babariviere.com";
-          icon = "test-tube";
-        }
-      ];
+    dotfiles.desktop.startpage.sui =
+      lib.mkIf dotfiles.tools.virtualisation.enable {
+        enable = true;
+        apps = [
+          {
+            name = "Bitwarden";
+            url = "bw.babariviere.com";
+            icon = "shield-lock-outline";
+          }
+          {
+            name = "Plex";
+            url = "plex.tv";
+            icon = "plex";
+          }
+          {
+            name = "Gitea";
+            url = "git.babariviere.com";
+            icon = "git";
+          }
+          {
+            name = "GitHub";
+            url = "github.com";
+            icon = "github";
+          }
+          {
+            name = "Drone";
+            url = "ci.babariviere.com";
+            icon = "test-tube";
+          }
+        ];
 
-      bookmarks = [
-        {
-          category = "Communication";
-          links = [
-            {
-              name = "Discord";
-              url = "https://discordapp.com";
-            }
-            {
-              name = "Gmail";
-              url = "https://gmail.com";
-            }
-          ];
-        }
-        {
-          category = "Media";
-          links = [
-            {
-              name = "YouTube";
-              url = "https://youtube.com";
-            }
-            {
-              name = "Spotify";
-              url = "https://browse.spotify.com";
-            }
-          ];
-        }
-        {
-          category = "Reading";
-          links = [
-            {
-              name = "Medium";
-              url = "http://medium.com";
-            }
-            {
-              name = "Reddit";
-              url = "http://reddit.com";
-            }
-          ];
-        }
-      ];
+        bookmarks = [
+          {
+            category = "Communication";
+            links = [
+              {
+                name = "Discord";
+                url = "https://discordapp.com";
+              }
+              {
+                name = "Gmail";
+                url = "https://gmail.com";
+              }
+            ];
+          }
+          {
+            category = "Media";
+            links = [
+              {
+                name = "YouTube";
+                url = "https://youtube.com";
+              }
+              {
+                name = "Spotify";
+                url = "https://browse.spotify.com";
+              }
+            ];
+          }
+          {
+            category = "Reading";
+            links = [
+              {
+                name = "Medium";
+                url = "http://medium.com";
+              }
+              {
+                name = "Reddit";
+                url = "http://reddit.com";
+              }
+            ];
+          }
+        ];
 
-      providers = [
-        {
-          name = "Duck Duck Go";
-          prefix = "/d";
-          url = "https://duckduckgo.com/?q=";
-        }
-        {
-          name = "Reddit";
-          prefix = "/r";
-          url = "https://www.reddit.com/search?q=";
-        }
-        {
-          name = "Qwant";
-          prefix = "/q";
-          url = "https://www.qwant.com/?q=";
-        }
-        {
-          name = "Soundcloud";
-          prefix = "/so";
-          url = "https://soundcloud.com/search?q=";
-        }
-        {
-          name = "Spotify";
-          prefix = "/s";
-          url = "https://open.spotify.com/search/results/";
-        }
-      ];
-    };
+        providers = [
+          {
+            name = "Duck Duck Go";
+            prefix = "/d";
+            url = "https://duckduckgo.com/?q=";
+          }
+          {
+            name = "Reddit";
+            prefix = "/r";
+            url = "https://www.reddit.com/search?q=";
+          }
+          {
+            name = "Qwant";
+            prefix = "/q";
+            url = "https://www.qwant.com/?q=";
+          }
+          {
+            name = "Soundcloud";
+            prefix = "/so";
+            url = "https://soundcloud.com/search?q=";
+          }
+          {
+            name = "Spotify";
+            prefix = "/s";
+            url = "https://open.spotify.com/search/results/";
+          }
+        ];
+      };
 
     home-manager.users."${dotfiles.user}" = {
       programs.firefox = {

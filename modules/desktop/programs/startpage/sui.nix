@@ -5,7 +5,17 @@ with lib;
 let
   dotfiles = config.dotfiles;
   sui = dotfiles.desktop.startpage.sui;
+  sources = import ../../../../nix/sources.nix;
+  unstable = import sources.unstable {
+    config = removeAttrs config.nixpkgs.config [ "packageOverrides" ];
+  };
 in {
+  imports = [
+    "${sources.unstable}/nixos/modules/virtualisation/containers.nix"
+    "${sources.unstable}/nixos/modules/virtualisation/podman.nix"
+    "${sources.unstable}/nixos/modules/virtualisation/oci-containers.nix"
+  ];
+
   options.dotfiles.desktop.startpage.sui = with types; {
     enable = mkEnableOption "sui";
 
@@ -99,28 +109,29 @@ in {
   };
 
   config = mkIf sui.enable {
-    docker-containers = lib.mkIf dotfiles.tools.docker.enable {
-      sui = {
-        image = "nginx:alpine";
-        ports = [ "${builtins.toString sui.port}:80" ];
-        volumes = let
-          apps =
-            pkgs.writeText "apps.json" (builtins.toJSON { apps = sui.apps; });
-          links = pkgs.writeText "links.json"
-            (builtins.toJSON { bookmarks = sui.bookmarks; });
-          providers = pkgs.writeText "providers.json"
-            (builtins.toJSON { providers = sui.providers; });
-          src = pkgs.runCommand "sui" { } ''
-            mkdir -p $out
-            cp -r ${sui.src}/assets $out/assets
-            cp ${sui.src}/index.html $out/index.html
-            cp ${apps} $out/apps.json
-            cp ${links} $out/links.json
-            cp ${providers} $out/providers.json
-          '';
+    virtualisation.oci-containers.containers =
+      lib.mkIf dotfiles.tools.virtualisation.enable {
+        sui = {
+          image = "nginx:alpine";
+          ports = [ "${builtins.toString sui.port}:80" ];
+          volumes = let
+            apps =
+              pkgs.writeText "apps.json" (builtins.toJSON { apps = sui.apps; });
+            links = pkgs.writeText "links.json"
+              (builtins.toJSON { bookmarks = sui.bookmarks; });
+            providers = pkgs.writeText "providers.json"
+              (builtins.toJSON { providers = sui.providers; });
+            src = pkgs.runCommand "sui" { } ''
+              mkdir -p $out
+              cp -r ${sui.src}/assets $out/assets
+              cp ${sui.src}/index.html $out/index.html
+              cp ${apps} $out/apps.json
+              cp ${links} $out/links.json
+              cp ${providers} $out/providers.json
+            '';
 
-        in [ "${src}:/usr/share/nginx/html" ];
+          in [ "${src}:/usr/share/nginx/html" ];
+        };
       };
-    };
   };
 }

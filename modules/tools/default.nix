@@ -8,20 +8,26 @@
     ./devops.nix
     ./insomnia.nix
     ./light.nix
+    ./podman.nix
     ./sql.nix
   ];
 
-  # Universal tools
-  environment.systemPackages = with pkgs; [
-    zip
-    unzip
-    jq
-    gzip
+  options.dotfiles.tools.virtualisation.enable =
+    lib.mkEnableOption "virtualisation";
 
-    inetutils
-    psutils
-    pciutils
-    usbutils
-    lsof
-  ];
+  config = {
+    # Universal tools
+    environment.systemPackages = with pkgs; [
+      zip
+      unzip
+      jq
+      gzip
+
+      inetutils
+      psutils
+      pciutils
+      usbutils
+      lsof
+    ];
+  };
 }
