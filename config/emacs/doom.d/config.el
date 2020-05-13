@@ -191,3 +191,6 @@
                                                                        (`("-transform" ,_) t)
                                                                        (_ f)))))
 (add-to-list 'safe-local-variable-values '(+format-on-save-enabled-modes . ()))
+
+;; Load private configuration after everything else
+(load! "private.el" doom-private-dir t)
