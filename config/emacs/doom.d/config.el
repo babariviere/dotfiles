@@ -100,9 +100,9 @@
   (add-to-list 'auto-mode-alist (cons org-journal-file-pattern 'org-journal-mode)))
 
 ;; :tools flyspell
-(setq ispell-aspell-data-dir "/run/current-system/sw/lib/aspell" )
-(setq ispell-aspell-dict-dir ispell-aspell-data-dir)
-(setq ispell-aspell-dictionary-alist '())
+(setq ispell-aspell-data-dir "/run/current-system/sw/lib/aspell"
+      ispell-aspell-dict-dir ispell-aspell-data-dir
+      ispell-aspell-dictionary-alist '())
 
 ;; :tools magit
 (defadvice! +magit-invalidate-projectile-cache-a (&rest args)
@@ -174,6 +174,8 @@
    :desc "Email" :n "m" #'=mu4e)))
 
 ;; misc
+
+(setq projectile-project-search-path '("/etc/dotfiles" "~/src" "~/src/github.com/babariviere" "~/projects"))
 
 (use-package! systemd
   :defer)
