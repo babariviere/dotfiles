@@ -12,6 +12,7 @@ in {
       python3Packages.python-language-server
       python3Packages.pip
       pipreqs
+      pypi2nix
     ];
   };
 }
