@@ -11,6 +11,7 @@ in {
       python3
       python3Packages.python-language-server
       python3Packages.pip
+      pipreqs
     ];
   };
 }
