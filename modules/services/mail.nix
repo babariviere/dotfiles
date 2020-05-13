@@ -46,14 +46,14 @@ in {
         mbsync.enable = true;
       };
 
-      services.mbsync = {
-        enable = true;
-        frequency = "*:0/15";
+      # services.mbsync = {
+      #   enable = true;
+      #   frequency = "*:0/15";
 
-        preExec = "${pkgs.isync}/bin/mbsync -Ha";
-        # Emacs starts a server, this is useless
-        # postExec = "${pkgs.unstable.mu}/bin/mu index";
-      };
+      #   preExec = "${pkgs.isync}/bin/mbsync -Ha";
+      #   # Emacs starts a server, this is useless
+      #   # postExec = "${pkgs.unstable.mu}/bin/mu index";
+      # };
     };
   };
 }
