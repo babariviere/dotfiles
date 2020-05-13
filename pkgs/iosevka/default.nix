@@ -20,6 +20,7 @@ iosevka.override {
   };
 
   inherit set;
-  extraParameters =
-    if withLigature then builtins.readFile ./iosevka.toml else null;
+  # TODO: fix me
+  # extraParameters =
+  #   if withLigature then builtins.readFile ./iosevka.toml else null;
 }
