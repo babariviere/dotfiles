@@ -62,7 +62,7 @@ in {
       aws.enable = true;
       build.enable = true;
       docker = {
-        enable = false;
+        enable = true;
         arion = true;
         compose = true;
       };
