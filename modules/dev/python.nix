@@ -9,7 +9,7 @@ in {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       (python3.withPackages
-        (ps: with ps; [ setuptools python-language-server pip ]))
+        (ps: with ps; [ setuptools python-language-server pip virtualenv ]))
       pipreqs
       pypi2nix
     ];
