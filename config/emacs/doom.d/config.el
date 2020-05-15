@@ -38,13 +38,7 @@
 
   (add-hook 'lsp-after-initialize-hook
             (lambda ()
-              (lsp--set-configuration (lsp-configuration-section "elixirLS"))))
-
-  (require 'avy)
-  (map!
-   :leader
-   :prefix "c"
-   :desc "Execute Lens" :n "L" #'lsp-avy-lens))
+              (lsp--set-configuration (lsp-configuration-section "elixirLS")))))
 
 
 (after! elixir-mode
@@ -149,7 +143,20 @@
 
 ;; :ui lsp
 
-(add-hook 'lsp-mode-hook #'lsp-lens-mode)
+(after! lsp-mode
+  (setq lsp-lens-auto-enable t
+        lsp-ui-doc-enable t
+        lsp-ui-sideline-enable t
+        lsp-enable-snippet t
+        lsp-enable-symbol-highlighting t
+        lsp-enable-indentation t
+        lsp-enable-folding t
+        lsp-enable-xref t
+        lsp-enable-file-watchers t
+        lsp-enable-links t
+        lsp-enable-completion-at-point t
+        lsp-signature-auto-activate t
+        lsp-signature-render-documentation t))
 
 ;; :email
 (set-email-account! "gmail"
