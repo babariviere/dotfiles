@@ -21,7 +21,7 @@ in {
       dates = "*-*-* 18:00:00";
       options = "--delete-older-than 7d";
     };
-    package = pkgs.unstable.nixUnstable;
+    package = pkgs.unstable.nix;
     nixPath = options.nix.nixPath.default ++ [
       "config=/etc/dotfiles/config"
       "nixpkgs-overlays=/etc/dotfiles/overlays.nix"

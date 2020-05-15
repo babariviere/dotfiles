@@ -13,7 +13,7 @@ in {
 
     dotfiles.desktop.startpage.sui =
       lib.mkIf dotfiles.tools.virtualisation.enable {
-        enable = true;
+        enable = false;
         apps = [
           {
             name = "Bitwarden";
