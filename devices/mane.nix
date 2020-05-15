@@ -79,7 +79,7 @@ in {
       fingerprint.enable = true;
       fwupd.enable = true;
       gpg.enable = true;
-      guix.enable = true;
+      guix.enable = false;
       keyring.enable = true;
       mail.enable = true;
       postgres.enable = true;

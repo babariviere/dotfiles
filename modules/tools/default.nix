@@ -28,6 +28,11 @@
       pciutils
       usbutils
       lsof
+
+      # Misc utils
+      du-dust
     ];
+
+    environment.shellAliases = { du = "dust"; };
   };
 }
