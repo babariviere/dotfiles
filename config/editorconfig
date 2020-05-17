@@ -12,6 +12,10 @@ indent_size = 2
 indent_style = space
 indent_size = 4
 
-[.css]
+[*.css]
+indent_style = space
+indent_size = 2
+
+[*.moon]
 indent_style = space
 indent_size = 2
