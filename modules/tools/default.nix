@@ -18,6 +18,7 @@
   config = {
     # Universal tools
     environment.systemPackages = with pkgs; [
+      p7zip
       zip
       unzip
       jq
