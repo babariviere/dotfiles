@@ -20,13 +20,6 @@
   :mode ("\\.dart$" . dart-mode))
 
 ;; :lang elixir
-(after! web-mode
-  (setq web-mode-engines-alist
-        '(("elixir"  . "\\.leex\\'")
-          ("elixir"  . "\\.eex\\'")
-          ("elixir"  . "\\.ex\\'"))
-        ))
-
 (defcustom lsp-elixir-suggest-specs t
   "Enable spec suggestion for ElixirLS."
   :type 'boolean
@@ -93,6 +86,15 @@
 
   (add-to-list 'auto-mode-alist (cons org-journal-file-pattern 'org-journal-mode)))
 
+;; :lang web
+(after! smartparens
+  (sp-local-pair 'mhtml-mode "<%" " %>"))
+
+(after! web-mode
+  (add-to-list web-mode-engines-alist
+        '("elixir"  . "\\.l?eex\\'")))
+
+
 ;; :tools flyspell
 (setq ispell-aspell-data-dir "/run/current-system/sw/lib/aspell"
       ispell-aspell-dict-dir ispell-aspell-data-dir
@@ -146,7 +148,12 @@
 (after! lsp-mode
   (setq lsp-lens-auto-enable t
         lsp-ui-doc-enable t
+        lsp-ui-doc-position 'bottom
+        lsp-ui-doc-header t
+        lsp-ui-doc-include-signature t
         lsp-ui-sideline-enable t
+        lsp-ui-sideline-ignore-duplicate t
+        lsp-ui-flycheck-enable t
         lsp-enable-snippet t
         lsp-enable-symbol-highlighting t
         lsp-enable-indentation t
@@ -189,6 +196,12 @@
 
 (use-package! graphql
   :commands (graphql-query graphql-mutation))
+
+(use-package! po-mode
+  :mode ("\\.po\\'" "\\.pot\\'")
+  :config
+  (setq po-default-file-header ""))
+(add-to-list 'evil-emacs-state-modes 'po-mode)
 
 (after! editorconfig
   (add-to-list 'auto-mode-alist '("\\editorconfig\\'" . editorconfig-conf-mode)))
