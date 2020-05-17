@@ -11,13 +11,13 @@ in {
 
     home-manager.users."${dotfiles.user}".xdg.configFile = {
       "rofi/config.rasi".source = pkgs.mutate <config/rofi/config.rasi> {
-        theme = dotfiles.theme;
+        theme = dotfiles.theme.name;
         terminal = "${pkgs.termite}/bin/termite";
-        font = dotfiles.desktop.fonts.mono.name;
+        font = dotfiles.theme.fonts.mono.name;
       };
 
-      "rofi/${dotfiles.theme}.rasi".source =
-        pkgs.mutate <config/rofi/theme.rasi> dotfiles.colors;
+      "rofi/${dotfiles.theme.name}.rasi".source =
+        pkgs.mutate <config/rofi/theme.rasi> dotfiles.theme.colors;
     };
   };
 }

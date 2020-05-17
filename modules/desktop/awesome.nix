@@ -6,8 +6,8 @@ let
 
   screenshot = pkgs.callPackage ./scripts/screenshot.nix { };
 
-  awesomerc = pkgs.mutate <config/awesome/awesomerc> (dotfiles.colors // {
-    setWallpaper = "${pkgs.feh}/bin/feh --bg-fill ${dotfiles.wallpaper}";
+  awesomerc = pkgs.mutate <config/awesome/awesomerc> (dotfiles.theme.colors // {
+    setWallpaper = "${pkgs.feh}/bin/feh --bg-fill ${dotfiles.theme.wallpaper}";
   });
 
   sxhkdrc = pkgs.mutate <config/sxhkd/sxhkdrc> {

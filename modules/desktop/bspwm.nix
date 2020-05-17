@@ -6,8 +6,8 @@ let
 
   screenshot = pkgs.callPackage ./scripts/screenshot.nix { };
 
-  bspwmrc = pkgs.mutate <config/bspwm/bspwmrc> (dotfiles.colors // {
-    setWallpaper = "${pkgs.feh}/bin/feh --bg-fill ${dotfiles.wallpaper}";
+  bspwmrc = pkgs.mutate <config/bspwm/bspwmrc> (dotfiles.theme.colors // {
+    setWallpaper = "${pkgs.feh}/bin/feh --bg-fill ${dotfiles.theme.wallpaper}";
   });
 
   sxhkdrc = pkgs.mutate <config/sxhkd/sxhkdrc> {

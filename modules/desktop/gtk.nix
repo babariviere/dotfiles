@@ -2,7 +2,8 @@
 
 with lib;
 let
-  cfg = config.dotfiles.desktop;
+  dotfiles = config.dotfiles;
+  cfg = dotfiles.desktop;
   cursorTheme = {
     package = pkgs.bibata-cursors;
     name = "Bibata Ice";
@@ -25,8 +26,8 @@ in {
       gtk = {
         enable = true;
         font = {
-          name = "${cfg.fonts.sansSerif.name} 12";
-          package = cfg.fonts.sansSerif.package;
+          name = "${dotfiles.theme.fonts.sansSerif.name} 12";
+          package = dotfiles.theme.fonts.sansSerif.package;
         };
         inherit iconTheme theme;
       };

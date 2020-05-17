@@ -6,7 +6,6 @@ in {
   imports = [
     ./awesome.nix
     ./bspwm.nix
-    ./fonts.nix
     ./gtk.nix
     ./i3.nix
     ./programs/chrome.nix
@@ -52,6 +51,6 @@ in {
 
     home-manager.users.${config.dotfiles.user}.xresources.properties =
       with lib.attrsets;
-      mapAttrs' (k: v: nameValuePair ("*" + k) v) config.dotfiles.colorsAnsi;
+      mapAttrs' (k: v: nameValuePair ("*" + k) v) config.dotfiles.theme.colorsAnsi;
   };
 }

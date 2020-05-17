@@ -30,9 +30,9 @@ in {
         pulseSupport = true;
       };
       extraConfig = builtins.readFile (pkgs.mutate <config/polybar/config>
-        (dotfiles.colors // dotfiles.network // {
+        (dotfiles.theme.colors // dotfiles.network // {
           inherit (cfg) battery batteryAdapter;
-          font = dotfiles.desktop.fonts.term.name;
+          font = dotfiles.theme.fonts.term.name;
         }));
       script = "polybar top &";
     };

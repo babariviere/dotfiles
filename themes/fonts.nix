@@ -1,10 +1,9 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-
 let
   dotfiles = config.dotfiles;
-  cfg = dotfiles.desktop.fonts;
+  cfg = dotfiles.theme.fonts;
 
   ## Build options
   mkFont = name: pkg: desc:
@@ -21,18 +20,24 @@ let
             description = "Font package for ${desc}";
             default = pkg;
           };
+          size = mkOption {
+            type = types.integer;
+            description = "Font size to use for ${desc}";
+            default = 12;
+          };
         };
       };
       description = "Font for ${desc}";
       default = {
         name = name;
         package = pkg;
+        size = 12;
       };
     };
 in {
   # TODO: use an enum for fonts ?
   # TODO: add fontconfig for each font. e.g font size for emacs, rofi and else
-  options.dotfiles.desktop.fonts = {
+  options.dotfiles.theme.fonts = {
     # term = mkFont "Jetbrains Mono" pkgs.unstable.jetbrains-mono
     #   "terminal font (no ligature)";
     #mono = mkFont "Jetbrains Mono" pkgs.unstable.jetbrains-mono "monospaced font";

@@ -112,8 +112,8 @@ in {
     home-manager.users."${dotfiles.user}" = {
       home.file = {
         ".doom.d/theme.el".source = pkgs.mutate <config/emacs/doom.d/theme.el> {
-          doomTheme = dotfiles.doomTheme;
-          font = dotfiles.desktop.fonts.mono.name;
+          doomTheme = dotfiles.theme.doom;
+          font = dotfiles.theme.fonts.mono.name;
         };
         ".doom.d/init.el".text = import ./init.el.nix { inherit config lib; };
         ".doom.d/packages.el".source =

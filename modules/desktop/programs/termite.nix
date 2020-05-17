@@ -3,7 +3,7 @@
 let
   dotfiles = config.dotfiles;
   cfg = dotfiles.desktop.termite;
-  colors = dotfiles.colors;
+  colors = dotfiles.theme.colors;
 in {
   options.dotfiles.desktop.termite.enable = lib.mkEnableOption "termite";
 
@@ -20,7 +20,7 @@ in {
         audibleBell = false;
         clickableUrl = true;
         filterUnmatchedUrls = true;
-        font = "${dotfiles.desktop.fonts.term.name} 11";
+        font = "${dotfiles.theme.fonts.term.name} 11";
         scrollbackLines = 1000;
         sizeHints = true;
 

@@ -25,10 +25,12 @@ let
     color15 = colors.lightWhite or colors.white;
   };
 
-  theme = (import (./. + "/${config.dotfiles.theme}"));
+  theme = (import (./. + "/${config.dotfiles.theme.name}"));
 in {
-  options.dotfiles = {
-    theme = mkOption {
+  imports = [ ./fonts.nix ];
+
+  options.dotfiles.theme = {
+    name = mkOption {
       type = types.enum (builtins.attrNames themes);
       description = "Define theme to use.";
     };
@@ -42,7 +44,7 @@ in {
       description = "Colors defined by theme. This will be overrided by theme.";
     };
 
-    doomTheme = mkOption {
+    doom = mkOption {
       type = types.str;
       description = "Emacs Doom theme.";
     };
@@ -56,22 +58,26 @@ in {
 
   # TODO: configure fonts with theme ?
   config = {
-    dotfiles.colors = mkForce (ansi theme // theme);
+    dotfiles.theme.colors = mkForce (ansi theme // theme);
 
-    dotfiles.colorsAnsi = mkForce (ansi theme // {
+    dotfiles.theme.colorsAnsi = mkForce (ansi theme // {
       foreground = theme.foreground;
       background = theme.background;
     });
 
-    dotfiles.doomTheme = "doom-${config.dotfiles.theme}";
-    dotfiles.wallpaper = let
-      path = (./. + "/${config.dotfiles.theme}/wallpaper.nix");
+    dotfiles.theme.doom = "doom-${config.dotfiles.theme.name}";
+    dotfiles.theme.wallpaper = let
+      path = (./. + "/${config.dotfiles.theme.name}/wallpaper.nix");
       expr = pkgs.callPackage path { };
     in mkForce expr.src;
 
     home-manager.users."${dotfiles.user}".xdg.configFile = {
-      "theme.json".text =
-        builtins.toJSON ({ name = dotfiles.theme; } // dotfiles.colorsAnsi);
+      # "theme.json".text =
+      #   let fonts = lib.attrsets.mapAttrs (x: x.name) dotfiles.theme.fonts;
+      #   in builtins.toJSON ({
+      #     name = dotfiles.theme;
+      #     fonts = fonts;
+      #   } // dotfiles.theme.colorsAnsi);
     };
   };
 }
