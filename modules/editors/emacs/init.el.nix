@@ -175,7 +175,10 @@ in header + (generateSections [
       enable = dotfiles.dev.latex.enable;
       flags = [ "fold" ];
     };
-    lua.enable = dotfiles.dev.lua.enable;
+    lua = {
+      enable = dotfiles.dev.lua.enable;
+      flags = [ "moonscript" ];
+    };
     markdown.enable = true;
     nix.enable = true;
     ocaml = {

@@ -8,7 +8,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      lua
+      (lua.withPackages (ps: with ps; [ moonscript ]))
       luarocks
       nodePackages.lua-fmt
     ];
