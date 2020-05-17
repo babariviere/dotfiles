@@ -6,6 +6,6 @@ writeShellScriptBin "nixos-update" ''
   nixpkgs="$(nix eval --raw '(import /etc/dotfiles/nix/sources.nix).nixpkgs')"
   nix-store --realise "$nixpkgs" 2>/dev/null
 
-  nix build --no-link -f "$nixpkgs/nixos" -I "nixpkgs=$nixpkgs" config.system.build.toplevel
+  nix build --no-link -f "$nixpkgs/nixos" -I "nixpkgs=$nixpkgs" config.system.build.toplevel "''${@:2}"
   nixos-rebuild -I "nixpkgs=$nixpkgs" $@
 ''
