@@ -2,6 +2,7 @@
 
 with lib;
 let
+  dotfiles = config.dotfiles;
   files = builtins.readDir ./.;
   themes = filterAttrs (n: v: v == "directory") files;
 
@@ -67,5 +68,10 @@ in {
       path = (./. + "/${config.dotfiles.theme}/wallpaper.nix");
       expr = pkgs.callPackage path { };
     in mkForce expr.src;
+
+    home-manager.users."${dotfiles.user}".xdg.configFile = {
+      "theme.json".text =
+        builtins.toJSON ({ name = dotfiles.theme; } // dotfiles.colorsAnsi);
+    };
   };
 }
