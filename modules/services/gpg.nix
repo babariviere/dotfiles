@@ -14,7 +14,6 @@ in {
       services.gpg-agent = {
         enable = true;
         enableExtraSocket = true;
-        enableSshSupport = true;
         defaultCacheTtl = 60 * 20; # 20 minutes
         extraConfig = ''
           allow-emacs-pinentry
