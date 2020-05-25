@@ -72,12 +72,15 @@ in {
     in mkForce expr.src;
 
     home-manager.users."${dotfiles.user}".xdg.configFile = {
-      # "theme.json".text =
-      #   let fonts = lib.attrsets.mapAttrs (x: x.name) dotfiles.theme.fonts;
-      #   in builtins.toJSON ({
-      #     name = dotfiles.theme;
-      #     fonts = fonts;
-      #   } // dotfiles.theme.colorsAnsi);
+      "theme.json".text = let
+        fontset =
+          lib.attrsets.filterAttrs (n: v: n != "ligature") dotfiles.theme.fonts;
+        fonts =
+          lib.attrsets.mapAttrs (_n: v: { inherit (v) name size; }) fontset;
+      in builtins.toJSON ({
+        name = dotfiles.theme.name;
+        fonts = fonts;
+      } // dotfiles.theme.colorsAnsi);
     };
   };
 }

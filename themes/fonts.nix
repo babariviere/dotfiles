@@ -21,7 +21,7 @@ let
             default = pkg;
           };
           size = mkOption {
-            type = types.integer;
+            type = types.int;
             description = "Font size to use for ${desc}";
             default = 12;
           };
