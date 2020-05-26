@@ -1,9 +1,10 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, priv, ... }:
 
 let user = "babariviere";
 in {
   imports = [
     ../.
+    ../hardware/mane.nix
     ../profiles/intel.nix
     ../profiles/laptop.nix
     ../profiles/nvidia.nix
@@ -89,7 +90,7 @@ in {
       virtualbox.enable = false;
       zerotier = {
         enable = true;
-        networks = import ../private/zt-networks.nix;
+        networks = import (priv "zt-networks.nix");
         nodes = [
           {
             name = "rpi4";
@@ -113,7 +114,7 @@ in {
       docker.enable = false;
       light.enable = true;
       podman = {
-        enable = true;
+        enable = false;
         arion = true;
         compose = true;
       };
@@ -126,7 +127,7 @@ in {
     uid = 1000;
     extraGroups = [ "wheel" "video" ];
     hashedPassword =
-      lib.removeSuffix "\n" (builtins.readFile ../private/babariviere.passwd);
+      lib.removeSuffix "\n" (builtins.readFile (priv "${user}.passwd"));
   };
 
   networking.hostName = "mane";

@@ -1,18 +1,15 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, unsmod, ... }:
 
 with lib;
 
 let
   dotfiles = config.dotfiles;
   sui = dotfiles.desktop.startpage.sui;
-  unstable = import <nixpkgs-unstable> {
-    config = removeAttrs config.nixpkgs.config [ "packageOverrides" ];
-  };
 in {
   imports = [
-    <nixpkgs-unstable/nixos/modules/virtualisation/containers.nix>
-    <nixpkgs-unstable/nixos/modules/virtualisation/podman.nix>
-    <nixpkgs-unstable/nixos/modules/virtualisation/oci-containers.nix>
+    (unsmod "nixos/modules/virtualisation/containers.nix")
+    (unsmod "nixos/modules/virtualisation/podman.nix")
+    (unsmod "nixos/modules/virtualisation/oci-containers.nix")
   ];
 
   options.dotfiles.desktop.startpage.sui = with types; {

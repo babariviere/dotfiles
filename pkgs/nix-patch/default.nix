@@ -1,4 +1,4 @@
-{ writeShellScriptBin, patchelf, glibc }:
+{ writeShellScriptBin, patchelf, glibc, inputs }:
 
 writeShellScriptBin "nix-patch" ''
   if [ "$#" -ne 1 ]; then
@@ -17,7 +17,7 @@ writeShellScriptBin "nix-patch" ''
     if [[ "$magic" =~ \#! ]]; then return 0; else return 1; fi
   }
   stopNest() { true; }
-  source ${<nixpkgs/pkgs/build-support/setup-hooks/patch-shebangs.sh>}
+  source ${inputs.nixpkgs}/pkgs/build-support/setup-hooks/patch-shebangs.sh
   patchShebangs --build $1
   find $1 -executable -type f -exec ${patchelf}/bin/patchelf --set-interpreter ${glibc}/lib/ld-linux-x86-64.so.2 {} \;
 ''

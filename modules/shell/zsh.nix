@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, usrconf, ... }:
 
 with lib;
 let
@@ -25,7 +25,7 @@ in {
         ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
         ZSH_CACHE = "$XDG_CACHE_HOME/zsh";
         ZGEN_DIR = "$XDG_CACHE_HOME/zgen";
-        ZGEN_SOURCE = "${pkgs.sources.zgen}";
+        ZGEN_SOURCE = "${pkgs.inputs.zgen}";
       };
       systemPackages = with pkgs; [ cfg.package h nix-zsh-completions ];
     };
@@ -58,7 +58,7 @@ in {
       };
       xdg.configFile = {
         "zsh" = {
-          source = <config/zsh>;
+          source = (usrconf "zsh");
           recursive = true;
         };
       };

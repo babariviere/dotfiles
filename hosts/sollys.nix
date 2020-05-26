@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, priv, ... }:
 
 let user = "bastien";
 in {
@@ -83,7 +83,7 @@ in {
     uid = 1000;
     extraGroups = [ "wheel" "video" ];
     hashedPassword =
-      lib.removeSuffix "\n" (builtins.readFile ../private/bastien.passwd);
+      lib.removeSuffix "\n" (builtins.readFile (priv "${user}.passwd"));
   };
 
   networking.hostName = "sollys";

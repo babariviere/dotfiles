@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, usrconf, ... }:
 
 let
   dotfiles = config.dotfiles;
@@ -17,7 +17,7 @@ in {
     environment.variables.ERL_AFLAGS = "-kernel shell_history enabled";
 
     home-manager.users."${dotfiles.user}" = {
-      home.file = { ".iex.exs".source = <config/elixir/iex.exs>; };
+      home.file = { ".iex.exs".source = (usrconf "elixir/iex.exs"); };
     };
   };
 

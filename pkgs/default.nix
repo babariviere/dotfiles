@@ -1,0 +1,26 @@
+final: prev:
+
+{
+  ert-run = final.callPackage ./ert-run { };
+
+  guix = final.callPackage ./guix { };
+
+  iosevkaBaba = (final.callPackage ./iosevka { }) "Iosevka Baba" "baba" true;
+  iosevkaTermBaba =
+    (final.callPackage ./iosevka { }) "Iosevka Term Baba" "term-baba" false;
+
+  mutate = final.callPackage ./mutate { };
+
+  nodePackages = prev.nodePackages // (final.callPackages ./node-packages { });
+
+  nix-patch = final.callPackage ./nix-patch { };
+
+  nixos-update = final.callPackage ./nixos-update { };
+
+  prime = final.callPackage ./prime { };
+
+  plymouth-themes =
+    final.callPackage ./plymouth-themes { src = final.inputs.plymouth-themes; };
+
+  xterm-24bits = final.callPackage ./xterm-24bits { };
+}

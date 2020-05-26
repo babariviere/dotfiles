@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, usrconf, ... }:
 
 let
   dotfiles = config.dotfiles;
@@ -10,14 +10,14 @@ in {
     environment.systemPackages = with pkgs; [ rofi ];
 
     home-manager.users."${dotfiles.user}".xdg.configFile = {
-      "rofi/config.rasi".source = pkgs.mutate <config/rofi/config.rasi> {
+      "rofi/config.rasi".source = pkgs.mutate (usrconf "rofi/config.rasi") {
         theme = dotfiles.theme.name;
         terminal = "${pkgs.termite}/bin/termite";
         font = dotfiles.theme.fonts.mono.name;
       };
 
       "rofi/${dotfiles.theme.name}.rasi".source =
-        pkgs.mutate <config/rofi/theme.rasi> dotfiles.theme.colors;
+        pkgs.mutate (usrconf "rofi/theme.rasi") dotfiles.theme.colors;
     };
   };
 }

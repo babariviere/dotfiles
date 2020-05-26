@@ -1,9 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, usrconf, ... }:
 
 let
   dotfiles = config.dotfiles;
   cfg = dotfiles.dev.haskell;
-  all-hies = import pkgs.sources.all-hies { };
 in {
   options.dotfiles.dev.haskell.enable = lib.mkEnableOption "haskell";
 
@@ -15,16 +14,15 @@ in {
         stack
         snack
         cabal2nix
-        (all-hies.selection { selector = p: { inherit (p) ghc882; }; })
       ] ++ (with haskellPackages; [ hoogle brittany hlint ]);
 
     home-manager.users."${dotfiles.user}" = {
       xdg.configFile."brittany" = {
-        source = <config/brittany>;
+        source = (usrconf "brittany");
         recursive = true;
       };
 
-      home.file.".ghci".source = pkgs.mutate <config/ghci> {
+      home.file.".ghci".source = pkgs.mutate (usrconf "ghci") {
         hoogle = "${pkgs.haskellPackages.hoogle}/bin/hoogle";
       };
     };

@@ -24,6 +24,7 @@ in {
     environment = {
       systemPackages = with pkgs; [
         git
+        git-crypt
         gitAndTools.hub
         gitAndTools.diff-so-fancy
         gitAndTools.gitflow

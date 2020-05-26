@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, usrconf, ... }:
 
 let
   dotfiles = config.dotfiles;
@@ -15,10 +15,11 @@ in {
 
     home-manager.users."${dotfiles.user}" = {
       xdg.configFile = {
-        "zsh/rc.d/env.php.zsh".source = <config/php/env.zsh>;
-        "fish/rc.d/env.php.fish".source = <config/php/env.fish>;
+        "zsh/rc.d/env.php.zsh".source = (usrconf "php/env.zsh");
+        "fish/rc.d/env.php.fish".source = (usrconf "php/env.fish");
         # To add a package, go to config/php/composer and do `composer require <package>`
-        "composer/composer.json".source = <config/php/composer/composer.json>;
+        "composer/composer.json".source =
+          (usrconf "php/composer/composer.json");
       };
     };
   };

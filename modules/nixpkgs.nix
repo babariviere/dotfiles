@@ -1,16 +1,7 @@
 { config, lib, options, pkgs, ... }:
 
-let
-  sources = import ../nix/sources.nix;
-  cfg = config.dotfiles;
+let cfg = config.dotfiles;
 in {
-  nixpkgs = {
-    config = { allowUnfree = true; };
-    overlays = import ../overlays.nix;
-  };
-
-  environment = { systemPackages = [ (import sources.niv { }).niv ]; };
-
   nix = {
     useSandbox = true;
     gc = {
@@ -18,11 +9,6 @@ in {
       dates = "*-*-* 18:00:00";
       options = "--delete-older-than 7d";
     };
-    package = pkgs.unstable.nixFlakes;
-    nixPath = options.nix.nixPath.default ++ [
-      "config=/etc/dotfiles/config"
-      "nixpkgs-overlays=/etc/dotfiles/overlays.nix"
-    ];
     autoOptimiseStore = true;
     trustedUsers = [ "root" "@wheel" cfg.user ];
     binaryCaches = [

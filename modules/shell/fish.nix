@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, usrconf, ... }:
 
 with lib;
 let
@@ -43,7 +43,7 @@ in {
       };
       # xdg.configFile = {
       #   "fish" = {
-      #     source = <config/fish>;
+      #     source = (usrconf "fish");
       #     recursive = true;
       #   };
       # };

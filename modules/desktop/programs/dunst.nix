@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, usrconf, ... }:
 
 let
   dotfiles = config.dotfiles;
@@ -8,7 +8,7 @@ in {
 
   config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
     home-manager.users."${dotfiles.user}".xdg.configFile."dunst/dunstrc".source =
-      pkgs.mutate <config/dunst/dunstrc> (dotfiles.theme.colors // {
+      pkgs.mutate (usrconf "dunst/dunstrc") (dotfiles.theme.colors // {
         rofi = pkgs.rofi;
         browser = pkgs.firefox;
         font = dotfiles.theme.fonts.sansSerif.name;

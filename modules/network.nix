@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, priv, ... }:
 
 with lib;
 
@@ -24,7 +24,7 @@ in {
       interfaces = mkMerge [ ethCfg wlanCfg ];
       wireless = mkIf (cfg.wlan != "") {
         enable = true;
-        networks = import ../private/networks.nix;
+        networks = import (priv "networks.nix");
         extraConfig = ''
           ctrl_interface=/run/wpa_supplicant
           ctrl_interface_group=wheel
@@ -33,8 +33,9 @@ in {
 
       nameservers = [ "8.8.8.8" "8.8.4.4" ];
 
-      extraHosts = builtins.readFile (builtins.fetchurl
-        "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts");
+      # FIXME: missing sha256
+      # extraHosts = builtins.readFile (builtins.fetchurl
+      #   "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts");
     };
   };
 }
