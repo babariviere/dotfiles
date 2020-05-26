@@ -9,9 +9,7 @@ in {
     overlays = import ../overlays.nix;
   };
 
-  environment = {
-    systemPackages = [ (import sources.niv { }).niv pkgs.unstable.nixFlakes ];
-  };
+  environment = { systemPackages = [ (import sources.niv { }).niv ]; };
 
   nix = {
     useSandbox = true;
@@ -20,7 +18,7 @@ in {
       dates = "*-*-* 18:00:00";
       options = "--delete-older-than 7d";
     };
-    package = pkgs.unstable.nix;
+    package = pkgs.unstable.nixFlakes;
     nixPath = options.nix.nixPath.default ++ [
       "config=/etc/dotfiles/config"
       "nixpkgs-overlays=/etc/dotfiles/overlays.nix"
