@@ -1,7 +1,6 @@
 let
   sources = import ./nix/sources.nix;
 
-  fprintd-nixpkgs = import sources.fprintd-nixpkgs { };
   unstable = import sources.unstable { config = { allowUnfree = true; }; };
   overlay = self: super: {
     inherit sources;
@@ -10,10 +9,7 @@ let
     snack = (import sources.snack).snack-exe;
     nur = import sources.NUR { inherit (self) pkgs; };
 
-    fprintd_1_90 = fprintd-nixpkgs.fprintd;
-    libfprint_1_90 = fprintd-nixpkgs.libfprint;
-
-    unstable = import sources.unstable { config = { allowUnfree = true; }; };
+    unstable = import <nixpkgs-unstable> { config = { allowUnfree = true; }; };
     podman = unstable.callPackage
       "${sources.unstable}/pkgs/applications/virtualization/podman/wrapper.nix"
       { };

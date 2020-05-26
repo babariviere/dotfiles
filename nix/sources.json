@@ -47,18 +47,6 @@
     "url": "https://github.com/nix-community/emacs-overlay/archive/8514c57ac15475baa2b62c222c128f2f8da6b639.tar.gz",
     "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
   },
-  "fprintd-nixpkgs": {
-    "branch": "fprintd",
-    "description": "Nix Packages collection",
-    "homepage": null,
-    "owner": "Elyhaka",
-    "repo": "nixpkgs",
-    "rev": "131a28e9f2e5f51e37a60af25379cc236f6b71c7",
-    "sha256": "0vqiij21hmj8zm6i66d68a230420g46x9x2lzfa9a1hd8ijnwfzh",
-    "type": "tarball",
-    "url": "https://github.com/Elyhaka/nixpkgs/archive/131a28e9f2e5f51e37a60af25379cc236f6b71c7.tar.gz",
-    "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-  },
   "home-manager": {
     "branch": "master",
     "description": "Manage a user environment using Nix",
@@ -153,18 +141,6 @@
     "sha256": "0vzk1pzqzw625lry84vicz736lp0rkc3x38y0jf4azhg6wk55mpm",
     "type": "tarball",
     "url": "https://github.com/babariviere/sui/archive/deba428809bdb4c9b9f5acc83b8b378ea14aa70f.tar.gz",
-    "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-  },
-  "unstable": {
-    "branch": "master",
-    "description": "Nix Packages collection",
-    "homepage": null,
-    "owner": "NixOS",
-    "repo": "nixpkgs",
-    "rev": "c034e19e76e69be6972c1d089639e94a8fef68cb",
-    "sha256": "0dwpfk6qlbqn2a3vbd331j6iybh00pyhgs8v5aaw8c8aicy7aj79",
-    "type": "tarball",
-    "url": "https://github.com/NixOS/nixpkgs/archive/c034e19e76e69be6972c1d089639e94a8fef68cb.tar.gz",
     "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
   },
   "zgen": {

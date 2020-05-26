@@ -11,7 +11,7 @@ in {
   config = mkIf cfg.enable {
     services.fprintd = {
       enable = true;
-      package = pkgs.fprintd_1_90;
+      package = pkgs.unstable.fprintd;
     };
 
     security.pam.services.login.fprintAuth = true;
