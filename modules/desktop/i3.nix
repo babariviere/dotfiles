@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, usrconf, ... }:
 
 with lib;
 let
@@ -7,7 +7,7 @@ let
 
   screenshot = pkgs.callPackage ./scripts/screenshot.nix { };
 
-  configFile = pkgs.mutate <config/i3/config> (dotfiles.theme.colors // {
+  configFile = pkgs.mutate (usrconf "i3/config") (dotfiles.theme.colors // {
     setWallpaper = "${pkgs.feh}/bin/feh --bg-fill ${dotfiles.theme.wallpaper}";
     screenshot = "${screenshot}/bin/screenshot";
   });

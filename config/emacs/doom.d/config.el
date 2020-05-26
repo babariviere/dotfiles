@@ -189,7 +189,7 @@
 
 ;; misc
 
-(setq projectile-project-search-path '("/etc/dotfiles" "~/src" "~/src/github.com/babariviere" "~/projects"))
+(setq projectile-project-search-path '("~/src" "~/src/github.com/babariviere" "~/projects"))
 
 (use-package! systemd
   :defer)

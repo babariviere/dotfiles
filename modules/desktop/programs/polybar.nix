@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, usrconf, ... }:
 
 with lib;
 let
@@ -29,7 +29,7 @@ in {
         # alsaSupport = true;
         pulseSupport = true;
       };
-      extraConfig = builtins.readFile (pkgs.mutate <config/polybar/config>
+      extraConfig = builtins.readFile (pkgs.mutate (usrconf "polybar/config")
         (dotfiles.theme.colors // dotfiles.network // {
           inherit (cfg) battery batteryAdapter;
           font = dotfiles.theme.fonts.term.name;

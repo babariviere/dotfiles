@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, usrconf, ... }:
 
 let dotfiles = config.dotfiles;
 in {
@@ -25,6 +25,6 @@ in {
   ];
 
   home-manager.users."${dotfiles.user}" = {
-    home.file = { ".editorconfig".source = <config/editorconfig>; };
+    home.file = { ".editorconfig".source = (usrconf "editorconfig"); };
   };
 }

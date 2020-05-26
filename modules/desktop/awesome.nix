@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, usrconf, ... }:
 
 let
   dotfiles = config.dotfiles;
@@ -6,11 +6,13 @@ let
 
   screenshot = pkgs.callPackage ./scripts/screenshot.nix { };
 
-  awesomerc = pkgs.mutate <config/awesome/awesomerc> (dotfiles.theme.colors // {
-    setWallpaper = "${pkgs.feh}/bin/feh --bg-fill ${dotfiles.theme.wallpaper}";
-  });
+  awesomerc = pkgs.mutate (usrconf "awesome/awesomerc") (dotfiles.theme.colors
+    // {
+      setWallpaper =
+        "${pkgs.feh}/bin/feh --bg-fill ${dotfiles.theme.wallpaper}";
+    });
 
-  sxhkdrc = pkgs.mutate <config/sxhkd/sxhkdrc> {
+  sxhkdrc = pkgs.mutate (usrconf "sxhkd/sxhkdrc") {
     terminal = "${pkgs.termite}/bin/termite";
     lock = "${pkgs.betterlockscreen}/bin/betterlockscreen -l";
     screenshot = "${screenshot}/bin/screenshot";

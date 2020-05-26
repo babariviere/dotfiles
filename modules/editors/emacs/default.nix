@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, usrconf, ... }:
 
 with lib;
 let
@@ -111,21 +111,22 @@ in {
 
     home-manager.users."${dotfiles.user}" = {
       home.file = {
-        ".doom.d/theme.el".source = pkgs.mutate <config/emacs/doom.d/theme.el> {
-          doomTheme = dotfiles.theme.doom;
-          font = dotfiles.theme.fonts.mono.name;
-        };
+        ".doom.d/theme.el".source =
+          pkgs.mutate (usrconf "emacs/doom.d/theme.el") {
+            doomTheme = dotfiles.theme.doom;
+            font = dotfiles.theme.fonts.mono.name;
+          };
         ".doom.d/init.el".text = import ./init.el.nix { inherit config lib; };
         ".doom.d/packages.el".source =
           config.home-manager.users."${dotfiles.user}".lib.file.mkOutOfStoreSymlink
-          <config/emacs/doom.d/packages.el>;
+          (usrconf "emacs/doom.d/packages.el");
         ".doom.d/config.el".source =
           config.home-manager.users."${dotfiles.user}".lib.file.mkOutOfStoreSymlink
-          <config/emacs/doom.d/config.el>;
+          (usrconf "emacs/doom.d/config.el");
       };
       xdg.configFile = {
-        "zsh/rc.d/env.emacs.zsh".source = <config/emacs/env.zsh>;
-        "fish/rc.d/env.emacs.fish".source = <config/emacs/env.fish>;
+        "zsh/rc.d/env.emacs.zsh".source = (usrconf "emacs/env.zsh");
+        "fish/rc.d/env.emacs.fish".source = (usrconf "emacs/env.fish");
       };
     };
   };

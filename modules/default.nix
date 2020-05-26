@@ -42,17 +42,14 @@ in {
         # Nix commands
         nix-env = "NIXPKGS_ALLOW_UNFREE=1 nix-env";
         ne = "nix-env";
-        nu =
-          "pushd /etc/dotfiles && niv update && popd && sudo nixos-update switch --upgrade";
+        nu = "sudo nixos-update switch --upgrade";
         ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
-        ns = "nix-shell";
-        nr = "sudo nixos-update";
         nrs = "sudo nixos-update switch";
         nrst = "sudo nixos-update switch --show-trace";
         nloc = "nix-locate --top-level";
 
         # Utilities
-        cat = "bat -p";
+        cat = "bat";
       };
 
       shellInit = ''

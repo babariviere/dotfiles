@@ -1,9 +1,9 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, unsmod, ... }:
 
 let cfg = config.dotfiles.shell.direnv;
 in {
   disabledModules = [ "services/development/lorri.nix" ];
-  imports = [ <nixpkgs-unstable/nixos/modules/services/development/lorri.nix> ];
+  imports = [ (unsmod "nixos/modules/services/development/lorri.nix") ];
 
   options.dotfiles.shell.direnv.enable = lib.mkEnableOption "direnv";
 
