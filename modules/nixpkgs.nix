@@ -5,13 +5,12 @@ let
   cfg = config.dotfiles;
 in {
   nixpkgs = {
-    pkgs = import sources.nixpkgs { config = { allowUnfree = true; }; };
+    config = { allowUnfree = true; };
     overlays = import ../overlays.nix;
   };
 
   environment = {
-    etc.nixpkgs.source = sources.nixpkgs;
-    systemPackages = [ (import sources.niv { }).niv pkgs.nixFlakes ];
+    systemPackages = [ (import sources.niv { }).niv pkgs.unstable.nixFlakes ];
   };
 
   nix = {
@@ -48,23 +47,16 @@ in {
   # run gc only if power source is plugged
   systemd.services.nix-gc.unitConfig.ConditionACPower = true;
 
-  # force the use of niv's nixpkgs for system packages
-  system.activationScripts.update-channel = ''
-    mkdir -p /nix/var/nix/profiles/per-user/root/channels-system
-    ln -sfn ${sources.nixpkgs} /nix/var/nix/profiles/per-user/root/channels-system/nixos
-    ln -sfn /nix/var/nix/profiles/per-user/root/channels-system /nix/var/nix/profiles/per-user/root/channels
-  '';
-
   # TODO: auto git clone
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "19.09"; # Did you read the comment?
+  system.stateVersion = "20.03"; # Did you read the comment?
   system.autoUpgrade = {
     enable = true;
-    channel = sources.nixpkgs.outPath;
+    channel = "20.03";
   };
   systemd.services.nixos-upgrade.unitConfig.ConditionACPower = true;
   systemd.timers.nixos-upgrade.timerConfig.Persistent = true;
