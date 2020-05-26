@@ -1,13 +1,9 @@
 { config, pkgs, lib, ... }:
 
-let
-  cfg = config.dotfiles.shell.direnv;
-  sources = import
-    ../../nix/sources.nix; # cannot use pkgs.unstable directly in import (infinite recursion)
+let cfg = config.dotfiles.shell.direnv;
 in {
   disabledModules = [ "services/development/lorri.nix" ];
-  imports =
-    [ "${sources.unstable}/nixos/modules/services/development/lorri.nix" ];
+  imports = [ <nixpkgs-unstable/nixos/modules/services/development/lorri.nix> ];
 
   options.dotfiles.shell.direnv.enable = lib.mkEnableOption "direnv";
 

@@ -1,4 +1,5 @@
-/result
-/private
-/out
+/result/
+/private/
+/out/
 /nixos.qcow2
+/env/

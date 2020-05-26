@@ -12,4 +12,7 @@ in {
   ];
 
   dotfiles.name = "Bastien Rivière";
+
+  home-manager.users."${config.dotfiles.user}".home.sessionVariables =
+    import ./env.nix { inherit lib; };
 }

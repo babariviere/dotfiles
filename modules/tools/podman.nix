@@ -3,15 +3,14 @@
 let
   dotfiles = config.dotfiles;
   cfg = dotfiles.tools.podman;
-  sources = import ../../nix/sources.nix;
-  unstable = import sources.unstable {
+  unstable = import <nixpkgs-unstable> {
     config = removeAttrs config.nixpkgs.config [ "packageOverrides" ];
   };
 in {
   imports = [
-    "${sources.unstable}/nixos/modules/virtualisation/containers.nix"
-    "${sources.unstable}/nixos/modules/virtualisation/podman.nix"
-    "${sources.unstable}/nixos/modules/virtualisation/oci-containers.nix"
+    <nixpkgs-unstable/nixos/modules/virtualisation/containers.nix>
+    <nixpkgs-unstable/nixos/modules/virtualisation/podman.nix>
+    <nixpkgs-unstable/nixos/modules/virtualisation/oci-containers.nix>
   ];
 
   disabledModules = [ "virtualisation/docker-containers.nix" ];

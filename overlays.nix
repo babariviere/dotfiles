@@ -1,7 +1,7 @@
 let
-  sources = import ./nix/sources.nix;
+  sources = import ./nix/sources.nix // { unstable = <nixpkgs-unstable>; };
 
-  unstable = import sources.unstable { config = { allowUnfree = true; }; };
+  unstable = import <nixpkgs-unstable> { config = { allowUnfree = true; }; };
   overlay = self: super: {
     inherit sources;
 
