@@ -43,7 +43,7 @@ in {
         nix-env = "NIXPKGS_ALLOW_UNFREE=1 nix-env";
         ne = "nix-env";
         nu =
-          "pushd /etc/dotfiles && niv update && popd && sudo nix-channel --update && sudo nixos-update switch";
+          "pushd /etc/dotfiles && niv update && popd && sudo nixos-update switch --upgrade";
         ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
         ns = "nix-shell";
         nr = "sudo nixos-update";

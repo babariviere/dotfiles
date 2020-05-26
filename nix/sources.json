@@ -53,10 +53,10 @@
         "homepage": "https://rycee.gitlab.io/home-manager/",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "5ba71ef91f3863508a61f5a7feba567c832a225e",
-        "sha256": "07aj2nvi46alhi0b1cfjw1gri6fmfdcb7adaa5xcq4rn317rvzpp",
+        "rev": "0e2858af94e3136cfa31d02c04c546fff0502c80",
+        "sha256": "10arsb6srf88f73ni1rzlyp7w5l387lrf4rw9h3cq5a16bj2pvw7",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/5ba71ef91f3863508a61f5a7feba567c832a225e.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/0e2858af94e3136cfa31d02c04c546fff0502c80.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "juno": {
@@ -141,6 +141,18 @@
         "sha256": "0vzk1pzqzw625lry84vicz736lp0rkc3x38y0jf4azhg6wk55mpm",
         "type": "tarball",
         "url": "https://github.com/babariviere/sui/archive/deba428809bdb4c9b9f5acc83b8b378ea14aa70f.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "unstable": {
+        "branch": "master",
+        "description": "Nix Packages collection",
+        "homepage": null,
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "72066757c8bd31cc592914cb944f8d7da569d741",
+        "sha256": "1vn76960yvgppz9d0f1p7nd41hvz9bdjnzk1x8wsdbmjm8bk024q",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/72066757c8bd31cc592914cb944f8d7da569d741.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "zgen": {
