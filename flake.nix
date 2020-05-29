@@ -33,7 +33,7 @@
 
       pkgs = import nixpkgs {
         inherit system;
-        overlays = self.overlays;
+        overlays = builtins.attrValues self.overlays;
         config.allowUnfree = true;
       };
     in {
@@ -42,32 +42,35 @@
       overlay = import ./pkgs;
 
       overlays = let
+        removeSuffix = suffix: str: builtins.head (builtins.split suffix str);
+
         uns = import unstable {
           inherit system;
           config.allowUnfree = true;
         };
-        overlays = map (name: import (./overlays + "/${name}"))
-          (builtins.attrNames (builtins.readDir ./overlays));
-        unstableOverlay = final: prev: { unstable = uns; };
+        overlays = builtins.foldl' (prev: name:
+          prev // {
+            ${removeSuffix ".nix" name} = import (./overlays + "/${name}");
+          }) { } (builtins.attrNames (builtins.readDir ./overlays));
         # TODO: how to expose overlays
-      in [
-        unstableOverlay
-        inputs.emacs.overlay
-        inputs.nur.overlay
-        (final: prev: {
+      in {
+        unstable = final: prev: { unstable = uns; };
+        emacs = inputs.emacs.overlay;
+        nur = inputs.nur.overlay;
+        arion = final: prev: {
           arion = (import final.inputs.arion { inherit (final) pkgs; }).arion;
-        })
-        (final: prev: { snack = (import final.inputs.snack).snack-exe; })
-        (final: prev: {
+        };
+        snack = final: prev: { snack = (import final.inputs.snack).snack-exe; };
+        podman = final: prev: {
           podman = uns.podman;
           podman-unwrapped = uns.podman-unwrapped;
-        })
-        (final: prev: {
+        };
+        plymouth = final: prev: {
           plymouth-themes = final.callPackage ./pkgs/plymouth-themes {
             src = inputs.plymouth-themes;
           };
-        })
-      ] ++ overlays;
+        };
+      } // overlays;
 
       nixosModules = { };
 
