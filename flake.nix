@@ -88,11 +88,11 @@
         moduleList = import ./modules/list.nix;
         modulesAttrs = listToAttrs (prep moduleList);
 
-        # # profiles
-        # profilesList = import ./profiles/list.nix;
-        # profilesAttrs = { profiles = listToAttrs (prep profilesList); };
+        # profiles
+        profilesList = import ./profiles/list.nix;
+        profilesAttrs = { profiles = listToAttrs (prep profilesList); };
 
-      in modulesAttrs; # // profilesAttrs;
+      in modulesAttrs // profilesAttrs;
 
     };
 }
