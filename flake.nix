@@ -30,7 +30,7 @@
   outputs = inputs@{ self, home, nixpkgs, unstable, ... }:
     let
       inherit (builtins)
-        listToAttrs baseNameOf attrNames attrValues readDir head split foldl';
+        listToAttrs baseNameOf attrNames attrValues readDir head split;
       system = "x86_64-linux";
 
       removeSuffix = suffix: str: head (split suffix str);
@@ -51,10 +51,13 @@
           inherit system;
           config.allowUnfree = true;
         };
-        overlays = foldl' (prev: name:
-          prev // {
-            ${removeSuffix ".nix" name} = import (./overlays + "/${name}");
-          }) { } (attrNames (readDir ./overlays));
+        overlays = let
+          prep = map (file: {
+            name = removeSuffix ".nix" file;
+            value = import (./overlays + "/${file}");
+          });
+          files = (attrNames (readDir ./overlays));
+        in listToAttrs (prep files);
         # TODO: how to expose overlays
       in {
         unstable = final: prev: { unstable = uns; };
