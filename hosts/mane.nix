@@ -5,6 +5,7 @@ in {
   imports = [
     ../.
     ../hardware/mane.nix
+    ../profiles/games
     ../profiles/intel.nix
     ../profiles/laptop.nix
     ../profiles/nvidia.nix
@@ -33,7 +34,6 @@ in {
       picom.enable = false;
       dunst.enable = true;
       rofi.enable = true;
-      steam.enable = true;
       thunderbird.enable = false;
     };
     dev = {
