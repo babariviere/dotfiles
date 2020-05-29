@@ -19,8 +19,5 @@ final: prev:
 
   prime = final.callPackage ./prime { };
 
-  plymouth-themes =
-    final.callPackage ./plymouth-themes { src = final.inputs.plymouth-themes; };
-
   xterm-24bits = final.callPackage ./xterm-24bits { };
 }

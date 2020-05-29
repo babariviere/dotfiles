@@ -42,16 +42,15 @@
       overlay = import ./pkgs;
 
       overlays = let
-        unstable = import unstable {
+        uns = import unstable {
           inherit system;
           config.allowUnfree = true;
         };
         overlays = map (name: import (./overlays + "/${name}"))
           (builtins.attrNames (builtins.readDir ./overlays));
-        unstableOverlay = final: prev: { inherit unstable; };
+        unstableOverlay = final: prev: { unstable = uns; };
         # TODO: how to expose overlays
       in [
-        (final: prev: { inherit inputs; })
         unstableOverlay
         inputs.emacs.overlay
         inputs.nur.overlay
@@ -60,8 +59,13 @@
         })
         (final: prev: { snack = (import final.inputs.snack).snack-exe; })
         (final: prev: {
-          podman = unstable.podman;
-          podman-unwrapped = unstable.podman-unwrapped;
+          podman = uns.podman;
+          podman-unwrapped = uns.podman-unwrapped;
+        })
+        (final: prev: {
+          plymouth-themes = final.callPackage ./pkgs/plymouth-themes {
+            src = inputs.plymouth-themes;
+          };
         })
       ] ++ overlays;
 
