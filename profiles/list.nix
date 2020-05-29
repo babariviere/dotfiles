@@ -3,6 +3,7 @@
   ./core.nix
   ./desktop/gtk.nix
   ./dev
+  ./games
   ./intel.nix
   ./laptop.nix
   ./nixpkgs.nix

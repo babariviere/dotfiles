@@ -10,7 +10,6 @@
   ./desktop/programs/picom.nix
   ./desktop/programs/polybar.nix
   ./desktop/programs/rofi.nix
-  ./desktop/programs/steam.nix
   ./desktop/programs/termite.nix
   ./desktop/programs/thunderbird.nix
   ./dev/android.nix
