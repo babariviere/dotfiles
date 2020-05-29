@@ -4,21 +4,6 @@ with lib;
 
 let cfg = config.dotfiles;
 in {
-  imports = [
-    ./nixpkgs.nix
-    ./boot.nix
-    ./user.nix
-    ./desktop
-    ./dev
-    ./editors
-    ./media
-    ./network.nix
-    ./services
-    ./shell
-    ./social
-    ./tools
-  ];
-
   options.dotfiles = {
     user = mkOption {
       type = types.str;
