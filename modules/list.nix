@@ -1,9 +1,7 @@
 [
-  ./boot.nix
   ./desktop
   ./desktop/awesome.nix
   ./desktop/bspwm.nix
-  ./desktop/gtk.nix
   ./desktop/i3.nix
   ./desktop/programs/chrome.nix
   ./desktop/programs/compton.nix
@@ -15,7 +13,6 @@
   ./desktop/programs/steam.nix
   ./desktop/programs/termite.nix
   ./desktop/programs/thunderbird.nix
-  ./dev
   ./dev/android.nix
   ./dev/c.nix
   ./dev/elixir.nix
@@ -40,7 +37,6 @@
   ./media/plex.nix
   ./media/spotify.nix
   ./network.nix
-  ./nixpkgs.nix
   ./services/bitwarden.nix
   ./services/fingerprint.nix
   ./services/fwupd.nix
@@ -54,7 +50,6 @@
   ./services/syncthing.nix
   ./services/virtualbox.nix
   ./services/zerotier.nix
-  ./shell
   ./shell/direnv.nix
   ./shell/fish.nix
   ./shell/git.nix
@@ -74,5 +69,4 @@
   ./tools/light.nix
   ./tools/podman.nix
   ./tools/sql.nix
-  ./user.nix
 ]

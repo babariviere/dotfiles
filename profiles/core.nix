@@ -2,6 +2,9 @@
 let inherit (lib) fileContents;
 
 in {
+  imports =
+    [ ./nixpkgs.nix ./boot.nix ./user.nix ./dev ./desktop/gtk.nix ./shell ];
+
   nix.package = pkgs.unstable.nixFlakes;
   nix.systemFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
 
@@ -54,6 +57,8 @@ in {
         nr = "np remove";
         ns = "n search";
         nrb = ifSudo "sudo nixos-rebuild";
+        nrbs = ifSudo "sudo nixos-rebuild switch";
+        nrbsu = ifSudo "sudo nixos-rebuild switch --upgrade";
 
         # sudo
         s = ifSudo "sudo -E ";
