@@ -1,16 +1,8 @@
 { config, lib, pkgs, ... }:
 
+# TODO: move to profile
 {
-  imports = [
-    ./aws.nix
-    ./build.nix
-    ./docker.nix
-    ./devops.nix
-    ./insomnia.nix
-    ./light.nix
-    ./podman.nix
-    ./sql.nix
-  ];
+  imports = [ ];
 
   options.dotfiles.tools.virtualisation.enable =
     lib.mkEnableOption "virtualisation";

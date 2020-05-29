@@ -3,23 +3,6 @@
 with lib;
 let cfg = config.dotfiles.desktop;
 in {
-  imports = [
-    ./awesome.nix
-    ./bspwm.nix
-    ./gtk.nix
-    ./i3.nix
-    ./programs/chrome.nix
-    ./programs/compton.nix
-    ./programs/dunst.nix
-    ./programs/firefox.nix
-    ./programs/picom.nix
-    ./programs/polybar.nix
-    ./programs/rofi.nix
-    ./programs/steam.nix
-    ./programs/termite.nix
-    ./programs/thunderbird.nix
-  ];
-
   options.dotfiles.desktop.enable = mkEnableOption "desktop";
 
   config = mkIf cfg.enable {
@@ -51,6 +34,7 @@ in {
 
     home-manager.users.${config.dotfiles.user}.xresources.properties =
       with lib.attrsets;
-      mapAttrs' (k: v: nameValuePair ("*" + k) v) config.dotfiles.theme.colorsAnsi;
+      mapAttrs' (k: v: nameValuePair ("*" + k) v)
+      config.dotfiles.theme.colorsAnsi;
   };
 }

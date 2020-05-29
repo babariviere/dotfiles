@@ -1,12 +1,7 @@
 { config, lib, pkgs, ... }:
 
-with lib;
-let
-  dotfiles = config.dotfiles;
-  cfg = dotfiles.shell;
-in {
-  imports = [ ./direnv.nix ./fish.nix ./git.nix ./starship.nix ./zsh.nix ];
-
+{
+  # TODO: move to profiles
   config = {
     programs.command-not-found.enable = false;
     environment.systemPackages = with pkgs; [ fd exa htop tree ];
