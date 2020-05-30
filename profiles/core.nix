@@ -9,7 +9,6 @@ in {
   nix.systemFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
     tmpOnTmpfs = true;
     kernel.sysctl."kernel.sysrq" = 1;
   };
