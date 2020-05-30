@@ -183,6 +183,4 @@ in {
       # unstable.next # TODO: this makes me compile qt-webengine
       pkgs.unstable.bandwhich
     ];
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 }
