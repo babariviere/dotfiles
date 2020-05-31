@@ -2,40 +2,59 @@
 #+DATE:    October 27, 2019
 
 Repository of my personal dotfiles.
-This is targeted to NixOS's users.
+This targets Nix/NixOS users.
 
 * Table of Contents :TOC_3:noexport:
 - [[#usage][Usage]]
 - [[#description][Description]]
+  - [[#hosts][Hosts]]
+  - [[#hardware][Hardware]]
   - [[#modules][Modules]]
-    - [[#add-new-module][Add new module]]
+  - [[#profiles][Profiles]]
 - [[#screenshots][Screenshots]]
 
 * Usage
-Clone this repository to ~/etc/dotfiles~.
-Import one of the configuration in your ~/etc/nixos/configuration.nix~.
-Run the ~switch.sh~ file.
-Enjoy!
+
+#+BEGIN_SRC sh
+# Clone repository in your favorite location
+git clone https://github.com/babariviere/dotfiles
+cd dotfiles
+
+# Link it to /etc/nixos
+sudo ln -s $(pwd) /etc/nixos
+
+# Install it via nix flakes, replace host by one of the file in `hosts` (except for default.nix)
+sudo nix-shell -p nixFlakes --run nixos-rebuild switch -p "<host>"
+#+END_SRC
 
 * Description
-My configuration into 5 parts:
-+ configuration.<system>.nix: this is the main entry point for configuration.
-  each configuration must import ~./default.nix~.
-+ config: this folder contains all static/template files. (templates are not
-  done yet).
-+ modules: this folder contains all modules. there is a custom generator to
-  create a simple looking configuration.nix file.
-+ profiles: specfic configuration for certains machines.
-+ themes: this folder contains all my themes. (not done yet)
+** Hosts
+A configuration for an host or a machine. It's where we use all the modules and profiles.
+All files (except ~default.nix~) in ~hosts~ is considered as an host
+and can be built via ~nixos-rebuild switch -p <host>~ or via ~nix shell .#nixosConfiguration.<host>~.
 
-The only thing that's not included is
+** Hardware
+It's the hardware configuration for each host. They are imported from ~hosts~ files.
+
+They are generated via ~nixos-generate-config --show-hardware-config~. It generally includes:
++ kernel version
++ boot arguments
++ file system configuration
++ swap devices
++ CPU configuration
 
 ** Modules
+A list of custom modules made to create an explicit configuration with dependencies.
 
-TODO: describe module options generation system.
+For example: if I set ~dotfiles.dev.rust.enable~ to ~true~, emacs will generate a configuration
+to enable rust syntax highlighting and code completion.
 
-*** Add new module
-TODO: document on how to add a new module
+All modules must have an option set with an enable flag. Otherwise, it should be put in ~profiles~.
+There are all declared in ~modules/list.nix~ and exported via ~nixosModules~ in ~flake.nix~.
+
+** Profiles
+A list of common configurations that does not requires configuration (unlike modules).
+There are all declared in ~profiles/list.nix~ and exported via ~nixosModules~ in ~flake.nix~.
 
 * Screenshots
 TODO: include screenshot for each system
