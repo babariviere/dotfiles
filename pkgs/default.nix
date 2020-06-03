@@ -15,8 +15,6 @@ final: prev:
 
   nix-patch = final.callPackage ./nix-patch { };
 
-  nixos-update = final.callPackage ./nixos-update { };
-
   prime = final.callPackage ./prime { };
 
   xterm-24bits = final.callPackage ./xterm-24bits { };

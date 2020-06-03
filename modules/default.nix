@@ -27,10 +27,10 @@ in {
         # Nix commands
         nix-env = "NIXPKGS_ALLOW_UNFREE=1 nix-env";
         ne = "nix-env";
-        nu = "sudo nixos-update switch --upgrade";
+        nu = "sudo nixos-rebuild switch --upgrade";
         ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
-        nrs = "sudo nixos-update switch";
-        nrst = "sudo nixos-update switch --show-trace";
+        nrs = "sudo nixos-rebuild switch";
+        nrst = "sudo nixos-rebuild switch --show-trace";
         nloc = "nix-locate --top-level";
 
         # Utilities
@@ -46,7 +46,6 @@ in {
         nix-prefetch-scripts
         nix-index
         nix-review
-        nixos-update
         nix-patch
         tealdeer
         file
