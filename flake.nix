@@ -64,9 +64,9 @@
         emacs = inputs.emacs.overlay;
         nur = inputs.nur.overlay;
         arion = final: prev: {
-          arion = (import final.inputs.arion { inherit (final) pkgs; }).arion;
+          arion = (import inputs.arion { inherit (final) pkgs; }).arion;
         };
-        snack = final: prev: { snack = (import final.inputs.snack).snack-exe; };
+        snack = final: prev: { snack = (import inputs.snack).snack-exe; };
         podman = final: prev: {
           podman = uns.podman;
           podman-unwrapped = uns.podman-unwrapped;
