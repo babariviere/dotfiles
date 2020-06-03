@@ -66,6 +66,8 @@ in {
           # Essential
           # emacsGit
           emacs'
+          sqlite
+
           (mkIf (cfg.editorconfig) editorconfig-core-c) # :tools editorconfig
 
           # For launching emacs lisp tests
