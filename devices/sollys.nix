@@ -102,4 +102,7 @@ in {
       '';
     }
   ];
+
+  # CPU
+  powerManagement.cpufreq.max = 2500000;
 }
