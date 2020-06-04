@@ -60,7 +60,10 @@
         in listToAttrs (prep files);
         # TODO: how to expose overlays
       in {
-        unstable = final: prev: { unstable = uns; };
+        unstable = final: prev: {
+          unstable = uns;
+          libgccjit = uns.libgccjit;
+        };
         emacs = inputs.emacs.overlay;
         nur = inputs.nur.overlay;
         arion = final: prev: {

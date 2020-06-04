@@ -6,8 +6,7 @@ let
   cfg = dotfiles.editors.emacs;
   rg = (pkgs.ripgrep.override { withPCRE2 = true; });
 
-  emacs' = pkgs.emacsGit.overrideAttrs
-    (old: { buildInputs = old.buildInputs ++ [ pkgs.harfbuzz.dev ]; });
+  emacs' = pkgs.emacsGcc;
   editorScript = pkgs.writeScriptBin "emacseditor" ''
     #!${pkgs.runtimeShell}
     if [ -z "$1" ]; then
