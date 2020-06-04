@@ -43,11 +43,11 @@ in {
     home-manager.users."${dotfiles.user}".programs.git = {
       enable = true;
 
-      extraConfig = {
-        core = {
-          pager =
-            "${pkgs.gitAndTools.diff-so-fancy}/bin/diff-so-fancy | ${pkgs.less}/bin/less --tabs=4 -RFX";
-        };
+      extraConfig = let inherit (pkgs.gitAndTools) delta;
+      in {
+        core.pager = "${delta}/bin/delta --theme='GitHub'";
+        interactive.diffFilter = "${delta}/bin/delta --color-only";
+
         # Color defined by diff-so-fancy
         color = {
           ui = true;
@@ -66,9 +66,13 @@ in {
             whitespace = "red reverse";
           };
         };
+
         url = {
           "git@bitbucket.org:" = { insteadOf = "https://bitbucket.org"; };
+          "git@github.com" = { insteadOf = "github"; };
         };
+
+        diff.algorithm = "patience";
       } // cfg.extraConfig;
       signing = lib.mkIf (cfg.signingKey != null) {
         key = cfg.signingKey;
