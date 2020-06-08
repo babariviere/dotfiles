@@ -9,7 +9,7 @@ in {
       terraform
       packer
       ansible
-      nixops
+      pkgs.nixops
     ];
   };
 }

@@ -90,10 +90,6 @@
 (after! smartparens
   (sp-local-pair 'mhtml-mode "<%" " %>"))
 
-(after! web-mode
-  (add-to-list web-mode-engines-alist
-        '("elixir"  . "\\.l?eex\\'")))
-
 
 ;; :tools flyspell
 (setq ispell-aspell-data-dir "/run/current-system/sw/lib/aspell"

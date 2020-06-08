@@ -22,6 +22,7 @@ in {
       dosfstools
       dnsutils
       fd
+      sd
       git
       gotop
       gptfdisk
