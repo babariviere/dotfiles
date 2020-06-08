@@ -159,8 +159,6 @@
         lsp-enable-indentation t
         lsp-enable-folding t
         lsp-enable-xref t
-        lsp-enable-file-watchers t
-        lsp-enable-links t
         lsp-enable-completion-at-point t
         lsp-signature-auto-activate t
         lsp-signature-render-documentation t))
