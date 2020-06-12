@@ -144,9 +144,11 @@
 (after! lsp-mode
   (setq lsp-lens-auto-enable t
         lsp-ui-doc-enable t
-        lsp-ui-doc-position 'bottom
+        lsp-ui-doc-position 'top
         lsp-ui-doc-header t
         lsp-ui-doc-include-signature t
+        lsp-ui-doc-max-height 25
+        lsp-ui-doc-max-width 35
         lsp-ui-sideline-enable t
         lsp-ui-sideline-ignore-duplicate t
         lsp-ui-flycheck-enable t
