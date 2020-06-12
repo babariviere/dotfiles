@@ -13,9 +13,9 @@ in {
     trustedUsers = [ "root" "@wheel" cfg.user ];
     binaryCaches = [
       "https://aseipp-nix-cache.freetls.fastly.net"
+      "https://cache.nixos.org"
       "https://babariviere.cachix.org"
       "https://all-hies.cachix.org"
-      "https://cache.nixos.org"
     ];
     binaryCachePublicKeys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
