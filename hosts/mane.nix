@@ -111,7 +111,10 @@ in {
     tools = {
       build.enable = true;
       devops.enable = true;
-      docker.enable = false;
+      docker = {
+        enable = true;
+        compose = true;
+      };
       light.enable = true;
       podman = {
         enable = false;

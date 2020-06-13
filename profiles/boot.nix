@@ -12,7 +12,7 @@
     # Boot animation
     plymouth = {
       enable = true;
-      theme = "sphere";
+      theme = "pixels";
       themePackages = [ pkgs.plymouth-themes ];
     };
   };

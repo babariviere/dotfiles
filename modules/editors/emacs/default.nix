@@ -6,6 +6,8 @@ let
   cfg = dotfiles.editors.emacs;
   rg = (pkgs.ripgrep.override { withPCRE2 = true; });
 
+  inherit (pkgs) stdenv;
+
   emacs' = pkgs.emacsGcc;
   editorScript = pkgs.writeScriptBin "emacseditor" ''
     #!${pkgs.runtimeShell}
@@ -117,13 +119,20 @@ in {
             doomTheme = dotfiles.theme.doom;
             font = dotfiles.theme.fonts.mono.name;
           };
+        ".doom.d/system.el".source =
+          pkgs.mutate (usrconf "emacs/doom.d/system.el") {
+            libraryPath = let
+              gccjit = pkgs.unstable.libgccjit;
+              gccjitPath = lib.getLib gccjit;
+              gccjitVersion = lib.getVersion gccjit;
+              libgccjitPath = gccjitPath
+                + "/lib/gcc/${stdenv.targetPlatform.config}/${gccjitVersion}";
+            in stdenv.lib.makeLibraryPath [ stdenv.cc.cc stdenv.glibc ]
+            + ":${libgccjitPath}";
+          };
         ".doom.d/init.el".text = import ./init.el.nix { inherit config lib; };
-        ".doom.d/packages.el".source =
-          config.home-manager.users."${dotfiles.user}".lib.file.mkOutOfStoreSymlink
-          (usrconf "emacs/doom.d/packages.el");
-        ".doom.d/config.el".source =
-          config.home-manager.users."${dotfiles.user}".lib.file.mkOutOfStoreSymlink
-          (usrconf "emacs/doom.d/config.el");
+        ".doom.d/packages.el".source = (usrconf "emacs/doom.d/packages.el");
+        ".doom.d/config.el".source = (usrconf "emacs/doom.d/config.el");
       };
       xdg.configFile = {
         "zsh/rc.d/env.emacs.zsh".source = (usrconf "emacs/env.zsh");

@@ -3,7 +3,7 @@
 
   inputs.nixpkgs.url = "nixpkgs/release-20.03";
   inputs.unstable.url = "github:NixOS/nixpkgs/master";
-  inputs.home.url = "github:babariviere/home-manager/flakes";
+  inputs.home.url = "github:rycee/home-manager/bqv-flakes";
 
   inputs.arion = {
     url = "github:hercules-ci/arion/master";

@@ -210,3 +210,4 @@
 
 ;; Load private configuration after everything else
 (load! "private.el" doom-private-dir t)
+(load! "system.el")

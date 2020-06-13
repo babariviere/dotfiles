@@ -23,11 +23,12 @@ in {
   config = lib.mkIf cfg.enable {
     environment = {
       systemPackages = with pkgs; [
-        git
+        gitAndTools.gitFull
         git-crypt
         gitAndTools.hub
         gitAndTools.diff-so-fancy
         gitAndTools.gitflow
+        github-cli
       ];
 
       shellAliases = {

@@ -38,21 +38,21 @@
     },
     "home": {
       "info": {
-        "lastModified": 1590693809,
-        "narHash": "sha256-LC1t0V1QQM5e1SJqPR34Jb8+nUB5sC1LedTCYEeWtW8="
+        "lastModified": 1591751635,
+        "narHash": "sha256-KgGtyFlkI/fsp+j8VEgJ/ynY9B91aX35Xp04HlDLRTo="
       },
       "inputs": {
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "owner": "babariviere",
+        "owner": "rycee",
         "repo": "home-manager",
-        "rev": "1bc39f6b05d2394d92833dee01e85f516b37cdc7",
+        "rev": "b3fee796fcd5531693d9b84ece76ad6836bb1cfa",
         "type": "github"
       },
       "original": {
-        "owner": "babariviere",
-        "ref": "flakes",
+        "owner": "rycee",
+        "ref": "bqv-flakes",
         "repo": "home-manager",
         "type": "github"
       }
