@@ -188,7 +188,9 @@
 
 ;; misc
 
-(setq projectile-project-search-path '("~/src" "~/src/github.com/babariviere" "~/projects"))
+(setq
+ custom-file (concat doom-private-dir "custom.el")
+ projectile-project-search-path '("~/src" "~/src/github.com/babariviere" "~/projects"))
 
 (use-package! systemd
   :defer)
@@ -214,3 +216,4 @@
 ;; Load private configuration after everything else
 (load! "private.el" doom-private-dir t)
 (load! "system.el")
+(load! "custom.el")
