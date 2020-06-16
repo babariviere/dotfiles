@@ -10,10 +10,10 @@ in {
     environment.systemPackages = with pkgs;
       [
         ghc # TODO: declare version at one place
-        cabal-install
+        # cabal-install
         stack
-        snack
-        cabal2nix
+        # snack
+        # cabal2nix
       ] ++ (with haskellPackages; [ hoogle brittany hlint ]);
 
     home-manager.users."${dotfiles.user}" = {

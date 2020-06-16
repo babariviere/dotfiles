@@ -24,9 +24,10 @@ in {
     };
     desktop = {
       enable = true;
-      awesome.enable = true;
+      awesome.enable = false;
       bspwm.enable = true;
       chrome.enable = true;
+      xmonad.enable = true;
       #i3.enable = true;
       firefox.enable = true;
       polybar.enable = true;
@@ -46,7 +47,7 @@ in {
       elm.enable = false;
       godot.enable = false;
       guile.enable = false;
-      haskell.enable = false;
+      haskell.enable = true;
       javascript.enable = true;
       latex.enable = true;
       lua.enable = true;
