@@ -132,15 +132,12 @@ windowCount =
 ------------------------------------------------------------------------
 myStartupHook :: X ()
 myStartupHook = do
-  spawnOnce "nitrogen --restore &"
-  spawnOnce "picom &"
-  spawnOnce "nm-applet &"
-  spawnOnce "volumeicon &"
+  spawnOnce "@setWallpaper@ &"
+  -- spawnOnce "picom &"
   spawnOnce
-    "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x292d3e --height 18 &"
-  spawnOnce "emacs --daemon &"
+    "trayer --edge top --align right --widthtype request --SetDockType true --SetPartialStrut true --expand true --transparent true --alpha 0 --tint 0x282a36 --height 18 &"
   -- spawnOnce "kak -d -s mysession &"
-  setWMName "LG3D"
+  setWMName "Baba"
 
 ------------------------------------------------------------------------
 -- GRID SELECT
@@ -778,7 +775,7 @@ main = do
               <+> docksEventHook,
           modMask = myModMask,
           terminal = myTerminal,
-          -- , startupHook        = myStartupHook
+          startupHook        = myStartupHook,
           layoutHook = myLayoutHook,
           workspaces = myWorkspaces,
           borderWidth = myBorderWidth,
