@@ -2,7 +2,12 @@
 
 let user = "bastien";
 in {
-  imports = [ ../. ../hardware/sollys.nix ../private/sollys/extra.nix ../profiles/nvidia.nix ];
+  imports = [
+    ../.
+    ../hardware/sollys.nix
+    ../private/sollys/extra.nix
+    ../profiles/nvidia.nix
+  ];
 
   dotfiles = {
     user = user;
@@ -14,11 +19,12 @@ in {
     };
     desktop = {
       enable = true;
-      bspwm.enable = true;
+      bspwm.enable = false;
+      xmonad.enable = true;
       # i3.enable = true;
       firefox.enable = true;
       polybar = {
-        enable = true;
+        enable = false;
         battery = "BAT1";
         batteryAdapter = "ADP1";
       };
