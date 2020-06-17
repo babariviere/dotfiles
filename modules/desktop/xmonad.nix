@@ -9,7 +9,25 @@ in {
 
   config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
     environment.systemPackages = with pkgs; [ xmobar ];
+
+    fonts.fonts =
+      [ (pkgs.unstable.nerdfonts.override { fonts = [ "Mononoki" ]; }) ];
+
+    services.xserver.displayManager.session = [{
+      manage = "desktop";
+      name = "xsession";
+      start = "exec $HOME/.xsession";
+    }];
     home-manager.users."${dotfiles.user}" = {
+      home.keyboard = {
+        layout = "us";
+        variant = "altgr-intl";
+      };
+
+      # TODO: clean me
+      services.flameshot.enable = true;
+
+      xsession.enable = true;
       xsession.windowManager.xmonad = {
         enable = true;
         enableContribAndExtras = true;
@@ -18,10 +36,16 @@ in {
           haskellPackages.xmonad-extras
           haskellPackages.xmonad
         ];
+        # TODO: mutate
+        config = (usrconf "xmonad/xmonad.hs");
       };
 
-      # xdg.configFile."xmonad/xmonadrc".source = xmonadrc;
-      # xdg.configFile."sxhkd/sxhkdrc".source = sxhkdrc;
+      home.file.".xmonad/xpm" = {
+        source = (usrconf "xmonad/xpm");
+        recursive = true;
+      };
+
+      xdg.configFile."xmobar/xmobarrc".source = (usrconf "xmobar/xmobarrc");
     };
   };
 }
