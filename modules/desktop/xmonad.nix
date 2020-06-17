@@ -40,12 +40,13 @@ in {
         config = (usrconf "xmonad/xmonad.hs");
       };
 
-      home.file.".xmonad/xpm" = {
-        source = (usrconf "xmonad/xpm");
-        recursive = true;
+      xdg.configFile = {
+        "xmobar/xmobarrc".source = (usrconf "xmobar/xmobarrc");
+        "xmobar/xpm" = {
+          source = (usrconf "xmonad/xpm");
+          recursive = true;
+        };
       };
-
-      xdg.configFile."xmobar/xmobarrc".source = (usrconf "xmobar/xmobarrc");
     };
   };
 }

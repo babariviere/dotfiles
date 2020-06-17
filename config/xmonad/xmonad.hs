@@ -760,7 +760,7 @@ myScratchPads =
 ------------------------------------------------------------------------
 main :: IO ()
 main = do
-  xmproc <- spawnPipe "xmobar -x 0 /home/babariviere/.config/xmobar/xmobarrc"
+  xmproc <- spawnPipe "xmobar"
   -- the xmonad, ya know...what the WM is named after!
   xmonad $
     ewmh

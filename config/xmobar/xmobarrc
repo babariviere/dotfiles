@@ -11,7 +11,7 @@ Config { font    = "xft:Mononoki Nerd Font:pixelsize=12:antialias=true:hinting=t
        , hideOnStart = False
        , allDesktops = True
        , persistent = True
-       , iconRoot = "/home/babariviere/.xmonad/xpm/"  -- default: "."
+       , iconRoot = ".config/xmobar/xpm"
        , commands = [ 
                       -- Time and date
                       Run Date "\xf133 %b %d %Y (%H:%M)" "date" 50
