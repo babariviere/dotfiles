@@ -17,3 +17,5 @@
   :recipe (:host github :repo "emacsmirror/protobuf-mode" :files (:defaults "*")))
 (package! org-roam-server :recipe (:host github :repo "org-roam/org-roam-server" :files ("*")))
 (package! po-mode)
+(when (featurep! :lang haskell)
+  (package! ormolu))

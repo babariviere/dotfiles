@@ -44,6 +44,11 @@
    '(("gopls.completeUnimported" t t)
      ("gopls.staticcheck" t t))))
 
+;; :lang haskell
+(use-package! omorlu
+  :when (featurep! :lang haskell)
+  :hook (haskell-mode . ormolu-format-on-save-mode))
+
 ;; :lang rust
 ;; (setq rustic-lsp-server 'rust-analyzer)
 (after! rustic

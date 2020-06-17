@@ -14,7 +14,7 @@ in {
         stack
         # snack
         # cabal2nix
-      ] ++ (with haskellPackages; [ hoogle brittany hlint ]);
+      ] ++ (with haskellPackages; [ hoogle ormolu hlint ]);
 
     home-manager.users."${dotfiles.user}" = {
       xdg.configFile."brittany" = {
