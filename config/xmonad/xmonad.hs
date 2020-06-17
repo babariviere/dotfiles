@@ -18,10 +18,8 @@ import XMonad
 import XMonad.Actions.CopyWindow (kill1, killAllOtherCopies)
 import XMonad.Actions.CycleWS
   ( WSType (..),
-    moveTo,
     nextScreen,
     prevScreen,
-    shiftTo,
   )
 import XMonad.Actions.GridSelect
 import XMonad.Actions.MouseResize
@@ -29,7 +27,6 @@ import XMonad.Actions.Promote
 import XMonad.Actions.RotSlaves (rotAllDown, rotSlavesDown)
 import qualified XMonad.Actions.Search as S
 import qualified XMonad.Actions.TreeSelect as TS
-import XMonad.Actions.WindowGo (runOrRaise)
 import XMonad.Actions.WithAll (killAll, sinkAll)
 -- Hooks
 import XMonad.Hooks.DynamicLog
@@ -85,7 +82,7 @@ import qualified XMonad.StackSet as W
 -- Utilities
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.NamedScratchpad
-import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
+import XMonad.Util.Run (runProcessWithInput, spawnPipe)
 import XMonad.Util.SpawnOnce
 
 ------------------------------------------------------------------------
@@ -153,7 +150,7 @@ myColorizer =
 
 -- gridSelect menu layout
 mygridConfig :: p -> GSConfig Window
-mygridConfig colorizer =
+mygridConfig _colorizer =
   (buildDefaultGSConfig myColorizer)
     { gs_cellheight = 40,
       gs_cellwidth = 250,
@@ -242,24 +239,6 @@ promptList =
     ("x", xmonadPrompt) -- xmonad prompt
   ]
 
--- A list of my custom prompts
-promptList' :: [(String, XPConfig -> String -> X (), String)]
-promptList' =
-  [ ("c", calcPrompt, "qalc") -- requires qalculate-gtk
-  ]
-
-------------------------------------------------------------------------
--- CUSTOM PROMPTS
-------------------------------------------------------------------------
--- calcPrompt requires a cli calculator called qalcualte-gtk.
--- You could use this as a template for other custom prompts that
--- use command line programs that return a single line of output.
-calcPrompt :: XPConfig -> String -> X ()
-calcPrompt c ans = inputPrompt c (trim ans)
-  ?+ \input -> liftIO (runProcessWithInput "qalc" [input] "") >>= calcPrompt c
-  where
-    trim = f . f where f = reverse . dropWhile isSpace
-
 ------------------------------------------------------------------------
 -- XPROMPT KEYMAP (emacs-like key bindings)
 ------------------------------------------------------------------------
@@ -340,11 +319,8 @@ dtXPKeymap =
 -- Xmonad has several search engines available to use located in
 -- XMonad.Actions.Search. Additionally, you can add other search engines
 -- such as those listed below.
-archwiki, ebay, news, reddit, urban :: S.SearchEngine
-archwiki =
-  S.searchEngine "archwiki" "https://wiki.archlinux.org/index.php?search="
-ebay = S.searchEngine "ebay" "https://www.ebay.com/sch/i.html?_nkw="
-news = S.searchEngine "news" "https://news.google.com/search?q="
+nixos, reddit, urban :: S.SearchEngine
+nixos = S.searchEngine "nixos" "https://nixos.org/nixos/options.html#"
 reddit = S.searchEngine "reddit" "https://www.reddit.com/search/?q="
 urban =
   S.searchEngine "urban" "https://www.urbandictionary.com/define.php?term="
@@ -353,13 +329,11 @@ urban =
 -- XMonad.Actions.Search, and some are the ones that I added above.
 searchList :: [(String, S.SearchEngine)]
 searchList =
-  [ ("a", archwiki),
-    ("d", S.duckduckgo),
-    ("e", ebay),
+  [ ("d", S.duckduckgo),
     ("g", S.google),
     ("h", S.hoogle),
     ("i", S.images),
-    ("n", news),
+    ("n", nixos),
     ("r", reddit),
     ("s", S.stackage),
     ("t", S.thesaurus),
@@ -375,7 +349,7 @@ searchList =
 -- TREE SELECT
 ------------------------------------------------------------------------
 treeselectAction :: TS.TSConfig (X ()) -> X ()
-treeselectAction tsDefaultConfig =
+treeselectAction _tsDefaultConfig =
   TS.treeselectAction
     tsDefaultConfig
     [ Node (TS.TSNode "hello" "displays hello" (spawn "xmessage hello!")) [],
@@ -399,19 +373,6 @@ treeselectAction tsDefaultConfig =
           Node
             (TS.TSNode "restart xmonad" "restart xmonad" (spawn "xmonad --restart"))
             []
-        ],
-      Node
-        ( TS.TSNode
-            "brightness"
-            "Sets screen brightness using xbacklight"
-            (return ())
-        )
-        [ Node (TS.TSNode "bright" "full power" (spawn "xbacklight -set 100")) [],
-          Node
-            ( TS.TSNode "normal" "normal brightness (50%)" (spawn "xbacklight -set 50")
-            )
-            [],
-          Node (TS.TSNode "dim" "quite dark" (spawn "xbacklight -set 10")) []
         ],
       Node
         (TS.TSNode "system monitors" "system monitoring applications" (return ()))
@@ -519,7 +480,7 @@ myKeys =
     ("M-S-t", treeselectAction tsDefaultConfig), -- tree select actions menu
 
     -- Windows navigation
-    ("M-windows", windows W.focusMaster), -- Move focus to the master window
+    ("M-m", windows W.focusMaster), -- Move focus to the master window
     ("M-j", windows W.focusDown), -- Move focus to the next window
     ("M-k", windows W.focusUp), -- Move focus to the prev window
       --, ("M-S-m", windows W.swapMaster)    -- Swap the focused window and the master window
@@ -549,36 +510,21 @@ myKeys =
     -- Workspaces
     ("M-.", nextScreen), -- Switch focus to next monitor
     ("M-,", prevScreen), -- Switch focus to prev monitor
-    ("M-S-<KP_Add>", shiftTo Next nonNSP >> moveTo Next nonNSP), -- Shifts focused window to next ws
-    ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP), -- Shifts focused window to prev ws
 
     -- Scratchpads
     ("M-S-<Return>", namedScratchpadAction myScratchPads "terminal"),
     -- Multimedia Keys
-    -- ("<XF86AudioPlay>", spawn "cmus toggle"),
-    -- ("<XF86AudioPrev>", spawn "cmus prev"),
-    -- ("<XF86AudioNext>", spawn "cmus next"),
     ("<XF86AudioMute>",   spawn "pamixer -t"),
     ("<XF86AudioLowerVolume>", spawn "pamixer -d 3"),
     ("<XF86AudioRaiseVolume>", spawn "pamixer -i 3"),
     ("<XF86MonBrightnessUp>", spawn "light -A 5"),
     ("<XF86MonBrightnessDown>", spawn "light -U 5"),
-    ("<XF86Search>", safeSpawn myBrowser ["https://www.google.com/"]),
-    ("<XF86Mail>", runOrRaise "geary" (resource =? "thunderbird")),
-    ("<XF86Calculator>", runOrRaise "gcalctool" (resource =? "gcalctool")),
-    ("<XF86Eject>", spawn "toggleeject"),
     ("<Print>", spawn "flameshot gui")
   ]
     -- Appending search engines to keybindings list
     ++ [("M-s " ++ k, S.promptSearch babaXTConfig' f) | (k, f) <- searchList]
     ++ [("M-S-s " ++ k, S.selectSearch f) | (k, f) <- searchList]
     ++ [("M-p " ++ k, f babaXTConfig') | (k, f) <- promptList]
-    ++ [("M-p " ++ k, f babaXTConfig' g) | (k, f, g) <- promptList']
-  where
-    -- Appending named scratchpads to keybindings list
-    nonNSP = WSIs (return (\ws -> W.tag ws /= "nsp"))
-    nonEmptyNonNSP =
-      WSIs (return (\ws -> isJust (W.stack ws) && W.tag ws /= "nsp"))
 
 ------------------------------------------------------------------------
 -- WORKSPACES
@@ -595,7 +541,7 @@ xmobarEscape = concatMap doubleLts
 myWorkspaces :: [String]
 myWorkspaces =
   clickable
-    . (map xmobarEscape)
+    . map xmobarEscape
     $ ["dev", "www", "chat", "mus", "sys", "doc", "vbox", "vid", "gfx"]
   where
     clickable l =
