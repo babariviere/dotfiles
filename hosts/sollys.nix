@@ -12,7 +12,7 @@ in {
   dotfiles = {
     user = user;
     email = "bastien.riviere@easy.movie";
-    theme.name = "one-light";
+    theme.name = "one";
     network = {
       eth = "enp59s0";
       wlan = "wlo1";
