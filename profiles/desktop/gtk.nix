@@ -32,6 +32,11 @@ in {
         inherit iconTheme theme;
       };
 
+      qt = {
+        enable = true;
+        platformTheme = "gtk";
+      };
+
       xsession.pointerCursor = cursorTheme;
     };
   };
