@@ -41,6 +41,8 @@ in {
           // {
             setWallpaper =
               "${pkgs.feh}/bin/feh --bg-fill ${dotfiles.theme.wallpaper}";
+            trayerBackground = "0x"
+              + lib.strings.removePrefix "#" dotfiles.theme.colors.background;
           });
       };
 

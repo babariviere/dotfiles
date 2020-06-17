@@ -132,7 +132,7 @@ myStartupHook = do
   spawnOnce "@setWallpaper@ &"
   -- spawnOnce "picom &"
   spawnOnce
-    "trayer --edge top --align right --widthtype request --SetDockType true --SetPartialStrut true --expand true --transparent true --alpha 0 --tint 0x282a36 --height 18 &"
+    "trayer --edge top --align right --widthtype request --SetDockType true --SetPartialStrut true --expand true --transparent true --alpha 0 --tint @trayerBackground@ --height 18 &"
   -- spawnOnce "kak -d -s mysession &"
   setWMName "Baba"
 
@@ -189,17 +189,17 @@ myAppGrid =
 ------------------------------------------------------------------------
 -- XPROMPT SETTINGS
 ------------------------------------------------------------------------
-babaXTConfig :: XPConfig
-babaXTConfig =
+myXTConfig :: XPConfig
+myXTConfig =
   def
     { font = "xft:Mononoki Nerd Font:size=9",
-      bgColor = "#292d3e",
-      fgColor = "#d0d0d0",
-      bgHLight = "#c792ea",
-      fgHLight = "#000000",
-      borderColor = "#535974",
+      bgColor = "@background@",
+      fgColor = "@foreground@",
+      bgHLight = "@lightBlack@",
+      fgHLight = "@foregroundBold@",
+      borderColor = "@lightWhite@",
       promptBorderWidth = 0,
-      promptKeymap = dtXPKeymap,
+      promptKeymap = myXPKeymap,
       position = Top,
       --    , position            = CenteredAt { xpCenterY = 0.3, xpWidth = 0.3 }
       height = 20,
@@ -215,8 +215,8 @@ babaXTConfig =
 
 -- The same config minus the autocomplete feature which is annoying on
 -- certain Xprompts, like the search engine prompts.
-babaXTConfig' :: XPConfig
-babaXTConfig' = babaXTConfig {autoComplete = Nothing}
+myXTConfig' :: XPConfig
+myXTConfig' = myXTConfig {autoComplete = Nothing}
 
 -- A list of all of the standard Xmonad prompts
 promptList :: [(String, XPConfig -> X ())]
@@ -242,8 +242,8 @@ promptList =
 ------------------------------------------------------------------------
 -- XPROMPT KEYMAP (emacs-like key bindings)
 ------------------------------------------------------------------------
-dtXPKeymap :: M.Map (KeyMask, KeySym) (XP ())
-dtXPKeymap =
+myXPKeymap :: M.Map (KeyMask, KeySym) (XP ())
+myXPKeymap =
   M.fromList $
     map
       (first $ (,) controlMask) -- control + <key>
@@ -460,7 +460,7 @@ myKeys =
     -- Open emacs
     ("M-e", spawn "emacseditor"),
     -- Run Prompt
-    ("M-d", shellPrompt babaXTConfig), -- Shell Prompt
+    ("M-d", shellPrompt myXTConfig), -- Shell Prompt
 
     -- Windows
     ("M-S-c", kill1), -- Kill the currently focused client
@@ -522,9 +522,9 @@ myKeys =
     ("<Print>", spawn "flameshot gui")
   ]
     -- Appending search engines to keybindings list
-    ++ [("M-s " ++ k, S.promptSearch babaXTConfig' f) | (k, f) <- searchList]
+    ++ [("M-s " ++ k, S.promptSearch myXTConfig' f) | (k, f) <- searchList]
     ++ [("M-S-s " ++ k, S.selectSearch f) | (k, f) <- searchList]
-    ++ [("M-p " ++ k, f babaXTConfig') | (k, f) <- promptList]
+    ++ [("M-p " ++ k, f myXTConfig') | (k, f) <- promptList]
 
 ------------------------------------------------------------------------
 -- WORKSPACES
@@ -652,6 +652,7 @@ tabs =
     myTabConfig =
       def
         { fontName = "xft:Mononoki Nerd Font:regular:pixelsize=11",
+          -- TODO: fix colors
           activeColor = "#292d3e",
           inactiveColor = "#3e445e",
           activeBorderColor = "#292d3e",
@@ -733,6 +734,7 @@ main = do
               xmobarPP
                 { ppOutput = \x ->
                     hPutStrLn xmproc x,
+                  -- TODO: fix colors
                   ppCurrent = xmobarColor "#c3e88d" "" . wrap "[" "]", -- Current workspace in xmobar
                   ppVisible = xmobarColor "#c3e88d" "", -- Visible but not current workspace
                   ppHidden = xmobarColor "#82AAFF" "" . wrap "*" "", -- Hidden workspaces in xmobar

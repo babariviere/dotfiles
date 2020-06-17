@@ -4,8 +4,8 @@
 
 Config { font    = "xft:Mononoki Nerd Font:pixelsize=12:antialias=true:hinting=true"
        , additionalFonts = [ "xft:FontAwesome:pixelsize=13" ]
-       , bgColor = "#282A36"
-       , fgColor = "#B45BCF"
+       , bgColor = "@background@"
+       , fgColor = "@foreground@"
        , position = Top
        , lowerOnStart = True
        , hideOnStart = False
