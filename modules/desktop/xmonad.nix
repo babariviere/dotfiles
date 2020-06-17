@@ -48,6 +48,8 @@ in {
         "xmobar/xmobarrc".source = pkgs.mutate (usrconf "xmobar/xmobarrc")
           (dotfiles.theme.colors // {
             network = dotfiles.network.wlan or dotfiles.network.eth;
+            # TODO: don't use polybar value
+            battery = dotfiles.desktop.polybar.battery;
           });
         # TODO: package it
         "xmobar/trayer-padding-icon.sh" = {
