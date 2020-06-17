@@ -7,14 +7,14 @@ in {
   options.dotfiles.dev.haskell.enable = lib.mkEnableOption "haskell";
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs;
-      [
-        ghc # TODO: declare version at one place
-        # cabal-install
-        stack
-        # snack
-        # cabal2nix
-      ] ++ (with haskellPackages; [ hoogle ormolu hlint ghcide ]);
+    environment.systemPackages = with pkgs; [
+      # cabal-install
+      stack
+      # snack
+      # cabal2nix
+      (haskellPackages.ghcWithPackages
+        (ps: with ps; [ hoogle ormolu hlint ghcide ]))
+    ];
 
     home-manager.users."${dotfiles.user}" = {
       home.file.".ghci".source = pkgs.mutate (usrconf "ghci") {
