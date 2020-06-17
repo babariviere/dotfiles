@@ -14,7 +14,7 @@ in {
         stack
         # snack
         # cabal2nix
-      ] ++ (with haskellPackages; [ hoogle ormolu hlint ]);
+      ] ++ (with haskellPackages; [ hoogle ormolu hlint ghcide ]);
 
     home-manager.users."${dotfiles.user}" = {
       home.file.".ghci".source = pkgs.mutate (usrconf "ghci") {
