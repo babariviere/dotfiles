@@ -45,7 +45,10 @@ in {
       };
 
       xdg.configFile = {
-        "xmobar/xmobarrc".source = (usrconf "xmobar/xmobarrc");
+        "xmobar/xmobarrc".source = pkgs.mutate (usrconf "xmobar/xmobarrc")
+          (dotfiles.theme.colors // {
+            network = dotfiles.network.wlan or dotfiles.network.eth;
+          });
         # TODO: package it
         "xmobar/trayer-padding-icon.sh" = {
           text = ''
