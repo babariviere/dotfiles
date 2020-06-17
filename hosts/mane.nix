@@ -17,7 +17,7 @@ in {
     user = user;
     # email = "me@babariviere.com"; TODO: need to fix signing key
     email = "babathriviere@gmail.com";
-    theme.name = "one-light";
+    theme.name = "one";
     network = {
       eth = "enp0s31f6";
       wlan = "wlp82s0";
@@ -25,12 +25,12 @@ in {
     desktop = {
       enable = true;
       awesome.enable = false;
-      bspwm.enable = true;
+      bspwm.enable = false;
       chrome.enable = true;
       xmonad.enable = true;
       #i3.enable = true;
       firefox.enable = true;
-      polybar.enable = true;
+      polybar.enable = false;
       termite.enable = true;
       picom.enable = false;
       dunst.enable = true;
