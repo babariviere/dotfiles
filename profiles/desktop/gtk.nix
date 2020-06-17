@@ -14,7 +14,7 @@ let
   };
   theme = {
     package = pkgs.plata-theme;
-    name = "Plata-Lumine";
+    name = "Plata-Noir";
   };
 in {
   config = mkIf cfg.enable {
