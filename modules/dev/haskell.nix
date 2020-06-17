@@ -17,11 +17,6 @@ in {
       ] ++ (with haskellPackages; [ hoogle ormolu hlint ]);
 
     home-manager.users."${dotfiles.user}" = {
-      xdg.configFile."brittany" = {
-        source = (usrconf "brittany");
-        recursive = true;
-      };
-
       home.file.".ghci".source = pkgs.mutate (usrconf "ghci") {
         hoogle = "${pkgs.haskellPackages.hoogle}/bin/hoogle";
       };
