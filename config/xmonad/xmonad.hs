@@ -499,7 +499,7 @@ myKeys =
     -- Open emacs
     ("M-e", spawn "emacseditor"),
     -- Run Prompt
-    ("M-S-<Return>", shellPrompt babaXTConfig), -- Shell Prompt
+    ("M-d", shellPrompt babaXTConfig), -- Shell Prompt
 
     -- Windows
     ("M-S-c", kill1), -- Kill the currently focused client
@@ -553,7 +553,7 @@ myKeys =
     ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP), -- Shifts focused window to prev ws
 
     -- Scratchpads
-    ("M-C-<Return>", namedScratchpadAction myScratchPads "terminal"),
+    ("M-S-<Return>", namedScratchpadAction myScratchPads "terminal"),
     -- Multimedia Keys
     -- ("<XF86AudioPlay>", spawn "cmus toggle"),
     -- ("<XF86AudioPrev>", spawn "cmus prev"),
