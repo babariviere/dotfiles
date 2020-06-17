@@ -784,6 +784,7 @@ main = do
           borderWidth = myBorderWidth,
           normalBorderColor = myNormColor,
           focusedBorderColor = myFocusColor,
+          focusFollowsMouse = False,
           logHook =
             dynamicLogWithPP
               xmobarPP
