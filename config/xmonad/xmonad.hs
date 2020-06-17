@@ -557,39 +557,20 @@ myKeys =
 
     -- Scratchpads
     ("M-C-<Return>", namedScratchpadAction myScratchPads "terminal"),
-    ("M-C-c", namedScratchpadAction myScratchPads "mocp"),
-    -- Controls for mocp music player.
-    ("M-u p", spawn "mocp --play"),
-    ("M-u l", spawn "mocp --next"),
-    ("M-u h", spawn "mocp --previous"),
-    ("M-u <Space>", spawn "mocp --toggle-pause"),
-    --- My Applications (Super+Alt+Key)
-    ("M-M1-a", spawn (myTerminal ++ " -e ncpamixer")),
-    ("M-M1-b", spawn "surf www.youtube.com/c/DistroTube/"),
-    ("M-M1-e", spawn (myTerminal ++ " -e neomutt")),
-    ("M-M1-f", spawn (myTerminal ++ " -e sh ./.config/vifm/scripts/vifmrun")),
-    ("M-M1-i", spawn (myTerminal ++ " -e irssi")),
-    ("M-M1-j", spawn (myTerminal ++ " -e joplin")),
-    ("M-M1-l", spawn (myTerminal ++ " -e lynx -cfg=~/.lynx/lynx.cfg -lss=~/.lynx/lynx.lss gopher://distro.tube")),
-    ("M-M1-m", spawn (myTerminal ++ " -e mocp")),
-    ("M-M1-n", spawn (myTerminal ++ " -e newsboat")),
-    ("M-M1-p", spawn (myTerminal ++ " -e pianobar")),
-    ("M-M1-r", spawn (myTerminal ++ " -e rtv")),
-    ("M-M1-t", spawn (myTerminal ++ " -e toot curses")),
-    ("M-M1-w", spawn (myTerminal ++ " -e wopr report.xml")),
-    ("M-M1-y", spawn (myTerminal ++ " -e youtube-viewer")),
     -- Multimedia Keys
-    ("<XF86AudioPlay>", spawn "cmus toggle"),
-    ("<XF86AudioPrev>", spawn "cmus prev"),
-    ("<XF86AudioNext>", spawn "cmus next"),
-    -- , ("<XF86AudioMute>",   spawn "amixer set Master toggle")  -- Bug prevents it from toggling correctly in 12.04.
-    ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute"),
-    ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute"),
+    -- ("<XF86AudioPlay>", spawn "cmus toggle"),
+    -- ("<XF86AudioPrev>", spawn "cmus prev"),
+    -- ("<XF86AudioNext>", spawn "cmus next"),
+    ("<XF86AudioMute>",   spawn "pamixer -t"),
+    ("<XF86AudioLowerVolume>", spawn "pamixer -d 3"),
+    ("<XF86AudioRaiseVolume>", spawn "pamixer -i 3"),
+    ("<XF86MonBrightnessUp>", spawn "light -A 5"),
+    ("<XF86MonBrightnessDown>", spawn "light -U 5"),
     ("<XF86Search>", safeSpawn myBrowser ["https://www.google.com/"]),
     ("<XF86Mail>", runOrRaise "geary" (resource =? "thunderbird")),
     ("<XF86Calculator>", runOrRaise "gcalctool" (resource =? "gcalctool")),
     ("<XF86Eject>", spawn "toggleeject"),
-    ("<Print>", spawn "scrotd 0")
+    ("<Print>", spawn "flameshot gui")
   ]
     -- Appending search engines to keybindings list
     ++ [("M-s " ++ k, S.promptSearch babaXTConfig' f) | (k, f) <- searchList]
@@ -763,21 +744,11 @@ myLayoutHook =
 ------------------------------------------------------------------------
 myScratchPads :: [NamedScratchpad]
 myScratchPads =
-  [ NS "terminal" spawnTerm findTerm manageTerm,
-    NS "mocp" spawnMocp findMocp manageMocp
-  ]
+  [ NS "terminal" spawnTerm findTerm manageTerm ]
   where
     spawnTerm = myTerminal ++ " -t scratchpad"
     findTerm = title =? "scratchpad"
     manageTerm = customFloating $ W.RationalRect l t w h
-      where
-        h = 0.9
-        w = 0.9
-        t = 0.95 - h
-        l = 0.95 - w
-    spawnMocp = myTerminal ++ " -n mocp 'mocp'"
-    findMocp = resource =? "mocp"
-    manageMocp = customFloating $ W.RationalRect l t w h
       where
         h = 0.9
         w = 0.9
