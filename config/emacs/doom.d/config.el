@@ -166,9 +166,6 @@
         lsp-signature-auto-activate t
         lsp-signature-render-documentation t))
 
-;; Disable ws-butler to makes lsp works again
-(remove-hook 'doom-first-buffer-hook #'ws-butler-global-mode)
-
 ;; :email
 (set-email-account! "gmail"
                     '((mu4e-sent-folder       . "/gmail/[Gmail]/Sent Mail")
