@@ -13,6 +13,8 @@ in {
     fonts.fonts =
       [ (pkgs.unstable.nerdfonts.override { fonts = [ "Mononoki" ]; }) ];
 
+    dotfiles.dev.haskell.enable = lib.mkForce true;
+
     services.xserver.displayManager.session = [{
       manage = "desktop";
       name = "xsession";
