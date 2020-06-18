@@ -18,7 +18,7 @@ Config { font    = "xft:Mononoki Nerd Font:pixelsize=12:antialias=true:hinting=t
                       -- Time and date
                     , Run Date "\xf133 %b %d %Y (%H:%M)" "date" 50
                       -- Network up and down
-                    , Run Network "@network@" ["-t", "\xf0aa <rx>kb  \xf0ab <tx>kb"] 20
+                    , Run Network "@network@" ["-t", "\xf0aa <tx>kb  \xf0ab <rx>kb"] 20
                       -- Cpu usage in percent
                     , Run Cpu ["-t", "\xf108  cpu: (<total>%)","-H","50","--high","red"] 20
                       -- Ram used number and percent
