@@ -8,7 +8,7 @@ in {
   options.dotfiles.desktop.xmonad.enable = lib.mkEnableOption "xmonad";
 
   config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
-    environment.systemPackages = with pkgs; [ xmobar nitrogen trayer ];
+    environment.systemPackages = with pkgs; [ nitrogen trayer xdotool ];
 
     fonts.fonts =
       [ (pkgs.unstable.nerdfonts.override { fonts = [ "Mononoki" ]; }) ];
@@ -35,6 +35,7 @@ in {
           haskellPackages.xmonad-contrib
           haskellPackages.xmonad-extras
           haskellPackages.xmonad
+          haskellPackages.xmobar
         ];
         # TODO: mutate
         config = pkgs.mutate (usrconf "xmonad/xmonad.hs") (dotfiles.theme.colors
@@ -47,11 +48,12 @@ in {
       };
 
       xdg.configFile = {
-        "xmobar/xmobarrc".source = pkgs.mutate (usrconf "xmobar/xmobarrc")
+        "xmobar/xmobar.hs".source = pkgs.mutate (usrconf "xmobar/xmobar.hs")
           (dotfiles.theme.colors // {
             network = dotfiles.network.wlan or dotfiles.network.eth;
             # TODO: don't use polybar value
             battery = dotfiles.desktop.polybar.battery;
+            xpm = (usrconf "xmonad/xpm");
           });
         # TODO: package it
         "xmobar/trayer-padding-icon.sh" = {
@@ -105,10 +107,6 @@ in {
             echo "<icon=''${iconfile}/>"
           '';
           executable = true;
-        };
-        "xmobar/xpm" = {
-          source = (usrconf "xmonad/xpm");
-          recursive = true;
         };
       };
     };

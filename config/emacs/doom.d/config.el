@@ -71,25 +71,25 @@
 
 (use-package! org-roam-server)
 
-(after! org-journal
-  (setq org-journal-dir org-directory
-        org-journal-file-format "daily-%Y%m.org"
-        org-journal-file-pattern (org-journal-dir-and-format->regex
-                                  org-journal-dir org-journal-file-format)
-        org-journal-file-type 'monthly)
-
-  (defun org-journal-file-header-func (time)
-    "Custom function to create journal header."
-    (concat
-     (pcase org-journal-file-type
-       (`daily "#+TITLE: Daily Journal\n#+STARTUP: showeverything")
-       (`weekly "#+TITLE: Weekly Journal\n#+STARTUP: folded")
-       (`monthly "#+TITLE: Monthly Journal\n#+STARTUP: folded")
-       (`yearly "#+TITLE: Yearly Journal\n#+STARTUP: folded"))))
-
-  (setq org-journal-file-header 'org-journal-file-header-func)
-
-  (add-to-list 'auto-mode-alist (cons org-journal-file-pattern 'org-journal-mode)))
+;; (after! org-journal
+;;   (setq org-journal-dir org-directory
+;;         org-journal-file-format "daily-%Y%m.org"
+;;         org-journal-file-pattern (org-journal-dir-and-format->regex
+;;                                   org-journal-dir org-journal-file-format)
+;;         org-journal-file-type 'monthly)
+;;
+;;   (defun org-journal-file-header-func (time)
+;;     "Custom function to create journal header."
+;;     (concat
+;;      (pcase org-journal-file-type
+;;        (`daily "#+TITLE: Daily Journal\n#+STARTUP: showeverything")
+;;        (`weekly "#+TITLE: Weekly Journal\n#+STARTUP: folded")
+;;        (`monthly "#+TITLE: Monthly Journal\n#+STARTUP: folded")
+;;        (`yearly "#+TITLE: Yearly Journal\n#+STARTUP: folded"))))
+;;
+;;   (setq org-journal-file-header 'org-journal-file-header-func)
+;;
+;;   (add-to-list 'auto-mode-alist (cons org-journal-file-pattern 'org-journal-mode)))
 
 ;; :lang web
 (after! smartparens
