@@ -734,14 +734,13 @@ main = do
               xmobarPP
                 { ppOutput = \x ->
                     hPutStrLn xmproc x,
-                  -- TODO: fix colors
-                  ppCurrent = xmobarColor "#c3e88d" "" . wrap "[" "]", -- Current workspace in xmobar
-                  ppVisible = xmobarColor "#c3e88d" "", -- Visible but not current workspace
-                  ppHidden = xmobarColor "#82AAFF" "" . wrap "*" "", -- Hidden workspaces in xmobar
-                  ppHiddenNoWindows = xmobarColor "#F07178" "", -- Hidden workspaces (no windows)
-                  ppTitle = xmobarColor "#d0d0d0" "" . shorten 60, -- Title of active window in xmobar
+                  ppCurrent = xmobarColor "@green@" "" . wrap "[" "]", -- Current workspace in xmobar
+                  ppVisible = xmobarColor "@green@" "", -- Visible but not current workspace
+                  ppHidden = xmobarColor "@blue@" "" . wrap "*" "", -- Hidden workspaces in xmobar
+                  ppHiddenNoWindows = xmobarColor "@red@" "", -- Hidden workspaces (no windows)
+                  ppTitle = xmobarColor "@foreground@" "" . shorten 60, -- Title of active window in xmobar
                   ppSep = "<fc=#666666>|</fc>", -- Separators in xmobar
-                  ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!", -- Urgent workspace
+                  ppUrgent = xmobarColor "@lightRed@" "" . wrap "!" "!", -- Urgent workspace
                   ppExtras = [windowCount], -- # of windows current workspace
                   ppOrder = \(ws : l : t : ex) -> [ws, l] ++ ex ++ [t]
                 }
