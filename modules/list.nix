@@ -4,6 +4,7 @@
   ./desktop/bspwm.nix
   ./desktop/i3.nix
   ./desktop/xmonad.nix
+  ./desktop/programs/alacritty.nix
   ./desktop/programs/chrome.nix
   ./desktop/programs/compton.nix
   ./desktop/programs/dunst.nix

@@ -28,7 +28,7 @@ in {
         battery = "BAT1";
         batteryAdapter = "ADP1";
       };
-      termite.enable = true;
+      alacritty.enable = true;
       compton.enable = false;
       dunst.enable = true;
       rofi.enable = true;

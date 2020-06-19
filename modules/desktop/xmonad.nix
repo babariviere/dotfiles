@@ -39,7 +39,7 @@ in {
           haskellPackages.xmonad
           haskellPackages.xmobar
         ];
-        # TODO: mutate
+        # TODO: configurable terminal
         config = pkgs.mutate (usrconf "xmonad/xmonad.hs") (dotfiles.theme.colors
           // {
             setWallpaper =

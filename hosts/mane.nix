@@ -31,7 +31,7 @@ in {
       #i3.enable = true;
       firefox.enable = true;
       polybar.enable = false;
-      termite.enable = true;
+      alacritty.enable = true;
       picom.enable = false;
       dunst.enable = true;
       rofi.enable = true;

@@ -95,7 +95,7 @@ myModMask :: KeyMask
 myModMask = mod4Mask -- Sets modkey to super/windows key
 
 myTerminal :: String
-myTerminal = "termite" -- Sets default terminal
+myTerminal = "alacritty" -- Sets default terminal
 
 myBrowser :: String
 myBrowser = "firefox"

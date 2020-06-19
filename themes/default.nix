@@ -25,6 +25,28 @@ let
     color15 = colors.lightWhite or colors.white;
   };
 
+  bright = colors: {
+    black = colors.lightBlack or colors.black;
+    red = colors.lightRed or colors.red;
+    green = colors.lightGreen or colors.green;
+    yellow = colors.lightYellow or colors.yellow;
+    blue = colors.lightBlue or colors.blue;
+    magenta = colors.lightMagenta or colors.magenta;
+    cyan = colors.lightCyan or colors.cyan;
+    white = colors.lightWhite or colors.white;
+  };
+
+  normal = colors: {
+    black = colors.black or (throw "black color is not defined");
+    red = colors.red or (throw "red color is not defined");
+    green = colors.green or (throw "green color is not defined");
+    yellow = colors.yellow or (throw "yellow color is not defined");
+    blue = colors.blue or (throw "blue color is not defined");
+    magenta = colors.magenta or (throw "magenta color is not defined");
+    cyan = colors.cyan or (throw "cyan color is not defined");
+    white = colors.white or (throw "white color is not defined");
+  };
+
   theme = (import (./. + "/${config.dotfiles.theme.name}"));
 in {
   imports = [ ./fonts.nix ];
@@ -36,12 +58,26 @@ in {
     };
     colors = mkOption {
       type = types.attrsOf (types.strMatching "#[a-f0-9]{6}");
-      description = "Colors defined by theme. This will be overrided by theme.";
+      description = "Colors defined by theme.";
+      readOnly = true;
     };
 
     colorsAnsi = mkOption {
       type = types.attrsOf (types.strMatching "#[a-f0-9]{6}");
-      description = "Colors defined by theme. This will be overrided by theme.";
+      description = "Colors defined by theme (ANSI format).";
+      readOnly = true;
+    };
+
+    bright = mkOption {
+      type = types.attrsOf (types.strMatching "#[a-f0-9]{6}");
+      description = "Bright colors defined by theme.";
+      readOnly = true;
+    };
+
+    normal = mkOption {
+      type = types.attrsOf (types.strMatching "#[a-f0-9]{6}");
+      description = "Normal colors defined by theme.";
+      readOnly = true;
     };
 
     doom = mkOption {
@@ -51,36 +87,27 @@ in {
 
     wallpaper = mkOption {
       type = types.path;
-      description =
-        "Wallapper defined by theme. This will be overrided by theme.";
+      description = "Wallapper defined by theme.";
+      readOnly = true;
     };
   };
 
   # TODO: configure fonts with theme ?
-  config = {
-    dotfiles.theme.colors = mkForce (ansi theme // theme);
+  config.dotfiles.theme = {
+    colors = (ansi theme // theme);
 
-    dotfiles.theme.colorsAnsi = mkForce (ansi theme // {
+    colorsAnsi = (ansi theme // {
       foreground = theme.foreground;
       background = theme.background;
     });
 
-    dotfiles.theme.doom = "doom-${config.dotfiles.theme.name}";
-    dotfiles.theme.wallpaper = let
+    bright = bright theme;
+    normal = normal theme;
+
+    doom = "doom-${config.dotfiles.theme.name}";
+    wallpaper = let
       path = (./. + "/${config.dotfiles.theme.name}/wallpaper.nix");
       expr = pkgs.callPackage path { };
     in mkForce expr.src;
-
-    home-manager.users."${dotfiles.user}".xdg.configFile = {
-      "theme.json".text = let
-        fontset =
-          lib.attrsets.filterAttrs (n: v: n != "ligature") dotfiles.theme.fonts;
-        fonts =
-          lib.attrsets.mapAttrs (_n: v: { inherit (v) name size; }) fontset;
-      in builtins.toJSON ({
-        name = dotfiles.theme.name;
-        fonts = fonts;
-      } // dotfiles.theme.colorsAnsi);
-    };
   };
 }
