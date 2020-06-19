@@ -95,16 +95,15 @@
 (after! smartparens
   (sp-local-pair 'mhtml-mode "<%" " %>"))
 
+;; :tools flycheck
+(after! flycheck
+  (setq flycheck-check-syntax-automatically '(save idle-change new-line mode-enabled)))
+
 
 ;; :tools flyspell
 (setq ispell-aspell-data-dir "/run/current-system/sw/lib/aspell"
       ispell-aspell-dict-dir ispell-aspell-data-dir
       ispell-aspell-dictionary-alist '())
-
-;; :tools magit
-(defadvice! +magit-invalidate-projectile-cache-a (&rest args)
-  :after '(magit-checkout magit-branch-checkout)
-  (projectile-invalidate-cache nil))
 
 ;; :ui deft
 (after! deft
