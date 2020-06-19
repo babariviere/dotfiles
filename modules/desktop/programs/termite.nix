@@ -62,7 +62,7 @@ in {
 
           # white
           color7  = ${colors.color7}
-          color15 = ${colors.color15}}
+          color15 = ${colors.color15}
         '';
       };
 
