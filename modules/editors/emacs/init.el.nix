@@ -202,7 +202,7 @@ in header + (generateSections [
     plantuml.enable = dotfiles.dev.plantuml.enable;
     python = {
       enable = dotfiles.dev.python.enable;
-      flags = [ "lsp" "pyenv" ];
+      flags = [ "lsp" "pyenv" "poetry" ];
     };
     rest.enable = true;
     ruby = {

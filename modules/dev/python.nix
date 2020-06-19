@@ -14,6 +14,7 @@ in {
       python3Packages.virtualenv
       pipreqs
       pypi2nix
+      poetry
     ];
   };
 }
