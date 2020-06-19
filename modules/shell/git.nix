@@ -46,7 +46,7 @@ in {
 
       extraConfig = let inherit (pkgs.gitAndTools) delta;
       in {
-        core.pager = "${delta}/bin/delta --theme='GitHub'";
+        core.pager = "${delta}/bin/delta --theme='OneHalfDark'";
         interactive.diffFilter = "${delta}/bin/delta --color-only";
 
         # Color defined by diff-so-fancy
