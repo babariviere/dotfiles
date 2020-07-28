@@ -27,7 +27,7 @@ config =
           -- Network up and down
           Run $ Network "@network@" ["-t", "\xf0aa <tx>kb  \xf0ab <rx>kb"] 20,
           -- Cpu usage in percent
-          Run $ Cpu ["-t", "\xf108  cpu: (<total>%)", "-H", "50", "--high", "red"] 20,
+          Run $ Cpu ["-t", "\xf108  cpu: (<total>%)"] 20,
           -- Ram used number and percent
           Run $ Memory ["-t", "\xf233  mem: <used>M (<usedratio>%)"] 20,
           -- Runs a standard shell command 'uname -r' to get kernel version
