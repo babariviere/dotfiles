@@ -22,6 +22,7 @@
   ./dev/godot.nix
   ./dev/guile.nix
   ./dev/haskell.nix
+  ./dev/idris.nix
   ./dev/javascript.nix
   ./dev/latex.nix
   ./dev/lua.nix

@@ -48,6 +48,7 @@ in {
       godot.enable = false;
       guile.enable = false;
       haskell.enable = true;
+      idris.enable = true;
       javascript.enable = true;
       latex.enable = true;
       lua.enable = true;

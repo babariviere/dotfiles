@@ -167,6 +167,7 @@ in header + (generateSections [
       enable = dotfiles.dev.haskell.enable;
       # flags = [ "ghcide" ];
     };
+    idris.enable = dotfiles.dev.idris.enable;
     javascript = {
       enable = dotfiles.dev.javascript.enable;
       flags = [ "lsp" ];
