@@ -6,7 +6,9 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ] ++ [ config.boot.kernelPackages.acpi_call ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_5_6;
+  boot.zfs.enableUnstable = true;
   hardware.enableRedistributableFirmware = true;
 
   networking.hostId = "0e14d244";
