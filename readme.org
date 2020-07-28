@@ -27,6 +27,8 @@ sudo ln -s $(pwd) /etc/nixos
 sudo nix-shell -p nixFlakes --run nixos-rebuild switch -p "<host>"
 #+END_SRC
 
+To update flake: =nix flake update --recreate-lock-file=
+
 * Description
 ** Hosts
 A configuration for an host or a machine. It's where we use all the modules and profiles.
