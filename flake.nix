@@ -64,7 +64,7 @@
           unstable = uns;
           libgccjit = uns.libgccjit;
         };
-        emacs = inputs.emacs.overlay;
+        emacs = _final: _prev: import inputs.emacs uns uns;
         nur = inputs.nur.overlay;
         arion = final: prev: {
           arion = (import inputs.arion { inherit (final) pkgs; }).arion;
