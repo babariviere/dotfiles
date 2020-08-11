@@ -78,8 +78,9 @@ import XMonad.Prompt.Pass
 import XMonad.Prompt.Shell (shellPrompt)
 import XMonad.Prompt.Ssh
 import XMonad.Prompt.XMonad
-import qualified XMonad.StackSet as W
+import XMonad.Prompt.FuzzyMatch
 -- Utilities
+import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run (runProcessWithInput, spawnPipe)
@@ -208,7 +209,7 @@ myXTConfig =
       defaultText = [],
       autoComplete = Just 100000, -- set Just 100000 for .1 sec
       showCompletionOnTab = False,
-      searchPredicate = isPrefixOf,
+      searchPredicate = fuzzyMatch,
       alwaysHighlight = True,
       maxComplRows = Nothing -- set to Just 5 for 5 rows
     }
