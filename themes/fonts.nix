@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, uns, ... }:
 
 with lib;
 let
@@ -61,6 +61,7 @@ in {
           monospace = [ cfg.mono.name ];
           sansSerif = [ cfg.sansSerif.name ];
           serif = [ cfg.serif.name ];
+          emoji = [ "Noto Color Emoji" ];
         };
       };
       fonts = [
@@ -69,6 +70,7 @@ in {
         cfg.sansSerif.package
         cfg.serif.package
         pkgs.nur.repos.babariviere.nerd-font-symbols
+        pkgs.unstable.noto-fonts-emoji
       ];
       enableDefaultFonts = true;
     };
