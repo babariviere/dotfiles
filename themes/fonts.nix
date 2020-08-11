@@ -59,7 +59,7 @@ in {
         enable = true;
         defaultFonts = {
           monospace = [ cfg.mono.name ];
-          sansSerif = [ cfg.sansSerif.name ];
+          sansSerif = [ cfg.sansSerif.name "Noto Color Emoji" ];
           serif = [ cfg.serif.name ];
           emoji = [ "Noto Color Emoji" ];
         };
