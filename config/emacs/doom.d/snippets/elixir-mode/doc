@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: doc
+# key: doc
+# condition: t
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# --
+@doc """
+${1:doc}
+
+## Examples
+
+    iex> $2
+    $3
+"""

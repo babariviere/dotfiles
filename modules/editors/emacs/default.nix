@@ -122,6 +122,10 @@ in {
         ".doom.d/init.el".text = import ./init.el.nix { inherit config lib; };
         ".doom.d/packages.el".source = (usrconf "emacs/doom.d/packages.el");
         ".doom.d/config.el".source = (usrconf "emacs/doom.d/config.el");
+        ".doom.d/snippets" = {
+          recursive = true;
+          source = usrconf "emacs/doom.d/snippets";
+        };
       };
       xdg.configFile = {
         "zsh/rc.d/env.emacs.zsh".source = (usrconf "emacs/env.zsh");

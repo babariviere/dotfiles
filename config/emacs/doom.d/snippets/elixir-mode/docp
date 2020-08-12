@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: docp
+# key: docp
+# condition: t
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# --
+@doc """
+${1:doc}
+
+## Parameters
+
+- \`${2:arg1}\`: $3
+
+## Examples
+
+    iex> $4
+    $5
+"""
