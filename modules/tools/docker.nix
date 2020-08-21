@@ -23,12 +23,6 @@ in {
     ];
 
     networking.hosts = { "172.17.0.1" = [ "host.docker.internal" ]; };
-    # TODO: I don't like this hack :(
-    networking.firewall.extraCommands = ''
-      iptables -I nixos-fw -d 172.17.0.1 -j ACCEPT
-      iptables -I nixos-fw -d 172.20.0.1/16 -j ACCEPT
-      iptables -I nixos-fw -s 172.20.0.1/16 -j ACCEPT
-    '';
 
     users.users."${dotfiles.user}".extraGroups = [ "docker" ];
   };
