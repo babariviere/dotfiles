@@ -62,6 +62,7 @@ in {
     editors = {
       emacs.enable = true;
       neovim.enable = true;
+      vscode.enable = true;
     };
     media = {
       plex.enable = false;

@@ -36,6 +36,7 @@
   ./dev/web.nix
   ./editors/emacs
   ./editors/neovim.nix
+  ./editors/vscode.nix
   ./media/plex.nix
   ./media/spotify.nix
   ./network.nix
