@@ -52,7 +52,7 @@ import XMonad.Layout.GridVariants (Grid (Grid))
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.LimitWindows (decreaseLimit, increaseLimit, limitWindows)
 import XMonad.Layout.Magnifier
-import XMonad.Layout.MultiToggle ((??), EOT (EOT), mkToggle, single)
+import XMonad.Layout.MultiToggle (EOT (EOT), mkToggle, single, (??))
 import qualified XMonad.Layout.MultiToggle as MT (Toggle (..))
 import XMonad.Layout.MultiToggle.Instances
   ( StdTransformers (MIRROR, NBFULL, NOBORDERS),
@@ -72,13 +72,13 @@ import qualified XMonad.Layout.ToggleLayouts as T
 import XMonad.Layout.WindowArranger (WindowArrangerMsg (..), windowArrange)
 -- Prompt
 import XMonad.Prompt
+import XMonad.Prompt.FuzzyMatch
 import XMonad.Prompt.Input
 import XMonad.Prompt.Man
 import XMonad.Prompt.Pass
 import XMonad.Prompt.Shell (shellPrompt)
 import XMonad.Prompt.Ssh
 import XMonad.Prompt.XMonad
-import XMonad.Prompt.FuzzyMatch
 -- Utilities
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (additionalKeysP)
@@ -484,7 +484,7 @@ myKeys =
     ("M-m", windows W.focusMaster), -- Move focus to the master window
     ("M-j", windows W.focusDown), -- Move focus to the next window
     ("M-k", windows W.focusUp), -- Move focus to the prev window
-      --, ("M-S-m", windows W.swapMaster)    -- Swap the focused window and the master window
+    --, ("M-S-m", windows W.swapMaster)    -- Swap the focused window and the master window
     ("M-S-j", windows W.swapDown), -- Swap focused window with next window
     ("M-S-k", windows W.swapUp), -- Swap focused window with prev window
     ("M-<Backspace>", promote), -- Moves focused window to master, others maintain order
@@ -515,7 +515,7 @@ myKeys =
     -- Scratchpads
     ("M-S-<Return>", namedScratchpadAction myScratchPads "terminal"),
     -- Multimedia Keys
-    ("<XF86AudioMute>",   spawn "pamixer -t"),
+    ("<XF86AudioMute>", spawn "pamixer -t"),
     ("<XF86AudioLowerVolume>", spawn "pamixer -d 3"),
     ("<XF86AudioRaiseVolume>", spawn "pamixer -i 3"),
     ("<XF86MonBrightnessUp>", spawn "light -A 5"),
@@ -600,48 +600,53 @@ mySpacing' i = spacingRaw True (Border i i i i) True (Border i i i i) True
 
 -- Defining a bunch of layouts, many that I don't use.
 tall =
-  renamed [Replace "tall"] $ limitWindows 12 $ mySpacing 8 $
-    ResizableTall
-      1
-      (3 / 100)
-      (1 / 2)
-      []
+  renamed [Replace "tall"] $
+    limitWindows 12 $
+      mySpacing 8 $
+        ResizableTall
+          1
+          (3 / 100)
+          (1 / 2)
+          []
 
 magnify =
-  renamed [Replace "magnify"]
-    $ magnifier
-    $ limitWindows 12
-    $ mySpacing 8
-    $ ResizableTall 1 (3 / 100) (1 / 2) []
+  renamed [Replace "magnify"] $
+    magnifier $
+      limitWindows 12 $
+        mySpacing 8 $
+          ResizableTall 1 (3 / 100) (1 / 2) []
 
 monocle = renamed [Replace "monocle"] $ limitWindows 20 $ Full
 
 floats = renamed [Replace "floats"] $ limitWindows 20 $ simplestFloat
 
 grid =
-  renamed [Replace "grid"]
-    $ limitWindows 12
-    $ mySpacing 8
-    $ mkToggle (single MIRROR)
-    $ Grid (16 / 10)
+  renamed [Replace "grid"] $
+    limitWindows 12 $
+      mySpacing 8 $
+        mkToggle (single MIRROR) $
+          Grid (16 / 10)
 
 spirals = renamed [Replace "spirals"] $ mySpacing' 8 $ spiral (6 / 7)
 
 threeCol =
-  renamed [Replace "threeCol"] $ limitWindows 7 $ mySpacing' 4 $
-    ThreeCol
-      1
-      (3 / 100)
-      (1 / 2)
+  renamed [Replace "threeCol"] $
+    limitWindows 7 $
+      mySpacing' 4 $
+        ThreeCol
+          1
+          (3 / 100)
+          (1 / 2)
 
 threeRow =
-  renamed [Replace "threeRow"]
-    $ limitWindows 7
-    $ mySpacing' 4
-    -- Mirror takes a layout and rotates it by 90 degrees.
-    -- So we are applying Mirror to the ThreeCol layout.
-    $ Mirror
-    $ ThreeCol 1 (3 / 100) (1 / 2)
+  renamed [Replace "threeRow"] $
+    limitWindows 7 $
+      mySpacing' 4
+      -- Mirror takes a layout and rotates it by 90 degrees.
+      -- So we are applying Mirror to the ThreeCol layout.
+      $
+        Mirror $
+          ThreeCol 1 (3 / 100) (1 / 2)
 
 tabs =
   renamed [Replace "tabs"]
@@ -664,12 +669,12 @@ tabs =
 
 -- The layout hook
 myLayoutHook =
-  avoidStruts
-    $ mouseResize
-    $ windowArrange
-    $ T.toggleLayouts floats
-    $ mkToggle (NBFULL ?? NOBORDERS ?? EOT)
-    $ myDefaultLayout
+  avoidStruts $
+    mouseResize $
+      windowArrange $
+        T.toggleLayouts floats $
+          mkToggle (NBFULL ?? NOBORDERS ?? EOT) $
+            myDefaultLayout
   where
     -- I've commented out the layouts I don't use.
     myDefaultLayout =
@@ -689,7 +694,7 @@ myLayoutHook =
 ------------------------------------------------------------------------
 myScratchPads :: [NamedScratchpad]
 myScratchPads =
-  [ NS "terminal" spawnTerm findTerm manageTerm ]
+  [NS "terminal" spawnTerm findTerm manageTerm]
   where
     spawnTerm = myTerminal ++ " -t scratchpad"
     findTerm = title =? "scratchpad"
@@ -723,7 +728,7 @@ main = do
               <+> docksEventHook,
           modMask = myModMask,
           terminal = myTerminal,
-          startupHook        = myStartupHook,
+          startupHook = myStartupHook,
           layoutHook = myLayoutHook,
           workspaces = myWorkspaces,
           borderWidth = myBorderWidth,
