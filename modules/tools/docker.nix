@@ -22,7 +22,9 @@ in {
       (lib.mkIf cfg.arion arion)
     ];
 
-    networking.hosts = { "172.17.0.1" = [ "host.docker.internal" ]; };
+    networking.hosts = {
+      "172.17.0.1" = [ "host.docker.internal" "tracker.local" ];
+    };
 
     users.users."${dotfiles.user}".extraGroups = [ "docker" ];
   };
