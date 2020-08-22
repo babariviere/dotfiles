@@ -7,8 +7,6 @@ in {
   options.dotfiles.desktop.firefox.enable = lib.mkEnableOption "firefox";
 
   config = lib.mkIf (dotfiles.desktop.enable && cfg.enable) {
-    environment.variables = { "BROWSER" = "firefox"; };
-
     home-manager.users."${dotfiles.user}" = {
       programs.firefox = {
         enable = true;
