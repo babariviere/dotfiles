@@ -459,7 +459,7 @@ myKeys =
     -- Open firefox
     ("M-w", spawn (myBrowser)),
     -- Open emacs
-    ("M-e", spawn "emacseditor"),
+    ("M-e", spawn "code"),
     -- Run Prompt
     ("M-d", shellPrompt myXTConfig), -- Shell Prompt
 
