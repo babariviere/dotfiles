@@ -74,7 +74,7 @@ in header + (generateSections [
       enable = true;
       flags = [ "all" "defaults" ];
     };
-    pretty-code.enable = true;
+    ligatures.enable = true;
     unicode.enable = true;
     vc-gutter.enable = true;
     vi-tilde-fringe.enable = true;
