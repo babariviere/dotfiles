@@ -6,6 +6,15 @@ in {
 
   config = lib.mkIf cfg.enable {
     # TODO: install ranger as another module
-    environment.systemPackages = with pkgs; [ neovim xsel ranger ueberzug ];
+    environment.systemPackages = with pkgs; [
+      neovim
+      xsel
+      ranger
+      ueberzug
+      fzf
+      silver-searcher
+      ripgrep
+      fd
+    ];
   };
 }
