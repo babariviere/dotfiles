@@ -9,6 +9,8 @@ brave-bin
 cabal-install
 dhcpcd
 discord
+docker
+docker-compose
 fakeroot
 fd
 feh
