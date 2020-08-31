@@ -21,6 +21,9 @@ export PATH=~/src/github.com/zimbatm/h:$PATH
 eval "$(h --setup ~/src)"
 eval "$(up --setup)"
 
+# Add asdf
+source $HOME/.asdf/asdf.sh
+
 source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/config.zsh
 source $ZDOTDIR/keybinds.zsh
