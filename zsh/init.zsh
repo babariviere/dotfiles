@@ -23,6 +23,7 @@ eval "$(up --setup)"
 
 # Add asdf
 source $HOME/.asdf/asdf.sh
+fpath=(${ASDF_DIR}/completions $fpath)
 
 source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/config.zsh
