@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ghc -dynamic -threaded xmobar.hs
