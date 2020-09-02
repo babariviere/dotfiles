@@ -15,4 +15,4 @@ if ! zplug check --verbose; then
   zplug install
 fi
 
-zplug load --verbose
+zplug load
