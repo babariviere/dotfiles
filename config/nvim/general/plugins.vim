@@ -36,6 +36,9 @@ call plug#begin(stdpath('data') . '/plugged')
   " Surround
   Plug 'tpope/vim-surround'
 
+  " Editor Config
+  Plug 'editorconfig/editorconfig-vim'
+
   " Comment code
   Plug 'tpope/vim-commentary'
 
