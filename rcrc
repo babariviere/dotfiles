@@ -1,0 +1,2 @@
+EXCLUDES="pkglist.txt"
+DOTFILES_DIRS="/home/babariviere/src/github.com/babariviere/dotfiles"
