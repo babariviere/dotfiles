@@ -20,7 +20,7 @@ call plug#begin(stdpath('data') . '/plugged')
 
   " COC
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
+  " Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
 
   " FZF
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }

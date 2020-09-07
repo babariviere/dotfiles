@@ -1,5 +1,6 @@
 {
 	"codeLens.enable": true,
+  "elixir.pathToElixirLS": "~/src/github.com/elixir-lsp/elixir-ls/release/language_server.sh",
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
   "python.jediEnabled": false,
