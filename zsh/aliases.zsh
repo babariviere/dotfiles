@@ -1,9 +1,5 @@
-if [[ $(uname) == "Darwin" ]]; then
-  alias ls="ls -G"
-else
-  alias ls="ls --color=auto"
-fi
+alias ls="exa"
 alias ll="ls -al"
 
-alias v="nvim \$(fzf)"
+alias v="nvim"
 alias vim="nvim"

@@ -19,3 +19,7 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
+
+for f in $ZDOTDIR/plugins/*.zsh(N); do
+  source $f
+done
