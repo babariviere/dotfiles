@@ -17,6 +17,7 @@ source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/config.zsh
 source $ZDOTDIR/keybinds.zsh
 source $ZDOTDIR/aliases.zsh
+source $ZDOTDIR/functions.zsh
 source $ZDOTDIR/plugins.zsh
 
 for file in $ZDOTDIR/rc.d/aliases.*.zsh(N); do
