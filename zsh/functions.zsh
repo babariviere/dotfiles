@@ -1,3 +1,3 @@
-gch() {
-  git checkout $(git branch --all | grep -v '* ' | fzf | tr -d [:space:])
-}
+# gch() {
+#   git checkout $(git branch --all | grep -v '* ' | fzf | tr -d [:space:])
+# }
