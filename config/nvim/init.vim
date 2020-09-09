@@ -10,7 +10,7 @@ source $HOME/.config/nvim/plugins/goyo.vim
 source $HOME/.config/nvim/plugins/quickscope.vim
 source $HOME/.config/nvim/plugins/neoformat.vim
 source $HOME/.config/nvim/plugins/rainbow.vim
-source $HOME/.config/nvim/plugins/rnvimr.vim
+" source $HOME/.config/nvim/plugins/rnvimr.vim
 source $HOME/.config/nvim/plugins/signify.vim
 source $HOME/.config/nvim/plugins/startify.vim
 

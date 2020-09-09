@@ -42,8 +42,8 @@ call plug#begin(stdpath('data') . '/plugged')
   " Comment code
   Plug 'tpope/vim-commentary'
 
-  " Ranger
-  Plug 'kevinhwang91/rnvimr'
+  "" Ranger
+  " "Plug 'kevinhwang91/rnvimr'
   " Colorizer
   Plug 'norcalli/nvim-colorizer.lua'
   " Rainbow
