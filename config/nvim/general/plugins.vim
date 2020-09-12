@@ -19,8 +19,14 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'LnL7/vim-nix'
 
   " COC
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
+  
+  " LSP nvim
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-lua/completion-nvim'
+  Plug 'nvim-lua/diagnostic-nvim'
+  Plug 'jiangmiao/auto-pairs'
 
   " FZF
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
