@@ -2,7 +2,7 @@ source $HOME/.zplug/init.zsh
 
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zdharma/history-search-multi-word"
-zplug "zsh-users/zsh-completions", dir:src
+zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
 

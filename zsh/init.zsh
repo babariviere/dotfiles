@@ -2,8 +2,8 @@
 export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac --with-wx"
 
 # Setup h
-export PATH=~/src/github.com/zimbatm/h:$PATH
-eval "$(h --setup ~/src)"
+export PATH=$HOME/src/github.com/zimbatm/h:$PATH
+eval "$(h --setup $HOME/src)"
 eval "$(up --setup)"
 
 # Setup direnv
