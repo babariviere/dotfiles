@@ -20,4 +20,12 @@ lua require 'plug-lsp'
 " TODO: take a look at conceal (to have symbols)
 
 " Reload `init.vim` on write
-au! BufWritePost $MYVIMRC source %
+" au! BufWritePost $MYVIMRC source %
+
+" TODO move me
+function! LspStatus() abort
+  let status = luaeval('require("lsp-status").status()')
+  return trim(status)
+endfunction
+call airline#parts#define_function('lsp_status', 'LspStatus')
+call airline#parts#define_condition('lsp_status', 'luaeval("#vim.lsp.buf_get_clients() > 0")')

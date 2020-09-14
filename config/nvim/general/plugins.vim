@@ -12,7 +12,9 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'rakr/vim-one'
 
   " Status bar
-  Plug 'itchyny/lightline.vim'
+  " Plug 'itchyny/lightline.vim'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
 
   " Languages
   Plug 'sheerun/vim-polyglot'
@@ -22,11 +24,14 @@ call plug#begin(stdpath('data') . '/plugged')
   " Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
   
+  " Auto Pairs
+  Plug 'jiangmiao/auto-pairs'
+
   " LSP nvim
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/completion-nvim'
   Plug 'nvim-lua/diagnostic-nvim'
-  Plug 'jiangmiao/auto-pairs'
+  Plug 'nvim-lua/lsp-status.nvim'
 
   " FZF
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }

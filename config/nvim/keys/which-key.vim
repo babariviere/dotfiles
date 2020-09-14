@@ -25,7 +25,7 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 " Single mappings
 let g:which_key_map['/'] = [ ':Commentary'                          , 'comment' ]
 let g:which_key_map[';'] = [ ':Commands'                            , 'commands' ]
-" let g:which_key_map['e'] = [ ':e <C-R>=expand("%:p:h") . "/" <CR>'  , 'explorer' ]
+let g:which_key_map['e'] = [ ':e <C-R>=expand("%:p:h") . "/" <CR>'  , 'explorer' ]
 let g:which_key_map['h'] = [ '<C-W>s'                               , 'split below']
 let g:which_key_map['r'] = [ ':RnvimrToggl'                         , 'ranger' ]
 let g:which_key_map['S'] = [ ':Startify'                            , 'start screen' ]
