@@ -1,3 +1,7 @@
 [user]
 	email = babathriviere@gmail.com
 	name = Bastien Rivière
+
+[alias]
+	co = checkout
+	s = status --branch --short
