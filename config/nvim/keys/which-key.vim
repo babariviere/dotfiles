@@ -36,7 +36,7 @@ let g:which_key_map[','] = [ ':Buffers'                             , 'open buff
 
 " Edit file in current file's directory
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-let g:which_key_map.e = 'edit in directory'
+" let g:which_key_map.e = 'edit in directory'
 
 " s is for search
 let g:which_key_map.s = {
