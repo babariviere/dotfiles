@@ -42,7 +42,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'airblade/vim-gitgutter'
 
   " Ale
-  Plug 'w0rp/ale'
+  " Plug 'w0rp/ale'
 
   " Surround
   Plug 'tpope/vim-surround'
