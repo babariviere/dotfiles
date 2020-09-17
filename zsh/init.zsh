@@ -1,5 +1,8 @@
 # TODO: move env to zshprofile ?
 export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac --with-wx"
+export EDITOR="nvim"
+
+ulimit -Sn 20000
 
 # Setup h
 export PATH=$HOME/src/github.com/zimbatm/h:$PATH
