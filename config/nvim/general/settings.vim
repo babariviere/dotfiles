@@ -33,9 +33,17 @@ set smartcase                           " Smart case search
 set termguicolors
 filetype plugin indent on
 
+" check for and load file changes
+autocmd WinEnter,BufWinEnter,FocusGained * checktime
+
+" disable swapfile to avoid errors on load
+set noswapfile
+
 set guifont="JetBrains Mono Nerd Font:h12"
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline_powerline_fonts = 0
+
+scriptencoding utf-8

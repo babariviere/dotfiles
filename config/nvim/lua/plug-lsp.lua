@@ -68,5 +68,5 @@ vim.o.completeopt = 'menuone,noinsert,noselect'
 
 vim.g.diagnostic_enable_virtual_text = 1
 vim.g.completion_chain_complete_list = {
-  {complete_items = {'lsp', 'snippet', 'path'}},
+  {complete_items = {'lsp', 'snippet'}},
 }

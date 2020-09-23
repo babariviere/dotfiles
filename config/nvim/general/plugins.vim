@@ -10,6 +10,8 @@ call plug#begin(stdpath('data') . '/plugged')
   " Themes
   Plug 'ntk148v/vim-horizon'
   Plug 'rakr/vim-one'
+  Plug 'ayu-theme/ayu-vim'
+  Plug 'drewtempelmeyer/palenight.vim'
 
   " Status bar
   " Plug 'itchyny/lightline.vim'
@@ -32,6 +34,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'nvim-lua/completion-nvim'
   Plug 'nvim-lua/diagnostic-nvim'
   Plug 'nvim-lua/lsp-status.nvim'
+  Plug 'tjdevries/lsp_extensions.nvim'
 
   " FZF
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -85,5 +88,8 @@ call plug#begin(stdpath('data') . '/plugged')
   " Zen mode
   Plug 'junegunn/goyo.vim'
   Plug 'junegunn/limelight.vim'
+
+  " Display indent
+  Plug 'Yggdroot/indentLine'
 call plug#end()
 
