@@ -3,6 +3,7 @@ source $HOME/.config/nvim/general/plugins.vim
 source $HOME/.config/nvim/general/neovide.vim
 " source $HOME/.config/nvim/themes/one.vim
 source $HOME/.config/nvim/themes/palenight.vim
+" source $HOME/.config/nvim/themes/ayu.vim
 source $HOME/.config/nvim/keys/mappings.vim
 source $HOME/.config/nvim/keys/which-key.vim
 " source $HOME/.config/nvim/plugins/coc.vim
@@ -17,9 +18,6 @@ source $HOME/.config/nvim/plugins/signify.vim
 
 lua require 'plug-colorizer'
 lua require 'plug-lsp'
-
-" One Dark
-colorscheme palenight
 
 " TODO: take a look at conceal (to have symbols)
 
