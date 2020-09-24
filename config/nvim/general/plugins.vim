@@ -41,9 +41,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'airblade/vim-rooter'
 
-  " Git
-  Plug 'airblade/vim-gitgutter'
-
   " Ale
   " Plug 'w0rp/ale'
 
