@@ -15,6 +15,7 @@ source $HOME/.config/nvim/plugins/rainbow.vim
 " source $HOME/.config/nvim/plugins/rnvimr.vim
 source $HOME/.config/nvim/plugins/signify.vim
 " source $HOME/.config/nvim/plugins/startify.vim
+source $HOME/.config/nvim/plugins/asciidoctor.vim
 
 lua require 'plug-colorizer'
 lua require 'plug-lsp'
@@ -41,5 +42,7 @@ autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * :lua require'ls
 let g:indentLine_char = '│'
 let g:indentLine_first_char = '│'
 let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_concealcursor = "nv"
+let g:indentLine_setConceal = 2
 " let g:indentLine_setColors = 0
 " }}

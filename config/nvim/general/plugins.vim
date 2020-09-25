@@ -21,6 +21,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " Languages
   Plug 'sheerun/vim-polyglot'
   Plug 'LnL7/vim-nix'
+  Plug 'habamax/vim-asciidoctor'
 
   " COC
   " Plug 'neoclide/coc.nvim', {'branch': 'release'}
