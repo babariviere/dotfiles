@@ -89,5 +89,8 @@ call plug#begin(stdpath('data') . '/plugged')
 
   " Display indent
   Plug 'Yggdroot/indentLine'
+
+  " Language tool
+  Plug 'rhysd/vim-grammarous'
 call plug#end()
 

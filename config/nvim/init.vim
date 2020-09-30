@@ -16,6 +16,7 @@ source $HOME/.config/nvim/plugins/rainbow.vim
 source $HOME/.config/nvim/plugins/signify.vim
 " source $HOME/.config/nvim/plugins/startify.vim
 source $HOME/.config/nvim/plugins/asciidoctor.vim
+source $HOME/.config/nvim/plugins/languagetool.vim
 
 lua require 'plug-colorizer'
 lua require 'plug-lsp'
@@ -36,6 +37,9 @@ call airline#parts#define_condition('lsp_status', 'luaeval("#vim.lsp.buf_get_cli
 
 " TODO move me
 autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * :lua require'lsp_extensions'.inlay_hints{ prefix = '» ', highlight = "NonText" }
+
+" Remove trailing spaces
+autocmd BufWritePre * %s/\s\+$//e
 
 " TODO move me
 " IndentLine {{
