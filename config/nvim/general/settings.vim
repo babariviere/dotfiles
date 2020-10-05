@@ -7,7 +7,7 @@ set nowrap									            " Disables line wrapping
 set encoding=utf-8					            " Encoding displayed
 set pumheight=10						            " Makes popup menu smaller
 set fileencoding=utf-8			            " The encoding written to file
-set cmdheight=2							            " Have more space to see command messages
+"set cmdheight=2							            " Have more space to see command messages
 set splitbelow							            " Horizontal splits will automatically be below
 set splitright							            " Vertical splits will automatically be to the right
 set t_Co=256								            "	Support 256 colors
