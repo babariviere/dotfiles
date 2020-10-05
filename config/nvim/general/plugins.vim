@@ -23,10 +23,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'LnL7/vim-nix'
   Plug 'habamax/vim-asciidoctor'
 
-  " COC
-  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  " Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
-  
   " Auto Pairs
   Plug 'jiangmiao/auto-pairs'
 
@@ -37,13 +33,13 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'nvim-lua/lsp-status.nvim'
   Plug 'tjdevries/lsp_extensions.nvim'
 
-  " FZF
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
-  Plug 'airblade/vim-rooter'
+  " Lua nvim
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-lua/telescope.nvim'
 
-  " Ale
-  " Plug 'w0rp/ale'
+  " Project root
+  Plug 'airblade/vim-rooter'
 
   " Surround
   Plug 'tpope/vim-surround'
