@@ -20,9 +20,10 @@ call plug#begin(stdpath('data') . '/plugged')
   " Plug 'vim-airline/vim-airline-themes'
 
   " Languages
-  Plug 'sheerun/vim-polyglot'
+  " Plug 'sheerun/vim-polyglot'
   Plug 'LnL7/vim-nix'
   Plug 'habamax/vim-asciidoctor'
+  Plug 'elixir-editors/vim-elixir'
 
   " Auto Pairs
   Plug 'jiangmiao/auto-pairs'
@@ -30,7 +31,8 @@ call plug#begin(stdpath('data') . '/plugged')
   " LSP nvim
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/completion-nvim'
-  Plug 'nvim-lua/diagnostic-nvim'
+  " Plug 'nvim-lua/diagnostic-nvim'
+  Plug 'babariviere/diagnostic-nvim'
   Plug 'nvim-lua/lsp-status.nvim'
   Plug 'tjdevries/lsp_extensions.nvim'
 
@@ -66,8 +68,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'metakirby5/codi.vim'
 
   " Git
-  Plug 'mhinz/vim-signify'
-  Plug 'tpope/vim-fugitive'
+  " Plug 'mhinz/vim-signify'
+  " Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb'
   Plug 'junegunn/gv.vim'
 

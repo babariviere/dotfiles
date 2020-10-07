@@ -6,7 +6,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   completion.on_attach(client, bufnr)
-  -- diagnostic.on_attach(client, bufnr)
+  diagnostic.on_attach(client, bufnr)
   lsp_status.on_attach(client, bufnr)
 
   local opts = {noremap = true, silent = true}
@@ -69,7 +69,6 @@ local servers = {
 
 local lsp = require 'nvim_lsp'
 
-vim.api.nvim_command("autocmd BufEnter * lua require'completion'.on_attach()")
 for name, config in pairs(servers) do
   config.on_attach = on_attach
   config.capabilities = vim.tbl_extend('keep', config.capabilities or {}, lsp_status.capabilities)

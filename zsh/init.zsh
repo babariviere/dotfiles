@@ -26,7 +26,9 @@ fi
 if [ -d "$HOME/.bin" ]; then
   export PATH="$HOME/.bin:$PATH"
 fi
+export PATH="$HOME/.local/bin:$PATH"
 
+source $HOME/.profile
 source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/config.zsh
 source $ZDOTDIR/keybinds.zsh
