@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+dir=$HOME/src/github.com/babariviere/dotfiles
+
+if [ ! -d "$dir" ]; then
+  mkdir -p "$(dirname $dir)"
+  git clone git@github.com:babariviere/dotfiles.git "$dir"
+fi
+
+case $(uname -s) in
+  Darwin)
+    bash "$dir/_setup/macos.sh"
+    ;;
+esac

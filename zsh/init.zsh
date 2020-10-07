@@ -16,6 +16,16 @@ eval "$(direnv hook zsh)"
 source $HOME/.asdf/asdf.sh
 fpath=(${ASDF_DIR}/completions $fpath)
 
+# Setup rust
+if [ -f "$HOME/.cargo/env" ]; then
+  source "$HOME/.cargo/env"
+fi
+
+# Add .bin if it exists
+if [ -d "$HOME/.bin" ]; then
+  export PATH="$HOME/.bin:$PATH"
+fi
+
 source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/config.zsh
 source $ZDOTDIR/keybinds.zsh
