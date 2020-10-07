@@ -14,9 +14,9 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'drewtempelmeyer/palenight.vim'
 
   " Status bar
-  " Plug 'itchyny/lightline.vim'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  Plug 'itchyny/lightline.vim'
+  " Plug 'vim-airline/vim-airline'
+  " Plug 'vim-airline/vim-airline-themes'
 
   " Languages
   Plug 'sheerun/vim-polyglot'

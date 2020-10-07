@@ -31,8 +31,24 @@ function! LspStatus() abort
   let status = luaeval('require("lsp-status").status()')
   return trim(status)
 endfunction
-call airline#parts#define_function('lsp_status', 'LspStatus')
-call airline#parts#define_condition('lsp_status', 'luaeval("#vim.lsp.buf_get_clients() > 0")')
+
+set showtabline=2
+let g:lightline = extend(g:lightline, {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype', 'lspstatus' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead',
+      \   'lspstatus': 'LspStatus'
+      \ },
+      \ })
+
+" call airline#parts#define_function('lsp_status', 'LspStatus')
+" call airline#parts#define_condition('lsp_status', 'luaeval("#vim.lsp.buf_get_clients() > 0")')
 
 
 " TODO move me
