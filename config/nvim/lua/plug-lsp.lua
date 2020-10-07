@@ -1,8 +1,10 @@
+local completion = require('completion')
 local lsp_status = require('lsp-status')
 
-local function on_attach(client, bufnr)
-  require'completion'.on_attach(client, bufnr)
-  require'diagnostic'.on_attach(client, bufnr)
+local on_attach = function(client, bufnr)
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  completion.on_attach(client, bufnr)
   lsp_status.on_attach(client, bufnr)
 
   local opts = {noremap = true, silent = true}
@@ -27,11 +29,18 @@ local function on_attach(client, bufnr)
     vim.api.nvim_command('au CursorMoved <buffer> lua vim.lsp.buf.clear_references()')
     vim.api.nvim_command('augroup END')
   end
-
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
 lsp_status.register_progress()
+lsp_status.config({
+  status_symbol = 'lsp',
+  indicator_errors = 'e',
+  indicator_warnings = 'w',
+  indicator_info = 'i',
+  indicator_hint = 'h',
+  indicator_ok = 'ok',
+  spinner_frames = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
+})
 
 local servers = {
   elixirls = {},
@@ -60,13 +69,14 @@ vim.api.nvim_command("autocmd BufEnter * lua require'completion'.on_attach()")
 for name, config in pairs(servers) do
   config.on_attach = on_attach
   config.capabilities = vim.tbl_extend('keep', config.capabilities or {}, lsp_status.capabilities)
-  -- config.callbacks = lsp_status.extensions[name].setup()
+  if lsp_status.extensions[name] then
+    config.callbacks = lsp_status.extensions[name].setup()
+  end
   lsp[name].setup(config)
 end
 
 vim.o.completeopt = 'menuone,noinsert,noselect'
 
-vim.g.diagnostic_enable_virtual_text = 1
 vim.g.completion_chain_complete_list = {
   {complete_items = {'lsp', 'snippet'}},
 }

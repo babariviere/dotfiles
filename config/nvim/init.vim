@@ -28,8 +28,11 @@ lua require 'plug-lsp'
 
 " TODO move me
 function! LspStatus() abort
-  let status = luaeval('require("lsp-status").status()')
-  return trim(status)
+  if luaeval('#vim.lsp.buf_get_clients() > 0')
+    return luaeval("require('lsp-status').status()")
+  endif
+
+  return ''
 endfunction
 
 set showtabline=2
