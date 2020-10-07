@@ -46,6 +46,15 @@ asdf plugin-add yarn || true
 asdf plugin-add direnv || true
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 info "Plugins are installed"
+info "Installing asdf packages"
+asdf install
+info "asdf packages are installed"
+
+pushd "$HOME" >/dev/null
+info "Allowing envrc"
+direnv allow
+popd
+
 echo
 info "Please, refresh your shell by doing either:"
 info '- executing: `source $HOME/.zshrc`'
