@@ -37,16 +37,16 @@ else
 fi
 
 info "Adding asdf plugins"
-asdf plugin-add erlang
-asdf plugin-add elixir
-asdf plugin-add jsonnet
-asdf plugin-add nodejs
-asdf plugin-add golang
-asdf plugin-add yarn
-asdf plugin-add direnv
+asdf plugin-add erlang || true
+asdf plugin-add elixir || true
+asdf plugin-add jsonnet || true
+asdf plugin-add nodejs || true
+asdf plugin-add golang || true
+asdf plugin-add yarn || true
+asdf plugin-add direnv || true
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 info "Plugins are installed"
-
+echo
 info "Please, refresh your shell by doing either:"
 info '- executing: `source $HOME/.zshrc`'
 info '- restart your shell'
