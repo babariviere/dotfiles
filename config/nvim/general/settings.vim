@@ -29,6 +29,7 @@ set formatoptions-=cro                  " Stop newline continution of comments
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set inccommand=nosplit
 set smartcase                           " Smart case search
+set title                               " Set window title
 
 set termguicolors
 filetype plugin indent on
