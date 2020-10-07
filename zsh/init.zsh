@@ -9,12 +9,13 @@ export PATH=$HOME/src/github.com/zimbatm/h:$PATH
 eval "$(h --setup $HOME/src)"
 eval "$(up --setup)"
 
-# Setup direnv
-eval "$(direnv hook zsh)"
-
 # Add asdf
 source $HOME/.asdf/asdf.sh
 fpath=(${ASDF_DIR}/completions $fpath)
+
+# Setup direnv
+eval "$(asdf direnv hook zsh)"
+direnv() { asdf exec direnv "$@"; }
 
 # Setup rust
 if [ -f "$HOME/.cargo/env" ]; then
