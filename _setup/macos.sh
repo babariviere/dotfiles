@@ -17,8 +17,16 @@ else
   info "Brew is installed"
 fi
 
-info "Installing Brewfile"
-brew bundle install
+info "Checking if Brewfile dependencies are installed"
+if [ ! $(brew bundle check >/dev/null 2>/dev/null) ]; then
+  info "Installing Brewfile dependecies"
+  brew bundle install
+else
+  info "Dependencies are installed"
+fi
+
+info "Installing dotfiles"
+rcup -v
 
 if [ ! $(command -v rustc) ]; then
   info "Installing rust"
@@ -27,6 +35,17 @@ if [ ! $(command -v rustc) ]; then
 else
   info "Rust is installed"
 fi
+
+info "Adding asdf plugins"
+asdf plugin-add erlang
+asdf plugin-add elixir
+asdf plugin-add jsonnet
+asdf plugin-add nodejs
+asdf plugin-add golang
+asdf plugin-add yarn
+asdf plugin-add direnv
+bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+info "Plugins are installed"
 
 info "Please, refresh your shell by doing either:"
 info '- executing: `source $HOME/.zshrc`'

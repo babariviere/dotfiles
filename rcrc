@@ -1,2 +1,2 @@
-EXCLUDES="Brewfile pkglist.txt _setup"
+EXCLUDES="Brewfile Brewfile.lock.json pkglist.txt _setup"
 DOTFILES_DIRS="$HOME/src/github.com/babariviere/dotfiles"
