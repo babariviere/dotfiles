@@ -1,0 +1,28 @@
+== What we want
+
+=== Setup system
+
+Usage:
+
+[source,sh]
+----
+setup-system # setup all system
+----
+
+[source,sh]
+----
+setup-system rust elixir # install only rust and elixir
+----
+
+How:
+
+[source,sh]
+----
+common=(rust.sh elixir.sh)
+specific=(macos.sh)
+
+# Handle cli
+for target in $targets; do
+  sh "$target"
+done
+----

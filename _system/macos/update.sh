@@ -1,11 +1,18 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-common="$HOME/src/github.com/babariviere/dotfiles/_system/common"
+dir="$HOME/src/github.com/babariviere/dotfiles"
+common="$dir/_system/common"
 
 brew update
 brew upgrade --fetch-head
 brew cleanup
 
-sh "$common/asdf.sh"
-sh "$common/nvim.sh"
+for f in $common/update/*; do
+  sh "$f"
+done
+
 mas upgrade
+
+pushd "$dir" >/dev/null
+brew bundle dump -f --all
+popd >/dev/null

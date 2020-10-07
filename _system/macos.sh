@@ -7,6 +7,7 @@ dir="$HOME/src/github.com/babariviere/dotfiles"
 info() {
   echo -e "\033[1minfo:\033[22m" $@
 }
+export -f info
 
 pushd "$dir" >/dev/null
 
@@ -28,13 +29,7 @@ fi
 info "Installing dotfiles"
 rcup -v
 
-if [ ! $(command -v rustc) ]; then
-  info "Installing rust"
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-  source $HOME/.cargo/env
-else
-  info "Rust is installed"
-fi
+sh "$dir/_system/common/setup/rust.sh"
 
 info "Adding asdf plugins"
 asdf plugin-add erlang || true
@@ -55,7 +50,7 @@ info "Allowing envrc"
 direnv allow
 popd
 
-echo
+echo ""
 info "Please, refresh your shell by doing either:"
 info '- executing: `source $HOME/.zshrc`'
 info '- restart your shell'
