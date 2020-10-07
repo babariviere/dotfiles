@@ -1,10 +1,12 @@
 local completion = require('completion')
+local diagnostic = require('diagnostic')
 local lsp_status = require('lsp-status')
 
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   completion.on_attach(client, bufnr)
+  -- diagnostic.on_attach(client, bufnr)
   lsp_status.on_attach(client, bufnr)
 
   local opts = {noremap = true, silent = true}
@@ -16,7 +18,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(0, 'n', 'gTD', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(0, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(0, 'n', 'gA', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   -- vim.api.nvim_buf_set_keymap(0, 'n', '<leader>e', '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>', opts)
   vim.api.nvim_buf_set_keymap(0, 'n', ']e', '<cmd>NextDiagnosticCycle<cr>', opts)
   vim.api.nvim_buf_set_keymap(0, 'n', '[e', '<cmd>PrevDiagnosticCycle<cr>', opts)
@@ -29,6 +31,8 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_command('au CursorMoved <buffer> lua vim.lsp.buf.clear_references()')
     vim.api.nvim_command('augroup END')
   end
+
+  vim.api.nvim_command("au CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()")
 end
 
 lsp_status.register_progress()
@@ -77,6 +81,11 @@ end
 
 vim.o.completeopt = 'menuone,noinsert,noselect'
 
+vim.g.diagnostic_enable_virtual_text = 1
+vim.g.diagnostic_trimmed_virtual_text = '40'
+vim.g.diagnostic_insert_delay = 1
+vim.g.diagnostic_virtual_text_prefix = '» '
+vim.g.space_before_virtual_text = 5
 vim.g.completion_chain_complete_list = {
   {complete_items = {'lsp', 'snippet'}},
 }

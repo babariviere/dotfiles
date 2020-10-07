@@ -15,6 +15,7 @@ call plug#begin(stdpath('data') . '/plugged')
 
   " Status bar
   Plug 'itchyny/lightline.vim'
+  Plug 'mengelbrecht/lightline-bufferline'
   " Plug 'vim-airline/vim-airline'
   " Plug 'vim-airline/vim-airline-themes'
 
@@ -29,6 +30,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " LSP nvim
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/completion-nvim'
+  Plug 'nvim-lua/diagnostic-nvim'
   Plug 'nvim-lua/lsp-status.nvim'
   Plug 'tjdevries/lsp_extensions.nvim'
 

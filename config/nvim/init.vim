@@ -44,10 +44,22 @@ let g:lightline = extend(g:lightline, {
       \              [ 'percent' ],
       \              [ 'fileformat', 'fileencoding', 'filetype', 'lspstatus' ] ]
       \ },
+      \ 'tabline': {
+      \   'left': [ [ 'buffers' ] ],
+      \   'right': [ [] ]
+      \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',
-      \   'lspstatus': 'LspStatus'
+      \   'lspstatus': 'LspStatus',
       \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
+      \ },
+      \ 'tabline_separator': { 'left': '', 'right': '' },
+      \ 'tabline_subseparator': { 'left': '', 'right': '' }
       \ })
 
 " call airline#parts#define_function('lsp_status', 'LspStatus')
