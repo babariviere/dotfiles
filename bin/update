@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+dir=$HOME/src/github.com/babariviere/dotfiles
+
+case $(uname -s) in
+  Darwin)
+    bash "$dir/_system/macos/update.sh"
+    ;;
+esac
