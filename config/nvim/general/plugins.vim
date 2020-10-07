@@ -88,5 +88,8 @@ call plug#begin(stdpath('data') . '/plugged')
 
   " Language tool
   Plug 'rhysd/vim-grammarous'
+
+  " Direnv
+  Plug 'direnv/direnv.vim'
 call plug#end()
 
