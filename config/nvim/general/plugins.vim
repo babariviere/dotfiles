@@ -68,8 +68,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'metakirby5/codi.vim'
 
   " Git
-  " Plug 'mhinz/vim-signify'
-  " Plug 'tpope/vim-fugitive'
+  Plug 'mhinz/vim-signify'
+  Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb'
   Plug 'junegunn/gv.vim'
 
