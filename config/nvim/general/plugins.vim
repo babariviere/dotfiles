@@ -32,7 +32,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/completion-nvim'
   " Plug 'nvim-lua/diagnostic-nvim'
-  Plug 'babariviere/diagnostic-nvim'
+  Plug 'babariviere/diagnostic-nvim', {'branch': 'fix-diagnostic-spam'}
   Plug 'nvim-lua/lsp-status.nvim'
   Plug 'tjdevries/lsp_extensions.nvim'
 
