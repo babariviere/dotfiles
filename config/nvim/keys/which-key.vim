@@ -33,6 +33,14 @@ let g:which_key_map['z'] = [ 'Goyo'                                 , 'zen' ]
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 let g:which_key_map.e = 'edit in directory'
 
+lua <<EOF
+require'telescope'.setup {
+  defaults = {
+    use_less = false
+  }
+}
+EOF
+
 nnoremap <leader><space> <cmd>lua require'telescope.builtin'.find_files{}<CR>
 let g:which_key_map[' '] = 'search files'
 
