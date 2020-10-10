@@ -34,9 +34,11 @@ nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 let g:which_key_map.e = 'edit in directory'
 
 lua <<EOF
-require'telescope'.setup {
-  defaults = {
-    use_less = false
+require'telescope'.setup{
+  defaults = require('telescope.themes').get_dropdown{
+    use_less = false,
+    width = 160,
+    results_height = 20
   }
 }
 EOF

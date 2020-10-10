@@ -39,7 +39,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " Lua nvim
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-lua/telescope.nvim'
+  Plug 'babariviere/telescope.nvim'
 
   " Project root
   Plug 'airblade/vim-rooter'
