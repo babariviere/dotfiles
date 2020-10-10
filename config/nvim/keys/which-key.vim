@@ -49,6 +49,8 @@ let g:which_key_map[' '] = 'search files'
 nnoremap <leader>, <cmd>lua require'telescope.builtin'.buffers{}<CR>
 let g:which_key_map[','] = 'open buffers'
 
+nnoremap <leader>; <cmd>lua require'telescope.builtin'.commands{}<CR>
+let g:which_key_map[';'] = 'commands'
 
 "" Buffers
 nnoremap <leader>bd :bdelete<CR>
