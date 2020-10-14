@@ -24,6 +24,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'LnL7/vim-nix'
   Plug 'habamax/vim-asciidoctor'
   Plug 'elixir-editors/vim-elixir'
+  Plug 'jparise/vim-graphql'
 
   " Auto Pairs
   Plug 'jiangmiao/auto-pairs'
