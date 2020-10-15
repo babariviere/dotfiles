@@ -89,6 +89,7 @@ call plug#begin(stdpath('data') . '/plugged')
 
   " Display indent
   Plug 'Yggdroot/indentLine'
+  Plug 'lukas-reineke/indent-blankline.nvim'
 
   " Language tool
   Plug 'rhysd/vim-grammarous'

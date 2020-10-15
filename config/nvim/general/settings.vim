@@ -30,6 +30,8 @@ set clipboard=unnamedplus               " Copy paste between vim and everything 
 set inccommand=nosplit
 set smartcase                           " Smart case search
 set title                               " Set window title
+set list
+set listchars=eol:↴
 
 set termguicolors
 filetype plugin indent on
