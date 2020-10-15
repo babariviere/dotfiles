@@ -9,8 +9,6 @@ export GOMODCACHE="$HOME/.cache/gomod"
 # export GOPATH="$HOME"
 export GO111MODULE=on
 
-mkdir -p "$GOTMPDIR"
-
 ulimit -Sn 20000
 
 # Setup h
