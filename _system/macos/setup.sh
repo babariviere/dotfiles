@@ -30,6 +30,7 @@ info "Installing dotfiles"
 rcup -v
 
 sh "$dir/_system/common/setup/rust.sh"
+sh "$dir/_system/common/setup/go.sh"
 
 info "Adding asdf plugins"
 asdf plugin-add erlang || true

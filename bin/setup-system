@@ -9,6 +9,6 @@ fi
 
 case $(uname -s) in
   Darwin)
-    bash "$dir/_system/macos.sh"
+    bash "$dir/_system/macos/setup.sh"
     ;;
 esac
