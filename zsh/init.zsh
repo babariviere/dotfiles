@@ -2,6 +2,15 @@
 export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac --with-wx"
 export EDITOR="nvim"
 
+# Go setup
+export GOBIN="$HOME/.local/bin"
+export GOCACHE="$HOME/.cache/go"
+export GOMODCACHE="$HOME/.cache/gomod"
+# export GOPATH="$HOME"
+export GO111MODULE=on
+
+mkdir -p "$GOTMPDIR"
+
 ulimit -Sn 20000
 
 # Setup h
