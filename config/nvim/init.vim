@@ -90,3 +90,5 @@ let g:indentLine_concealcursor = "nv"
 let g:indentLine_setConceal = 2
 " let g:indentLine_setColors = 0
 " }}
+
+let g:rooter_patterns = ['.git', '_darcs', '.hg', '.bzr', '.svn', 'Makefile', 'Cargo.toml', 'mix.exs']
