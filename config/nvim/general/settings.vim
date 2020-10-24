@@ -32,6 +32,7 @@ set smartcase                           " Smart case search
 set title                               " Set window title
 set list
 set listchars=eol:↴
+set signcolumn=yes
 
 set termguicolors
 filetype plugin indent on
