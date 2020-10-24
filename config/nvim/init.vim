@@ -20,6 +20,7 @@ source $HOME/.config/nvim/plugins/languagetool.vim
 
 lua require 'plug-colorizer'
 lua require 'plug-lsp'
+lua require 'plug-treesitter'
 
 " TODO: take a look at conceal (to have symbols)
 
