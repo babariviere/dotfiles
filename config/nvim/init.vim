@@ -68,7 +68,6 @@ let g:lightline = extend(g:lightline, {
 
 
 " TODO move me
-autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * :lua require'lsp_extensions'.inlay_hints{ prefix = '» ', highlight = "NonText" }
 
 " Remove trailing spaces
 function! s:trim_trailing_whitespace() abort
