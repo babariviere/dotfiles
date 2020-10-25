@@ -1,6 +1,8 @@
 # TODO: move env to zshprofile ?
 export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac --with-wx"
 export EDITOR="nvim"
+# Fix issue on MacOS
+export GPG_TTY=$(tty)
 
 # Go setup
 export GOBIN="$HOME/.local/bin"
