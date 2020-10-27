@@ -89,10 +89,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'junegunn/goyo.vim'
   Plug 'junegunn/limelight.vim'
 
-  " Display indent
-  Plug 'Yggdroot/indentLine'
-  Plug 'lukas-reineke/indent-blankline.nvim'
-
   " Language tool
   Plug 'rhysd/vim-grammarous'
 

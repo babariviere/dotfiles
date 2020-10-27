@@ -31,8 +31,7 @@ set inccommand=nosplit
 set smartcase                           " Smart case search
 set title                               " Set window title
 set list
-set listchars=eol:↴
-set signcolumn=yes
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 
 set termguicolors
 filetype plugin indent on

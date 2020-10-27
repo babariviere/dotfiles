@@ -67,8 +67,6 @@ let g:lightline = extend(g:lightline, {
 " call airline#parts#define_condition('lsp_status', 'luaeval("#vim.lsp.buf_get_clients() > 0")')
 
 
-" TODO move me
-
 " Remove trailing spaces
 function! s:trim_trailing_whitespace() abort
   let l:view = winsaveview()
@@ -80,15 +78,5 @@ augroup trim_spaces
   autocmd!
   autocmd BufWritePre * call <SID>trim_trailing_whitespace()
 augroup END
-
-" TODO move me
-" IndentLine {{
-let g:indentLine_char = '│'
-let g:indentLine_first_char = '│'
-let g:indentLine_showFirstIndentLevel = 1
-let g:indentLine_concealcursor = "nv"
-let g:indentLine_setConceal = 2
-" let g:indentLine_setColors = 0
-" }}
 
 let g:rooter_patterns = ['.git', '_darcs', '.hg', '.bzr', '.svn', 'Makefile', 'Cargo.toml', 'mix.exs']
