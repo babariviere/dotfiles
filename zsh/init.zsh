@@ -37,8 +37,11 @@ if [ -d "$HOME/.bin" ]; then
 fi
 export PATH="$HOME/.local/bin:$PATH"
 
+# Dracula config
+export DRACULA_DISPLAY_CONTEXT=1
+
 source $HOME/.profile
-source $ZDOTDIR/prompt.zsh
+# source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/config.zsh
 source $ZDOTDIR/keybinds.zsh
 source $ZDOTDIR/aliases.zsh

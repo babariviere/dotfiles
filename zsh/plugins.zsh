@@ -1,5 +1,7 @@
 source $HOME/.zplug/init.zsh
 
+zplug "dracula/zsh", as:theme
+
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zdharma/history-search-multi-word"
 zplug "zsh-users/zsh-completions"
