@@ -38,7 +38,7 @@ fi
 export PATH="$HOME/.local/bin:$PATH"
 
 # Dracula config
-export DRACULA_DISPLAY_CONTEXT=1
+# export DRACULA_DISPLAY_CONTEXT=1
 
 source $HOME/.profile
 # source $ZDOTDIR/prompt.zsh
