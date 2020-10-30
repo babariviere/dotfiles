@@ -5,3 +5,4 @@ editor: !!null nvim
 # Aliases allow you to create nicknames for gh commands
 aliases:
     co: pr checkout
+pager: delta
