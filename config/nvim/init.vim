@@ -2,8 +2,9 @@ source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/plugins.vim
 source $HOME/.config/nvim/general/neovide.vim
 " source $HOME/.config/nvim/themes/one.vim
-source $HOME/.config/nvim/themes/palenight.vim
+" source $HOME/.config/nvim/themes/palenight.vim
 " source $HOME/.config/nvim/themes/ayu.vim
+source $HOME/.config/nvim/themes/dracula.vim
 source $HOME/.config/nvim/keys/mappings.vim
 source $HOME/.config/nvim/keys/which-key.vim
 " source $HOME/.config/nvim/plugins/coc.vim

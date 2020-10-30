@@ -12,6 +12,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'rakr/vim-one'
   Plug 'ayu-theme/ayu-vim'
   Plug 'drewtempelmeyer/palenight.vim'
+  Plug 'dracula/vim', { 'as': 'dracula' }
 
   " Status bar
   Plug 'itchyny/lightline.vim'
