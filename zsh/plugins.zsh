@@ -11,14 +11,8 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "changyuheng/fz", defer:1
 zplug "rupa/z", use:z.sh
 
-zplug "zdharma/fast-syntax-highlighting", if:"[[ -z $SSH_CONNECTION ]]"
-
 zplug "laggardkernel/zsh-thefuck"
 zplug "Aloxaf/fzf-tab"
-
-if ! zplug check --verbose; then
-  zplug install
-fi
 
 zplug load
 

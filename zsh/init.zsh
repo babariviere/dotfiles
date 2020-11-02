@@ -13,6 +13,9 @@ export GO111MODULE=on
 
 ulimit -Sn 20000
 
+# Use vi bindings
+set -o vi
+
 # Setup h
 export PATH=$HOME/src/github.com/zimbatm/h:$PATH
 eval "$(h --setup $HOME/src)"
