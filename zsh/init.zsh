@@ -69,4 +69,8 @@ zle-keymap-select() {
 
 zle -N zle-keymap-select
 
+preexec() {
+  echo -ne "\x1b[\x36 q"
+}
+
 echo -ne "\x1b[\x36 q"
