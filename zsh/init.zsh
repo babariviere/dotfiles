@@ -58,3 +58,15 @@ done
 for file in $HOME/.zsh/rc.d/env.*.zsh(N); do
   source $file
 done
+
+# vi cursor
+zle-keymap-select() {
+  case $KEYMAP in
+    vicmd) echo -ne "\x1b[\x32 q";; # block cursor
+    viins|main) echo -ne "\x1b[\x36 q";; # beam cursor
+  esac
+}
+
+zle -N zle-keymap-select
+
+echo -ne "\x1b[\x36 q"
