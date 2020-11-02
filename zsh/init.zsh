@@ -59,18 +59,20 @@ for file in $HOME/.zsh/rc.d/env.*.zsh(N); do
   source $file
 done
 
+_set_block_cursor() { echo -ne "\x1b[\x32 q" }
+_set_beam_cursor() { echo -ne "\x1b[\x36 q" }
+
 # vi cursor
 zle-keymap-select() {
   case $KEYMAP in
-    vicmd) echo -ne "\x1b[\x32 q";; # block cursor
-    viins|main) echo -ne "\x1b[\x36 q";; # beam cursor
+    vicmd) _set_block_cursor;; # block cursor
+    viins|main) _set_beam_cursor;; # beam cursor
   esac
 }
 
 zle -N zle-keymap-select
 
-preexec() {
-  echo -ne "\x1b[\x36 q"
-}
-
-echo -ne "\x1b[\x36 q"
+zle-line-init() { zle -K viins; _set_beam_cursor }
+zle-line-finish() { _set_block_cursor }
+zle -N zle-line-init
+zle -N zle-line-finish
