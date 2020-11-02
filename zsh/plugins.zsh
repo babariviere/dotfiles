@@ -22,6 +22,6 @@ fi
 
 zplug load
 
-for f in $ZDOTDIR/plugins/*.zsh(N); do
+for f in $HOME/.zsh/plugins/*.zsh(N); do
   source $f
 done

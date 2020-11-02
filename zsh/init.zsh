@@ -41,17 +41,17 @@ export PATH="$HOME/.local/bin:$PATH"
 # export DRACULA_DISPLAY_CONTEXT=1
 
 source $HOME/.profile
-# source $ZDOTDIR/prompt.zsh
-source $ZDOTDIR/config.zsh
-source $ZDOTDIR/keybinds.zsh
-source $ZDOTDIR/aliases.zsh
-source $ZDOTDIR/functions.zsh
-source $ZDOTDIR/plugins.zsh
+# source $HOME/.zsh/prompt.zsh
+source $HOME/.zsh/config.zsh
+source $HOME/.zsh/keybinds.zsh
+source $HOME/.zsh/aliases.zsh
+source $HOME/.zsh/functions.zsh
+source $HOME/.zsh/plugins.zsh
 
-for file in $ZDOTDIR/rc.d/aliases.*.zsh(N); do
+for file in $HOME/.zsh/rc.d/aliases.*.zsh(N); do
   source $file
 done
 
-for file in $ZDOTDIR/rc.d/env.*.zsh(N); do
+for file in $HOME/.zsh/rc.d/env.*.zsh(N); do
   source $file
 done
