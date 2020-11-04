@@ -10,6 +10,8 @@ if [ ! -d "$rust_analyzer_src" ]; then
   git clone https://github.com/rust-analyzer/rust-analyzer.git "$rust_analyzer_src"
 fi
 
+rustup update
+
 pushd "$rust_analyzer_src" >/dev/null
 cargo xtask install --server
 popd
