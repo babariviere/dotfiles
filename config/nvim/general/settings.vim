@@ -32,6 +32,7 @@ set smartcase                           " Smart case search
 set title                               " Set window title
 set list
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+set mouse=a
 
 set termguicolors
 filetype plugin indent on
