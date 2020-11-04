@@ -1,3 +1,8 @@
+if exists('g:baba_ft_rust')
+  finish
+endif
+let g:baba_ft_rust = 1
+
 augroup ft_rust
   au!
   au BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
