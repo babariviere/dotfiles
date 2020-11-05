@@ -20,9 +20,8 @@ set -o vi
 export PATH=$HOME/src/github.com/zimbatm/h:$PATH
 eval "$(h --setup $HOME/src)"
 
-# Add asdf
-source $HOME/.asdf/asdf.sh
-fpath=(${ASDF_DIR}/completions $fpath)
+# Setup direnv
+eval "$(direnv hook zsh)"
 
 # Setup rust
 if [ -f "$HOME/.cargo/env" ]; then
@@ -71,3 +70,6 @@ zle-line-init() { zle -K viins; _set_beam_cursor }
 zle-line-finish() { _set_block_cursor }
 zle -N zle-line-init
 zle -N zle-line-finish
+
+# Add asdf
+source $HOME/.asdf/asdf.sh
