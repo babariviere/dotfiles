@@ -19,15 +19,10 @@ set -o vi
 # Setup h
 export PATH=$HOME/src/github.com/zimbatm/h:$PATH
 eval "$(h --setup $HOME/src)"
-eval "$(up --setup)"
 
 # Add asdf
 source $HOME/.asdf/asdf.sh
 fpath=(${ASDF_DIR}/completions $fpath)
-
-# Setup direnv
-eval "$(asdf direnv hook zsh)"
-direnv() { asdf exec direnv "$@"; }
 
 # Setup rust
 if [ -f "$HOME/.cargo/env" ]; then
@@ -46,10 +41,10 @@ export PATH="$HOME/.local/bin:$PATH"
 source $HOME/.profile
 # source $HOME/.zsh/prompt.zsh
 source $HOME/.zsh/config.zsh
-source $HOME/.zsh/keybinds.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/functions.zsh
 source $HOME/.zsh/plugins.zsh
+source $HOME/.zsh/keybinds.zsh
 
 for file in $HOME/.zsh/rc.d/aliases.*.zsh(N); do
   source $file
