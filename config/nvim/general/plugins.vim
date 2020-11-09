@@ -45,6 +45,10 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/telescope.nvim'
 
+  " Snippets
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
+
   " Project root
   Plug 'airblade/vim-rooter'
 

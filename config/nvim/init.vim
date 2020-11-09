@@ -18,6 +18,7 @@ source $HOME/.config/nvim/plugins/signify.vim
 " source $HOME/.config/nvim/plugins/startify.vim
 source $HOME/.config/nvim/plugins/asciidoctor.vim
 source $HOME/.config/nvim/plugins/languagetool.vim
+source $HOME/.config/nvim/plugins/snippets.vim
 
 lua require 'plug-colorizer'
 lua require 'plug-lsp'
