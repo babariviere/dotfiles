@@ -5,8 +5,11 @@ local lsp_status = require('lsp-status')
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  completion.on_attach(client, bufnr)
-  diagnostic.on_attach(client, bufnr)
+  completion.on_attach({
+    enable_auto_hover = 1,
+    enable_auto_signature = 1
+  })
+  diagnostic.on_attach()
   lsp_status.on_attach(client, bufnr)
 
   local opts = {noremap = true, silent = true}
