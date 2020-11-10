@@ -52,6 +52,9 @@ info "Allowing envrc"
 direnv allow
 popd
 
+info "Linking iCloud to home"
+ln -s $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs $HOME/iCloud
+
 echo ""
 info "Please, refresh your shell by doing either:"
 info '- executing: `source $HOME/.zshrc`'
