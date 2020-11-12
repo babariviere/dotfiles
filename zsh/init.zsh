@@ -34,6 +34,11 @@ if [ -d "$HOME/.bin" ]; then
 fi
 export PATH="$HOME/.local/bin:$PATH"
 
+# Add nix
+if [ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+  source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi
+
 # Dracula config
 # export DRACULA_DISPLAY_CONTEXT=1
 

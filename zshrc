@@ -22,3 +22,4 @@ zinit light-mode for \
 ### End of Zinit's installer chunk
 
 source "$HOME/.zsh/init.zsh"
+if [ -e /Users/bastienriviere/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/bastienriviere/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
