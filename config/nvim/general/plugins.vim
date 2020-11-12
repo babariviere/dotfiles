@@ -53,7 +53,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'airblade/vim-rooter'
 
   " Surround
-  Plug 'tpope/vim-surround'
+  Plug 'blackcauldron7/surround.nvim'
 
   " Editor Config
   Plug 'editorconfig/editorconfig-vim'
@@ -99,5 +99,10 @@ call plug#begin(stdpath('data') . '/plugged')
 
   " Direnv
   Plug 'direnv/direnv.vim'
+
+  " Neuron
+  Plug 'junegunn/fzf'
+  Plug 'junegunn/fzf.vim'
+  Plug 'fiatjaf/neuron.vim'
 call plug#end()
 

@@ -84,3 +84,7 @@ augroup END
 let g:rooter_patterns = ['.git', '_darcs', '.hg', '.bzr', '.svn', 'Makefile', 'Cargo.toml', 'mix.exs']
 
 let g:AutoPairsMultilineClose = 0
+
+let g:neuron_dir = $HOME.'/notes/'
+
+lua require"surround".setup{}
