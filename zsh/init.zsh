@@ -1,3 +1,5 @@
+source $HOME/.profile
+
 # TODO: move env to zshprofile ?
 export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac --with-wx"
 export EDITOR="nvim"
@@ -42,7 +44,6 @@ fi
 # Dracula config
 # export DRACULA_DISPLAY_CONTEXT=1
 
-source $HOME/.profile
 # source $HOME/.zsh/prompt.zsh
 source $HOME/.zsh/config.zsh
 source $HOME/.zsh/aliases.zsh
