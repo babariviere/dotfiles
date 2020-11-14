@@ -167,7 +167,7 @@ local lsp_config = {
   indicator_hint = '',
   indicator_ok = '',
   spinner_frames = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
-  status_symbol = 'lsp ',
+  status_symbol = '異',
   select_symbol = nil
 }
 local function statusline_lsp()
