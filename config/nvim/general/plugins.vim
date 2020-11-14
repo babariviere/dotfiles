@@ -15,10 +15,13 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'dracula/vim', { 'as': 'dracula' }
 
   " Status bar
-  Plug 'itchyny/lightline.vim'
-  Plug 'mengelbrecht/lightline-bufferline'
+  " Plug 'itchyny/lightline.vim'
+  " Plug 'mengelbrecht/lightline-bufferline'
   " Plug 'vim-airline/vim-airline'
   " Plug 'vim-airline/vim-airline-themes'
+  Plug 'glepnir/galaxyline.nvim'
+  Plug 'akinsho/nvim-bufferline.lua'
+  Plug 'kyazdani42/nvim-web-devicons'
 
   " Languages
   " Plug 'sheerun/vim-polyglot'
@@ -35,8 +38,6 @@ call plug#begin(stdpath('data') . '/plugged')
   " LSP nvim
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/completion-nvim'
-  " Plug 'nvim-lua/diagnostic-nvim'
-  Plug 'babariviere/diagnostic-nvim', {'branch': 'fix-diagnostic-spam'}
   Plug 'nvim-lua/lsp-status.nvim'
   Plug 'tjdevries/lsp_extensions.nvim'
 

@@ -1,5 +1,4 @@
 local completion = require('completion')
-local diagnostic = require('diagnostic')
 local lsp_status = require('lsp-status')
 
 local on_attach = function(client, bufnr)
@@ -9,7 +8,6 @@ local on_attach = function(client, bufnr)
     enable_auto_hover = 1,
     enable_auto_signature = 1
   })
-  diagnostic.on_attach()
   lsp_status.on_attach(client, bufnr)
 
   local opts = {noremap = true, silent = true}
@@ -22,9 +20,10 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(0, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   vim.api.nvim_buf_set_keymap(0, 'n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  -- vim.api.nvim_buf_set_keymap(0, 'n', '<leader>e', '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(0, 'n', ']e', '<cmd>NextDiagnosticCycle<cr>', opts)
-  vim.api.nvim_buf_set_keymap(0, 'n', '[e', '<cmd>PrevDiagnosticCycle<cr>', opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', 'ge', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', 'gE', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', ']e', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', '[e', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
 
   vim.api.nvim_command('inoremap <silent><expr> <c-space> completion#trigger_completion()')
 
@@ -35,19 +34,19 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_command('augroup END')
   end
 
-  vim.api.nvim_command("au CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()")
+  -- vim.api.nvim_command("au CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()")
 end
 
 lsp_status.register_progress()
-lsp_status.config({
-  status_symbol = 'lsp',
-  indicator_errors = 'e',
-  indicator_warnings = 'w',
-  indicator_info = 'i',
-  indicator_hint = 'h',
-  indicator_ok = 'ok',
-  spinner_frames = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
-})
+-- lsp_status.config({
+--   status_symbol = 'lsp',
+--   indicator_errors = 'e',
+--   indicator_warnings = 'w',
+--   indicator_info = 'i',
+--   indicator_hint = 'h',
+--   indicator_ok = 'ok',
+--   spinner_frames = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
+-- })
 
 local servers = {
   elixirls = {},
@@ -83,10 +82,20 @@ end
 
 vim.o.completeopt = 'menuone,noinsert,noselect'
 
-vim.g.diagnostic_enable_virtual_text = 1
-vim.g.diagnostic_trimmed_virtual_text = '40'
-vim.g.diagnostic_insert_delay = 1
-vim.g.diagnostic_virtual_text_prefix = '» '
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    -- Enable underline, use default values
+    underline = true,
+    -- Enable virtual text, override spacing to 4
+    virtual_text = {
+      spacing = 4,
+      prefix = '»',
+    },
+    signs = true,
+    -- Disable a feature
+    update_in_insert = false,
+  }
+)
 vim.g.space_before_virtual_text = 5
 vim.g.completion_chain_complete_list = {
   {complete_items = {'lsp', 'snippet'}},

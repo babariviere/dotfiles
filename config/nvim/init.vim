@@ -20,9 +20,10 @@ source $HOME/.config/nvim/plugins/asciidoctor.vim
 source $HOME/.config/nvim/plugins/languagetool.vim
 source $HOME/.config/nvim/plugins/snippets.vim
 
-lua require 'plug-colorizer'
-lua require 'plug-lsp'
-lua require 'plug-treesitter'
+lua require 'baba.colorizer'
+lua require 'baba.lsp'
+lua require 'baba.statusline'
+lua require 'baba.treesitter'
 
 " TODO: take a look at conceal (to have symbols)
 
@@ -85,6 +86,9 @@ let g:rooter_patterns = ['.git', '_darcs', '.hg', '.bzr', '.svn', 'Makefile', 'C
 
 let g:AutoPairsMultilineClose = 0
 
-let g:neuron_dir = $HOME.'/notes/'
+" TODO: neuron is spawned for the first file open so disable it for now.
+" let g:neuron_dir = $HOME.'/notes/'
 
-lua require"surround".setup{}
+lua require'surround'.setup{}
+lua require'bufferline'.setup()
+
