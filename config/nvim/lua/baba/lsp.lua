@@ -69,7 +69,7 @@ local servers = {
   vimls = {}
 }
 
-local lsp = require 'nvim_lsp'
+local lsp = require 'lspconfig'
 
 for name, config in pairs(servers) do
   config.on_attach = on_attach
