@@ -83,5 +83,6 @@ cask "tableplus"
 cask "transmission"
 cask "visual-studio-code"
 mas "AdGuard for Safari", id: 1440147259
+mas "Cascadea", id: 1432182561
 mas "GoodNotes", id: 1444383602
 mas "Grammarly for Safari", id: 1462114288
