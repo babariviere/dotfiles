@@ -105,6 +105,31 @@ vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.imp
 vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
 vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
 
+vim.g.lsp_utils_location_opts = {
+  keymaps = {
+    n = {
+      ['<C-j>'] = 'j',
+      ['<C-k>'] = 'k',
+    }
+  }
+}
+vim.g.lsp_utils_symbols_opts = {
+  keymaps = {
+    n = {
+      ['<C-j>'] = 'j',
+      ['<C-k>'] = 'k',
+    }
+  }
+}
+vim.g.lsp_utils_codeaction_opts = {
+  keymaps = {
+    n = {
+      ['<C-j>'] = 'j',
+      ['<C-k>'] = 'k',
+    }
+  }
+}
+
 vim.g.space_before_virtual_text = 5
 vim.g.completion_chain_complete_list = {
   {complete_items = {'lsp'}},
