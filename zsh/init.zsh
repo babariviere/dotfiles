@@ -19,8 +19,11 @@ ulimit -Sn 20000
 set -o vi
 
 # Setup h
-export PATH=$HOME/src/github.com/zimbatm/h:$PATH
-eval "$(h --setup $HOME/src)"
+# export PATH=$HOME/src/github.com/zimbatm/h:$PATH
+# eval "$(h --setup $HOME/src)"
+
+# Setup flow
+eval "$(flow setup $HOME/src)"
 
 # Setup direnv
 eval "$(direnv hook zsh)"

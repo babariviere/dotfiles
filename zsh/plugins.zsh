@@ -7,8 +7,8 @@ zinit light zdharma/history-search-multi-word
 zinit ice wait'1' lucid
 zinit light changyuheng/fz
 
-zinit ice src'z.sh'
-zinit light rupa/z
+# zinit ice src'z.sh'
+# zinit light rupa/z
 
 zinit ice wait lucid
 zinit light laggardkernel/zsh-thefuck
