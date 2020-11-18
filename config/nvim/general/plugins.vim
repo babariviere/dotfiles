@@ -72,7 +72,9 @@ call plug#begin(stdpath('data') . '/plugged')
   " Rainbow
   Plug 'junegunn/rainbow_parentheses.vim'
   " Formatting
-  Plug 'sbdchd/neoformat'
+  " Plug 'sbdchd/neoformat'
+  Plug 'mhartington/formatter.nvim'
+
   " Scratchpad
   Plug 'metakirby5/codi.vim'
 

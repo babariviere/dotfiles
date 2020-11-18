@@ -11,7 +11,7 @@ source $HOME/.config/nvim/keys/which-key.vim
 source $HOME/.config/nvim/plugins/codi.vim
 source $HOME/.config/nvim/plugins/goyo.vim
 source $HOME/.config/nvim/plugins/quickscope.vim
-source $HOME/.config/nvim/plugins/neoformat.vim
+" source $HOME/.config/nvim/plugins/neoformat.vim
 source $HOME/.config/nvim/plugins/rainbow.vim
 " source $HOME/.config/nvim/plugins/rnvimr.vim
 source $HOME/.config/nvim/plugins/signify.vim
@@ -22,6 +22,7 @@ source $HOME/.config/nvim/plugins/snippets.vim
 
 lua require 'baba.colorizer'
 lua require 'baba.lsp'
+lua require 'baba.formatter'
 lua require 'baba.statusline'
 lua require 'baba.treesitter'
 
