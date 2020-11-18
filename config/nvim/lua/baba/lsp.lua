@@ -98,5 +98,5 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 vim.g.space_before_virtual_text = 5
 vim.g.completion_chain_complete_list = {
-  {complete_items = {'lsp', 'snippet'}},
+  {complete_items = {'lsp'}},
 }
