@@ -40,6 +40,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'nvim-lua/completion-nvim'
   Plug 'nvim-lua/lsp-status.nvim'
   Plug 'tjdevries/lsp_extensions.nvim'
+  Plug 'RishabhRD/popfix'
+  Plug 'RishabhRD/nvim-lsputils'
 
   " Lua nvim
   Plug 'nvim-lua/popup.nvim'
