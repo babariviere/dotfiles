@@ -1,3 +1,4 @@
+tap "babariviere/tools", "git@github.com:babariviere/homebrew-tools.git"
 tap "fewlinesco/tap"
 tap "github/gh"
 tap "homebrew/bundle"
@@ -19,6 +20,7 @@ brew "dog"
 brew "exa"
 brew "fd"
 brew "findutils"
+brew "flow"
 brew "fswatch"
 brew "fzf"
 brew "gh"
@@ -58,10 +60,12 @@ brew "tealdeer"
 brew "thefuck"
 brew "tokei"
 brew "unixodbc"
+brew "unrar"
 brew "watch"
 brew "wget"
 brew "wxmac"
 brew "yarn"
+brew "babariviere/tools/flow-sh", link: false
 brew "fewlinesco/tap/fwl_error"
 brew "proxmark/proxmark3/proxmark3", args: ["HEAD"]
 cask "1password"
@@ -84,5 +88,7 @@ cask "transmission"
 cask "visual-studio-code"
 mas "AdGuard for Safari", id: 1440147259
 mas "Cascadea", id: 1432182561
+mas "Dark Reader for Safari", id: 1438243180
 mas "GoodNotes", id: 1444383602
 mas "Grammarly for Safari", id: 1462114288
+mas "Xcode", id: 497799835
