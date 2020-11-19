@@ -94,3 +94,13 @@ let g:AutoPairsMultilineClose = 0
 lua require'surround'.setup{}
 lua require'bufferline'.setup()
 
+" Flow configuration
+lua << EOF
+function flow_after_switch(path)
+  vim.api.nvim_command('edit '..path)
+  require'telescope.builtin'.find_files{}
+end
+EOF
+
+nnoremap <silent> <leader>pp :lua require('flow').switch_project(flow_after_switch)<CR>
+nnoremap <silent> <leader>pc :lua require('flow').clone_project(flow_after_switch)<CR>
