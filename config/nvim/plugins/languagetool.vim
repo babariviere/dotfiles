@@ -1,10 +1,10 @@
 let g:grammarous#languagetool_cmd = 'languagetool'
 let g:grammarous#show_first_error = 0
 
-augroup languagetool
-  au!
-  au BufWritePost *.adoc GrammarousCheck
-augroup end
+" augroup languagetool
+"   au!
+"   au BufWritePost *.adoc GrammarousCheck
+" augroup end
 
 let g:grammarous#hooks = {}
 function! g:grammarous#hooks.on_check(errs) abort
