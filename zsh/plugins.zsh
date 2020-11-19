@@ -4,8 +4,8 @@ zinit light dracula/zsh
 zinit light zsh-users/zsh-history-substring-search
 zinit light zdharma/history-search-multi-word
 
-zinit ice wait'1' lucid
-zinit light changyuheng/fz
+# zinit ice wait'1' lucid
+# zinit light changyuheng/fz
 
 # zinit ice src'z.sh'
 # zinit light rupa/z
