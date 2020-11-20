@@ -33,20 +33,6 @@ sh "$dir/_system/common/setup/rust.sh"
 sh "$dir/_system/common/setup/go.sh"
 sh "$dir/_system/common/setup/tmux.sh"
 
-info "Adding asdf plugins"
-asdf plugin-add erlang || true
-asdf plugin-add elixir || true
-asdf plugin-add jsonnet || true
-asdf plugin-add nodejs || true
-asdf plugin-add golang || true
-asdf plugin-add yarn || true
-asdf plugin-add direnv || true
-bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-info "Plugins are installed"
-info "Installing asdf packages"
-asdf install
-info "asdf packages are installed"
-
 pushd "$HOME" >/dev/null
 info "Allowing envrc"
 direnv allow
