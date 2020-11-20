@@ -227,7 +227,7 @@ local function statusline_lsp()
     return symbol .. base_status
   end
 
-  return symbol .. vim.b.lsp_client_name .. ' ' .. lsp_config.indicator_ok
+  return symbol .. (vim.b.lsp_client_name or '') .. ' ' .. lsp_config.indicator_ok
 end
 
 gls.right[1]= {
