@@ -29,6 +29,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'habamax/vim-asciidoctor'
   Plug 'elixir-editors/vim-elixir'
   Plug 'jparise/vim-graphql'
+  Plug 'ARM9/arm-syntax-vim'
 
   Plug 'nvim-treesitter/nvim-treesitter'
 
@@ -47,6 +48,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/telescope.nvim'
+  Plug 'rafcamlet/nvim-luapad'
 
   " Flow
   Plug 'babariviere/flow.nvim'
