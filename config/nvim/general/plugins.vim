@@ -112,5 +112,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'fiatjaf/neuron.vim'
+
+  " Easy align
+  Plug 'junegunn/vim-easy-align'
 call plug#end()
 
