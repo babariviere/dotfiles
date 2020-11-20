@@ -39,6 +39,49 @@ local on_attach = function(client, bufnr)
   -- vim.api.nvim_command("au CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()")
 end
 
+local on_new_config = function(config, root_dir)
+  local lsp_config = root_dir..'/.lsp.json'
+
+  if not vim.fn.filereadable(lsp_config) then
+    return
+  end
+
+  local out = vim.fn.readfile(lsp_config)
+  local raw = vim.fn.json_decode(out)
+
+  local decoder = {}
+  decoder.decode = function(tbl)
+    if type(tbl) ~= "table" then return tbl end
+    for k,v in pairs(tbl) do
+      if type(k) ~= "string" then goto continue end
+      local i = k:find('%.')
+      if i then
+        local a = k:sub(0, i-1)
+        local b = k:sub(i+1)
+        tbl[k] = nil
+
+        tbl[a] = tbl[a] or {}
+        tbl[a][b] = v
+        tbl[a] = decoder.decode(tbl[a])
+      else
+        tbl[k] = decoder.decode(v)
+      end
+      ::continue::
+    end
+    return tbl
+  end
+
+  local settings = {
+    settings = decoder.decode(raw)
+  }
+
+  local new_config = vim.tbl_extend("force", config, settings)
+
+  for k,v in pairs(new_config) do
+    config[k] = v
+  end
+end
+
 lsp_status.register_progress()
 -- lsp_status.config({
 --   status_symbol = 'lsp',
@@ -75,6 +118,7 @@ local lsp = require 'lspconfig'
 
 for name, config in pairs(servers) do
   config.on_attach = on_attach
+  config.on_new_config = on_new_config
   config.capabilities = vim.tbl_extend('keep', config.capabilities or {}, lsp_status.capabilities)
   if lsp_status.extensions[name] then
     config.callbacks = lsp_status.extensions[name].setup()
