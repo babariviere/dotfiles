@@ -1,0 +1,8 @@
+[v1]
+"cargo-binutils 0.3.3 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-cov", "cargo-nm", "cargo-objcopy", "cargo-objdump", "cargo-profdata", "cargo-readobj", "cargo-size", "cargo-strip", "rust-ar", "rust-cov", "rust-ld", "rust-lld", "rust-nm", "rust-objcopy", "rust-objdump", "rust-profdata", "rust-readobj", "rust-size", "rust-strip"]
+"cargo-edit 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-add", "cargo-rm", "cargo-upgrade"]
+"du-dust 0.5.3 (registry+https://github.com/rust-lang/crates.io-index)" = ["dust"]
+"flow 0.1.0 (path+file:///Users/bastienriviere/src/github.com/babariviere/flow)" = ["flow"]
+"rust-analyzer 0.0.0 (path+file:///Users/bastienriviere/src/github.com/rust-analyzer/rust-analyzer/crates/rust-analyzer)" = ["rust-analyzer"]
+"toml-cli 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["toml"]
+"xargo 0.3.22 (registry+https://github.com/rust-lang/crates.io-index)" = ["xargo", "xargo-check"]
