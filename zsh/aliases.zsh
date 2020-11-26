@@ -17,4 +17,4 @@ alias ddn="docker-compose down"
 alias dlog="docker-compose logs"
 alias dclean="docker system prune --volumes"
 
-alias neuron="neuron -d $HOME/notes"
+# alias neuron="neuron -d $HOME/notes"

@@ -30,6 +30,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'elixir-editors/vim-elixir'
   Plug 'jparise/vim-graphql'
   Plug 'ARM9/arm-syntax-vim'
+  Plug 'mustache/vim-mustache-handlebars'
 
   Plug 'nvim-treesitter/nvim-treesitter'
 

@@ -42,6 +42,12 @@ export PATH="$HOME/.local/bin:$PATH"
 # Add nix
 if [ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
   source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+
+  # Home manager
+  if [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
+    export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+    source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+  fi
 fi
 
 # Dracula config
