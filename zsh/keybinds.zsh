@@ -16,3 +16,8 @@ bindkey "\e\e" fuck-command-line
 
 # set delete key
 bindkey "^?" backward-delete-char
+
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^e" edit-command-line
+bindkey -M vicmd v edit-command-line
