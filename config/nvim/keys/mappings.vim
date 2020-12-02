@@ -5,6 +5,7 @@
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<cmd>lua require('snippets').expand_or_advance()<CR>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<cmd>lua require('snippets').advance_snippet(-1)<CR>"
 inoremap <silent><expr> <Return> pumvisible() ? "\<c-y>\<cr>" : "\<CR>"
+inoremap <Tab> <cmd>lua require'baba.snippets'.expand_or_tab()<CR>
 
 " Use enter to complete
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"

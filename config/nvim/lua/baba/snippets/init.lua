@@ -11,7 +11,6 @@ end
 snips._global = {
   todo = "TODO(babariviere): ",
   date = [[${=os.date("%Y-%m-%d")}]],
-  epoch = [[${=os.time()}]],
   branch = branch,
   clickup = function ()
     return string.gsub(branch(), '(CU%-[0-9a-z]+).*', "%1") or ""
@@ -20,23 +19,33 @@ snips._global = {
 
 snips.elixir = {
   def = utils.match_indentation [[
-  def $1($2) do
-    $0
-  end
-  ]],
+def $1($2) do
+  $0
+end]],
 
   defp = utils.match_indentation [[
-  defp $1($2) do
-    $0
-  end
-  ]]
+defp $1($2) do
+  $0
+end
+  ]],
+
+  iex = utils.comment_and_indent [[
+    iex> $0]],
+
+  ["do"] = utils.match_indentation [[
+do
+  $0
+end]],
+
+  ["if:"] = utils.match_indentation "if $1, do: $0",
+  ["ife"] = utils.match_indentation "if $1, do:"
 }
 
 snips.go = {
   err = utils.match_indentation [[
-  if err != nil {
-    return$0
-  }]]
+if err != nil {
+  return$0
+}]]
 }
 
 snips.lua = {
@@ -51,3 +60,13 @@ snippets.set_ux(require'baba.snippets.floaty')
 -- snippets.use_suggested_mappings()
 
 vim.g.completion_enable_snippet = "snippets.nvim"
+
+return {
+  expand_or_tab = function ()
+    local _, expanded = require 'snippets'.expand_or_advance()
+    if expanded then
+      return
+    end
+    vim.api.nvim_eval([[feedkeys("\<tab>", "n")]])
+  end
+}
