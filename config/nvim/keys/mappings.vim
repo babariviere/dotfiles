@@ -2,8 +2,9 @@
 " inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use Ctrl-J and Ctrl-K to navigate popup
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<cmd>lua require('snippets').expand_or_advance()<CR>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<cmd>lua require('snippets').advance_snippet(-1)<CR>"
+inoremap <silent><expr> <Return> pumvisible() ? "\<c-y>\<cr>" : "\<CR>"
 
 " Use enter to complete
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"

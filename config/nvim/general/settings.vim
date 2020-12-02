@@ -37,9 +37,6 @@ set mouse=a
 set termguicolors
 filetype plugin indent on
 
-" check for and load file changes
-autocmd WinEnter,BufWinEnter,FocusGained * checktime
-
 " disable swapfile to avoid errors on load
 set noswapfile
 

@@ -178,5 +178,5 @@ vim.g.lsp_utils_codeaction_opts = {
 
 vim.g.space_before_virtual_text = 5
 vim.g.completion_chain_complete_list = {
-  {complete_items = {'lsp'}},
+  {complete_items = {'lsp', 'snippet'}},
 }

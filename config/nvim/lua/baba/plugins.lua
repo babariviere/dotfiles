@@ -87,6 +87,7 @@ return require('packer').startup {
       -- Snippets
       -- use 'SirVer/ultisnips'
       -- use 'honza/vim-snippets'
+      use 'norcalli/snippets.nvim'
 
       -- Project root
       use 'airblade/vim-rooter'

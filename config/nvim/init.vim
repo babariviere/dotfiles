@@ -27,6 +27,7 @@ lua require 'baba.lsp'
 lua require 'baba.formatter'
 lua require 'baba.statusline'
 lua require 'baba.treesitter'
+lua require 'baba.snippets'
 
 " TODO: take a look at conceal (to have symbols)
 
