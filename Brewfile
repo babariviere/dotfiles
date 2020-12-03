@@ -34,12 +34,15 @@ brew "git-delta"
 brew "gnupg"
 brew "go"
 brew "graphviz"
+brew "helm"
 brew "hivemind"
 brew "htop"
 brew "httpie"
 brew "hub"
 brew "ipfs"
 brew "jq"
+brew "kubernetes-cli", link: false
+brew "kubeseal"
 brew "languagetool"
 brew "lazygit"
 brew "libxslt"
@@ -55,6 +58,8 @@ brew "oil"
 brew "openapi-generator"
 brew "tmux", args: ["HEAD"]
 brew "overmind"
+brew "poetry"
+brew "postgresql"
 brew "pygments"
 brew "qemu"
 brew "rcm"
@@ -87,6 +92,8 @@ cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
 cask "insomnia"
 cask "ipfs"
+cask "istat-menus"
+cask "postico"
 cask "refined-github-safari"
 cask "slack"
 cask "tableplus"
@@ -97,4 +104,5 @@ mas "Cascadea", id: 1432182561
 mas "Dark Reader for Safari", id: 1438243180
 mas "GoodNotes", id: 1444383602
 mas "Grammarly for Safari", id: 1462114288
+mas "Userscripts", id: 1463298887
 mas "Xcode", id: 497799835
