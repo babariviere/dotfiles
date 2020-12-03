@@ -8,6 +8,15 @@ require('formatter').setup({
             stdin = true
           }
         end
+      },
+      lua = {
+        function()
+          return {
+            exe = "lua-format",
+            args = {"--config=$HOME/.config/luaformatter/config.yaml"},
+            stdin = true
+          }
+        end
       }
     }
   })

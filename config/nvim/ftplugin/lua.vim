@@ -1,4 +1,4 @@
 augroup ft_lua
   au!
-  " au BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 1000)
+  au BufWritePre *.lua Format
 augroup end

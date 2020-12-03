@@ -1,0 +1,12 @@
+require 'baba.globals'
+require 'baba.mappings'
+require 'baba.plugins'
+
+require 'baba.themes.dracula'
+require 'baba.colorizer'
+require 'baba.completion'
+require 'baba.lsp'
+require 'baba.formatter'
+require 'baba.statusline'
+require 'baba.treesitter'
+require 'baba.snippets'

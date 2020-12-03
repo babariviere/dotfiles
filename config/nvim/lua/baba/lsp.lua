@@ -1,18 +1,8 @@
--- local completion = require('completion')
 local lsp_status = require('lsp-status')
-
-vim.api.nvim_command [[autocmd BufEnter * lua require'completion'.on_attach{
-    enable_auto_hover = 1,
-    enable_auto_signature = 1
-  }]]
 
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- completion.on_attach({
-  --   enable_auto_hover = 1,
-  --   enable_auto_signature = 1
-  -- })
   lsp_status.on_attach(client, bufnr)
 
   local opts = {noremap = true, silent = true}
@@ -29,8 +19,6 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(0, 'n', 'gE', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   vim.api.nvim_buf_set_keymap(0, 'n', ']e', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', opts)
   vim.api.nvim_buf_set_keymap(0, 'n', '[e', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
-
-  vim.api.nvim_command('inoremap <silent><expr> <c-space> completion#trigger_completion()')
 
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_command('augroup lsp_aucmds')
@@ -191,6 +179,3 @@ vim.g.lsp_utils_codeaction_opts = {
 }
 
 vim.g.space_before_virtual_text = 5
-vim.g.completion_chain_complete_list = {
-  {complete_items = {'lsp', 'snippet', 'path'}},
-}
