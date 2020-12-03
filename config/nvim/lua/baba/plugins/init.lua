@@ -25,9 +25,8 @@ return require('packer').startup {
     local pkg = function(package)
       local build_config = function(name)
         local _, _, pname = name:match('(.-)([^\\/]-%.?([^%.\\/]*))$')
-        local status, p = pcall(require, 'baba.plugins.' .. pname)
-        if status then return p end
-        return nil
+        pname = 'baba.plugins.' .. pname
+        return [[require']] .. pname .. [[']]
       end
 
       if type(package) == 'table' then

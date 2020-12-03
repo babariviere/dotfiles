@@ -1,1 +1,1 @@
-require'surround'.setup()
+require'surround'.setup {}
