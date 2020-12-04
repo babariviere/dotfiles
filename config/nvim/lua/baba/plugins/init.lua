@@ -53,7 +53,7 @@ return require('packer').startup {
     -- use 'mengelbrecht/lightline-bufferline'
     -- use 'vim-airline/vim-airline'
     -- use 'vim-airline/vim-airline-themes'
-    use 'glepnir/galaxyline.nvim'
+    use {'glepnir/galaxyline.nvim', config = [[require'baba.statusline']]}
     pkg {'akinsho/nvim-bufferline.lua', as = 'bufferline'}
     use 'kyazdani42/nvim-web-devicons'
 
@@ -66,14 +66,18 @@ return require('packer').startup {
     use 'ARM9/arm-syntax-vim'
     use 'mustache/vim-mustache-handlebars'
 
-    use 'nvim-treesitter/nvim-treesitter'
+    use {
+      'nvim-treesitter/nvim-treesitter',
+      run = function() vim.api.nvim_command [[TSUpdate]] end,
+      config = [[require'baba.treesitter']]
+    }
 
     -- Auto Pairs
     pkg {'jiangmiao/auto-pairs', as = 'autopairs'}
 
     -- LSP nvim
-    use 'neovim/nvim-lspconfig'
-    use 'nvim-lua/completion-nvim'
+    use {'neovim/nvim-lspconfig', config = [[require'baba.lsp']]}
+    use {'nvim-lua/completion-nvim', config = [[require'baba.completion']]}
     use 'nvim-lua/lsp-status.nvim'
     use 'tjdevries/lsp_extensions.nvim'
     use 'RishabhRD/popfix'
@@ -108,7 +112,7 @@ return require('packer').startup {
     -- Snippets
     -- use 'SirVer/ultisnips'
     -- use 'honza/vim-snippets'
-    use 'norcalli/snippets.nvim'
+    use {'norcalli/snippets.nvim', config = [[require'baba.snippets']]}
 
     -- Project root
     pkg {'airblade/vim-rooter', as = 'rooter'}
@@ -128,12 +132,12 @@ return require('packer').startup {
     ---- Ranger
     -- --use 'kevinhwang91/rnvimr'
     -- Colorizer
-    use 'norcalli/nvim-colorizer.lua'
+    use {'norcalli/nvim-colorizer.lua', config = [[require 'baba.colorizer']]}
     -- Rainbow
     use 'junegunn/rainbow_parentheses.vim'
     -- Formatting
     -- use 'sbdchd/neoformat'
-    use 'mhartington/formatter.nvim'
+    use {'mhartington/formatter.nvim', config = [[require'baba.formatter']]}
 
     -- Scratchpad
     use 'metakirby5/codi.vim'

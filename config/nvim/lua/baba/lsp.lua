@@ -102,7 +102,20 @@ lsp_status.register_progress()
 local servers = {
   elixirls = {},
   gopls = {},
-  pyls_ms = {},
+  pyls_ms = {
+    cmd = {
+      'dotnet', 'exec', os.getenv('HOME') ..
+        '/.cache/nvim/lspconfig/pyls_ms/Microsoft.Python.LanguageServer.dll'
+    },
+    init_options = {
+      interpreter = {
+        properties = {
+          InterpreterPath = '/usr/local/bin/python3',
+          Version = '3.9'
+        }
+      }
+    }
+  },
   rust_analyzer = {},
   sumneko_lua = {
     settings = {
@@ -136,9 +149,6 @@ for name, config in pairs(servers) do
   config.on_new_config = on_new_config
   config.capabilities = vim.tbl_extend('keep', config.capabilities or {},
                                        lsp_status.capabilities)
-  if lsp_status.extensions[name] then
-    config.callbacks = lsp_status.extensions[name].setup()
-  end
   lsp[name].setup(config)
 end
 
