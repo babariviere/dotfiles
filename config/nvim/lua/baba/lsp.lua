@@ -102,6 +102,7 @@ lsp_status.register_progress()
 local servers = {
   elixirls = {},
   gopls = {},
+  pyls_ms = {},
   rust_analyzer = {},
   sumneko_lua = {
     settings = {
