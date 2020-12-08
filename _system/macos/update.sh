@@ -8,6 +8,7 @@ brew upgrade --fetch-head
 brew cleanup
 
 for f in $common/update/*; do
+  echo "Updating $f..."
   sh "$f"
 done
 
