@@ -19,6 +19,7 @@ brew "libtool"
 brew "crosstool-ng"
 brew "direnv"
 brew "dog"
+brew "dotnet"
 brew "wxmac"
 brew "elixir"
 brew "node"
@@ -96,10 +97,12 @@ cask "istat-menus"
 cask "postico"
 cask "refined-github-safari"
 cask "slack"
+cask "spotify"
 cask "tableplus"
 cask "transmission"
 cask "visual-studio-code"
 mas "AdGuard for Safari", id: 1440147259
+mas "Aviary", id: 1522043420
 mas "Cascadea", id: 1432182561
 mas "Dark Reader for Safari", id: 1438243180
 mas "GoodNotes", id: 1444383602
