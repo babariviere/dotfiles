@@ -1,5 +1,6 @@
 zinit ice pick"dracula.zsh-theme" src"lib/async.zsh"
-zinit light dracula/zsh
+# zinit light dracula/zsh
+zinit load %HOME/src/github.com/dracula/zsh
 
 zinit light zsh-users/zsh-history-substring-search
 zinit light zdharma/history-search-multi-word

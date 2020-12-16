@@ -21,3 +21,6 @@ autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^e" edit-command-line
 bindkey -M vicmd v edit-command-line
+
+bindkey -M vicmd ? history-search-multi-word
+bindkey -M vicmd / history-search-multi-word
