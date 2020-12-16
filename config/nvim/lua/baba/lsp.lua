@@ -139,6 +139,12 @@ local servers = {
         }
       }
     }
+  },
+  tsserver = {
+    -- default_config = {
+    --   bin_dir = '/usr/local/bin',
+    cmd = {'typescript-language-server', '--stdio'}
+    -- }
   }
 }
 

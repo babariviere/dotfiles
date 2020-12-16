@@ -1,3 +1,9 @@
+--- Git blame {{{
+vim.g.gitblame_enabled = true
+vim.g.gitblame_message_template = ' <author>, <date> • <summary>'
+--- }}}
+
+--- Signify {{{
 -- Change these if you want
 vim.g.signify_sign_add = '▎'
 vim.g.signify_sign_delete = '▁'
@@ -13,3 +19,4 @@ vim.api.nvim_set_keymap('n', '<leader>gj', '<plug>(signify-next-hunk)', {})
 vim.api.nvim_set_keymap('n', '<leader>gk', '<plug>(signify-prev-hunk)', {})
 vim.api.nvim_set_keymap('n', '<leader>gJ', '9999<leader>gJ', {})
 vim.api.nvim_set_keymap('n', '<leader>gK', '9999<leader>gk', {})
+--- }}}

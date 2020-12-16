@@ -25,6 +25,7 @@ return require('packer').startup {
     local pkg = function(package)
       local build_config = function(name)
         local _, _, pname = name:match('(.-)([^\\/]-%.?([^%.\\/]*))$')
+        pname = pname:gsub('-', '_')
         pname = 'baba.plugins.' .. pname
         return [[require']] .. pname .. [[']]
       end
@@ -143,10 +144,11 @@ return require('packer').startup {
     use 'metakirby5/codi.vim'
 
     -- Git
-    pkg {'mhinz/vim-signify', as = 'signify'}
-    use 'tpope/vim-fugitive'
-    use 'tpope/vim-rhubarb'
-    use 'junegunn/gv.vim'
+    use {
+      'tpope/vim-fugitive', 'tpope/vim-rhubarb', 'junegunn/gv.vim',
+      {'mhinz/vim-signify', config = [[require'baba.git']]},
+      {'f-person/git-blame.nvim', config = [[require'baba.git']]}
+    }
 
     -- Start page
     use 'mhinz/vim-startify'
@@ -188,7 +190,8 @@ return require('packer').startup {
         if not ok then
           vim.cmd [[65vnew  [packer] ]]
 
-          return vim.api.nvim_get_current_win(), vim.api.nvim_get_current_buf()
+          return true, vim.api.nvim_get_current_win(),
+                 vim.api.nvim_get_current_buf()
         end
 
         local bufnr = float_win.bufnr
@@ -197,7 +200,7 @@ return require('packer').startup {
         vim.api.nvim_buf_set_name(bufnr, name)
         vim.api.nvim_win_set_option(win, 'winblend', 10)
 
-        return win, bufnr
+        return true, win, bufnr
       end
     }
   }
