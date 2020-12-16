@@ -1,9 +1,21 @@
 #!/usr/bin/env bash
 
 dir=$HOME/src/github.com/babariviere/dotfiles
+common="$dir/_system/common"
+
+update_scripts=()
 
 case $(uname -s) in
   Darwin)
-    bash "$dir/_system/macos/update.sh"
+    update_scripts+=($dir/_system/macos/update/*)
     ;;
 esac
+
+update_scripts+=($common/update/*)
+
+for script in ${update_scripts[@]}; do
+  filename=$(basename -- "$script")
+  script_name=${filename%.*}
+  echo "=== Updating $script_name ==="
+  bash "$script"
+done

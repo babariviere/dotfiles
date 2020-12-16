@@ -1,14 +1,31 @@
 #!/usr/bin/env bash
 
+info() {
+  echo -e "\033[1minfo:\033[22m" $@
+}
+export -f info
+
 dir=$HOME/src/github.com/babariviere/dotfiles
+common="$dir/_system/common"
 
 if [ ! -d "$dir" ]; then
   mkdir -p "$(dirname $dir)"
   git clone git@github.com:babariviere/dotfiles.git "$dir"
 fi
 
+setup_scripts=()
+
 case $(uname -s) in
   Darwin)
-    bash "$dir/_system/macos/setup.sh"
+    setup_scripts+=$($dir/_system/macos/setup/*)
     ;;
 esac
+
+setup_scripts+=($common/setup/*)
+
+for script in ${setup_scripts[@]}; do
+  filename=$(basename -- "$script")
+  script_name=${filename%.*}
+  echo "=== Setup $script_name ==="
+  bash "$script"
+done
