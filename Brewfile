@@ -106,12 +106,14 @@ cask "inkscape"
 cask "insomnia"
 cask "ipfs"
 cask "istat-menus"
+cask "onecast"
 cask "postico"
 cask "slack"
 cask "spotify"
 cask "tableplus"
 cask "transmission"
 cask "visual-studio-code"
+cask "zoom"
 mas "AdGuard for Safari", id: 1440147259
 mas "Aviary", id: 1522043420
 mas "Dark Reader for Safari", id: 1438243180
