@@ -87,6 +87,12 @@ return require('packer').startup {
       requires = {{'RishabhRD/popfix', opt = true}}
     }
 
+    -- DAP
+    use {
+      {'mfussenegger/nvim-dap', config = [[require'baba.dap']]},
+      'theHamsta/nvim-dap-virtual-text'
+    }
+
     -- Lua nvim
     use 'nvim-lua/plenary.nvim'
     use {
@@ -145,8 +151,15 @@ return require('packer').startup {
 
     -- Git
     use {
-      'tpope/vim-fugitive', 'tpope/vim-rhubarb', 'junegunn/gv.vim',
-      {'mhinz/vim-signify', config = [[require'baba.git']]},
+      'tpope/vim-fugitive',
+      'tpope/vim-rhubarb',
+      'junegunn/gv.vim',
+      -- {'mhinz/vim-signify', config = [[require'baba.git']]},
+      {
+        'lewis6991/gitsigns.nvim',
+        config = function() end,
+        requires = {'nvim-lua/plenary.nvim'}
+      },
       {'f-person/git-blame.nvim', config = [[require'baba.git']]}
     }
 

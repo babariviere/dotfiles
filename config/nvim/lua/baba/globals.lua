@@ -45,7 +45,8 @@ local options = {
   listchars = [[tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·]],
   termguicolors = true,
 
-  foldmethod = 'marker'
+  foldmethod = 'marker',
+  foldlevelstart = 0
 }
 
 for k, v in pairs(options) do

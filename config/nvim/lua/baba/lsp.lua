@@ -89,18 +89,11 @@ local on_new_config = function(config, root_dir)
 end
 
 lsp_status.register_progress()
--- lsp_status.config({
---   status_symbol = 'lsp',
---   indicator_errors = 'e',
---   indicator_warnings = 'w',
---   indicator_info = 'i',
---   indicator_hint = 'h',
---   indicator_ok = 'ok',
---   spinner_frames = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
--- })
 
 local servers = {
-  elixirls = {},
+  elixirls = {
+    cmd = { os.getenv('HOME') .. '/src/github.com/elixir-lsp/elixir-ls/release/language_server.sh' }
+  },
   gopls = {},
   pyls_ms = {
     cmd = {
