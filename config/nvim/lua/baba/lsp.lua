@@ -91,13 +91,64 @@ end
 lsp_status.register_progress()
 
 local servers = {
-  elixirls = {
-    cmd = { os.getenv('HOME') .. '/src/github.com/elixir-lsp/elixir-ls/release/language_server.sh' }
+  diagnosticls = {
+    filetypes = {'asciidoc', 'markdown', 'gitcommit', 'sh'},
+    init_options = {
+      linters = {
+        shellcheck = {
+          command = 'shellcheck',
+          debounce = 100,
+          args = {'--format=gcc', '-'},
+          offsetLine = 0,
+          offsetColumn = 0,
+          sourceName = 'shellcheck',
+          formatLines = 1,
+          formatPattern = {
+            '^[^:]+:(\\d+):(\\d+):\\s+([^:]+):\\s+(.*)$',
+            {line = 1, column = 2, message = 4, security = 3}
+          },
+          securities = {error = 'error', warning = 'warning', note = 'info'}
+        },
+        languagetool = {
+          command = 'languagetool',
+          debounce = 200,
+          args = {'-'},
+          offsetLine = 0,
+          offsetColumn = 0,
+          sourceName = 'languagetool',
+          formatLines = 2,
+          formatPattern = {
+            '^\\d+?\\.\\)\\s+Line\\s+(\\d+),\\s+column\\s+(\\d+),\\s+([^\\n]+)\nMessage:\\s+(.*)$',
+            {line = 1, column = 2, message = {4, 3}}
+          }
+        }
+      },
+      filetypes = {
+        sh = 'shellcheck',
+        asciidoc = 'languagetool',
+        markdown = 'languagetool',
+        gitcommit = 'languagetool'
+      },
+      -- Use format.nvim instead
+      formatters = {},
+      formatFiletypes = {}
+    }
   },
+
+  elixirls = {
+    cmd = {
+      os.getenv('HOME') ..
+        '/src/github.com/elixir-lsp/elixir-ls/release/language_server.sh'
+    }
+  },
+
   gopls = {},
+
   pyls_ms = {
     cmd = {
-      'dotnet', 'exec', os.getenv('HOME') ..
+      'dotnet',
+      'exec',
+      os.getenv('HOME') ..
         '/.cache/nvim/lspconfig/pyls_ms/Microsoft.Python.LanguageServer.dll'
     },
     init_options = {
@@ -109,7 +160,9 @@ local servers = {
       }
     }
   },
+
   rust_analyzer = {},
+
   sumneko_lua = {
     settings = {
       Lua = {
@@ -133,6 +186,7 @@ local servers = {
       }
     }
   },
+
   tsserver = {
     -- default_config = {
     --   bin_dir = '/usr/local/bin',
