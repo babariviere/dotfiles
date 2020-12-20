@@ -292,3 +292,9 @@ gls.short_line_right[1] = {
     highlight = {colors.fg, colors.purple}
   }
 }
+
+local M = {}
+
+function M.on_attach(_, _) gl.load_galaxyline() end
+
+return M

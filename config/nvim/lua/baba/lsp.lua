@@ -1,9 +1,11 @@
+local statusline = require('baba.statusline')
 local lsp_status = require('lsp-status')
 
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   lsp_status.on_attach(client, bufnr)
+  statusline.on_attach(client, bufnr)
 
   local opts = {noremap = true, silent = true}
   vim.api.nvim_buf_set_keymap(0, 'n', 'gD',
