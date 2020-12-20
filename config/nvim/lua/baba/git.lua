@@ -25,11 +25,11 @@ vim.g.gitblame_message_template = ' <author>, <date> • <summary>'
 
 require'gitsigns'.setup {
   signs = {
-    add = {hl = 'DiffAdd', text = '▎'},
-    change = {hl = 'DiffChange', text = '▎'},
-    delete = {hl = 'DiffDelete', text = '▁'},
-    topdelete = {hl = 'DiffDelete', text = '▔'},
-    changedelete = {hl = 'DiffChange', text = '▎'}
+    add = {hl = 'DiffAdd', text = '▋'},
+    change = {hl = 'DiffChange', text = '▋'},
+    delete = {hl = 'DiffDelete', text = '▋'},
+    topdelete = {hl = 'DiffDelete', text = '▘'},
+    changedelete = {hl = 'DiffChange', text = '▋'}
   }
 }
 
