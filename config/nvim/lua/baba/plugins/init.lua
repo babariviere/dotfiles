@@ -74,7 +74,8 @@ return require('packer').startup {
     }
 
     -- Auto Pairs
-    pkg {'jiangmiao/auto-pairs', as = 'autopairs'}
+    -- pkg {'jiangmiao/auto-pairs', as = 'autopairs'}
+    pkg {'cohama/lexima.vim', as = 'lexima'}
 
     -- LSP nvim
     use {'neovim/nvim-lspconfig', config = [[require'baba.lsp']]}
