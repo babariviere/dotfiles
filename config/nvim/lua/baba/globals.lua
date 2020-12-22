@@ -46,7 +46,9 @@ local options = {
   termguicolors = true,
 
   foldmethod = 'marker',
-  foldlevelstart = 0
+  foldlevelstart = 0,
+
+  conceallevel = 2
 }
 
 for k, v in pairs(options) do
