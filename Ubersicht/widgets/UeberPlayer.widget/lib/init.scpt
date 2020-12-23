@@ -9,18 +9,6 @@ on error e
   error "Couldn't set up mypath!" & e
 end try
 
--- Check which Apple Music app to use (iTunes for pre-Catalina or Music otherwise)
--- NOTE: This is a slightly hacky way to modify the `getTrack.scpt`, for the goal of accomodating to your macOS's music player
-set command to ""
-try
-  tell application "Finder" to get application file id "com.apple.Music"
-  set command to "sed -i '' 's/\"iTunes\"/\"Music\"/' UeberPlayer.widget/lib/getTrack.scpt"
-on error
-  set appleMusicApp to "iTunes"
-  set command to "sed -i '' 's/\"Music\"/\"iTunes\"/' UeberPlayer.widget/lib/getTrack.scpt"
-end try
-do shell script command
-
 -- Use a .plist file to detect changes
 global plist_filepath
 set plist_filepath to (mypath & "currentTrack.plist" as string)

@@ -167,14 +167,10 @@ on extractMusicArt()
   end tell
 
   -- Use alternate way of getting the path because the other one doesn't work for some reason?
-  set myAltPath to POSIX path of (path to me)
-	set AppleScript's text item delimiters to "/"
-	set myAltPath to (myAltPath's text items 1 thru -2 as string) & "/"
-	set AppleScript's text item delimiters to ""
-  set myAltPath to (myAltPath as POSIX file) & "cache:" & artworkFilename as string
+  set myAltPath to (path to home folder) & ".Ubersicht:widgets:UeberPlayer.widget:cache:" & artworkFilename as string
 
   set outFile to open for access file myAltPath with write permission
   set eof outFile to 0
-  write srcBytes to outFile starting at eof
+  write srcBytes to outFile
   close access outFile
 end extractMusicArt

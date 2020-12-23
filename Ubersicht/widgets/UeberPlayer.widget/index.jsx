@@ -1,6 +1,5 @@
 import { styled, run } from "uebersicht";
 import getColors from "./lib/getColors.js";
-const _version = "1.2.4";
 
 /* CUSTOMIZATION (mess around here!)
 You may need to refresh the widget after changing these settings
@@ -115,43 +114,6 @@ const Wrapper = styled("div")`
   }
 `;
 
-const miniWrapperPos = ({ horizontal }) => {
-  switch (horizontal) {
-    case "left":
-      return `text-align: left;`;
-    case "center":
-      return `text-align: center;`;
-    case "right":
-      return `text-align: right;`;
-    default:
-      return horizontal.startsWith("-")
-        ? `text-align: right;`
-        : `text-align: left;`;
-  }
-};
-
-const MiniWrapper = styled(Wrapper)`
-  border-radius: 0;
-  overflow: visible;
-  box-shadow: none;
-  background: transparent;
-  ${miniWrapperPos}
-
-  &::before {
-    display: none;
-  }
-`;
-
-const BigPlayer = styled("div")`
-  display: flex;
-  flex-direction: column;
-  width: 240px;
-`;
-
-const MediumPlayer = styled(BigPlayer)`
-  width: 180px;
-`;
-
 const SmallPlayer = styled("div")`
   position: relative;
   border: 1.5px solid #292828;
@@ -160,22 +122,6 @@ const SmallPlayer = styled("div")`
   display: flex;
   height: 30px;
   width: 300px;
-`;
-
-const MiniPlayer = styled("div")`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  line-height: 1;
-
-  * {
-    text-shadow: 0px 0px 4px #0004, 0px 2px 12px #0004;
-  }
-
-  > * + * {
-    margin-top: 0.5em;
-  }
 `;
 
 const ArtworkWrapper = styled("div")`
@@ -323,45 +269,6 @@ const Artist = styled("p")`
   }
 `;
 
-const Album = styled("p")`
-  font-size: 0.65em;
-  color: ${(props) => (props.color ? props.color : "inherit")};
-  opacity: 0.75;
-
-  &::after {
-    content: "";
-    display: inline-block;
-    width: 0;
-  }
-
-  &.small {
-    font-size: 0.65em;
-  }
-`;
-
-const UpdateNotif = styled("div")`
-  position: absolute;
-  top: 0;
-  width: 100%;
-  padding: 1em;
-  min-height: 30%;
-  background-image: linear-gradient(to bottom, #000b, transparent);
-`;
-
-const UpdateText = styled("p")`
-  font-size: 0.7em;
-  text-align: center !important;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-`;
-
 /* UEBER-SPECIFIC STUFF */
 
 export const init = (dispatch) => {
@@ -410,6 +317,7 @@ export const updateState = ({ type, output, error }, previousState) => {
     case "UB/COMMAND_RAN":
       return updateSongData(output, error, previousState);
     case "GET_ART":
+      console.log("GET_ART");
       if (options.adaptiveColors) {
         return getColors(output, previousState, options);
       } else {
@@ -517,6 +425,7 @@ const updateSongData = (output, error, previousState) => {
 const prepareArtwork = (dispatch, song) => {
   // Use a dummy image to test images beforehand
   const img = new Image();
+  console.log("PREPARE");
 
   // Attempts images in this order: Local -> Online -> Default
   img.onload = () => {
@@ -534,13 +443,14 @@ const prepareArtwork = (dispatch, song) => {
     }
   };
 
+  console.log(song.localArtwork);
   img.crossOrigin = "anonymous";
   img.src = song.localArtwork;
 };
 
 // RENDERING //
 // Artwork image
-const artworkImage = (wrapperClass, { art1, art2, alternate }) => (
+const ArtworkImage = (wrapperClass, { art1, art2, alternate }) => (
   <ArtworkWrapper className={wrapperClass}>
     <Artwork src={art1} show={alternate} />
     <Artwork src={art2} show={!alternate} />
@@ -555,7 +465,7 @@ const small = (
   artwork
 ) => (
   <SmallPlayer>
-    {artworkImage("small", artwork)}
+    {ArtworkImage("small", artwork)}
     <Information className="small">
       <Track color={secondaryColor}>
         {track} // {artist}
@@ -585,7 +495,7 @@ export const render = (
   },
   dispatch
 ) => {
-  const { size, horizontalPosition, verticalPosition, alwaysShow } = options;
+  const { horizontalPosition, verticalPosition, alwaysShow } = options;
 
   // Determine widget visability
   const showWidget = playing || (alwaysShow === 1 && app) || alwaysShow === 2;
