@@ -22,6 +22,16 @@ local bindings = {
       [[pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]],
       expr = true,
       noremap = true
+    },
+    ['<up>'] = {
+      [[pumvisible() ? '<c-e><up>' : '<up>']],
+      expr = true,
+      noremap = true
+    },
+    ['<down>'] = {
+      [[pumvisible() ? '<c-e><down>' : '<down>']],
+      expr = true,
+      noremap = true
     }
   },
 
