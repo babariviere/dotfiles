@@ -7,13 +7,13 @@ update_scripts=()
 
 case $(uname -s) in
   Darwin)
-    update_scripts+=($dir/_system/macos/update/*)
+    update_scripts+=("$dir"/_system/macos/update/*)
     ;;
 esac
 
-update_scripts+=($common/update/*)
+update_scripts+=("$common"/update/*)
 
-for script in ${update_scripts[@]}; do
+for script in "${update_scripts[@]}"; do
   filename=$(basename -- "$script")
   script_name=${filename%.*}
   echo "=== Updating $script_name ==="
