@@ -87,15 +87,29 @@ alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
 
+# focus window
+
 shift + alt - h : yabai -m window --swap west
 shift + alt - j : yabai -m window --swap south
 shift + alt - k : yabai -m window --swap north
 shift + alt - l : yabai -m window --swap east
 
+# warp window
+
 shift + cmd - h : yabai -m window --warp west
 shift + cmd - j : yabai -m window --warp south
 shift + cmd - k : yabai -m window --warp north
 shift + cmd - l : yabai -m window --warp east
+
+# stackline
+
+cmd + shift - n : yabai -m window --focus stack.next
+cmd + shift - p : yabai -m window --focus stack.prev
+
+cmd + ctrl - left  : yabai -m window west --stack $(yabai -m query --windows --window | jq -r '.id')
+cmd + ctrl - down  : yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id')
+cmd + ctrl - up    : yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id')
+cmd + ctrl - right : yabai -m window east --stack $(yabai -m query --windows --window | jq -r '.id')
 
 # swap managed window
 # shift + alt - h : yabai -m window --swap north
@@ -120,7 +134,15 @@ shift + cmd - l : yabai -m window --warp east
 
 # fast focus desktop
 # cmd + alt - x : yabai -m space --focus recent
-# cmd + alt - 1 : yabai -m space --focus 1
+cmd + alt - 1 : yabai -m space --focus 1
+cmd + alt - 2 : yabai -m space --focus 2
+cmd + alt - 3 : yabai -m space --focus 3
+cmd + alt - 4 : yabai -m space --focus 4
+cmd + alt - 5 : yabai -m space --focus 5
+cmd + alt - 6 : yabai -m space --focus 6
+cmd + alt - 7 : yabai -m space --focus 7
+cmd + alt - 8 : yabai -m space --focus 8
+cmd + alt - 9 : yabai -m space --focus 9
 
 # send window to desktop and follow focus
 # shift + cmd - z : yabai -m window --space next; yabai -m space --focus next
