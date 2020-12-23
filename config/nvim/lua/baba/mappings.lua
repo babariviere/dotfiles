@@ -42,7 +42,6 @@ local bindings = {
     ['<C-j>'] = {'<C-w>j', noremap = true},
     ['<C-k>'] = {'<C-w>k', noremap = true},
     ['<C-l>'] = {'<C-w>l', noremap = true},
-    [':e'] = {[[:e <C-R>=expand("%:p:h") . "/" <CR>]], noremap = true},
     ['<leader><space>'] = {
       [[<cmd>lua require'telescope.builtin'.find_files{}<CR>]],
       noremap = true
@@ -66,7 +65,9 @@ local bindings = {
     }
   },
 
-  v = {['<'] = {'<gv', noremap = true}, ['>'] = {'>gv', noremap = true}}
+  v = {['<'] = {'<gv', noremap = true}, ['>'] = {'>gv', noremap = true}},
+
+  c = {['ed'] = {[[e <C-R>=expand("%:h") . "/" <CR>]], noremap = true}}
 }
 
 for map, set in pairs(bindings) do
