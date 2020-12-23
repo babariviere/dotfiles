@@ -163,6 +163,14 @@ return require('packer').startup {
       },
       {'f-person/git-blame.nvim', config = [[require'baba.git']]}
     }
+    use {
+      'pwntester/octo.nvim',
+      requires = {
+        'nvim-lua/popup.nvim',
+        'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope.nvim'
+      }
+    }
 
     -- Start page
     use 'mhinz/vim-startify'
