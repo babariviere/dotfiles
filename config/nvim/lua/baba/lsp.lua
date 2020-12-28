@@ -165,6 +165,12 @@ local servers = {
 
   rust_analyzer = {},
 
+  scry = {
+    cmd = {
+      os.getenv('HOME') .. '/src/github.com/crystal-lang-tools/scry/bin/scry'
+    }
+  },
+
   sumneko_lua = {
     settings = {
       Lua = {

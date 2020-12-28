@@ -66,6 +66,7 @@ return require('packer').startup {
     use 'jparise/vim-graphql'
     use 'ARM9/arm-syntax-vim'
     use 'mustache/vim-mustache-handlebars'
+    use 'vim-crystal/vim-crystal'
 
     use {
       'nvim-treesitter/nvim-treesitter',

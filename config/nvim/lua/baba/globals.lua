@@ -48,7 +48,9 @@ local options = {
   foldmethod = 'marker',
   foldlevelstart = 0,
 
-  conceallevel = 2
+  conceallevel = 2,
+
+  signcolumn = 'yes:1'
 }
 
 for k, v in pairs(options) do
