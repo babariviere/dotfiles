@@ -38,6 +38,7 @@ local function onFnReleased()
   drag.timer:stop()
 
   -- Cleanup
+  drag.window:focus()
   drag.window = nil
   drag.canvas = drag.canvas:delete()
   hs.window.animationDuration = drag._duration
