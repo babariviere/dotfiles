@@ -181,14 +181,15 @@ local servers = {
           path = vim.split(package.path, ';')
         },
         diagnostics = {
-          -- Get the language server to recognize the `vim` global
-          globals = {'vim'}
+          -- Get the language server to recognize the `vim` and `hs` global
+          globals = {'vim', 'hs'}
         },
         workspace = {
           -- Make the server aware of Neovim runtime files
           library = {
             [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
+            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+            ['/Applications/Hammerspoon.app/Contents/Resources/extensions'] = true
           }
         }
       }
