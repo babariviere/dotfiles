@@ -1,2 +1,1 @@
-local stackline = require 'stackline.stackline.stackline'
-stackline:init{appearance = {showIcons = false}}
+require('window.drag'):start()
