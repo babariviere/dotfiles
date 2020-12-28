@@ -129,8 +129,8 @@ cask "postico"
 cask "slack"
 cask "spotify"
 cask "tableplus"
+cask "touch-bar-simulator"
 cask "transmission"
-cask "ubersicht"
 cask "visual-studio-code"
 mas "AdGuard for Safari", id: 1440147259
 mas "Aviary", id: 1522043420
