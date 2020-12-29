@@ -1,6 +1,6 @@
 local c = require('hs.canvas')
 
-local drag = {
+local M = {
   window = nil,
   canvas = nil,
   isPressed = false,
@@ -10,48 +10,48 @@ local drag = {
 }
 
 local function windowSetFrame()
-  drag.window:setFrame(drag.frame)
-  drag.canvas:frame(drag.frame)
+  M.window:setFrame(M.frame)
+  M.canvas:frame(M.frame)
 end
 
 --- FN key handler
 
 local function onFnPressed()
-  drag.window = hs.window.frontmostWindow()
+  M.window = hs.window.frontmostWindow()
 
-  drag._duration = hs.window.animationDuration
+  M._duration = hs.window.animationDuration
   hs.window.animationDuration = 0
 
-  drag.canvas = c.new(drag.window:frame())
-  drag.canvas[1] = {type = 'rectangle', id = 'part1', action = 'build'}
-  drag.canvas:clickActivating(false)
-  drag.canvas:canvasMouseEvents(true, true, false, false)
+  M.canvas = c.new(M.window:frame())
+  M.canvas[1] = {type = 'rectangle', id = 'part1', action = 'build'}
+  M.canvas:clickActivating(false)
+  M.canvas:canvasMouseEvents(true, true, false, false)
   -- Required to disable mouse event for focused window below
-  drag.canvas:mouseCallback(function(_, _, _, _, _) end)
-  drag.canvas:level('dragging')
-  drag.canvas:show()
+  M.canvas:mouseCallback(function(_, _, _, _, _) end)
+  M.canvas:level('dragging')
+  M.canvas:show()
 
-  drag.frame = drag.window:frame()
-  drag.timer = hs.timer.doEvery(0.01, windowSetFrame):start()
+  M.frame = M.window:frame()
+  M.timer = hs.timer.doEvery(0.01, windowSetFrame):start()
 end
 
 local function onFnReleased()
-  drag.timer:fire()
-  drag.timer:stop()
+  M.timer:fire()
+  M.timer:stop()
 
   -- Cleanup
-  drag.window:focus()
-  drag.window = nil
-  drag.canvas = drag.canvas:delete()
-  hs.window.animationDuration = drag._duration
+  M.window:focus()
+  M.window = nil
+  M.canvas = M.canvas:delete()
+  hs.window.animationDuration = M._duration
 end
 
 local function handleFnKey(e)
   local isPressed = e:getFlags()['fn'] or false
 
-  if isPressed == drag.isPressed then return end
+  if isPressed == M.isPressed then return end
 
-  drag.isPressed = isPressed
+  M.isPressed = isPressed
   if isPressed then
     onFnPressed()
   else
@@ -63,26 +63,26 @@ end
 --- Left click handler
 
 local function moveWindow(e)
-  if not drag.isPressed or drag.window == nil then return end
+  if not M.isPressed or M.window == nil then return end
   local dx = e:getProperty(hs.eventtap.event.properties.mouseEventDeltaX)
   local dy = e:getProperty(hs.eventtap.event.properties.mouseEventDeltaY)
 
-  drag.frame.x = drag.frame.x + dx
-  drag.frame.y = drag.frame.y + dy
+  M.frame.x = M.frame.x + dx
+  M.frame.y = M.frame.y + dy
 end
 
 --- Right click handler
 
 local function resizeWindow(e)
-  if not drag.isPressed or drag.window == nil then return end
+  if not M.isPressed or M.window == nil then return end
   local dx = e:getProperty(hs.eventtap.event.properties.mouseEventDeltaX)
   local dy = e:getProperty(hs.eventtap.event.properties.mouseEventDeltaY)
 
-  drag.frame.w = drag.frame.w + dx
-  drag.frame.h = drag.frame.h + dy
+  M.frame.w = M.frame.w + dx
+  M.frame.h = M.frame.h + dy
 end
 
-function drag:start()
+function M:start()
   self._fn = hs.eventtap
                .new({hs.eventtap.event.types.flagsChanged}, handleFnKey):start()
   self._leftDrag = hs.eventtap.new({hs.eventtap.event.types.leftMouseDragged},
@@ -91,10 +91,10 @@ function drag:start()
                                     resizeWindow):start()
 end
 
-function drag:stop()
+function M:stop()
   self._fn = self._fn:stop()
   self._leftDrag:stop()
   self._rightDrag:stop()
 end
 
-return drag
+return M
