@@ -17,17 +17,19 @@ end
 --- FN key handler
 
 local function onFnPressed()
-  drag.window = hs.window.focusedWindow()
+  drag.window = hs.window.frontmostWindow()
 
   drag._duration = hs.window.animationDuration
   hs.window.animationDuration = 0
 
-  drag.canvas = c.new(drag.window:frame()):show()
-  drag.canvas[1] = {type = 'rectangle', id = 'part1', action = 'clip'}
-  drag.canvas:clickActivating(true)
+  drag.canvas = c.new(drag.window:frame())
+  drag.canvas[1] = {type = 'rectangle', id = 'part1', action = 'build'}
+  drag.canvas:clickActivating(false)
   drag.canvas:canvasMouseEvents(true, true, false, false)
   -- Required to disable mouse event for focused window below
   drag.canvas:mouseCallback(function(_, _, _, _, _) end)
+  drag.canvas:level('dragging')
+  drag.canvas:show()
 
   drag.frame = drag.window:frame()
   drag.timer = hs.timer.doEvery(0.01, windowSetFrame):start()
@@ -55,7 +57,7 @@ local function handleFnKey(e)
   else
     onFnReleased()
   end
-  return false
+  return true
 end
 
 --- Left click handler
