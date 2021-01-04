@@ -1,6 +1,8 @@
 -- Only required if you have packer in your `opt` pack
 local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
 
+vim.cmd([[autocmd BufWritePost plugins.lua PackerCompile]])
+
 if not packer_exists then
   -- TODO: Maybe handle windows better?
   if vim.fn.input('Download Packer? (y for yes) ') ~= 'y' then return end
