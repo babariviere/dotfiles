@@ -1,4 +1,5 @@
 require 'busted.runner'()
+local inspect = require 'inspect'
 
 describe('Binary tree', function()
   setup(function() btree = require('./lib/btree') end)
@@ -45,5 +46,46 @@ describe('Binary tree', function()
     assert.are.equal(root:find(2).left.value, 4)
     assert.are.equal(root:find(2).right.value, 5)
     assert.are.equal(root:find(6).left, nil)
+  end)
+
+  it('should traverse tree', function()
+    local root = btree:new('h')
+    root:insert('e') -- left
+    root:insert('o') -- right
+    root:insert('l') -- left left
+    root:insert('l') -- left right
+
+    local res = ''
+    root:traverse(function(node, parent, depth)
+      res = res .. node.value .. tostring(depth)
+      if parent ~= nil then res = res .. parent.value end
+      return depth + 1
+    end, 1)
+
+    assert.are.equal(res, 'h1e2hl3el3eo2h')
+  end)
+
+  it('should map tree', function()
+    local root = btree:new(1)
+    root:insert(2) -- left
+    root:insert(3) -- right
+    root:insert(4) -- left left
+    root:insert(5) -- left right
+    root:insert(6) -- right left
+
+    local new = root:map(function(node, parent)
+      if parent == nil then return node.value end
+
+      return node.value + parent.value
+    end)
+
+    assert.are.equal(new.value, root.value)
+    assert.are.equal(new.left.value, new.value + root.left.value)
+    assert.are.equal(new.left.left.value, new.left.value + root.left.left.value)
+    assert.are.equal(new.left.right.value,
+                     new.left.value + root.left.right.value)
+    assert.are.equal(new.right.value, new.value + root.right.value)
+    assert.are.equal(new.right.left.value,
+                     new.right.value + root.right.left.value)
   end)
 end)

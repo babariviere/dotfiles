@@ -72,18 +72,46 @@ function Node:find(value)
   end
 end
 
-function Node:__tostring()
-  local function prettyprint(node, depth, prefix)
-    local prefix = prefix or 'R '
-    local s = string.rep(' ', depth) .. prefix .. node.value .. '\n'
-    if node.left ~= nil then s = s .. prettyprint(node.left, depth + 1, 'l ') end
-    if node.right ~= nil then
-      s = s .. prettyprint(node.right, depth + 1, 'r ')
-    end
-    return s
-  end
+function Node:_traverse(callback, parent, value)
+  value = callback(self, parent, value)
 
-  return prettyprint(self, 0)
+  if self.left ~= nil then self.left:_traverse(callback, self, value) end
+  if self.right ~= nil then self.right:_traverse(callback, self, value) end
 end
+
+-- Traverse binary tree and run function.
+--
+-- Parameters:
+-- - callback: function which takes the current node as an argument, parent's return value and parent node.
+-- - value: an optional value to pass to the callback as the "parent value" (only for root node)
+function Node:traverse(callback, value) self:_traverse(callback, nil, value) end
+
+function Node:_map(mapper, parent)
+  local root = Node:new(mapper(self, parent))
+
+  if root.left ~= nil then root.left = self.left:_map(mapper, root) end
+  if root.right ~= nil then root.right = self.right:_map(mapper, root) end
+
+  return root
+end
+
+-- Create a new binary tree by mapping each node with function call.
+--
+-- Same arguments as Node:traverse
+function Node:map(mapper) return self:_map(mapper, nil) end
+
+-- function Node:__tostring()
+--   local function prettyprint(node, depth, prefix)
+--     local prefix = prefix or 'R '
+--     local s = string.rep(' ', depth) .. prefix .. node.value .. '\n'
+--     if node.left ~= nil then s = s .. prettyprint(node.left, depth + 1, 'l ') end
+--     if node.right ~= nil then
+--       s = s .. prettyprint(node.right, depth + 1, 'r ')
+--     end
+--     return s
+--   end
+
+--   return prettyprint(self, 0)
+-- end
 
 return Node
