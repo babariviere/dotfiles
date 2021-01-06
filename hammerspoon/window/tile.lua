@@ -12,7 +12,11 @@ function M.tile()
 
   for _, window in pairs(windows) do root:insertWindow(window) end
 
-  root:forEachLeaf(function(node) node.window:setFrame(node.rect) end)
+  local delay = 0.
+  root:forEachLeaf(function(node)
+    hs.timer.doAfter(delay, function() node.window:setFrame(node.rect) end)
+    delay = delay + 0.2
+  end)
 end
 
 function M.start() hs.hotkey.bind({'cmd', 'alt'}, 'k', 'Tile', M.tile) end
