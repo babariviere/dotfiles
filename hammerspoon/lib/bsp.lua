@@ -7,7 +7,7 @@ function Node.new(rect, ratio)
     secondChild = nil,
     parent = nil,
     window = nil, -- only set when window is leaf
-    rect = rect,
+    rect = rect:floor(),
     ratio = ratio or 0.5
   }
   setmetatable(node, Node)
