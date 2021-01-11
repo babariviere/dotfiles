@@ -11,6 +11,7 @@ local function moveWindow()
   local delay = 0.
 
   return function(node)
+    if not node.window then return end
     if node.rect == node.window:frame() then return end
     hs.timer.doAfter(delay, function()
       node.window:setFrame(node.rect)
