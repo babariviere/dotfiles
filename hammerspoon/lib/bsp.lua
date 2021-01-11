@@ -17,14 +17,15 @@ function Node.new(rect, ratio)
   return node
 end
 
-function Node:isRoot() return self.parent == nil end
+function Node:isRoot()
+  return self.parent == nil
+end
 
-function Node:isLeaf() return self.firstChild == nil and self.secondChild == nil end
+function Node:isLeaf()
+  return self.firstChild == nil and self.secondChild == nil
+end
 
--- TODO: rename me into insertLeaf
 function Node:insertWindow(window)
-  -- TODO: when is leaf, split and create new node
-  -- when not leaf, find biggest rect
   if not self:isLeaf() then
     local biggest = self:biggestLeaf()
     biggest:insertWindow(window)
@@ -37,8 +38,7 @@ function Node:insertWindow(window)
     return
   end
 
-  local firstRect, secondRect = hs.geometry.copy(self.rect),
-                                hs.geometry.copy(self.rect)
+  local firstRect, secondRect = hs.geometry.copy(self.rect), hs.geometry.copy(self.rect)
 
   if firstRect.w > firstRect.h then
     firstRect.w = firstRect.w * self.ratio

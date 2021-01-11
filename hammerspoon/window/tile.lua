@@ -5,19 +5,21 @@ local module = {
 
 local bsp = require('lib/bsp')
 local spaces = require('hs._asm.undocumented.spaces')
-local wf = hs.window.filter
+local wf = require('hs.window.filter')
 
 local function moveWindow()
   local delay = 0.
 
   return function(node)
     if node.rect == node.window:frame() then return end
-    hs.timer.doAfter(delay, function() node.window:setFrame(node.rect) end)
+    hs.timer.doAfter(delay, function()
+      node.window:setFrame(node.rect)
+    end)
     delay = delay + 0.2
   end
 end
 
-local function onWindowCreated(window, appName, event)
+local function onWindowCreated(window, _, _)
   local space = window:spaces()[1]
 
   local root = module.spaces[space]
@@ -28,7 +30,7 @@ local function onWindowCreated(window, appName, event)
   root:forEachLeaf(moveWindow())
 end
 
-local function onWindowDestroyed(window, appName, evnet)
+local function onWindowDestroyed(window, _, _)
   local space = spaces.activeSpace()
 
   local root = module.spaces[space]
@@ -41,8 +43,7 @@ end
 
 function module.tile()
   local screen = hs.screen.mainScreen()
-  local filter = wf.new():setCurrentSpace(true):setScreens({screen:id()})
-                   :rejectApp('Notification Centre')
+  local filter = wf.new():setCurrentSpace(true):setScreens({screen:id()}):rejectApp('Notification Centre')
   local windows = filter:getWindows()
 
   local root = bsp.new(screen:frame()) -- root is the screen, it should not be resized
@@ -58,10 +59,11 @@ function module.start()
   hs.hotkey.bind({'cmd', 'alt'}, 'k', 'Tile', module.tile)
 
   module._onCreate = wf.new():subscribe(wf.windowCreated, onWindowCreated)
-  module._onDestroy = wf.new():subscribe(wf.windowDestroyed, onWindowDestroyed)
-                        :subscribe(wf.windowHidden, onWindowDestroyed)
+  module._onDestroy = wf.new():subscribe({wf.windowDestroyed, wf.windowHidden, wf.windowMinimized}, onWindowDestroyed)
 end
 
-function module.stop() module._onCreate:unsubscribeAll() end
+function module.stop()
+  module._onCreate:unsubscribeAll()
+end
 
 return module
