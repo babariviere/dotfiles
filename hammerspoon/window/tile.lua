@@ -2,6 +2,7 @@ local module = {
   -- Windows in spaces
   spaces = {},
   assets = {},
+  rejectApps = {'Notification Centre', 'Alfred', '1password', 'Hammerspoon'},
 
   --- Options
   menubar = true
@@ -70,7 +71,8 @@ end
 
 function module.tile()
   local screen = hs.screen.mainScreen()
-  local filter = wf.new():setCurrentSpace(true):setScreens({screen:id()}):rejectApp('Notification Centre')
+  local filter = wf.new():setCurrentSpace(true):setScreens({screen:id()})
+  for _, app in pairs(module.rejectApps) do filter = filter:rejectApp(app) end
   local windows = filter:getWindows()
 
   local root = bsp.new(screen:frame()) -- root is the screen, it should not be resized
@@ -103,7 +105,12 @@ function module.start()
   hs.hotkey.bind({'cmd', 'alt'}, 'k', 'Tile', module.tile)
   hs.hotkey.bind({'cmd', 'alt'}, 'j', 'Toggle Tile', module.toggleTile)
 
-  module._wf = wf.new():subscribe(wf.windowCreated, onWindowCreated):subscribe(
+  module._wf = wf.new()
+
+  for _, app in pairs(module.rejectApps) do module._wf = module._wf:rejectApp(app) end
+
+  -- TODO(babariviere): reject app only for "window created" event
+  module._wf = module._wf:subscribe(wf.windowCreated, onWindowCreated):subscribe(
                  {wf.windowDestroyed, wf.windowHidden, wf.windowMinimized}, onWindowDestroyed):subscribe(
                  {wf.windowFocused}, onWindowFocused)
 
