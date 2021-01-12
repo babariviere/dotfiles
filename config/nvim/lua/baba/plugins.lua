@@ -1,26 +1,13 @@
 -- Only required if you have packer in your `opt` pack
 local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
 
-vim.cmd([[autocmd BufWritePost plugins.lua PackerCompile]])
-
 if not packer_exists then
-  -- TODO: Maybe handle windows better?
-  if vim.fn.input('Download Packer? (y for yes) ') ~= 'y' then return end
-
-  local directory = string.format('%s/site/pack/packer/opt/',
-                                  vim.fn.stdpath('data'))
-
-  vim.fn.mkdir(directory, 'p')
-
-  local out = vim.fn.system(string.format('git clone %s %s',
-                                          'https://github.com/wbthomason/packer.nvim',
-                                          directory .. '/packer.nvim'))
-
-  print(out)
-  print('Downloading packer.nvim...')
-
-  return
+  vim.cmd('!git clone https://github.com/wbthomason/packer.nvim ' ..
+            install_path)
+  vim.cmd 'packadd packer.nvim'
 end
+
+vim.cmd([[autocmd BufWritePost **/nvim/lua/baba/plugins.lua PackerCompile]])
 
 return require('packer').startup {
   function(use)
@@ -69,6 +56,7 @@ return require('packer').startup {
     use 'ARM9/arm-syntax-vim'
     use 'mustache/vim-mustache-handlebars'
     use 'vim-crystal/vim-crystal'
+    use 'earthly/earthly.vim'
 
     use {
       'nvim-treesitter/nvim-treesitter',

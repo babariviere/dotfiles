@@ -8,43 +8,24 @@ local on_attach = function(client, bufnr)
   statusline.on_attach(client, bufnr)
 
   local opts = {noremap = true, silent = true}
-  vim.api.nvim_buf_set_keymap(0, 'n', 'gD',
-                              '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(0, 'n', 'gd',
-                              '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>',
-                              opts)
-  vim.api.nvim_buf_set_keymap(0, 'n', 'gi',
-                              '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(0, 'n', '<c-s>',
-                              '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(0, 'n', 'gTD',
-                              '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rn',
-                              '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(0, 'n', 'gr',
-                              '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(0, 'n', 'ga',
-                              '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(0, 'n', 'ge',
-                              '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',
-                              opts)
-  vim.api.nvim_buf_set_keymap(0, 'n', 'gE',
-                              '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>',
-                              opts)
-  vim.api.nvim_buf_set_keymap(0, 'n', ']e',
-                              '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>',
-                              opts)
-  vim.api.nvim_buf_set_keymap(0, 'n', '[e',
-                              '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>',
-                              opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', 'gTD', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', 'ge', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', 'gE', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', ']e', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', '[e', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
 
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_command('augroup lsp_aucmds')
-    vim.api.nvim_command(
-      'au CursorHold <buffer> lua vim.lsp.buf.document_highlight()')
-    vim.api.nvim_command(
-      'au CursorMoved <buffer> lua vim.lsp.buf.clear_references()')
+    vim.api.nvim_command('au CursorHold <buffer> lua vim.lsp.buf.document_highlight()')
+    vim.api.nvim_command('au CursorMoved <buffer> lua vim.lsp.buf.clear_references()')
     vim.api.nvim_command('augroup END')
   end
 
@@ -92,6 +73,9 @@ end
 
 lsp_status.register_progress()
 
+local sumneko_root = os.getenv('HOME') .. '/src/github.com/sumneko/lua-language-server'
+local sumneko_bin = sumneko_root .. '/bin/macOS/lua-language-server'
+
 local servers = {
   diagnosticls = {
     filetypes = {'asciidoc', 'markdown', 'gitcommit', 'sh'},
@@ -125,53 +109,28 @@ local servers = {
           }
         }
       },
-      filetypes = {
-        sh = 'shellcheck',
-        asciidoc = 'languagetool',
-        markdown = 'languagetool',
-        gitcommit = 'languagetool'
-      },
+      filetypes = {sh = 'shellcheck', asciidoc = 'languagetool', markdown = 'languagetool', gitcommit = 'languagetool'},
       -- Use format.nvim instead
       formatters = {},
       formatFiletypes = {}
     }
   },
 
-  elixirls = {
-    cmd = {
-      os.getenv('HOME') ..
-        '/src/github.com/elixir-lsp/elixir-ls/release/language_server.sh'
-    }
-  },
+  elixirls = {cmd = {os.getenv('HOME') .. '/src/github.com/elixir-lsp/elixir-ls/release/language_server.sh'}},
 
   gopls = {},
 
   pyls_ms = {
-    cmd = {
-      'dotnet',
-      'exec',
-      os.getenv('HOME') ..
-        '/.cache/nvim/lspconfig/pyls_ms/Microsoft.Python.LanguageServer.dll'
-    },
-    init_options = {
-      interpreter = {
-        properties = {
-          InterpreterPath = '/usr/local/bin/python3',
-          Version = '3.9'
-        }
-      }
-    }
+    cmd = {'dotnet', 'exec', os.getenv('HOME') .. '/.cache/nvim/lspconfig/pyls_ms/Microsoft.Python.LanguageServer.dll'},
+    init_options = {interpreter = {properties = {InterpreterPath = '/usr/local/bin/python3', Version = '3.9'}}}
   },
 
   rust_analyzer = {},
 
-  scry = {
-    cmd = {
-      os.getenv('HOME') .. '/src/github.com/crystal-lang-tools/scry/bin/scry'
-    }
-  },
+  scry = {cmd = {os.getenv('HOME') .. '/src/github.com/crystal-lang-tools/scry/bin/scry'}},
 
   sumneko_lua = {
+    cmd = {sumneko_bin, '-E', sumneko_root .. '/main.lua'},
     settings = {
       Lua = {
         runtime = {
@@ -209,49 +168,33 @@ local lsp = require 'lspconfig'
 for name, config in pairs(servers) do
   config.on_attach = on_attach
   config.on_new_config = on_new_config
-  config.capabilities = vim.tbl_extend('keep', config.capabilities or {},
-                                       lsp_status.capabilities)
+  config.capabilities = vim.tbl_extend('keep', config.capabilities or {}, lsp_status.capabilities)
   lsp[name].setup(config)
 end
 
 vim.o.completeopt = 'menuone,noinsert,noselect'
 
-vim.lsp.handlers['textDocument/publishDiagnostics'] =
-  vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    -- Enable underline, use default values
-    underline = true,
-    -- Enable virtual text
-    virtual_text = {prefix = '»'},
-    signs = true,
-    -- Disable a feature
-    update_in_insert = false
-  })
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  -- Enable underline, use default values
+  underline = true,
+  -- Enable virtual text
+  virtual_text = {prefix = '»'},
+  signs = true,
+  -- Disable a feature
+  update_in_insert = false
+})
 
-vim.lsp.handlers['textDocument/codeAction'] =
-  require'lsputil.codeAction'.code_action_handler
-vim.lsp.handlers['textDocument/references'] =
-  require'lsputil.locations'.references_handler
-vim.lsp.handlers['textDocument/definition'] =
-  require'lsputil.locations'.definition_handler
-vim.lsp.handlers['textDocument/declaration'] =
-  require'lsputil.locations'.declaration_handler
-vim.lsp.handlers['textDocument/typeDefinition'] =
-  require'lsputil.locations'.typeDefinition_handler
-vim.lsp.handlers['textDocument/implementation'] =
-  require'lsputil.locations'.implementation_handler
-vim.lsp.handlers['textDocument/documentSymbol'] =
-  require'lsputil.symbols'.document_handler
-vim.lsp.handlers['workspace/symbol'] =
-  require'lsputil.symbols'.workspace_handler
+vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
+vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
+vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
+vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
+vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
+vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
+vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
 
-vim.g.lsp_utils_location_opts = {
-  keymaps = {n = {['<C-j>'] = 'j', ['<C-k>'] = 'k'}}
-}
-vim.g.lsp_utils_symbols_opts = {
-  keymaps = {n = {['<C-j>'] = 'j', ['<C-k>'] = 'k'}}
-}
-vim.g.lsp_utils_codeaction_opts = {
-  keymaps = {n = {['<C-j>'] = 'j', ['<C-k>'] = 'k'}}
-}
+vim.g.lsp_utils_location_opts = {keymaps = {n = {['<C-j>'] = 'j', ['<C-k>'] = 'k'}}}
+vim.g.lsp_utils_symbols_opts = {keymaps = {n = {['<C-j>'] = 'j', ['<C-k>'] = 'k'}}}
+vim.g.lsp_utils_codeaction_opts = {keymaps = {n = {['<C-j>'] = 'j', ['<C-k>'] = 'k'}}}
 
 vim.g.space_before_virtual_text = 5
