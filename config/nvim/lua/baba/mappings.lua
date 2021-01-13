@@ -10,29 +10,11 @@ local bindings = {
       expr = true,
       noremap = true
     },
-    ['<Return>'] = {
-      [[<cmd>lua require'baba.snippets'.expand_or_key("<CR>")<CR>]],
-      noremap = true
-    },
-    ['<Tab>'] = {
-      [[<cmd>lua require'baba.snippets'.expand_or_key("<tab>")<CR>]],
-      noremap = true
-    },
-    ['<CR>'] = {
-      [[pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]],
-      expr = true,
-      noremap = true
-    },
-    ['<up>'] = {
-      [[pumvisible() ? '<c-e><up>' : '<up>']],
-      expr = true,
-      noremap = true
-    },
-    ['<down>'] = {
-      [[pumvisible() ? '<c-e><down>' : '<down>']],
-      expr = true,
-      noremap = true
-    }
+    ['<Return>'] = {[[<cmd>lua require'baba.snippets'.expand_or_key("<CR>")<CR>]], noremap = true},
+    ['<Tab>'] = {[[<cmd>lua require'baba.snippets'.expand_or_key("<tab>")<CR>]], noremap = true},
+    ['<CR>'] = {[[pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]], expr = true, noremap = true},
+    ['<up>'] = {[[pumvisible() ? '<c-e><up>' : '<up>']], expr = true, noremap = true},
+    ['<down>'] = {[[pumvisible() ? '<c-e><down>' : '<down>']], expr = true, noremap = true}
   },
 
   n = {
@@ -42,32 +24,15 @@ local bindings = {
     ['<C-j>'] = {'<C-w>j', noremap = true},
     ['<C-k>'] = {'<C-w>k', noremap = true},
     ['<C-l>'] = {'<C-w>l', noremap = true},
-    ['<leader><space>'] = {
-      [[<cmd>lua require'telescope.builtin'.find_files{}<CR>]],
-      noremap = true
-    },
-    ['<leader>,'] = {
-      [[<cmd>lua require'telescope.builtin'.buffers{}<CR>]],
-      noremap = true
-    },
-    ['<leader>;'] = {
-      [[<cmd>lua require'telescope.builtin'.commands{}<CR>]],
-      noremap = true
-    },
+    ['<leader><space>'] = {[[<cmd>lua require'telescope.builtin'.find_files{}<CR>]], noremap = true},
+    ['<leader>,'] = {[[<cmd>lua require'telescope.builtin'.buffers{}<CR>]], noremap = true},
+    ['<leader>;'] = {[[<cmd>lua require'telescope.builtin'.commands{}<CR>]], noremap = true},
     ['<leader>bd'] = {[[:bdelete<CR>]], noremap = true},
-    ['<leader>sb'] = {
-      [[<cmd>lua require'telescope.builtin'.buffers{}<CR>]],
-      noremap = true
-    },
-    ['<leader>sp'] = {
-      [[<cmd>lua require'telescope.builtin'.live_grep{}<CR>]],
-      noremap = true
-    }
+    ['<leader>sb'] = {[[<cmd>lua require'telescope.builtin'.buffers{}<CR>]], noremap = true},
+    ['<leader>sp'] = {[[<cmd>lua require'telescope.builtin'.live_grep{}<CR>]], noremap = true}
   },
 
-  v = {['<'] = {'<gv', noremap = true}, ['>'] = {'>gv', noremap = true}},
-
-  c = {['ed'] = {[[e <C-R>=expand("%:h") . "/" <CR>]], noremap = true}}
+  v = {['<'] = {'<gv', noremap = true}, ['>'] = {'>gv', noremap = true}}
 }
 
 for map, set in pairs(bindings) do
@@ -76,3 +41,11 @@ for map, set in pairs(bindings) do
     vim.api.nvim_set_keymap(map, key, cmd, opts)
   end
 end
+
+vim.cmd [[
+func Eatchar(pat)
+  let c = nr2char(getchar(0))
+  return (c =~ a:pat) ? '' : c
+endfunc
+]]
+vim.cmd [[ cnoreabbrev <expr> e getcmdtype() == ":" && getcmdline() == 'e' ? 'e <C-R>=expand("%:h") . "/"<CR><C-R>=Eatchar(" ")<CR>' : 'e' ]]

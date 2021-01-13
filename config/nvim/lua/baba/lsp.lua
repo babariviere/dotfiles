@@ -76,6 +76,8 @@ lsp_status.register_progress()
 local sumneko_root = os.getenv('HOME') .. '/src/github.com/sumneko/lua-language-server'
 local sumneko_bin = sumneko_root .. '/bin/macOS/lua-language-server'
 
+local lsp = require 'lspconfig'
+
 local servers = {
   diagnosticls = {
     filetypes = {'asciidoc', 'markdown', 'gitcommit', 'sh'},
@@ -163,12 +165,20 @@ local servers = {
   }
 }
 
-local lsp = require 'lspconfig'
+local function find_lsp_ancestor(startpath)
+  return lsp.util.search_ancestors(startpath, function(path)
+    if lsp.util.path.is_file(lsp.util.path.join(path, '.lsp.json')) then return path end
+  end)
+end
 
 for name, config in pairs(servers) do
   config.on_attach = on_attach
   config.on_new_config = on_new_config
   config.capabilities = vim.tbl_extend('keep', config.capabilities or {}, lsp_status.capabilities)
+  local default_config = lsp[name].document_config.default_config
+  config.root_dir = function(fname)
+    return find_lsp_ancestor(fname) or default_config.root_dir(fname)
+  end
   lsp[name].setup(config)
 end
 
