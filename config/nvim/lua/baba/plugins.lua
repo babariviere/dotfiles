@@ -2,6 +2,7 @@
 local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
 
 if not packer_exists then
+  local install_path = os.getenv('HOME') .. '/.local/share/nvim/site/pack/packer/opt/packer.nvim'
   vim.cmd('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
   vim.cmd 'packadd packer.nvim'
 end
@@ -95,6 +96,7 @@ return require('packer').startup {
         {'nvim-telescope/telescope-github.nvim'}
       }
     }
+    use 'shoumodip/ido.nvim'
     -- use 'rafcamlet/nvim-luapad'
 
     -- Flow
