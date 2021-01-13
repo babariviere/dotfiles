@@ -26,7 +26,7 @@ local options = {
 
   backup = false,
   writebackup = false,
-  swapfile = false,
+  swapfile = true,
   autoread = true,
 
   updatetime = 200,
