@@ -1,68 +1,68 @@
 vim.api.nvim_command [[syntax enable]]
 vim.api.nvim_command [[filetype plugin indent on]]
 
-vim.g.mapleader = ' '
+local opts_info = vim.api.nvim_get_all_options_info()
 
-local options = {
-  hidden = true,
-  wrap = false,
-  encoding = 'utf-8',
-  pumheight = 10,
-  fileencoding = 'utf-8',
-  splitbelow = true,
-  splitright = true,
-  t_Co = '256',
-
-  tabstop = 2,
-  softtabstop = 2,
-  shiftwidth = 2,
-  smarttab = true,
-  expandtab = true,
-  smartindent = true,
-  autoindent = true,
-  number = true,
-  cursorline = true,
-  showtabline = 2,
-
-  backup = false,
-  writebackup = false,
-  swapfile = true,
-  autoread = true,
-
-  updatetime = 200,
-  timeoutlen = 500,
-
-  formatoptions = 'crqnj',
-
-  clipboard = 'unnamedplus',
-  mouse = 'a',
-
-  inccommand = 'nosplit',
-  smartcase = true,
-  title = true,
-
-  list = true,
-  listchars = [[tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·]],
-  termguicolors = true,
-
-  foldmethod = 'marker',
-  foldlevelstart = 0,
-
-  conceallevel = 2,
-
-  signcolumn = 'yes:1'
-}
-
-for k, v in pairs(options) do
-  -- TODO: vim.o does not works well (some options are not applied)
-  if v == true then
-    vim.api.nvim_command('set ' .. k)
-  elseif v == false then
-    vim.api.nvim_command('set no' .. k)
-  else
-    vim.api.nvim_command('set ' .. k .. '=' .. v)
+local opt = setmetatable({}, {
+  __newindex = function(_, key, value)
+    vim.o[key] = value
+    local scope = opts_info[key].scope
+    if scope == "win" then
+      vim.wo[key] = value
+    elseif scope == "buf" then
+      vim.bo[key] = value
+    end
   end
-end
+})
+
+vim.g.mapleader = " "
+
+opt.hidden = true
+opt.wrap = false
+opt.encoding = "utf-8"
+opt.pumheight = 10
+opt.fileencoding = "utf-8"
+opt.splitbelow = true
+opt.splitright = true
+
+opt.tabstop = 2
+opt.softtabstop = 2
+opt.shiftwidth = 2
+opt.smarttab = true
+opt.expandtab = true
+opt.smartindent = true
+opt.autoindent = true
+opt.number = true
+opt.cursorline = true
+opt.showtabline = 2
+
+opt.backup = false
+opt.writebackup = false
+opt.swapfile = true
+opt.autoread = true
+
+opt.updatetime = 200
+opt.timeoutlen = 500
+
+opt.formatoptions = "crqnj"
+
+opt.clipboard = "unnamedplus"
+opt.mouse = "a"
+
+opt.inccommand = "nosplit"
+opt.smartcase = true
+opt.title = true
+
+opt.list = true
+opt.listchars = [[tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·]]
+opt.termguicolors = true
+
+opt.foldmethod = "marker"
+opt.foldlevelstart = 0
+
+opt.conceallevel = 2
+
+opt.signcolumn = "yes:1"
 
 function TRIM_TRAILING_WHITESPACE()
   local view = vim.fn.winsaveview()
