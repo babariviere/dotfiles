@@ -24,9 +24,7 @@ local function moveWindow()
       return
     end
     hs.timer.doAfter(delay, function()
-      if node.window then
-        node.window:setFrame(node.rect)
-      end
+      node.window:setFrame(node.rect)
     end)
     delay = delay + 0.2
   end

@@ -68,7 +68,9 @@ end
 
 function Node:deleteWindow(window)
   local leaf = self:findLeaf(window:id())
-  if not leaf then return end
+  if not leaf then
+    return
+  end
 
   if not leaf.parent then
     leaf.window = nil
@@ -110,12 +112,18 @@ end
 function Node:findLeaf(leaf)
   if not self:isLeaf() then
     local first = self.firstChild:findLeaf(leaf)
-    if first then return first end
+    if first then
+      return first
+    end
     local second = self.secondChild:findLeaf(leaf)
-    if second then return second end
+    if second then
+      return second
+    end
   end
 
-  if self.id == leaf then return self end
+  if self.id == leaf then
+    return self
+  end
 
   return nil
 end
@@ -123,7 +131,9 @@ end
 -- Execute function for each leaf
 function Node:forEachLeaf(f)
   if self:isLeaf() then
-    f(self)
+    if self.window then
+      f(self)
+    end
     return
   end
 
