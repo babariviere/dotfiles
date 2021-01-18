@@ -25,16 +25,19 @@ snips._global = {
 }
 
 snips.elixir = {
-  def = utils.match_indentation [[
+  df = utils.match_indentation [[
 def $1($2) do
   $0
 end]],
 
-  defp = utils.match_indentation [[
+  dfp = utils.match_indentation [[
 defp $1($2) do
   $0
 end
   ]],
+
+  ["df:"] = "def $1($2), do: $0",
+  ["dfp:"] = "defp $1($2), do: $0",
 
   iex = utils.comment_and_indent [[
     iex> $0]],
@@ -43,6 +46,10 @@ end
 do
   $0
 end]],
+
+  ["do:"] = "do: $0",
+
+  ["fn"] = "fn ${1:args} -> $0 end",
 
   ["case"] = utils.match_indentation [[
 case $1 do
@@ -55,7 +62,20 @@ if $1 do
   $0
 end]],
   ["if:"] = utils.match_indentation "if $1, do: $0",
-  ["ife:"] = utils.match_indentation "if $1, do: $2, else: $0"
+  ["ife:"] = utils.match_indentation "if $1, do: $2, else: $0",
+
+  ["p"] = "|> $0",
+  [">e"] = "|> Enum.each(fn $1 -> $0 end)",
+  [">i"] = "|> IO.inspect()$0",
+
+  ["put"] = "IO.puts($1)$0",
+  ["ins"] = "IO.inspect($1)$0",
+
+  ["doc"] = utils.match_indentation [[
+@doc """
+$0
+"""
+]]
 }
 
 snips.go = {
