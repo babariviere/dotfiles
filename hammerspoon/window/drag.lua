@@ -1,11 +1,8 @@
 local c = require("hs.canvas")
+local tap = require("hs.eventtap")
+local tapevent = require("hs.eventtap.event")
 
-local M = {window = nil, canvas = nil, isPressed = false, frame = nil, timer = nil, _duration = 0}
-
-local function windowSetFrame()
-  M.window:setFrame(M.frame)
-  M.canvas:frame(M.frame)
-end
+local M = {window = nil, canvas = nil, frame = nil, timer = nil, _duration = 0}
 
 local function getWindowUnderCursor()
   local pos = hs.geometry.new(hs.mouse.getAbsolutePosition())
@@ -16,10 +13,17 @@ local function getWindowUnderCursor()
   end)
 end
 
---- FN key handler
+local function windowSetFrame()
+  M.window:setFrame(M.frame)
+  M.canvas:frame(M.frame)
+end
 
-local function onFnPressed()
+local function createCanvas()
   M.window = getWindowUnderCursor()
+  if M.window == nil then
+    return
+  end
+  M.window:focus()
 
   M._duration = hs.window.animationDuration
   hs.window.animationDuration = 0
@@ -38,9 +42,13 @@ local function onFnPressed()
   M.timer = hs.timer.doEvery(0.01, windowSetFrame):start()
 end
 
-local function onFnReleased()
+local function deleteCanvas()
+  if M.window == nil then
+    return
+  end
   M.timer:fire()
   M.timer:stop()
+  M.timer = nil
 
   -- Cleanup
   M.window:focus()
@@ -49,30 +57,27 @@ local function onFnReleased()
   hs.window.animationDuration = M._duration
 end
 
-local function handleFnKey(e)
-  local isPressed = e:getFlags()["fn"] or false
+local function handleMouseState(e)
+  local pressure = e:getProperty(tapevent.properties.mouseEventPressure)
+  local flags = e:getFlags()
+  local clicked = pressure > 0
 
-  if isPressed == M.isPressed then
-    return
-  end
-
-  M.isPressed = isPressed
-  if isPressed then
-    onFnPressed()
+  if clicked and flags.fn then
+    createCanvas()
   else
-    onFnReleased()
+    deleteCanvas()
   end
-  return true
 end
 
 --- Left click handler
 
 local function moveWindow(e)
-  if not M.isPressed or M.window == nil then
+  if M.window == nil then
     return
   end
-  local dx = e:getProperty(hs.eventtap.event.properties.mouseEventDeltaX)
-  local dy = e:getProperty(hs.eventtap.event.properties.mouseEventDeltaY)
+
+  local dx = e:getProperty(tapevent.properties.mouseEventDeltaX)
+  local dy = e:getProperty(tapevent.properties.mouseEventDeltaY)
 
   M.frame.x = M.frame.x + dx
   M.frame.y = M.frame.y + dy
@@ -81,24 +86,30 @@ end
 --- Right click handler
 
 local function resizeWindow(e)
-  if not M.isPressed or M.window == nil then
+  if M.window == nil then
     return
   end
-  local dx = e:getProperty(hs.eventtap.event.properties.mouseEventDeltaX)
-  local dy = e:getProperty(hs.eventtap.event.properties.mouseEventDeltaY)
+
+  local dx = e:getProperty(tapevent.properties.mouseEventDeltaX)
+  local dy = e:getProperty(tapevent.properties.mouseEventDeltaY)
 
   M.frame.w = M.frame.w + dx
   M.frame.h = M.frame.h + dy
 end
 
 function M:start()
-  self._fn = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, handleFnKey):start()
-  self._leftDrag = hs.eventtap.new({hs.eventtap.event.types.leftMouseDragged}, moveWindow):start()
-  self._rightDrag = hs.eventtap.new({hs.eventtap.event.types.rightMouseDragged}, resizeWindow):start()
+  self._mouseState = tap.new({
+    tapevent.types.leftMouseUp,
+    tapevent.types.leftMouseDown,
+    tapevent.types.rightMouseUp,
+    tapevent.types.rightMouseDown
+  }, handleMouseState):start()
+  self._leftDrag = tap.new({tapevent.types.leftMouseDragged}, moveWindow):start()
+  self._rightDrag = tap.new({tapevent.types.rightMouseDragged}, resizeWindow):start()
 end
 
 function M:stop()
-  self._fn = self._fn:stop()
+  self._mouseState:stop()
   self._leftDrag:stop()
   self._rightDrag:stop()
 end
