@@ -75,18 +75,28 @@ function module.toggleTile()
   end
 end
 
+local function isAllowed(win)
+  local appname = win:application():name()
+  for _, v in pairs(module.rejectApps) do
+    if v == appname then
+      return false
+    end
+  end
+
+  return true
+end
+
 function module.tile()
   local screen = hs.screen.mainScreen()
-  local filter = wf.new():setCurrentSpace(true):setScreens({screen:id()})
-  for _, app in pairs(module.rejectApps) do
-    filter = filter:rejectApp(app)
-  end
-  local windows = filter:getWindows()
+  local space = spaces.activeSpace()
+  local windows = spaces.allWindowsForSpace(space)
 
   local root = bsp.new(screen:frame()) -- root is the screen, it should not be resized
 
   for _, window in pairs(windows) do
-    root:insertWindow(window)
+    if isAllowed(window) then
+      root:insertWindow(window)
+    end
   end
 
   root:forEachLeaf(moveWindow())
