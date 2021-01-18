@@ -8,7 +8,7 @@ vim.api.nvim_set_keymap("i", "<c-space>", "completion#trigger_completion()",
 
 -- TODO(babariviere): only allow path in string or comments
 vim.g.completion_chain_complete_list = {
-  {complete_items = {"lsp", "snippets"}},
+  {complete_items = {"lsp", "snippet"}},
   {complete_items = {"path"}},
   {mode = "<c-p>"},
   {mode = "<c-n>"}
