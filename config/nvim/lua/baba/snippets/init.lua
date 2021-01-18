@@ -8,12 +8,19 @@ local function branch()
   return result:gsub("^(.-)%s$", "%1")
 end
 
+local function parse_clickup_ticket(s)
+  return string.gsub(s, "(CU%-[0-9a-z]+).*", "%1")
+end
+
 snips._global = {
   todo = "TODO(babariviere): ",
   date = [[${=os.date("%Y-%m-%d")}]],
   branch = branch,
   clickup = function()
-    return string.gsub(branch(), "(CU%-[0-9a-z]+).*", "%1") or ""
+    return parse_clickup_ticket(branch()) or ""
+  end,
+  clickupr = function()
+    return "[" .. parse_clickup_ticket(branch()) .. "]"
   end
 }
 
