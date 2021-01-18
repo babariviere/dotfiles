@@ -1,6 +1,6 @@
 --- Git blame {{{
 vim.g.gitblame_enabled = true
-vim.g.gitblame_message_template = ' <author>, <date> • <summary>'
+vim.g.gitblame_message_template = " <author>, <date> • <summary>"
 --- }}}
 
 --- Signify {{{
@@ -23,13 +23,13 @@ vim.g.gitblame_message_template = ' <author>, <date> • <summary>'
 
 --- GitSigns {{{
 
-require'gitsigns'.setup {
+require"gitsigns".setup {
   signs = {
-    add = {hl = 'DiffAdd', text = '▋'},
-    change = {hl = 'DiffChange', text = '▋'},
-    delete = {hl = 'DiffDelete', text = '▋'},
-    topdelete = {hl = 'DiffDelete', text = '▘'},
-    changedelete = {hl = 'DiffChange', text = '▋'}
+    add = {hl = "DiffAdd", text = "▋"},
+    change = {hl = "DiffChange", text = "▋"},
+    delete = {hl = "DiffDelete", text = "▋"},
+    topdelete = {hl = "DiffDelete", text = "▘"},
+    changedelete = {hl = "DiffChange", text = "▋"}
   }
 }
 

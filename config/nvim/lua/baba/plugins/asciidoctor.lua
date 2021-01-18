@@ -1,1 +1,1 @@
-vim.g.asciidoctor_fenced_languages = {'elixir', 'json'}
+vim.g.asciidoctor_fenced_languages = {"elixir", "json"}

@@ -1,20 +1,19 @@
 --- DAP {{{
-local dap = require('dap')
+local dap = require("dap")
 dap.adapters.elixir = {
-  type = 'executable',
-  command = os.getenv('HOME') ..
-    '/src/github.com/elixir-lsp/elixir-ls/release/debugger.sh',
+  type = "executable",
+  command = os.getenv("HOME") .. "/src/github.com/elixir-lsp/elixir-ls/release/debugger.sh",
   args = {}
 }
 dap.configurations.elixir = {
   {
-    type = 'elixir',
-    request = 'launch',
-    name = 'mix test',
-    task = 'test',
-    taskArgs = {'--trace'},
-    projectDir = '${workspaceFolder}',
-    requireFiles = {'test/**/test_helper.exs', 'test/**/*_test.exs'}
+    type = "elixir",
+    request = "launch",
+    name = "mix test",
+    task = "test",
+    taskArgs = {"--trace"},
+    projectDir = "${workspaceFolder}",
+    requireFiles = {"test/**/test_helper.exs", "test/**/*_test.exs"}
   }
 }
 --- }}}

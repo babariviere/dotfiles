@@ -1,19 +1,19 @@
 local snips = {}
-local utils = require 'snippets.utils'
+local utils = require "snippets.utils"
 
 local function branch()
-  local handle = io.popen('git branch --show-current 2>/dev/null')
-  local result = handle:read('*a')
+  local handle = io.popen("git branch --show-current 2>/dev/null")
+  local result = handle:read("*a")
   handle:close()
-  return result:gsub('^(.-)%s$', '%1')
+  return result:gsub("^(.-)%s$", "%1")
 end
 
 snips._global = {
-  todo = 'TODO(babariviere): ',
+  todo = "TODO(babariviere): ",
   date = [[${=os.date("%Y-%m-%d")}]],
   branch = branch,
   clickup = function()
-    return string.gsub(branch(), '(CU%-[0-9a-z]+).*', '%1') or ''
+    return string.gsub(branch(), "(CU%-[0-9a-z]+).*", "%1") or ""
   end
 }
 
@@ -32,23 +32,23 @@ end
   iex = utils.comment_and_indent [[
     iex> $0]],
 
-  ['do'] = utils.match_indentation [[
+  ["do"] = utils.match_indentation [[
 do
   $0
 end]],
 
-  ['case'] = utils.match_indentation [[
+  ["case"] = utils.match_indentation [[
 case $1 do
   $2 ->
     $0
 end]],
 
-  ['if'] = utils.match_indentation [[
+  ["if"] = utils.match_indentation [[
 if $1 do
   $0
 end]],
-  ['if:'] = utils.match_indentation 'if $1, do: $0',
-  ['ife:'] = utils.match_indentation 'if $1, do: $2, else: $0'
+  ["if:"] = utils.match_indentation "if $1, do: $0",
+  ["ife:"] = utils.match_indentation "if $1, do: $2, else: $0"
 }
 
 snips.go = {
@@ -63,18 +63,20 @@ snips.lua = {
   lambda = utils.match_indentation [[function () $0 end]]
 }
 
-local snippets = require 'snippets'
+local snippets = require "snippets"
 
 snippets.snippets = snips
-snippets.set_ux(require 'baba.snippets.floaty')
+snippets.set_ux(require "baba.snippets.floaty")
 -- snippets.use_suggested_mappings()
 
-vim.g.completion_enable_snippet = 'snippets.nvim'
+vim.g.completion_enable_snippet = "snippets.nvim"
 
 return {
   expand_or_key = function(key)
-    local expanded = require'snippets'.expand_or_advance()
-    if expanded then return end
+    local expanded = require"snippets".expand_or_advance()
+    if expanded then
+      return
+    end
     vim.api.nvim_eval([[feedkeys("\]] .. key .. [[", "n")]])
   end
 }
