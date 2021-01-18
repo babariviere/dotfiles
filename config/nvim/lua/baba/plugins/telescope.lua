@@ -1,5 +1,5 @@
-local telescope = require 'telescope'
-local previewers = require 'telescope.previewers'
+local telescope = require "telescope"
+local previewers = require "telescope.previewers"
 
 telescope.setup {
   defaults = {
@@ -9,5 +9,4 @@ telescope.setup {
   }
 }
 
-telescope.load_extension('fzy_native')
-telescope.load_extension('gh')
+telescope.load_extension("gh")
