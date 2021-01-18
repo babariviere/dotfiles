@@ -10,7 +10,6 @@ local bindings = {
       expr = true,
       noremap = true
     },
-    ["<Return>"] = {[[<cmd>lua require'baba.snippets'.expand_or_key("<CR>")<CR>]], noremap = true},
     ["<Tab>"] = {[[<cmd>lua require'baba.snippets'.expand_or_key("<tab>")<CR>]], noremap = true},
     ["<CR>"] = {[[pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]], expr = true, noremap = true},
     ["<up>"] = {[[pumvisible() ? '<c-e><up>' : '<up>']], expr = true, noremap = true},

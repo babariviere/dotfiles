@@ -100,10 +100,13 @@ vim.g.completion_enable_snippet = "snippets.nvim"
 
 return {
   expand_or_key = function(key)
-    local expanded = require"snippets".expand_or_advance()
-    if expanded then
+    if snippets.has_active_snippet() then
+      snippets.advance_snippet(1)
       return
     end
-    vim.api.nvim_eval([[feedkeys("\]] .. key .. [[", "n")]])
+    if snippets.expand_at_cursor() then
+      return
+    end
+    vim.fn.feedkeys(key, "n")
   end
 }
