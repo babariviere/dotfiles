@@ -68,11 +68,9 @@ end
 function module.toggleTile()
   local space = spaces.activeSpace()
   if module.spaces[space] then
-    hs.alert("No Tile") -- TODO(babariviere): better text
     module.spaces[space] = nil
     module._menubar:setIcon(module.assets.inactive)
   else
-    hs.alert("Tile")
     module.tile()
   end
 end
@@ -103,7 +101,6 @@ function module.setupAssets()
   module.assets.inactive = hs.image.imageFromPath(hs.configdir .. "/assets/tile_inactive.png"):size({w = 16, h = 16})
 end
 
--- TODO(babariviere): on space focus, change menubar icon
 function module.createMenubar()
   module._menubar = mb.new()
   module._menubar:setClickCallback(module.toggleTile)
