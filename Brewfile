@@ -10,6 +10,7 @@ tap "homebrew/core"
 tap "homebrew/services"
 tap "khanhas/tap"
 tap "koekeishiya/formulae"
+tap "ms-jpq/sad"
 brew "asciidoctor"
 brew "autoconf"
 brew "automake"
@@ -59,6 +60,7 @@ brew "kubeseal"
 brew "languagetool"
 brew "lazygit"
 brew "libxslt"
+brew "lua@5.1"
 brew "luajit", args: ["HEAD"]
 brew "luarocks"
 brew "mas"
@@ -85,11 +87,14 @@ brew "rcm"
 brew "recon-ng"
 brew "ripgrep"
 brew "ruby"
+brew "rust-analyzer"
 brew "sd"
 brew "shellcheck"
+brew "sk"
 brew "socat"
 brew "starship"
 brew "tealdeer"
+brew "telnet"
 brew "thefuck"
 brew "tokei"
 brew "tree"
@@ -98,17 +103,17 @@ brew "unrar"
 brew "watch"
 brew "wget"
 brew "yarn"
+brew "youtube-dl"
 brew "babariviere/tools/flow-sh", link: false
-brew "d12frosted/emacs-plus/emacs-plus@27", args: ["with-modern-sexy-v2-icon"]
 brew "fewlinesco/tap/fwl_error"
 brew "khanhas/tap/spicetify-cli"
+brew "ms-jpq/sad/sad"
 cask "1password"
 cask "1password-cli"
 cask "alfred"
 cask "altair-graphql-client"
 cask "bettertouchtool"
 cask "brave-browser"
-cask "clickup"
 cask "dash"
 cask "discord"
 cask "docker"
@@ -139,3 +144,14 @@ cask "tableplus"
 cask "touch-bar-simulator"
 cask "transmission"
 cask "visual-studio-code"
+cask "vlc"
+mas "AdGuard for Safari", id: 1440147259
+mas "Aviary", id: 1522043420
+mas "Dark Reader for Safari", id: 1438243180
+mas "GoodNotes", id: 1444383602
+mas "Grammarly for Safari", id: 1462114288
+mas "iMovie", id: 408981434
+mas "Pages", id: 409201541
+mas "Paprika Recipe Manager 3", id: 1303222628
+mas "Tampermonkey", id: 1482490089
+mas "Xcode", id: 497799835
