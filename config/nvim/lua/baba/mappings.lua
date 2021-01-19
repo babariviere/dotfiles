@@ -16,6 +16,8 @@ local bindings = {
     ["<down>"] = {[[pumvisible() ? '<c-e><down>' : '<down>']], expr = true, noremap = true}
   },
 
+  s = {["<Tab>"] = {[[<Esc>i<cmd>lua require'baba.snippets'.expand_or_key("<tab>")<CR>]], noremap = true}},
+
   n = {
     ["<TAB>"] = {":bnext<CR>", noremap = true},
     ["<S-TAB>"] = {":bprevious<CR>", noremap = true},

@@ -87,21 +87,26 @@ if err != nil {
 
 snips.lua = {
   req = [[local ${2:${1|S.v:match"([^.()]+)[()]*$"}} = require '$1']],
-  lambda = utils.match_indentation [[function () $0 end]]
+  lambda = utils.match_indentation [[function () $0 end]],
+  t = [[
+  local
+  ${2:hello} = require '$1'
+  $0]]
 }
 
 local snippets = require "snippets"
 
 snippets.snippets = snips
-snippets.set_ux(require "baba.snippets.floaty")
+-- snippets.set_ux(require "baba.snippets.floaty")
+snippets.set_ux(require "baba.snippets.text_markers")
+-- snippets.set_ux(require "snippets.inserters.vim_input")
 -- snippets.use_suggested_mappings()
 
 vim.g.completion_enable_snippet = "snippets.nvim"
 
 return {
   expand_or_key = function(key)
-    if snippets.has_active_snippet() then
-      snippets.advance_snippet(1)
+    if snippets.advance_snippet(1) then
       return
     end
     if snippets.expand_at_cursor() then
