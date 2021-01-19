@@ -13,6 +13,8 @@ local spaces = require("hs._asm.undocumented.spaces")
 local wf = require("hs.window.filter")
 local mb = require("hs.menubar")
 
+-- TODO(babariviere): cleaning
+
 local function moveWindow()
   local delay = 0.
 

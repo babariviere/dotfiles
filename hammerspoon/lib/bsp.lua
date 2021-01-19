@@ -80,7 +80,7 @@ function Node:deleteWindow(window)
 
   local parent = leaf.parent
 
-  if parent.firstChild == self then
+  if parent.firstChild.id == leaf.id then
     parent.window = parent.secondChild.window
     parent.id = parent.secondChild.id
     parent.firstChild = nil
