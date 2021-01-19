@@ -3,6 +3,10 @@ local splitter = require "snippets.splitter"
 local concat = table.concat
 local api = vim.api
 
+local function feedkeys(keys)
+  api.nvim_feedkeys(api.nvim_replace_termcodes(keys, true, false, true), "n", true)
+end
+
 local function get_text(bufnr, start_line, start_col, end_line, end_col)
   local lines = api.nvim_buf_get_lines(bufnr, start_line, end_line + 1, false)
   lines[#lines] = lines[#lines]:sub(1, end_col + 1)
@@ -43,6 +47,7 @@ local function entrypoint(structure)
   -- key=snippets id, value=extmark id
   local marks = {}
 
+  -- create marks for each input fields
   local trow, tcol = row, col
   for i, v in pairs(evaluator.structure) do
     if type(v) == "string" then
@@ -58,6 +63,7 @@ local function entrypoint(structure)
       trow, tcol = advance_cursor(S[i] or "", trow, tcol)
     end
   end
+  -- create the "cursor" mark if there is no $0 in macro
   if not marks[0] then
     marks["end"] = api.nvim_buf_set_extmark(bufnr, ns, trow - 1, tcol, {})
   end
@@ -95,9 +101,12 @@ local function entrypoint(structure)
         return true
       end
 
-      if current_index > 1 then
+      -- Resolve previous value, only if the user goes forward in snippet
+      if current_index > 1 and offset > 0 then
         -- Reverse end and start when end < start
         -- TODO(babariviere): to remove this ugly code, we need to wait for https://github.com/neovim/neovim/pull/13679
+        --    this will be required for live update.
+        --    use CursorMovedI for live update
         local prev_mark = marks[current_index - 1]
         local pos = api.nvim_buf_get_extmark_by_id(bufnr, ns, prev_mark, {details = true})
         if pos[3].end_row < pos[1] or pos[3].end_col < pos[2] then
@@ -145,10 +154,10 @@ local function entrypoint(structure)
 
       if resolved ~= "" then
         -- enter select mode
-        api.nvim_feedkeys(api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+        feedkeys("<Esc>")
         api.nvim_command [[normal! v]]
         api.nvim_win_set_cursor(win, {pos[3].end_row + 1, pos[3].end_col})
-        api.nvim_feedkeys(api.nvim_replace_termcodes("<C-g>", true, false, true), "m", true)
+        feedkeys("<C-g>")
       end
     end
   }
