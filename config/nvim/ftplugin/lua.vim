@@ -1,4 +1,4 @@
 augroup ft_lua
   au!
-  au BufWritePre *.lua Format
+  au BufWritePre *.lua FormatWrite
 augroup end
