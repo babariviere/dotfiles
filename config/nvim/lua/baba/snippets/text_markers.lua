@@ -48,6 +48,13 @@ local api = vim.api
 --  zero_index = 6
 -- }
 
+local function get_text(bufnr, start_line, start_col, end_line, end_col)
+  local lines = api.nvim_buf_get_lines(bufnr, start_line, end_line + 1, false)
+  lines[#lines] = lines[#lines]:sub(1, end_col + 1)
+  lines[1] = lines[1]:sub(start_col + 1)
+  return lines
+end
+
 local function advance_cursor(text, row, col)
   local lines = vim.split(text, "\n", true)
   row = row + #lines - 1
@@ -86,9 +93,12 @@ local function entrypoint(structure)
     if type(v) == "string" then
       trow, tcol = advance_cursor(v, trow, tcol)
     elseif v.is_input or v["id"] == 0 then
-      marks[v.id] = api.nvim_buf_set_extmark(bufnr, ns, trow - 1, tcol, {end_line = trow - 1, end_col = tcol})
+      local start_line, start_col = trow - 1, tcol
+      local end_row, end_col = advance_cursor(defaults[v.id] or "", trow, tcol)
+      marks[v.id] = api.nvim_buf_set_extmark(bufnr, ns, start_line, start_col,
+                                             {end_line = end_row - 1, end_col = end_col})
 
-      trow, tcol = advance_cursor(defaults[v.id] or "", trow, tcol)
+      trow, tcol = end_row, end_col
     else
       trow, tcol = advance_cursor(S[i] or "", trow, tcol)
     end
@@ -97,7 +107,7 @@ local function entrypoint(structure)
     marks["end"] = api.nvim_buf_set_extmark(bufnr, ns, trow - 1, tcol, {})
   end
 
-  local resolved_inputs = defaults
+  local resolved_inputs = {}
   local current_index = 0
 
   local R
@@ -132,29 +142,55 @@ local function entrypoint(structure)
 
       if current_index > 1 then
         local prev_mark = marks[current_index - 1]
-        local crow, ccol, cdetails = unpack(api.nvim_buf_get_extmark_by_id(bufnr, ns, prev_mark, {details = true}))
-        if cdetails.end_row < crow or cdetails.end_col < ccol then
-          api.nvim_buf_set_extmark(bufnr, ns, cdetails.end_row, cdetails.end_col,
-                                   {end_line = crow, end_col = ccol, id = prev_mark})
+        local pos = api.nvim_buf_get_extmark_by_id(bufnr, ns, prev_mark, {details = true})
+        if pos[3].end_row < pos[1] or pos[3].end_col < pos[2] then
+          pos[1], pos[3].end_row = pos[3].end_row, pos[1]
+          pos[2], pos[3].end_col = pos[3].end_col, pos[2]
+          api.nvim_buf_set_extmark(bufnr, ns, pos[1], pos[2],
+                                   {end_line = pos[3].end_row, end_col = pos[3].end_col, id = prev_mark})
         end
 
-        -- TODO(babariviere): fill resolved
+        local prev_input = evaluator.inputs[current_index - 1]
+        resolved_inputs[prev_input.id] = table.concat(
+                                           get_text(bufnr, pos[1], pos[2], pos[3].end_row, pos[3].end_col - 1), "\n")
+        local new_resolved = evaluator.evaluate_inputs(resolved_inputs)
+        for i = current_index, #evaluator.inputs, 1 do
+          local input = evaluator.inputs[i]
+          local cur_value = resolved_inputs[input.id]
+          local new_value = new_resolved[input.id]
+          if new_value ~= cur_value and new_value ~= defaults[input.id] then
+            resolved_inputs[input.id] = new_value
+
+            local new_lines = vim.split(new_value, "\n", false)
+            pos = api.nvim_buf_get_extmark_by_id(bufnr, ns, marks[input.id], {details = true})
+            api.nvim_buf_set_text(bufnr, pos[1], pos[2], pos[3].end_row, pos[3].end_col, new_lines)
+            local end_line, end_col
+            if #new_lines > 1 then
+              end_line = pos[3].end_row + #new_lines
+              local last_line = new_lines[#new_lines]
+              end_col = #last_line
+            else
+              local last_line = new_lines[#new_lines]
+              end_col = pos[3].end_col + #last_line
+            end
+            api.nvim_buf_set_extmark(bufnr, ns, pos[1], pos[2],
+                                     {end_line = end_line, end_col = end_col, id = marks[input.id]})
+          end
+        end
       end
 
       local input = evaluator.inputs[current_index]
       local mark = marks[input.id]
 
-      local crow, ccol = unpack(api.nvim_buf_get_extmark_by_id(bufnr, ns, mark, {}))
-      crow = crow + 1 -- extmark is zero indexed
-      api.nvim_win_set_cursor(win, {crow, ccol})
-      local resolved = resolved_inputs[input.id] or ""
+      local pos = api.nvim_buf_get_extmark_by_id(bufnr, ns, mark, {details = true})
+      api.nvim_win_set_cursor(win, {pos[1] + 1, pos[2]}) -- extmark is zero indexed
+      local resolved = resolved_inputs[input.id] or defaults[input.id] or ""
 
       if resolved ~= "" then
-        -- TODO: prefill resolved
+        -- enter select mode
         api.nvim_feedkeys(api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
         api.nvim_command [[normal! v]]
-        crow, ccol = advance_cursor(resolved, crow, ccol)
-        api.nvim_win_set_cursor(win, {crow, ccol})
+        api.nvim_win_set_cursor(win, {pos[3].end_row + 1, pos[3].end_col})
         api.nvim_feedkeys(api.nvim_replace_termcodes("<C-g>", true, false, true), "m", true)
       end
     end
