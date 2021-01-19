@@ -82,13 +82,15 @@ local function entrypoint(structure)
   local marks = {}
 
   local trow, tcol = row, col
-  for _, v in pairs(evaluator.structure) do
+  for i, v in pairs(evaluator.structure) do
     if type(v) == "string" then
       trow, tcol = advance_cursor(v, trow, tcol)
-    else
+    elseif v.is_input then
       marks[v.id] = api.nvim_buf_set_extmark(bufnr, ns, trow - 1, tcol, {end_line = trow - 1, end_col = tcol})
 
       trow, tcol = advance_cursor(defaults[v.id] or "", trow, tcol)
+    else
+      trow, tcol = advance_cursor(S[i] or "", trow, tcol)
     end
   end
   marks["end"] = api.nvim_buf_set_extmark(bufnr, ns, trow - 1, tcol, {})
