@@ -3,51 +3,6 @@ local splitter = require "snippets.splitter"
 local concat = table.concat
 local api = vim.api
 
--- {
---  evaluate_defaults = <function 1>,
---  evaluate_inputs = <function 2>,
---  evaluate_structure = <function 3>,
---  inputs = { {
---      default = "",
---      first_index = 4,
---      id = 1,
---      order = 1
---    }, {
---      default = <function 4>,
---      first_index = 2,
---      id = 2,
---      order = 2
---    },
---    <metatable> = <1>{
---      __newindex = <function 5>
---    }
---  },
---  structure = { "local\n", {
---      default = <function 4>,
---      id = 2,
---      is_input = true,
---      order = 2,
---      <metatable> = <2>{
---        __tostring = <function 6>
---      }
---    }, " = require '", {
---      default = "",
---      id = 1,
---      is_input = true,
---      order = 1,
---      <metatable> = <table 2>
---    }, "'\n", {
---      default = "",
---      id = 0,
---      is_input = false,
---      order = 0,
---      <metatable> = <table 2>
---    },
---    <metatable> = <table 1>
---  },
---  zero_index = 6
--- }
-
 local function get_text(bufnr, start_line, start_col, end_line, end_col)
   local lines = api.nvim_buf_get_lines(bufnr, start_line, end_line + 1, false)
   lines[#lines] = lines[#lines]:sub(1, end_col + 1)
@@ -141,6 +96,8 @@ local function entrypoint(structure)
       end
 
       if current_index > 1 then
+        -- Reverse end and start when end < start
+        -- TODO(babariviere): to remove this ugly code, we need to wait for https://github.com/neovim/neovim/pull/13679
         local prev_mark = marks[current_index - 1]
         local pos = api.nvim_buf_get_extmark_by_id(bufnr, ns, prev_mark, {details = true})
         if pos[3].end_row < pos[1] or pos[3].end_col < pos[2] then
