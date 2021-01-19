@@ -98,7 +98,7 @@ local snippets = require "snippets"
 
 snippets.snippets = snips
 -- snippets.set_ux(require "baba.snippets.floaty")
-snippets.set_ux(require "baba.snippets.text_markers")
+snippets.set_ux(require "baba.snippets.select")
 -- snippets.set_ux(require "snippets.inserters.vim_input")
 -- snippets.use_suggested_mappings()
 
