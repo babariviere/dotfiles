@@ -50,6 +50,9 @@ local on_new_config = function(config, root_dir)
   end
 end
 
+-- Setup autocmd for lsp.lua files
+vim.api.nvim_command [[ autocmd BufNewFile .lsp.lua 0r ~/.config/nvim/templates/lsp.lua ]]
+
 lsp_status.register_progress()
 
 local sumneko_root = os.getenv("HOME") .. "/src/github.com/sumneko/lua-language-server"
