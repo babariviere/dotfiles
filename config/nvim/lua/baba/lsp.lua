@@ -35,42 +35,13 @@ local on_attach = function(client, bufnr)
 end
 
 local on_new_config = function(config, root_dir)
-  local lsp_config = root_dir .. "/.lsp.json"
+  local lsp_config = root_dir .. "/.lsp.lua"
 
   if not vim.fn.filereadable(lsp_config) then
     return
   end
 
-  local out = vim.fn.readfile(lsp_config)
-  local raw = vim.fn.json_decode(out)
-
-  local decoder = {}
-  decoder.decode = function(tbl)
-    if type(tbl) ~= "table" then
-      return tbl
-    end
-    for k, v in pairs(tbl) do
-      if type(k) ~= "string" then
-        goto continue
-      end
-      local i = k:find("%.")
-      if i then
-        local a = k:sub(0, i - 1)
-        local b = k:sub(i + 1)
-        tbl[k] = nil
-
-        tbl[a] = tbl[a] or {}
-        tbl[a][b] = v
-        tbl[a] = decoder.decode(tbl[a])
-      else
-        tbl[k] = decoder.decode(v)
-      end
-      ::continue::
-    end
-    return tbl
-  end
-
-  local settings = {settings = decoder.decode(raw)}
+  local settings = {settings = loadfile(lsp_config)()}
 
   local new_config = vim.tbl_extend("force", config, settings)
 
@@ -139,31 +110,7 @@ local servers = {
 
   scry = {cmd = {os.getenv("HOME") .. "/src/github.com/crystal-lang-tools/scry/bin/scry"}},
 
-  sumneko_lua = {
-    cmd = {sumneko_bin, "-E", sumneko_root .. "/main.lua"},
-    settings = {
-      Lua = {
-        runtime = {
-          -- Get the language server to recognize LuaJIT globals like `jit` and `bit`
-          version = "LuaJIT",
-          -- Setup your lua path
-          path = vim.split(package.path, ";")
-        },
-        diagnostics = {
-          -- Get the language server to recognize the `vim` and `hs` global
-          globals = {"vim", "hs"}
-        },
-        workspace = {
-          -- Make the server aware of Neovim runtime files
-          library = {
-            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-            [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-            ["/Applications/Hammerspoon.app/Contents/Resources/extensions"] = true
-          }
-        }
-      }
-    }
-  },
+  sumneko_lua = {cmd = {sumneko_bin, "-E", sumneko_root .. "/main.lua"}},
 
   tsserver = {
     -- default_config = {
@@ -175,7 +122,7 @@ local servers = {
 
 local function find_lsp_ancestor(startpath)
   return lsp.util.search_ancestors(startpath, function(path)
-    if lsp.util.path.is_file(lsp.util.path.join(path, ".lsp.json")) then
+    if lsp.util.path.is_file(lsp.util.path.join(path, ".lsp.lua")) then
       return path
     end
   end)
