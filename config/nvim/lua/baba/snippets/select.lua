@@ -41,7 +41,7 @@ local function entrypoint(structure)
   lines[#lines] = lines[#lines] .. current_line:sub(col + 1)
   api.nvim_buf_set_lines(bufnr, row - 1, row, false, lines)
 
-  local ns = api.nvim_create_namespace("baba-snippets")
+  local ns = api.nvim_create_namespace("snippets.select")
   local defaults = evaluator.evaluate_inputs {}
 
   -- key=snippets id, value=extmark id
@@ -55,8 +55,12 @@ local function entrypoint(structure)
     elseif v.is_input or v["id"] == 0 then
       local start_line, start_col = trow - 1, tcol
       local end_row, end_col = advance_cursor(defaults[v.id] or "", trow, tcol)
-      marks[v.id] = api.nvim_buf_set_extmark(bufnr, ns, start_line, start_col,
-                                             {end_line = end_row - 1, end_col = end_col})
+      marks[v.id] = api.nvim_buf_set_extmark(bufnr, ns, start_line, start_col, {
+        end_line = end_row - 1,
+        end_col = end_col,
+        right_gravity = false,
+        end_right_gravity = true
+      })
 
       trow, tcol = end_row, end_col
     else
@@ -81,6 +85,12 @@ local function entrypoint(structure)
       offset = offset or 1
       current_index = math.max(math.min(current_index + offset, #evaluator.inputs + 1), 0)
 
+      -- close popup window (this causes some error with extmarks, don't know why)
+      -- related: https://github.com/neovim/neovim/issues/13816
+      if vim.fn.pumvisible() ~= 0 then
+        feedkeys("<C-g><C-g>")
+      end
+
       if current_index == 0 then
         R.aborted = true
         return true
@@ -100,21 +110,13 @@ local function entrypoint(structure)
         end
         return true
       end
+      -- TODO(babariviere): use CursorMovedI for live update
 
       -- Resolve previous value, only if the user goes forward in snippet
       if current_index > 1 and offset > 0 then
         -- Reverse end and start when end < start
-        -- TODO(babariviere): to remove this ugly code, we need to wait for https://github.com/neovim/neovim/pull/13679
-        --    this will be required for live update.
-        --    use CursorMovedI for live update
         local prev_mark = marks[current_index - 1]
         local pos = api.nvim_buf_get_extmark_by_id(bufnr, ns, prev_mark, {details = true})
-        if pos[3].end_row < pos[1] or pos[3].end_col < pos[2] then
-          pos[1], pos[3].end_row = pos[3].end_row, pos[1]
-          pos[2], pos[3].end_col = pos[3].end_col, pos[2]
-          api.nvim_buf_set_extmark(bufnr, ns, pos[1], pos[2],
-                                   {end_line = pos[3].end_row, end_col = pos[3].end_col, id = prev_mark})
-        end
 
         local prev_input = evaluator.inputs[current_index - 1]
         resolved_inputs[prev_input.id] = table.concat(
@@ -139,15 +141,19 @@ local function entrypoint(structure)
               local last_line = new_lines[#new_lines]
               end_col = pos[3].end_col + #last_line
             end
-            api.nvim_buf_set_extmark(bufnr, ns, pos[1], pos[2],
-                                     {end_line = end_line, end_col = end_col, id = marks[input.id]})
+            api.nvim_buf_set_extmark(bufnr, ns, pos[1], pos[2], {
+              end_line = end_line,
+              end_col = end_col,
+              id = marks[input.id],
+              right_gravity = false,
+              end_right_gravity = true
+            })
           end
         end
       end
 
       local input = evaluator.inputs[current_index]
       local mark = marks[input.id]
-
       local pos = api.nvim_buf_get_extmark_by_id(bufnr, ns, mark, {details = true})
       api.nvim_win_set_cursor(win, {pos[1] + 1, pos[2]}) -- extmark is zero indexed
       local resolved = resolved_inputs[input.id] or defaults[input.id] or ""

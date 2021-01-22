@@ -88,6 +88,10 @@ if err != nil {
 snips.lua = {
   req = [[local ${2:${1|S.v:match"([^.()]+)[()]*$"}} = require '$1']],
   lambda = utils.match_indentation [[function () $0 end]],
+  ["if"] = utils.match_indentation [[
+if $1 then
+  $0
+end]],
   t = [[
   local
   ${2:hello} = require '$1'
