@@ -14,6 +14,9 @@ local wf = require("hs.window.filter")
 local mb = require("hs.menubar")
 
 -- TODO(babariviere): cleaning
+-- TODO(babariviere): still a bug to fix when starting computer
+--  tiling is applied on 2 spaces (allWindowsForSpace doesn't seems to work but it's faster anyway)
+--  we need to do some logging at boot
 
 local function moveWindow()
   local delay = 0.
@@ -40,7 +43,10 @@ local function onWindowCreated(window, _, _)
     return
   end
 
-  root:insertWindow(window)
+  -- Avoid duplcation issue in tree
+  if not root:findLeaf(window:id()) then
+    root:insertWindow(window)
+  end
 
   root:forEachLeaf(moveWindow())
 end
