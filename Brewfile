@@ -1,4 +1,4 @@
-tap "babariviere/tools", "git@github.com:babariviere/homebrew-tools.git"
+ Brewfiletap "babariviere/tools", "git@github.com:babariviere/homebrew-tools.git"
 tap "d12frosted/emacs-plus"
 tap "fewlinesco/tap"
 tap "github/gh"
@@ -145,13 +145,5 @@ cask "touch-bar-simulator"
 cask "transmission"
 cask "visual-studio-code"
 cask "vlc"
-mas "AdGuard for Safari", id: 1440147259
-mas "Aviary", id: 1522043420
-mas "Dark Reader for Safari", id: 1438243180
-mas "GoodNotes", id: 1444383602
-mas "Grammarly for Safari", id: 1462114288
-mas "iMovie", id: 408981434
-mas "Pages", id: 409201541
 mas "Paprika Recipe Manager 3", id: 1303222628
-mas "Tampermonkey", id: 1482490089
 mas "Xcode", id: 497799835
