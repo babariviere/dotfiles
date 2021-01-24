@@ -112,9 +112,8 @@ local function entrypoint(structure)
       end
       -- TODO(babariviere): use CursorMovedI for live update
 
-      -- Resolve previous value, only if the user goes forward in snippet
+      -- Resolve next values, only if the user goes forward in snippet
       if current_index > 1 and offset > 0 then
-        -- Reverse end and start when end < start
         local prev_mark = marks[current_index - 1]
         local pos = api.nvim_buf_get_extmark_by_id(bufnr, ns, prev_mark, {details = true})
 
