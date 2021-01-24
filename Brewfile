@@ -1,4 +1,4 @@
- Brewfiletap "babariviere/tools", "git@github.com:babariviere/homebrew-tools.git"
+tap "babariviere/tools", "git@github.com:babariviere/homebrew-tools.git"
 tap "d12frosted/emacs-plus"
 tap "fewlinesco/tap"
 tap "github/gh"
