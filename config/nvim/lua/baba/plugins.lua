@@ -65,6 +65,7 @@ return require("packer").startup {
       end,
       config = [[require'baba.treesitter']]
     }
+    use {"nvim-treesitter/playground"}
 
     -- Auto Pairs
     -- pkg {'jiangmiao/auto-pairs', as = 'autopairs'}
