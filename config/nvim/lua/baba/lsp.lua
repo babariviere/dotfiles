@@ -21,6 +21,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(0, "n", "gE", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "]e", "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "[e", "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", opts)
+  vim.api.nvim_buf_set_keymap(0, "n", "<leader>ca", "<cmd>lua require('lspsaga.codeaction').code_action()<cr>", opts)
 
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_command("augroup lsp_aucmds")
@@ -123,6 +124,20 @@ local servers = {
   }
 }
 
+-- Patch upstream iterate_parents.
+lsp.util.path.iterate_parents = function(path)
+  local function it(_, v)
+    if not v then
+      return
+    end
+    if v == "/" then
+      return
+    end
+    return lsp.util.path.dirname(v), path
+  end
+  return it, path, path
+end
+
 local function find_lsp_ancestor(startpath)
   return lsp.util.search_ancestors(startpath, function(path)
     if lsp.util.path.is_file(lsp.util.path.join(path, ".lsp.lua")) then
@@ -168,3 +183,7 @@ vim.g.lsp_utils_symbols_opts = {keymaps = {n = {["<C-j>"] = "j", ["<C-k>"] = "k"
 vim.g.lsp_utils_codeaction_opts = {keymaps = {n = {["<C-j>"] = "j", ["<C-k>"] = "k"}}}
 
 vim.g.space_before_virtual_text = 5
+
+-- LSP Saga
+local saga = require "lspsaga"
+saga.init_lsp_saga {}
