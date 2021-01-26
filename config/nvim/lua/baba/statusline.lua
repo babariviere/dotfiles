@@ -2,30 +2,16 @@ local gl = require("galaxyline")
 local gls = gl.section
 gl.short_line_list = {"LuaTree", "vista", "dbui"}
 
-local palette = setmetatable({}, {
-  __index = function(_, key)
-    local table = vim.g["dracula#palette"]
-    if key:sub(1, #"color_") == "color_" then
-      return table[key]
-    end
-    return table[key][1]
-  end
-})
-
 local colors = {
-  bg = palette.bg,
-  line_bg = palette.bglight,
-  fg = palette.fg,
-
-  yellow = palette.yellow,
-  cyan = palette.cyan,
-  darkblue = palette.comment,
-  green = palette.green,
-  orange = palette.orange,
-  purple = palette.purple,
-  magenta = palette.pink,
-  blue = palette.cyan,
-  red = palette.red
+  yellow = "#fabd2f",
+  cyan = "#008080",
+  green = "#afd700",
+  orange = "#FF8800",
+  purple = "#5d4d7a",
+  magenta = "#d16d9e",
+  grey = "#c0c0c0",
+  blue = "#0087d7",
+  red = "#ec5f67"
 }
 
 local buffer_not_empty = function()
@@ -239,7 +225,7 @@ end
 gls.right[1] = {
   FileFormat = {
     provider = "FileFormat",
-    separator = " ",
+    separator = "",
     separator_highlight = {colors.bg, colors.line_bg},
     highlight = {colors.fg, colors.line_bg}
   }
@@ -269,12 +255,11 @@ gls.right[3] = {
 gls.right[4] = {
   PerCent = {
     provider = "LinePercent",
-    separator = " ",
-    separator_highlight = {colors.line_bg, colors.line_bg},
+    separator = " |",
+    separator_highlight = {colors.blue, colors.line_bg},
     highlight = {colors.fg, colors.darkblue}
   }
 }
-gls.right[5] = {ScrollBar = {provider = "ScrollBar", highlight = {colors.darkblue, colors.purple}}}
 
 gls.short_line_left[1] = {
   BufferType = {

@@ -33,10 +33,12 @@ return require("packer").startup {
 
     -- Themes
     use "ntk148v/vim-horizon"
-    use "rakr/vim-one"
+    use "Th3Whit3Wolf/one-nvim"
     use "ayu-theme/ayu-vim"
     use "drewtempelmeyer/palenight.vim"
     use {"dracula/vim", as = "dracula"}
+    use "NLKNguyen/papercolor-theme"
+    use "sainnhe/edge"
 
     -- Status bar
     -- pkg {'itchyny/lightline.vim', as = 'lightline'}

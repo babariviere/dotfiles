@@ -7,6 +7,9 @@ export ECTO_EDITOR="$EDITOR"
 # Fix issue on MacOS
 export GPG_TTY=$(tty)
 
+export BAT_THEME="OneHalfLight"
+export FZF_DEFAULT_OPTS='--color=light'
+
 # Go setup
 export GOBIN="$HOME/.local/bin"
 export GOCACHE="$HOME/.cache/go"

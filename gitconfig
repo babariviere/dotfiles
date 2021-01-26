@@ -16,7 +16,7 @@
 [delta]
   # features = side-by-side line-numbers decorations
   features = line-numbers decorations
-  syntax-theme = Dracula
+  syntax-theme = OneHalfLight
 
 [delta "decorations"]
   commit-decoration-style = none
