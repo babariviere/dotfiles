@@ -1,4 +1,5 @@
 tap "babariviere/tools", "git@github.com:babariviere/homebrew-tools.git"
+tap "cuelang/tap"
 tap "d12frosted/emacs-plus"
 tap "fewlinesco/tap"
 tap "github/gh"
@@ -105,6 +106,7 @@ brew "wget"
 brew "yarn"
 brew "youtube-dl"
 brew "babariviere/tools/flow-sh", link: false
+brew "cuelang/tap/cue"
 brew "fewlinesco/tap/fwl_error"
 brew "khanhas/tap/spicetify-cli"
 brew "ms-jpq/sad/sad"
@@ -145,5 +147,6 @@ cask "touch-bar-simulator"
 cask "transmission"
 cask "visual-studio-code"
 cask "vlc"
+mas "Hush", id: 1544743900
 mas "Paprika Recipe Manager 3", id: 1303222628
 mas "Xcode", id: 497799835
