@@ -36,8 +36,25 @@ defp $1($2) do
 end
   ]],
 
-  ["df:"] = "def $1($2), do: $0",
-  ["dfp:"] = "defp $1($2), do: $0",
+  ["df:"] = "def ${1:myfunc}($2), do: $0",
+  ["dfp:"] = "defp ${1:myfunc}($2), do: $0",
+
+  -- TODO(babariviere): try to determine module from path
+  dfm = utils.match_indentation [[
+defmodule $1 do
+  $0
+end]],
+
+  dft = utils.match_indentation [[
+defmodule $1 do
+  use ${2:${1|S.v:match"([^.]+).*$"}}
+end
+]],
+
+  ["test"] = utils.match_indentation [[
+test "$1" do
+  $0
+end]],
 
   iex = utils.comment_and_indent [[
     iex> $0]],
@@ -91,11 +108,7 @@ snips.lua = {
   ["if"] = utils.match_indentation [[
 if $1 then
   $0
-end]],
-  t = [[
-  local
-  ${2:hello} = require '$1'
-  $0]]
+end]]
 }
 
 local snippets = require "snippets"
