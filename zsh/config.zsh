@@ -59,3 +59,5 @@ unsetopt AUTO_NAME_DIRS     # Don't add variable-stored paths to ~ list
 
 autoload -Uz compinit
 compinit
+
+zstyle ':completion:*' menu yes select
