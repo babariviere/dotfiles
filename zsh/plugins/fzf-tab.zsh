@@ -1,4 +1,4 @@
-disable-fzf-tab
+enable-fzf-tab
 
 if [ -n "$TMUX" ]; then
   # Use popup
@@ -6,13 +6,13 @@ if [ -n "$TMUX" ]; then
   zstyle ':fzf-tab:*' popup-pad 50 20
 fi
 
-zstyle ":fzf-tab:*" default-color $'\033[33;5;37m'
-FZF_TAB_GROUP_COLORS=()
-for i in {1..16} ; do
-    # FZF_TAB_GROUP_COLORS+="$(colorfg 10 255 10)"
-    FZF_TAB_GROUP_COLORS+=($'\033[38;5;19m')
-done
-zstyle ':fzf-tab:*' group-colors $FZF_TAB_GROUP_COLORS
+local fzf_flags=(
+  --color=light
+  --color=hl:#373a42
+  --color=bg+:#f0f0f0
+  --color=hl+:#373a42
+)
+zstyle ':fzf-tab:*' fzf-flags $fzf_flags
 
 zstyle ":completion:*:git-checkout:*" sort false
 zstyle ':completion:*:descriptions' format '[%d]'
