@@ -46,7 +46,8 @@ return require("packer").startup {
     -- use 'vim-airline/vim-airline'
     -- use 'vim-airline/vim-airline-themes'
     use {"glepnir/galaxyline.nvim", config = [[require'baba.statusline']]}
-    pkg {"akinsho/nvim-bufferline.lua", as = "bufferline"}
+    -- pkg {"akinsho/nvim-bufferline.lua", as = "bufferline"}
+    use {"romgrk/barbar.nvim", as = "barbar"}
     use "kyazdani42/nvim-web-devicons"
 
     -- Languages
