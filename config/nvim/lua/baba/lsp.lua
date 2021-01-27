@@ -126,6 +126,13 @@ local servers = {
 
 -- Patch upstream iterate_parents.
 lsp.util.path.iterate_parents = function(path)
+  local abs_path = vim.loop.fs_realpath(path)
+  if not abs_path then
+    local parent = lsp.util.path.dirname(path)
+    path = vim.loop.fs_realpath(parent)
+  else
+    path = abs_path
+  end
   local function it(_, v)
     if not v then
       return
