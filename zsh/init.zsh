@@ -6,6 +6,8 @@ export EDITOR="nvim"
 export ECTO_EDITOR="$EDITOR"
 # Fix issue on MacOS
 export GPG_TTY=$(tty)
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
 
 export BAT_THEME="OneHalfLight"
 export FZF_DEFAULT_OPTS='--color=light'
