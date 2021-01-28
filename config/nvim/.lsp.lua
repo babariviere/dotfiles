@@ -7,7 +7,7 @@ return {
       path = vim.split(package.path, ";")
     },
     diagnostics = {
-      -- Get the language server to recognize the `vim` and `hs` global
+      -- Get the language server to recognize the `vim` global
       globals = {"vim"}
     },
     workspace = {
