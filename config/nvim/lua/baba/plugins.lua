@@ -85,6 +85,7 @@ return require("packer").startup {
     use "RishabhRD/popfix"
     use {"RishabhRD/nvim-lsputils", requires = {{"RishabhRD/popfix", opt = true}}}
     use {"glepnir/lspsaga.nvim", requires = {"neovim/nvim-lspconfig"}}
+    pkg {"kosayoda/nvim-lightbulb", as = "lightbulb"}
 
     -- DAP
     use {{"mfussenegger/nvim-dap", config = [[require'baba.dap']]}, "theHamsta/nvim-dap-virtual-text"}
