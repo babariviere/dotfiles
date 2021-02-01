@@ -1,5 +1,5 @@
-local statusline = require("baba.statusline")
-local lsp_status = require("lsp-status")
+local statusline = require'baba.statusline'
+local lsp_status = require'lsp-status'
 
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -114,7 +114,19 @@ local servers = {
 
   scry = {cmd = {os.getenv("HOME") .. "/src/github.com/crystal-lang-tools/scry/bin/scry"}},
 
-  sumneko_lua = {cmd = {sumneko_bin, "-E", sumneko_root .. "/main.lua"}},
+  sumneko_lua = {
+    cmd = {sumneko_bin, "-E", sumneko_root .. "/main.lua"},
+    filetypes = {"lua"},
+    settings = {
+      completion = {
+        keywordSnippet = "Disable",
+      },
+      workspace = {
+        maxPreload = 1000,
+        preloadFileSize = 1000
+      }
+    }
+  },
 
   tsserver = {
     -- default_config = {
