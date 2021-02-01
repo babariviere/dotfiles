@@ -82,8 +82,6 @@ return require("packer").startup {
     use {"nvim-lua/completion-nvim", config = [[require'baba.completion']]}
     use "nvim-lua/lsp-status.nvim"
     use "tjdevries/lsp_extensions.nvim"
-    use "RishabhRD/popfix"
-    use {"RishabhRD/nvim-lsputils", requires = {{"RishabhRD/popfix", opt = true}}}
     use {"glepnir/lspsaga.nvim", requires = {"neovim/nvim-lspconfig"}}
     pkg {"kosayoda/nvim-lightbulb", as = "lightbulb"}
 

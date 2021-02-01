@@ -10,14 +10,14 @@ local on_attach = function(client, bufnr)
   local opts = {noremap = true, silent = true}
   vim.api.nvim_buf_set_keymap(0, "n", "gnD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "gnd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(0, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(0, "n", "K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "<c-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "gTD", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(0, "n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(0, "n", "ge", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(0, "n", "ga", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(0, "n", "ge", "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "gE", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "]e", "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "[e", "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", opts)
@@ -187,19 +187,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   -- Disable a feature
   update_in_insert = false
 })
-
-vim.lsp.handlers["textDocument/codeAction"] = require"lsputil.codeAction".code_action_handler
-vim.lsp.handlers["textDocument/references"] = require"lsputil.locations".references_handler
-vim.lsp.handlers["textDocument/definition"] = require"lsputil.locations".definition_handler
-vim.lsp.handlers["textDocument/declaration"] = require"lsputil.locations".declaration_handler
-vim.lsp.handlers["textDocument/typeDefinition"] = require"lsputil.locations".typeDefinition_handler
-vim.lsp.handlers["textDocument/implementation"] = require"lsputil.locations".implementation_handler
-vim.lsp.handlers["textDocument/documentSymbol"] = require"lsputil.symbols".document_handler
-vim.lsp.handlers["workspace/symbol"] = require"lsputil.symbols".workspace_handler
-
-vim.g.lsp_utils_location_opts = {keymaps = {n = {["<C-j>"] = "j", ["<C-k>"] = "k"}}}
-vim.g.lsp_utils_symbols_opts = {keymaps = {n = {["<C-j>"] = "j", ["<C-k>"] = "k"}}}
-vim.g.lsp_utils_codeaction_opts = {keymaps = {n = {["<C-j>"] = "j", ["<C-k>"] = "k"}}}
 
 vim.g.space_before_virtual_text = 5
 
