@@ -92,9 +92,9 @@ return require("packer").startup {
     -- Lua nvim
     use "nvim-lua/plenary.nvim"
     use {"nvim-lua/popup.nvim", requires = {{"nvim-lua/plenary.nvim", opt = true}}}
-    pkg {
+    use {
       "nvim-telescope/telescope.nvim",
-      as = "telescope",
+      config = [[require'baba.plugins.telescope']],
       requires = {
         {"nvim-lua/popup.nvim", opt = true},
         {"nvim-lua/plenary.nvim", opt = true},
@@ -106,7 +106,7 @@ return require("packer").startup {
     -- use 'rafcamlet/nvim-luapad'
 
     -- Flow
-    pkg {"babariviere/flow.nvim", as = "flow", requires = {"nvim-telescope/telescope.nvim", opt = true}}
+    pkg {"babariviere/flow.nvim", as = "flow"}
 
     -- Snippets
     -- use 'SirVer/ultisnips'
