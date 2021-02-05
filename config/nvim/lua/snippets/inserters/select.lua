@@ -111,6 +111,7 @@ local function entrypoint(structure)
         return true
       end
       -- TODO(babariviere): use CursorMovedI for live update
+      -- TODO(babariviere): resolve non input (e.g $-1)
 
       -- Resolve next values, only if the user goes forward in snippet
       if current_index > 1 and offset > 0 then
@@ -138,7 +139,7 @@ local function entrypoint(structure)
               end_col = #last_line
             else
               local last_line = new_lines[#new_lines]
-              end_col = pos[3].end_col + #last_line
+              end_col = pos[2] + #last_line
             end
             api.nvim_buf_set_extmark(bufnr, ns, pos[1], pos[2], {
               end_line = end_line,
