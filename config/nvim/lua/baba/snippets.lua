@@ -25,29 +25,29 @@ snips._global = {
 }
 
 snips.elixir = {
-  df = utils.match_indentation [[
+  def = utils.match_indentation [[
 def $1($2) do
   $0
 end]],
 
-  dfp = utils.match_indentation [[
+  defp = utils.match_indentation [[
 defp $1($2) do
   $0
 end
   ]],
 
-  ["df:"] = "def ${1:myfunc}($2), do: $0",
-  ["dfp:"] = "defp ${1:myfunc}($2), do: $0",
+  ["def:"] = "def ${1:myfunc}($2), do: $0",
+  ["defp:"] = "defp ${1:myfunc}($2), do: $0",
 
   -- TODO(babariviere): try to determine module from path
-  dfm = utils.match_indentation [[
+  defm = utils.match_indentation [[
 defmodule $1 do
   $0
 end]],
 
-  dft = utils.match_indentation [[
+  deft = utils.match_indentation [[
 defmodule $1 do
-  use ${2:${1|S.v:match"([^.]+).*$"}}
+  use ${2:$1}.${3:DataCase}
 end
 ]],
 
