@@ -9,8 +9,8 @@ export GPG_TTY=$(tty)
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 
-export BAT_THEME="OneHalfLight"
-export FZF_DEFAULT_OPTS='--color=light'
+export BAT_THEME="OneHalfDark"
+# export FZF_DEFAULT_OPTS='--color=light'
 
 # Go setup
 export GOBIN="$HOME/.local/bin"

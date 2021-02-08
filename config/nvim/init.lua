@@ -2,4 +2,4 @@ require "baba.globals"
 require "baba.mappings"
 require "baba.plugins"
 
-require "baba.themes.one_light"
+require "baba.themes.horizon"

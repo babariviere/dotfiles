@@ -137,7 +137,8 @@ gls.left[12] = {
   Space = {
     provider = function()
       return " "
-    end
+    end,
+    highlight = {colors.bg, colors.bg}
   }
 }
 gls.left[13] = {DiagnosticWarn = {provider = "DiagnosticWarn", icon = "  ", highlight = {colors.blue, colors.bg}}}
@@ -145,7 +146,8 @@ gls.left[14] = {
   Space = {
     provider = function()
       return " "
-    end
+    end,
+    highlight = {colors.bg, colors.bg}
   }
 }
 
