@@ -158,6 +158,7 @@ return require("packer").startup {
       "pwntester/octo.nvim",
       requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim"}
     }
+    use 'TimUntersberger/neogit'
 
     -- Start page
     use "mhinz/vim-startify"
