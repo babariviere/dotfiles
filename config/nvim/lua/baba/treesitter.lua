@@ -1,8 +1,4 @@
--- local parser_config = require"nvim-treesitter.parsers".get_parser_configs()
--- parser_config.markdown = {
---   install_info = {url = "https://github.com/ikatyang/tree-sitter-markdown", files = {"src/parser.c", "src/scanner.cc"}}
--- }
-require"nvim-treesitter.configs".setup {
+require "nvim-treesitter.configs".setup {
   ensure_installed = "maintained", -- one of "all", "language", or a list of languages
   highlight = {
     enable = true, -- false will disable the whole extension
