@@ -15,6 +15,7 @@ local opt = setmetatable({}, {
   end
 })
 
+vim.g.maplocalleader = ","
 vim.g.mapleader = " "
 
 opt.hidden = true
