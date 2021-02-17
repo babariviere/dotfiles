@@ -46,6 +46,8 @@ return require("packer").startup {
     use "NLKNguyen/papercolor-theme"
     use "sainnhe/edge"
 
+    use "rktjmp/lush.nvim"
+
     -- Status bar
     -- pkg {'itchyny/lightline.vim', as = 'lightline'}
     -- use 'mengelbrecht/lightline-bufferline'
@@ -136,16 +138,19 @@ return require("packer").startup {
 
     ---- Ranger
     -- --use 'kevinhwang91/rnvimr'
-    -- Colorizer
-    use {"norcalli/nvim-colorizer.lua", config = [[require 'baba.colorizer']]}
+    --- Colorizer
+    -- use {"norcalli/nvim-colorizer.lua", config = [[require 'baba.colorizer']]}
+    pkg {"RRethy/vim-hexokinase", as = "hexokinase", run = "make hexokinase"}
+
     -- Rainbow
-    use "junegunn/rainbow_parentheses.vim"
+    -- use "junegunn/rainbow_parentheses.vim"
+
     -- Formatting
     -- use 'sbdchd/neoformat'
     use {"mhartington/formatter.nvim", config = [[require'baba.formatter']]}
 
     -- Scratchpad
-    use "metakirby5/codi.vim"
+    -- use "metakirby5/codi.vim"
 
     -- Git
     use {
@@ -165,7 +170,7 @@ return require("packer").startup {
       "pwntester/octo.nvim",
       requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim"}
     }
-    use 'TimUntersberger/neogit'
+    use "TimUntersberger/neogit"
 
     -- Start page
     use "mhinz/vim-startify"
@@ -199,9 +204,12 @@ return require("packer").startup {
       open_fn = function(name)
         -- Can only use plenary when we have our plugins.
         -- We can only get plenary when we don't have our plugins ;)
-        local ok, float_win = pcall(function()
-          return require("plenary.window.float").percentage_range_window(0.8, 0.8)
-        end)
+        local ok, float_win =
+          pcall(
+          function()
+            return require("plenary.window.float").percentage_range_window(0.8, 0.8)
+          end
+        )
 
         if not ok then
           vim.cmd [[65vnew  [packer] ]]
