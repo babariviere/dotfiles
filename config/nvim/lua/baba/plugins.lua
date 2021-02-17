@@ -31,8 +31,14 @@ return require("packer").startup {
     -- Packer can manage itself as an optional plugin
     use {"wbthomason/packer.nvim", opt = true}
 
+    -- Fennel/Conjure/Lisp...
+    use "Olical/conjure"
+    use {"Olical/aniseed", requires = {{"bakpakin/fennel.vim"}}}
+    -- use "bhurlow/vim-parinfer"
+    use {"eraserhd/parinfer-rust", run = "cargo build --release"}
+
     -- Themes
-    use "ntk148v/vim-horizon"
+    -- use "ntk148v/vim-horizon"
     use "Th3Whit3Wolf/one-nvim"
     use "ayu-theme/ayu-vim"
     use "drewtempelmeyer/palenight.vim"
@@ -72,6 +78,7 @@ return require("packer").startup {
     use {"nvim-treesitter/nvim-treesitter-textobjects"}
     use {"nvim-treesitter/nvim-treesitter-refactor"}
     use {"nvim-treesitter/nvim-tree-docs", requires = {{"Olical/aniseed"}}}
+    use {"p00f/nvim-ts-rainbow"}
 
     -- Auto Pairs
     -- pkg {'jiangmiao/auto-pairs', as = 'autopairs'}
@@ -98,7 +105,6 @@ return require("packer").startup {
       requires = {
         {"nvim-lua/popup.nvim", opt = true},
         {"nvim-lua/plenary.nvim", opt = true},
-
         -- extensions
         {"nvim-telescope/telescope-github.nvim"}
       }

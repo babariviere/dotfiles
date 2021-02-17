@@ -15,6 +15,9 @@ require"nvim-treesitter.configs".setup {
   },
   indent = {enable = true},
   query_linter = {enable = true, use_virtual_text = true, lint_events = {"BufWrite", "CursorHold"}},
+  rainbow = {
+    enable = true
+  },
   refactor = {
     highlight_definitions = {enable = false},
     highlight_current_scope = {enable = false},
