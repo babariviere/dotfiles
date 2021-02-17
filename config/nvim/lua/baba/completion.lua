@@ -6,6 +6,8 @@ vim.api.nvim_command [[autocmd BufEnter * lua require'completion'.on_attach{
 vim.api.nvim_set_keymap("i", "<c-space>", "completion#trigger_completion()",
   {noremap = true, silent = true, expr = true})
 
+vim.o.completeopt = 'menuone,noinsert,noselect'
+
 -- TODO(babariviere): only allow path in string or comments
 vim.g.completion_chain_complete_list = {
   {complete_items = {"lsp", "snippet"}},
@@ -13,6 +15,9 @@ vim.g.completion_chain_complete_list = {
   {mode = "<c-p>"},
   {mode = "<c-n>"}
 }
+vim.g.completion_auto_change_source = 1
+
+vim.g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy', 'all'}
 
 vim.g.completion_customize_lsp_label = {
   Function = " [function]",
@@ -25,9 +30,9 @@ vim.g.completion_customize_lsp_label = {
   Folder = " [folder]",
   Snippet = " [snippet]",
   Operator = " [operator]",
-  Module = " [module]",
-  Text = "ﮜ[text]",
-  Class = " [class]",
+  Module = "  [module]",
+  Text = "ﮜ [text]",
+  Class = "  [class]",
   Interface = " [interface]"
 }
 
