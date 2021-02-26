@@ -19,6 +19,9 @@ export GOMODCACHE="$HOME/.cache/gomod"
 # export GOPATH="$HOME"
 export GO111MODULE=on
 
+# LLVM setup
+export LLVM_CONFIG=/usr/local/opt/llvm/bin/llvm-config
+
 ulimit -Sn 20000
 
 # Use vi bindings
