@@ -63,7 +63,7 @@
    :Type {:fg syntax.cranberry}
    :Underlined {:fg syntax.turquoise :attrs "underline"}
    :VertSplit {:fg ui.backgroundAlt :bg ui.backgroundAlt}
-   :Visual {:bg ui.accent}
+   :Visual {:bg "#4b5166"}
    :WarningMsg {:fg ui.warning}
    :WildMenu {:fg ui.shadow :bg ui.warning}
 
@@ -148,7 +148,7 @@
    ;; Tab Line
    :TabLine {:fg ui.lightText :bg ui.background}
    :TabLineFill {:fg ui.lightText :bg ui.background :attrs "reverse"}
-   :TabLineSel {:fg ui.lightText :bg syntax.cranberry}
+   :TabLineSel {:fg ui.lightText :bg ui.background}
 
    ;; CSS
    :cssBraces {:link :Delimiter}

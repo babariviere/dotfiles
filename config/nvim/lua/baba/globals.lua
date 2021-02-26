@@ -3,17 +3,21 @@ vim.api.nvim_command [[filetype plugin indent on]]
 
 local opts_info = vim.api.nvim_get_all_options_info()
 
-local opt = setmetatable({}, {
-  __newindex = function(_, key, value)
-    vim.o[key] = value
-    local scope = opts_info[key].scope
-    if scope == "win" then
-      vim.wo[key] = value
-    elseif scope == "buf" then
-      vim.bo[key] = value
+local opt =
+  setmetatable(
+  {},
+  {
+    __newindex = function(_, key, value)
+      vim.o[key] = value
+      local scope = opts_info[key].scope
+      if scope == "win" then
+        vim.wo[key] = value
+      elseif scope == "buf" then
+        vim.bo[key] = value
+      end
     end
-  end
-})
+  }
+)
 
 vim.g.maplocalleader = ","
 vim.g.mapleader = " "
@@ -65,6 +69,9 @@ opt.conceallevel = 2
 
 opt.signcolumn = "yes:1"
 
+opt.winblend = 10
+opt.pumblend = 10
+
 function TRIM_TRAILING_WHITESPACE()
   local view = vim.fn.winsaveview()
   vim.api.nvim_command [[keeppatterns %substitute/\m\s\+$//e]]
@@ -76,3 +83,10 @@ vim.api.nvim_command [[augroup trim_spaces]]
 vim.api.nvim_command [[autocmd!]]
 vim.api.nvim_command [[autocmd BufWritePre * lua TRIM_TRAILING_WHITESPACE()]]
 vim.api.nvim_command [[augroup END]]
+
+---
+--- Misc settings
+---
+
+-- Disable sqlcomplete mapping
+vim.g.omni_sql_no_default_maps = 1

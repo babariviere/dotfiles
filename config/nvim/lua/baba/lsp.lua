@@ -1,5 +1,5 @@
-local statusline = require'baba.statusline'
-local lsp_status = require'lsp-status'
+local statusline = require "baba.statusline"
+local lsp_status = require "lsp-status"
 
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -14,7 +14,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(0, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "<c-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "gTD", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(0, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(0, "n", "gR", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "ga", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "ge", "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>", opts)
@@ -62,64 +62,64 @@ local sumneko_bin = sumneko_root .. "/bin/macOS/lua-language-server"
 local lsp = require "lspconfig"
 
 local servers = {
-  diagnosticls = {
-    filetypes = {"asciidoc", "markdown", "gitcommit", "sh"},
-    init_options = {
-      linters = {
-        shellcheck = {
-          command = "shellcheck",
-          debounce = 100,
-          args = {"--format=gcc", "-"},
-          offsetLine = 0,
-          offsetColumn = 0,
-          sourceName = "shellcheck",
-          formatLines = 1,
-          formatPattern = {
-            "^[^:]+:(\\d+):(\\d+):\\s+([^:]+):\\s+(.*)$",
-            {line = 1, column = 2, message = 4, security = 3}
-          },
-          securities = {error = "error", warning = "warning", note = "info"}
-        },
-        languagetool = {
-          command = "languagetool",
-          debounce = 200,
-          args = {"-d", "EN_QUOTES", "-m", "fr-FR", "-l", "en-US", "-"},
-          offsetLine = 0,
-          offsetColumn = 0,
-          sourceName = "languagetool",
-          formatLines = 2,
-          formatPattern = {
-            "^\\d+?\\.\\)\\s+Line\\s+(\\d+),\\s+column\\s+(\\d+),\\s+([^\\n]+)\nMessage:\\s+(.*)$",
-            {line = 1, column = 2, message = {4, 3}}
-          }
-        }
-      },
-      filetypes = {sh = "shellcheck", asciidoc = "languagetool", markdown = "languagetool", gitcommit = "languagetool"},
-      -- Use format.nvim instead
-      formatters = {},
-      formatFiletypes = {}
-    }
-  },
-
+  clojure_lsp = {},
+  -- diagnosticls = {
+  --   filetypes = {"asciidoc", "markdown", "gitcommit", "sh"},
+  --   init_options = {
+  --     linters = {
+  --       shellcheck = {
+  --         command = "shellcheck",
+  --         debounce = 100,
+  --         args = {"--format=gcc", "-"},
+  --         offsetLine = 0,
+  --         offsetColumn = 0,
+  --         sourceName = "shellcheck",
+  --         formatLines = 1,
+  --         formatPattern = {
+  --           "^[^:]+:(\\d+):(\\d+):\\s+([^:]+):\\s+(.*)$",
+  --           {line = 1, column = 2, message = 4, security = 3}
+  --         },
+  --         securities = {error = "error", warning = "warning", note = "info"}
+  --       },
+  --       languagetool = {
+  --         command = "languagetool",
+  --         debounce = 200,
+  --         args = {"-d", "EN_QUOTES", "-m", "fr", "-l", "en-US", "-"},
+  --         offsetLine = 0,
+  --         offsetColumn = 0,
+  --         sourceName = "languagetool",
+  --         formatLines = 2,
+  --         formatPattern = {
+  --           "^\\d+?\\.\\)\\s+Line\\s+(\\d+),\\s+column\\s+(\\d+),\\s+([^\\n]+)\nMessage:\\s+(.*)$",
+  --           {line = 1, column = 2, message = {4, 3}}
+  --         }
+  --       }
+  --     },
+  --     filetypes = {
+  --       sh = "shellcheck",
+  --       asciidoc = "languagetool",
+  --       markdown = "languagetool",
+  --       gitcommit = "languagetool"
+  --     },
+  --     -- Use format.nvim instead
+  --     formatters = {},
+  --     formatFiletypes = {}
+  --   }
+  -- },
   elixirls = {cmd = {os.getenv("HOME") .. "/src/github.com/elixir-lsp/elixir-ls/release/language_server.sh"}},
-
   gopls = {},
-
   pyls_ms = {
     cmd = {"dotnet", "exec", os.getenv("HOME") .. "/.cache/nvim/lspconfig/pyls_ms/Microsoft.Python.LanguageServer.dll"},
     init_options = {interpreter = {properties = {InterpreterPath = "/usr/local/bin/python3", Version = "3.9"}}}
   },
-
   rust_analyzer = {},
-
   scry = {cmd = {os.getenv("HOME") .. "/src/github.com/crystal-lang-tools/scry/bin/scry"}},
-
   sumneko_lua = {
     cmd = {sumneko_bin, "-E", sumneko_root .. "/main.lua"},
     filetypes = {"lua"},
     settings = {
       completion = {
-        keywordSnippet = "Disable",
+        keywordSnippet = "Disable"
       },
       workspace = {
         maxPreload = 1000,
@@ -127,7 +127,6 @@ local servers = {
       }
     }
   },
-
   tsserver = {
     -- default_config = {
     --   bin_dir = '/usr/local/bin',
@@ -158,11 +157,14 @@ lsp.util.path.iterate_parents = function(path)
 end
 
 local function find_lsp_ancestor(startpath)
-  return lsp.util.search_ancestors(startpath, function(path)
-    if lsp.util.path.is_file(lsp.util.path.join(path, ".lsp.lua")) then
-      return path
+  return lsp.util.search_ancestors(
+    startpath,
+    function(path)
+      if lsp.util.path.is_file(lsp.util.path.join(path, ".lsp.lua")) then
+        return path
+      end
     end
-  end)
+  )
 end
 
 for name, config in pairs(servers) do
@@ -178,15 +180,19 @@ end
 
 vim.o.completeopt = "menuone,noinsert,noselect"
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  -- Enable underline, use default values
-  underline = true,
-  -- Enable virtual text
-  virtual_text = {prefix = "»"},
-  signs = true,
-  -- Disable a feature
-  update_in_insert = false
-})
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+  vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics,
+  {
+    -- Enable underline, use default values
+    underline = true,
+    -- Enable virtual text
+    virtual_text = {prefix = "»"},
+    signs = true,
+    -- Disable a feature
+    update_in_insert = false
+  }
+)
 
 vim.g.space_before_virtual_text = 5
 
