@@ -12,6 +12,8 @@
 
 [core]
   pager = delta
+	autocrlf = false
+	eol = lf
 
 [delta]
   # features = side-by-side line-numbers decorations
