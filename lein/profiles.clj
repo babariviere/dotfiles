@@ -11,7 +11,7 @@
                   [lein-try "0.4.3"]
                   [io.aviso/pretty "0.1.37"]
                   [cider/cider-nrepl "0.25.9"]
-                  [lein-cljfmt "0.6.0"]]
+                  [lein-auto "0.1.3"]]
         :middleware [io.aviso.lein-pretty/inject] ; better stacktrace
         :injections [(require 'io.aviso.repl)] ;colours for stack traces in the REPL
         :aliases {"rebl" ["trampoline" "run" "-m" "rebel-readline.main"]}}}
