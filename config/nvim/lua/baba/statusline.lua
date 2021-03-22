@@ -119,92 +119,29 @@ gls.left[9] = {
   }
 }
 
-local messages = require("lsp-status/messaging").messages
-
-local lsp_config = {
-  kind_labels = {},
-  indicator_errors = "  ",
-  indicator_warnings = "  ",
-  indicator_info = "  ",
-  indicator_hint = "  ",
-  indicator_ok = "  ",
-  spinner_frames = {"⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷"},
-  status_symbol = "異",
-  select_symbol = nil
-}
-local function statusline_lsp()
-  if #vim.lsp.buf_get_clients() == 0 then
-    return ""
-  end
-
-  local buf_messages = messages()
-  local only_hint = true
-  local status_parts = {}
-
-  local msgs = {}
-  for _, msg in ipairs(buf_messages) do
-    local name = msg.name
-    local client_name = "[" .. name .. "]"
-    local contents = ""
-    if msg.progress then
-      contents = msg.title
-      if msg.message then
-        contents = contents .. " " .. msg.message
-      end
-
-      if msg.percentage then
-        contents = contents .. " (" .. msg.percentage .. ")"
-      end
-
-      if msg.spinner then
-        contents = lsp_config.spinner_frames[(msg.spinner % #lsp_config.spinner_frames) + 1] .. " " .. contents
-      end
-    elseif msg.status then
-      contents = msg.content
-      if msg.uri then
-        local filename = vim.uri_to_fname(msg.uri)
-        filename = vim.fn.fnamemodify(filename, ":~:.")
-        local space = math.min(60, math.floor(0.6 * vim.fn.winwidth(0)))
-        if #filename > space then
-          filename = vim.fn.pathshorten(filename)
-        end
-
-        contents = "(" .. filename .. ") " .. contents
-      end
-    else
-      contents = msg.content
-    end
-
-    table.insert(msgs, client_name .. " " .. contents)
-  end
-
-  local base_status = vim.trim(table.concat(status_parts, " ") .. " " .. table.concat(msgs, " "))
-  local symbol = lsp_config.status_symbol .. (only_hint and "" or " ")
-  local current_function = vim.b.lsp_current_function
-  if current_function and current_function ~= "" then
-    symbol = symbol .. "(" .. current_function .. ") "
-  end
-
-  if base_status ~= "" then
-    return symbol .. base_status
-  end
-
-  return symbol .. (vim.b.lsp_client_name or "") .. " " .. lsp_config.indicator_ok
-end
-
 gls.right = {
   {
     LspStatus = {
-      provider = statusline_lsp,
+      provider = "GetLspClient",
       condition = function()
-        if #vim.lsp.buf_get_clients() == 0 then
+        local tbl = {["dashboard"] = true, [""] = true}
+        if tbl[vim.bo.filetype] then
           return false
         end
         return true
       end,
       separator = " ",
       separator_highlight = {colors.blue, colors.line_bg},
+      icon = "異",
       highlight = {colors.fg, colors.line_bg}
+    }
+  },
+  {
+    Space = {
+      provider = function()
+        return " "
+      end,
+      separator = " "
     }
   },
   {

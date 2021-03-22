@@ -1,11 +1,5 @@
-local statusline = require "baba.statusline"
-local lsp_status = require "lsp-status"
-
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-  lsp_status.on_attach(client, bufnr)
-  statusline.on_attach(client, bufnr)
 
   local opts = {noremap = true, silent = true}
   vim.api.nvim_buf_set_keymap(0, "n", "gnD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -53,8 +47,6 @@ end
 
 -- Setup autocmd for lsp.lua files
 vim.api.nvim_command [[ autocmd BufNewFile .lsp.lua 0r ~/.config/nvim/templates/lsp.lua ]]
-
-lsp_status.register_progress()
 
 local sumneko_root = os.getenv("HOME") .. "/src/github.com/sumneko/lua-language-server"
 local sumneko_bin = sumneko_root .. "/bin/macOS/lua-language-server"
@@ -170,7 +162,6 @@ end
 for name, config in pairs(servers) do
   config.on_attach = on_attach
   config.on_new_config = on_new_config
-  config.capabilities = vim.tbl_extend("keep", config.capabilities or {}, lsp_status.capabilities)
   local default_config = lsp[name].document_config.default_config
   config.root_dir = function(fname)
     return find_lsp_ancestor(fname) or default_config.root_dir(fname)
