@@ -14,6 +14,7 @@
   pager = delta
 	autocrlf = false
 	eol = lf
+	excludesfile = /Users/bastienriviere/.gitignore
 
 [delta]
   # features = side-by-side line-numbers decorations
