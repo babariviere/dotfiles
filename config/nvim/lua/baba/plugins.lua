@@ -60,11 +60,11 @@ return require("packer").startup {
     use {"glepnir/galaxyline.nvim", config = [[require'baba.statusline']]}
     -- pkg {"akinsho/nvim-bufferline.lua", as = "bufferline"}
     pkg {"romgrk/barbar.nvim", as = "barbar"}
-    -- use "kyazdani42/nvim-web-devicons"
-    use {
-      "yamatsum/nvim-web-nonicons",
-      requires = {"kyazdani42/nvim-web-devicons"}
-    }
+    use "kyazdani42/nvim-web-devicons"
+    -- use {
+    --   "yamatsum/nvim-web-nonicons",
+    --   requires = {"kyazdani42/nvim-web-devicons"}
+    -- }
 
     -- Languages
     -- use 'sheerun/vim-polyglot'
@@ -169,6 +169,7 @@ return require("packer").startup {
       {
         "lewis6991/gitsigns.nvim",
         config = function()
+          require "baba.git"
         end,
         requires = {"nvim-lua/plenary.nvim"}
       }

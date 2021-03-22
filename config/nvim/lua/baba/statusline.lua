@@ -82,19 +82,6 @@ local function find_git_root()
   return get_git_dir(path)
 end
 
-gls.left[5] = {
-  GitIcon = {
-    provider = function()
-      return "  "
-    end,
-    condition = find_git_root,
-    highlight = {colors.orange, colors.line_bg}
-  }
-}
-gls.left[6] = {
-  GitBranch = {provider = "GitBranch", condition = find_git_root, highlight = {colors.fg, colors.line_bg, "bold"}}
-}
-
 local checkwidth = function()
   local squeeze_width = vim.fn.winwidth(0) / 2
   if squeeze_width > 40 then
@@ -103,26 +90,7 @@ local checkwidth = function()
   return false
 end
 
-gls.left[7] = {
-  DiffAdd = {provider = "DiffAdd", condition = checkwidth, icon = " ", highlight = {colors.green, colors.line_bg}}
-}
-gls.left[8] = {
-  DiffModified = {
-    provider = "DiffModified",
-    condition = checkwidth,
-    icon = " ",
-    highlight = {colors.orange, colors.line_bg}
-  }
-}
-gls.left[9] = {
-  DiffRemove = {
-    provider = "DiffRemove",
-    condition = checkwidth,
-    icon = " ",
-    highlight = {colors.red, colors.line_bg}
-  }
-}
-gls.left[10] = {
+gls.left[5] = {
   LeftEnd = {
     provider = function()
       return ""
@@ -132,8 +100,8 @@ gls.left[10] = {
     highlight = {colors.line_bg, colors.line_bg}
   }
 }
-gls.left[11] = {DiagnosticError = {provider = "DiagnosticError", icon = "  ", highlight = {colors.red, colors.bg}}}
-gls.left[12] = {
+gls.left[6] = {DiagnosticError = {provider = "DiagnosticError", icon = "  ", highlight = {colors.red, colors.bg}}}
+gls.left[7] = {
   Space = {
     provider = function()
       return " "
@@ -141,8 +109,8 @@ gls.left[12] = {
     highlight = {colors.bg, colors.bg}
   }
 }
-gls.left[13] = {DiagnosticWarn = {provider = "DiagnosticWarn", icon = "  ", highlight = {colors.blue, colors.bg}}}
-gls.left[14] = {
+gls.left[8] = {DiagnosticWarn = {provider = "DiagnosticWarn", icon = "  ", highlight = {colors.blue, colors.bg}}}
+gls.left[9] = {
   Space = {
     provider = function()
       return " "
@@ -155,11 +123,11 @@ local messages = require("lsp-status/messaging").messages
 
 local lsp_config = {
   kind_labels = {},
-  indicator_errors = "",
-  indicator_warnings = "",
-  indicator_info = "",
-  indicator_hint = "",
-  indicator_ok = "",
+  indicator_errors = "  ",
+  indicator_warnings = "  ",
+  indicator_info = "  ",
+  indicator_hint = "  ",
+  indicator_ok = "  ",
   spinner_frames = {"⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷"},
   status_symbol = "異",
   select_symbol = nil
@@ -224,30 +192,7 @@ local function statusline_lsp()
   return symbol .. (vim.b.lsp_client_name or "") .. " " .. lsp_config.indicator_ok
 end
 
-local function statusline_iced()
-  return "nREPL: " .. vim.fn["iced#nrepl#status"]()
-end
-
 gls.right = {
-  {
-    FileFormat = {
-      provider = "FileFormat",
-      separator = "",
-      separator_highlight = {colors.bg, colors.line_bg},
-      highlight = {colors.fg, colors.line_bg}
-    }
-  },
-  -- gls.right[2] = {
-  --   IcedStatus = {
-  --     provider = statusline_iced,
-  --     condition = function()
-  --       return vim.bo.ft == "clojure" and vim.fn["iced#nrepl#status"]
-  --     end,
-  --     separator = " | ",
-  --     separator_highlight = {colors.blue, colors.line_bg},
-  --     highlight = {colors.fg, colors.line_bg}
-  --   }
-  -- }
   {
     LspStatus = {
       provider = statusline_lsp,
@@ -257,27 +202,67 @@ gls.right = {
         end
         return true
       end,
-      separator = " | ",
+      separator = " ",
       separator_highlight = {colors.blue, colors.line_bg},
       highlight = {colors.fg, colors.line_bg}
     }
   },
   {
-    LineInfo = {
-      provider = "LineColumn",
-      separator = " | ",
-      separator_highlight = {colors.blue, colors.line_bg},
-      highlight = {colors.fg, colors.line_bg}
+    DiffAdd = {
+      provider = "DiffAdd",
+      condition = checkwidth,
+      icon = " ",
+      highlight = {"#09f7a0", colors.line_bg}
     }
   },
   {
-    PerCent = {
-      provider = "LinePercent",
-      separator = " |",
-      separator_highlight = {colors.blue, colors.line_bg},
-      highlight = {colors.fg, colors.darkblue}
+    DiffModified = {
+      provider = "DiffModified",
+      condition = checkwidth,
+      icon = " ",
+      highlight = {"#21bfc2", colors.line_bg}
+    }
+  },
+  {
+    DiffRemove = {
+      provider = "DiffRemove",
+      condition = checkwidth,
+      icon = " ",
+      highlight = {"#f43e5c", colors.line_bg}
+    }
+  },
+  {
+    GitIcon = {
+      provider = function()
+        return "  "
+      end,
+      condition = find_git_root,
+      highlight = {colors.orange, colors.line_bg}
+    }
+  },
+  {
+    GitBranch = {
+      provider = "GitBranch",
+      condition = find_git_root,
+      highlight = {colors.fg, colors.line_bg, "bold"}
     }
   }
+  -- {
+  --   LineInfo = {
+  --     provider = "LineColumn",
+  --     separator = " ",
+  --     separator_highlight = {colors.blue, colors.line_bg},
+  --     highlight = {colors.fg, colors.line_bg}
+  --   }
+  -- },
+  -- {
+  --   PerCent = {
+  --     provider = "LinePercent",
+  --     separator = " ",
+  --     separator_highlight = {colors.blue, colors.line_bg},
+  --     highlight = {colors.fg, colors.darkblue}
+  --   }
+  -- }
 }
 
 gls.short_line_left[1] = {
