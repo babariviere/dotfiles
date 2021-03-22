@@ -175,6 +175,13 @@ for name, config in pairs(servers) do
   config.root_dir = function(fname)
     return find_lsp_ancestor(fname) or default_config.root_dir(fname)
   end
+
+  -- Use new incremental sync by default: https://github.com/neovim/neovim/pull/14079
+  if not config.flags then
+    config.flags = {}
+  end
+  config.flags.allow_incremental_sync = true
+
   lsp[name].setup(config)
 end
 
@@ -198,4 +205,11 @@ vim.g.space_before_virtual_text = 5
 
 -- LSP Saga
 local saga = require "lspsaga"
-saga.init_lsp_saga {}
+saga.init_lsp_saga {
+  code_action_prompt = {
+    enable = true,
+    sign = true,
+    sign_priority = 20,
+    virtual_text = false
+  }
+}

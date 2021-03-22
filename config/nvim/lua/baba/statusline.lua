@@ -224,42 +224,59 @@ local function statusline_lsp()
   return symbol .. (vim.b.lsp_client_name or "") .. " " .. lsp_config.indicator_ok
 end
 
-gls.right[1] = {
-  FileFormat = {
-    provider = "FileFormat",
-    separator = "",
-    separator_highlight = {colors.bg, colors.line_bg},
-    highlight = {colors.fg, colors.line_bg}
-  }
-}
-gls.right[2] = {
-  LspStatus = {
-    provider = statusline_lsp,
-    condition = function()
-      if #vim.lsp.buf_get_clients() == 0 then
-        return false
-      end
-      return true
-    end,
-    separator = " | ",
-    separator_highlight = {colors.blue, colors.line_bg},
-    highlight = {colors.fg, colors.line_bg}
-  }
-}
-gls.right[3] = {
-  LineInfo = {
-    provider = "LineColumn",
-    separator = " | ",
-    separator_highlight = {colors.blue, colors.line_bg},
-    highlight = {colors.fg, colors.line_bg}
-  }
-}
-gls.right[4] = {
-  PerCent = {
-    provider = "LinePercent",
-    separator = " |",
-    separator_highlight = {colors.blue, colors.line_bg},
-    highlight = {colors.fg, colors.darkblue}
+local function statusline_iced()
+  return "nREPL: " .. vim.fn["iced#nrepl#status"]()
+end
+
+gls.right = {
+  {
+    FileFormat = {
+      provider = "FileFormat",
+      separator = "",
+      separator_highlight = {colors.bg, colors.line_bg},
+      highlight = {colors.fg, colors.line_bg}
+    }
+  },
+  -- gls.right[2] = {
+  --   IcedStatus = {
+  --     provider = statusline_iced,
+  --     condition = function()
+  --       return vim.bo.ft == "clojure" and vim.fn["iced#nrepl#status"]
+  --     end,
+  --     separator = " | ",
+  --     separator_highlight = {colors.blue, colors.line_bg},
+  --     highlight = {colors.fg, colors.line_bg}
+  --   }
+  -- }
+  {
+    LspStatus = {
+      provider = statusline_lsp,
+      condition = function()
+        if #vim.lsp.buf_get_clients() == 0 then
+          return false
+        end
+        return true
+      end,
+      separator = " | ",
+      separator_highlight = {colors.blue, colors.line_bg},
+      highlight = {colors.fg, colors.line_bg}
+    }
+  },
+  {
+    LineInfo = {
+      provider = "LineColumn",
+      separator = " | ",
+      separator_highlight = {colors.blue, colors.line_bg},
+      highlight = {colors.fg, colors.line_bg}
+    }
+  },
+  {
+    PerCent = {
+      provider = "LinePercent",
+      separator = " |",
+      separator_highlight = {colors.blue, colors.line_bg},
+      highlight = {colors.fg, colors.darkblue}
+    }
   }
 }
 

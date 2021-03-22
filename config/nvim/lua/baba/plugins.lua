@@ -32,8 +32,12 @@ return require("packer").startup {
     use {"wbthomason/packer.nvim", opt = true}
 
     -- Fennel/Conjure/Lisp...
-    use "Olical/conjure"
+    -- use "guns/vim-sexp"
+    -- use "tpope/vim-sexp-mappings-for-regular-people"
+    -- pkg {"liquidz/vim-iced", as = "iced"}
+    pkg "Olical/conjure"
     use {"Olical/aniseed", requires = {{"bakpakin/fennel.vim"}}}
+    use {"Olical/nvim-local-fennel", requires = {{"bakpakin/fennel.vim"}}}
     -- use "bhurlow/vim-parinfer"
     use {"eraserhd/parinfer-rust", run = "cargo build --release"}
 
@@ -56,7 +60,11 @@ return require("packer").startup {
     use {"glepnir/galaxyline.nvim", config = [[require'baba.statusline']]}
     -- pkg {"akinsho/nvim-bufferline.lua", as = "bufferline"}
     pkg {"romgrk/barbar.nvim", as = "barbar"}
-    use "kyazdani42/nvim-web-devicons"
+    -- use "kyazdani42/nvim-web-devicons"
+    use {
+      "yamatsum/nvim-web-nonicons",
+      requires = {"kyazdani42/nvim-web-devicons"}
+    }
 
     -- Languages
     -- use 'sheerun/vim-polyglot'
@@ -93,7 +101,7 @@ return require("packer").startup {
     use "nvim-lua/lsp-status.nvim"
     use "tjdevries/lsp_extensions.nvim"
     use {"glepnir/lspsaga.nvim", requires = {"neovim/nvim-lspconfig"}}
-    pkg {"kosayoda/nvim-lightbulb", as = "lightbulb"}
+    -- pkg {"kosayoda/nvim-lightbulb", as = "lightbulb"}
 
     -- DAP
     use {{"mfussenegger/nvim-dap", config = [[require'baba.dap']]}, "theHamsta/nvim-dap-virtual-text"}
@@ -163,20 +171,24 @@ return require("packer").startup {
         config = function()
         end,
         requires = {"nvim-lua/plenary.nvim"}
-      },
-      {"f-person/git-blame.nvim", config = [[require'baba.git']]}
+      }
+      -- {"f-person/git-blame.nvim", config = [[require'baba.git']]}
     }
-    use {
+    pkg {
       "pwntester/octo.nvim",
+      as = "octo",
       requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim"}
     }
-    use "TimUntersberger/neogit"
+    -- use "TimUntersberger/neogit"
 
     -- Start page
     use "mhinz/vim-startify"
 
     -- Quick scope
     pkg {"unblevable/quick-scope", as = "quickscope"}
+
+    -- Quick fix
+    use "kevinhwang91/nvim-bqf"
 
     -- Which key
     use "liuchengxu/vim-which-key"

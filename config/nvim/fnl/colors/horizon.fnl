@@ -42,7 +42,7 @@
    :Identifier {:fg syntax.cranberry}
    :Include {:fg syntax.lavender}
    :LineNr {:fg ui.accentAlt :bg ui.background}
-   :MatchParen {:fg ui.background :bg syntax.cranberry}
+   :MatchParen {:fg ui.background :bg ui.accentAlt}
    :MoreMsg {:fg ui.positive}
    :NonText {:fg ui.accent}
    :Normal {:fg ui.lightText :bg ui.background}
