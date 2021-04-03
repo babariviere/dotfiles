@@ -96,8 +96,9 @@ return require("packer").startup {
 
     -- LSP nvim
     use {"neovim/nvim-lspconfig", config = [[require'baba.lsp']]}
-    use {"nvim-lua/completion-nvim", config = [[require'baba.completion']]}
-    -- pkg "hrsh7th/nvim-compe"
+    -- use {"nvim-lua/completion-nvim", config = [[require'baba.completion']]}
+    pkg "hrsh7th/nvim-compe"
+    use "tami5/compe-conjure"
     use "tjdevries/lsp_extensions.nvim"
     use {"glepnir/lspsaga.nvim", requires = {"neovim/nvim-lspconfig"}}
     -- pkg {"kosayoda/nvim-lightbulb", as = "lightbulb"}

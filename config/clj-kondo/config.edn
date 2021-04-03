@@ -1,3 +1,4 @@
 {:lint-as {mount.core/defstate clojure.core/def
            devcards.core/defcard cljs.core/def
-           devcards.core/defcard-rg cljs.core/def}}
+           devcards.core/defcard-rg cljs.core/def}
+ :output {:analysis true}}

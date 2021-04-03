@@ -5,4 +5,4 @@ vim.g.airline_theme = "dracula"
 
 vim.api.nvim_command [[colorscheme dracula]]
 
-vim.api.nvim_command [[highlight DraculaDiffDelete guibg=none ctermbg=none]]
+-- vim.api.nvim_command [[highlight DraculaDiffDelete guibg=none ctermbg=none]]

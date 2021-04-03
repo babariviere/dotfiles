@@ -2,7 +2,7 @@ require "baba.globals"
 require "baba.mappings"
 require "baba.plugins"
 
-require "baba.themes.horizon"
+require "baba.themes.dracula"
 local lua_config = vim.fn.stdpath("config") .. "/lua"
 function _G.fennel_compile_file(input)
   local _, e = string.find(input, "nvim/fnl/")

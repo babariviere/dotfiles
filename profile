@@ -7,7 +7,7 @@ export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig:/usr/local/opt/libpq/lib
 export PATH="$HOME/.emacs.d/bin:$PATH"
 
 # GraalVM
-export PATH="/Library/Java/JavaVirtualMachines/graalvm-ce-java8-21.0.0/Contents/Home/bin:$PATH"
+export PATH="$(jabba which graalvm-ce-java11@21.0.0)/Contents/Home/bin:$PATH"
 export GRAALVM_HOME="$(jabba which graalvm-ce-java11@21.0.0)/Contents/Home"
 # export JAVA_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-java8-21.0.0/Contents/Home
 

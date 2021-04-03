@@ -15,9 +15,7 @@ local bindings = {
     ["<up>"] = {[[pumvisible() ? '<c-e><up>' : '<up>']], expr = true, noremap = true},
     ["<down>"] = {[[pumvisible() ? '<c-e><down>' : '<down>']], expr = true, noremap = true}
   },
-
   s = {["<Tab>"] = {[[<Esc>i<cmd>lua require'baba.snippets'.expand_or_key("<tab>")<CR>]], noremap = true}},
-
   n = {
     ["<TAB>"] = {":bnext<CR>", noremap = true},
     ["<S-TAB>"] = {":bprevious<CR>", noremap = true},
@@ -32,7 +30,9 @@ local bindings = {
     ["<leader>sb"] = {[[<cmd>lua require'telescope.builtin'.buffers{}<CR>]], noremap = true},
     ["<leader>sp"] = {[[<cmd>lua require'telescope.builtin'.live_grep{}<CR>]], noremap = true}
   },
-
+  t = {
+    ["<C-g>"] = {"<C-\\><C-n>", noremap = true}
+  },
   v = {["<"] = {"<gv", noremap = true}, [">"] = {">gv", noremap = true}}
 }
 
