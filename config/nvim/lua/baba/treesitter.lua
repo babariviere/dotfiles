@@ -58,3 +58,5 @@ require "nvim-treesitter.configs".setup {
     keymaps = {doc_all_in_range = "gdd", doc_node_at_cursor = "gdd", edit_doc_at_cursor = "gde"}
   }
 }
+
+require("baba.treesitter.clojure")
