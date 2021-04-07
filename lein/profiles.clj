@@ -10,11 +10,11 @@
                   [lein-auto "0.1.3"]]
         :aliases {"rebl" ["trampoline" "run" "-m" "rebel-readline.main"]}}
  :repl {:dependencies [[com.bhauman/rebel-readline "0.1.4"]
-                       [io.aviso/pretty "0.1.37"]
-                       [cider/piggieback "0.4.2"]]
+                       [io.aviso/pretty "0.1.37"]]
+        ;;                [cider/piggieback "0.4.2"]]
         :plugins [[cider/cider-nrepl "0.25.9"]
                   [io.aviso/pretty "0.1.37"]]
-        :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
+        ;; :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
         :middleware [io.aviso.lein-pretty/inject] ; better stacktrace
         :injections [(require 'io.aviso.repl)]}} ;colours for stack traces in the REPL
 
