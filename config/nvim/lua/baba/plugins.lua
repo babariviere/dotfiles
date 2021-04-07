@@ -144,6 +144,9 @@ return require("packer").startup {
     -- File utilities
     use "tpope/vim-eunuch"
 
+    -- tmux
+    use "tpope/vim-obsession"
+
     ---- Ranger
     -- --use 'kevinhwang91/rnvimr'
     --- Colorizer
