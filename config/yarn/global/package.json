@@ -1,8 +1,6 @@
 {
   "dependencies": {
-    "alfred-fkill": "^0.4.1",
     "diagnostic-languageserver": "^1.8.0",
-    "esy": "^0.6.7",
     "lua-fmt": "^2.6.0",
     "neovim": "^4.9.0",
     "node-cljfmt": "^0.5.4-0",
