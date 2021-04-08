@@ -23,16 +23,17 @@
 ((sym_lit) @variable.builtin
  (#match? @variable.builtin "^[*].+[*]$"))
 
-;; parameter-related
 (list_lit
   .
   (sym_lit)
   (sym_lit)+ @variable
   (#match? @variable "^&.*$"))
 
-(list_lit
- .
- (vec_lit value: ((sym_lit) @parameter)))
+;; parameter-related
+; TODO(babariviere): missing parameter for single method fn
+; (list_lit
+;  .
+;  (vec_lit value: ((sym_lit) @parameter)))
 
 
 ;; gensym
