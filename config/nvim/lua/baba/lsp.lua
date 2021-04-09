@@ -24,6 +24,8 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_command("augroup END")
   end
 
+  vim.api.nvim_command("au CursorHoldI <buffer> lua require('lspsaga.signaturehelp').signature_help()")
+
   vim.b.lsp_client_name = client.name
 
   -- vim.api.nvim_command("au CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()")
