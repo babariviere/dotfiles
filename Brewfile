@@ -135,6 +135,7 @@ brew "babariviere/tools/flow-sh", link: false
 brew "borkdude/brew/babashka"
 brew "borkdude/brew/carve"
 brew "borkdude/brew/clj-kondo"
+brew "clojure-lsp/brew/clojure-lsp-native"
 brew "clojure/tools/clojure"
 brew "cuelang/tap/cue"
 brew "d12frosted/emacs-plus/emacs-plus@28", args: ["with-modern-papirus-icon", "with-native-comp"]
