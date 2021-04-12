@@ -63,7 +63,7 @@ opt.listchars = [[tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·]]
 opt.termguicolors = true
 
 opt.foldmethod = "marker"
-opt.foldlevelstart = 0
+opt.foldlevelstart = 99
 
 opt.conceallevel = 2
 
