@@ -11,13 +11,13 @@
 
 {:aliases
    {;; Project
-    :new {:extra-deps {seancorfield/clj-new {:mvn/version "1.1.264"}}
+    :new {:extra-deps {seancorfield/clj-new {:mvn/version "1.1.293"}}
           :exec-fn    clj-new/create
           :exec-args  {:template "app"}}
 
     ;; Linting
     :check {:extra-deps {athos/clj-check {:git/url "https://github.com/athos/clj-check.git"
-                                          :sha "cd1f25456de5eebda0a69602dd3445905382b3a4"}}
+                                          :sha "518d5a1cbfcd7c952f548e6dbfcb9a4a5faf9062"}}
             :main-opts ["-m" "clj-check.check"]}
 
     ;; Cljfmt
@@ -25,14 +25,14 @@
           :main-opts ["-m" "cljfmt.main"]}
 
     ;; JAR
-    :depstar {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.0.193"}}
+    :depstar {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.0.211"}}
               :ns-default hf.depstar
               :exec-args {}}
 
 
     ;; REPL
     :repl/rebel-nrepl {:extra-deps {nrepl/nrepl                {:mvn/version "0.8.3"}
-                                    cider/cider-nrepl          {:mvn/version "0.25.9"}
+                                    cider/cider-nrepl          {:mvn/version "0.25.10"}
                                     com.bhauman/rebel-readline {:mvn/version "0.1.4"}}
                        :main-opts  ["-m" "nrepl.cmdline"
                                     "--middleware" "[cider.nrepl/cider-middleware]"
@@ -40,7 +40,7 @@
                                     "-f" "rebel-readline.main/-main"]}
 
     :repl/nrepl {:extra-deps {nrepl/nrepl                {:mvn/version "0.8.3"}
-                              cider/cider-nrepl          {:mvn/version "0.25.9"}}
+                              cider/cider-nrepl          {:mvn/version "0.25.10"}}
                   :main-opts  ["-m" "nrepl.cmdline"
                                "--middleware" "[cider.nrepl/cider-middleware]"
                                "-i"]}
@@ -49,11 +49,11 @@
             :main-opts ["-m" "rebel-readline.main"]}
 
     ;; Testing
-    :runner {:extra-deps {lambdaisland/kaocha {:mvn/version "1.0.732"}}
+    :runner {:extra-deps {lambdaisland/kaocha {:mvn/version "1.0.829"}}
              :main-opts  ["-m " "kaocha.runner"]}
 
     ;; Dependencies
-    :outdated {:extra-deps {antq/antq {:mvn/version "0.12.1"}}
+    :outdated {:extra-deps {com.github.liquidz/antq {:mvn/version "0.12.4"}}
                :main-opts ["-m" "antq.core"]}
 
     ;; Graph
@@ -62,7 +62,7 @@
             :ns-default   clojure.tools.deps.graph}
 
     :morpheus {:extra-deps {thomasa/morpheus {:git/url "https://github.com/benedekfazekas/morpheus.git"
-                                              :sha "d3decebc1cb9ef697cd34781f9cf83d44a071e85"}}
+                                              :sha "7f4876ea631a6f5ccee2094d255efd2d1a98ffb6"}}
                :main-opts  ["-m" "thomasa.morpheus.main"]}}}
 
   ;; Paths
