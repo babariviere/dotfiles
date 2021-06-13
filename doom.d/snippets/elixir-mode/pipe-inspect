@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: pipe-inspect
+# key: >i
+# condition: t
+# --
+|> IO.inspect($0)

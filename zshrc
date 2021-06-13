@@ -1,0 +1,67 @@
+## History
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+# emacs
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+# vi
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+# set delete key
+bindkey "^?" backward-delete-char
+
+###
+### Prompt
+###
+
+# fish style pwd
+_fishy_collapsed_wd() {
+  local i pwd
+  pwd=("${(s:/:)PWD/#$HOME/~}")
+  if (( $#pwd > 1 )); then
+    for i in {1..$(($#pwd-1))}; do
+      if [[ "$pwd[$i]" = .* ]]; then
+        pwd[$i]="${${pwd[$i]}[1,2]}"
+      else
+        pwd[$i]="${${pwd[$i]}[1]}"
+      fi
+    done
+  fi
+  echo "${(j:/:)pwd}"
+}
+
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+zstyle ':vcs_info:git:*' formats '%F{red}%b%f'
+
+# Allow command substitution in PS1
+setopt PROMPT_SUBST
+PS1='%F{magenta}%n%f:%F{blue}$(_fishy_collapsed_wd)%f> '
+RPS1=\$vcs_info_msg_0_
+
+###
+### VI cursor
+###
+
+_set_block_cursor() { echo -ne "\x1b[\x32 q" }
+_set_beam_cursor() { echo -ne "\x1b[\x36 q" }
+
+# vi cursor
+zle-keymap-select() {
+  case $KEYMAP in
+    vicmd) _set_block_cursor;; # block cursor
+    viins|main) _set_beam_cursor;; # beam cursor
+  esac
+}
+
+zle -N zle-keymap-select
+
+zle-line-init() { zle -K viins; _set_beam_cursor }
+zle-line-finish() { _set_block_cursor }
+zle -N zle-line-init
+zle -N zle-line-finish
+
+# Options
+setopt prompt_sp # show when command finish without a newline
