@@ -1,15 +1,15 @@
 {
-  description = "Example darwin system flake";
+  description = "Baba's dotfiles";
 
   inputs = {
     nix.url = "github:nixos/nix";
     nix.inputs.nixpkgs.follows = "nixpkgs";
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
-    flow.url = "path:../../../flow";
+    flow.url = "path:../flow";
 
     # Emacs
     emacs.url = "github:nix-community/emacs-overlay";
@@ -41,7 +41,7 @@
           };
           package = pkgs.hiPrio pkgs.nixUnstable;
           registry = { nixpkgs.flake = nixpkgs; };
-          trustedUsers = [ "babariviere" ];
+          # trustedUsers = [ "babariviere" ];
           useSandbox = "relaxed";
         };
 
@@ -52,29 +52,37 @@
           };
           javaOverlay = final: prev: {
             # FIXME: does not work
-            graalvm11-ce = prev.graalvm11-ce.overrideAttrs (attrs: {
-              doInstallCheck = false;
-            });
+            graalvm11-ce = prev.graalvm11-ce.overrideAttrs
+              (attrs: { doInstallCheck = false; });
           };
-        in [ inputs.neovim-nightly.overlay inputs.emacs.overlay javaOverlay self.overlay ];
+        in [
+          inputs.neovim-nightly.overlay
+          inputs.emacs.overlay
+          javaOverlay
+          self.overlay
+        ];
 
         services.nix-daemon.enable = true;
       };
+
+      lib = nixpkgs.lib.extend
+        (self: super: { my = import ./lib { lib = self; }; });
+
+      modules = lib.my.findModulesRec ./modules;
     in {
       # Build darwin flake using:
       # $ darwin-rebuild build --flake ./modules/examples#darwinConfigurations.mac-fewlines.system \
       #       --override-input darwin .
       darwinConfigurations."Baba-Mac" = darwin.lib.darwinSystem {
-        modules = [
-          configuration
-          home-manager.darwinModules.home-manager
-          ./hosts/mac-fewlines.nix
-        ];
-        specialArgs = { inherit inputs; };
+        modules = [ configuration home-manager.darwinModules.home-manager ]
+          ++ modules ++ [ ./hosts/mac-fewlines.nix ];
+        specialArgs = { inherit inputs lib; };
       };
 
       # Expose the package set, including overlays, for convenience.
       darwinPackages = self.darwinConfigurations."Baba-Mac".pkgs;
+
+      lib = lib.my;
 
       overlay = import ./pkgs;
     };

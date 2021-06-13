@@ -62,21 +62,15 @@ in {
   # programs.fish.enable = true;
   programs.nix-index.enable = true;
 
-  services.emacs = {
-    enable = true;
-    # TODO: Find a way to shorten this path
-    package = emacs;
-  };
-
-  home-manager.users.bastienriviere = { config, pkgs, ... }: {
+  hm = {
 
     home.sessionPath = [ "$HOME/.emacs.d/bin" ];
 
     home.file = {
       ".doom.d" = {
-        source = ../../doom.d;
+        source = "${config.dotfiles.configDir}/doom.d";
         recursive = true;
-        onChange = "~/.emacs.d/bin/doom sync";
+        onChange = "${config.user.home}/.emacs.d/bin/doom sync";
       };
       # Not working as planned
       # ".emacs.d" = {
@@ -124,15 +118,16 @@ in {
       pkgs.nixfmt
       pkgs.nix-prefetch-scripts
       pkgs.nixpkgs-review
+      pkgs.nix-tree
 
       # Common Lisp
       pkgs.sbcl
 
       # Clojure
-      pkgs.babashka
+      # FIXME: pkgs.babashka
       pkgs.boot
       pkgs.clojure
-      pkgs.clojure-lsp
+      # FIXME: pkgs.clojure-lsp
       pkgs.leiningen
     ];
     home.stateVersion = "21.03";
@@ -234,7 +229,7 @@ in {
 
       initExtra =
         let flow = "${inputs.flow.defaultPackage.${pkgs.system}}/bin/flow";
-        in (builtins.readFile ../zshrc) + ''
+        in (builtins.readFile "${config.dotfiles.configDir}/zshrc") + ''
           eval "$(${flow} setup $HOME/src --path ${flow})"
         '';
 
@@ -273,11 +268,6 @@ in {
     };
   };
 
-  users.users.bastienriviere = {
-    name = "bastienriviere";
-    home = "/Users/bastienriviere";
-  };
-
   # system.activationScripts.applications.text = pkgs.lib.mkForce (''
   #   rm -rf ~/Applications/Nix\ Apps
   #   mkdir -p ~/Applications/Nix\ Apps
@@ -286,6 +276,7 @@ in {
   #   cp -r "$src" ~/Applications/Nix\ Apps
   #   done
   # '');
+  my.editor.emacs.enable = true;
 
   system.defaults = {
     finder = {
@@ -300,6 +291,8 @@ in {
   system.activationScripts.myDefaults.text = ''
     defaults write com.apple.desktopservices DSDontWriteNetworkStores true
   '';
+
+  user.name = "bastienriviere";
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

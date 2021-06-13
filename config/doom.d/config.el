@@ -9,7 +9,7 @@
 (setq user-full-name "Bastien Riviere"
       user-mail-address "babathriviere@gmail.com")
 
-(setq doom-private-dir "~/src/github.com/babariviere/dotfiles-kap/dot/doom.d")
+(setq doom-private-dir "~/src/github.com/babariviere/dotfiles/config/doom.d")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:

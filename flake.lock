@@ -105,11 +105,11 @@
       },
       "locked": {
         "narHash": "sha256-aRNIQbNvnLkI/alQ2Xtjj39UiSKQE/enpCr9CfvJiGs=",
-        "path": "../../../flow",
+        "path": "../flow",
         "type": "path"
       },
       "original": {
-        "path": "../../../flow",
+        "path": "../flow",
         "type": "path"
       }
     },
@@ -259,16 +259,16 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1623176226,
-        "narHash": "sha256-54a9uvHlIlK3i0b36HfGMc4zqM0BpMOOiFYBxEhQFK8=",
+        "lastModified": 1623601054,
+        "narHash": "sha256-YrS++a0N3up+cgUqi719bZb7NNiGTM9V0YzHLhGrGWk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "51bb9f3e9ab6161a3bf7746e20b955712cef618b",
+        "rev": "9a3f4867099bc868b77817c272dce9f39f808376",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixpkgs-unstable",
+        "ref": "master",
         "repo": "nixpkgs",
         "type": "github"
       }
