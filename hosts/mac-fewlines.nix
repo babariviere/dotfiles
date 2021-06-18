@@ -115,8 +115,6 @@ in {
     ];
     home.stateVersion = "21.03";
 
-    programs.direnv = { enable = true; };
-
     programs.exa.enable = true;
 
     programs.fish = { enable = false; };
@@ -257,6 +255,13 @@ in {
   my = {
     editor.emacs.enable = true;
     dev.rust.enable = true;
+    shell = {
+      direnv = {
+        enable = true;
+        nix = true;
+        asdf = true;
+      };
+    };
   };
 
   system.defaults = {
