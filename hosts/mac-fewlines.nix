@@ -253,7 +253,10 @@ in {
   # '');
 
   my = {
-    editor.emacs.enable = true;
+    editor = {
+      emacs.enable = true;
+      editorconfig.enable = true;
+    };
     dev.rust.enable = true;
     shell = {
       direnv = {
