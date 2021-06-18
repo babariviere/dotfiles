@@ -1,14 +1,19 @@
-{config, options, lib, home-manager, pkgs, ...}:
+{ config, options, lib, home-manager, pkgs, ... }:
 
-with lib;
-{
+with lib; {
   options = with types; {
-    hm = mkOption {
-      type = attrs;
-      default = {};
-    };
+    # env = mkOption {
+    #   type = attrs;
+    #   default = { };
+    # };
 
-    dotfiles = let type = either str path; in {
+    # home = mkOption {
+    #   type = attrs;
+    #   default = { };
+    # };
+
+    dotfiles = let type = either str path;
+    in {
       dir = mkOption {
         inherit type;
         default = findFirst pathExists (toString ../.) [
@@ -29,19 +34,27 @@ with lib;
 
     user = mkOption {
       type = attrs;
-      default = {};
+      default = { };
     };
   };
 
+  imports = [
+    (mkAliasOptionModule [ "hm" ] [ "home-manager" "users" config.user.name ])
+    (mkAliasOptionModule [ "home" ] [ "hm" "home" ])
+    (mkAliasOptionModule [ "env" ] [ "hm" "home" "sessionVariables" ])
+    (mkAliasOptionModule [ "xdg" ] [ "hm" "xdg" ])
+  ];
+
   config = {
     user = {
-      home = if pkgs.stdenv.isDarwin then "/Users/${config.user.name}" else "/home/${config.user.name}";
+      home = if pkgs.stdenv.isDarwin then
+        "/Users/${config.user.name}"
+      else
+        "/home/${config.user.name}";
     } // (lib.optionalAttrs pkgs.stdenv.isLinux {
       extraGroups = [ "wheel" ];
       isNormalUser = true;
     });
-
-    home-manager.users.${config.user.name} = mkAliasDefinitions options.hm;
 
     users.users.${config.user.name} = mkAliasDefinitions options.user;
   };

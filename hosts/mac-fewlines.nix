@@ -63,23 +63,6 @@ in {
   programs.nix-index.enable = true;
 
   hm = {
-
-    home.sessionPath = [ "$HOME/.emacs.d/bin" ];
-
-    home.file = {
-      ".doom.d" = {
-        source = "${config.dotfiles.configDir}/doom.d";
-        recursive = true;
-        onChange = "${config.user.home}/.emacs.d/bin/doom sync";
-      };
-      # Not working as planned
-      # ".emacs.d" = {
-      #   source = doom-emacs;
-      #   recursive = true;
-      #   onChange = "~/.emacs.d/bin/doom upgrade";
-      # };
-    };
-
     home.packages = let
       nvimConfig = pkgs.neovimUtils.makeNeovimConfig {
         withPython3 = true;
@@ -134,15 +117,9 @@ in {
 
     programs.direnv = { enable = true; };
 
-    programs.emacs = {
-      enable = true;
-      package = emacs;
-    };
-
     programs.exa.enable = true;
 
     programs.fish = { enable = false; };
-
     programs.fzf = { enable = true; };
 
     programs.gh = {
@@ -276,7 +253,11 @@ in {
   #   cp -r "$src" ~/Applications/Nix\ Apps
   #   done
   # '');
-  my.editor.emacs.enable = true;
+
+  my = {
+    editor.emacs.enable = true;
+    dev.rust.enable = true;
+  };
 
   system.defaults = {
     finder = {
