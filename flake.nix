@@ -39,7 +39,20 @@
             options = "-d --delete-older-than 7d";
           };
           package = pkgs.hiPrio pkgs.nixUnstable;
-          registry = { nixpkgs.flake = nixpkgs; };
+          registry = {
+            nixpkgs.flake = nixpkgs;
+            dotfiles = {
+              from = {
+                id = "dotfiles";
+                type = "indirect";
+              };
+              to = {
+                type = "path";
+                path =
+                  "${config.user.home}/src/github.com/babariviere/dotfiles"; # WARNING(babariviere): meh
+              };
+            };
+          };
           # trustedUsers = [ "babariviere" ];
           useSandbox = "relaxed";
         };

@@ -220,7 +220,7 @@ in {
         ddn = "docker-compose down";
 
         dr = "darwin-rebuild";
-        drs = "darwin-rebuild switch --flake .#Baba-Mac --keep-going";
+        drs = "darwin-rebuild switch --flake dotfiles#Baba-Mac --keep-going";
 
         wk = "watch kubectl";
         k = "${pkgs.kubectl}/bin/kubectl";
