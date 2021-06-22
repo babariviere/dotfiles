@@ -2,16 +2,6 @@
 
 with lib; {
   options = with types; {
-    # env = mkOption {
-    #   type = attrs;
-    #   default = { };
-    # };
-
-    # home = mkOption {
-    #   type = attrs;
-    #   default = { };
-    # };
-
     dotfiles = let type = either str path;
     in {
       dir = mkOption {
