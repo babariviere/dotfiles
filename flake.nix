@@ -84,5 +84,9 @@
       lib = lib.my;
 
       overlay = import ./pkgs;
+
+      packages.x86_64-darwin = {
+        lima = nixpkgs.legacyPackages.x86_64-darwin.callPackage ./pkgs/lima { };
+      };
     };
 }
