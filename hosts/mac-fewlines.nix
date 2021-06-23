@@ -257,7 +257,10 @@ in {
       emacs.enable = true;
       editorconfig.enable = true;
     };
-    dev.rust.enable = true;
+    dev = {
+      elixir.enable = true;
+      rust.enable = true;
+    };
     shell = {
       direnv = {
         enable = true;

@@ -65,7 +65,7 @@
 ;; they are implemented.
 
 (after! lsp-mode
-  (setq lsp-elixir-server-command '("~/src/github.com/elixir-lsp/elixir-ls/release/language_server.sh")))
+  (setq lsp-elixir-server-command '("elixir-ls"))) ; REVIEW(babariviere): inject elixir from nix store
 
 (use-package! parrot
   :commands (parrot-mode)
