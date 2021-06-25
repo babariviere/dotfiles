@@ -54,7 +54,7 @@
               };
             };
           };
-          # trustedUsers = [ "babariviere" ];
+          trustedUsers = [ config.user.name ];
           useSandbox = "relaxed";
         };
 
@@ -63,17 +63,7 @@
             aws-sdk-cpp =
               prev.aws-sdk-cpp.overrideAttrs (attrs: { doCheck = false; });
           };
-          javaOverlay = final: prev: {
-            # FIXME: does not work
-            graalvm11-ce = prev.graalvm11-ce.overrideAttrs
-              (attrs: { doInstallCheck = false; });
-          };
-        in [
-          inputs.neovim-nightly.overlay
-          inputs.emacs.overlay
-          javaOverlay
-          self.overlay
-        ];
+        in [ inputs.neovim-nightly.overlay inputs.emacs.overlay self.overlay ];
 
         services.nix-daemon.enable = true;
       };
@@ -86,9 +76,9 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake ./modules/examples#darwinConfigurations.mac-fewlines.system \
       #       --override-input darwin .
-      darwinConfigurations."Baba-Mac" = darwin.lib.darwinSystem {
+      darwinConfigurations."attila-torridus" = darwin.lib.darwinSystem {
         modules = [ configuration home-manager.darwinModules.home-manager ]
-          ++ modules ++ [ ./hosts/mac-fewlines.nix ];
+          ++ modules ++ [ ./hosts/attila-torridus.nix ];
         specialArgs = { inherit inputs lib; };
       };
 

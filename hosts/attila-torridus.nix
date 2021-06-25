@@ -107,10 +107,10 @@ in {
       pkgs.sbcl
 
       # Clojure
-      # FIXME: pkgs.babashka
+      pkgs.babashka
       pkgs.boot
       pkgs.clojure
-      # FIXME: pkgs.clojure-lsp
+      pkgs.clojure-lsp
       pkgs.leiningen
     ];
     home.stateVersion = "21.03";
@@ -220,7 +220,7 @@ in {
         ddn = "docker-compose down";
 
         dr = "darwin-rebuild";
-        drs = "darwin-rebuild switch --flake dotfiles#Baba-Mac --keep-going";
+        drs = "darwin-rebuild switch --flake dotfiles --keep-going";
 
         wk = "watch kubectl";
         k = "${pkgs.kubectl}/bin/kubectl";
@@ -270,6 +270,8 @@ in {
     };
   };
 
+  networking.hostName = "attila-torridus";
+
   system.defaults = {
     finder = {
       AppleShowAllExtensions = true;
@@ -289,4 +291,13 @@ in {
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
+
+  meta = {
+    specie = {
+      url = "https://ebird.org/species/ochatt1";
+      latinName = "Attila torridus";
+      name = "Attila ocré";
+    };
+  };
+  # image: https://ebird.org/species/ochatt1
 }

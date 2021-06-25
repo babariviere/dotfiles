@@ -26,6 +26,11 @@ with lib; {
       type = attrs;
       default = { };
     };
+
+    meta = mkOption {
+      type = attrs;
+      default = { };
+    };
   };
 
   imports = [
