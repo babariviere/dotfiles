@@ -1,6 +1,8 @@
 name: "Build"
 on:
   push:
+    paths:
+      - "flake.lock" # only update on flake update
 jobs:
   build:
     runs-on: macos-latest
