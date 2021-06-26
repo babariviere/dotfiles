@@ -1,0 +1,16 @@
+name: "Build"
+on:
+  push:
+jobs:
+  build:
+    runs-on: macos-11
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: cachix/install-nix-action@v13
+        with:
+          nix_path: nixpkgs=channel:nixpkgs-unstable
+      - uses: cachix/cachix-action@v10
+        with:
+          name: babariviere
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - run: nix build .#emacsOsx

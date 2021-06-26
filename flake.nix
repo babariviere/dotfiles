@@ -28,11 +28,15 @@
         home-manager.useUserPackages = true;
 
         nix = {
-          binaryCaches =
-            [ "https://cache.nixos.org" "https://nix-community.cachix.org" ];
+          binaryCaches = [
+            "https://cache.nixos.org"
+            "https://nix-community.cachix.org"
+            "https://babariviere.cachix.org"
+          ];
           binaryCachePublicKeys = [
             "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
             "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+            "babariviere.cachix.org-1:IZH469NpgfLwJWYS2qv6HsuaKpBP7AwEqfkpcfd/U04="
           ];
           gc = {
             automatic = true;
@@ -89,8 +93,14 @@
 
       overlay = import ./pkgs;
 
-      packages.x86_64-darwin = {
-        lima = nixpkgs.legacyPackages.x86_64-darwin.callPackage ./pkgs/lima { };
+      packages.x86_64-darwin = let
+        pkgs = import nixpkgs {
+          system = "x86_64-darwin";
+          overlays = [ inputs.emacs.overlay ];
+        };
+      in {
+        emacsOsx = pkgs.callPackage ./pkgs/emacs { };
+        lima = pkgs.callPackage ./pkgs/lima { };
       };
     };
 }
