@@ -59,15 +59,41 @@
             };
           };
           trustedUsers = [ config.user.name ];
+          sandboxPaths = [
+            "/System/Library/Frameworks"
+            "/System/Library/PrivateFrameworks"
+          ];
           useSandbox = "relaxed";
         };
 
         nixpkgs.overlays = let
-          nixOverlay = final: prev: {
-            aws-sdk-cpp =
-              prev.aws-sdk-cpp.overrideAttrs (attrs: { doCheck = false; });
+          pythonOverride = super: python-self: python-super: {
+            # https://github.com/NixOS/nixpkgs/issues/128266
+            pycairo = python-super.pycairo.overrideAttrs (attrs: {
+              doCheck = false;
+              doInstallCheck = false;
+              nativeBuildInputs =
+                builtins.filter (drv: drv.name != "pytest-check-hook")
+                attrs.nativeBuildInputs;
+            });
           };
-        in [ inputs.neovim-nightly.overlay inputs.emacs.overlay self.overlay ];
+          pythonOverlay = self: super: {
+            python = super.python.override {
+              packageOverrides = pythonOverride super;
+            };
+            python3 = super.python3.override {
+              packageOverrides = pythonOverride super;
+            };
+            python38 = super.python38.override {
+              packageOverrides = pythonOverride super;
+            };
+          };
+        in [
+          inputs.neovim-nightly.overlay
+          inputs.emacs.overlay
+          pythonOverlay
+          self.overlay
+        ];
 
         services.nix-daemon.enable = true;
       };
@@ -87,7 +113,7 @@
       };
 
       # Expose the package set, including overlays, for convenience.
-      darwinPackages = self.darwinConfigurations."Baba-Mac".pkgs;
+      darwinPackages = self.darwinConfigurations."attila-torridus".pkgs;
 
       lib = lib.my;
 
