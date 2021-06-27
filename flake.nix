@@ -30,14 +30,19 @@
         nix = {
           binaryCaches = [
             "https://cache.nixos.org"
+            "https://cache.ngi0.nixos.org/"
             "https://nix-community.cachix.org"
             "https://babariviere.cachix.org"
           ];
           binaryCachePublicKeys = [
             "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+            "cache.ngi0.nixos.org-1:KqH5CBLNSyX184S9BKZJo1LxrxJ9ltnY2uAs5c/f1MA="
             "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
             "babariviere.cachix.org-1:igoOZJyEAhWg3Rbavjim3yyDj7nIkGYe5327+G0diFw="
           ];
+          extraOptions = ''
+            experimental-features = nix-command flakes ca-derivations ca-references
+          '';
           gc = {
             automatic = true;
             options = "-d --delete-older-than 7d";
@@ -66,34 +71,39 @@
           useSandbox = "relaxed";
         };
 
-        nixpkgs.overlays = let
-          pythonOverride = super: python-self: python-super: {
-            # https://github.com/NixOS/nixpkgs/issues/128266
-            pycairo = python-super.pycairo.overrideAttrs (attrs: {
-              doCheck = false;
-              doInstallCheck = false;
-              nativeBuildInputs =
-                builtins.filter (drv: drv.name != "pytest-check-hook")
-                attrs.nativeBuildInputs;
-            });
-          };
-          pythonOverlay = self: super: {
-            python = super.python.override {
-              packageOverrides = pythonOverride super;
+        nixpkgs = {
+          overlays = let
+            pythonOverride = super: python-self: python-super: {
+              # https://github.com/NixOS/nixpkgs/issues/128266
+              pycairo = python-super.pycairo.overrideAttrs (attrs: {
+                doCheck = false;
+                doInstallCheck = false;
+                nativeBuildInputs =
+                  builtins.filter (drv: drv.name != "pytest-check-hook")
+                  attrs.nativeBuildInputs;
+              });
             };
-            python3 = super.python3.override {
-              packageOverrides = pythonOverride super;
+            pythonOverlay = self: super: {
+              python = super.python.override {
+                packageOverrides = pythonOverride super;
+              };
+              python3 = super.python3.override {
+                packageOverrides = pythonOverride super;
+              };
+              python38 = super.python38.override {
+                packageOverrides = pythonOverride super;
+              };
             };
-            python38 = super.python38.override {
-              packageOverrides = pythonOverride super;
-            };
-          };
-        in [
-          inputs.neovim-nightly.overlay
-          inputs.emacs.overlay
-          pythonOverlay
-          self.overlay
-        ];
+          in [
+            inputs.neovim-nightly.overlay
+            inputs.emacs.overlay
+            pythonOverlay
+            self.overlay
+          ];
+
+          # FIXME: https://github.com/NixOS/nix/issues/4903
+          # config.contentAddressedByDefault = true;
+        };
 
         services.nix-daemon.enable = true;
       };
