@@ -49,7 +49,7 @@ in {
     };
 
     env = {
-      EDITOR = "${emacsclient}/bin/emacsclient -nw";
+      EDITOR = "${emacs}/bin/emacsclient -nw";
       VISUAL = "${emacsclient}/bin/emacsclient";
     };
   };
