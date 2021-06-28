@@ -270,7 +270,7 @@ in {
     };
   };
 
-  networking.hostName = "attila-torridus";
+  networking.hostName = "adrastea";
 
   system.defaults = {
     finder = {
@@ -291,13 +291,4 @@ in {
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
-
-  meta = {
-    specie = {
-      url = "https://ebird.org/species/ochatt1";
-      latinName = "Attila torridus";
-      name = "Attila ocré";
-    };
-  };
-  # image: https://ebird.org/species/ochatt1
 }

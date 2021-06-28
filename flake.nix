@@ -116,14 +116,14 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake ./modules/examples#darwinConfigurations.mac-fewlines.system \
       #       --override-input darwin .
-      darwinConfigurations."attila-torridus" = darwin.lib.darwinSystem {
+      darwinConfigurations."adrastea" = darwin.lib.darwinSystem {
         modules = [ configuration home-manager.darwinModules.home-manager ]
-          ++ modules ++ [ ./hosts/attila-torridus.nix ];
+          ++ modules ++ [ ./hosts/adrastea.nix ];
         specialArgs = { inherit inputs lib; };
       };
 
       # Expose the package set, including overlays, for convenience.
-      darwinPackages = self.darwinConfigurations."attila-torridus".pkgs;
+      darwinPackages = self.darwinConfigurations."adrastea".pkgs;
 
       lib = lib.my;
 
