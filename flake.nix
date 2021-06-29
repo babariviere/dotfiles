@@ -105,7 +105,11 @@
           # config.contentAddressedByDefault = true;
         };
 
-        services.nix-daemon.enable = true;
+        # FIXME: only available on darwin
+        services.nix-daemon = {
+          enable = true;
+          logFile = "/var/log/nix-daemon.log";
+        };
       };
 
       lib = nixpkgs.lib.extend
