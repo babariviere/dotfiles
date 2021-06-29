@@ -116,14 +116,14 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake ./modules/examples#darwinConfigurations.mac-fewlines.system \
       #       --override-input darwin .
-      darwinConfigurations."adrastea" = darwin.lib.darwinSystem {
+      darwinConfigurations."ochatt" = darwin.lib.darwinSystem {
         modules = [ configuration home-manager.darwinModules.home-manager ]
-          ++ modules ++ [ ./hosts/adrastea.nix ];
+          ++ modules ++ [ ./hosts/ochatt.nix ];
         specialArgs = { inherit inputs lib; };
       };
 
       # Expose the package set, including overlays, for convenience.
-      darwinPackages = self.darwinConfigurations."adrastea".pkgs;
+      darwinPackages = self.darwinConfigurations."ochatt".pkgs;
 
       lib = lib.my;
 

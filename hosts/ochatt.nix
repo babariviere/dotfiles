@@ -270,7 +270,7 @@ in {
     };
   };
 
-  networking.hostName = "adrastea";
+  networking.hostName = "ochatt";
 
   system.defaults = {
     finder = {
@@ -291,4 +291,12 @@ in {
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
+
+  meta = {
+    specie = {
+      url = "https://ebird.org/species/ochatt1";
+      code = "ochatt";
+      name = "Ochraceous Attila";
+    };
+  };
 }
