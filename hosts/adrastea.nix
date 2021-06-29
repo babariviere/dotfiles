@@ -6,7 +6,7 @@ let
 in {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = [ emacs ];
+  environment.systemPackages = [ emacs pkgs.hugo ];
 
   homebrew = {
     enable = true;
@@ -279,7 +279,7 @@ in {
       _FXShowPosixPathInTitle = true;
     };
     NSGlobalDomain.AppleFontSmoothing =
-      1; # my display doesn't have high dpi so it looks like blurry when not enabled
+      0; # my display doesn't have high dpi so it looks like blurry when not enabled
   };
 
   system.activationScripts.myDefaults.text = ''
