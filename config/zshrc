@@ -38,7 +38,7 @@ zstyle ':vcs_info:git:*' formats '%F{red}%b%f'
 
 # Allow command substitution in PS1
 setopt PROMPT_SUBST
-PS1='%F{magenta}%n%f:%F{blue}$(_fishy_collapsed_wd)%f> '
+PS1='%F{magenta}%n%f@%F{red}%m%f:%F{blue}$(_fishy_collapsed_wd)%f> '
 RPS1=\$vcs_info_msg_0_
 
 ###
