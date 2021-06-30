@@ -64,9 +64,14 @@
             };
           };
           trustedUsers = [ config.user.name ];
+          # FIXME: only for darwin
           sandboxPaths = [
             "/System/Library/Frameworks"
             "/System/Library/PrivateFrameworks"
+            "/usr/lib"
+            "/private/tmp"
+            "/private/var/tmp"
+            "/usr/bin/env"
           ];
           useSandbox = "relaxed";
         };
