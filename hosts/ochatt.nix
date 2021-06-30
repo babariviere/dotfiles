@@ -261,6 +261,7 @@ in {
       elixir.enable = true;
       rust.enable = true;
     };
+    services = { tailscale.enable = true; };
     shell = {
       direnv = {
         enable = true;

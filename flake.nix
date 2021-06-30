@@ -146,6 +146,7 @@
       in {
         emacsOsx = pkgs.callPackage ./pkgs/emacs { };
         lima = pkgs.callPackage ./pkgs/lima { };
+        tailscale = pkgs.callPackage ./pkgs/tailscale { };
       };
     };
 }
