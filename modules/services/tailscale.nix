@@ -14,9 +14,10 @@ in with pkgs; {
     })
     (lib.optionalAttrs (options.launchd ? agents) {
       environment.systemPackages = [ pkgs.tailscale ];
-      launchd.agents.tailscaled = {
+      launchd.daemons.tailscaled = {
         serviceConfig.ProgramArguments = [ "${pkgs.tailscale}/bin/tailscaled" ];
         serviceConfig.RunAtLoad = true;
+        serviceConfig.StandardErrorPath = "/var/log/tailscale.log";
       };
     })
   ]);
