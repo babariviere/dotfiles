@@ -26,6 +26,7 @@
     let
       configuration = { config, pkgs, ... }: {
         home-manager.useUserPackages = true;
+        home-manager.useGlobalPkgs = true;
 
         nix = {
           binaryCaches = [
@@ -99,10 +100,14 @@
                 packageOverrides = pythonOverride super;
               };
             };
+            fishOverlay = self: super: {
+              fish = super.fish.overrideAttrs (attrs: { doCheck = false; });
+            };
           in [
             inputs.neovim-nightly.overlay
             inputs.emacs.overlay
             pythonOverlay
+            fishOverlay
             self.overlay
           ];
 
