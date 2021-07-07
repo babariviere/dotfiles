@@ -13,10 +13,10 @@
 
     # Emacs
     emacs.url = "github:nix-community/emacs-overlay";
-    doom-emacs = {
-      url = "github:hlissner/doom-emacs/develop";
-      flake = false;
-    };
+    # doom-emacs = {
+    #   url = "github:hlissner/doom-emacs/develop";
+    #   flake = false;
+    # };
     # FIXME: does not work for now
     # nix-doom-emacs.url = "github:vlaci/nix-doom-emacs";
     # nix-doom-emacs.inputs.doom-emacs.follows = "doom-emacs";
