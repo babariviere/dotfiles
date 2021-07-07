@@ -36,7 +36,10 @@ in {
       "mas"
       # "fewlines/tap/fwl_error"
     ];
-    masApps = { "Spark" = 1176895641; };
+    masApps = {
+      "Spark" = 1176895641;
+      "Tailscale" = 1475387142;
+    };
   };
 
   # Use a custom configuration.nix location.
@@ -261,7 +264,10 @@ in {
       elixir.enable = true;
       rust.enable = true;
     };
-    services = { tailscale.enable = true; };
+    services = {
+      # Disable it since it install the binary but not the application (needed for taildrop)
+      tailscale.enable = false;
+    };
     shell = {
       direnv = {
         enable = true;
