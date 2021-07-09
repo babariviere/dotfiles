@@ -2,13 +2,13 @@
 
 buildGoModule rec {
   name = "lima";
-  version = "0.3.0";
+  version = "0.5.0";
 
   src = fetchFromGitHub {
     owner = "AkihiroSuda";
     repo = "lima";
     rev = "v${version}";
-    sha256 = "0slcnylx0ss76s6a05rj2yl4kmhdff638cx8624vnd3s6nagmpir";
+    sha256 = "sha256-1952xGSfVFI2Fs5HLJKCyB6ZxKFf5uPKXIlctM/T+8o=";
   };
 
   buildFlagsArray = [
@@ -33,7 +33,7 @@ buildGoModule rec {
     rm -rf $out/bin/linux_amd64 $out/bin/linux_arm64
   '';
 
-  vendorSha256 = "sha256-x7BF1HCKk4U8ymYruyVU3DsyBwZnuzsW140havontLU";
+  vendorSha256 = "sha256-rPL/jxMHMkKffoYLSI3FFtFRYGtARKmrODmL9w+rN0E=";
 
   CGO_ENABLED = 0;
 
