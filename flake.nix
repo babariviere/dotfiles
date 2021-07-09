@@ -10,6 +10,7 @@
     home-manager.url = "github:nix-community/home-manager";
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     flow.url = "path:../flow";
+    utils.url = "github:numtide/flake-utils";
 
     # Emacs
     emacs.url = "github:nix-community/emacs-overlay";
@@ -22,7 +23,7 @@
     # nix-doom-emacs.inputs.doom-emacs.follows = "doom-emacs";
   };
 
-  outputs = { self, darwin, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, darwin, nixpkgs, home-manager, utils, ... }@inputs:
     let
       configuration = { config, pkgs, ... }: {
         home-manager.useUserPackages = true;
@@ -78,38 +79,7 @@
         };
 
         nixpkgs = {
-          overlays = let
-            pythonOverride = super: python-self: python-super: {
-              # https://github.com/NixOS/nixpkgs/issues/128266
-              pycairo = python-super.pycairo.overrideAttrs (attrs: {
-                doCheck = false;
-                doInstallCheck = false;
-                nativeBuildInputs =
-                  builtins.filter (drv: drv.name != "pytest-check-hook")
-                  attrs.nativeBuildInputs;
-              });
-            };
-            pythonOverlay = self: super: {
-              python = super.python.override {
-                packageOverrides = pythonOverride super;
-              };
-              python3 = super.python3.override {
-                packageOverrides = pythonOverride super;
-              };
-              python38 = super.python38.override {
-                packageOverrides = pythonOverride super;
-              };
-            };
-            fishOverlay = self: super: {
-              fish = super.fish.overrideAttrs (attrs: { doCheck = false; });
-            };
-          in [
-            inputs.neovim-nightly.overlay
-            inputs.emacs.overlay
-            pythonOverlay
-            fishOverlay
-            self.overlay
-          ];
+          overlays = lib.attrValues self.overlays;
 
           # FIXME: https://github.com/NixOS/nix/issues/4903
           # config.contentAddressedByDefault = true;
@@ -143,15 +113,42 @@
 
       overlay = import ./pkgs;
 
-      packages.x86_64-darwin = let
-        pkgs = import nixpkgs {
-          system = "x86_64-darwin";
-          overlays = [ inputs.emacs.overlay ];
+      overlays = let
+        pythonOverride = super: python-self: python-super: {
+          # https://github.com/NixOS/nixpkgs/issues/128266
+          pycairo = python-super.pycairo.overrideAttrs (attrs: {
+            doCheck = false;
+            doInstallCheck = false;
+            nativeBuildInputs =
+              builtins.filter (drv: drv.name != "pytest-check-hook")
+              attrs.nativeBuildInputs;
+          });
+        };
+        pythonOverlay = self: super: {
+          python =
+            super.python.override { packageOverrides = pythonOverride super; };
+          python3 =
+            super.python3.override { packageOverrides = pythonOverride super; };
+          python38 = super.python38.override {
+            packageOverrides = pythonOverride super;
+          };
+        };
+        fishOverlay = self: super: {
+          fish = super.fish.overrideAttrs (attrs: { doCheck = false; });
         };
       in {
-        emacsOsx = pkgs.callPackage ./pkgs/emacs { };
-        lima = pkgs.callPackage ./pkgs/lima { };
-        tailscale = pkgs.callPackage ./pkgs/tailscale { };
+        neovim = inputs.neovim-nightly.overlay;
+        emacs = inputs.emacs.overlay;
+        python = pythonOverlay;
+        fish = fishOverlay;
+        self = self.overlay;
       };
-    };
+    } // (utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = lib.attrValues self.overlays;
+        };
+        self' = self;
+      in { packages = lib.fix (self: self'.overlay self pkgs); }));
 }
