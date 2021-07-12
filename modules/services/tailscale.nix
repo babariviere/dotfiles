@@ -12,7 +12,7 @@ in with pkgs; {
     (lib.optionalAttrs (options.services ? tailscale) {
       services.tailscale = { enable = true; };
     })
-    (lib.optionalAttrs (options.launchd ? agents) {
+    (lib.optionalAttrs (options ? launchd) {
       environment.systemPackages = [ pkgs.tailscale ];
       launchd.daemons.tailscaled = {
         serviceConfig.ProgramArguments = [ "${pkgs.tailscale}/bin/tailscaled" ];

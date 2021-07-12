@@ -27,17 +27,17 @@ with lib; {
       default = { };
     };
 
-    meta = mkOption {
+    meta.specie = mkOption {
       type = attrs;
       default = { };
     };
   };
 
+  # TODO(babariviere): find a way to make this optional
   imports = [
     (mkAliasOptionModule [ "hm" ] [ "home-manager" "users" config.user.name ])
     (mkAliasOptionModule [ "home" ] [ "hm" "home" ])
     (mkAliasOptionModule [ "env" ] [ "hm" "home" "sessionVariables" ])
-    (mkAliasOptionModule [ "xdg" ] [ "hm" "xdg" ])
   ];
 
   config = {

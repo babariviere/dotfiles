@@ -7,9 +7,9 @@ let
     #!${pkgs.runtimeShell}
 
     if [ -z "$1" ]; then
-        ${emacs}/bin/emacsclient -c -n -a "" "$@"
+        exec ${emacs}/bin/emacsclient -c -n -a "" "$@"
     else
-        ${emacs}/bin/emacsclient -n -a "" "$@"
+        exec ${emacs}/bin/emacsclient -n -a "" "$@"
     fi
   '';
 in {
