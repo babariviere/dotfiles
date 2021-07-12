@@ -11,6 +11,7 @@
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     flow.url = "path:../flow";
     utils.url = "github:numtide/flake-utils";
+    deploy.url = "github:serokell/deploy-rs";
 
     # Emacs
     emacs.url = "github:nix-community/emacs-overlay";
