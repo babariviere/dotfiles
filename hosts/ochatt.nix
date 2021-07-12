@@ -86,6 +86,7 @@ in {
       pkgs.bat
       pkgs.dogdns
       pkgs.exa
+      pkgs.lunchy
 
       # Git
       pkgs.git

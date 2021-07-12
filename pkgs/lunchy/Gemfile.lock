@@ -1,0 +1,16 @@
+GEM
+  specs:
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    lunchy (0.10.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  lunchy!
+
+BUNDLED WITH
+   2.2.20
