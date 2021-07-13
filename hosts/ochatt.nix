@@ -47,7 +47,16 @@ in {
   # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
   environment.pathsToLink = [ "/share/zsh" ];
 
-  nix.trustedUsers = [ "bastienriviere" ];
+  nix.trustedUsers = [ config.user.name ];
+  nix.buildMachines = [{
+    hostName = "100.100.28.13";
+    maxJobs = 8;
+    sshUser = "root";
+    system = "x86_64-linux";
+    sshKey = "/var/root/.ssh/id_rsa";
+    supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+  }];
+  nix.distributedBuilds = true;
 
   launchd.daemons = {
     limits = {

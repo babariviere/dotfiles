@@ -24,11 +24,13 @@
     # nix-doom-emacs.inputs.doom-emacs.follows = "doom-emacs";
   };
 
-  outputs = { self, darwin, nixpkgs, home-manager, utils, ... }@inputs:
+  outputs = { self, darwin, nixpkgs, home-manager, utils, deploy, ... }@inputs:
     let
       configuration = { config, pkgs, ... }: {
         home-manager.useUserPackages = true;
         home-manager.useGlobalPkgs = true;
+
+        environment.systemPackages = [ deploy.defaultPackage."${pkgs.system}" ];
 
         nix = {
           binaryCaches = [
@@ -98,6 +100,12 @@
 
       modules = lib.my.findModulesRec ./modules;
     in {
+      nixosConfigurations."vercar" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ configuration home-manager.darwinModules.home-manager ]
+          ++ modules ++ [ ./hosts/vercar/configuration.nix ];
+      };
+
       # Build darwin flake using:
       # $ darwin-rebuild build --flake ./modules/examples#darwinConfigurations.mac-fewlines.system \
       #       --override-input darwin .
@@ -113,6 +121,18 @@
       # Expose the package set, including overlays, for convenience.
       darwinPackages = self.darwinConfigurations."ochatt".pkgs;
 
+      deploy.nodes.vercar = {
+        hostname = "100.100.28.13";
+        profiles.system = {
+          user = "root";
+          sshUser = "root";
+          path = deploy.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.vercar;
+        };
+      };
+
+      checks = builtins.mapAttrs
+        (system: deployLib: deployLib.deployChecks self.deploy) deploy.lib;
       lib = lib.my;
 
       overlay = import ./pkgs;
