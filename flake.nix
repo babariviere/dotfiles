@@ -67,15 +67,6 @@
             };
           };
           trustedUsers = [ config.user.name ];
-          # FIXME: only for darwin
-          sandboxPaths = [
-            "/System/Library/Frameworks"
-            "/System/Library/PrivateFrameworks"
-            "/usr/lib"
-            "/private/tmp"
-            "/private/var/tmp"
-            "/usr/bin/env"
-          ];
           useSandbox = "relaxed";
         };
 
@@ -85,8 +76,17 @@
           # FIXME: https://github.com/NixOS/nix/issues/4903
           # config.contentAddressedByDefault = true;
         };
+      };
 
-        # FIXME: only available on darwin
+      darwinConfiguration = { config, pkgs, ... }: {
+        nix.sandboxPaths = [
+          "/System/Library/Frameworks"
+          "/System/Library/PrivateFrameworks"
+          "/usr/lib"
+          "/private/tmp"
+          "/private/var/tmp"
+          "/usr/bin/env"
+        ];
         services.nix-daemon = {
           enable = true;
           logFile = "/var/log/nix-daemon.log";
@@ -102,8 +102,11 @@
       # $ darwin-rebuild build --flake ./modules/examples#darwinConfigurations.mac-fewlines.system \
       #       --override-input darwin .
       darwinConfigurations."ochatt" = darwin.lib.darwinSystem {
-        modules = [ configuration home-manager.darwinModules.home-manager ]
-          ++ modules ++ [ ./hosts/ochatt.nix ];
+        modules = [
+          configuration
+          darwinConfiguration
+          home-manager.darwinModules.home-manager
+        ] ++ modules ++ [ ./hosts/ochatt.nix ];
         specialArgs = { inherit inputs lib; };
       };
 
@@ -125,17 +128,16 @@
               attrs.nativeBuildInputs;
           });
         };
-        pythonOverlay = self: super: {
+        pythonOverlay = final: prev: {
           python =
-            super.python.override { packageOverrides = pythonOverride super; };
+            prev.python.override { packageOverrides = pythonOverride prev; };
           python3 =
-            super.python3.override { packageOverrides = pythonOverride super; };
-          python38 = super.python38.override {
-            packageOverrides = pythonOverride super;
-          };
+            prev.python3.override { packageOverrides = pythonOverride prev; };
+          python38 =
+            prev.python38.override { packageOverrides = pythonOverride prev; };
         };
-        fishOverlay = self: super: {
-          fish = super.fish.overrideAttrs (attrs: { doCheck = false; });
+        fishOverlay = final: prev: {
+          fish = prev.fish.overrideAttrs (attrs: { doCheck = false; });
         };
       in {
         neovim = inputs.neovim-nightly.overlay;
