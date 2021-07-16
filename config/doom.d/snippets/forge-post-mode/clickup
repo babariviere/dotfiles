@@ -4,7 +4,5 @@
 # --
 [`
 (let ((branch (shell-command-to-string "git branch --show-current")))
-  (string-join (cl-subseq
-           (split-string branch "\-")
-           0 2) "-"))
+  (car (split-string branch "/"))
 `]$0
