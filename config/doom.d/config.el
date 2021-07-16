@@ -101,3 +101,6 @@
          :map lisp-mode-map
          (:prefix "e"
           (:desc "Evaluate last" "e" #'+common-lisp--sly-eval-last-sexp)))))
+
+(after! yasnippet
+  (add-hook 'snippet-mode-hook (lambda () (setq require-final-newline nil))))
