@@ -13,11 +13,10 @@
     ]
   },
   "description": "Unbound DNS resolver metrics",
-  "editable": true,
+  "editable": false,
   "gnetId": 11705,
   "graphTooltip": 0,
-  "id": 1,
-  "iteration": 1626694929068,
+  "iteration": 1626706363142,
   "links": [
     {
       "icon": "external link",
@@ -83,9 +82,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "sum"
-          ],
+          "calcs": ["sum"],
           "fields": "",
           "values": false
         },
@@ -158,9 +155,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -233,9 +228,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "sum"
-          ],
+          "calcs": ["sum"],
           "fields": "",
           "values": false
         },
@@ -308,9 +301,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "sum"
-          ],
+          "calcs": ["sum"],
           "fields": "",
           "values": false
         },
@@ -383,9 +374,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -457,9 +446,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -604,10 +591,6 @@
     {
       "collapsed": true,
       "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -670,9 +653,7 @@
             "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
-              "calcs": [
-                "sum"
-              ],
+              "calcs": ["sum"],
               "fields": "",
               "values": false
             },
@@ -745,9 +726,7 @@
             "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
-              "calcs": [
-                "sum"
-              ],
+              "calcs": ["sum"],
               "fields": "",
               "values": false
             },
@@ -820,9 +799,7 @@
             "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
-              "calcs": [
-                "sum"
-              ],
+              "calcs": ["sum"],
               "fields": "",
               "values": false
             },
@@ -895,9 +872,7 @@
             "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
-              "calcs": [
-                "sum"
-              ],
+              "calcs": ["sum"],
               "fields": "",
               "values": false
             },
@@ -970,9 +945,7 @@
             "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
-              "calcs": [
-                "sum"
-              ],
+              "calcs": ["sum"],
               "fields": "",
               "values": false
             },
@@ -1045,9 +1018,7 @@
             "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
-              "calcs": [
-                "sum"
-              ],
+              "calcs": ["sum"],
               "fields": "",
               "values": false
             },
@@ -1120,9 +1091,7 @@
             "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
-              "calcs": [
-                "sum"
-              ],
+              "calcs": ["sum"],
               "fields": "",
               "values": false
             },
@@ -1195,9 +1164,7 @@
             "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
-              "calcs": [
-                "sum"
-              ],
+              "calcs": ["sum"],
               "fields": "",
               "values": false
             },
@@ -1270,9 +1237,7 @@
             "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
-              "calcs": [
-                "sum"
-              ],
+              "calcs": ["sum"],
               "fields": "",
               "values": false
             },
@@ -1345,9 +1310,7 @@
             "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
-              "calcs": [
-                "sum"
-              ],
+              "calcs": ["sum"],
               "fields": "",
               "values": false
             },
@@ -1861,10 +1824,6 @@
     {
       "collapsed": true,
       "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2248,10 +2207,6 @@
     {
       "collapsed": true,
       "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2548,10 +2503,6 @@
     {
       "collapsed": true,
       "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2918,10 +2869,6 @@
     {
       "collapsed": true,
       "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3225,10 +3172,6 @@
     {
       "collapsed": true,
       "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3424,11 +3367,7 @@
   "refresh": "5s",
   "schemaVersion": 30,
   "style": "dark",
-  "tags": [
-    "unbound",
-    "dns",
-    "resolver"
-  ],
+  "tags": ["unbound", "dns", "resolver"],
   "templating": {
     "list": [
       {
@@ -3484,5 +3423,5 @@
   "timezone": "",
   "title": "Unbound",
   "uid": "WTxVrkZ7k",
-  "version": 1
+  "version": 3
 }
