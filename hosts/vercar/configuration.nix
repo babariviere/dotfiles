@@ -172,13 +172,13 @@
         {
           name = "Node Full Exporter";
           disableDeletion = true;
-          options.path = config.dotfiles.configDir
+          options.path = /. + config.dotfiles.configDir
             + "/grafana/dashboards/node_full_exporter.json";
         }
         {
           name = "Unbound";
           disableDeletion = true;
-          options.path = config.dotfiles.configDir
+          options.path = /. + config.dotfiles.configDir
             + "/grafana/dashboards/unbound.json";
         }
       ];

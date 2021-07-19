@@ -2,11 +2,11 @@
 
 with lib; {
   options = with types; {
-    dotfiles = let type = path;
+    dotfiles = let type = either str path;
     in {
       dir = mkOption {
         inherit type;
-        default = /. + findFirst pathExists (toString ../.) [
+        default = findFirst pathExists (toString ../.) [
           "${config.user.home}/src/github.com/babariviere/dotfiles"
           "${config.user.home}/.config/dotfiles"
           "/etc/dotfiles"
