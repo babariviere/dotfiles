@@ -46,10 +46,11 @@
             "babariviere.cachix.org-1:igoOZJyEAhWg3Rbavjim3yyDj7nIkGYe5327+G0diFw="
           ];
           extraOptions = ''
-            experimental-features = nix-command flakes ca-derivations ca-references
+            experimental-features = nix-command flakes
           '';
           gc = {
-            automatic = true;
+            automatic =
+              false; # FIXME: enable only on local machines, on server it's useful
             options = "-d --delete-older-than 7d";
           };
           package = pkgs.hiPrio pkgs.nixUnstable;

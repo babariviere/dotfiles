@@ -7,9 +7,12 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "vercar";
+  networking.hostName = "${config.meta.specie.code}";
+  networking.domain = "home";
   services.tailscale.enable = true;
-  networking.firewall.allowedUDPPorts = [ config.services.tailscale.port ];
+  networking.firewall.allowedTCPPorts = lib.mkForce [ ];
+  networking.firewall.allowedUDPPorts =
+    lib.mkForce [ config.services.tailscale.port ];
   networking.firewall.trustedInterfaces =
     [ config.services.tailscale.interfaceName ];
 
@@ -39,6 +42,158 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.openssh.openFirewall = false;
+
+  services.unbound = {
+    enable = true;
+    localControlSocketPath = "/run/unbound/unbound.ctl";
+    settings = {
+      server = {
+        interface = [ "0.0.0.0" ];
+        access-control = [ "127.0.0.0/8 allow" "100.0.0.0/8 allow" ];
+        # port = 5335;
+
+        do-ip4 = true;
+        do-ip6 = true;
+        do-udp = true;
+        do-tcp = true;
+
+        # You want to leave this to no unless you have *native* IPv6. With 6to4 and
+        # Terredo tunnels your web browser should favor IPv4 for the same reasons
+        prefer-ip6 = false;
+
+        # Trust glue only if it is within the server's authority
+        harden-glue = true;
+
+        # Require DNSSEC data for trust-anchored zones, if such data is absent, the zone becomes BOGUS
+        harden-dnssec-stripped = true;
+
+        # Don't use Capitalization randomization as it known to cause DNSSEC issues sometimes
+        # see https://discourse.pi-hole.net/t/unbound-stubby-or-dnscrypt-proxy/9378 for further details
+        use-caps-for-id = false;
+
+        # Reduce EDNS reassembly buffer size.
+        # Suggested by the unbound man page to reduce fragmentation reassembly problems
+        edns-buffer-size = 1472;
+
+        # Perform prefetching of close to expired message cache entries
+        # This only applies to domains that have been frequently queried
+        prefetch = true;
+
+        # Ensure kernel buffer is large enough to not lose messages in traffic spikes
+        so-rcvbuf = "1m";
+
+        # Ensure privacy of local IP ranges
+        private-address = [
+          "192.168.0.0/16"
+          "169.254.0.0/16"
+          "172.16.0.0/12"
+          "10.0.0.0/8"
+          "fd00::/8"
+          "fe80::/10"
+        ];
+
+        # TODO: automate this
+        #
+        # redirect all queries from ${hostname}.home to the correct ip address.
+        # local-zone redirect allow redirection of all subdomain
+        # local-data set the ip for the domain
+        local-zone =
+          [ ''"vercar.home." redirect'' ''"ochatt.home." redirect'' ];
+        local-data = [
+          ''"vercar.home. A 100.100.28.13"''
+          ''"ochatt.home. A 100.78.240.51"''
+        ];
+      };
+    };
+  };
+
+  services.prometheus = {
+    enable = true;
+    port = 9001;
+    exporters = {
+      node = {
+        enable = true;
+        enabledCollectors = [ "systemd" ];
+        port = 9002;
+      };
+      unbound = {
+        enable = true;
+        port = 9003;
+        controlInterface = config.services.unbound.localControlSocketPath;
+        group = config.services.unbound.group;
+      };
+    };
+
+    scrapeConfigs = [
+      {
+        job_name = "node";
+        static_configs = [{
+          targets = [
+            "127.0.0.1:${
+              toString config.services.prometheus.exporters.node.port
+            }"
+          ];
+        }];
+      }
+      {
+        job_name = "unbound";
+        static_configs = [{
+          targets = [
+            "127.0.0.1:${
+              toString config.services.prometheus.exporters.unbound.port
+            }"
+          ];
+        }];
+      }
+    ];
+    # TODO(babariviere): check if we can add more config
+  };
+
+  services.grafana = {
+    enable = true;
+    port = 8120;
+    addr = "127.0.0.1";
+    domain =
+      "grafana.${config.networking.hostName}.${config.networking.domain}";
+
+    declarativePlugins = with pkgs.grafanaPlugins; [ grafana-piechart-panel ];
+
+    # TODO: security.adminPasswordFile and secretKeyFile
+    # A good occasion to test agenix
+    provision = {
+      enable = true;
+      datasources = [{
+        name = "Prometheus";
+        type = "prometheus";
+        access = "proxy";
+        url = "http://localhost:${toString config.services.prometheus.port}";
+      }];
+      dashboards = [
+        {
+          name = "Node Full Exporter";
+          disableDeletion = true;
+          options.path = config.dotfiles.configDir
+            + "/grafana/dashboards/node_full_exporter.json";
+        }
+        {
+          name = "Unbound";
+          disableDeletion = true;
+          options.path = config.dotfiles.configDir
+            + "/grafana/dashboards/unbound.json";
+        }
+      ];
+    };
+  };
+
+  services.nginx.enable = true;
+  services.nginx.virtualHosts.${config.services.grafana.domain} = {
+    locations."/" = {
+      proxyPass = "http://${toString config.services.grafana.addr}:${
+          toString config.services.grafana.port
+        }";
+      proxyWebsockets = true;
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
