@@ -12,6 +12,7 @@
     flow.url = "path:../flow";
     utils.url = "github:numtide/flake-utils";
     deploy.url = "github:serokell/deploy-rs";
+    agenix.url = "github:ryantm/agenix";
 
     # Emacs
     emacs.url = "github:nix-community/emacs-overlay";
@@ -100,22 +101,22 @@
         (self: super: { my = import ./lib { lib = self; }; });
 
       modules = lib.my.findModulesRec ./modules;
+
+      commonModules = [ configuration inputs.agenix.nixosModules.age ];
+      nixosModules = commonModules ++ [ home-manager.nixosModules.home-manager ]
+        ++ modules;
+      darwinModules = commonModules
+        ++ [ darwinConfiguration home-manager.darwinModules.home-manager ]
+        ++ modules;
+
     in {
       nixosConfigurations."vercar" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [ configuration home-manager.darwinModules.home-manager ]
-          ++ modules ++ [ ./hosts/vercar/configuration.nix ];
+        modules = nixosModules ++ [ ./hosts/vercar/configuration.nix ];
       };
 
-      # Build darwin flake using:
-      # $ darwin-rebuild build --flake ./modules/examples#darwinConfigurations.mac-fewlines.system \
-      #       --override-input darwin .
       darwinConfigurations."ochatt" = darwin.lib.darwinSystem {
-        modules = [
-          configuration
-          darwinConfiguration
-          home-manager.darwinModules.home-manager
-        ] ++ modules ++ [ ./hosts/ochatt.nix ];
+        modules = darwinModules ++ [ ./hosts/ochatt.nix ];
         specialArgs = { inherit inputs lib; };
       };
 
