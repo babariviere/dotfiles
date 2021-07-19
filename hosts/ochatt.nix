@@ -109,6 +109,7 @@ in {
       # Ops
       pkgs.kubectl
       pkgs.kubectx
+      pkgs.tailscale
 
       # Nix
       pkgs.nixfmt
@@ -288,6 +289,8 @@ in {
   };
 
   networking.hostName = "ochatt";
+  # networking.dns = [ "100.100.28.13" "1.1.1.1" ];
+  networking.knownNetworkServices = [ "Wi-Fi" ];
 
   system.defaults = {
     finder = {
