@@ -194,6 +194,29 @@
       proxyWebsockets = true;
     };
   };
+  services.nginx.virtualHosts."nix-store.${config.networking.hostName}.${config.networking.domain}" =
+    {
+      locations."/" = {
+        proxyPass = "http://${toString config.services.nix-serve.bindAddress}:${
+            toString config.services.nix-serve.port
+          }";
+      };
+    };
+
+  services.nix-serve = {
+    enable = true;
+    secretKeyFile = config.age.secrets."nix-serve".path;
+  };
+
+  age.secrets = {
+    "nix-serve" = {
+      file = ../../secrets/vercar.nix-serve.age;
+      owner = "nix-serve";
+      group = "nogroup";
+    };
+  };
+
+  users.users.nix-serve = { isNormalUser = true; };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

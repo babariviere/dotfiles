@@ -4,6 +4,6 @@ let
   users = [ ochatt ];
 
   vercar =
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILxFkInHWWR3JeTA/4mzZdzrKwH6AAnvGB4jnhARfUn1";
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMO6/jzKplTgI8UEbJTdNskExUfQEJ9GG1b9smYXoaP4";
   servers = [ vercar ];
-in { "vercar.nix-serve.age".publicKeys = [ vercar ]; }
+in { "vercar.nix-serve.age".publicKeys = [ ochatt vercar ]; }

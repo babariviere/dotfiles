@@ -31,16 +31,21 @@
         home-manager.useUserPackages = true;
         home-manager.useGlobalPkgs = true;
 
-        environment.systemPackages = [ deploy.defaultPackage."${pkgs.system}" ];
+        environment.systemPackages = [
+          deploy.defaultPackage."${pkgs.system}"
+          inputs.agenix.defaultPackage."${pkgs.system}"
+        ];
 
         nix = {
           binaryCaches = [
+            "http://nix-store.vercar.home"
             "https://cache.nixos.org"
             "https://cache.ngi0.nixos.org/"
             "https://nix-community.cachix.org"
             "https://babariviere.cachix.org"
           ];
           binaryCachePublicKeys = [
+            "vercar.home:1R/Q2IoFGQ5NqYGneOoxhrvkhgpdBrn87Po2uPM4wmI="
             "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
             "cache.ngi0.nixos.org-1:KqH5CBLNSyX184S9BKZJo1LxrxJ9ltnY2uAs5c/f1MA="
             "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -48,6 +53,8 @@
           ];
           extraOptions = ''
             experimental-features = nix-command flakes
+            keep-outputs = true
+            keep-derivations = true
           '';
           gc = {
             automatic =
