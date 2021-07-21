@@ -302,8 +302,10 @@ in {
       0; # my display doesn't have high dpi so it looks like blurry when not enabled
   };
 
+  # TODO(babariviere): convert them to homemanager options
   system.activationScripts.myDefaults.text = ''
     defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+    defaults write com.apple.finder AppleShowAllFiles -boolean true
   '';
 
   user.name = "bastienriviere";
