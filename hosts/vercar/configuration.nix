@@ -52,6 +52,11 @@
         access-control = [ "127.0.0.0/8 allow" "100.0.0.0/8 allow" ];
         # port = 5335;
 
+        log-queries = true;
+        statistics-interval = 0;
+        extended-statistics = true;
+        statistics-cumulative = true;
+
         do-ip4 = true;
         do-ip6 = true;
         do-udp = true;
