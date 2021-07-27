@@ -9,7 +9,7 @@ in with pkgs; {
   # HACK: split it up into two file? or find a proper way to do this
 
   config = lib.mkIf cfg.enable (lib.mkMerge [
-    (lib.optionalAttrs (options.services ? tailscale) {
+    (lib.optionalAttrs (options ? services.tailscale) {
       services.tailscale = { enable = true; };
     })
     (lib.optionalAttrs (options ? launchd) {

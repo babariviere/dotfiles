@@ -104,10 +104,12 @@
         };
       };
 
-      lib = nixpkgs.lib.extend
-        (self: super: { my = import ./lib { lib = self; }; });
+      inherit (nixpkgs) lib;
 
-      modules = lib.my.findModulesRec ./modules;
+      # lib = nixpkgs.lib.extend
+      #   (self: super: { my = import ./lib { lib = self; }; });
+
+      modules = import ./modules/modules.nix;
 
       commonModules = [ configuration inputs.agenix.nixosModules.age ];
       nixosModules = commonModules ++ [ home-manager.nixosModules.home-manager ]
@@ -142,7 +144,7 @@
 
       checks = builtins.mapAttrs
         (system: deployLib: deployLib.deployChecks self.deploy) deploy.lib;
-      lib = lib.my;
+      # lib = lib.my;
 
       overlay = import ./pkgs;
 
