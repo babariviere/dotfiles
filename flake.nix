@@ -109,7 +109,7 @@
       # lib = nixpkgs.lib.extend
       #   (self: super: { my = import ./lib { lib = self; }; });
 
-      modules = import ./modules/modules.nix;
+      modules = import ./modules/module-list.nix;
 
       commonModules = [ configuration inputs.agenix.nixosModules.age ];
       nixosModules = commonModules ++ [ home-manager.nixosModules.home-manager ]
