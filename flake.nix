@@ -109,24 +109,32 @@
       # lib = nixpkgs.lib.extend
       #   (self: super: { my = import ./lib { lib = self; }; });
 
+      lib' = import ./lib { inherit lib; };
       modules = import ./modules/module-list.nix;
 
-      commonModules = [ configuration inputs.agenix.nixosModules.age ];
-      nixosModules = commonModules ++ [ home-manager.nixosModules.home-manager ]
-        ++ modules;
-      darwinModules = commonModules
-        ++ [ darwinConfiguration home-manager.darwinModules.home-manager ]
-        ++ modules;
+    in lib'.mkFlake {
+      inherit self inputs;
 
-    in {
-      nixosConfigurations."vercar" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = nixosModules ++ [ ./hosts/vercar/configuration.nix ];
+      hostDefaults = {
+        common.modules = [ configuration ] ++ modules;
+        platform = {
+          darwin.modules =
+            [ darwinConfiguration home-manager.darwinModules.home-manager ];
+          linux.modules = [ home-manager.nixosModules.home-manager ];
+        };
       };
 
-      darwinConfigurations."ochatt" = darwin.lib.darwinSystem {
-        modules = darwinModules ++ [ ./hosts/ochatt.nix ];
-        specialArgs = { inherit inputs lib; };
+      hosts = {
+        ochatt = {
+          system = "x86_64-darwin";
+          modules = [ ./hosts/ochatt.nix ];
+          specialArgs = { inherit inputs lib; };
+        };
+
+        vercar = {
+          system = "x86_64-linux";
+          modules = [ ./hosts/vercar/configuration.nix ];
+        };
       };
 
       # Expose the package set, including overlays, for convenience.
