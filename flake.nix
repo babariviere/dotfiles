@@ -31,10 +31,7 @@
         home-manager.useUserPackages = true;
         home-manager.useGlobalPkgs = true;
 
-        environment.systemPackages = [
-          deploy.defaultPackage."${pkgs.system}"
-          inputs.agenix.defaultPackage."${pkgs.system}"
-        ];
+        environment.systemPackages = [ deploy.defaultPackage."${pkgs.system}" ];
 
         nix = {
           binaryCaches = [
@@ -192,5 +189,11 @@
           overlays = lib.attrValues self.overlays;
         };
         self' = self;
-      in { packages = lib.fix (self: self'.overlay self pkgs); }));
+      in {
+        packages = lib.fix (self: self'.overlay self pkgs);
+
+        devShell = pkgs.mkShell {
+          buildInputs = [ inputs.agenix.defaultPackage."${system}" ];
+        };
+      }));
 }
