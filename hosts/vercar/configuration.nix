@@ -48,7 +48,9 @@
     localControlSocketPath = "/run/unbound/unbound.ctl";
     settings = {
       server = {
-        interface = [ "0.0.0.0" ];
+        # TODO: use `network.nix` for IPs
+        # NOTE: libvirt allocate port 53 for dnsmasq so we can't use port 53
+        interface = [ "127.0.0.1" "100.100.28.13" ];
         access-control = [ "127.0.0.0/8 allow" "100.0.0.0/8 allow" ];
         # port = 5335;
 
@@ -222,6 +224,16 @@
   };
 
   users.users.nix-serve = { isNormalUser = true; };
+
+  # this is needed to get a bridge with DHCP enabled
+  virtualisation.libvirtd.enable = true;
+
+  # reboot your computer after adding those lines
+  boot.extraModprobeConfig = ''
+    options kvm_intel nested=1
+    options kvm_intel emulate_invalid_guest_state=0
+    options kvm ignore_msrs=1
+  '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

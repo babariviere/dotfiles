@@ -35,6 +35,11 @@
     fsType = "zfs";
   };
 
+  fileSystems."/var/lib/virt/mac1" = {
+    device = "tank/virt/mac1";
+    fsType = "zfs";
+  };
+
   swapDevices =
     [{ device = "/dev/disk/by-uuid/58482150-213f-4b15-a10e-b79211a1087c"; }];
 
