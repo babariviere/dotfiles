@@ -1,5 +1,5 @@
 { lib, ... }:
 
 {
-  mkFlake = import ./mk-flake.nix { inherit lib; };
+  mkFlake = import ./mk-flake { inherit lib; };
 }
