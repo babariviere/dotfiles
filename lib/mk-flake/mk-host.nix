@@ -1,4 +1,4 @@
-{ hostDefaults, inputs, lib, self }:
+{ hostDefaults, inputs, lib, profiles, self }:
 
 host:
 let
@@ -30,7 +30,7 @@ let
         inputs.nixpkgs.lib.nixosSystem;
       getDefaults' = getDefaults { inherit system platform; };
     in f ({
-      modules = (getDefaults' "modules") ++ host.modules;
+      modules = (getDefaults' "modules") ++ profiles ++ host.modules;
       # extraArgs = (getDefaults "extraArgs") // host.extraArgs;
       specialArgs = {
         inherit self inputs system;

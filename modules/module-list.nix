@@ -1,9 +1,4 @@
 [
   ./options.nix
-  ./dev/elixir.nix
-  ./dev/rust.nix
-  ./editor/editorconfig.nix
-  ./editor/emacs.nix
   ./services/tailscale.nix
-  ./shell/direnv.nix
 ]

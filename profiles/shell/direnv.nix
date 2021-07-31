@@ -1,15 +1,13 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
-let cfg = config.my.shell.direnv;
+let cfg = config.profiles.shell.direnv;
 in {
-  options.my.shell.direnv = with lib; {
-    enable = mkEnableOption "direnv";
-
-    nix = mkEnableOption "nix-direnv";
-    asdf = mkEnableOption "asdf";
+  options = {
+    nix = lib.mkEnableOption "nix-direnv";
+    asdf = lib.mkEnableOption "asdf";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = {
     hm.programs.direnv = {
       enable = true;
       nix-direnv = lib.mkIf cfg.nix {

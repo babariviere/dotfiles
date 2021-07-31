@@ -112,6 +112,8 @@
     in lib'.mkFlake {
       inherit self inputs;
 
+      profiles = lib'.foldProfiles ./profiles;
+
       hostDefaults = {
         common.modules = [ configuration ] ++ modules;
         platform = {
