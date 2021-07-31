@@ -16,7 +16,8 @@ let
           name = removeSuffix ".nix" n;
           attrPath = if n != "default.nix" then (path ++ [ name ]) else path;
           path' = path ++ [ n ];
-        in if t == "regular" then
+          isHidden = lib.hasPrefix "." name;
+        in if t == "regular" && !isHidden then
           { config, lib, pkgs, ... }@attrs:
           let
             # Import the profile file by concat all paths
@@ -34,7 +35,9 @@ let
               (lib.getAttrFromPath ([ "profiles" ] ++ attrPath ++ [ "enable" ])
                 config) content';
           }
+        else if t == "directory" && !isHidden then
+          foldDir profile-dir path' (dir + "/${n}")
         else
-          foldDir profile-dir path' (dir + "/${n}");
+          [ ];
     in lib.mapAttrsToList (n: v: f n v) paths;
 in profile-dir: lib.flatten (foldDir profile-dir [ ] profile-dir)

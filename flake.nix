@@ -136,6 +136,11 @@
         };
       };
 
+      home = {
+        modules = import ./home/modules/module-list.nix;
+        profiles = lib'.foldProfiles ./home/profiles;
+      };
+
       # Expose the package set, including overlays, for convenience.
       darwinPackages = self.darwinConfigurations."ochatt".pkgs;
 

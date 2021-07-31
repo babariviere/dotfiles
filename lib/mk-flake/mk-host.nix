@@ -1,4 +1,4 @@
-{ hostDefaults, inputs, lib, profiles, self }:
+{ home, hostDefaults, inputs, lib, profiles, self }:
 
 host:
 let
@@ -18,6 +18,11 @@ let
       (hostDefaults.system."${system}"."${attribute}" or default)
     ];
 
+  hmConfig = {
+    home-manager.sharedModules = (home.modules or [ ])
+      ++ (home.profiles or [ ]);
+  };
+
   mkSystem = system:
     let
       platform = if (builtins.elem system lib.platforms.darwin) then
@@ -30,7 +35,8 @@ let
         inputs.nixpkgs.lib.nixosSystem;
       getDefaults' = getDefaults { inherit system platform; };
     in f ({
-      modules = (getDefaults' "modules") ++ profiles ++ host.modules;
+      modules = (getDefaults' "modules") ++ [ hmConfig ] ++ profiles
+        ++ host.modules;
       # extraArgs = (getDefaults "extraArgs") // host.extraArgs;
       specialArgs = {
         inherit self inputs system;
