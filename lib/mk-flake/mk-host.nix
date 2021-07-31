@@ -41,7 +41,7 @@ let
       # extraArgs = (getDefaults "extraArgs") // host.extraArgs;
       specialArgs = {
         inherit self inputs system;
-      } // (getDefaults' "specialArgs") // host.specialArgs;
+      } // (getDefaults' "specialArgs") // (host.specialArgs or { });
     } // (lib.optionalAttrs (platform == "linux") { inherit system; }));
 
 in mkSystem system

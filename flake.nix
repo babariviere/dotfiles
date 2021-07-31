@@ -117,7 +117,10 @@
         platform = {
           darwin.modules =
             [ darwinConfiguration home-manager.darwinModules.home-manager ];
-          linux.modules = [ home-manager.nixosModules.home-manager ];
+          linux.modules = [
+            home-manager.nixosModules.home-manager
+            inputs.agenix.nixosModules.age
+          ];
         };
       };
 
