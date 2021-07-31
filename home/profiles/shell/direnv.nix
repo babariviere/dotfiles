@@ -8,7 +8,7 @@ in {
   };
 
   config = {
-    hm.programs.direnv = {
+    programs.direnv = {
       enable = true;
       nix-direnv = lib.mkIf cfg.nix {
         enable = true;

@@ -57,6 +57,37 @@ in {
     supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
   }];
   nix.distributedBuilds = true;
+  # FIXME(babariviere): age module is not supported for darwin.
+  # either:
+  # - add missing `deps` attribute to nix-darwin
+  # - create my own module to support secrets
+  #
+  # nix.extraOptions = let
+  #   postBuildHook = pkgs.writeShellScript "post-build-hook.sh" ''
+  #     set -eu
+  #     set -f # disable globbing
+  #     export IFS=' '
+
+  #     echo "Signing paths" $OUT_PATHS
+  #     nix store sign --key-file ${
+  #       config.age.secrets."nix-serve".path
+  #     } $OUT_PATHS
+  #     echo "Uploading paths" $OUT_PATHS
+  #     exec nix copy --to 'ssh://vercar' $OUT_PATHS
+  #   '';
+  # in ''
+  #   post-build-hook = ${postBuildHook}
+  # '';
+
+  # age.sshKeyPaths =
+  #   [ "${config.user.home}/.ssh/id_rsa" "${config.user.home}/.ssh/id_ed25519" ];
+  # age.secrets = {
+  #   "nix-serve" = {
+  #     file = ../../secrets/vercar.nix-serve.age;
+  #     owner = "root";
+  #     group = "nogroup";
+  #   };
+  # };
 
   launchd.daemons = {
     limits = {
@@ -266,24 +297,25 @@ in {
   #   done
   # '');
 
-  my = {
-    editor = {
-      emacs.enable = true;
-      editorconfig.enable = true;
-    };
-    dev = {
-      elixir.enable = true;
-      rust.enable = true;
-    };
-    services = {
-      # Disable it since it install the binary but not the application (needed for taildrop)
-      tailscale.enable = false;
-    };
-    shell = {
-      direnv = {
-        enable = true;
-        nix = true;
-        asdf = true;
+  # NOTE: I don't have system profiles (RIP)
+  # profiles = { };
+
+  home-manager.users.bastienriviere = {
+    profiles = {
+      dev = {
+        elixir.enable = true;
+        rust.enable = true;
+      };
+      editor = {
+        emacs.enable = true;
+        editorconfig.enable = true;
+      };
+      shell = {
+        direnv = {
+          enable = true;
+          nix = true;
+          asdf = true;
+        };
       };
     };
   };
