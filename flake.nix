@@ -69,12 +69,10 @@
               to = {
                 type = "path";
                 # HACK(babariviere): to ensure that it exists, create an option and make it clone automatically if the path doesn't exist
-                path =
-                  "${config.user.home}/src/github.com/babariviere/dotfiles";
+                path = config.dotfiles.dir;
               };
             };
           };
-          trustedUsers = [ config.user.name ];
           useSandbox = "relaxed";
         };
 

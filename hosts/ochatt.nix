@@ -47,7 +47,7 @@ in {
   # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
   environment.pathsToLink = [ "/share/zsh" ];
 
-  nix.trustedUsers = [ config.user.name ];
+  nix.trustedUsers = lib.attrNames config.users.users;
   nix.buildMachines = [{
     hostName = "100.100.28.13";
     maxJobs = 8;
@@ -105,189 +105,6 @@ in {
   # programs.fish.enable = true;
   programs.nix-index.enable = true;
 
-  hm = {
-    home.packages = let
-      nvimConfig = pkgs.neovimUtils.makeNeovimConfig {
-        withPython3 = true;
-        withNodeJs = true;
-        viAlias = true;
-        vimAlias = true;
-      };
-      nvim = pkgs.wrapNeovimUnstable pkgs.neovim-nightly (nvimConfig // {
-        wrapperArgs = (lib.escapeShellArgs nvimConfig.wrapperArgs);
-        wrapRc = false;
-      });
-    in [
-      nvim
-      pkgs.tree-sitter
-
-      # Tools
-      pkgs.age
-      pkgs.bat
-      pkgs.dogdns
-      pkgs.exa
-      pkgs.lunchy
-
-      # Git
-      pkgs.git
-      pkgs.git-ignore
-      pkgs.git-fame
-      pkgs.git-open
-      pkgs.git-trim
-      pkgs.gitleaks
-      pkgs.github-cli
-
-      # Ops
-      pkgs.kubectl
-      pkgs.kubectx
-      pkgs.tailscale
-
-      # Nix
-      pkgs.nixfmt
-      pkgs.nix-prefetch-scripts
-      pkgs.nixpkgs-review
-      pkgs.nix-tree
-
-      # Common Lisp
-      pkgs.sbcl
-
-      # Clojure
-      pkgs.babashka
-      pkgs.boot
-      pkgs.clojure
-      pkgs.clojure-lsp
-      pkgs.leiningen
-    ];
-    home.stateVersion = "21.03";
-
-    programs.exa.enable = true;
-
-    programs.fish = { enable = false; };
-    programs.fzf = { enable = true; };
-
-    programs.gh = {
-      enable = true;
-      aliases = {
-        pc = "pr create";
-        pcd = "pr create -d";
-      };
-      gitProtocol = "ssh";
-    };
-
-    programs.git = {
-      enable = true;
-      aliases = {
-        cleanup = "trim";
-        co = "checkout";
-        s = "status --branch --short";
-      };
-      attributes = [
-        # TODO:
-        # "*.age diff=age"
-      ];
-      delta = {
-        enable = true;
-        options = {
-          features = "line-numbers decorations";
-          syntax-theme = "Dracula";
-          decorations = {
-
-            commit-decoration-style = "none";
-            file-style = "yellow bold ul";
-            file-decoration-style = "black bold ol";
-            hunk-header-decoration-style = "magenta box";
-          };
-          line-numbers = {
-            line-numbers-minus-style = "#444444";
-            line-numbers-zero-style = "#444444";
-            line-numbers-plus-style = "#444444";
-            line-numbers-left-style = "magenta";
-            line-numbers-right-style = "magenta";
-          };
-        };
-      };
-      extraConfig = {
-        core = {
-          autocrlf = false;
-          eof = "lf";
-        };
-        init.defaultBranch = "main";
-        github.user = "babariviere";
-      };
-      ignores = [
-        ".envrc"
-        ".lsp"
-        ".rebel_readline_history"
-        ".projectile"
-        "*.pem"
-        "*.swp"
-        ".DS_Store"
-      ];
-      includes = [{ path = "~/.gitconfig.local"; }];
-      userEmail = "babathriviere@gmail.com";
-      userName = "Bastien Riviere";
-    };
-
-    # TODO: programs.htop
-
-    programs.nix-index.enable = true;
-
-    programs.ssh = { enable = true; };
-
-    programs.zsh = {
-      # TODO: write configuration here
-      enable = true;
-      enableAutosuggestions = true;
-      enableCompletion = true;
-
-      autocd = true;
-      defaultKeymap = "viins";
-      history = {
-        expireDuplicatesFirst = true;
-        share = false;
-      };
-
-      initExtra =
-        let flow = "${inputs.flow.defaultPackage.${pkgs.system}}/bin/flow";
-        in (builtins.readFile "${config.dotfiles.configDir}/zshrc") + ''
-          eval "$(${flow} setup $HOME/src --path ${flow})"
-        '';
-
-      shellAliases = {
-        ls = "${pkgs.exa}/bin/exa";
-        ll = "ls -l";
-        l = "ls";
-
-        gco = "git co";
-        gs = "git s";
-
-        dup = "docker-compose up";
-        ddn = "docker-compose down";
-
-        dr = "darwin-rebuild";
-        drs = "darwin-rebuild switch --flake dotfiles --keep-going";
-
-        wk = "watch kubectl";
-        k = "${pkgs.kubectl}/bin/kubectl";
-        kns = "${pkgs.kubectx}/bin/kubens";
-        kctx = "${pkgs.kubectx}/bin/kubectx";
-      };
-
-      plugins = [
-        {
-          name = "fast-syntax-highlighting";
-          src = "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions";
-        }
-        {
-          name = "zsh-history-substring-search";
-          file = "zsh-history-substring-search.zsh";
-          src =
-            "${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search";
-        }
-      ];
-    };
-  };
-
   # system.activationScripts.applications.text = pkgs.lib.mkForce (''
   #   rm -rf ~/Applications/Nix\ Apps
   #   mkdir -p ~/Applications/Nix\ Apps
@@ -303,22 +120,64 @@ in {
   home-manager.users.bastienriviere = {
     profiles = {
       dev = {
+        common-lisp.enable = true;
+        clojure.enable = true;
         elixir.enable = true;
+        nix.enable = true;
         rust.enable = true;
       };
       editor = {
         emacs.enable = true;
         editorconfig.enable = true;
       };
+      ops = { kubernetes.enable = true; };
       shell = {
         direnv = {
           enable = true;
           nix = true;
           asdf = true;
         };
+        git.enable = true;
+        gh.enable = true;
+        zsh.enable = true;
       };
     };
+
+    home.packages = let
+      nvimConfig = pkgs.neovimUtils.makeNeovimConfig {
+        withPython3 = true;
+        withNodeJs = true;
+        viAlias = true;
+        vimAlias = true;
+      };
+      nvim = pkgs.wrapNeovimUnstable pkgs.neovim-nightly (nvimConfig // {
+        wrapperArgs = (lib.escapeShellArgs nvimConfig.wrapperArgs);
+        wrapRc = false;
+      });
+    in [
+      nvim
+      pkgs.tree-sitter
+
+      pkgs.tailscale
+
+      # Tools
+      pkgs.age
+      pkgs.bat
+      pkgs.dogdns
+      pkgs.exa
+      pkgs.lunchy
+    ];
+
+    programs.exa.enable = true;
+    programs.fish.enable = false;
+    programs.fzf.enable = true;
+    programs.nix-index.enable = true;
+    programs.ssh.enable = true;
+
+    home.stateVersion = "21.03";
   };
+
+  users.users.bastienriviere.home = "/Users/bastienriviere";
 
   networking.hostName = "ochatt";
   # networking.dns = [ "100.100.28.13" "1.1.1.1" ];
@@ -339,8 +198,6 @@ in {
     defaults write com.apple.desktopservices DSDontWriteNetworkStores true
     defaults write com.apple.finder AppleShowAllFiles -boolean true
   '';
-
-  user.name = "bastienriviere";
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

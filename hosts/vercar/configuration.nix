@@ -37,8 +37,6 @@
   };
   services.logind.lidSwitch = "ignore";
 
-  user.name = "babariviere";
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.openssh.openFirewall = false;

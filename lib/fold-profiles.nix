@@ -18,7 +18,7 @@ let
           path' = path ++ [ n ];
           isHidden = lib.hasPrefix "." name;
         in if t == "regular" && !isHidden then
-          { config, lib, pkgs, ... }@attrs:
+          { config, inputs, lib, pkgs, ... }@attrs:
           let
             # Import the profile file by concat all paths
             content =

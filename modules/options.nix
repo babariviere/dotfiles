@@ -2,15 +2,18 @@
 
 with lib; {
   options = with types; {
-    dotfiles = let type = either str path;
+    dotfiles = let
+      type = either str path;
+      forEachUser = f: map f (attrValues config.users.users);
     in {
       dir = mkOption {
         inherit type;
-        default = findFirst pathExists (toString ../.) [
-          "${config.user.home}/src/github.com/babariviere/dotfiles"
-          "${config.user.home}/.config/dotfiles"
-          "/etc/dotfiles"
-        ];
+        default = let
+          paths = (forEachUser
+            (user: "${user.home}/src/github.com/babariviere/dotfiles"))
+            ++ (forEachUser (user: "${user.home}/.config/dotfiles"))
+            ++ [ "/etc/dotfiles" ];
+        in findFirst pathExists (toString ../.) paths;
       };
       configDir = mkOption {
         inherit type;
@@ -31,26 +34,5 @@ with lib; {
       type = attrs;
       default = { };
     };
-  };
-
-  # TODO(babariviere): find a way to make this optional
-  imports = [
-    (mkAliasOptionModule [ "hm" ] [ "home-manager" "users" config.user.name ])
-    (mkAliasOptionModule [ "home" ] [ "hm" "home" ])
-    (mkAliasOptionModule [ "env" ] [ "hm" "home" "sessionVariables" ])
-  ];
-
-  config = {
-    user = {
-      home = if pkgs.stdenv.isDarwin then
-        "/Users/${config.user.name}"
-      else
-        "/home/${config.user.name}";
-    } // (lib.optionalAttrs pkgs.stdenv.isLinux {
-      extraGroups = [ "wheel" ];
-      isNormalUser = true;
-    });
-
-    users.users.${config.user.name} = mkAliasDefinitions options.user;
   };
 }

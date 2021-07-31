@@ -21,6 +21,7 @@ let
   hmConfig = {
     home-manager.sharedModules = (home.modules or [ ])
       ++ (home.profiles or [ ]);
+    home-manager.extraSpecialArgs = { inherit inputs; };
   };
 
   mkSystem = system:
