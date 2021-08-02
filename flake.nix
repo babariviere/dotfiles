@@ -61,17 +61,7 @@
           package = pkgs.hiPrio pkgs.nixUnstable;
           registry = {
             nixpkgs.flake = nixpkgs;
-            dotfiles = {
-              from = {
-                id = "dotfiles";
-                type = "indirect";
-              };
-              to = {
-                type = "path";
-                # HACK(babariviere): to ensure that it exists, create an option and make it clone automatically if the path doesn't exist
-                path = config.dotfiles.dir;
-              };
-            };
+            dotfiles.flake = self;
           };
           useSandbox = "relaxed";
         };

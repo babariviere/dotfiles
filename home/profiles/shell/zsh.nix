@@ -32,7 +32,7 @@
       ddn = "docker-compose down";
 
       dr = "darwin-rebuild";
-      drs = "darwin-rebuild switch --flake dotfiles --keep-going";
+      drs = "darwin-rebuild switch --flake . --keep-going";
 
       wk = "watch kubectl";
       k = "${pkgs.kubectl}/bin/kubectl";
