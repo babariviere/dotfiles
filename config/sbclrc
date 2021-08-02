@@ -1,0 +1,12 @@
+;;; The following lines added by ql:add-to-init-file:
+#-quicklisp
+(let ((quicklisp-init (merge-pathnames ".quicklisp/setup.lisp"
+                                       (user-homedir-pathname))))
+  (when (probe-file quicklisp-init)
+    (load quicklisp-init)))
+
+(setf *print-case* :downcase)
+
+(require "asdf")
+(require "cffi")
+(push "/opt/local/lib/" cffi:*foreign-library-directories*)
