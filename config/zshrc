@@ -31,6 +31,12 @@ _fishy_collapsed_wd() {
   echo "${(j:/:)pwd}"
 }
 
+_in_nix_shell() {
+  if [[ "$PATH" = $'/nix/store'* ]]; then
+    echo -n "%F{blue}❄$f "
+  fi
+}
+
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
@@ -39,7 +45,7 @@ zstyle ':vcs_info:git:*' formats '%F{red}%b%f'
 # Allow command substitution in PS1
 setopt PROMPT_SUBST
 PS1='%F{magenta}%n%f@%F{red}%m%f:%F{blue}$(_fishy_collapsed_wd)%f> '
-RPS1=\$vcs_info_msg_0_
+RPS1='$(_in_nix_shell)'\$vcs_info_msg_0_
 
 ###
 ### VI cursor
