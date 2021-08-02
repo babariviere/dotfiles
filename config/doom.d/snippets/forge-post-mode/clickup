@@ -3,6 +3,9 @@
 # key: clickup
 # --
 [`
-(let ((branch (shell-command-to-string "git branch --show-current")))
-  (car (split-string branch "/")))
+(let* ((branch (shell-command-to-string "git branch --show-current"))
+       (branch* (car (split-string branch "/"))))
+  (string-join (cl-subseq
+            (split-string branch* "\-")
+            0 2) "-"))
 `]$0
