@@ -52,3 +52,7 @@
 ;; Time to party 😳
 (package! parrot)
 (package! nyan-mode)
+
+(package! dhall-mode)
+
+(package! kaolin-themes)

@@ -27,7 +27,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-dracula)
+(setq doom-theme 'kaolin-ocean)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -104,3 +104,15 @@
 
 (after! yasnippet
   (add-hook 'snippet-mode-hook (lambda () (setq require-final-newline nil))))
+
+;; Dhall
+(use-package! dhall-mode
+  :mode "\\.dhall\\'")
+
+(after! lsp-mode
+  (add-hook 'dhall-mode #'lsp-mode))
+
+(use-package! kaolin-themes
+  :config
+  (setq kaolin-themes-modeline-border nil
+        kaolin-themes-comments-style 'normal))
