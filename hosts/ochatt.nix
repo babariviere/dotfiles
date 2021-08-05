@@ -189,8 +189,7 @@ in {
       QuitMenuItem = true;
       _FXShowPosixPathInTitle = true;
     };
-    NSGlobalDomain.AppleFontSmoothing =
-      0; # my display doesn't have high dpi so it looks like blurry when not enabled
+    NSGlobalDomain.AppleFontSmoothing = 0;
   };
 
   # TODO(babariviere): convert them to homemanager options
