@@ -7,4 +7,10 @@
 
 (menu-bar-mode -1)           ; Disable the menu bar
 
-(set-face-attribute 'default nil :font "MonoLisa 12")
+(setq custom-file (concat user-emacs-directory "custom.el"))
+(when (file-exists-p custom-file)
+  (load custom-file))
+
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
+(column-number-mode)
+

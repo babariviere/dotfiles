@@ -16,6 +16,7 @@
 
     # Emacs
     emacs.url = "github:nix-community/emacs-overlay";
+    emacs.inputs.nixpkgs.follows = "nixpkgs";
     # doom-emacs = {
     #   url = "github:hlissner/doom-emacs/develop";
     #   flake = false;
