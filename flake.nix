@@ -125,11 +125,6 @@
           system = "x86_64-linux";
           modules = [ ./hosts/vercar/configuration.nix ];
         };
-
-        # "vercar.mac1" = {
-        #   system = "x86_64-darwin";
-        #   modules = [ ];
-        # };
       };
 
       home = {
@@ -141,22 +136,6 @@
       darwinPackages = self.darwinConfigurations."ochatt".pkgs;
 
       deploy.nodes = {
-        # FIXME: doesn't work
-        # "vercar.mac1" = {
-        #   hostname = "100.100.28.13";
-        #   profiles.system = {
-        #     user = "root";
-        #     sshUser = "root";
-        #     path = deploy.lib.x86_64-darwin.activate.custom
-        #       self.darwinConfigurations."vercar.mac1".config.system ''
-        #         cd /tmp
-
-        #         echo "hello"
-        #         # $PROFILE/activate-user
-        #         # $PROFILE/activate
-        #       '';
-        #   };
-        # };
         vercar = {
           hostname = "100.100.28.13";
           profiles.system = {
@@ -215,6 +194,13 @@
 
         devShell = pkgs.mkShell {
           buildInputs = [ inputs.agenix.defaultPackage."${system}" ];
+        };
+
+        apps = {
+          amber-emacs = {
+            type = "app";
+            program = "${self.packages."${system}".amber-emacs}/bin/emacs";
+          };
         };
       }));
 }

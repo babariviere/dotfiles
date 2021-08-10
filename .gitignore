@@ -3,3 +3,5 @@ result
 !/secrets/secrets.nix
 !/secrets/*.age
 /.direnv
+/.emacs.d
+/.cache

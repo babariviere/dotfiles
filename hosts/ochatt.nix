@@ -127,7 +127,9 @@ in {
         rust.enable = true;
       };
       editor = {
-        emacs.enable = true;
+        # TODO: maybe to a flavor instead? maybe use a module then
+        doom.enable = true;
+        emacs.enable = false;
         editorconfig.enable = true;
       };
       ops = { kubernetes.enable = true; };
