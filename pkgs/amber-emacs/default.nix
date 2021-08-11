@@ -19,6 +19,9 @@ in emacsWithPackages (epkgs:
     evil-collection
     general
 
+    magit
+    forge
+
     # Themes
     doom-themes
     kaolin-themes
