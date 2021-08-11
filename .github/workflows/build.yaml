@@ -2,8 +2,6 @@ name: "Build"
 on:
   workflow_dispatch:
   push:
-    paths:
-      - "flake.lock" # only update on flake update
 jobs:
   build:
     runs-on: macos-latest
