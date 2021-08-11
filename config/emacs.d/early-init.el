@@ -14,3 +14,4 @@
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (column-number-mode)
 
+(defalias 'yes-or-no-p 'y-or-n-p)
