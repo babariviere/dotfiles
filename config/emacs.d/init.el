@@ -1,5 +1,6 @@
 ;; Init configuration
 
+;;; Code:
 (set-frame-font "MonoLisa 12")
 (load-theme 'kaolin-ocean t)
 
@@ -9,13 +10,23 @@
   :after evil
   :config
   (general-create-definer amber/leader-keys
-    :keymaps '(normal insert visual emacs)
+    :states '(normal insert visual emacs)
+    :keymaps 'override
     :prefix "SPC"
     :global-prefix "C-SPC")
 
+  (general-create-definer amber/local-leader-keys
+    :states '(normal insert visual emacs)
+    :keymaps 'override
+    :prefix "SPC m"
+    :global-prefix "M-SPC")
+
   (amber/leader-keys
-    "h"  '(:ignore h :which-key "help")
-    "ht" '(counsel-load-theme :which-key "choose theme")))
+   "."  '(counsel-switch-buffer :which-key "switch buffer")
+   ";"  '(eval-expression :which-key "eval expression")
+   ":"  '(counsel-M-x :which-key "M-x")
+   "h"  '(:ignore h :which-key "help")
+   "ht" '(counsel-load-theme :which-key "choose theme")))
 
 (use-package evil
   :custom
@@ -34,6 +45,9 @@
   :after evil
   :config
   (evil-collection-init))
+
+(use-package counsel
+  :bind (("M-x" . counsel-M-x)))
 
 (use-package ivy
   :commands (swiper counsel-describe-function counsel-describe-variable)
@@ -67,3 +81,15 @@
   :custom
   (which-key-idle-delay 1))
 
+(use-package projectile
+  :after general
+  :config (projectile-mode 1)
+  :custom
+  (projectile-completion-system 'ivy)
+  (projectile-switch-project-action #'projectile-dired)
+  :general
+  (amber/leader-keys
+   "p" '(:keymap projectile-command-map :which-key "project")))
+
+(use-package counsel-projectile
+  :config (counsel-projectile-mode 1))

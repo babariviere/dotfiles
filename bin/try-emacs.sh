@@ -1,4 +1,4 @@
 #!/bin/sh
 
 rsync -rtv $(pwd)/config/emacs.d/ $(pwd)/.emacs.d/
-env HOME=$(pwd) nix run .#amber-emacs -- --debug
+env HOME=$(pwd) nix run .#amber-emacs -- --debug --debug-init

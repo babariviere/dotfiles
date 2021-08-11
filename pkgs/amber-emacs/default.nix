@@ -12,6 +12,9 @@ in emacsWithPackages (epkgs:
     use-package
     which-key
 
+    projectile
+    counsel-projectile
+
     evil
     evil-collection
     general
