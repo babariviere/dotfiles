@@ -22,6 +22,10 @@ in emacsWithPackages (epkgs:
     magit
     forge
 
+    diredfl
+    all-the-icons-dired
+    diff-hl
+
     # Themes
     doom-themes
     kaolin-themes
