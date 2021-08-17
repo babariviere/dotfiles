@@ -23,3 +23,5 @@
        (backup-dir (concat cache-dir "/emacs/backups")))
   (make-directory backup-dir t)
   (setq backup-directory-alist `(("." . ,backup-dir))))
+
+(setq create-lockfiles nil)
