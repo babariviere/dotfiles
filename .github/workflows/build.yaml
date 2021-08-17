@@ -22,4 +22,4 @@ jobs:
       - name: Build packages
         run: nix build .#emacsOsx .#amber-emacs -L
       - name: Build ochatt
-        run: nix build .#darwinConfigurations.ochatt.system
+        run: nix build .#darwinConfigurations.ochatt.system -L
