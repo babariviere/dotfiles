@@ -15,3 +15,5 @@
 (column-number-mode)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+(setq inhibit-startup-screen t)
