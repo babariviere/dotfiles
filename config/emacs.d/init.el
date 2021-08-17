@@ -8,14 +8,15 @@
 (load-library "amber-completion")
 (load-library "amber-dired")
 (load-library "amber-keys")
+(load-library "amber-lisp")
 (load-library "amber-magit")
 (load-library "amber-project")
 
 (require 'use-package)
 
 (use-package doom-modeline
-  :ensure t
-  :config (doom-modeline-mode 1)
+  :config
+  (doom-modeline-mode 1)
   :custom
   (doom-modeline-height 15)
   (doom-modeline-buffer-file-name-style 'relative-from-project))

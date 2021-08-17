@@ -26,6 +26,9 @@ in emacsWithPackages (epkgs:
     all-the-icons-dired
     diff-hl
 
+    lispy
+    lispyville
+
     # Themes
     doom-themes
     kaolin-themes
