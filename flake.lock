@@ -142,13 +142,17 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "narHash": "sha256-aRNIQbNvnLkI/alQ2Xtjj39UiSKQE/enpCr9CfvJiGs=",
-        "path": "../flow",
-        "type": "path"
+        "lastModified": 1629188229,
+        "narHash": "sha256-mJQ/qxy71edhtLC4XzXx9/+KXgiSQYWmDHNtP0nSKTQ=",
+        "owner": "babariviere",
+        "repo": "flow",
+        "rev": "c46118d59f7d3707b093fa66aad9262e14677e3b",
+        "type": "github"
       },
       "original": {
-        "path": "../flow",
-        "type": "path"
+        "owner": "babariviere",
+        "repo": "flow",
+        "type": "github"
       }
     },
     "home-manager": {

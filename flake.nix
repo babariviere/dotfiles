@@ -9,7 +9,7 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
-    flow.url = "path:../flow";
+    flow.url = "github:babariviere/flow";
     utils.url = "github:numtide/flake-utils";
     deploy.url = "github:serokell/deploy-rs";
     agenix.url = "github:ryantm/agenix";
