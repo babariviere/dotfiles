@@ -8,6 +8,7 @@
   (projectile-switch-project-action #'projectile-dired)
   :general
   (amber/leader-keys
+   "SPC" '(projectile-find-file :which-key "find file")
    "p" '(:keymap projectile-command-map :which-key "project")))
 
 (use-package counsel-projectile
