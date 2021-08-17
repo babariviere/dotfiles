@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, inputs, ... }: {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
@@ -45,7 +45,11 @@
     enable = true;
     localControlSocketPath = "/run/unbound/unbound.ctl";
     settings = {
-      server = {
+      server = let
+        ads = pkgs.runCommand "ads.conf" { } ''
+          cat ${inputs.hosts-denylist}/alternates/fakenews-gambling-porn/hosts | ${pkgs.gnugrep}/bin/grep '^0\.0\.0\.0' | ${pkgs.gawk}/bin/awk '{print "local-zone: \""$2"\" redirect\nlocal-data: \""$2" A 0.0.0.0\""}' > $out
+        '';
+      in {
         # TODO: use `network.nix` for IPs
         # NOTE: libvirt allocate port 53 for dnsmasq so we can't use port 53
         interface = [ "127.0.0.1" "100.100.28.13" ];
@@ -108,6 +112,8 @@
           ''"vercar.home. A 100.100.28.13"''
           ''"ochatt.home. A 100.78.240.51"''
         ];
+
+        include = [ (toString ads) ];
       };
     };
   };

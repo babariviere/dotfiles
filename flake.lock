@@ -173,6 +173,22 @@
         "type": "github"
       }
     },
+    "hosts-denylist": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1628698712,
+        "narHash": "sha256-1B+HWu/KN7BWxGCIZ6yw/8JmccXKzEhn+goE6c5rSCk=",
+        "owner": "StevenBlack",
+        "repo": "hosts",
+        "rev": "687628a6c348b6e8e29b0c15f13dd687141be50e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "StevenBlack",
+        "repo": "hosts",
+        "type": "github"
+      }
+    },
     "lowdown-src": {
       "flake": false,
       "locked": {
@@ -373,6 +389,7 @@
         "emacs": "emacs",
         "flow": "flow",
         "home-manager": "home-manager",
+        "hosts-denylist": "hosts-denylist",
         "neovim-nightly": "neovim-nightly",
         "nix": "nix",
         "nixpkgs": "nixpkgs_6",

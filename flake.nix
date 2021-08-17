@@ -13,6 +13,10 @@
     utils.url = "github:numtide/flake-utils";
     deploy.url = "github:serokell/deploy-rs";
     agenix.url = "github:ryantm/agenix";
+    hosts-denylist = {
+      url = "github:StevenBlack/hosts";
+      flake = false;
+    };
 
     # Emacs
     emacs.url = "github:nix-community/emacs-overlay";
