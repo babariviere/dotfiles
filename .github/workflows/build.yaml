@@ -19,4 +19,7 @@ jobs:
         with:
           name: babariviere
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - run: nix build .#emacsOsx .#amber-emacs -L
+      - name: Build packages
+        run: nix build .#emacsOsx .#amber-emacs -L
+      - name: Build ochatt
+        run: nix build .#darwinConfigurations.ochatt.system
