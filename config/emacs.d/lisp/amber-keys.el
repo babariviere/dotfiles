@@ -47,5 +47,11 @@
   :config
   (evil-collection-init))
 
+(use-package which-key
+  :demand
+  :config (which-key-mode 1)
+  :custom
+  (which-key-idle-delay 1))
+
 (provide 'amber-keys)
 ;;; amber-keys.el ends here
