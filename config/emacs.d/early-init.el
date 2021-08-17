@@ -17,3 +17,9 @@
 (defalias 'yes-or-no-p #'y-or-n-p)
 
 (setq inhibit-startup-screen t)
+
+(let* ((cache-dir (or (getenv "XDG_CACHE_HOME")
+                      (concat (getenv "HOME") "/.cache")))
+       (backup-dir (concat cache-dir "/emacs/backups")))
+  (make-directory backup-dir t)
+  (setq backup-directory-alist `(("." . ,backup-dir))))
