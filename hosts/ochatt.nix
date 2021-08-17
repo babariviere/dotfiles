@@ -102,7 +102,6 @@ in {
 
   # Create /etc/bashrc that loads the nix-darwin environment.
   programs.zsh.enable = true; # default shell on catalina
-  # programs.fish.enable = true;
   programs.nix-index.enable = true;
 
   # system.activationScripts.applications.text = pkgs.lib.mkForce (''

@@ -173,14 +173,10 @@
           python38 =
             prev.python38.override { packageOverrides = pythonOverride prev; };
         };
-        fishOverlay = final: prev: {
-          fish = prev.fish.overrideAttrs (attrs: { doCheck = false; });
-        };
       in {
         neovim = inputs.neovim-nightly.overlay;
         emacs = inputs.emacs.overlay;
         python = pythonOverlay;
-        fish = fishOverlay;
         self = self.overlay;
       };
     } // (utils.lib.eachDefaultSystem (system:
