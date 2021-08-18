@@ -5,3 +5,4 @@ result
 /.direnv
 /.emacs.d
 /.cache
+.DS_Store
