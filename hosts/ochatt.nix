@@ -142,6 +142,7 @@ in {
           nix = true;
           asdf = true;
         };
+        dog.enable = true;
         git.enable = true;
         gh.enable = true;
         sd.enable = true;
