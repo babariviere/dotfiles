@@ -174,7 +174,6 @@ in {
       # Tools
       pkgs.age
       pkgs.bat
-      pkgs.dogdns
       pkgs.exa
       pkgs.lunchy
     ];

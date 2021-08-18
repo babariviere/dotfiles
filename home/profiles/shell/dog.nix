@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.packages = [ pkgs.dog ];
+  home.packages = [ pkgs.dogdns ];
 }
