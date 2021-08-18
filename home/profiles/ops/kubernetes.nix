@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.packages = [ pkgs.kubectl pkgs.kubectx pkgs.helm ];
+  home.packages = [ pkgs.kubectl pkgs.kubectx pkgs.kubernetes-helm ];
 }
