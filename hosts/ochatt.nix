@@ -172,6 +172,11 @@ in {
 
       pkgs.tailscale
 
+      pkgs.coreutils
+      pkgs.coreutils-prefixed
+      pkgs.findutils
+      pkgs.fontconfig
+
       # Tools
       pkgs.age
       pkgs.bat
