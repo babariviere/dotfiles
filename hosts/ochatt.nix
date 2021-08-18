@@ -12,6 +12,7 @@ in {
     enable = true;
     autoUpdate = true;
     cleanup = "zap";
+    global.brewfile = true;
     casks = [
       "1password"
       "battery-buddy"
