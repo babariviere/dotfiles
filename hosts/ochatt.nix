@@ -16,7 +16,7 @@ in {
       "dash"
       "discord"
       "docker"
-      "firefox-nightly"
+      "firefox"
       "iterm2"
       "raycast"
       "slack"
