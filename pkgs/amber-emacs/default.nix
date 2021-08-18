@@ -20,6 +20,7 @@ in emacsWithPackages (epkgs:
     general
 
     magit
+    magit-todos
     forge
 
     diredfl

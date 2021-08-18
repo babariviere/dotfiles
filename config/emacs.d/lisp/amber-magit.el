@@ -12,4 +12,9 @@
 (use-package forge
   :after magit)
 
+(use-package magit-todos
+  :after magit
+  :config
+  (magit-todos-mode 1))
+
 (provide 'amber-magit)
