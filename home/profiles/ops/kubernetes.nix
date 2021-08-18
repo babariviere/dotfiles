@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.packages = [ pkgs.kubectl pkgs.kubectx ];
+  home.packages = [ pkgs.kubectl pkgs.kubectx pkgs.helm ];
 }

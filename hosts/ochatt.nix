@@ -131,7 +131,10 @@ in {
         emacs.enable = false;
         editorconfig.enable = true;
       };
-      ops = { kubernetes.enable = true; };
+      ops = {
+        aws.enable = true;
+        kubernetes.enable = true;
+      };
       shell = {
         direnv = {
           enable = true;
