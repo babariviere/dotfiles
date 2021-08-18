@@ -14,17 +14,22 @@ in {
     cleanup = "zap";
     casks = [
       "1password"
+      "battery-buddy"
       "dash"
       "discord"
       "docker"
+      "encryptme"
       "firefox"
+      "insomnia"
       "iterm2"
+      "postico"
       "raycast"
       "slack"
       "spotify"
+      "wezterm"
     ];
     taps = [
-      # "fewlines/tap"
+      "fewlinesco/tap"
       "homebrew/bundle"
       "homebrew/cask"
       "homebrew/cask-drivers"
@@ -33,10 +38,7 @@ in {
       "homebrew/core"
       "homebrew/services"
     ];
-    brews = [
-      "mas"
-      # "fewlines/tap/fwl_error"
-    ];
+    brews = [ "mas" "fewlinesco/tap/fwl_error" ];
     masApps = {
       "Spark" = 1176895641;
       "Tailscale" = 1475387142;
