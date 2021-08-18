@@ -5,9 +5,10 @@
 (load-theme 'kaolin-ocean t)
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
+(load-library "amber-keys")             ; must be loaded first
+
 (load-library "amber-completion")
 (load-library "amber-dired")
-(load-library "amber-keys")
 (load-library "amber-lisp")
 (load-library "amber-magit")
 (load-library "amber-project")
