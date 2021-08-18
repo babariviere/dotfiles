@@ -1,22 +1,66 @@
 (require 'use-package)
 
-(use-package counsel
-  :bind (("M-x" . counsel-M-x))
+(use-package vertico
+  :custom
+  (vertico-cycle t)
+  :init
+  (vertico-mode 1)
+  :general
+  (:keymaps 'vertico-map
+   "C-j" 'vertico-next
+   "C-k" 'vertico-previous
+   "C-f" 'vertico-exit))
+
+(use-package savehist
+  :init
+  (savehist-mode 1))
+
+(use-package marginalia
+  :after vertico
+  :custom
+  (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+  :init
+  (marginalia-mode 1)
+  :config
+  (let ((categories '((persp-switch-to-buffer . buffer)
+                      (projectile-find-file . project-file)
+                      (projectile-recentf . project-file)
+                      (projectile-switch-to-buffer . buffer)
+                      (projectile-switch-project . project-file))))
+    (dolist (category categories)
+      (cl-pushnew category marginalia-command-categories :test #'equal))))
+
+(use-package orderless
+  :custom
+  (completion-styles '(orderless))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles partial-completion)))))
+
+(use-package consult
+  :general
+  ([remap apropos]                       #'consult-apropos
+   [remap bookmark-jump]                 #'consult-bookmark
+   [remap evil-show-marks]               #'consult-mark
+   [remap goto-line]                     #'consult-goto-line
+   [remap imenu]                         #'consult-imenu
+   [remap locate]                        #'consult-locate
+   [remap load-theme]                    #'consult-theme
+   [remap man]                           #'consult-man
+   [remap recentf-open-files]            #'consult-recent-file
+   [remap switch-to-buffer]              #'consult-buffer
+   [remap switch-to-buffer-other-window] #'consult-buffer-other-window
+   [remap switch-to-buffer-other-frame]  #'consult-buffer-other-frame
+   [remap yank-pop]                      #'consult-yank-pop))
+
+(use-package embark
   :general
   (amber/leader-keys
-   "." '(counsel-switch-buffer :which-key "switch buffer")
-   ":" '(counsel-M-x :which-key "M-x")
-   "ht" '(counsel-load-theme :which-key "choose theme")))
+   "a" '(embark-act :wk "actions")
+   "hb" '(embark-bindings :wk "describe bindings")))
 
-(use-package ivy
-  :commands (swiper counsel-describe-function counsel-describe-variable)
-  :config
-  (ivy-mode 1))
-
-(use-package ivy-rich
-  :after ivy
-  :config
-  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
-  (ivy-rich-mode 1))
+(use-package embark-consult
+  :after (embark consult)
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
 
 (provide 'amber-completion)

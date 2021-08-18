@@ -3,17 +3,20 @@
 let emacsWithPackages = (emacsPackagesFor emacs).emacsWithPackages;
 in emacsWithPackages (epkgs:
   with epkgs; [
-    counsel
     doom-modeline
     helpful
-    ivy
-    ivy-rich
-    swiper
     use-package
     which-key
 
+    # Completion
+    vertico
+    marginalia
+    orderless
+    consult
+    embark
+    embark-consult
+
     projectile
-    counsel-projectile
 
     evil
     evil-collection

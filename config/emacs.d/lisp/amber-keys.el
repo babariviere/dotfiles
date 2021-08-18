@@ -7,6 +7,8 @@
 
 (require 'use-package)
 
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
 (use-package general
   :config
   (general-create-definer amber/leader-keys
@@ -22,9 +24,13 @@
     :non-normal-prefix "M-SPC")
 
   (amber/leader-keys
+   "." '(switch-to-buffer :wk "switch to buffer")
+   ":" '(execute-extended-command :wk "M-x")
    ";"  '(eval-expression :which-key "eval expression")
-   "h"  '(:ignore h :which-key "help")
-   "hF" '(describe-face :wk "describe face")))
+   "h"  '(:ignore t :which-key "help")
+   "hF" '(describe-face :wk "describe face")
+   "ht" '(load-theme :wk "choose theme")
+   "m" '(:ignore t :wk "local")))
 
 (use-package evil
   :custom
@@ -60,12 +66,11 @@
   (which-key-idle-delay 1))
 
 (use-package helpful
-  :bind
-  ([remap describe-function] . helpful-function)
-  ([remap describe-command] . helpful-command)
-  ([remap describe-variable] . helpful-variable)
-  ([remap describe-key] . helpful-key)
   :general
+  ([remap describe-function] 'helpful-function
+   [remap describe-command] 'helpful-command
+   [remap describe-variable] 'helpful-variable
+   [remap describe-key] 'helpful-key)
   (amber/leader-keys
    "hf" '(helpful-callable :wk "describe function")
    "hk" '(helpful-key :wk "describe key")
