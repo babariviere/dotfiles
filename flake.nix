@@ -36,8 +36,6 @@
         home-manager.useUserPackages = true;
         home-manager.useGlobalPkgs = true;
 
-        environment.systemPackages = [ deploy.defaultPackage."${pkgs.system}" ];
-
         nix = {
           binaryCaches = [
             "http://nix-store.vercar.home"
@@ -194,7 +192,10 @@
         packages = lib.fix (self: self'.overlay self pkgs);
 
         devShell = pkgs.mkShell {
-          buildInputs = [ inputs.agenix.defaultPackage."${system}" ];
+          buildInputs = [
+            inputs.agenix.defaultPackage."${system}"
+            deploy.defaultPackage."${system}"
+          ];
         };
 
         apps = {
