@@ -1,7 +1,12 @@
 (require 'use-package)
 
 (use-package counsel
-  :bind (("M-x" . counsel-M-x)))
+  :bind (("M-x" . counsel-M-x))
+  :general
+  (amber/leader-keys
+   "." '(counsel-switch-buffer :which-key "switch buffer")
+   ":" '(counsel-M-x :which-key "M-x")
+   "ht" '(counsel-load-theme :which-key "choose theme")))
 
 (use-package ivy
   :commands (swiper counsel-describe-function counsel-describe-variable)

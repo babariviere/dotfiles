@@ -22,12 +22,9 @@
     :non-normal-prefix "M-SPC")
 
   (amber/leader-keys
-   "."  '(counsel-switch-buffer :which-key "switch buffer")
    ";"  '(eval-expression :which-key "eval expression")
-   ":"  '(counsel-M-x :which-key "M-x")
    "h"  '(:ignore h :which-key "help")
-   "hF" '(describe-face :wk "describe face")
-   "ht" '(counsel-load-theme :which-key "choose theme")))
+   "hF" '(describe-face :wk "describe face")))
 
 (use-package evil
   :custom
