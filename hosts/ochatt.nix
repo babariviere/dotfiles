@@ -20,6 +20,7 @@ in {
       "discord"
       "docker"
       "encryptme"
+      "gpg-suite-no-mail"
       "firefox"
       "insomnia"
       "iterm2"
@@ -28,6 +29,7 @@ in {
       "slack"
       "spotify"
       "wezterm"
+      "zsa-wally"
     ];
     taps = [
       "fewlinesco/tap"
@@ -140,15 +142,14 @@ in {
         kubernetes.enable = true;
       };
       shell = {
+        common.enable = true;
         direnv = {
           enable = true;
           nix = true;
           asdf = true;
         };
-        dog.enable = true;
         git.enable = true;
         gh.enable = true;
-        sd.enable = true;
         tldr.enable = true;
         zsh.enable = true;
       };
