@@ -11,6 +11,7 @@ in {
   homebrew = {
     enable = true;
     autoUpdate = true;
+    cleanup = "zap";
     casks = [
       "1password"
       "dash"
@@ -143,6 +144,8 @@ in {
         };
         git.enable = true;
         gh.enable = true;
+        sd.enable = true;
+        tldr.enable = true;
         zsh.enable = true;
       };
     };
