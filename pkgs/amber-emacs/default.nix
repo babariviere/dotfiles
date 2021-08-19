@@ -33,6 +33,14 @@ in emacsWithPackages (epkgs:
     lispy
     lispyville
 
+    # Company
+    company
+    company-box
+
+    # Nix
+    nix-mode
+    nix-update
+
     # Themes
     doom-themes
     kaolin-themes

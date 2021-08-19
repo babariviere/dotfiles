@@ -1,0 +1,1 @@
+(provide 'amber-elisp)
