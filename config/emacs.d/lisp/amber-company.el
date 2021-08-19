@@ -81,8 +81,6 @@
    "RET" #'company-complete-selection))
 
 (use-package company-box
-  :hook (company-mode . company-box-mode)
-  :config
-  (add-to-list 'company-box-frame-parameters '(font . "MonoLisa-12")))
+  :hook (company-mode . company-box-mode))
 
 (provide 'amber-company)
