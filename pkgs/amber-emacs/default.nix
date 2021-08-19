@@ -22,6 +22,8 @@ in emacsWithPackages (epkgs:
     evil-collection
     general
 
+    eldoc
+
     magit
     magit-todos
     forge

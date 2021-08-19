@@ -9,7 +9,7 @@
   (projectile-globally-ignored-files '(".DS_Store" "TAGS"))
   :general
   (amber/leader-keys
-   "SPC" '(projectile-find-file :which-key "find file")
+   "SPC" '(projectile-find-file :which-key "find file in project")
    "p" '(:ignore t :which-key "project")
    "pp" '(projectile-switch-project :wk "switch project")))
 

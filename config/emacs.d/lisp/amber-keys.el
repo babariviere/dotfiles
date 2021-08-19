@@ -24,7 +24,8 @@
     :non-normal-prefix "M-SPC")
 
   (amber/leader-keys
-   "." '(switch-to-buffer :wk "switch to buffer")
+   "." '(find-file :wk "find file")
+   "," '(switch-to-buffer :wk "switch to buffer")
    ":" '(execute-extended-command :wk "M-x")
    ";"  '(eval-expression :which-key "eval expression")
    "h"  '(:ignore t :which-key "help")

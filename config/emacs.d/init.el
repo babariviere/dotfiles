@@ -29,3 +29,6 @@
   :custom
   (doom-modeline-height 15)
   (doom-modeline-buffer-file-name-style 'relative-from-project))
+
+(use-package eldoc
+  :hook (emacs-lisp-mode . eldoc-mode))
