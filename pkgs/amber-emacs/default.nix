@@ -43,6 +43,9 @@ in emacsWithPackages (epkgs:
     nix-mode
     nix-update
 
+    # Elisp
+    eros
+
     # Themes
     doom-themes
     kaolin-themes

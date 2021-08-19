@@ -12,16 +12,19 @@
 (use-package general
   :config
   (general-create-definer amber/leader-keys
-    :states '(normal insert visual emacs)
+    :states '(normal insert motion visual emacs)
     :keymaps 'override
     :prefix "SPC"
-    :non-normal-prefix "C-SPC")
+    :non-normal-prefix "M-SPC")
 
   (general-create-definer amber/local-leader-keys
-    :states '(normal insert visual emacs)
+    :states '(normal insert motion visual emacs)
     :keymaps 'override
-    :prefix "SPC m"
-    :non-normal-prefix "M-SPC")
+    :prefix ","
+    :non-normal-prefix "M-,")
+
+  (amber/local-leader-keys
+   "" nil)
 
   (amber/leader-keys
    "." '(find-file :wk "find file")
@@ -30,8 +33,7 @@
    ";"  '(eval-expression :which-key "eval expression")
    "h"  '(:ignore t :which-key "help")
    "hF" '(describe-face :wk "describe face")
-   "ht" '(load-theme :wk "choose theme")
-   "m" '(:ignore t :wk "local")))
+   "ht" '(load-theme :wk "choose theme")))
 
 (use-package evil
   :custom

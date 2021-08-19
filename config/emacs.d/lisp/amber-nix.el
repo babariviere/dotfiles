@@ -8,7 +8,7 @@
                      'js-mode))
   (amber/set-company-backend 'nix-mode 'company-nixos-options)
   :general
-  (amber/local-leader-keys
+  (amber/local-leader-keys nix-mode-map
    "f" '(nix-format-buffer :wk "format buffer")
    "r" '(nix-repl-show :wk "repl")
    "s" '(nix-shell :wk "nix-shell")))
