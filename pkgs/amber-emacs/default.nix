@@ -39,6 +39,11 @@ in emacsWithPackages (epkgs:
     company
     company-box
 
+    # Lsp
+    lsp-mode
+    lsp-ui
+    consult-lsp
+
     # Nix
     nix-mode
     nix-update

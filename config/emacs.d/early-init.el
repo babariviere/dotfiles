@@ -25,3 +25,6 @@
   (setq backup-directory-alist `(("." . ,backup-dir))))
 
 (setq create-lockfiles nil)
+
+(setq read-process-output-max (* 1024 1024))
+(setq gc-cons-threshold 100000000)

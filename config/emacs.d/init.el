@@ -17,6 +17,7 @@
 (load-library "amber-magit")
 (load-library "amber-project")
 (load-library "amber-company")
+(load-library "amber-lsp")
 
 (load-library "amber-elisp")
 (load-library "amber-nix")
