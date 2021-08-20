@@ -73,11 +73,6 @@
    "C-j" #'company-select-next
    "C-k" #'company-select-previous
    "<tab>"  #'company-complete-common-or-cycle
-   "RET" #'company-complete-selection)
-  (:keymaps 'lsp-mode-map
-   "C-j" #'company-select-next
-   "C-k" #'company-select-previous
-   "<tab>"  #'company-complete-common-or-cycle
    "RET" #'company-complete-selection))
 
 (use-package company-box
