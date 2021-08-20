@@ -20,9 +20,15 @@
 
 (let* ((cache-dir (or (getenv "XDG_CACHE_HOME")
                       (concat (getenv "HOME") "/.cache")))
-       (backup-dir (concat cache-dir "/emacs/backups")))
+       (auto-save-dir (concat cache-dir "/emacs/autosave"))
+       (backup-dir (concat cache-dir "/emacs/backup")))
+  (make-directory auto-save-dir t)
   (make-directory backup-dir t)
-  (setq backup-directory-alist `(("." . ,backup-dir))))
+  (setq auto-save-list-file-prefix auto-save-dir
+        auto-save-file-name-transforms
+        `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'" ,(concat auto-save-dir "/tramp-\\2") t)
+          (".*" ,auto-save-dir t))
+        backup-directory-alist `(("." . ,backup-dir))))
 
 (setq create-lockfiles nil)
 
