@@ -23,6 +23,7 @@
     :prefix ","
     :non-normal-prefix "M-,")
 
+  ;; Required to avoid error with non-prefixed key. (official solution from general)
   (amber/local-leader-keys
    "" nil)
 
@@ -31,7 +32,10 @@
    "," '(switch-to-buffer :wk "switch to buffer")
    ":" '(execute-extended-command :wk "M-x")
    ";"  '(eval-expression :which-key "eval expression")
+   "b"  '(:ignore t :wk "buffer")
+   "bk" '(kill-current-buffer :wk "kill buffer")
    "h"  '(:ignore t :which-key "help")
+   "hK" '(general-describe-keybindings :wk "describe keybindings")
    "hF" '(describe-face :wk "describe face")
    "ht" '(load-theme :wk "choose theme")))
 
@@ -73,7 +77,8 @@
   ([remap describe-function] 'helpful-function
    [remap describe-command] 'helpful-command
    [remap describe-variable] 'helpful-variable
-   [remap describe-key] 'helpful-key)
+   [remap describe-key] 'helpful-key
+   [remap describe-symbol] 'helpful-symbol)
   (amber/leader-keys
    "hf" '(helpful-callable :wk "describe function")
    "hk" '(helpful-key :wk "describe key")
