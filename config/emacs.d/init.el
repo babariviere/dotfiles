@@ -8,19 +8,20 @@
                          :weight unspecified :slant unspecified :width unspecified)))))
 (load-theme 'kaolin-ocean t)
 
-(add-to-list 'load-path "~/.emacs.d/lisp")
-(load-library "amber-keys")             ; must be loaded first
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(require 'amber-keys)             ; must be loaded first
 
-(load-library "amber-completion")
-(load-library "amber-dired")
-(load-library "amber-lisp")
-(load-library "amber-magit")
-(load-library "amber-project")
-(load-library "amber-company")
-(load-library "amber-lsp")
+(require 'amber-completion)
+(require 'amber-dired)
+(require 'amber-lisp)
+(require 'amber-magit)
+(require 'amber-project)
+(require 'amber-company)
+(require 'amber-lsp)
 
-(load-library "amber-elisp")
-(load-library "amber-nix")
+(require 'amber-elisp)
+(require 'amber-elixir)
+(require 'amber-nix)
 
 (require 'use-package)
 

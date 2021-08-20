@@ -51,6 +51,10 @@ in emacsWithPackages (epkgs:
     # Elisp
     eros
 
+    # Elixir
+    elixir-mode
+    alchemist
+
     # Themes
     doom-themes
     kaolin-themes
