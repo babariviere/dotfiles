@@ -39,6 +39,20 @@
    "hF" '(describe-face :wk "describe face")
    "ht" '(load-theme :wk "choose theme")))
 
+(defun amber/window-split-and-follow ()
+  "Split current window horizontally, then focus new window.
+If `evil-split-window-below' is non-nil, the new window isn't focused."
+  (interactive)
+  (let ((evil-split-window-below (not evil-split-window-below)))
+    (call-interactively #'evil-window-split)))
+
+(defun amber/window-vsplit-and-follow ()
+  "Split current window vertically, then focus new window.
+If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
+  (interactive)
+  (let ((evil-vsplit-window-right (not evil-vsplit-window-right)))
+    (call-interactively #'evil-window-vsplit)))
+
 (use-package evil
   :custom
   (evil-want-integration t)
@@ -53,11 +67,15 @@
   (evil-set-initial-state 'dashboard-mode 'normal)
   :general
   (amber/leader-keys
-   "w" '(:ignore t :wk "window")
-   "wh" '(evil-window-left :wk "left window")
-   "wj" '(evil-window-down :wk "down window")
-   "wk" '(evil-window-up :wk "up window")
-   "wl" '(evil-window-right :wk "right window")))
+    "w" '(:ignore t :wk "window")
+    "wh" '(evil-window-left :wk "left window")
+    "wj" '(evil-window-down :wk "down window")
+    "wk" '(evil-window-up :wk "up window")
+    "wl" '(evil-window-right :wk "right window")
+    "ws" '(evil-window-split :wk "split horizontal")
+    "wS" '(amber/window-split-and-follow :wk "split horizontal (follow)")
+    "wv" '(evil-window-vsplit :wk "split vertical")
+    "wV" '(amber/window-vsplit-and-follow :wk "split vertical (follow)")))
 
 (use-package evil-collection
   :after evil
