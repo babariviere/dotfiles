@@ -133,8 +133,8 @@ in {
       };
       editor = {
         # TODO: maybe to a flavor instead? maybe use a module then
-        doom.enable = true;
-        emacs.enable = false;
+        doom.enable = false;
+        emacs.enable = true;
         editorconfig.enable = true;
       };
       ops = {

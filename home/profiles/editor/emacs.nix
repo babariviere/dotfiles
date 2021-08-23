@@ -12,6 +12,10 @@ let
     fi
   '';
 in {
+  assertions = [{
+    assertion = !config.profiles.editor.doom.enable;
+    message = "profiles.editor.doom cannot be enable with emacs.";
+  }];
 
   home.file = {
     ".emacs.d" = {

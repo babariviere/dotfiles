@@ -12,6 +12,11 @@ let
     fi
   '';
 in {
+  assertions = [{
+    assertion = !config.profiles.editor.emacs.enable;
+    message = "profiles.editor.emacs cannot be enable with doom.";
+  }];
+
   home.packages = [ emacs ];
 
   programs.zsh = { shellAliases = { e = "${emacsclient}/bin/emacsclient"; }; };
