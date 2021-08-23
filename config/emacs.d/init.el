@@ -18,6 +18,7 @@
 (require 'amber-project)
 (require 'amber-company)
 (require 'amber-lsp)
+(require 'amber-snippets)
 
 (require 'amber-elisp)
 (require 'amber-elixir)

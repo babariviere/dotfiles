@@ -4,7 +4,7 @@
 ;; TODO: add general keyword to hook company backend
 (defvar amber/company-backend-alist
   '((text-mode (:separate company-dabbrev company-yasnippet company-ispell))
-    (prog-mode company-capf company-yasnippet)
+    (prog-mode (company-capf :with company-yasnippet))
     (conf-mode company-capf company-dabbrev-code company-yasnippet)))
 
 (defun amber/company--backends ()
@@ -20,7 +20,7 @@
           (push backend backends)))
       (delete-dups
        (append (cl-loop for (mode . backends) in amber/company-backend-alist
-                        if (or (eq major-mode mode)  ; major modes
+                        if (or (eq major-mode mode) ; major modes
                                (and (boundp mode)
                                     (symbol-value mode))) ; minor modes
                         append backends)
@@ -55,7 +55,7 @@
   :custom
   (company-minimum-prefix-length 2)
   (company-idle-delay 0.0)
-  (company-backends '(company-capf))
+  (company-backends '())
   (company-auto-commit nil)
   (company-tooltip-limit 14)
   (company-tooltip-align-annotations t)
@@ -72,10 +72,16 @@
   (:keymaps 'company-active-map
    "C-j" #'company-select-next
    "C-k" #'company-select-previous
-   "<tab>"  #'company-complete-common-or-cycle
+   ;; tab is used by yasnippet
+   "<tab>"  nil
+   "TAB" nil
    "RET" #'company-complete-selection))
 
 (use-package company-box
-  :hook (company-mode . company-box-mode))
+  :hook (company-mode . company-box-mode)
+  :config
+  ;; remove that ugly green color for yasnippet completion
+  (setq company-box-backends-colors nil)
+  (add-to-list 'company-box-frame-parameters '(tab-bar-lines . 0)))
 
 (provide 'amber-company)

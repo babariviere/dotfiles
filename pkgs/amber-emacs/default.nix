@@ -58,6 +58,10 @@ in emacsWithPackages (epkgs:
     elixir-mode
     alchemist
 
+    # Snippets
+    yasnippet
+    yasnippet-snippets
+
     # Themes
     doom-themes
     kaolin-themes
