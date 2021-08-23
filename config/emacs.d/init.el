@@ -19,6 +19,7 @@
 (require 'amber-company)
 (require 'amber-lsp)
 (require 'amber-snippets)
+(require 'amber-smartparens)
 
 (require 'amber-elisp)
 (require 'amber-elixir)

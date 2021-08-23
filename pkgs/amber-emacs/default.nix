@@ -58,6 +58,9 @@ in emacsWithPackages (epkgs:
     elixir-mode
     alchemist
 
+    # Smartparens
+    smartparens
+
     # Snippets
     yasnippet
     yasnippet-snippets
