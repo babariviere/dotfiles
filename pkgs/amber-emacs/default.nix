@@ -50,6 +50,9 @@ in emacsWithPackages (epkgs:
 
     # Elisp
     eros
+    highlight-quoted
+    elisp-demos
+    macrostep
 
     # Elixir
     elixir-mode
