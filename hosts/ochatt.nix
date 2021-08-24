@@ -41,7 +41,7 @@ in {
       "homebrew/core"
       "homebrew/services"
     ];
-    brews = [ "mas" "fewlinesco/tap/fwl_error" ];
+    brews = [ "fontconfig" "mas" "fewlinesco/tap/fwl_error" ];
     masApps = {
       "Spark" = 1176895641;
       "Tailscale" = 1475387142;
@@ -122,6 +122,11 @@ in {
   # NOTE: I don't have system profiles (RIP)
   # profiles = { };
 
+  fonts = {
+    enableFontDir = true;
+    fonts = [ pkgs.source-sans-pro ];
+  };
+
   home-manager.users.bastienriviere = {
     profiles = {
       dev = {
@@ -175,7 +180,7 @@ in {
       pkgs.coreutils
       pkgs.coreutils-prefixed
       pkgs.findutils
-      pkgs.fontconfig
+      # pkgs.fontconfig
 
       # Tools
       pkgs.age
