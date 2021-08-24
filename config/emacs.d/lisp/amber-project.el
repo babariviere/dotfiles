@@ -2,7 +2,9 @@
 
 (use-package projectile
   :after general
-  :config (projectile-mode 1)
+  :config
+  (delete "default.nix" projectile-project-root-files)
+  (projectile-mode 1)
   :custom
   (projectile-completion-system 'auto)
   (projectile-switch-project-action #'projectile-dired)
