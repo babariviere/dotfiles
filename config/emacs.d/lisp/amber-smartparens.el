@@ -27,6 +27,8 @@
 
 ;;; Code:
 
+(require 'use-package)
+
 (use-package smartparens
   :custom
   ;; Disable overlay since we use show-paren
@@ -36,7 +38,14 @@
   :config
   ;; require config for most languages
   (require 'smartparens-config)
-  (smartparens-global-mode 1))
+  (smartparens-global-mode 1)
+
+  (dolist (brace '("(" "{" "["))
+    (sp-pair brace nil
+	     :post-handlers '(("||\n[i]" "RET") ("| " "SPC"))))
+
+  ;; In lisps ( should open a new form if before another parenthesis
+  (sp-local-pair sp-lisp-modes "(" ")" :unless '(:rem sp-point-before-same-p)))
 
 (provide 'amber-smartparens)
 
