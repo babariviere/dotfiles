@@ -20,6 +20,7 @@
 (require 'amber-lsp)
 (require 'amber-snippets)
 (require 'amber-smartparens)
+(require 'amber-direnv)
 
 (require 'amber-elisp)
 (require 'amber-elixir)

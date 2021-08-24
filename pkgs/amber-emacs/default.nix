@@ -48,6 +48,9 @@ in emacsWithPackages (epkgs:
     nix-mode
     nix-update
 
+    # Direnv
+    envrc
+
     # Elisp
     eros
     highlight-quoted
