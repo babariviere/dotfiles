@@ -1,7 +1,19 @@
-{ emacs, emacsPackagesFor }:
+{ emacs, emacsPackagesFor, lib, makeWrapper,
+  # external dependencies
+  nixfmt,
+  ripgrep }:
 
-let emacsWithPackages = (emacsPackagesFor emacs).emacsWithPackages;
-in emacsWithPackages (epkgs:
+let
+  emacs' = emacs.overrideAttrs (old: {
+    buildInputs = old.buildInputs or [] ++ [ makeWrapper ];
+    postInstall = old.postInstall or "" + ''
+    wrapProgram $out/bin/emacs \
+      --prefix PATH : ${lib.makeBinPath [ nixfmt ripgrep ]}
+  '';
+  });
+  emacsWithPackages = (emacsPackagesFor emacs').emacsWithPackages;
+in
+emacsWithPackages (epkgs:
   with epkgs; [
     doom-modeline
     helpful

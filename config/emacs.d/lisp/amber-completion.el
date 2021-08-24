@@ -37,6 +37,10 @@
   (completion-category-overrides '((file (styles partial-completion))))
   (orderless-component-separator "[ &]"))
 
+(defun amber/consult-ripgrep-project ()
+  "Run consult-ripgrep in projectile-project-root."
+  (consult-ripgrep (projectile-project-root)))
+
 (use-package consult
   :general
   ([remap apropos]                       #'consult-apropos
@@ -53,9 +57,9 @@
    [remap switch-to-buffer-other-frame]  #'consult-buffer-other-frame
    [remap yank-pop]                      #'consult-yank-pop)
   (amber/leader-keys
-   "s" '(:ignore t :wk "search")
-   "sb" '(consult-line :wk "search buffer")
-   ))
+    "s" '(:ignore t :wk "search")
+    "sb" '(consult-line :wk "search buffer")
+    "sp" '(amber/consult-ripgrep-project :wk "search project")))
 
 (use-package embark
   :general
