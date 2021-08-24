@@ -61,6 +61,13 @@ in emacsWithPackages (epkgs:
     elixir-mode
     alchemist
 
+    # Org
+    org
+    org-appear
+    org-contrib
+    org-superstar
+    evil-org
+
     # Smartparens
     smartparens
 

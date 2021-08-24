@@ -1,11 +1,11 @@
 ;; Init configuration
 
 ;;; Code:
-(setf (alist-get 'font default-frame-alist)
-      "MonoLisa-12")
-(custom-set-faces `(fixed-pitch
-                    ((t (:font ,(font-spec :family "MonoLisa" :size 12)
-                         :weight unspecified :slant unspecified :width unspecified)))))
+(let ((fixed-pitch '(:family "MonoLisa" :height 120)))
+  (custom-set-faces
+   `(default ((t ,fixed-pitch)))
+   `(fixed-pitch ((t ,fixed-pitch)))))
+
 (load-theme 'kaolin-ocean t)
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
@@ -24,6 +24,7 @@
 
 (require 'amber-elisp)
 (require 'amber-elixir)
+(require 'amber-org)
 (require 'amber-nix)
 
 (require 'use-package)
