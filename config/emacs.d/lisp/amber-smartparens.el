@@ -34,6 +34,8 @@
   (sp-highlight-wrap-overlay nil)
   (sp-highlight-wrap-tag-overlay nil)
   :config
+  ;; require config for most languages
+  (require 'smartparens-config)
   (smartparens-global-mode 1))
 
 (provide 'amber-smartparens)
