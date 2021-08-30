@@ -39,6 +39,7 @@
 
 (defun amber/consult-ripgrep-project ()
   "Run consult-ripgrep in projectile-project-root."
+  (interactive)
   (consult-ripgrep (projectile-project-root)))
 
 (use-package consult
