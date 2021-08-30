@@ -90,4 +90,7 @@ emacsWithPackages (epkgs:
     # Themes
     doom-themes
     kaolin-themes
+
+    # vterm
+    vterm
   ])
