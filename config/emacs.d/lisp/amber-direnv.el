@@ -26,9 +26,18 @@
 
 ;;; Code:
 
+(defun amber/direnv-init-earlier-h ()
+  "Initialize direnv before major hook init."
+  (let ((fn #'envrc-global-mode-enable-in-buffers))
+    (if (not envrc-global-mode)
+	(remove-hook 'change-major-mode-after-body-hook fn)
+      (remove-hook 'after-change-major-mode-hook fn)
+      (add-hook 'change-major-mode-after-body-hook fn 100))))
+
 (use-package envrc
   :config
-  (envrc-global-mode 1))
+  (envrc-global-mode 1)
+  (amber/direnv-init-earlier-h))
 
 (provide 'amber-direnv)
 
