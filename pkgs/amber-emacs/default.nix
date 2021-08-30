@@ -51,14 +51,8 @@ emacsWithPackages (epkgs:
     company
     company-box
 
-    # Lsp
-    lsp-mode
-    lsp-ui
-    consult-lsp
-
-    # Nix
-    nix-mode
-    nix-update
+    # Data
+    yaml-mode
 
     # Direnv
     envrc
@@ -73,12 +67,21 @@ emacsWithPackages (epkgs:
     elixir-mode
     alchemist
 
+    # Lsp
+    lsp-mode
+    lsp-ui
+    consult-lsp
+
     # Org
     org
     org-appear
     org-contrib
     org-superstar
     evil-org
+
+    # Nix
+    nix-mode
+    nix-update
 
     # Smartparens
     smartparens

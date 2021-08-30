@@ -23,6 +23,7 @@
 (require 'amber-direnv)
 (require 'amber-vterm)
 
+(require 'amber-data)
 (require 'amber-elisp)
 (require 'amber-elixir)
 (require 'amber-org)
