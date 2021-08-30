@@ -33,6 +33,7 @@
   :custom
   (vterm-kill-buffer-on-exit t)
   (vterm-max-scrollback 5000)
+  (vterm-buffer-name-string "vterm:%s")
   :general
   (amber/leader-keys
     "o" '(:ignore t :wk "open")

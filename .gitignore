@@ -6,3 +6,5 @@ result
 /.emacs.d
 /.cache
 .DS_Store
+/.zsh*
+/.zcompdump

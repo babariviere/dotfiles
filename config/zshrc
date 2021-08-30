@@ -71,3 +71,7 @@ zle -N zle-line-finish
 
 # Options
 setopt prompt_sp # show when command finish without a newline
+
+# vterm
+autoload -U add-zsh-hook
+add-zsh-hook -Uz chpwd (){ print -Pn "\e]2;%m:%2~\a" }
