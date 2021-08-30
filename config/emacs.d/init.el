@@ -29,6 +29,7 @@
 (require 'amber-elixir)
 (require 'amber-org)
 (require 'amber-nix)
+(require 'amber-sql)
 
 (require 'use-package)
 
