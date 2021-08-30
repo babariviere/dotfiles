@@ -185,6 +185,7 @@ in {
       # Tools
       pkgs.age
       pkgs.bat
+      pkgs.cachix
       pkgs.exa
       pkgs.lunchy
     ];
