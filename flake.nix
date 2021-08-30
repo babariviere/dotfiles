@@ -175,10 +175,16 @@
           python38 =
             prev.python38.override { packageOverrides = pythonOverride prev; };
         };
+        deltaOverlay = final: prev: {
+          delta = prev.delta.overrideAttrs (drv: {
+            doCheck = false;
+          });
+        };
       in {
         neovim = inputs.neovim-nightly.overlay;
         emacs = inputs.emacs.overlay;
         python = pythonOverlay;
+        delta = deltaOverlay;
         self = self.overlay;
       };
     } // (utils.lib.eachSystem [ "x86_64-linux" "x86_64-darwin" ] (system:
