@@ -19,6 +19,7 @@ emacsWithPackages (epkgs:
     helpful
     use-package
     which-key
+    gcmh
 
     # Completion
     vertico
@@ -28,22 +29,27 @@ emacsWithPackages (epkgs:
     embark
     embark-consult
 
+    # Project
     projectile
 
+    # Keys
     evil
     evil-collection
     general
 
     eldoc
 
+    # Git
     magit
     magit-todos
     forge
 
+    # Dired
     diredfl
     all-the-icons-dired
     diff-hl
 
+    # Lisp
     lispy
     lispyville
 
