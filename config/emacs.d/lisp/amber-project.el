@@ -18,6 +18,7 @@
   (amber/leader-keys
     "SPC" '(projectile-find-file :which-key "find file in project")
     "p" '(:ignore t :which-key "project")
+    "pi" '(projectile-invalidate-cache :wk "invalidate cache")
     "pp" '(projectile-switch-project :wk "switch project")))
 
 (provide 'amber-project)
