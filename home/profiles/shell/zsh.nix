@@ -16,7 +16,7 @@
 
     initExtra =
       let flow = "${inputs.flow.defaultPackage.${pkgs.system}}/bin/flow";
-      in (builtins.readFile "${config.dotfiles.configDir}/zshrc") + ''
+      in (builtins.readFile "${config.dotfiles.configDir}/zshrc") + "\n" + ''
         eval "$(${flow} setup $HOME/src --path ${flow})"
       '';
 
