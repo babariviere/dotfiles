@@ -28,7 +28,8 @@
 ;;; Code:
 
 (use-package format-all
-  :hook (prog-mode . format-all-mode)
+  :hook ((prog-mode . format-all-mode)
+	 (format-all-mode . format-all-ensure-formatter))
   :general
   (amber/leader-keys
     "cf" '(format-all-buffer :wk "format buffer")))
