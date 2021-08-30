@@ -22,6 +22,7 @@
 (require 'amber-smartparens)
 (require 'amber-direnv)
 (require 'amber-vterm)
+(require 'amber-format)
 
 (require 'amber-data)
 (require 'amber-elisp)

@@ -67,6 +67,9 @@ emacsWithPackages (epkgs:
     elixir-mode
     alchemist
 
+    # Format
+    format-all
+
     # Lsp
     lsp-mode
     lsp-ui
