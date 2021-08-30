@@ -27,7 +27,6 @@
 ;;; Code:
 
 (use-package envrc
-  :defer t
   :config
   (envrc-global-mode 1))
 

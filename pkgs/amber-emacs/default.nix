@@ -1,5 +1,6 @@
 { emacs, emacsPackagesFor, lib, makeWrapper,
   # external dependencies
+  direnv,
   nixfmt,
   ripgrep }:
 
@@ -61,6 +62,7 @@ emacsWithPackages (epkgs:
     yaml-mode
 
     # Direnv
+    direnv
     envrc
 
     # Elisp
