@@ -52,6 +52,8 @@ in emacsWithPackages (epkgs:
     use-package
     which-key
     gcmh
+    hl-todo
+    git-gutter
 
     # Completion
     vertico

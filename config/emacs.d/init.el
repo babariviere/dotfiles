@@ -42,3 +42,14 @@
 
 (use-package eldoc
   :hook (emacs-lisp-mode . eldoc-mode))
+
+;; TODO: customize keyword faces
+(use-package hl-todo
+  :custom
+  (hl-todo-highlight-punctuation ":")
+  :config
+  (global-hl-todo-mode 1))
+
+(use-package git-gutter
+  :config
+  (global-git-gutter-mode +1))
