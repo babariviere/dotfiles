@@ -53,7 +53,7 @@
   :hook
   (after-init . global-company-mode)
   :custom
-  (company-minimum-prefix-length 2)
+  (company-minimum-prefix-length 1)
   (company-idle-delay 0.0)
   (company-backends '())
   (company-auto-commit nil)
@@ -70,12 +70,12 @@
   (company-dabbrev-downcase nil)
   :general
   (:keymaps 'company-active-map
-   "C-j" #'company-select-next
-   "C-k" #'company-select-previous
-   ;; tab is used by yasnippet
-   "<tab>"  nil
-   "TAB" nil
-   "RET" #'company-complete-selection))
+	    "C-j" #'company-select-next
+	    "C-k" #'company-select-previous
+	    ;; tab is used by yasnippet
+	    "<tab>"  nil
+	    "TAB" nil
+	    "RET" #'company-complete-selection))
 
 (use-package company-box
   :hook (company-mode . company-box-mode)
