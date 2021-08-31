@@ -5,9 +5,10 @@
 
 (use-package alchemist
   :hook (elixir-mode . alchemist-mode)
-  :general
-  ('normal alchemist-mode-map
-           ;; let lsp handle documentation
-           "K" nil))
+  :config
+  (with-eval-after-load 'evil-collection
+    (general-def 'normal alchemist-mode-map
+      "K" nil
+      :package 'alchemist)))
 
 (provide 'amber-elixir)
