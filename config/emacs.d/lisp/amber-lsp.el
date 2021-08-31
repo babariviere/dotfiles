@@ -8,6 +8,10 @@
   (lsp-enable-folding nil)
   (lsp-enable-on-type-formatting nil)
   (lsp-headerline-breadcrumb-enable nil)
+  (lsp-ui-sideline-enable t)
+  (lsp-ui-sideline-show-diagnostics t)
+  ;; breaks sideline
+  (lsp-eldoc-enable-hover nil)
   :general
   ('motion
    lsp-mode-map
