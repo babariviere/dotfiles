@@ -107,6 +107,7 @@ in emacsWithPackages (epkgs:
     # Elixir
     elixir-mode
     alchemist
+    exunit
 
     # Format
     format-all
