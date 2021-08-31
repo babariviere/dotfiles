@@ -25,19 +25,19 @@
 
   ;; Required to avoid error with non-prefixed key. (official solution from general)
   (amber/local-leader-keys
-   "" nil)
+    "" nil)
 
   (amber/leader-keys
-   "." '(find-file :wk "find file")
-   "," '(switch-to-buffer :wk "switch to buffer")
-   ":" '(execute-extended-command :wk "M-x")
-   ";"  '(eval-expression :which-key "eval expression")
-   "b"  '(:ignore t :wk "buffer")
-   "bk" '(kill-current-buffer :wk "kill buffer")
-   "h"  '(:ignore t :which-key "help")
-   "hK" '(general-describe-keybindings :wk "describe keybindings")
-   "hF" '(describe-face :wk "describe face")
-   "ht" '(load-theme :wk "choose theme")))
+    "." '(find-file :wk "find file")
+    "," '(switch-to-buffer :wk "switch to buffer")
+    ":" '(execute-extended-command :wk "M-x")
+    ";"  '(eval-expression :which-key "eval expression")
+    "b"  '(:ignore t :wk "buffer")
+    "bk" '(kill-current-buffer :wk "kill buffer")
+    "h"  '(:ignore t :which-key "help")
+    "hK" '(general-describe-keybindings :wk "describe keybindings")
+    "hF" '(describe-face :wk "describe face")
+    "ht" '(load-theme :wk "choose theme")))
 
 (defun amber/window-split-and-follow ()
   "Split current window horizontally, then focus new window.
@@ -59,6 +59,7 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
   (evil-want-keybinding nil)
   (evil-want-C-u-scroll t)
   (evil-want-C-i-jump nil)
+  (evil-undo-system 'undo-fu)
   :config
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
@@ -98,9 +99,36 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
    [remap describe-key] 'helpful-key
    [remap describe-symbol] 'helpful-symbol)
   (amber/leader-keys
-   "hf" '(helpful-callable :wk "describe function")
-   "hk" '(helpful-key :wk "describe key")
-   "hv" '(helpful-variable :wk "describe variable")))
+    "hf" '(helpful-callable :wk "describe function")
+    "hk" '(helpful-key :wk "describe key")
+    "hv" '(helpful-variable :wk "describe variable")))
+
+(use-package undo-fu
+  :custom
+  (undo-limit 400000)
+  (undo-strong-limit 3000000)
+  (undo-outer-limit 48000000)
+  :config
+  (define-minor-mode global-undo-fu-mode
+    "Enables `undo-fu' for the current session."
+    :keymap (let ((map (make-sparse-keymap)))
+              (define-key map [remap undo] #'undo-fu-only-undo)
+              (define-key map [remap redo] #'undo-fu-only-redo)
+              (define-key map (kbd "C-_")     #'undo-fu-only-undo)
+              (define-key map (kbd "M-_")     #'undo-fu-only-redo)
+              (define-key map (kbd "C-M-_")   #'undo-fu-only-redo-all)
+              (define-key map (kbd "C-x r u") #'undo-fu-session-save)
+              (define-key map (kbd "C-x r U") #'undo-fu-session-recover)
+              map)
+    :init-value nil
+    :global t)
+  (global-undo-fu-mode 1))
+
+;; TODO: undo-fu-session-directory in cache
+(use-package undo-fu-session
+  :hook (global-undo-fu-mode . global-undo-fu-session-mode)
+  :custom
+  (undo-fu-session-incompatible-files '("\\.gpg$" "/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'")))
 
 (provide 'amber-keys)
 ;;; amber-keys.el ends here
