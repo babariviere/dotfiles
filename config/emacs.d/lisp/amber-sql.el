@@ -34,7 +34,7 @@
 
 (use-package sql
   :general
-  (amber/local-leader-keys
+  (amber/local-leader-keys sql-mode-map
     "e" '(:ignore t :wk "eval")
     "ee" '(sql-send-paragraph :wk "eval")
     "eb" '(sql-send-buffer :wk "eval buffer")
