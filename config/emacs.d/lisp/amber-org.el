@@ -151,7 +151,7 @@
 	(amber/org--babel-lazy-load lang)))
 
   (advice-add 'org-src--get-lang-mode :before #'amber/org--src-lazy-load-library-a)
-  
+
   (defun amber/org--babel-lazy-load-library-a (info)
     "Load babel libraries lazily when babel blocks are executed."
     (let* ((lang (nth 0 info))
@@ -170,6 +170,14 @@
 
   (advice-add #'org-babel-do-load-languages :override #'ignore))
 
+(defun amber/org-src-fix-newline-and-indent-a (&optional indent _arg _interactive)
+  "Mimic `newline-and-indent` in src blocks."
+  (when (and indent
+	     org-src-tab-acts-natively
+	     (org-in-src-block-p t))
+    (org-babel-do-in-edit-buffer
+     (call-interactively #'indent-for-tab-command))))
+
 (use-package org
   :hook ((org-mode . visual-line-mode)
 	 (org-mode . amber/org-babel-lazy-load-h))
@@ -179,6 +187,11 @@
   (org-indent-mode-turns-on-hiding-stars nil)
   (org-startup-indented t)
   (org-confirm-babel-evaluate nil)
+  (org-edit-src-content-indentation 0)
+  (org-src-preserve-indentation t)
+  (org-src-tab-acts-natively t)
+  :config
+  (advice-add #'org-return :after #'amber/org-src-fix-newline-and-indent-a)
   :general
   ('normal org-mode-map
   	   "RET" #'amber/org-dwin-at-point
