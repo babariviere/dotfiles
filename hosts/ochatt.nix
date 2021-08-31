@@ -2,7 +2,7 @@
 
 let
   # emacs = config.home-manager.users.bastienriviere.programs.emacs.package;
-  emacs = pkgs.emacsOsx;
+  emacs = pkgs.emacsGit;
 in {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget

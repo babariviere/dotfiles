@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  emacs = pkgs.emacsOsx;
+  emacs = pkgs.emacsGit;
   emacsclient = pkgs.writeScriptBin "emacsclient" ''
     #!${pkgs.runtimeShell}
 
