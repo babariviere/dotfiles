@@ -1,20 +1,51 @@
-{ emacs, emacsPackagesFor, lib, makeWrapper,
-  # external dependencies
-  direnv,
-  nixfmt,
-  ripgrep }:
+{ emacs, emacsPackagesFor, lib, makeWrapper, fetchFromGitHub, writeText
+, runCommand,
+# external dependencies
+direnv, nixfmt, ripgrep }:
 
 let
   emacs' = emacs.overrideAttrs (old: {
-    buildInputs = old.buildInputs or [] ++ [ makeWrapper ];
+    buildInputs = old.buildInputs or [ ] ++ [ makeWrapper ];
     postInstall = old.postInstall or "" + ''
-    wrapProgram $out/bin/emacs \
-      --prefix PATH : ${lib.makeBinPath [ nixfmt ripgrep ]}
-  '';
+      wrapProgram $out/bin/emacs \
+        --prefix PATH : ${lib.makeBinPath [ nixfmt ripgrep ]}
+    '';
   });
-  emacsWithPackages = (emacsPackagesFor emacs').emacsWithPackages;
-in
-emacsWithPackages (epkgs:
+  overrides = final: prev: {
+    doom-snippets = final.melpaBuild {
+      pname = "doom-snippets";
+      ename = "doom-snippets";
+      recipe = writeText "recipe" ''
+        (doom-snippets :fetcher github
+                       :repo "hlissner/doom-snippets"
+                       :files ("*.el" "*-mode" ".nosearch"))
+      '';
+      version = "20210730.0";
+      commit = "772e0fcaeee9b17ab3dfe10feccfa1b5199c4f60";
+      src = let
+        src = fetchFromGitHub {
+          owner = "hlissner";
+          repo = "doom-snippets";
+          rev = "772e0fcaeee9b17ab3dfe10feccfa1b5199c4f60";
+          sha256 = "1g99z0ws0jswh892f4cf62rkjl4jinjg63sl59m0z7f3n5hi9dc1";
+        };
+      in runCommand "doom-snippets-src" { } ''
+        cp -R ${src} $out
+        chmod +w $out/*
+        for d in $out/*/; do
+            touch "$d/.nosearch"
+        done
+      '';
+
+    };
+    yaml = prev.yaml.overrideAttrs (old: {
+      # Disable native comp as it keeps getting stuck
+      postInstall = "true";
+    });
+  };
+  emacsWithPackages = ((emacsPackagesFor emacs').overrideScope'
+    overrides).emacs.pkgs.emacsWithPackages;
+in emacsWithPackages (epkgs:
   with epkgs; [
     doom-modeline
     helpful
@@ -37,6 +68,8 @@ emacsWithPackages (epkgs:
     evil
     evil-collection
     general
+    undo-fu
+    undo-fu-session
 
     eldoc
 
@@ -99,7 +132,7 @@ emacsWithPackages (epkgs:
 
     # Snippets
     yasnippet
-    yasnippet-snippets
+    doom-snippets
 
     # Themes
     doom-themes

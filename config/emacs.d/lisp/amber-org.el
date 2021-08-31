@@ -210,11 +210,6 @@
 (use-package org-agenda
   :after org)
 
-;; enable <s, <n, etc...
-;; doc: https://orgmode.org/manual/Structure-Templates.html
-(use-package org-tempo
-  :after org)
-
 (use-package evil-org
   :after org
   :hook (org-mode . evil-org-mode)

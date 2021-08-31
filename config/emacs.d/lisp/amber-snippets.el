@@ -2,7 +2,7 @@
 
 (use-package yasnippet
   :config
-  (require 'yasnippet-snippets)
+  (require 'doom-snippets)
   (yas-global-mode 1))
 
 
