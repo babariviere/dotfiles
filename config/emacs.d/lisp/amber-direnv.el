@@ -37,7 +37,10 @@
 (use-package envrc
   :config
   (envrc-global-mode 1)
-  (amber/direnv-init-earlier-h))
+  (amber/direnv-init-earlier-h)
+
+  ;; ensure org-babel matches host's buffer
+  (advice-add #'org-babel-execute-src-block :around #'envrc-propagate-environment))
 
 (provide 'amber-direnv)
 
