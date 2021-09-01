@@ -125,6 +125,7 @@ in emacsWithPackages (epkgs:
     org-contrib
     org-superstar
     evil-org
+    org-roam
 
     # Nix
     nix-mode

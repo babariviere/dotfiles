@@ -32,6 +32,10 @@
 
 (require 'use-package)
 
+;;
+;; Functions
+;;
+
 ;; A slightly modified version of doom's one.
 ;; Source: https://github.com/hlissner/doom-emacs/blob/bf8495b4122701fb30cb6cea37281dc8f3bedcd0/modules/lang/org/autoload/org.el#L125
 (defun amber/org-dwin-at-point (&optional arg)
@@ -178,6 +182,23 @@
     (org-babel-do-in-edit-buffer
      (call-interactively #'indent-for-tab-command))))
 
+(defun amber/org-archive-subtree-as-completed ()
+  "Archive subtree into the daily file and mark it as completed if not done."
+  (interactive)
+  (let ((todo (org-get-todo-state)))
+    (when (not (or (equal "DONE" todo)
+		   (equal "MEETING" todo)))
+      (org-todo "DONE")))
+  (let* ((journal-dir (expand-file-name org-roam-dailies-directory org-roam-directory))
+	 (daily-name (format-time-string "%Y%m%d"))
+	 (org-archive-file (expand-file-name daily-name journal-dir))
+	 (org-archive-location (format "%s::" org-archive-file)))
+    (org-archive-subtree)))
+
+;;
+;; Packages setup
+;;
+
 (use-package org
   :hook ((org-mode . visual-line-mode)
 	 (org-mode . amber/org-babel-lazy-load-h))
@@ -190,6 +211,16 @@
   (org-edit-src-content-indentation 0)
   (org-src-preserve-indentation t)
   (org-src-tab-acts-natively t)
+  (org-todo-keywords '((sequence "TODO(t)" "NEXT(n!)" "|" "DONE(d!)")
+		       (sequence "WAITING(w@/!)" "HOLD(h@/!)" | "CANCELLED(c@/!)" "MEETING(m)")))
+  ;; TODO: better colors
+  (org-todo-keyword-faces '(("TODO" . org-todo)
+			    ("NEXT" . org-warning)
+			    ("DONE" . org-done)
+			    ("WAITING" . org-warning)
+			    ("HOLD" . org-warning)
+			    ("CANCELLED" . org-archived)
+			    ("MEETING" . org-warning)))
   :config
   (advice-add #'org-return :after #'amber/org-src-fix-newline-and-indent-a)
   :general
@@ -197,7 +228,39 @@
   	   "RET" #'amber/org-dwin-at-point
 	   [ret] #'amber/org-dwin-at-point)
   (amber/local-leader-keys org-mode-map
+    "a" '(amber/org-archive-subtree-as-complete :wk "archive (completed)")
     "t" '(amber/org-slow-todo :wk "select todo")))
+
+(use-package org-capture
+  :after org
+  :custom
+  ;; TODO: setup templates
+  ;; Need:
+  ;; - capture work task
+  ;; - capture meeting
+  ;; - capture project task
+  ;; - capture pr review
+  ;; - capture reference
+  (org-capture-templates nil))
+
+;; Allows for trigger and blocker
+;; See: https://www.nongnu.org/org-edna-el/
+(use-package org-edna
+  :after org
+  :hook (org-mode . org-edna-mode))
+
+(use-package org-roam
+  :hook (after-init . org-roam-mode)
+  :custom
+  (org-roam-completion-everywhere t)
+  (org-roam-completion-system 'default)
+  :init
+  (setq org-roam-v2-ack t))
+
+(use-package org-roam-dailies
+  :after org-roam
+  :custom
+  (org-roam-dailies-directory "journal/"))
 
 (use-package org-appear
   :hook (org-mode . org-appear-mode))
