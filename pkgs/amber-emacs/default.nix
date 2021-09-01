@@ -112,6 +112,10 @@ in emacsWithPackages (epkgs:
     alchemist
     exunit
 
+    # Flycheck
+    flycheck
+    flycheck-inline
+
     # Format
     format-all
 
@@ -124,6 +128,7 @@ in emacsWithPackages (epkgs:
     org
     org-appear
     org-contrib
+    org-edna
     org-superstar
     evil-org
     org-roam
