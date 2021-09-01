@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+pushd "$PROJECT_ROOT"
+
+nix flake update
+git add flake.lock
+git commit -m "chore: update flake.lock"
+git push
+
+popd
