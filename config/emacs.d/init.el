@@ -7,6 +7,10 @@
    `(fixed-pitch ((t ,fixed-pitch)))))
 
 (load-theme 'kaolin-ocean t)
+(custom-set-variables
+ '(kaolin-git-gutter-solid t)
+ '(kaolin-themes-git-gutter-solid t))
+
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'amber-keys)             ; must be loaded first
