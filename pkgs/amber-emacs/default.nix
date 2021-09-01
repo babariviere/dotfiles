@@ -54,6 +54,7 @@ in emacsWithPackages (epkgs:
     gcmh
     hl-todo
     git-gutter
+    git-gutter-fringe
 
     # Completion
     vertico
