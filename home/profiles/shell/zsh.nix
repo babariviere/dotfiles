@@ -14,11 +14,21 @@
       share = false;
     };
 
-    initExtra =
-      let flow = "${inputs.flow.defaultPackage.${pkgs.system}}/bin/flow";
-      in (builtins.readFile "${config.dotfiles.configDir}/zshrc") + "\n" + ''
-        eval "$(${flow} setup $HOME/src --path ${flow})"
-      '';
+    initExtra = let
+      flow = "${inputs.flow.defaultPackage.${pkgs.system}}/bin/flow";
+      base = builtins.readFile "${config.dotfiles.configDir}/zshrc";
+    in ''
+      ${base}
+      eval "$(${flow} setup $HOME/src --path ${flow})"
+    '';
+
+    completionInit = ''
+      autoload -Uz compinit
+      for dump in ~/.zcompdump(N.mh+24); do
+        compinit
+      done
+      compinit -C
+    '';
 
     shellAliases = {
       ls = "${pkgs.exa}/bin/exa";
