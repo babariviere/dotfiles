@@ -1,7 +1,7 @@
 on emacsclient(input)
 	set scr to "/etc/profiles/per-user/bastienriviere/bin/emacsclient -n -c -a \"/etc/profiles/per-user/bastienriviere/bin/emacs\""
 	if input is not "" then
-		set scr to script & " '" & input & "'"
+		set scr to scr & " '" & input & "'"
 	end if
 	do shell script scr
 end emacsclient
