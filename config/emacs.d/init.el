@@ -9,8 +9,13 @@
 (load-theme 'kaolin-ocean t)
 (custom-set-variables
  '(kaolin-git-gutter-solid t)
- '(kaolin-themes-git-gutter-solid t))
+ '(kaolin-themes-git-gutter-solid t)
+ ;; Fix warning about not being able to determine a suitable EmacsClient
+ '(with-editor-emacsclient-executable "emacsclient"))
 
+(when (memq window-system '(mac ns x))
+  (setq exec-path-from-shell-arguments '("-l"))
+  (exec-path-from-shell-initialize))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'amber-keys)             ; must be loaded first
