@@ -307,6 +307,12 @@ Examples:
 (use-package org-protocol
   :after org)
 
+(use-package org-refile
+  :after org
+  :custom
+  (org-refile-targets (mapcar (-partial #'concat org-directory)
+			      (list org-agenda-file org-tasks-file))))
+
 (use-package org-clock
   :after org
   :custom
