@@ -196,12 +196,56 @@
     (org-archive-subtree)))
 
 ;;
+;; Variables
+;;
+
+(defgroup amber-org nil "Customization for amber's org flow.")
+
+(defcustom org-inbox-file "inbox.org"
+  "File to use for inbox."
+  :type 'file
+  :group 'amber-org)
+
+(defcustom org-agenda-file "agenda.org"
+  "File to use for agenda.
+Contains non-actionnable tasks and/or tasks related to people.
+Examples:
+- a meeting
+- a recuring event (haircut, cleaning, ...)
+- call someone"
+  :type 'file
+  :group 'amber-org)
+
+(defcustom org-tasks-file "tasks.org"
+  "File to use for all actionnable tasks.  They are mostly programming tasks.
+Examples:
+- work on project task
+- customize Emacs org mode
+- do a PR review"
+  :type 'file
+  :group 'amber-org)
+
+(defcustom org-meeting-directory "meeting/"
+  "Directory holding all past meetings."
+  :type 'directory
+  :group 'amber-org)
+
+(defcustom org-reference-directory "refs/"
+  "Directory holding all web references."
+  :type 'directory
+  :group 'amber-org)
+
+;;
 ;; Packages setup
 ;;
+
+;; TODO: to handle meeting:
+;; when meeting done, move subtree to meeting/%{date}-%{slug}
 
 (use-package org
   :hook ((org-mode . visual-line-mode)
 	 (org-mode . amber/org-babel-lazy-load-h))
+  :demand t
   :custom
   (org-hide-emphasis-marker t)
   (org-hide-leading-star nil)
@@ -211,8 +255,9 @@
   (org-edit-src-content-indentation 0)
   (org-src-preserve-indentation t)
   (org-src-tab-acts-natively t)
+  (org-directory (expand-file-name "~/src/github.com/babariviere/notes/"))
   (org-todo-keywords '((sequence "TODO(t)" "NEXT(n!)" "|" "DONE(d!)")
-		       (sequence "WAITING(w@/!)" "HOLD(h@/!)" | "CANCELLED(c@/!)" "MEETING(m)")))
+		       (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "MEETING(m)")))
   ;; TODO: better colors
   (org-todo-keyword-faces '(("TODO" . org-todo)
 			    ("NEXT" . org-warning)
@@ -229,19 +274,43 @@
 	   [ret] #'amber/org-dwin-at-point)
   (amber/local-leader-keys org-mode-map
     "a" '(amber/org-archive-subtree-as-complete :wk "archive (completed)")
-    "t" '(amber/org-slow-todo :wk "select todo")))
+    "e" '(org-set-effort :wk "set effort")
+    "t" '(amber/org-slow-todo :wk "select todo"))
+  (amber/leader-keys
+    "n" '(:ignore t :wk "notes")
+    "nc" '(org-capture :wk "capture")))
+
+;; TODO: use hydra for refiling as in http://www.howardism.org/Technical/Emacs/getting-more-boxes-done.html
 
 (use-package org-capture
   :after org
   :custom
-  ;; TODO: setup templates
-  ;; Need:
-  ;; - capture work task
-  ;; - capture meeting
-  ;; - capture project task
-  ;; - capture pr review
-  ;; - capture reference
-  (org-capture-templates nil))
+  ;; TODO: template must be able to accept parameters from org-roam files
+  ;; Examples:
+  ;; - you can add people to meetings
+  ;;
+  (org-capture-templates
+   `(("i" "Inbox" entry (file ,(concat org-directory org-inbox-file))
+      "* %? :refile:\n:PROPERTIES:\n:CREATED: %U\n:END:"
+      :clock-in t :clock-resume t :empty-lines 1)
+     ("t" "Task" entry (file ,(concat org-directory org-inbox-file))
+      "* TODO %? :refile:\n:PROPERTIES:\n:CREATED: %U\n:END:"
+      :clock-in t :clock-resume t :empty-lines 1)
+     ("m" "Meeting (work)" entry (file ,(concat org-directory org-agenda-file))
+      "* MEETING [%<%Y-%m-%d %a>] :meeting:work:refile:\n:PROPERTIES:\n:CREATED: %U\n:END:\n\nParticipants:%^{Participants}\nNotes:\n%?"
+      :clock-in t :clock-resume t :empty-lines 1)
+     ("p" "PR Review" entry (file+headline ,(concat org-directory org-tasks-file) "Pull requests")
+      "* REVIEW gh:%?\n:PROPERTIES:\n:CREATED: %U\n:END:"))))
+
+;; TODO: define org-link gh:owner/repo#pr + define org-protocol to handle it
+
+(use-package org-protocol
+  :after org)
+
+(use-package org-clock
+  :after org
+  :custom
+  (org-clock-out-remove-zero-time-clocks t))
 
 ;; Allows for trigger and blocker
 ;; See: https://www.nongnu.org/org-edna-el/
@@ -250,10 +319,11 @@
   :hook (org-mode . org-edna-mode))
 
 (use-package org-roam
-  :hook (after-init . org-roam-mode)
+  :after org
   :custom
   (org-roam-completion-everywhere t)
   (org-roam-completion-system 'default)
+  (org-roam-directory org-directory)
   :init
   (setq org-roam-v2-ack t))
 
@@ -261,6 +331,18 @@
   :after org-roam
   :custom
   (org-roam-dailies-directory "journal/"))
+
+(use-package org-roam-protocol
+  :after org-roam
+  :custom
+  (org-roam-capture-ref-templates
+   '(("r" "Reference" plain
+      "%?"
+      :target (file+head "refs/${slug}.org"
+			 "#+TITLE: ${title}\n#+ROAM_REFS: ${refs}\n\n")
+      :unnarrowed t)))
+  :init
+  (make-directory (concat org-roam-directory org-reference-directory) t))
 
 (use-package org-appear
   :hook (org-mode . org-appear-mode))
