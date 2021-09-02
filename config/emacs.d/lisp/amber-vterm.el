@@ -37,8 +37,8 @@
   :general
   (amber/leader-keys
     "o" '(:ignore t :wk "open")
-    "ot" '(vterm-other-window :wk "open")
-    "oT" '(vterm :wk "open here")))
+    "ot" '(vterm-other-window :wk "open vterm")
+    "oT" '(vterm :wk "open vterm here")))
 
 
 (provide 'amber-vterm)
