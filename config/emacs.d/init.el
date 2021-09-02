@@ -13,7 +13,9 @@
  ;; Fix warning about not being able to determine a suitable EmacsClient
  '(with-editor-emacsclient-executable "emacsclient"))
 
-(when (memq window-system '(mac ns x))
+(when (or (memq window-system '(mac ns x))
+	  (daemonp))
+  (require 'exec-path-from-shell)
   (setq exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-initialize))
 
