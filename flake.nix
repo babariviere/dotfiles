@@ -55,6 +55,7 @@
             experimental-features = nix-command flakes
             keep-outputs = true
             keep-derivations = true
+            allowed-impure-host-deps = /usr/bin/osacompile
           '';
           gc = {
             automatic =
@@ -85,7 +86,6 @@
           "/private/tmp"
           "/private/var/tmp"
           "/usr/bin/env"
-          "/usr/bin/osacompile"
         ];
         services.nix-daemon = {
           enable = true;
