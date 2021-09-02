@@ -75,7 +75,8 @@
 	    ;; tab is used by yasnippet
 	    "<tab>"  nil
 	    "TAB" nil
-	    "RET" #'company-complete-selection))
+	    "RET" #'company-complete-selection
+	    [C-return] #'evil-ret))
 
 (use-package company-box
   :hook (company-mode . company-box-mode)
