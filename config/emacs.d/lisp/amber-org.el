@@ -195,6 +195,15 @@
 	 (org-archive-location (format "%s::" org-archive-file)))
     (org-archive-subtree)))
 
+(defun amber/org-clean-refile-tag ()
+  "Remove refile tag from refiled item."
+  (save-window-excursion
+    (org-refile-goto-last-stored)
+    (org-set-tags
+     (remove "refile"
+	     (seq-remove (lambda (tag) (get-text-property 0 'inherited tag))
+			 (org-get-tags))))))
+
 ;;
 ;; Variables
 ;;
@@ -266,6 +275,7 @@ Examples:
 			    ("HOLD" . org-warning)
 			    ("CANCELLED" . org-archived)
 			    ("MEETING" . org-warning)))
+  (org-global-properties '(("Effort_ALL" . "0:05 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00")))
   :config
   (advice-add #'org-return :after #'amber/org-src-fix-newline-and-indent-a)
   :general
@@ -279,8 +289,6 @@ Examples:
   (amber/leader-keys
     "n" '(:ignore t :wk "notes")
     "nc" '(org-capture :wk "capture")))
-
-;; TODO: use hydra for refiling as in http://www.howardism.org/Technical/Emacs/getting-more-boxes-done.html
 
 (use-package org-capture
   :after org
@@ -307,11 +315,24 @@ Examples:
 (use-package org-protocol
   :after org)
 
-(use-package org-refile
+(use-package org-agenda
   :after org
   :custom
-  (org-refile-targets (mapcar (-partial #'concat org-directory)
-			      (list org-agenda-file org-tasks-file))))
+  (org-agenda-files (mapcar (-partial #'concat org-directory)
+			    (list org-inbox-file org-agenda-file org-tasks-file))))
+
+;; TODO: use hydra for refiling as in http://www.howardism.org/Technical/Emacs/getting-more-boxes-done.html
+(use-package org-refile
+  :after (org org-agenda)
+  :hook (org-after-refile-insert . amber/org-clean-refile-tag)
+  :custom
+  (org-refile-targets '((nil :maxlevel . 3)
+			(org-agenda-files :maxlevel . 3)))
+  (org-refile-use-outline-path 'file)
+  (org-outline-path-complete-in-steps nil)
+  :general
+  (amber/local-leader-keys org-mode-map
+    "r" '(org-refile :wk "refile")))
 
 (use-package org-clock
   :after org
@@ -357,9 +378,6 @@ Examples:
   :hook (org-mode . org-superstar-mode)
   :custom
   (org-superstar-leading-bullet ?\s))
-
-(use-package org-agenda
-  :after org)
 
 (use-package evil-org
   :after org
