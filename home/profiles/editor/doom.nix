@@ -43,7 +43,7 @@ in {
   #   package = emacs;
   # };
 
-  home.sessionVariables = {
+  env = {
     EDITOR = "${emacs}/bin/emacsclient -nw";
     VISUAL = "${emacsclient}/bin/emacsclient";
   };

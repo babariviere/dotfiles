@@ -17,7 +17,7 @@ in {
   home.packages = [ emacs ];
   programs.zsh = { shellAliases = { e = "${emacs}/bin/emacsclient"; }; };
 
-  home.sessionVariables = {
+  env = {
     EDITOR = "${emacs}/bin/emacsclient -nw";
     VISUAL = "${emacs}/bin/emacsclient";
   };
