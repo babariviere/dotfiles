@@ -17,8 +17,10 @@ in {
     message = "profiles.editor.emacs cannot be enable with doom.";
   }];
 
-  home.packages = [ emacs ];
+  home.packages = [ emacs ]
+    ++ (lib.optionals pkgs.stdenv.isDarwin [ pkgs.emacs-client ]);
 
+  programs.emacs.package = emacs;
   programs.zsh = { shellAliases = { e = "${emacsclient}/bin/emacsclient"; }; };
 
   home.sessionPath = [ "$HOME/.emacs.d/bin" ];

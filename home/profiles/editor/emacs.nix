@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let
-  emacs = pkgs.amber-emacs;
+let emacs = pkgs.amber-emacs;
 in {
   assertions = [{
     assertion = !config.profiles.editor.doom.enable;
@@ -14,7 +13,9 @@ in {
       recursive = true;
     };
   };
-  home.packages = [ emacs ];
+  home.packages = [ emacs ]
+    ++ (lib.optionals pkgs.stdenv.isDarwin [ pkgs.emacs-client ]);
+  programs.emacs.package = emacs;
   programs.zsh = { shellAliases = { e = "${emacs}/bin/emacsclient"; }; };
 
   env = {

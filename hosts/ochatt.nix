@@ -1,12 +1,9 @@
 { config, inputs, lib, pkgs, ... }:
 
-let
-  # emacs = config.home-manager.users.bastienriviere.programs.emacs.package;
-  emacs = pkgs.emacsGit;
-in {
+{
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = [ emacs pkgs.hugo ];
+  environment.systemPackages = [ pkgs.hugo ];
 
   homebrew = {
     enable = true;
@@ -121,6 +118,13 @@ in {
 
   # NOTE: I don't have system profiles (RIP)
   # profiles = { };
+
+  services.emacs = let user = config.home-manager.users.bastienriviere;
+  in {
+    enable =
+      user.profiles.editor.emacs.enable or user.profiles.editor.doom.enable;
+    package = user.programs.emacs.package;
+  };
 
   fonts = {
     enableFontDir = true;
