@@ -15,6 +15,7 @@ jobs:
             experimental-features = nix-command flakes
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
             sandbox = relaxed
+            extra-sandbox-paths = /usr/bin/osacompile
       - uses: cachix/cachix-action@v10
         with:
           name: babariviere
