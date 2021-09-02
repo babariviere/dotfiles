@@ -73,3 +73,6 @@
     nil nil '(center repeated))
   (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240]
     nil nil 'bottom))
+
+;; temporary, I want to find a solution for macOS
+(server-start)
