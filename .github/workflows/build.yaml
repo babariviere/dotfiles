@@ -15,7 +15,6 @@ jobs:
             experimental-features = nix-command flakes
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
             sandbox = relaxed
-            extra-sandbox-paths = /System/Library/Frameworks /System/Library/PrivateFrameworks /usr/lib /private/tmp /private/var/tmp /usr/bin
       - uses: cachix/cachix-action@v10
         with:
           name: babariviere

@@ -91,9 +91,7 @@ let
     </dict>
     </plist>
   '';
-in runCommand "emacs-client" {
-  __impureHostDeps = [ "/usr/bin/osacompile" ];
-} ''
+in runCommand "emacs-client" { __useChroot = true; } ''
   mkdir -p $out/Applications
   /usr/bin/osacompile -o $out/Applications/EmacsClient.app ${script}
   cp ${emacs}/Applications/Emacs.app/Contents/Resources/{document,Emacs}.icns $out/Applications/EmacsClient.app/Contents/Resources/
