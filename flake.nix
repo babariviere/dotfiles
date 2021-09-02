@@ -85,6 +85,7 @@
           "/private/tmp"
           "/private/var/tmp"
           "/usr/bin/env"
+          "/usr/bin/osacompile"
         ];
         services.nix-daemon = {
           enable = true;
@@ -184,7 +185,8 @@
           haskellPackages = prev.haskellPackages.override {
             overrides = hself: hsuper: {
               http2 = hsuper.http2.overrideAttrs (drv: { doCheck = false; });
-              servant-client = hsuper.servant-client.overrideAttrs (drv: { doCheck = false; });
+              servant-client =
+                hsuper.servant-client.overrideAttrs (drv: { doCheck = false; });
             };
           };
         };
