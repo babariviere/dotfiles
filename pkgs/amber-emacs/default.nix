@@ -4,13 +4,6 @@
 direnv, nixfmt, ripgrep }:
 
 let
-  emacs' = emacs.overrideAttrs (old: {
-    buildInputs = old.buildInputs or [ ] ++ [ makeWrapper ];
-    postInstall = old.postInstall or "" + ''
-      wrapProgram $out/bin/emacs \
-        --prefix PATH : ${lib.makeBinPath [ nixfmt ripgrep ]}
-    '';
-  });
   overrides = final: prev: {
     doom-snippets = final.melpaBuild {
       pname = "doom-snippets";
@@ -43,7 +36,7 @@ let
       postInstall = "true";
     });
   };
-  emacsWithPackages = ((emacsPackagesFor emacs').overrideScope'
+  emacsWithPackages = ((emacsPackagesFor emacs).overrideScope'
     overrides).emacs.pkgs.emacsWithPackages;
 in emacsWithPackages (epkgs:
   with epkgs; [
@@ -55,6 +48,7 @@ in emacsWithPackages (epkgs:
     hl-todo
     git-gutter
     git-gutter-fringe
+    exec-path-from-shell
 
     # Completion
     vertico
