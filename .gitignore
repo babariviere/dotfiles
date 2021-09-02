@@ -3,7 +3,7 @@ result
 !/secrets/secrets.nix
 !/secrets/*.age
 /.direnv
-/.emacs.d
+/.home
 /.cache
 .DS_Store
 /.zsh*

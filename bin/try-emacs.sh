@@ -1,6 +1,9 @@
 #!/bin/sh
 
-rsync -rtv $(pwd)/config/emacs.d/ $(pwd)/.emacs.d/
+set -e
+
+hm=$(pwd)/.home/amber-emacs
+rsync -rtv $(pwd)/config/emacs.d/ $hm/.emacs.d/
 # For vterm
-rsync -rtv $(pwd)/config/zshrc $(pwd)/.zshrc
-env HOME=$(pwd) nix run .#amber-emacs -- --debug --debug-init
+rsync -rtv $(pwd)/config/zshrc $hm/.zshrc
+env HOME=$hm nix run .#amber-emacs -- --debug --debug-init
