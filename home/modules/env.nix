@@ -13,7 +13,7 @@
   in lib.mkMerge [
     {
       programs.bash.sessionVariables = config.env;
-      programs.zsh.sessionVariables = config.env;
+      programs.zsh.envExtra = sessionVarsStr;
     }
     (lib.mkIf (!config.programs.bash.enable) {
       home.file.".profile".source = pkgs.writeShellScript "profile" ''
