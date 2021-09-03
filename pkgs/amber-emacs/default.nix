@@ -88,6 +88,9 @@ in emacsWithPackages (epkgs:
     company
     company-box
 
+    # Csharp
+    csharp-mode
+
     # Data
     yaml-mode
 
