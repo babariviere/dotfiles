@@ -21,5 +21,7 @@ jobs:
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - name: Build packages
         run: nix build .#emacsGit .#amber-emacs -L
+      - name: Build emacs-client (in non-sandbox)
+        run: nix build .#emacs-client --option sandbox false
       - name: Build ochatt
-        run: nix build .#darwinConfigurations.ochatt.system -L --option sandbox relaxed
+        run: nix build .#darwinConfigurations.ochatt.system -L
