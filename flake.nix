@@ -4,7 +4,7 @@
   inputs = {
     nix.url = "github:nixos/nix";
     nix.inputs.nixpkgs.follows = "nixpkgs";
-    nixpkgs.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
@@ -21,13 +21,6 @@
     # Emacs
     emacs.url = "github:nix-community/emacs-overlay";
     emacs.inputs.nixpkgs.follows = "nixpkgs";
-    # doom-emacs = {
-    #   url = "github:hlissner/doom-emacs/develop";
-    #   flake = false;
-    # };
-    # FIXME: does not work for now
-    # nix-doom-emacs.url = "github:vlaci/nix-doom-emacs";
-    # nix-doom-emacs.inputs.doom-emacs.follows = "doom-emacs";
   };
 
   outputs = { self, darwin, nixpkgs, home-manager, utils, deploy, ... }@inputs:
