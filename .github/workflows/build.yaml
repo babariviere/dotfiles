@@ -22,4 +22,4 @@ jobs:
       - name: Build packages
         run: nix build .#emacsGit .#amber-emacs -L
       - name: Build ochatt
-        run: nix build .#darwinConfigurations.ochatt.system -L
+        run: nix build .#darwinConfigurations.ochatt.system -L --option sandbox relaxed
