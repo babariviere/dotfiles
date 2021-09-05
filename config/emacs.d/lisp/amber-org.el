@@ -284,7 +284,11 @@ Examples:
 	   [ret] #'amber/org-dwin-at-point)
   (amber/local-leader-keys org-mode-map
     "a" '(amber/org-archive-subtree-as-complete :wk "archive (completed)")
+    "c" '(:ignore t :wk "clock")
+    "ci" '(org-clock-in :wk "clock in")
+    "co" '(org-clock-out :wk "clock out")
     "e" '(org-set-effort :wk "set effort")
+    "p" '(org-priority :wk "set priority")
     "t" '(amber/org-slow-todo :wk "select todo"))
   (amber/leader-keys
     "n" '(:ignore t :wk "notes")
