@@ -1,0 +1,44 @@
+name: "Update flakes"
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 8 * * *'
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: cachix/install-nix-action@v13
+        with:
+          install_url: https://nixos-nix-install-tests.cachix.org/serve/8d8xah1f6ypccpmw9cfsl8ziw1chj4cl/install
+          install_options: --tarball-url-prefix nixos-nix-install-tests.cachix.org/serve
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            sandbox = relaxed
+      - name: Make changes to pull request
+        id: flk
+        run: |
+          echo "::set-output name=nix-flk-update::$(nix flake update)\n"
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: 'chore: update flake.lock'
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          branch: chore/flake-update
+          delete-branch: true
+          title: 'chore: update flake.lock'
+          body: |
+            Output of `nix flake update`: 
+
+            ```
+            ${{join(steps.flk.outputs.*, '\n')}}
+            ```
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
