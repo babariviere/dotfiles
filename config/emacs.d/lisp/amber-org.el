@@ -355,8 +355,16 @@ Examples:
   (org-roam-completion-everywhere t)
   (org-roam-completion-system 'default)
   (org-roam-directory org-directory)
+  (org-roam-capture-templates
+   '(("d" "default" plain "%?" :target
+      (file+head "brain/${slug}.org" "#+title: ${title}\n")
+      :unnarrowed t)))
   :init
-  (setq org-roam-v2-ack t))
+  (setq org-roam-v2-ack t)
+
+  :general
+  (amber/leader-keys
+    "nf" '(org-roam-node-find :wk "find note")))
 
 (use-package org-roam-dailies
   :after org-roam
