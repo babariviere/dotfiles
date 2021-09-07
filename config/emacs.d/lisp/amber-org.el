@@ -320,6 +320,7 @@ Examples:
     "ci" '(org-clock-in :wk "clock in")
     "co" '(org-clock-out :wk "clock out")
     "e" '(org-set-effort :wk "set effort")
+	"i" '(org-roam-node-insert :wk "insert node")
 	"l" '(org-insert-link :wk "insert link")
     "p" '(org-priority :wk "set priority")
     "t" '(amber/org-slow-todo :wk "select todo"))
@@ -435,7 +436,11 @@ Examples:
   (make-directory (concat org-roam-directory org-reference-directory) t))
 
 (use-package org-appear
-  :hook (org-mode . org-appear-mode))
+  :hook (org-mode . org-appear-mode)
+  :custom
+  (org-appear-autolinks nil)
+  (org-appear-autosubmarkers t)
+  (org-appear-autoemphasis t))
 
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode)
