@@ -228,6 +228,12 @@
   (interactive)
   (find-file (expand-file-name org-tasks-file org-directory)))
 
+(defun amber/org-roam-toggle-buffer ()
+  "Toggle org-roam buffer if not visible."
+  (and (not org-roam-capture--node)
+       (not (eq 'visible (org-roam-buffer--visibility)))
+       (org-roam-buffer-toggle)))
+
 ;;
 ;; Variables
 ;;
@@ -382,6 +388,8 @@ Examples:
 
 (use-package org-roam
   :after org
+  :hook ((org-roam-mode . org-roam-db-autosync-mode)
+	 (org-roam-find-file . amber/org-roam-toggle-buffer))
   :custom
   (org-roam-completion-everywhere t)
   (org-roam-completion-system 'default)
@@ -392,6 +400,16 @@ Examples:
       :unnarrowed t)))
   :init
   (setq org-roam-v2-ack t)
+
+  :config
+  (add-to-list 'display-buffer-alist
+               '("\\*org-roam\\*"
+		 (display-buffer-in-side-window)
+		 (side . right)
+		 (slot . 0)
+		 (window-width . 0.33)
+		 (window-parameters . ((no-other-window . t)
+                                       (no-delete-other-windows . t)))))
 
   :general
   (amber/leader-keys
