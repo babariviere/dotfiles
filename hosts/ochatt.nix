@@ -141,6 +141,7 @@
         common-lisp.enable = true;
         clojure.enable = true;
         elixir.enable = true;
+        go.enable = true;
         nix.enable = true;
         rust.enable = true;
       };

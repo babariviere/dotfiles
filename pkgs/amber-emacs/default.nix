@@ -116,6 +116,10 @@ in emacsWithPackages (epkgs:
     # Format
     format-all
 
+    # Go
+    go-mode
+    go-eldoc
+
     # Lsp
     lsp-mode
     lsp-ui

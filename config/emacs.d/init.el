@@ -40,6 +40,7 @@
 (require 'amber-data)
 (require 'amber-elisp)
 (require 'amber-elixir)
+(require 'amber-go)
 (require 'amber-org)
 (require 'amber-nix)
 (require 'amber-sql)

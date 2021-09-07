@@ -3,6 +3,7 @@
 set -e
 
 hm=$(pwd)/.home/amber-emacs
+mkdir -p "$hm"
 rsync -rtv $(pwd)/config/emacs.d/ $hm/.emacs.d/
 # For vterm
 rsync -rtv $(pwd)/config/zshrc $hm/.zshrc
