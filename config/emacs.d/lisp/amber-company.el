@@ -5,6 +5,7 @@
 (defvar amber/company-backend-alist
   '((text-mode (:separate company-dabbrev company-yasnippet company-ispell))
     (prog-mode (company-capf :with company-yasnippet))
+	(org-mode (:separate company-capf company-dabbrev company-yasnippet company-ispell))
     (conf-mode company-capf company-dabbrev-code company-yasnippet)))
 
 (defun amber/company--backends ()
@@ -70,13 +71,13 @@
   (company-dabbrev-downcase nil)
   :general
   (:keymaps 'company-active-map
-	    "C-j" #'company-select-next
-	    "C-k" #'company-select-previous
-	    ;; tab is used by yasnippet
-	    "<tab>"  nil
-	    "TAB" nil
-	    "RET" #'company-complete-selection
-	    [C-return] #'evil-ret))
+			"C-j" #'company-select-next
+			"C-k" #'company-select-previous
+			;; tab is used by yasnippet
+			"<tab>"  nil
+			"TAB" nil
+			"RET" #'company-complete-selection
+			[C-return] #'evil-ret))
 
 (use-package company-box
   :hook (company-mode . company-box-mode)

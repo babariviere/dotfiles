@@ -44,85 +44,85 @@
   (if (button-at (point))
       (call-interactively #'push-button)
     (let* ((context (org-element-context))
-	   (type (org-element-type context)))
+		   (type (org-element-type context)))
       ;; skip over unimportant contexts
       (while (and context (memq type '(verbatim code bold italic underline strike-through subscript superscript)))
-	(setq context (org-element-property :parent context)
-	      type (org-element-type context)))
+		(setq context (org-element-property :parent context)
+			  type (org-element-type context)))
       (pcase type
-	(`headline
-	 (cond ((memq (bound-and-true-p org-goto-map)
-		      (current-active-maps))
-		(org-goto-ret))
-	       ((and (fboundp 'toc-org-insert-toc)
-		     (member "TOC" (org-get-tags)))
-		(toc-org-insert-toc)
-		(message "Updating table of contents"))
-	       ((string= "ARCHIVE" (car-safe (org-get-tags)))
-		(org-force-cycle-archived))
-	       ((or (org-element-property :todo-type context)
-		    (org-element-property :scheduled context))
-		(let ((org-use-fast-todo-selection nil))
-		  (org-todo))))
-	 ;; Update any metadata
-	 (org-update-checkbox-count)
-	 (org-update-parent-todo-statistics)
-	 (when (and (fboundp 'toc-org-insert-toc)
-		    (member "TOC" (org-get-tags)))
-	   (toc-org-insert-toc)
-	   (message "Updating table of contents")))
+		(`headline
+		 (cond ((memq (bound-and-true-p org-goto-map)
+					  (current-active-maps))
+				(org-goto-ret))
+			   ((and (fboundp 'toc-org-insert-toc)
+					 (member "TOC" (org-get-tags)))
+				(toc-org-insert-toc)
+				(message "Updating table of contents"))
+			   ((string= "ARCHIVE" (car-safe (org-get-tags)))
+				(org-force-cycle-archived))
+			   ((or (org-element-property :todo-type context)
+					(org-element-property :scheduled context))
+				(let ((org-use-fast-todo-selection nil))
+				  (org-todo))))
+		 ;; Update any metadata
+		 (org-update-checkbox-count)
+		 (org-update-parent-todo-statistics)
+		 (when (and (fboundp 'toc-org-insert-toc)
+					(member "TOC" (org-get-tags)))
+		   (toc-org-insert-toc)
+		   (message "Updating table of contents")))
 
-	(`clock (org-clock-update-time-maybe))
+		(`clock (org-clock-update-time-maybe))
 
-	(`footnote-reference
-	 (org-footnote-goto-definition (org-element-property :label context)))
+		(`footnote-reference
+		 (org-footnote-goto-definition (org-element-property :label context)))
 
-	(`footnote-definition
-	 (org-footnote-goto-previous-reference (org-element-property :label context)))
+		(`footnote-definition
+		 (org-footnote-goto-previous-reference (org-element-property :label context)))
 
-	((or `planning `timestamp)
-	 (org-follow-timestamp-link))
+		((or `planning `timestamp)
+		 (org-follow-timestamp-link))
 
-	((or `table `table-row)
-	 (if (org-at-TBLFM-p)
-	     (org-table-calc-current-TBLFM)
-	   (ignore-errors
-	     (save-excursion
-	       (goto-char (org-element-property :contents-begin context))
-	       (org-call-with-arg 'org-table-recalculate (or arg t))))))
+		((or `table `table-row)
+		 (if (org-at-TBLFM-p)
+			 (org-table-calc-current-TBLFM)
+		   (ignore-errors
+			 (save-excursion
+			   (goto-char (org-element-property :contents-begin context))
+			   (org-call-with-arg 'org-table-recalculate (or arg t))))))
 
-	(`table-cell
-	 (org-table-blank-field)
-	 (org-table-recalculate arg)
-	 (when (and (string-empty-p (string-trim (org-table-get-field)))
-		    (bound-and-true-p evil-local-mode))
-	   (evil-change-state 'insert)))
+		(`table-cell
+		 (org-table-blank-field)
+		 (org-table-recalculate arg)
+		 (when (and (string-empty-p (string-trim (org-table-get-field)))
+					(bound-and-true-p evil-local-mode))
+		   (evil-change-state 'insert)))
 
-	(`babel-call
-	 (org-babel-lob-execute-maybe))
+		(`babel-call
+		 (org-babel-lob-execute-maybe))
 
-	(`statistics-cookie
-	 (save-excursion (org-update-statistics-cookies arg)))
+		(`statistics-cookie
+		 (save-excursion (org-update-statistics-cookies arg)))
 
-	((or `src-block `inline-src-block)
-	 (org-babel-execute-src-block arg))
+		((or `src-block `inline-src-block)
+		 (org-babel-execute-src-block arg))
 
-	((or `latex-fragment `latex-environment)
-	 (org-latex-preview arg))
+		((or `latex-fragment `latex-environment)
+		 (org-latex-preview arg))
 
-	(`link
-	 (let* ((lineage (org-element-lineage context '(link) t))
-		(path (org-element-property :path lineage)))
-	   (if (or (equal (org-element-property :type lineage) "img")
-		   (and path (image-type-from-file-name path)))
-	       (+org--toggle-inline-images-in-subtree
-		(org-element-property :begin lineage)
-		(org-element-property :end lineage))
-	     (org-open-at-point arg))))
+		(`link
+		 (let* ((lineage (org-element-lineage context '(link) t))
+				(path (org-element-property :path lineage)))
+		   (if (or (equal (org-element-property :type lineage) "img")
+				   (and path (image-type-from-file-name path)))
+			   (+org--toggle-inline-images-in-subtree
+				(org-element-property :begin lineage)
+				(org-element-property :end lineage))
+			 (org-open-at-point arg))))
 
-	((guard (org-element-property :checkbox (org-element-lineage context '(item) t)))
-	 (let ((match (and (org-at-item-checkbox-p) (match-string 1))))
-	   (org-toggle-checkbox (if (equal match "[ ]") '(16)))))))))
+		((guard (org-element-property :checkbox (org-element-lineage context '(item) t)))
+		 (let ((match (and (org-at-item-checkbox-p) (match-string 1))))
+		   (org-toggle-checkbox (if (equal match "[ ]") '(16)))))))))
 
 (defun amber/org-slow-todo ()
   "Launch org-todo with fast-mode disabled."
@@ -152,7 +152,7 @@
   (defun amber/org--src-lazy-load-library-a (lang)
     "Lazy load a babel package to ensure syntax highlighting."
     (or (cdr (assoc lang org-src-lang-modes))
-	(amber/org--babel-lazy-load lang)))
+		(amber/org--babel-lazy-load lang)))
 
   (advice-add 'org-src--get-lang-mode :before #'amber/org--src-lazy-load-library-a)
 
@@ -161,10 +161,10 @@
     (let* ((lang (nth 0 info))
            (lang (cond ((symbolp lang) lang)
                        ((stringp lang) (intern lang))))
-	   ;; useful if we want to add aliases
+		   ;; useful if we want to add aliases
            ;; (lang (or (cdr (assq lang +org-babel-mode-alist))
            ;;           lang))
-	   )
+		   )
       (amber/org--babel-lazy-load
        lang (and (not (assq :sync (nth 2 info)))
                  (assq :async (nth 2 info))))
@@ -177,8 +177,8 @@
 (defun amber/org-src-fix-newline-and-indent-a (&optional indent _arg _interactive)
   "Mimic `newline-and-indent` in src blocks."
   (when (and indent
-	     org-src-tab-acts-natively
-	     (org-in-src-block-p t))
+			 org-src-tab-acts-natively
+			 (org-in-src-block-p t))
     (org-babel-do-in-edit-buffer
      (call-interactively #'indent-for-tab-command))))
 
@@ -187,21 +187,21 @@
   (interactive)
   (let ((todo (org-get-todo-state)))
     (when (not (or (equal "DONE" todo)
-		   (equal "MEETING" todo)))
+				   (equal "MEETING" todo)))
       (org-todo "DONE")))
   (save-window-excursion
     (let* ((org-roam-directory (expand-file-name org-roam-dailies-directory org-roam-directory))
-	   (default-template (car org-roam-dailies-capture-templates))
-	   (template (car org-roam-dailies-capture-templates))
-	   (template-start (seq-take template 2))
-	   (template-end (seq-drop template 4)))
+		   (default-template (car org-roam-dailies-capture-templates))
+		   (template (car org-roam-dailies-capture-templates))
+		   (template-start (seq-take template 2))
+		   (template-end (seq-drop template 4)))
       (org-roam-capture- :node (org-roam-node-create)
-			 :templates (list (append template-start '(plain "") template-end))
-			 :props (list :override-default-time (current-time) :immediate-finish t))))
+						 :templates (list (append template-start '(plain "") template-end))
+						 :props (list :override-default-time (current-time) :immediate-finish t))))
   (let* ((journal-dir (expand-file-name org-roam-dailies-directory org-roam-directory))
-	 (daily-name (format-time-string "%Y-%m-%d.org"))
-	 (org-archive-file (expand-file-name daily-name journal-dir))
-	 (org-archive-location (format "%s::" org-archive-file)))
+		 (daily-name (format-time-string "%Y-%m-%d.org"))
+		 (org-archive-file (expand-file-name daily-name journal-dir))
+		 (org-archive-location (format "%s::" org-archive-file)))
     (org-archive-subtree)))
 
 (defun amber/org-clean-refile-tag ()
@@ -210,8 +210,8 @@
     (org-refile-goto-last-stored)
     (org-set-tags
      (remove "refile"
-	     (seq-remove (lambda (tag) (get-text-property 0 'inherited tag))
-			 (org-get-tags))))))
+			 (seq-remove (lambda (tag) (get-text-property 0 'inherited tag))
+						 (org-get-tags))))))
 
 (defun amber/org-goto-inbox ()
   "Goto inbox file."
@@ -283,7 +283,7 @@ Examples:
 
 (use-package org
   :hook ((org-mode . visual-line-mode)
-	 (org-mode . amber/org-babel-lazy-load-h))
+		 (org-mode . amber/org-babel-lazy-load-h))
   :demand t
   :custom
   (org-hide-emphasis-marker t)
@@ -296,29 +296,31 @@ Examples:
   (org-src-tab-acts-natively t)
   (org-directory (expand-file-name "~/src/github.com/babariviere/notes/"))
   (org-todo-keywords '((sequence "TODO(t)" "NEXT(n!)" "|" "DONE(d!)")
-		       (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "MEETING(m)")))
+					   (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "MEETING(m)")))
   ;; TODO: better colors
   (org-todo-keyword-faces '(("TODO" . org-todo)
-			    ("NEXT" . org-warning)
-			    ("DONE" . org-done)
-			    ("WAITING" . org-warning)
-			    ("HOLD" . org-warning)
-			    ("CANCELLED" . org-archived)
-			    ("MEETING" . org-warning)))
+							("NEXT" . org-warning)
+							("DONE" . org-done)
+							("WAITING" . org-warning)
+							("HOLD" . org-warning)
+							("CANCELLED" . org-archived)
+							("MEETING" . org-warning)))
   (org-global-properties '(("Effort_ALL" . "0:05 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00")))
   :config
   (advice-add #'org-return :after #'amber/org-src-fix-newline-and-indent-a)
   :general
   ('normal org-mode-map
-  	   "RET" #'amber/org-dwin-at-point
-	   [ret] #'amber/org-dwin-at-point)
+  		   "RET" #'amber/org-dwin-at-point
+		   [ret] #'amber/org-dwin-at-point)
   (amber/local-leader-keys org-mode-map
+	"" nil
     "a" '(:ignore t :wk "archive")
     "at" '(amber/org-archive-subtree-as-completed :wk "archive task")
     "c" '(:ignore t :wk "clock")
     "ci" '(org-clock-in :wk "clock in")
     "co" '(org-clock-out :wk "clock out")
     "e" '(org-set-effort :wk "set effort")
+	"l" '(org-insert-link :wk "insert link")
     "p" '(org-priority :wk "set priority")
     "t" '(amber/org-slow-todo :wk "select todo"))
   (amber/leader-keys
@@ -357,7 +359,7 @@ Examples:
   :after org
   :custom
   (org-agenda-files (mapcar (-partial #'concat org-directory)
-			    (list org-inbox-file org-agenda-file org-tasks-file)))
+							(list org-inbox-file org-agenda-file org-tasks-file)))
   :general
   (amber/leader-keys
     "oa" '(org-agenda :wk "open agenda")))
@@ -368,7 +370,7 @@ Examples:
   :hook (org-after-refile-insert . amber/org-clean-refile-tag)
   :custom
   (org-refile-targets '((nil :maxlevel . 3)
-			(org-agenda-files :maxlevel . 3)))
+						(org-agenda-files :maxlevel . 3)))
   (org-refile-use-outline-path 'file)
   (org-outline-path-complete-in-steps nil)
   :general
@@ -389,7 +391,7 @@ Examples:
 (use-package org-roam
   :after org
   :hook ((org-roam-mode . org-roam-db-autosync-mode)
-	 (org-roam-find-file . amber/org-roam-toggle-buffer))
+		 (org-roam-find-file . amber/org-roam-toggle-buffer))
   :custom
   (org-roam-completion-everywhere t)
   (org-roam-completion-system 'default)
@@ -404,11 +406,11 @@ Examples:
   :config
   (add-to-list 'display-buffer-alist
                '("\\*org-roam\\*"
-		 (display-buffer-in-side-window)
-		 (side . right)
-		 (slot . 0)
-		 (window-width . 0.33)
-		 (window-parameters . ((no-other-window . t)
+				 (display-buffer-in-side-window)
+				 (side . right)
+				 (slot . 0)
+				 (window-width . 0.33)
+				 (window-parameters . ((no-other-window . t)
                                        (no-delete-other-windows . t)))))
 
   :general
@@ -427,7 +429,7 @@ Examples:
    '(("r" "Reference" plain
       "%?"
       :target (file+head "refs/${slug}.org"
-			 "#+TITLE: ${title}\n#+ROAM_REFS: ${refs}\n\n")
+						 "#+TITLE: ${title}\n#+ROAM_REFS: ${refs}\n\n")
       :unnarrowed t)))
   :init
   (make-directory (concat org-roam-directory org-reference-directory) t))
