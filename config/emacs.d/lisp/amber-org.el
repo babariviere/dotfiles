@@ -189,8 +189,17 @@
     (when (not (or (equal "DONE" todo)
 		   (equal "MEETING" todo)))
       (org-todo "DONE")))
+  (save-window-excursion
+    (let* ((org-roam-directory (expand-file-name org-roam-dailies-directory org-roam-directory))
+	   (default-template (car org-roam-dailies-capture-templates))
+	   (template (car org-roam-dailies-capture-templates))
+	   (template-start (seq-take template 2))
+	   (template-end (seq-drop template 4)))
+      (org-roam-capture- :node (org-roam-node-create)
+			 :templates (list (append template-start '(plain "") template-end))
+			 :props (list :override-default-time (current-time) :immediate-finish t))))
   (let* ((journal-dir (expand-file-name org-roam-dailies-directory org-roam-directory))
-	 (daily-name (format-time-string "%Y%m%d"))
+	 (daily-name (format-time-string "%Y-%m-%d.org"))
 	 (org-archive-file (expand-file-name daily-name journal-dir))
 	 (org-archive-location (format "%s::" org-archive-file)))
     (org-archive-subtree)))
@@ -203,6 +212,21 @@
      (remove "refile"
 	     (seq-remove (lambda (tag) (get-text-property 0 'inherited tag))
 			 (org-get-tags))))))
+
+(defun amber/org-goto-inbox ()
+  "Goto inbox file."
+  (interactive)
+  (find-file (expand-file-name org-inbox-file org-directory)))
+
+(defun amber/org-goto-agenda ()
+  "Goto agenda file."
+  (interactive)
+  (find-file (expand-file-name org-agenda-file org-directory)))
+
+(defun amber/org-goto-tasks ()
+  "Goto tasks file."
+  (interactive)
+  (find-file (expand-file-name org-tasks-file org-directory)))
 
 ;;
 ;; Variables
@@ -283,7 +307,8 @@ Examples:
   	   "RET" #'amber/org-dwin-at-point
 	   [ret] #'amber/org-dwin-at-point)
   (amber/local-leader-keys org-mode-map
-    "a" '(amber/org-archive-subtree-as-complete :wk "archive (completed)")
+    "a" '(:ignore t :wk "archive")
+    "at" '(amber/org-archive-subtree-as-completed :wk "archive task")
     "c" '(:ignore t :wk "clock")
     "ci" '(org-clock-in :wk "clock in")
     "co" '(org-clock-out :wk "clock out")
@@ -292,7 +317,10 @@ Examples:
     "t" '(amber/org-slow-todo :wk "select todo"))
   (amber/leader-keys
     "n" '(:ignore t :wk "notes")
-    "nc" '(org-capture :wk "capture")))
+    "nc" '(org-capture :wk "capture")
+    "oA" '(amber/org-goto-agenda :wk "open agenda.org")
+    "oi" '(amber/org-goto-inbox :wk "open inbox.org")
+    "oI" '(amber/org-goto-tasks :wk "open tasks.org")))
 
 (use-package org-capture
   :after org
@@ -323,7 +351,10 @@ Examples:
   :after org
   :custom
   (org-agenda-files (mapcar (-partial #'concat org-directory)
-			    (list org-inbox-file org-agenda-file org-tasks-file))))
+			    (list org-inbox-file org-agenda-file org-tasks-file)))
+  :general
+  (amber/leader-keys
+    "oa" '(org-agenda :wk "open agenda")))
 
 ;; TODO: use hydra for refiling as in http://www.howardism.org/Technical/Emacs/getting-more-boxes-done.html
 (use-package org-refile
