@@ -29,12 +29,79 @@
 
 (require 'use-package)
 
+(defvar amber/go-last-test nil
+  "The last test run.")
+
+(defun amber/go--spawn (cmd)
+  "Spawn go CMD and keep selected window."
+  (save-selected-window
+    (compile cmd)))
+
+(defun amber/go--run-tests (args)
+  "Run test.  Execute cmd go test ARGS."
+  (let ((cmd (concat "go test " args)))
+    (setq amber/go-last-test (concat "cd " default-directory ";" cmd))
+    (amber/go--spawn cmd)))
+
+(defun amber/go-test-rerun ()
+  "Rerun last test."
+  (interactive)
+  (if amber/go-last-test
+      (amber/go--spawn amber/go-last-test)
+    (amber/go-test-all)))
+
+(defun amber/go-test-all ()
+  "Run all test."
+  (interactive)
+  (amber/go-run-tests ""))
+
+(defun amber/go-test-nested ()
+  "Run all nested test."
+  (interactive)
+  (amber/go-run-tests "./..."))
+
+(defun amber/go-test-single ()
+  "Run single test."
+  (interactive)
+  (if (string-match "_test\\.go" buffer-file-name)
+      (save-excursion
+        (re-search-backward "^func[ ]+\\(([[:alnum:]]*?[ ]?[*]?[[:alnum:]]+)[ ]+\\)?\\(Test[[:alnum:]_]+\\)(.*)")
+        (+go--run-tests (concat "-run" "='" (match-string-no-properties 2) "'")))
+    (error "Must be in a _test.go file")))
+
+(defun amber/go-toggle-test-file-name ()
+  "Return the test/source file name."
+  (let ((file-name (file-name-base (buffer-file-name))))
+    (if (s-suffix-p "_test" file-name)
+	(concat (string-remove-suffix "_test" file-name) ".go")
+      (concat file-name "_test.go"))))
+
+;; TODO: this function is not ideal, need some rework:
+;; - split it in two functions (look at exunit)
+;; - add support for project root tests folder
+(defun amber/go-toggle-file-and-test ()
+  (interactive)
+  (let ((file-name (amber/go-toggle-test-file-name)))
+    (if (file-exists-p file-name)
+	(find-file file-name)
+      (error "No file found."))))
+
 (use-package go-mode
   :mode "\\.go\\'"
-  :hook (go-mode . lsp-deferred))
+  :hook (go-mode . lsp)
+  :general
+  (amber/local-leader-keys go-mode-map
+    "t" '(:ignore t :wk "test")
+    "ts" '(amber/go-test-single :wk "test signle")
+    "ta" '(amber/go-test-all :wk "test all")
+    "tr" '(amber/go-test-rerun :wk "rerun test")
+    "tn" '(amber/go-test-nested :wk "test nested")))
 
-(use-package go-eldoc
-  :hook (go-mode . go-eldoc-setup))
+(use-package go-gen-test
+  :general
+  (amber/local-leader-keys go-mode-map
+    "tg" '(go-gen-test-dwim :wk "generate tests")
+    "tG" '(go-gen-test-all :wk "generate all tests")))
 
 (provide 'amber-go)
 

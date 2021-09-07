@@ -118,7 +118,7 @@ in emacsWithPackages (epkgs:
 
     # Go
     go-mode
-    go-eldoc
+    go-gen-test
 
     # Lsp
     lsp-mode
