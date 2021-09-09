@@ -1,12 +1,5 @@
 name: "Build"
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - develop
-  pull_request:
-    branches:
-      - develop
+on: [workflow_dispatch, push, pull_request]
 jobs:
   build:
     runs-on: macos-latest
