@@ -28,6 +28,8 @@ jobs:
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.BABA_GITHUB_TOKEN }}
         with:
           commit-message: 'chore: update flake.lock'
           committer: GitHub <noreply@github.com>
