@@ -15,7 +15,7 @@ jobs:
           install_options: --tarball-url-prefix nixos-nix-install-tests.cachix.org/serve
           extra_nix_config: |
             experimental-features = nix-command flakes
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            access-tokens = github.com=${{ secrets.BABA_GITHUB_TOKEN }}
             sandbox = relaxed
       - name: Make changes to pull request
         id: flk
