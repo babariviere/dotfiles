@@ -32,8 +32,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BABA_GITHUB_TOKEN }}
         with:
           commit-message: 'chore: update flake.lock'
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          committer: Bastien Riviere <babathriviere@gmail.com>
+          author: Bastien Riviere <babathriviere@gmail.com>
           signoff: false
           branch: chore/flake-update
           delete-branch: true
