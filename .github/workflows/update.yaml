@@ -29,9 +29,8 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
+          token: ${{ secrets.BABA_GITHUB_TOKEN }}
           commit-message: 'chore: update flake.lock'
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
           branch: chore/flake-update
           delete-branch: true
