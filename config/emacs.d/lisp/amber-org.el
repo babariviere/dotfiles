@@ -367,7 +367,7 @@ Examples:
 
 ;; TODO: use hydra for refiling as in http://www.howardism.org/Technical/Emacs/getting-more-boxes-done.html
 (use-package org-refile
-  :after (org org-agenda)
+  :after org
   :hook (org-after-refile-insert . amber/org-clean-refile-tag)
   :custom
   (org-refile-targets '((nil :maxlevel . 3)
@@ -391,6 +391,7 @@ Examples:
 
 (use-package org-roam
   :after org
+  :demand t
   :hook ((org-roam-mode . org-roam-db-autosync-mode)
 		 (org-roam-find-file . amber/org-roam-toggle-buffer))
   :custom
