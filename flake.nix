@@ -4,7 +4,7 @@
   inputs = {
     nix.url = "github:nixos/nix";
     nix.inputs.nixpkgs.follows = "nixpkgs";
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
@@ -13,6 +13,9 @@
     utils.url = "github:numtide/flake-utils";
     deploy.url = "github:serokell/deploy-rs";
     agenix.url = "github:ryantm/agenix";
+    agenix-cli.url = "github:cole-h/agenix-cli";
+    agenix-cli.inputs.nixpkgs.follows = "nixpkgs";
+    agenix-cli.inputs.mozilla.url = "github:mozilla/nixpkgs-mozilla";
     hosts-denylist = {
       url = "github:StevenBlack/hosts";
       flake = false;
@@ -186,7 +189,7 @@
           delta = prev.delta.overrideAttrs (drv: { doCheck = false; });
         };
       in {
-        neovim = inputs.neovim-nightly.overlay;
+        # neovim = inputs.neovim-nightly.overlay;
         emacs = inputs.emacs.overlay;
         python = pythonOverlay;
         delta = deltaOverlay;
@@ -205,7 +208,7 @@
 
         devShell = pkgs.mkShell {
           buildInputs = [
-            inputs.agenix.defaultPackage."${system}"
+            inputs.agenix-cli.defaultPackage."${system}"
             deploy.defaultPackage."${system}"
           ];
         };

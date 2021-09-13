@@ -1,7 +1,13 @@
 result
 /secrets/*
-!/secrets/secrets.nix
 !/secrets/*.age
+!/secrets/**/
+/secrets/*/*
+!/secrets/**/
+!/secrets/**/*.age
+/secrets/*/*/*
+!/secrets/**/**/
+!/secrets/**/**/*.age
 /.direnv
 /.home
 /.cache

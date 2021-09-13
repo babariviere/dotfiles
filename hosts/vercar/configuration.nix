@@ -221,11 +221,12 @@
 
   age.secrets = {
     "nix-serve" = {
-      file = ../../secrets/vercar.nix-serve.age;
+      file = ../../secrets/vercar/nix-serve.age;
       owner = "nix-serve";
       group = "nogroup";
     };
   };
+  system.activationScripts.users.supportsDryActivation = lib.mkForce false;
 
   users.users.nix-serve = { isNormalUser = true; };
 

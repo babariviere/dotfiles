@@ -18,6 +18,44 @@
         "type": "github"
       }
     },
+    "agenix-cli": {
+      "inputs": {
+        "crate2nix": "crate2nix",
+        "mozilla": "mozilla",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1629751265,
+        "narHash": "sha256-DGuw2jFeXFUgVo39fsB9cTGijNzmchUGbtfs8NNBz7A=",
+        "owner": "cole-h",
+        "repo": "agenix-cli",
+        "rev": "c6d8f80ef48544d569ff54a62a481b24260f43d7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cole-h",
+        "repo": "agenix-cli",
+        "type": "github"
+      }
+    },
+    "crate2nix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1614443448,
+        "narHash": "sha256-E5dg/EwJKvEhU/KYJC/Hblm+Vw88rtj++GN+p9dNPpE=",
+        "owner": "kolloch",
+        "repo": "crate2nix",
+        "rev": "5dd04e6de2fbdbeb067ab701de8ec29bc228c389",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kolloch",
+        "repo": "crate2nix",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -206,6 +244,22 @@
         "type": "github"
       }
     },
+    "mozilla": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1629225446,
+        "narHash": "sha256-HJX4Pc5ZUAg4apxB/XHuJ+6ukzvRQqeZMjscOBst2bA=",
+        "owner": "mozilla",
+        "repo": "nixpkgs-mozilla",
+        "rev": "0510159186dd2ef46e5464484fbdf119393afa58",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mozilla",
+        "repo": "nixpkgs-mozilla",
+        "type": "github"
+      }
+    },
     "naersk": {
       "inputs": {
         "nixpkgs": [
@@ -370,16 +424,16 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1630500761,
-        "narHash": "sha256-xjEjZro342lUPd5Z/fFwdAX1dMXXZ3tvPGqMpqs0U20=",
+        "lastModified": 1631470189,
+        "narHash": "sha256-hkUPYlpNOY9nbG1ByRin9NzPAYnPtwq/nGxO/DoeZd0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "6cc260cfd60f094500b79e279069b499806bf6d8",
+        "rev": "364b5555ee04bf61ee0075a3adab4c9351a8d38c",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixpkgs-unstable",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -387,6 +441,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "agenix-cli": "agenix-cli",
         "darwin": "darwin",
         "deploy": "deploy",
         "emacs": "emacs",

@@ -1,0 +1,13 @@
+[identities]
+ochatt = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKdGuXrkHZdLl/+/kTxtbByYyxhLpcMTzfx3fABK6qt4"
+vercar = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMO6/jzKplTgI8UEbJTdNskExUfQEJ9GG1b9smYXoaP4"
+
+[groups]
+users = [ "ochatt" ]
+servers = [ "vercar" ]
+admins = [ "ochatt" ]
+
+[[paths]]
+glob = "secrets/vercar/**"
+identities = [ "vercar" ]
+groups = [ "admins" ]
