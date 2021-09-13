@@ -219,13 +219,25 @@
     secretKeyFile = config.age.secrets."nix-serve".path;
   };
 
-  age.secrets = {
+  age.secrets = let
+    step-ca = file: {
+      name = "step-ca/${file}";
+      value = {
+        # TODO: make it readable for pki too
+        file = ../../secrets/vercar/step-ca + "/${file}.age";
+        owner = "nobody";
+        group = "step-ca";
+        mode = "0040";
+      };
+    };
+  in {
     "nix-serve" = {
       file = ../../secrets/vercar/nix-serve.age;
       owner = "nix-serve";
       group = "nogroup";
     };
-  };
+  } // (builtins.listToAttrs
+    (map step-ca [ "intermediate_ca.key" "root_ca.key" "password" ]));
   system.activationScripts.users.supportsDryActivation = lib.mkForce false;
 
   users.users.nix-serve = { isNormalUser = true; };
@@ -240,6 +252,12 @@
     options kvm ignore_msrs=1
   '';
 
+  profiles = {
+    security = {
+      step-ca.enable = true;
+      vaultwarden.enable = true;
+    };
+  };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

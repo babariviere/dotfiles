@@ -1,13 +1,16 @@
 result
 /secrets/*
-!/secrets/*.age
 !/secrets/**/
+!/secrets/*.age
+!/secrets/*.crt
 /secrets/*/*
 !/secrets/**/
 !/secrets/**/*.age
+!/secrets/**/*.crt
 /secrets/*/*/*
 !/secrets/**/**/
 !/secrets/**/**/*.age
+!/secrets/**/**/*.crt
 /.direnv
 /.home
 /.cache

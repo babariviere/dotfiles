@@ -18,13 +18,14 @@ let
           path' = path ++ [ n ];
           isHidden = lib.hasPrefix "." name;
         in if t == "regular" && !isHidden then
-          { config, inputs, lib, pkgs, ... }@attrs:
+          { config, lib, ... }@attrs:
           let
             # Import the profile file by concat all paths
-            content =
-              import (lib.foldl (a: b: a + "/${b}") profile-dir path') attrs;
-            options = content.options or { };
-            content' = content.config or content;
+            f = import (lib.foldl (a: b: a + "/${b}") profile-dir path');
+            args = (builtins.intersectAttrs (builtins.functionArgs f) attrs);
+            content = f args;
+            options = if content ? options then content.options else { };
+            content' = if content ? config then content.config else content;
           in {
             options.profiles = lib.setAttrByPath attrPath ({
               enable = lib.mkEnableOption
