@@ -1,0 +1,163 @@
+#+TITLE: Dotfiles
+
+* Dotfiles
+** Tasks
+*** TODO rename modules to profiles (and keep modules)
+*** TODO install MonoLisa from nix (is it possible?)
+*** TODO automatic setup of builders from network.nix
+*** TODO setup agebox
+*** TODO setup new flake system
+** Emacs config
+*** DONE completion system: vertico
+*** DONE magit
+*** DONE projectile
+*** DONE lisp editing
+*** DONE evil + general
+*** DONE company
+*** DONE nix
+*** TODO clojure
+*** DONE elixir
+*** TODO common-lisp
+**** TODO sly
+*** DONE [#A] direnv
+*** TODO org-mode (with agenda)
+**** DONE org-babel
+**** DONE find a way to behave like in doom (like delete leading spaces, probably evil-org)
+**** TODO org-pomodoro
+**** TODO org-chef
+**** TODO custom org-flow (ala org-gtd)
+***** What I want
+- inbox.org: capture all thoughts
+  for reference: https://blog.jethro.dev/posts/capturing_inbox/
+- references: capture template refs/${title} (https://github.com/d12frosted/environment/blob/master/emacs/lisp/lib-vulpea-capture.el)
+- projects.org: for projects tasks (work, personal, home, events, ...)
+- agenda.org: for meeting and other things, not tasks related
+- everything else: knowledge, no tasks
+- work/: work related notes
+- people/: people related notes
+
+***** Resources
+****** https://d12frosted.io/posts/2021-01-16-task-management-with-roam-vol5.html
+****** https://www.labri.fr/perso/nrougier/GTD/index.html
+****** https://blog.jethro.dev/posts/org_mode_workflow_preview/
+*** DONE lsp
+*** DONE yasnippet
+*** DONE elisp
+**** DONE eros
+**** DONE macrostep
+*** TODO flycheck
+*** DONE undo-fu
+*** DONE smartparens
+*** DONE format-all
+*** TODO avy
+*** TODO editorconfig 
+*** DONE hl-todo
+*** TODO evil-commentary
+*** DONE vterm
+*** DONE yaml
+*** DONE gcmh
+*** TODO window balancing
+*** References
+**** https://github.com/hlissner/doom-emacs
+**** https://github.com/abo-abo/oremacs
+**** https://github.com/angrybacon/dotemacs
+** Hosts
+*** ochatt
+MacOS machine
+
+*** vercar
+Thinkpad as a server
+
+* New flake system
+
+Inspiration:
+https://github.com/divnix/devos
+https://github.com/divnix/digga
+https://github.com/gytis-ivaskevicius/flake-utils-plus
+
+** DONE hosts and hostDefaults
+** DONE home
+** DONE profiles
+** TODO export nixosModules and darwinModules
+
+** Example
+
+#+begin_src nix
+lib.mkFlake {
+  profiles = lib.foldProfiles ./profiles;
+
+  hostDefaults = {
+    common = {
+      modules = [ ... ];
+      specialArgs = { inherit inputs; };
+      # maybe?
+      overlays = {};
+    };
+    platform = {
+      darwin = {
+        ...
+      };
+      linux = {
+        ...
+      };
+    };
+    system = {
+      x86_64-darwin = {
+        ...
+      };
+    };
+  };
+
+  # If hosts contains home manager config, they will be exporter in homeConfigurations with format `user@host`
+  hosts = {
+    ochatt = {
+      system = "x86_64-darwin";
+      modules = [];
+    };
+    vercar = {
+      system = "x86_64-linux";
+    };
+  };
+
+  # Home manager modules and profiles. They are found in home/{modules,profiles}
+  home = {
+    modules = {
+
+    };
+    profiles = lib.foldProfiles ./home/profiles;
+  };
+
+  lib = {};
+  overlay = {};
+  overlays = {};
+  defaultPackage = {};
+  packages = {};
+
+  devShell = {};
+}
+#+end_src
+
+* FAQ
+** How do I find my hostNames?
+
+*** TODO Specify a way to create an hostname / have a naming scheme
+*** Resources
+
+Site where I find birds: https://ebird.org
+Search birds in any language: https://avibase.bsc-eoc.org
+How they are translated to codes: https://www.audubonspokane.org/bird-codes
+
+*** Bird List
+
+- https://ebird.org/species/ochatt1 *took*
+- https://ebird.org/species/blujay
+- https://ebird.org/species/vercar1 *took*
+- https://ebird.org/species/bkbkin1/
+- https://ebird.org/species/beehum1/
+- https://ebird.org/species/brthum/
+- https://ebird.org/species/scihum1/
+- https://ebird.org/species/swbhum1/
+- https://ebird.org/species/vitsta1/
+- https://ebird.org/species/bkbwar
+- https://ebird.org/species/yehbla
+- https://ebird.org/species/orbbun1
