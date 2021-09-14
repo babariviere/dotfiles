@@ -44,13 +44,19 @@
   security.pki.certificateFiles = [
     (/. + config.dotfiles.dir
       + "/secrets/${config.networking.hostName}/step-ca/root_ca.crt")
-    (/. + config.dotfiles.dir
-      + "/secrets/${config.networking.hostName}/step-ca/intermediate_ca.crt")
   ];
 
   users.groups.step-ca.name = "step-ca";
 
-  systemd.services.step-ca.serviceConfig = {
-    SupplementaryGroups = [ config.users.groups.step-ca.name ];
+  # TODO: make it run before acme-* services
+  systemd.services.step-ca = let
+    certs = map (cert: "acme-${cert}.service")
+      (builtins.attrNames config.security.acme.certs);
+  in {
+    wantedBy = certs;
+    before = certs ++ [ "acme-selfsigned-ca.service" ];
+    serviceConfig = {
+      SupplementaryGroups = [ config.users.groups.step-ca.name ];
+    };
   };
 }
