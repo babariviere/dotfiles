@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }: {
+{ config, lib, pkgs, inputs, ... }: rec {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
@@ -236,8 +236,8 @@
       owner = "nix-serve";
       group = "nogroup";
     };
-  } // (builtins.listToAttrs
-    (map step-ca [ "intermediate_ca.key" "root_ca.key" "password" ]));
+  } // (lib.optionalAttrs profiles.security.step-ca.enable (builtins.listToAttrs
+    (map step-ca [ "intermediate_ca.key" "root_ca.key" "password" ])));
   system.activationScripts.users.supportsDryActivation = lib.mkForce false;
 
   users.users.nix-serve = { isNormalUser = true; };
