@@ -18,7 +18,7 @@ let
           path' = path ++ [ n ];
           isHidden = lib.hasPrefix "." name;
         in if t == "regular" && !isHidden then
-          { config, lib, ... }@attrs:
+          { config, lib, pkgs, ... }@attrs:
           let
             # Import the profile file by concat all paths
             f = import (lib.foldl (a: b: a + "/${b}") profile-dir path');
