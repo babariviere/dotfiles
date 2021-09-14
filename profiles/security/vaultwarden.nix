@@ -1,9 +1,9 @@
-{ config, lib, ... }:
+{ config, lib, options, ... }:
 
 let
   dataFolder = "/var/lib/vaultwarden";
   domain = "bw.${config.networking.hostName}.${config.networking.domain}";
-in {
+in lib.optionalAttrs (options.networking ? domain) {
   services.vaultwarden = {
     enable = true;
     backupDir = "${dataFolder}/backups";

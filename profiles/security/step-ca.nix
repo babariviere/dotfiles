@@ -1,6 +1,6 @@
-{ config, lib, ... }:
+{ config, lib, options, ... }:
 
-{
+lib.optionalAttrs (options.networking ? domain) {
   security.acme = {
     server =
       "https://${config.networking.hostName}.${config.networking.domain}:${
