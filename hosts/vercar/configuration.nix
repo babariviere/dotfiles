@@ -254,8 +254,8 @@
 
   profiles = {
     security = {
-      step-ca.enable = true;
-      vaultwarden.enable = true;
+      step-ca.enable = false;
+      vaultwarden.enable = false;
     };
   };
   # This value determines the NixOS release from which the default
