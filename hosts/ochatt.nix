@@ -169,19 +169,8 @@
       };
     };
 
-    home.packages = let
-      nvimConfig = pkgs.neovimUtils.makeNeovimConfig {
-        withPython3 = true;
-        withNodeJs = true;
-        viAlias = true;
-        vimAlias = true;
-      };
-      nvim = pkgs.wrapNeovimUnstable pkgs.neovim-nightly (nvimConfig // {
-        wrapperArgs = (lib.escapeShellArgs nvimConfig.wrapperArgs);
-        wrapRc = false;
-      });
-    in [
-      nvim
+    home.packages = [
+      pkgs.neovim
       pkgs.tree-sitter
 
       pkgs.tailscale
