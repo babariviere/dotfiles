@@ -48,13 +48,11 @@
 
   users.groups.step-ca.name = "step-ca";
 
-  # TODO: make it run before acme-* services
   systemd.services.step-ca = let
     certs = map (cert: "acme-${cert}.service")
       (builtins.attrNames config.security.acme.certs);
   in {
-    wantedBy = certs;
-    before = certs ++ [ "acme-selfsigned-ca.service" ];
+    requiredBy = certs;
     serviceConfig = {
       SupplementaryGroups = [ config.users.groups.step-ca.name ];
     };
