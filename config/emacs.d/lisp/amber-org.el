@@ -185,24 +185,33 @@
 (defun amber/org-archive-subtree-as-completed ()
   "Archive subtree into the daily file and mark it as completed if not done."
   (interactive)
-  (let ((todo (org-get-todo-state)))
+  (let ((todo (org-get-todo-state))
+		(org-after-todo-state-change-hook '()))
     (when (not (or (equal "DONE" todo)
-				   (equal "MEETING" todo)))
+				   (equal "MEETING" todo)
+				   (equal "CANCELLED" todo)))
       (org-todo "DONE")))
-  (save-window-excursion
-    (let* ((org-roam-directory (expand-file-name org-roam-dailies-directory org-roam-directory))
-		   (default-template (car org-roam-dailies-capture-templates))
-		   (template (car org-roam-dailies-capture-templates))
-		   (template-start (seq-take template 2))
-		   (template-end (seq-drop template 4)))
-      (org-roam-capture- :node (org-roam-node-create)
-						 :templates (list (append template-start '(plain "") template-end))
-						 :props (list :override-default-time (current-time) :immediate-finish t))))
-  (let* ((journal-dir (expand-file-name org-roam-dailies-directory org-roam-directory))
-		 (daily-name (format-time-string "%Y-%m-%d.org"))
-		 (org-archive-file (expand-file-name daily-name journal-dir))
-		 (org-archive-location (format "%s::" org-archive-file)))
-    (org-archive-subtree)))
+
+  (let* ((org-refile-keep nil)
+		 (org-roam-dailies-capture-templates
+		  '(("d" "default" entry "%?" :target
+			 (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n" ("Tasks")))))
+		 (org-after-refile-insert-hook #'save-buffer)
+		 today-file
+		 pos)
+	(save-window-excursion
+	  (org-roam-dailies--capture (current-time) t)
+	  (setq today-file (buffer-file-name))
+	  (setq pos (point)))
+
+	(unless (equal (file-truename today-file)
+				   (file-truename (buffer-file-name)))
+	  (org-refile nil nil (list "Tasks" today-file nil pos)))))
+
+(defun amber/org-archive-if-done ()
+  "Archive task if it's marked as done."
+  (when (equal org-state "DONE")
+	(amber/org-archive-subtree-as-completed)))
 
 (defun amber/org-clean-refile-tag ()
   "Remove refile tag from refiled item."
@@ -283,7 +292,8 @@ Examples:
 
 (use-package org
   :hook ((org-mode . visual-line-mode)
-		 (org-mode . amber/org-babel-lazy-load-h))
+		 (org-mode . amber/org-babel-lazy-load-h)
+		 (org-after-todo-state-change . amber/org-archive-if-done))
   :demand t
   :custom
   (org-hide-emphasis-marker t)
@@ -390,7 +400,6 @@ Examples:
   :hook (org-mode . org-edna-mode))
 
 (use-package org-roam
-  :after org
   :demand t
   :hook ((org-roam-mode . org-roam-db-autosync-mode)
 		 (org-roam-find-file . amber/org-roam-toggle-buffer))
