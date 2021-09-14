@@ -236,6 +236,11 @@
       owner = "nix-serve";
       group = "nogroup";
     };
+    "nginx-auth-file" = {
+      file = ../../secrets/vercar/nginx-auth-file.age;
+      owner = "nginx";
+      group = "nginx";
+    };
   } // (lib.optionalAttrs profiles.security.step-ca.enable (builtins.listToAttrs
     (map step-ca [ "intermediate_ca.key" "root_ca.key" "password" ])));
   system.activationScripts.users.supportsDryActivation = lib.mkForce false;
@@ -253,6 +258,7 @@
   '';
 
   profiles = {
+    server.webdav.enable = true;
     security = {
       step-ca.enable = false;
       vaultwarden.enable = false;

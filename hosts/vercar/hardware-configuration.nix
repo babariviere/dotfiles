@@ -30,6 +30,11 @@
     fsType = "vfat";
   };
 
+  fileSystems."/srv" = {
+    device = "tank/system/srv";
+    fsType = "zfs";
+  };
+
   fileSystems."/var" = {
     device = "tank/system/var";
     fsType = "zfs";
