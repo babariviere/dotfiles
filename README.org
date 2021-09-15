@@ -25,7 +25,9 @@
 **** DONE find a way to behave like in doom (like delete leading spaces, probably evil-org)
 **** TODO org-pomodoro
 **** TODO org-chef
-**** TODO custom org-flow (ala org-gtd)
+**** DONE custom org-flow (ala org-gtd)
+- State "DONE"       from "NEXT"       [2021-09-15 Wed 14:37]
+- State "NEXT"       from "TODO"       [2021-09-15 Wed 14:37]
 ***** What I want
 - inbox.org: capture all thoughts
   for reference: https://blog.jethro.dev/posts/capturing_inbox/
@@ -62,8 +64,10 @@
 **** https://github.com/abo-abo/oremacs
 **** https://github.com/angrybacon/dotemacs
 ** Hosts
-*** ochatt
+*** +ochatt+
 MacOS machine
+
+No more in use since I don't have it anymore.
 
 *** vercar
 Thinkpad as a server
