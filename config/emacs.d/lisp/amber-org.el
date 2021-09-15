@@ -214,15 +214,6 @@
 			 (equal (org-get-todo-state) "DONE"))
 	(amber/org-archive-subtree-as-completed)))
 
-(defun amber/org-clean-refile-tag ()
-  "Remove refile tag from refiled item."
-  (save-window-excursion
-    (org-refile-goto-last-stored)
-    (org-set-tags
-     (remove "refile"
-			 (seq-remove (lambda (tag) (get-text-property 0 'inherited tag))
-						 (org-get-tags))))))
-
 (defun amber/org-goto-inbox ()
   "Goto inbox file."
   (interactive)
@@ -317,6 +308,7 @@ Examples:
 							("CANCELLED" . org-archived)
 							("MEETING" . org-warning)))
   (org-global-properties '(("Effort_ALL" . "0:05 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00")))
+  (org-log-done 'time)
   :config
   (advice-add #'org-return :after #'amber/org-src-fix-newline-and-indent-a)
   :general
@@ -351,13 +343,13 @@ Examples:
   ;;
   (org-capture-templates
    `(("i" "Inbox" entry (file ,(concat org-directory org-inbox-file))
-      "* %? :refile:\n:PROPERTIES:\n:CREATED: %U\n:END:"
+      "* %?\n:PROPERTIES:\n:CREATED: %U\n:END:"
       :clock-in t :clock-resume t :empty-lines 1)
      ("t" "Task" entry (file ,(concat org-directory org-inbox-file))
-      "* TODO %? :refile:\n:PROPERTIES:\n:CREATED: %U\n:END:"
+      "* TODO %?\n:PROPERTIES:\n:CREATED: %U\n:END:"
       :clock-in t :clock-resume t :empty-lines 1)
      ("m" "Meeting (work)" entry (file ,(concat org-directory org-agenda-file))
-      "* MEETING [%<%Y-%m-%d %a>] :meeting:work:refile:\n:PROPERTIES:\n:CREATED: %U\n:END:\n\nParticipants:%^{Participants}\nNotes:\n%?"
+      "* MEETING [%<%Y-%m-%d %a>] :meeting:work:\n:PROPERTIES:\n:CREATED: %U\n:END:\n\nParticipants:%^{Participants}\nNotes:\n%?"
       :clock-in t :clock-resume t :empty-lines 1)
      ("p" "PR Review" entry (file+headline ,(concat org-directory org-tasks-file) "Pull requests")
       "* REVIEW gh:%?\n:PROPERTIES:\n:CREATED: %U\n:END:"))))
@@ -367,19 +359,53 @@ Examples:
 (use-package org-protocol
   :after org)
 
+(defun amber/org-agenda-view ()
+  "Open default `org-agenda` view."
+  (interactive)
+  (org-agenda nil "g"))
+
 (use-package org-agenda
   :after org
+  :demand t
+  :hook (after-init . amber/org-agenda-view)
   :custom
   (org-agenda-files (mapcar (-partial #'concat org-directory)
 							(list org-inbox-file org-agenda-file org-tasks-file)))
+  (org-agenda-window-setup 'other-window)
+  (org-agenda-hide-tags-regexp ".")
+  (org-agenda-custom-commands
+   '(("g" "GTD"
+	  ((agenda ""
+			   ((org-agenda-skip-function
+				 '(org-agenda-skip-entry-if 'deadline))
+				(org-deadline-warning-days 0)
+				(org-agenda-span 'day)))
+	   (todo "NEXT"
+			 ((org-agenda-skip-function
+			   '(org-agenda-skip-entry-if 'deadline))
+			  (org-agenda-prefix-format "  %i %-12:c [%e] ")
+			  (org-agenda-overriding-header "\nTasks\n")))
+	   (agenda ""
+			   ((org-agenda-entry-types '(:deadlines))
+				(org-agenda-format-date "")
+				(org-deadline-warning-days 7)
+				(org-agenda-span 'day)
+				(org-agenda-time-grid nil)
+				(org-agenda-skip-function
+				 '(org-agenda-skip-entry-if 'notregexp "\\* NEXT"))
+				(org-agenda-overriding-header "\nDeadlines")))
+	   (tags-todo "inbox"
+				  ((org-agenda-prefix-format "  %?-12t% s")
+				   (org-agenda-overriding-header "\nInbox\n")))
+	   (tags "CLOSED>=\"<today>\""
+			 ((org-agenda-overriding-header "\nCompleted today\n")))))))
   :general
   (amber/leader-keys
-    "oa" '(org-agenda :wk "open agenda")))
+    "oa" '(amber/org-agenda-view :wk "open agenda")))
 
 ;; TODO: use hydra for refiling as in http://www.howardism.org/Technical/Emacs/getting-more-boxes-done.html
 (use-package org-refile
   :after org
-  :hook (org-after-refile-insert . amber/org-clean-refile-tag)
   :custom
   (org-refile-targets '((nil :maxlevel . 3)
 						(org-agenda-files :maxlevel . 3)))
