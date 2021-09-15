@@ -33,8 +33,8 @@
 (defun amber/company-init-backends ()
   "Initialize backends for the buffer."
   (or (memq major-mode '(fundamental-mode special-mode))
-      buffer-read-only
-      (setq-local company-backends (amber/company--backends))))
+	  buffer-read-only
+	  (setq-local company-backends (amber/company--backends))))
 
 (defun amber/set-company-backend (modes &rest backends)
   "Set company BACKENDS for MODES."
@@ -51,6 +51,7 @@
 (add-hook 'after-change-major-mode-hook #'amber/company-init-backends 'append)
 
 (use-package company
+  :demand t
   :hook
   (after-init . global-company-mode)
   :custom
