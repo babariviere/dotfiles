@@ -210,7 +210,8 @@
 
 (defun amber/org-archive-if-done ()
   "Archive task if it's marked as done."
-  (when (equal (org-get-todo-state) "DONE")
+  (when (and (string-prefix-p org-directory (buffer-file-name))
+			 (equal (org-get-todo-state) "DONE"))
 	(amber/org-archive-subtree-as-completed)))
 
 (defun amber/org-clean-refile-tag ()
