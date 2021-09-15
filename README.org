@@ -72,6 +72,9 @@ No more in use since I don't have it anymore.
 *** vercar
 Thinkpad as a server
 
+*** beehum
+Thinkpad for work.
+
 * New flake system
 
 Inspiration:
@@ -153,11 +156,11 @@ How they are translated to codes: https://www.audubonspokane.org/bird-codes
 
 *** Bird List
 
-- https://ebird.org/species/ochatt1 *took*
+- https://ebird.org/species/ochatt1 *previously took*
 - https://ebird.org/species/blujay
 - https://ebird.org/species/vercar1 *took*
 - https://ebird.org/species/bkbkin1/
-- https://ebird.org/species/beehum1/
+- https://ebird.org/species/beehum1/ *took*
 - https://ebird.org/species/brthum/
 - https://ebird.org/species/scihum1/
 - https://ebird.org/species/swbhum1/
