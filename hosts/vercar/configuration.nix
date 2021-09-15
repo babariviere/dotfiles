@@ -9,12 +9,6 @@
 
   networking.hostName = "${config.meta.specie.code}";
   networking.domain = "home";
-  services.tailscale.enable = true;
-  networking.firewall.allowedTCPPorts = lib.mkForce [ ];
-  networking.firewall.allowedUDPPorts =
-    lib.mkForce [ config.services.tailscale.port ];
-  networking.firewall.trustedInterfaces =
-    [ config.services.tailscale.interfaceName ];
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
@@ -258,6 +252,7 @@
   '';
 
   profiles = {
+    net.tailscale.enable = true;
     server.webdav.enable = true;
     security = {
       step-ca.enable = false;
