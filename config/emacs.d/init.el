@@ -16,7 +16,7 @@
  '(tab-width 4))
 
 (when (or (memq window-system '(mac ns x))
-	  (daemonp))
+		  (daemonp))
   (require 'exec-path-from-shell)
   (setq exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-initialize))
@@ -66,21 +66,19 @@
   :config
   (global-hl-todo-mode 1))
 
-(use-package git-gutter
+(use-package diff-hl
+  :hook ((dired-mode . diff-hl-dired-mode-unless-remote)
+		 (prog-mode . diff-hl-mode)
+         (magit-pre-refresh . diff-hl-magit-pre-refresh)
+         (magit-post-refresh . diff-hl-magit-post-refresh))
   :config
-  (global-git-gutter-mode +1))
-
-(use-package git-gutter-fringe
-  :config
-  ;; standardize default fringe width
-  (if (fboundp 'fringe-mode) (fringe-mode '4))
-
-  ;; places the git gutter outside the margins.
-  (setq-default fringes-outside-margins t)
-  ;; thin fringe bitmaps
-  (define-fringe-bitmap 'git-gutter-fr:added [224]
+  ;; use margin instead of fringe
+  (define-fringe-bitmap 'amber/diff-hl-fringe [224]
     nil nil '(center repeated))
-  (define-fringe-bitmap 'git-gutter-fr:modified [224]
-    nil nil '(center repeated))
-  (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240]
-    nil nil 'bottom))
+  (setq diff-hl-fringe-bmp-function (lambda (type pos) 'amber/diff-hl-fringe)
+		diff-hl-margin-symbols-alist '((insert . " ")
+									   (delete . " ")
+									   (change . " ")
+									   (unknown . " ")
+									   (ignored . " ")))
+  (diff-hl-margin-mode))
