@@ -46,12 +46,7 @@
       (setf (alist-get mode amber/company-backend-alist)
             backends))))
 
-(put 'amber/company-init-backends 'permanent-local-hook t)
-
-(add-hook 'after-change-major-mode-hook #'amber/company-init-backends 'append)
-
 (use-package company
-  :demand t
   :hook
   (after-init . global-company-mode)
   :custom
@@ -70,6 +65,10 @@
   ;; domain-specific words with particular casing.
   (company-dabbrev-ignore-case nil)
   (company-dabbrev-downcase nil)
+  :config
+  (put 'amber/company-init-backends 'permanent-local-hook t)
+
+  (add-hook 'after-change-major-mode-hook #'amber/company-init-backends 'append)
   :general
   (:keymaps 'company-active-map
 			"C-j" #'company-select-next
