@@ -396,9 +396,7 @@ Examples:
 				(org-agenda-overriding-header "\nDeadlines")))
 	   (tags-todo "inbox"
 				  ((org-agenda-prefix-format "  %?-12t% s")
-				   (org-agenda-overriding-header "\nInbox\n")))
-	   (tags "CLOSED>=\"<today>\""
-			 ((org-agenda-overriding-header "\nCompleted today\n")))))))
+				   (org-agenda-overriding-header "\nInbox\n")))))))
   :general
   (amber/leader-keys
     "oa" '(amber/org-agenda-view :wk "open agenda")))
