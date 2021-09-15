@@ -3,8 +3,13 @@
 host:
 let
   system = host.system or "x86_64-linux";
-  getDefaults = { system, platform }:
-    attribute:
+  platform = rec {
+    inherit system;
+    isDarwin = builtins.elem system lib.platforms.darwin;
+    isLinux = builtins.elem system lib.platforms.linux;
+    name = if isDarwin then "darwin" else "linux";
+  };
+  getDefaults = platform: attribute:
     let
       isList = builtins.elem attribute [ "modules" ];
       concat = if isList then
@@ -14,8 +19,8 @@ let
       default = if isList then [ ] else { };
     in concat [
       (hostDefaults.common."${attribute}" or default)
-      (hostDefaults.platform."${platform}"."${attribute}" or default)
-      (hostDefaults.system."${system}"."${attribute}" or default)
+      (hostDefaults.platform."${platform.name}"."${attribute}" or default)
+      (hostDefaults.system."${platform.system}"."${attribute}" or default)
     ];
 
   hmConfig = {
@@ -26,22 +31,18 @@ let
 
   mkSystem = system:
     let
-      platform = if (builtins.elem system lib.platforms.darwin) then
-        "darwin"
-      else
-        "linux";
-      f = if platform == "darwin" then
+      f = if platform.isDarwin then
         inputs.darwin.lib.darwinSystem
       else
         inputs.nixpkgs.lib.nixosSystem;
-      getDefaults' = getDefaults { inherit system platform; };
+      getDefaults' = getDefaults platform;
     in f ({
       modules = (getDefaults' "modules") ++ [ hmConfig ] ++ profiles
         ++ host.modules;
       # extraArgs = (getDefaults "extraArgs") // host.extraArgs;
       specialArgs = {
-        inherit self inputs system;
+        inherit self inputs platform system;
       } // (getDefaults' "specialArgs") // (host.specialArgs or { });
-    } // (lib.optionalAttrs (platform == "linux") { inherit system; }));
+    } // (lib.optionalAttrs (platform.name == "linux") { inherit system; }));
 
 in mkSystem system
