@@ -13,9 +13,6 @@
   programs.ssh.enable = true;
 
   shell.aliases = {
-    ll = "ls -l";
-    l = "ls";
-
     gco = "git co";
     gs = "git s";
 
