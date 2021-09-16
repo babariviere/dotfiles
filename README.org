@@ -1,4 +1,5 @@
 #+TODO: TODO NEXT | DONE
+#+OPTIONS: todo:t
 
 * Dotfiles
 ** Tasks
