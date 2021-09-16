@@ -127,6 +127,11 @@
           system = "x86_64-linux";
           modules = [ ./hosts/vercar/configuration.nix ];
         };
+
+        beehum = {
+          system = "x86_64-linux";
+          modules = [ ./hosts/beehum/configuration.nix ];
+        };
       };
 
       home = {
