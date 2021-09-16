@@ -93,22 +93,19 @@ lib.mkFlake {
 
   hostDefaults = {
     common = {
-      modules = [ ... ];
+      modules = [ ];
       specialArgs = { inherit inputs; };
       # maybe?
       overlays = {};
     };
     platform = {
       darwin = {
-        ...
       };
       linux = {
-        ...
       };
     };
     system = {
       x86_64-darwin = {
-        ...
       };
     };
   };
