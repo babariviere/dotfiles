@@ -109,6 +109,9 @@ in emacsWithPackages (epkgs:
     alchemist
     exunit
 
+    # Fish
+    fish-mode
+
     # Flycheck
     flycheck
     flycheck-inline

@@ -367,6 +367,7 @@ Examples:
 (use-package org-agenda
   :after org
   :demand t
+  ;; TODO: this hook needs to run after evil-collection
   :hook (after-init . amber/org-agenda-view)
   :custom
   (org-agenda-files (mapcar (-partial #'concat org-directory)
