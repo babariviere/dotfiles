@@ -10,6 +10,8 @@
       set fish_cursor_visual block
       fish_vi_cursor
       fish_vi_key_bindings
+
+      set -g flow_cmd ${inputs.flow.packages."${pkgs.system}".flow}/bin/flow
     '';
     plugins = [
       {
@@ -24,6 +26,10 @@
       {
         name = "pure";
         src = pkgs.fishPlugins.pure.src;
+      }
+      {
+        name = "flow";
+        src = inputs.flow.packages."${pkgs.system}".fishPlugins.flow.src;
       }
     ];
   };
