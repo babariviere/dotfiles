@@ -21,7 +21,8 @@ in {
     ++ (lib.optionals pkgs.stdenv.isDarwin [ pkgs.emacs-client ]);
 
   programs.emacs.package = emacs;
-  programs.zsh = { shellAliases = { e = "${emacsclient}/bin/emacsclient"; }; };
+
+  shell.aliases = { e = "${emacsclient}/bin/emacsclient"; };
 
   home.sessionPath = [ "$HOME/.emacs.d/bin" ];
 
@@ -45,7 +46,7 @@ in {
   #   package = emacs;
   # };
 
-  env = {
+  shell.env = {
     EDITOR = "${emacs}/bin/emacsclient -nw";
     VISUAL = "${emacsclient}/bin/emacsclient";
   };

@@ -1,5 +1,33 @@
-{ pkgs, ...}:
+{ pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ dogdns sd fd ripgrep ];
+  # TODO: separate packages?
+  home.packages = with pkgs; [ age bat cachix exa dogdns sd fd ripgrep ];
+
+  programs.exa = {
+    enable = true;
+    enableAliases = true;
+  };
+  programs.fzf.enable = true;
+  programs.nix-index.enable = true;
+  programs.ssh.enable = true;
+
+  shell.aliases = {
+    ll = "ls -l";
+    l = "ls";
+
+    gco = "git co";
+    gs = "git s";
+
+    dup = "docker-compose up";
+    ddn = "docker-compose down";
+
+    dr = "darwin-rebuild";
+    drs = "darwin-rebuild switch --flake . --keep-going";
+
+    wk = "watch kubectl";
+    k = "${pkgs.kubectl}/bin/kubectl";
+    kns = "${pkgs.kubectx}/bin/kubens";
+    kctx = "${pkgs.kubectx}/bin/kubectx";
+  };
 }

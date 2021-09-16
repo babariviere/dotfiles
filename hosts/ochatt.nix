@@ -161,6 +161,7 @@
           nix = true;
           asdf = true;
         };
+        fish.enable = true;
         git.enable = true;
         gh.enable = true;
         tldr.enable = true;
@@ -178,20 +179,8 @@
       pkgs.coreutils-prefixed
       pkgs.findutils
       # pkgs.fontconfig
-
-      # Tools
-      pkgs.age
-      pkgs.bat
-      pkgs.cachix
-      pkgs.exa
       pkgs.lunchy
     ];
-
-    programs.exa.enable = true;
-    programs.fish.enable = false;
-    programs.fzf.enable = true;
-    programs.nix-index.enable = true;
-    programs.ssh.enable = true;
 
     home.activation = {
       copyApplications = let

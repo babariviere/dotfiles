@@ -17,9 +17,9 @@ in lib.mkMerge [
     home.packages = [ emacs ]
       ++ (lib.optionals pkgs.stdenv.isDarwin [ pkgs.emacs-client ]);
     programs.emacs.package = emacs;
-    programs.zsh = { shellAliases = { e = "${emacs}/bin/emacsclient"; }; };
+    shell.aliases = { e = "${emacs}/bin/emacsclient"; };
 
-    env = {
+    shell.env = {
       EDITOR = "${emacs}/bin/emacsclient -nw";
       VISUAL = "${emacs}/bin/emacsclient";
     };

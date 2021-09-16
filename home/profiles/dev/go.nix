@@ -3,5 +3,5 @@
 {
   home.packages = with pkgs; [ go gopls ];
 
-  env.GOPATH = "${config.home.homeDirectory}/src";
+  shell.env.GOPATH = "${config.home.homeDirectory}/src";
 }

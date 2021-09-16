@@ -1,1 +1,1 @@
-[ ./options.nix ./env.nix ]
+[ ./options.nix ./shell.nix ]

@@ -30,26 +30,6 @@
       compinit -C
     '';
 
-    shellAliases = {
-      ls = "${pkgs.exa}/bin/exa";
-      ll = "ls -l";
-      l = "ls";
-
-      gco = "git co";
-      gs = "git s";
-
-      dup = "docker-compose up";
-      ddn = "docker-compose down";
-
-      dr = "darwin-rebuild";
-      drs = "darwin-rebuild switch --flake . --keep-going";
-
-      wk = "watch kubectl";
-      k = "${pkgs.kubectl}/bin/kubectl";
-      kns = "${pkgs.kubectx}/bin/kubens";
-      kctx = "${pkgs.kubectx}/bin/kubectx";
-    };
-
     plugins = [
       {
         name = "fast-syntax-highlighting";

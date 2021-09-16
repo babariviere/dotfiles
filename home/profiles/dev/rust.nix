@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [ rustup ];
 
-  env = {
+  shell.env = {
     RUSTUP_HOME = "${config.xdg.dataHome}/rustup";
     CARGO_HOME = "${config.xdg.dataHome}/cargo";
   };
