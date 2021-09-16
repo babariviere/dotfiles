@@ -1,5 +1,3 @@
-#+TITLE: Dotfiles
-
 * Dotfiles
 ** Tasks
 *** TODO rename modules to profiles (and keep modules)
