@@ -146,7 +146,6 @@
         rust.enable = true;
       };
       editor = {
-        # TODO: maybe to a flavor instead? maybe use a module then
         doom.enable = false;
         emacs.enable = true;
         editorconfig.enable = true;

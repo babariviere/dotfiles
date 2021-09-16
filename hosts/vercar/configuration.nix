@@ -1,4 +1,6 @@
-{ config, lib, pkgs, inputs, ... }: rec {
+{ config, lib, network, pkgs, inputs, ... }:
+
+rec {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
@@ -100,12 +102,11 @@
         # redirect all queries from ${hostname}.home to the correct ip address.
         # local-zone redirect allow redirection of all subdomain
         # local-data set the ip for the domain
-        local-zone =
-          [ ''"vercar.home." redirect'' ''"ochatt.home." redirect'' ];
-        local-data = [
-          ''"vercar.home. A 100.100.28.13"''
-          ''"ochatt.home. A 100.78.240.51"''
-        ];
+        local-zone = map (node: ''"${node.name}.${network.domain}." redirect'')
+          network.nodes;
+        local-data =
+          map (node: ''"${node.name}.${network.domain}. A ${node.ip}"'')
+          network.nodes;
 
         include = [ (toString ads) ];
       };
@@ -240,6 +241,12 @@
   system.activationScripts.users.supportsDryActivation = lib.mkForce false;
 
   users.users.nix-serve = { isNormalUser = true; };
+
+  users.users.root.openssh.authorizedKeys.keys = lib.foldl (res: node:
+    if config.networking.hostName == node.name then
+      res
+    else
+      res ++ [ node.public-key ]) [ ] network.nodes;
 
   # this is needed to get a bridge with DHCP enabled
   virtualisation.libvirtd.enable = true;

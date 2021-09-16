@@ -102,7 +102,10 @@
       profiles = lib'.foldProfiles ./profiles;
 
       hostDefaults = {
-        common.modules = [ configuration ] ++ modules;
+        common = {
+          modules = [ configuration ] ++ modules;
+          specialArgs = { network = import ./network.nix; };
+        };
         platform = {
           darwin.modules =
             [ darwinConfiguration home-manager.darwinModules.home-manager ];
