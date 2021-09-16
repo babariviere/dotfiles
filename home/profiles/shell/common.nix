@@ -22,6 +22,9 @@
     dr = "darwin-rebuild";
     drs = "darwin-rebuild switch --flake . --keep-going";
 
+    nr = "nixos-rebuild";
+    nrs = "nixos-rebuild switch --keep-going";
+
     wk = "watch kubectl";
     k = "${pkgs.kubectl}/bin/kubectl";
     kns = "${pkgs.kubectx}/bin/kubens";
