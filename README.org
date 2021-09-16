@@ -1,3 +1,5 @@
+#+TODO: TODO NEXT | DONE
+
 * Dotfiles
 ** Tasks
 *** TODO rename modules to profiles (and keep modules)
