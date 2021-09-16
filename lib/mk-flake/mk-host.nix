@@ -37,12 +37,14 @@ let
         inputs.nixpkgs.lib.nixosSystem;
       getDefaults' = getDefaults platform;
     in f ({
+      inherit system;
+
       modules = (getDefaults' "modules") ++ [ hmConfig ] ++ profiles
         ++ host.modules;
       # extraArgs = (getDefaults "extraArgs") // host.extraArgs;
       specialArgs = {
         inherit self inputs platform system;
       } // (getDefaults' "specialArgs") // (host.specialArgs or { });
-    } // (lib.optionalAttrs (platform.name == "linux") { inherit system; }));
+    });
 
 in mkSystem system
