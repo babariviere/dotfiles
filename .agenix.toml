@@ -4,9 +4,9 @@ vercar = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMO6/jzKplTgI8UEbJTdNskExUfQEJ9GG1
 beehum = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAR8+m6kSrZ8Zc3+NMolR2mzmfgzFPhij/cGl2KGHDBQ"
 
 [groups]
-users = [ "ochatt" "beehum" ]
+users = [ "ochatt", "beehum" ]
 servers = [ "vercar" ]
-admins = [ "ochatt" "beehum" ]
+admins = [ "ochatt", "beehum" ]
 
 [[paths]]
 glob = "secrets/vercar/**"
