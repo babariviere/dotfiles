@@ -19,7 +19,7 @@
       base = builtins.readFile "${config.dotfiles.configDir}/zshrc";
     in ''
       ${base}
-      eval "$(${flow} setup $HOME/src --path ${flow})"
+      eval "$(${flow} setup $HOME/src --path ${flow} zsh)"
     '';
 
     completionInit = ''

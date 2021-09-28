@@ -3,16 +3,18 @@
 {
   programs.fish = {
     enable = true;
-    interactiveShellInit = ''
-      set fish_cursor_default block
-      set fish_cursor_insert line
-      set fish_cursor_replace_one underscore
-      set fish_cursor_visual block
-      fish_vi_cursor
-      fish_vi_key_bindings
+    interactiveShellInit =
+      let flow = "${inputs.flow.defaultPackage.${pkgs.system}}/bin/flow";
+      in ''
+        set fish_cursor_default block
+        set fish_cursor_insert line
+        set fish_cursor_replace_one underscore
+        set fish_cursor_visual block
+        fish_vi_cursor
+        fish_vi_key_bindings
 
-      set -g flow_cmd ${inputs.flow.packages."${pkgs.system}".flow}/bin/flow
-    '';
+        ${flow} setup $HOME/src --path ${flow} fish | source
+      '';
     plugins = [
       {
         name = "dracula";
