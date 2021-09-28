@@ -19,10 +19,6 @@
 
   networking.hostId = "99b75f29";
 
-  # NOTE: Enabled by nixos-hardware but we don't want it (breaks wifi)
-  # FIXME: fix wifi not working with tlp
-  services.tlp.enable = lib.mkForce false;
-
   fileSystems."/" = {
     device = "tank/system";
     fsType = "zfs";

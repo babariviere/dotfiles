@@ -18,12 +18,18 @@
   networking.domain = "home";
 
   networking.useDHCP = false;
+  networking.usePredictableInterfaceNames = true;
   networking.interfaces = {
     enp4s0.useDHCP = true;
     wlp0s20f3.useDHCP = true;
   };
 
   networking.wireless.iwd.enable = true;
+  # Required to avoid racing condition at boot
+  systemd.services.iwd = {
+    after = [ "sys-subsystem-net-devices-wlp0s20f3.device" ];
+    requires = [ "sys-subsystem-net-devices-wlp0s20f3.device" ];
+  };
 
   ## Profiles
 
