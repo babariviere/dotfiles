@@ -347,6 +347,21 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1632267580,
+        "narHash": "sha256-AvNXdmaPHYs6idbfgu1H40vEw4Wq15xLAgCnpCN1l1A=",
+        "owner": "nixos",
+        "repo": "nixos-hardware",
+        "rev": "3cc8c47af31798040ea62499090540413279f832",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1618628710,
@@ -450,6 +465,7 @@
         "hosts-denylist": "hosts-denylist",
         "neovim-nightly": "neovim-nightly",
         "nix": "nix",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_6",
         "utils": "utils_2"
       }
