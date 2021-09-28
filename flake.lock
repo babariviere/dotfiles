@@ -179,11 +179,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1632851578,
-        "narHash": "sha256-TuYW8PkBIYVm93W6WvWeVo/Gxnr0C4ZyaWqyezi0cyw=",
+        "lastModified": 1632852146,
+        "narHash": "sha256-jPhFq74HbJhvHWd85IECiPaGzge44lrpyxvt+XeDK34=",
         "owner": "babariviere",
         "repo": "flow",
-        "rev": "78c6da0510096373f513821f21570481f030b088",
+        "rev": "ab25d999ecc4cda3974785be11f007506a5577f9",
         "type": "github"
       },
       "original": {

@@ -29,10 +29,6 @@
         name = "pure";
         src = pkgs.fishPlugins.pure.src;
       }
-      {
-        name = "flow";
-        src = inputs.flow.packages."${pkgs.system}".fishPlugins.flow.src;
-      }
     ];
   };
 }
