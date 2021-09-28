@@ -35,6 +35,7 @@
 
         nix = {
           binaryCaches = [
+            "https://cache.nixos.org"
             "https://cache.ngi0.nixos.org/"
             "https://nix-community.cachix.org"
             "https://babariviere.cachix.org"

@@ -19,16 +19,33 @@
 
   networking.useDHCP = false;
   networking.usePredictableInterfaceNames = true;
-  networking.interfaces = {
-    enp4s0.useDHCP = true;
-    wlp0s20f3.useDHCP = true;
+  networking.useNetworkd = true;
+  # networking.interfaces = {
+  #   enp4s0.useDHCP = true;
+  #   wlp0s20f3.useDHCP = true;
+  # };
+
+  systemd.network.links."00-wlp0s20f3" = {
+    enable = true;
+    matchConfig.MACAddress = "80:b6:55:ef:fd:a3";
+    linkConfig.Name = "wlp0s20f3";
+  };
+
+  systemd.network.networks.wlp0s20f3 = {
+    name = "wlp0s20f3";
+    networkConfig = {
+      DHCP = "yes";
+      IPv6PrivacyExtensions = "yes";
+    };
   };
 
   networking.wireless.iwd.enable = true;
-  # Required to avoid racing condition at boot
-  systemd.services.iwd = {
-    after = [ "sys-subsystem-net-devices-wlp0s20f3.device" ];
-    requires = [ "sys-subsystem-net-devices-wlp0s20f3.device" ];
+  networking.wireless.iwd.settings = {
+    General = {
+      UseDefaultInterface = true;
+      EnableNetworkConfiguration = true;
+      AddressRandomization = "once";
+    };
   };
 
   ## Profiles
@@ -49,6 +66,8 @@
 
   services.xserver.layout = "us";
   services.xserver.xkbVariant = "altgr-intl";
+
+  ## Nix
 
   # User
 
