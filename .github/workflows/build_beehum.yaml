@@ -17,5 +17,5 @@ jobs:
         with:
           name: babariviere
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build ochatt
-        run: nix build .#nixosConfigurations.ochatt.config.system.build.toplevel -L
+      - name: Build beehum
+        run: nix build .#nixosConfigurations.beehum.config.system.build.toplevel -L
