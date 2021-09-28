@@ -159,48 +159,9 @@
 
       overlay = import ./pkgs;
 
-      overlays = let
-        pythonOverride = let
-          disableCheck = drv:
-            drv.overrideAttrs (attrs: {
-              doCheck = false;
-              doInstallCheck = false;
-              dontUsePytestCheck = true;
-            });
-        in super: pself: psuper: {
-          # https://github.com/NixOS/nixpkgs/issues/128266
-          pycairo = disableCheck psuper.pycairo;
-          factory_boy = disableCheck psuper.factory_boy;
-          httplib2 = disableCheck psuper.httplib2;
-        };
-        pythonOverlay = final: prev: {
-          python =
-            prev.python.override { packageOverrides = pythonOverride prev; };
-          python3 =
-            prev.python3.override { packageOverrides = pythonOverride prev; };
-          python38 =
-            prev.python38.override { packageOverrides = pythonOverride prev; };
-          python39 =
-            prev.python39.override { packageOverrides = pythonOverride prev; };
-        };
-        haskellOverlay = final: prev: {
-          haskellPackages = prev.haskellPackages.override {
-            overrides = hself: hsuper: {
-              http2 = hsuper.http2.overrideAttrs (drv: { doCheck = false; });
-              servant-client =
-                hsuper.servant-client.overrideAttrs (drv: { doCheck = false; });
-            };
-          };
-        };
-        deltaOverlay = final: prev: {
-          delta = prev.delta.overrideAttrs (drv: { doCheck = false; });
-        };
-      in {
+      overlays = {
         # neovim = inputs.neovim-nightly.overlay;
         emacs = inputs.emacs.overlay;
-        python = pythonOverlay;
-        delta = deltaOverlay;
-        haskell = haskellOverlay;
         self = self.overlay;
       };
     } // (utils.lib.eachSystem [ "x86_64-linux" "x86_64-darwin" ] (system:
