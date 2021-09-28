@@ -1,8 +1,8 @@
-name: "Build"
+name: "Build beehum"
 on: [workflow_dispatch, push]
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
       - uses: cachix/install-nix-action@v13
@@ -17,9 +17,5 @@ jobs:
         with:
           name: babariviere
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build packages
-        run: nix build .#emacsGit .#amber-emacs -L
-      - name: Build emacs-client (in non-sandbox)
-        run: nix build .#emacs-client --option sandbox false
       - name: Build ochatt
-        run: nix build .#darwinConfigurations.ochatt.system -L
+        run: nix build .#nixosConfigurations.ochatt.config.system.build.toplevel -L
