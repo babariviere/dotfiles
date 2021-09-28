@@ -67,6 +67,7 @@
 
         nixpkgs = {
           overlays = lib.attrValues self.overlays;
+          config.allowUnfree = true;
 
           # FIXME: https://github.com/NixOS/nix/issues/4903
           # config.contentAddressedByDefault = true;
