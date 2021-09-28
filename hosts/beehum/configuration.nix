@@ -41,7 +41,6 @@
   users.users.greeter.group = "greeter";
   users.groups.greeter = { };
 
-  services.xserver.enable = true;
   services.xserver.layout = "us";
   services.xserver.xkbVariant = "altgr-intl";
 
@@ -80,6 +79,19 @@
         zsh.enable = true;
       };
     };
+
+    # TODO: remove this and split in profile
+    home.packages = with pkgs; [
+      firefox
+      conan
+      rofi
+      alacritty
+      mako
+      nixos-option
+    ];
+
+    # nix shell nixpkgs#swaylock-effects
+    # swaylock --screenshots --clock --effect-blur 7x5 --effect-vignette 0.5:0.5 --grace 2 --fade-in 0.2
 
     # TODO: refactor me
     programs.git = {
