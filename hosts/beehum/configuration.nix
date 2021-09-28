@@ -25,6 +25,12 @@
   #   wlp0s20f3.useDHCP = true;
   # };
 
+  systemd.services."systemd-networkd-wait-online".serviceConfig.ExecStart = [
+    ""
+    "${config.systemd.package}/lib/systemd/systemd-networkd-wait-online --any"
+  ];
+
+  systemd.network.enable = true;
   systemd.network.links."00-wlp0s20f3" = {
     enable = true;
     matchConfig.MACAddress = "80:b6:55:ef:fd:a3";
