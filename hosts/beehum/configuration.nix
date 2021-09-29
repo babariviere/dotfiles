@@ -63,8 +63,10 @@
   # TODO: configuration
   programs.sway.enable = true;
   services.greetd.enable = true;
-  services.greetd.settings.default_session.command =
-    "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd sway";
+  services.greetd.settings = {
+    terminal.vt = 7;
+    default_session.command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd sway";
+  };
 
   # FIXME: what do I need to do this?
   users.users.greeter.group = "greeter";
