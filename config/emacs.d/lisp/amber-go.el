@@ -91,7 +91,7 @@
   :hook (go-mode . lsp)
   :general
   ('motion go-mode-map
-		   "go" #'go-guru-definition)
+		   "gd" #'go-guru-definition)
   (amber/local-leader-keys go-mode-map
     "t" '(:ignore t :wk "test")
     "ts" '(amber/go-test-single :wk "test signle")

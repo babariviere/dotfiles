@@ -1,7 +1,7 @@
 { emacs, emacsPackagesFor, lib, makeWrapper, fetchFromGitHub, writeText
 , runCommand,
 # external dependencies
-direnv, nixfmt, ripgrep }:
+direnv, nixfmt, ripgrep, gotools }:
 
 let
   overrides = final: prev: {
@@ -123,6 +123,7 @@ in emacsWithPackages (epkgs:
     go-mode
     go-gen-test
     go-guru
+    gotools
 
     # Lsp
     lsp-mode
