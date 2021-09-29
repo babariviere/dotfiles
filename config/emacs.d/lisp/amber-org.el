@@ -408,6 +408,8 @@ Examples:
   (org-refile-targets '((nil :maxlevel . 3)
 						(org-agenda-files :maxlevel . 3)))
   (org-refile-use-outline-path 'file)
+  ;; We want to org-refile as the first item in the list (like a feed)
+  (org-reverse-note-order t)
   (org-outline-path-complete-in-steps nil)
   :general
   (amber/local-leader-keys org-mode-map
