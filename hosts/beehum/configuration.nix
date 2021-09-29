@@ -62,11 +62,15 @@
 
   # TODO: configuration
   programs.sway.enable = true;
-  services.greetd.enable = true;
-  services.greetd.settings = {
-    terminal.vt = 7;
-    default_session.command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd sway";
+  services.greetd = {
+    enable = true;
+    vt = 7;
+    settings = {
+      default_session.command =
+        "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd sway";
+    };
   };
+  systemd.services.greetd.serviceConfig.Type = "idle";
 
   # FIXME: what do I need to do this?
   users.users.greeter.group = "greeter";
