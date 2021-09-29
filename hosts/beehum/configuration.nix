@@ -85,6 +85,24 @@
 
   hardware.pulseaudio.enable = true;
 
+  ## Virtualisation
+
+  virtualisation.containers = {
+    enable = true;
+    storage.settings = {
+      storage.driver = "overlay";
+      storage.options = {
+        # Required with zfs, otherwise it won't work
+        mount_program = "${pkgs.fuse-overlayfs}/bin/fuse-overlayfs";
+      };
+    };
+  };
+  virtualisation.podman = {
+    enable = true;
+    dockerSocket.enable = true;
+    dockerCompat = true;
+  };
+
   services.openvpn.servers = {
     godzilla = {
       config = ''
@@ -117,7 +135,7 @@
   users.users.babariviere = {
     isNormalUser = true;
     createHome = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "docker" "podman" ];
     hashedPassword =
       "$6$hebDRrf7peavZ$fpakn/Inc7A9xAxL5RiZ3WHUcuznSWMC2chOb5bsInISVD3XQjxnark37vQfYY1v32mqkxTfr1Fzj1HUmKj7D1";
     shell = pkgs.fish;
