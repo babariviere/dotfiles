@@ -1,7 +1,7 @@
 ;; Init configuration
 
 ;;; Code:
-(let ((fixed-pitch '(:family "MonoLisa" :height 105)))
+(let ((fixed-pitch '(:family "MonoLisa" :height 90)))
   (custom-set-faces
    `(default ((t ,fixed-pitch)))
    `(fixed-pitch ((t ,fixed-pitch)))))
