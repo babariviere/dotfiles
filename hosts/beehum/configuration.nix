@@ -81,8 +81,11 @@
 
   ## Nix
 
-  # User
+  ## Audio
 
+  hardware.pulseaudio.enable = true;
+
+  # User
   users.users.babariviere = {
     isNormalUser = true;
     createHome = true;
@@ -126,14 +129,110 @@
       nixos-option
       nyxt
       discord
+      slack
       foot
     ];
+
+    programs.waybar = {
+      enable = true;
+      settings = [{
+        layer = "top";
+        position = "top";
+        height = 30;
+        output = [ "eDP-1" "HDMI-A-1" ];
+        modules-left = [ "sway/workspaces" "sway/mode" "wlr/taskbar" ];
+        modules-center = [ "sway/window" ];
+        modules-right = [ "network" "pulseaudio" ];
+        modules = {
+          "sway/workspaces" = {
+            disable-scroll = true;
+            all-outputs = true;
+          };
+        };
+      }];
+      style = ''
+        * {
+            font-family: MonoLisa;
+            font-size: 10px;
+        }
+        window#waybar {
+            background: rgba(43, 48, 59, 0.5);
+            border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+            color: white;
+        }
+
+        tooltip {
+          background: rgba(43, 48, 59, 0.5);
+          border: 1px solid rgba(100, 114, 125, 0.5);
+        }
+        tooltip label {
+          color: white;
+        }
+
+        #workspaces button {
+            padding: 0 5px;
+            background: transparent;
+            color: white;
+            border-bottom: 3px solid transparent;
+        }
+
+        #workspaces button.focused {
+            background: #64727D;
+            border-bottom: 3px solid white;
+        }
+
+        #mode, #clock, #battery {
+            padding: 0 10px;
+            margin: 0 5px;
+        }
+
+        #mode {
+            background: #64727D;
+            border-bottom: 3px solid white;
+        }
+
+        #clock {
+            background-color: #64727D;
+        }
+
+        #battery {
+            background-color: #ffffff;
+            color: black;
+        }
+
+        #battery.charging {
+            color: white;
+            background-color: #26A65B;
+        }
+
+        @keyframes blink {
+            to {
+                background-color: #ffffff;
+                color: black;
+            }
+        }
+
+        #battery.warning:not(.charging) {
+            background: #f53c3c;
+            color: white;
+            animation-name: blink;
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+      '';
+    };
 
     wayland.windowManager.sway = {
       enable = true;
       xwayland = true;
       wrapperFeatures.gtk = true;
       config = {
+        bars = [{
+          position = "top";
+          command = "${pkgs.waybar}/bin/waybar";
+        }];
         focus.followMouse = false;
         fonts = {
           names = [ "MonoLisa" ];
@@ -158,6 +257,10 @@
         };
         modifier = "Mod4";
         terminal = "${pkgs.foot}/bin/foot";
+        keybindings = lib.mkOptionDefault {
+          "Mod4+End" =
+            "exec ${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --effect-blur 7x5 --effect-vignette 0.5:0.5 --grace 2 --fade-in 0.2";
+        };
       };
       extraConfig = ''
         default_border pixel 2
@@ -177,9 +280,6 @@
         };
       };
     };
-
-    # nix shell nixpkgs#swaylock-effects
-    # swaylock --screenshots --clock --effect-blur 7x5 --effect-vignette 0.5:0.5 --grace 2 --fade-in 0.2
 
     # TODO: refactor me
     programs.git = {
