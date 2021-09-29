@@ -85,6 +85,34 @@
 
   hardware.pulseaudio.enable = true;
 
+  services.openvpn.servers = {
+    godzilla = {
+      config = ''
+        client
+        dev tun
+        proto tcp
+
+        resolv-retry infinite
+        nobind
+        persist-key
+        persist-tun
+        mute-replay-warnings
+        cipher AES-256-CBC
+        comp-lzo
+        verb 4
+
+        # Choose one
+        #remote 10.208.27.158 1194
+        remote 35.205.77.46 1194
+
+        # Configure the paths to your key files
+        ca /etc/openvpn/godzilla/ca.crt
+        cert /etc/openvpn/godzilla/client.crt
+        key /etc/openvpn/godzilla/client.key
+      '';
+    };
+  };
+
   # User
   users.users.babariviere = {
     isNormalUser = true;
