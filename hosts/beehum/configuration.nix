@@ -199,86 +199,128 @@
         position = "top";
         height = 30;
         output = [ "eDP-1" "HDMI-A-1" ];
-        modules-left = [ "sway/workspaces" "sway/mode" "wlr/taskbar" ];
-        modules-center = [ "sway/window" ];
-        modules-right = [ "network" "pulseaudio" "clock" ];
+        modules-left = [ "sway/workspaces" "sway/mode" ];
+        modules-center = [ "clock" ];
+        modules-right = [ "tray" "pulseaudio" "network" "battery" ];
         modules = {
-          "sway/workspaces" = {
-            disable-scroll = true;
-            all-outputs = true;
+          "sway/mode" = { "format" = ''<span style="italic">{}</span>''; };
+          network = {
+            interface = "wl*";
+            format-wifi = "{essid} ({signalStrength}%) ";
+            format-ethernet = "{ifname} ";
+            format-disconnected = "";
+            max-length = 50;
+            # "on-click" = "foot -e 'nmtui'";
+          };
+          tray = {
+            icon-size = 15;
+            spacing = 10;
+          };
+          battery = {
+            states = {
+              good = 95;
+              warning = 20;
+              critical = 10;
+            };
+            format = "{capacity}% {icon}";
+            format-charging = "{capacity}% ";
+            format-plugged = "{capacity}% ";
+            format-alt = "{time} {icon}";
+            format-full = "";
+            format-icons = [ "" "" "" "" "" ];
+          };
+          pulseaudio = {
+            format = "{volume}% {icon} ";
+            format-bluetooth = "{volume}% {icon} {format_source}";
+            format-bluetooth-muted = " {icon} {format_source}";
+            format-muted = "0% {icon} ";
+            format-source = "{volume}% ";
+            format-source-muted = "";
+            format-icons = {
+              headphone = "";
+              hands-free = "";
+              headset = "";
+              phone = "";
+              portable = "";
+              car = "";
+              default = [ "" "" "" ];
+            };
+            # "on-click" = "pavucontrol";
           };
         };
       }];
       style = ''
         * {
-            font-family: MonoLisa;
-            font-size: 10px;
-        }
-        window#waybar {
-            background: rgba(43, 48, 59, 0.5);
-            border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-            color: white;
-        }
-
-        tooltip {
-          background: rgba(43, 48, 59, 0.5);
-          border: 1px solid rgba(100, 114, 125, 0.5);
-        }
-        tooltip label {
-          color: white;
+            font-family: MonoLisa, Font Awesome;
+            font-size: 13px;
+            border: none;
+            border-radius: 0;
+            min-height: 0;
+            box-shadow:    none;
+            text-shadow:   none;
+            transition-duration: 0s;
         }
 
-        #workspaces button {
-            padding: 0 5px;
-            background: transparent;
-            color: white;
-            border-bottom: 3px solid transparent;
+        window {
+            color:      rgba(217, 216, 216, 1);
+            background: rgba(35, 31, 32, 0.00);
         }
 
-        #workspaces button.focused {
-            background: #64727D;
-            border-bottom: 3px solid white;
+        window#waybar.solo {
+            color:      rgba(217, 216, 216, 1);
+            background: rgba(35, 31, 32, 0.85);
         }
 
-        #mode, #clock, #battery, #network, #pulseaudio {
-            padding: 0 10px;
+        #workspaces {
             margin: 0 5px;
         }
 
-        #mode {
-            background: #64727D;
-            border-bottom: 3px solid white;
+        #workspaces button {
+            padding:    0 5px;
+            color:      rgba(217, 216, 216, 0.4);
+        }
+
+        #workspaces button.visible {
+            color:      rgba(217, 216, 216, 1);
+        }
+
+        #workspaces button.focused {
+            border-top: 3px solid rgba(217, 216, 216, 1);
+            border-bottom: 3px solid rgba(217, 216, 216, 0);
+        }
+
+        #workspaces button.urgent {
+            color:      rgba(238, 46, 36, 1);
+        }
+
+        #mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-spotify, #custom-weather, #custom-mail {
+            margin:     0px 6px 0px 10px;
+            min-width:  25px;
         }
 
         #clock {
-            background-color: #64727D;
+            margin:     0px 16px 0px 10px;
+            min-width:  140px;
         }
 
-        #battery {
-            background-color: #ffffff;
-            color: black;
+        #battery.warning {
+        color:       rgba(255, 210, 4, 1);
+        }
+
+        #battery.critical {
+            color:      rgba(238, 46, 36, 1);
         }
 
         #battery.charging {
-            color: white;
-            background-color: #26A65B;
+            color:      rgba(217, 216, 216, 1);
         }
 
-        @keyframes blink {
-            to {
-                background-color: #ffffff;
-                color: black;
-            }
+        #custom-storage.warning {
+            color:      rgba(255, 210, 4, 1);
         }
 
-        #battery.warning:not(.charging) {
-            background: #f53c3c;
-            color: white;
-            animation-name: blink;
-            animation-duration: 0.5s;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
+        #custom-storage.critical {
+            color:      rgba(238, 46, 36, 1);
         }
       '';
     };
@@ -310,9 +352,23 @@
             tap = "disabled";
           };
         };
-        output = {
-          eDP-1 = { pos = "0 0"; };
-          HDMI-A-1 = { pos = "1920 0"; };
+        output = let
+          artworks = pkgs.fetchFromGitHub {
+            owner = "NixOS";
+            repo = "nixos-artwork";
+            rev = "9bd73014f75c2ce97d104c78314d78eb2493e24d";
+            sha256 = "1976vc2w26h78wngqm7q1rnqa387y1bpf9wicxfghbc2qkimq2m5";
+          };
+          bg = "${artworks}/wallpapers/nix-wallpaper-dracula.png fill";
+        in {
+          eDP-1 = {
+            pos = "0 0";
+            inherit bg;
+          };
+          HDMI-A-1 = {
+            pos = "1920 0";
+            inherit bg;
+          };
         };
         modifier = "Mod4";
         terminal = "${pkgs.foot}/bin/foot";
@@ -322,6 +378,10 @@
           "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 2";
           "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 2";
           "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t";
+          "XF86MonBrightnessDown" =
+            "exec ${pkgs.brightnessctl}/bin/brightnessctl s 5%-";
+          "XF86MonBrightnessUp" =
+            "exec ${pkgs.brightnessctl}/bin/brightnessctl s +5%";
         };
         startup = [
           {
