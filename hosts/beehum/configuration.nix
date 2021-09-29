@@ -142,7 +142,7 @@
         output = [ "eDP-1" "HDMI-A-1" ];
         modules-left = [ "sway/workspaces" "sway/mode" "wlr/taskbar" ];
         modules-center = [ "sway/window" ];
-        modules-right = [ "network" "pulseaudio" ];
+        modules-right = [ "network" "pulseaudio" "clock" ];
         modules = {
           "sway/workspaces" = {
             disable-scroll = true;
@@ -181,7 +181,7 @@
             border-bottom: 3px solid white;
         }
 
-        #mode, #clock, #battery {
+        #mode, #clock, #battery, #network, #pulseaudio {
             padding: 0 10px;
             margin: 0 5px;
         }
