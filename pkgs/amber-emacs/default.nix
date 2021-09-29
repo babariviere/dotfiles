@@ -122,6 +122,7 @@ in emacsWithPackages (epkgs:
     # Go
     go-mode
     go-gen-test
+    go-guru
 
     # Lsp
     lsp-mode
