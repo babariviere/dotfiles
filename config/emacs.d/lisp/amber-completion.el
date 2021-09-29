@@ -7,9 +7,9 @@
   (vertico-mode 1)
   :general
   (:keymaps 'vertico-map
-   "C-j" 'vertico-next
-   "C-k" 'vertico-previous
-   "C-f" 'vertico-exit))
+			"C-j" 'vertico-next
+			"C-k" 'vertico-previous
+			"C-f" 'vertico-exit))
 
 (use-package savehist
   :init
@@ -37,6 +37,11 @@
   (completion-category-overrides '((file (styles partial-completion))))
   (orderless-component-separator "[ &]"))
 
+(defun amber/consult-ripgrep-folder ()
+  "Run consult-ripgrep in folder."
+  (interactive)
+  (consult-ripgrep (file-name-directory buffer-file-name)))
+
 (defun amber/consult-ripgrep-project ()
   "Run consult-ripgrep in projectile-project-root."
   (interactive)
@@ -60,13 +65,14 @@
   (amber/leader-keys
     "s" '(:ignore t :wk "search")
     "sb" '(consult-line :wk "search buffer")
+	"sd" '(amber/consult-ripgrep-folder :wk "search folder")
     "sp" '(amber/consult-ripgrep-project :wk "search project")))
 
 (use-package embark
   :general
   (amber/leader-keys
-   "a" '(embark-act :wk "actions")
-   "hb" '(embark-bindings :wk "describe bindings")))
+	"a" '(embark-act :wk "actions")
+	"hb" '(embark-bindings :wk "describe bindings")))
 
 (use-package embark-consult
   :after (embark consult)
