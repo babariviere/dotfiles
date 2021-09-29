@@ -22,10 +22,11 @@
     dr = "darwin-rebuild";
     drs = "darwin-rebuild switch --flake . --keep-going";
 
-    nr = "nixos-rebuild";
-    nrs = "nixos-rebuild switch --keep-going";
+    nr = "sudo nixos-rebuild";
+    nrs = "sudo nixos-rebuild switch --flake . --keep-going";
 
     wk = "watch kubectl";
+    # FIXME: move me to kube profile
     k = "${pkgs.kubectl}/bin/kubectl";
     kns = "${pkgs.kubectx}/bin/kubens";
     kctx = "${pkgs.kubectx}/bin/kubectx";
