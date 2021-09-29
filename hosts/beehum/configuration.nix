@@ -260,6 +260,9 @@
         keybindings = lib.mkOptionDefault {
           "Mod4+End" =
             "exec ${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --effect-blur 7x5 --effect-vignette 0.5:0.5 --grace 2 --fade-in 0.2";
+          "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 2";
+          "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 2";
+          "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t";
         };
       };
       extraConfig = ''
