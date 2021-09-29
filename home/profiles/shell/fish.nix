@@ -29,6 +29,10 @@
         name = "pure";
         src = pkgs.fishPlugins.pure.src;
       }
+      {
+        name = "foreign-env";
+        src = pkgs.fishPlugins.foreign-env.src;
+      }
     ];
   };
 }
