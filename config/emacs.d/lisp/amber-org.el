@@ -348,8 +348,8 @@ Examples:
      ("t" "Task" entry (file ,(concat org-directory org-inbox-file))
       "* TODO %?\n:PROPERTIES:\n:CREATED: %U\n:END:"
       :clock-in t :clock-resume t :empty-lines 1)
-     ("m" "Meeting (work)" entry (file ,(concat org-directory org-agenda-file))
-      "* MEETING [%<%Y-%m-%d %a>] :meeting:work:\n:PROPERTIES:\n:CREATED: %U\n:END:\n\nParticipants:%^{Participants}\nNotes:\n%?"
+     ("m" "Meeting" entry (file ,(concat org-directory org-agenda-file))
+      "* MEETING [%<%Y-%m-%d %a>] %^{Subject}\n:PROPERTIES:\n:CREATED: %U\n:END:\n\nParticipants:%^{Participants}\nNotes:\n%?"
       :clock-in t :clock-resume t :empty-lines 1)
      ("p" "PR Review" entry (file+headline ,(concat org-directory org-tasks-file) "Pull requests")
       "* REVIEW gh:%?\n:PROPERTIES:\n:CREATED: %U\n:END:"))))
