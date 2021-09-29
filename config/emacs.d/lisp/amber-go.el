@@ -53,12 +53,12 @@
 (defun amber/go-test-all ()
   "Run all test."
   (interactive)
-  (amber/go-run-tests ""))
+  (amber/go--run-tests ""))
 
 (defun amber/go-test-nested ()
   "Run all nested test."
   (interactive)
-  (amber/go-run-tests "./..."))
+  (amber/go--run-tests "./..."))
 
 (defun amber/go-test-single ()
   "Run single test."
@@ -66,14 +66,14 @@
   (if (string-match "_test\\.go" buffer-file-name)
       (save-excursion
         (re-search-backward "^func[ ]+\\(([[:alnum:]]*?[ ]?[*]?[[:alnum:]]+)[ ]+\\)?\\(Test[[:alnum:]_]+\\)(.*)")
-        (+go--run-tests (concat "-run" "='" (match-string-no-properties 2) "'")))
+        (amber/go--run-tests (concat "-run" "='" (match-string-no-properties 2) "'")))
     (error "Must be in a _test.go file")))
 
 (defun amber/go-toggle-test-file-name ()
   "Return the test/source file name."
   (let ((file-name (file-name-base (buffer-file-name))))
     (if (s-suffix-p "_test" file-name)
-	(concat (string-remove-suffix "_test" file-name) ".go")
+		(concat (string-remove-suffix "_test" file-name) ".go")
       (concat file-name "_test.go"))))
 
 ;; TODO: this function is not ideal, need some rework:
@@ -83,13 +83,15 @@
   (interactive)
   (let ((file-name (amber/go-toggle-test-file-name)))
     (if (file-exists-p file-name)
-	(find-file file-name)
+		(find-file file-name)
       (error "No file found."))))
 
 (use-package go-mode
   :mode "\\.go\\'"
   :hook (go-mode . lsp)
   :general
+  ('motion go-mode-map
+		   "go" #'go-guru-definition)
   (amber/local-leader-keys go-mode-map
     "t" '(:ignore t :wk "test")
     "ts" '(amber/go-test-single :wk "test signle")
