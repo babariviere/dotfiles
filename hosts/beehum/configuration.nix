@@ -85,6 +85,19 @@
 
   hardware.pulseaudio.enable = true;
 
+  ## Wayland
+
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+  };
+
+  services.pipewire.enable = true;
+
+  # Set XDG portal related variables
+  environment.variables.XDG_SESSION_TYPE = "wayland";
+  environment.variables.XDG_CURRENT_DESKTOP = "sway";
+
   ## Virtualisation
 
   virtualisation.containers = {
@@ -310,6 +323,18 @@
           "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 2";
           "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t";
         };
+        startup = [
+          {
+            # Import variables needed for screen sharing and gnome3 pinentry to work.
+            command =
+              "${pkgs.dbus}/bin/dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway";
+          }
+          {
+            command =
+              "${pkgs.systemd}/bin/systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP";
+          }
+
+        ];
       };
       extraConfig = ''
         default_border pixel 2
