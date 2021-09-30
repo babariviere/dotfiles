@@ -227,6 +227,25 @@
 
     home.sessionPath = [ "~/.local/bin" ];
 
+    programs.mako = {
+      enable = true;
+      font = "MonoLisa 10";
+      defaultTimeout = 2000;
+      backgroundColor = "#282a36";
+      borderColor = "#282a36";
+      textColor = "#44475a";
+      extraConfig = ''
+        [urgency=low]
+        border-color=#282a36
+
+        [urgency=normal]
+        border-color=#f1fa8c
+
+        [urgency=high]
+        border-color=#ff5555
+      '';
+    };
+
     programs.rofi = {
       enable = true;
       theme = let inherit (config.lib.formats.rasi) mkLiteral;
@@ -617,7 +636,6 @@
             command =
               "${pkgs.systemd}/bin/systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP";
           }
-
         ];
       };
       extraConfig = ''
