@@ -154,4 +154,7 @@ in emacsWithPackages (epkgs:
 
     # vterm
     vterm
+
+    # Misc
+    git-auto-commit-mode
   ])
