@@ -56,25 +56,16 @@
 
   ## Profiles
 
-  profiles = { net.tailscale.enable = true; };
+  profiles = {
+    login.greetd.enable = true;
+    media.pulseaudio.enable = true;
+    net.tailscale.enable = true;
+    wm.sway.enable = true;
+  };
 
   ## Display
 
   # TODO: configuration
-  programs.sway.enable = true;
-  services.greetd = {
-    enable = true;
-    vt = 7;
-    settings = {
-      default_session.command =
-        "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd sway";
-    };
-  };
-  systemd.services.greetd.serviceConfig.Type = "idle";
-
-  # FIXME: what do I need to do this?
-  users.users.greeter.group = "greeter";
-  users.groups.greeter = { };
 
   services.xserver.layout = "us";
   services.xserver.xkbVariant = "altgr-intl";
@@ -82,8 +73,6 @@
   ## Nix
 
   ## Audio
-
-  hardware.pulseaudio.enable = true;
 
   ## Security
 
@@ -95,17 +84,6 @@
   }];
 
   ## Wayland
-
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-  };
-
-  services.pipewire.enable = true;
-
-  # Set XDG portal related variables
-  environment.variables.XDG_SESSION_TYPE = "wayland";
-  environment.variables.XDG_CURRENT_DESKTOP = "sway";
 
   ## Virtualisation
 
@@ -618,6 +596,8 @@
           "Mod4+d" = ''
             exec ${pkgs.j4-dmenu-desktop}/bin/j4-dmenu-desktop --dmenu "${pkgs.rofi}/bin/rofi -dmenu -i -show-icons"
           '';
+          "Mod4+less" = "${pkgs.mako}/bin/makoctl dismiss";
+          "Mod4+greater" = "${pkgs.mako}/bin/makoctl invoke";
           "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 2";
           "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 2";
           "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t";

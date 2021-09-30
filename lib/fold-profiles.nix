@@ -22,8 +22,11 @@ let
           let
             # Import the profile file by concat all paths
             f = import (lib.foldl (a: b: a + "/${b}") profile-dir path');
-            args = (builtins.intersectAttrs (builtins.functionArgs f) attrs);
-            content = f args;
+            args = if builtins.isFunction f then
+              (builtins.intersectAttrs (builtins.functionArgs f) attrs)
+            else
+              { };
+            content = if builtins.isFunction f then f args else f;
             options = if content ? options then content.options else { };
             content' = if content ? config then content.config else content;
           in {
