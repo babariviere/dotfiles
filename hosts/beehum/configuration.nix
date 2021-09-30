@@ -225,7 +225,7 @@
       };
     };
 
-    home.sessionPath = [ "~/.local/bin" ];
+    home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
 
     programs.mako = {
       enable = true;
