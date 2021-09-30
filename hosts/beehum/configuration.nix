@@ -85,6 +85,15 @@
 
   hardware.pulseaudio.enable = true;
 
+  ## Security
+
+  security.pam.loginLimits = [{
+    domain = "*";
+    type = "-";
+    item = "nofile";
+    value = "1048576";
+  }];
+
   ## Wayland
 
   xdg.portal = {
