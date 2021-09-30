@@ -109,20 +109,29 @@
 
   ## Virtualisation
 
-  virtualisation.containers = {
+  #  virtualisation.containers = {
+  #    enable = true;
+  #    storage.settings = {
+  #      storage.driver = "overlay";
+  #      storage.options = {
+  #        # Required with zfs, otherwise it won't work
+  #        mount_program = "${pkgs.fuse-overlayfs}/bin/fuse-overlayfs";
+  #      };
+  #    };
+  #    containersConf.settings = {
+  #      containers.default_ulimits = [ "nofile=1048576:1048576" ];
+  #    };
+  #  };
+  #  virtualisation.podman = {
+  #    enable = true;
+  #    dockerSocket.enable = true;
+  #    dockerCompat = true;
+  #  };
+  # TODO: find a way to use podman instead
+  virtualisation.docker = {
     enable = true;
-    storage.settings = {
-      storage.driver = "overlay";
-      storage.options = {
-        # Required with zfs, otherwise it won't work
-        mount_program = "${pkgs.fuse-overlayfs}/bin/fuse-overlayfs";
-      };
-    };
-  };
-  virtualisation.podman = {
-    enable = true;
-    dockerSocket.enable = true;
-    dockerCompat = true;
+    enableOnBoot = true;
+    autoPrune.enable = true;
   };
 
   services.openvpn.servers = {
