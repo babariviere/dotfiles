@@ -190,7 +190,16 @@
       discord
       slack
       foot
+      docker-compose
+      neovim
+      postgresql
+      gcc
+      yarn
+      poetry
+      font-awesome
     ];
+
+    home.sessionPath = [ "~/.local/bin" ];
 
     programs.waybar = {
       enable = true;
