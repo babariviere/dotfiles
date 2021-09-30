@@ -5,5 +5,5 @@
   environment.variables.XDG_CURRENT_DESKTOP = "sway";
 
   profiles.login.greetd.command = "${pkgs.sway}/bin/sway";
-  profiles.wm.wayland.enable = true;
+  profiles.desktop.wayland.enable = true;
 }
