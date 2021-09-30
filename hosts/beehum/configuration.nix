@@ -242,7 +242,7 @@
             format = "{volume}% {icon} ";
             format-bluetooth = "{volume}% {icon} {format_source}";
             format-bluetooth-muted = " {icon} {format_source}";
-            format-muted = "0% {icon} ";
+            format-muted = " ";
             format-source = "{volume}% ";
             format-source-muted = "";
             format-icons = {
@@ -260,7 +260,7 @@
       }];
       style = ''
         * {
-            font-family: MonoLisa, Font Awesome;
+            font-family: all-the-icons, MonoLisa;
             font-size: 13px;
             border: none;
             border-radius: 0;
@@ -324,12 +324,8 @@
             color:      rgba(217, 216, 216, 1);
         }
 
-        #custom-storage.warning {
-            color:      rgba(255, 210, 4, 1);
-        }
-
-        #custom-storage.critical {
-            color:      rgba(238, 46, 36, 1);
+        #pulseaudio.muted {
+            font-family: github-octicons;
         }
       '';
     };
