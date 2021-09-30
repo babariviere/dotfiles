@@ -230,7 +230,7 @@
     programs.mako = {
       enable = true;
       font = "MonoLisa 10";
-      defaultTimeout = 2000;
+      defaultTimeout = 0;
       backgroundColor = "#282a36";
       borderColor = "#282a36";
       textColor = "#44475a";
