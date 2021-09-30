@@ -62,6 +62,8 @@ in emacsWithPackages (epkgs:
     # Keys
     evil
     evil-collection
+    evil-surround
+    evil-commentary
     general
     undo-fu
     undo-fu-session

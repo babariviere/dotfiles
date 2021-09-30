@@ -91,6 +91,16 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
         '(lispy))
   (evil-collection-init))
 
+(use-package evil-surround
+  :after evil
+  :config
+  (global-evil-surround-mode 1))
+
+(use-package evil-commentary
+  :after evil
+  :config
+  (evil-commentary-mode 1))
+
 (use-package which-key
   :demand
   :config (which-key-mode 1)
