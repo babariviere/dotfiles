@@ -670,6 +670,7 @@
             email = "bastien.riviere@tanker.io";
             signingKey = "ACFD416C8BFB251A";
           };
+          gitlab.user = "bastien.riviere";
           commit.gpgSign = true;
         };
       }];
