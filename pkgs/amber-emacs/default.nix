@@ -93,6 +93,7 @@ in emacsWithPackages (epkgs:
 
     # Data
     yaml-mode
+    gitlab-ci-mode
 
     # Direnv
     envrc

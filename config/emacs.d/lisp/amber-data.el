@@ -29,7 +29,10 @@
 
 (use-package yaml-mode
   :mode (("\\.yml\\'" . yaml-mode)
-	 ("\\.yaml\\'" . yaml-mode)))
+		 ("\\.yaml\\'" . yaml-mode)))
+
+(use-package gitlab-ci-mode
+  :mode (("\\.gitlab-ci.yml\\'" . gitlab-ci-mode)))
 
 (provide 'amber-data)
 
