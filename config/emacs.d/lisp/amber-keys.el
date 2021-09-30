@@ -84,6 +84,8 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
 
 (use-package evil-collection
   :after evil
+  :custom
+  (evil-collection-key-blacklist '("SPC" "," "gd" "K"))
   :config
   (mapc (lambda (x) (delq x evil-collection-mode-list))
         '(lispy))
