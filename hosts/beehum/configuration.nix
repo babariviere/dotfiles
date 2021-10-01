@@ -194,6 +194,7 @@
       yarn
       poetry
       font-awesome
+      gitlab-ci-lint
     ];
 
     gtk = {
