@@ -90,11 +90,9 @@
   :mode "\\.go\\'"
   :hook (go-mode . lsp)
   :general
-  ('motion go-mode-map
-		   "gd" #'go-guru-definition)
   (amber/local-leader-keys go-mode-map
     "t" '(:ignore t :wk "test")
-    "ts" '(amber/go-test-single :wk "test signle")
+    "ts" '(amber/go-test-single :wk "test single")
     "ta" '(amber/go-test-all :wk "test all")
     "tr" '(amber/go-test-rerun :wk "rerun test")
     "tn" '(amber/go-test-nested :wk "test nested")))
