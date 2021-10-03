@@ -196,6 +196,7 @@
       poetry
       font-awesome
       gitlab-ci-lint
+      jq
     ];
 
     gtk = {
