@@ -5,8 +5,8 @@
   (when (probe-file quicklisp-init)
     (load quicklisp-init)))
 
-#-asdf (require "asdf")
-#-cffi (require "cffi")
+#-asdf (require :asdf)
+#-cffi (require :cffi)
 
 (if (member "--no-linedit" sb-ext:*posix-argv* :test 'equal)
     (setf sb-ext:*posix-argv* 
