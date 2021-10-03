@@ -99,8 +99,8 @@
         "Mod4+d" = ''
           exec ${pkgs.j4-dmenu-desktop}/bin/j4-dmenu-desktop --dmenu "${pkgs.rofi}/bin/rofi -dmenu -i -show-icons"
         '';
-        "Mod4+less" = "${pkgs.mako}/bin/makoctl dismiss";
-        "Mod4+greater" = "${pkgs.mako}/bin/makoctl invoke";
+        "Mod4+n" = "${pkgs.mako}/bin/makoctl dismiss";
+        "Mod4+Shift+n" = "${pkgs.mako}/bin/makoctl invoke";
         "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 2";
         "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 2";
         "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t";
