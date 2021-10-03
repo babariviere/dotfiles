@@ -153,6 +153,7 @@
   home-manager.users.babariviere = { config, lib, pkgs, ... }: {
     profiles = {
       dev = {
+        common-lisp.enable = true;
         go.enable = true;
         nix.enable = true;
         rust.enable = true;

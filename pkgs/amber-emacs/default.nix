@@ -80,6 +80,11 @@ in emacsWithPackages (epkgs:
     all-the-icons-dired
     diff-hl
 
+    # Common Lisp
+    sly
+    sly-macrostep
+    sly-repl-ansi-color
+
     # Lisp
     lispy
     lispyville

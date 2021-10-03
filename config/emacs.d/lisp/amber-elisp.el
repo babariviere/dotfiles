@@ -5,17 +5,17 @@
 
 (add-hook 'emacs-lisp-mode #'highlight-quoted-mode)
 
-(general-def 'motion emacs-lisp-mode-map
+(general-def 'normal emacs-lisp-mode-map
   "K" #'describe-symbol)
 
 (amber/local-leader-keys
-  'motion lisp-mode-shared-map
+  'normal emacs-lisp-mode-map
   "m" '(macrostep-expand :wk "expand macro"))
 
 (use-package eros
   :hook (emacs-lisp-mode . eros-mode)
   :general
-  (amber/local-leader-keys lisp-mode-shared-map
+  (amber/local-leader-keys emacs-lisp-mode-map
     "e" '(:ignore t :wk "eval")
     "eb" '(eval-buffer :wk "eval buffer")
     "ee" '(eros-eval-last-sexp :wk "eval expr")

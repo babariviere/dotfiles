@@ -38,6 +38,7 @@
 (require 'amber-format)
 (require 'amber-flycheck)
 
+(require 'amber-common-lisp)
 (require 'amber-csharp)
 (require 'amber-data)
 (require 'amber-elisp)
