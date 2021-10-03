@@ -14,4 +14,4 @@
     (when (interactive-stream-p *terminal-io*)
       (require :sb-aclrepl)
       (require :linedit)
-      (funcall (intern "INSTALL-REPL" :linedit) :wrap-current t)))
+      (funcall (intern "INSTALL-REPL" :linedit) :wrap-current t :eof-quits t)))
