@@ -389,7 +389,7 @@ Examples:
 	   (todo "NEXT"
 			 ((org-agenda-skip-function
 			   '(org-agenda-skip-entry-if 'deadline))
-			  (org-agenda-prefix-format "  %i %-12:c [%e] ")
+			  (org-agenda-prefix-format "  %-8:c [%-4e]%l")
 			  (org-agenda-overriding-header "\nTasks\n")))
 	   (agenda ""
 			   ((org-agenda-entry-types '(:deadlines))
