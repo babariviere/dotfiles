@@ -212,8 +212,8 @@
   "Archive task if it's marked as done."
   (let (parent-context)
 	(save-excursion
-	  (org-up-heading-safe)
-	  (setf parent-context (org-element-context)))
+	  (when (org-up-heading-safe)
+		(setf parent-context (org-element-context))))
 	(when (and (string-prefix-p org-directory (buffer-file-name))
 			   (equal (org-get-todo-state) "DONE")
 			   (not (org-element-property :todo-type parent-context)))
@@ -331,6 +331,7 @@ Examples:
 	"i" '(org-roam-node-insert :wk "insert node")
 	"l" '(org-insert-link :wk "insert link")
     "p" '(org-priority :wk "set priority")
+	"P" '(org-set-property :wk "set property")
     "t" '(amber/org-slow-todo :wk "select todo"))
   (amber/leader-keys
     "n" '(:ignore t :wk "notes")
@@ -389,17 +390,27 @@ Examples:
 	   (todo "NEXT"
 			 ((org-agenda-skip-function
 			   '(org-agenda-skip-entry-if 'deadline))
-			  (org-agenda-prefix-format "  %-8:c [%-4e]%l")
+			  (org-agenda-prefix-format "  %-8:c [%-4e] ")
 			  (org-agenda-overriding-header "\nTasks\n")))
-	   (agenda ""
-			   ((org-agenda-entry-types '(:deadlines))
-				(org-agenda-format-date "")
-				(org-deadline-warning-days 7)
-				(org-agenda-span 'day)
-				(org-agenda-time-grid nil)
-				(org-agenda-skip-function
-				 '(org-agenda-skip-entry-if 'notregexp "\\* NEXT"))
-				(org-agenda-overriding-header "\nDeadlines")))
+	   (todo "WAITING"
+			 ((org-agenda-skip-function
+			   '(org-agenda-skip-entry-if 'deadline))
+			  (org-agenda-prefix-format "  %-8:c ")
+			  (org-agenda-overriding-header "\nWaitings\n")))
+	   (todo "MEETING"
+			 ((org-agenda-skip-function
+			   '(org-agenda-skip-entry-if 'deadline))
+			  (org-agenda-prefix-format "  %-8:c ")
+			  (org-agenda-overriding-header "\nMeetings\n")))
+	   ;; (agenda ""
+	   ;; 		   ((org-agenda-entry-types '(:deadlines))
+	   ;; 			(org-agenda-format-date "")
+	   ;; 			(org-deadline-warning-days 7)
+	   ;; 			(org-agenda-span 'day)
+	   ;; 			(org-agenda-time-grid nil)
+	   ;; 			(org-agenda-skip-function
+	   ;; 			 '(org-agenda-skip-entry-if 'notregexp "\\* NEXT"))
+	   ;; 			(org-agenda-overriding-header "\nDeadlines")))
 	   (tags-todo "inbox"
 				  ((org-agenda-prefix-format "  %?-12t% s")
 				   (org-agenda-overriding-header "\nInbox\n")))))))
