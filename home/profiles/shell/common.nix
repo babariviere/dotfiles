@@ -2,7 +2,7 @@
 
 {
   # TODO: separate packages?
-  home.packages = with pkgs; [ age bat cachix exa dogdns sd fd ripgrep ];
+  home.packages = with pkgs; [ age bat cachix exa dogdns sd fd ripgrep htop ];
 
   programs.exa = {
     enable = true;
