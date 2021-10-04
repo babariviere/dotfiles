@@ -89,7 +89,7 @@
   ## Virtualisation
 
   # Required to use podman instead of docker for building. (even if we have the alias)
-  environment.systemVariables = { COMPOSE_DOCKER_CLI_BUILD = "0"; };
+  environment.sessionVariables = { COMPOSE_DOCKER_CLI_BUILD = "0"; };
 
   virtualisation.containers = {
     enable = true;
