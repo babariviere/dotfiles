@@ -88,30 +88,33 @@
 
   ## Virtualisation
 
-  #  virtualisation.containers = {
-  #    enable = true;
-  #    storage.settings = {
-  #      storage.driver = "overlay";
-  #      storage.options = {
-  #        # Required with zfs, otherwise it won't work
-  #        mount_program = "${pkgs.fuse-overlayfs}/bin/fuse-overlayfs";
-  #      };
-  #    };
-  #    containersConf.settings = {
-  #      containers.default_ulimits = [ "nofile=1048576:1048576" ];
-  #    };
-  #  };
-  #  virtualisation.podman = {
-  #    enable = true;
-  #    dockerSocket.enable = true;
-  #    dockerCompat = true;
-  #  };
-  # TODO: find a way to use podman instead
-  virtualisation.docker = {
+  # Required to use podman instead of docker for building. (even if we have the alias)
+  environment.systemVariables = { COMPOSE_DOCKER_CLI_BUILD = "0"; };
+
+  virtualisation.containers = {
     enable = true;
-    enableOnBoot = true;
-    autoPrune.enable = true;
+    storage.settings = {
+      storage.driver = "overlay";
+      storage.options = {
+        # Required with zfs, otherwise it won't work
+        mount_program = "${pkgs.fuse-overlayfs}/bin/fuse-overlayfs";
+      };
+    };
+    containersConf.settings = {
+      containers.default_ulimits = [ "nofile=1048576:1048576" ];
+    };
   };
+  virtualisation.podman = {
+    enable = true;
+    dockerSocket.enable = true;
+    dockerCompat = true;
+  };
+  # TODO: find a way to use podman instead
+  # virtualisation.docker = {
+  #   enable = true;
+  #   enableOnBoot = true;
+  #   autoPrune.enable = true;
+  # };
 
   services.openvpn.servers = {
     godzilla = {
