@@ -65,6 +65,7 @@
         "*" = {
           xkb_layout = "us";
           xkb_variant = "altgr-intl";
+          xkb_options = "caps:ctrl_modifier";
         };
         "1267:13:Elan_Touchpad" = {
           click_method = "clickfinger";
