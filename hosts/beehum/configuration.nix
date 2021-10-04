@@ -109,12 +109,6 @@
     dockerSocket.enable = true;
     dockerCompat = true;
   };
-  # TODO: find a way to use podman instead
-  # virtualisation.docker = {
-  #   enable = true;
-  #   enableOnBoot = true;
-  #   autoPrune.enable = true;
-  # };
 
   services.openvpn.servers = {
     godzilla = {
