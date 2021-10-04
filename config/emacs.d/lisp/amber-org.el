@@ -210,9 +210,14 @@
 
 (defun amber/org-archive-if-done ()
   "Archive task if it's marked as done."
-  (when (and (string-prefix-p org-directory (buffer-file-name))
-			 (equal (org-get-todo-state) "DONE"))
-	(amber/org-archive-subtree-as-completed)))
+  (let (parent-context)
+	(save-excursion
+	  (org-up-heading-safe)
+	  (setf parent-context (org-element-context)))
+	(when (and (string-prefix-p org-directory (buffer-file-name))
+			   (equal (org-get-todo-state) "DONE")
+			   (not (org-element-property :todo-type parent-context)))
+	  (amber/org-archive-subtree-as-completed))))
 
 (defun amber/org-goto-inbox ()
   "Goto inbox file."
