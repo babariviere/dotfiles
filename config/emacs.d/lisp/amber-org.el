@@ -336,6 +336,7 @@ Examples:
   (amber/leader-keys
     "n" '(:ignore t :wk "notes")
     "nc" '(org-capture :wk "capture")
+	"nC" '(org-roam-capture :wk "roam capture")
 	"no" '(org-clock-out :wk "clock out")
     "oA" '(amber/org-goto-agenda :wk "open agenda.org")
     "oi" '(amber/org-goto-inbox :wk "open inbox.org")
