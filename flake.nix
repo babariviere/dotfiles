@@ -118,11 +118,12 @@
       };
 
       hosts = {
-        ochatt = {
-          system = "x86_64-darwin";
-          modules = [ ./hosts/ochatt.nix ];
-          specialArgs = { inherit inputs lib; };
-        };
+        # TODO: remove me
+        # ochatt = {
+        #   system = "x86_64-darwin";
+        #   modules = [ ./hosts/ochatt.nix ];
+        #   specialArgs = { inherit inputs lib; };
+        # };
 
         vercar = {
           system = "x86_64-linux";
@@ -141,7 +142,7 @@
       };
 
       # Expose the package set, including overlays, for convenience.
-      darwinPackages = self.darwinConfigurations."ochatt".pkgs;
+      # darwinPackages = self.darwinConfigurations."ochatt".pkgs;
 
       deploy.nodes = {
         vercar = {

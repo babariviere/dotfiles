@@ -2,7 +2,8 @@ final: prev:
 
 {
   cat-with-cat = prev.callPackage ./cat-with-cat { };
-  amber-emacs = prev.callPackage ./amber-emacs { emacs = final.emacsGit; };
+  amber-emacs =
+    prev.callPackage ./amber-emacs { emacs = final.emacsGit or prev.emacsGit; };
   lima = prev.callPackage ./lima { };
   tailscale = prev.callPackage ./tailscale { inherit (prev) tailscale; };
   gitlab-ci-lint = prev.callPackage ./gitlab-ci-lint { };
