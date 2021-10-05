@@ -379,7 +379,6 @@ Examples:
   (org-agenda-files (mapcar (-partial #'concat org-directory)
 							(list org-inbox-file org-agenda-file org-tasks-file)))
   (org-agenda-window-setup 'other-window)
-  (org-agenda-hide-tags-regexp ".")
   (org-agenda-custom-commands
    '(("g" "GTD"
 	  ((agenda ""
