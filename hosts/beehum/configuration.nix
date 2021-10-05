@@ -241,6 +241,7 @@
         allow-emacs-pinentry
         allow-loopback-pinentry
       '';
+      defaultCacheTtl = 1800;
     };
 
     home.stateVersion = "21.03";
