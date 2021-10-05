@@ -201,6 +201,7 @@
       font-awesome
       gitlab-ci-lint
       jq
+      ccls
     ];
 
     gtk = {
