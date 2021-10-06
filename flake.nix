@@ -29,7 +29,7 @@
 
   outputs = { self, darwin, nixpkgs, home-manager, utils, deploy, ... }@inputs:
     let
-      configuration = { config, pkgs, ... }: {
+      configuration = { config, pkgs, system, ... }: {
         home-manager.useUserPackages = true;
         home-manager.useGlobalPkgs = true;
 
@@ -165,6 +165,7 @@
       overlays = {
         # neovim = inputs.neovim-nightly.overlay;
         emacs = inputs.emacs.overlay;
+        # nix = inputs.nix.overlay;
         self = self.overlay;
       };
     } // (utils.lib.eachSystem [ "x86_64-linux" "x86_64-darwin" ] (system:
