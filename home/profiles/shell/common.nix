@@ -23,7 +23,7 @@
     drs = "darwin-rebuild switch --flake . --keep-going";
 
     nr = "sudo nixos-rebuild";
-    nrs = "sudo nixos-rebuild switch --flake . --keep-going";
+    nrs = "sudo nixos-rebuild switch --flake . --keep-going -L";
 
     wk = "watch kubectl";
     # FIXME: move me to kube profile
