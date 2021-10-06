@@ -445,8 +445,6 @@ Examples:
 
 (use-package org-roam
   :demand t
-  :hook ((org-roam-mode . org-roam-db-autosync-mode)
-		 (org-roam-find-file . amber/org-roam-toggle-buffer))
   :custom
   (org-roam-completion-everywhere t)
   (org-roam-completion-system 'default)
@@ -468,6 +466,7 @@ Examples:
 				 (window-parameters . ((no-other-window . t)
                                        (no-delete-other-windows . t)))))
 
+  (org-roam-db-autosync-mode 1)
   :general
   (amber/leader-keys
     "nf" '(org-roam-node-find :wk "find note")))
