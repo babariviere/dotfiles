@@ -72,6 +72,15 @@
   services.xserver.xkbVariant = "altgr-intl";
 
   ## Nix
+  # TODO: use network.nix
+  nix.buildMachines = [{
+    hostName = "100.100.28.13";
+    maxJobs = 8;
+    sshUser = "root";
+    system = "x86_64-linux";
+    sshKey = "/root/.ssh/id_ed25519";
+    supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+  }];
 
   ## Audio
 
