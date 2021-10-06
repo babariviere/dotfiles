@@ -211,6 +211,7 @@
       gitlab-ci-lint
       jq
       ccls
+      clang-tools
     ];
 
     gtk = {
