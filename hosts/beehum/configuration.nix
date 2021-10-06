@@ -73,6 +73,7 @@
 
   ## Nix
   # TODO: use network.nix
+  nix.distributedBuilds = true;
   nix.buildMachines = [{
     hostName = "100.100.28.13";
     maxJobs = 8;
