@@ -37,6 +37,7 @@
 (require 'amber-vterm)
 (require 'amber-format)
 (require 'amber-flycheck)
+(require 'amber-persp)
 
 (require 'amber-common-lisp)
 (require 'amber-csharp)

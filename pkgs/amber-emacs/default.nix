@@ -147,6 +147,10 @@ in emacsWithPackages (epkgs:
     nix-mode
     nix-update
 
+    # Persp
+    perspective
+    persp-projectile
+
     # Smartparens
     smartparens
 

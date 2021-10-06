@@ -29,7 +29,7 @@
 
   (amber/leader-keys
     "." '(find-file :wk "find file")
-    "," '(switch-to-buffer :wk "switch to buffer")
+    "<" '(switch-to-buffer :wk "switch to buffer")
     ":" '(execute-extended-command :wk "M-x")
     ";"  '(eval-expression :which-key "eval expression")
     "b"  '(:ignore t :wk "buffer")
