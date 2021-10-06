@@ -13,7 +13,8 @@
  ;; Fix warning about not being able to determine a suitable EmacsClient
  '(with-editor-emacsclient-executable "emacsclient")
 
- '(tab-width 4))
+ '(tab-width 4)
+ '(epg-pinentry-mode 'loopback))
 
 (when (or (memq window-system '(mac ns x))
 		  (daemonp))
