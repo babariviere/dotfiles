@@ -235,6 +235,16 @@
       includes = [{
         condition = "gitdir:~/src/gitlab.com/TankerHQ/";
         contents = {
+          core.excludesFile = let
+            file = pkgs.writeText "gitignore" ''
+              shell.nix
+              .envrc
+              .direnv
+              .go
+              flake.nix
+              flake.lock
+            '';
+          in "${file}";
           user = {
             email = "bastien.riviere@tanker.io";
             signingKey = "ACFD416C8BFB251A";
