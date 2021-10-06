@@ -50,6 +50,7 @@
       };
       init.defaultBranch = "main";
       github.user = "babariviere";
+      remote.pushDefault = "origin";
     };
     ignores = [
       ".envrc"
