@@ -78,10 +78,7 @@
 	"rs" '(sly-mrepl-sync :wk "sync repl")
 	"t" '(:ignore t :wk "trace")
 	"tt" '(sly-toggle-trace-fdefinition :wk "trace def")
-	"tu" '(sly-untrace-all :wk "untrace all"))
-  :config
-  (unless evil-move-beyond-eol
-	(advice-add 'amber/common-lisp-sly-eval-last-sexp :around 'evil-collection-sly-last-sexp)))
+	"tu" '(sly-untrace-all :wk "untrace all")))
 
 (use-package sly-repl-ansi-color
   :defer t
