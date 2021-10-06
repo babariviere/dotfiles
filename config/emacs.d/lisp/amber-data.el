@@ -42,7 +42,7 @@
   :mode ("\\.gitlab-ci.yml\\'" . gitlab-ci-mode)
   :hook (gitlab-ci-mode . lsp)
   :general
-  (amber/local-leader-keys
+  (amber/local-leader-keys gitlab-ci-mode
 	"l" '(gitlab-ci-lint :wk "lint"))
   :init
   (require 'lsp-yaml)
