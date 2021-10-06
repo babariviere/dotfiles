@@ -27,9 +27,9 @@
 
 ;;; Code:
 
+(require 'use-package)
+
 (use-package yaml-mode
-  :mode (("\\.yml\\'" . yaml-mode)
-		 ("\\.yaml\\'" . yaml-mode))
   :hook (yaml-mode . lsp))
 
 (defun amber/gitlab-inject-api-token (fn &rest args)
@@ -39,9 +39,10 @@
 	(apply fn args)))
 
 (use-package gitlab-ci-mode
-  :mode (("\\.gitlab-ci.yml\\'" . gitlab-ci-mode))
+  :mode ("\\.gitlab-ci.yml\\'" . gitlab-ci-mode)
   :hook (gitlab-ci-mode . lsp)
-  :config
+  :init
+  (require 'lsp-yaml)
   (add-to-list 'lsp-language-id-configuration '(gitlab-ci-mode . "spring-boot-properties-yaml"))
   (add-to-list 'lsp-yaml-custom-tags "!reference sequence")
   (push 'gitlab-ci-mode (lsp--client-major-modes (gethash 'yamlls lsp-clients)))
