@@ -29,10 +29,14 @@
 
 (use-package yaml-mode
   :mode (("\\.yml\\'" . yaml-mode)
-		 ("\\.yaml\\'" . yaml-mode)))
+		 ("\\.yaml\\'" . yaml-mode))
+  :hook (yaml-mode . lsp))
 
 (use-package gitlab-ci-mode
-  :mode (("\\.gitlab-ci.yml\\'" . gitlab-ci-mode)))
+  :mode (("\\.gitlab-ci.yml\\'" . gitlab-ci-mode))
+  :hook (gitlab-ci-mode . lsp)
+  :config
+  (push 'gitlab-ci-mode (lsp--client-major-modes (gethash 'yamlls lsp-clients))))
 
 (provide 'amber-data)
 

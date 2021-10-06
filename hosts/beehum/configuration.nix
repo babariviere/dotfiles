@@ -212,6 +212,7 @@
       jq
       ccls
       clang-tools
+      yaml-language-server
     ];
 
     gtk = {
