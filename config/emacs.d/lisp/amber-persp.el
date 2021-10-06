@@ -29,6 +29,8 @@
 
 (use-package perspective
   :demand t
+  :custom
+  (persp-show-modestring nil)
   :config
   (persp-mode 1)
   (require 'persp-projectile)
