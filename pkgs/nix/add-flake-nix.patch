@@ -1,0 +1,64 @@
+diff --git a/src/libexpr/flake/flake.cc b/src/libexpr/flake/flake.cc
+index 1a1fa6938..958325953 100644
+--- a/src/libexpr/flake/flake.cc
++++ b/src/libexpr/flake/flake.cc
+@@ -609,12 +609,13 @@ LockedFlake lockFlake(
+ 
+                         newLockFile.write(path);
+ 
+-                        topRef.input.markChangedFile(
+-                            (topRef.subdir == "" ? "" : topRef.subdir + "/") + "flake.lock",
+-                            lockFlags.commitLockFile
+-                            ? std::optional<std::string>(fmt("%s: %s\n\nFlake lock file changes:\n\n%s",
+-                                    relPath, lockFileExists ? "Update" : "Add", filterANSIEscapes(diff, true)))
+-                            : std::nullopt);
++                        if (topRef.input.toURL().scheme != "git+file")
++                            topRef.input.markChangedFile(
++                                (topRef.subdir == "" ? "" : topRef.subdir + "/") + "flake.lock",
++                                lockFlags.commitLockFile
++                                ? std::optional<std::string>(fmt("%s: %s\n\nFlake lock file changes:\n\n%s",
++                                        relPath, lockFileExists ? "Update" : "Add", filterANSIEscapes(diff, true)))
++                                : std::nullopt);
+ 
+                         /* Rewriting the lockfile changed the top-level
+                            repo, so we should re-read it. FIXME: we could
+diff --git a/src/libfetchers/git.cc b/src/libfetchers/git.cc
+index 8468d2afc..87108f42d 100644
+--- a/src/libfetchers/git.cc
++++ b/src/libfetchers/git.cc
+@@ -274,7 +274,7 @@ struct GitInputScheme : InputScheme
+                         return i != files.end() && hasPrefix(*i, prefix);
+                     }
+ 
+-                    return files.count(file);
++                    return files.count(file) || file == "flake.nix" || file == "flake.lock";
+                 };
+ 
+                 auto storePath = store->addToStore(input.getName(), actualUrl, FileIngestionMethod::Recursive, htSHA256, filter);
+@@ -412,8 +412,10 @@ struct GitInputScheme : InputScheme
+ 
+         /* Now that we know the ref, check again whether we have it in
+            the store. */
+-        if (auto res = getCache()->lookup(store, getImmutableAttrs()))
+-            return makeResult(res->first, std::move(res->second));
++        // This hack enforce the usage of the latest flake.{nix,lock}
++        if (!isLocal)
++            if (auto res = getCache()->lookup(store, getImmutableAttrs()))
++                return makeResult(res->first, std::move(res->second));
+ 
+         Path tmpDir = createTempDir();
+         AutoDelete delTmpDir(tmpDir, true);
+@@ -458,9 +460,12 @@ struct GitInputScheme : InputScheme
+             // FIXME: should pipe this, or find some better way to extract a
+             // revision.
+             auto source = sinkToSource([&](Sink & sink) {
++                Strings args = { "-C", repoDir, "archive", input.getRev()->gitRev(), "--add-file=flake.nix" };
++                if (pathExists(repoDir + "/flake.lock"))
++                    args.push_back("--add-file=flake.lock");
+                 runProgram2({
+                     .program = "git",
+-                    .args = { "-C", repoDir, "archive", input.getRev()->gitRev() },
++                    .args = args,
+                     .standardOut = &sink
+                 });
+             });
