@@ -70,6 +70,7 @@
 
 (use-package embark
   :general
+  ("C-." '(embark-act :wk "act"))
   (amber/leader-keys
 	"a" '(embark-act :wk "actions")
 	"hb" '(embark-bindings :wk "describe bindings")))
