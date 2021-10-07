@@ -53,7 +53,8 @@
 
 (use-package sly
   :custom
-  (inferior-lisp-program "sbcl --noinform --no-linedit")
+  (inferior-lisp-program "sbcl")
+  (sly-complete-symbol-function 'sly-simple-completions)
   :general
   (amber/local-leader-keys lisp-mode-map
 	"" nil

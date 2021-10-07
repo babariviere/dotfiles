@@ -1,7 +1,7 @@
-(clpm-client:activate-context "default" :activate-asdf-integration t)
+;; (clpm-client:activate-context "default" :activate-asdf-integration t)
 
-#-asdf (require :asdf)
-#-cffi (asdf:load-system :cffi)
+;; #-asdf (require :asdf)
+;; #-cffi (asdf:load-system :cffi)
 
 ;; (if (member "--no-linedit" sb-ext:*posix-argv* :test 'equal)
 ;;     (setf sb-ext:*posix-argv* 
@@ -10,3 +10,10 @@
 ;;       (asdf:load-system :sb-aclrepl)
 ;;       (asdf:load-system :linedit)
 ;;       (funcall (intern "INSTALL-REPL" :linedit) :wrap-current t :eof-quits t)))
+
+(defmacro when-let ((var test-form) &body body)
+  `(let ((,var ,test-form))
+     (when ,var ,@body)))
+
+(when-let (clpmfile (probe-file "clpmfile"))
+  (clpm-client:activate-context clpmfile :activate-asdf-integration t))
