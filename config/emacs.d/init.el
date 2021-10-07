@@ -20,8 +20,7 @@
  '(with-editor-emacsclient-executable "emacsclient")
 
  '(indent-tabs-mode nil)
- '(tab-width 4)
- '(epg-pinentry-mode 'loopback))
+ '(tab-width 4))
 
 (when (or (memq window-system '(mac ns x))
 		  (daemonp))
@@ -100,3 +99,10 @@
   (zoom-size '(0.618 . 0.618))
   :config
   (zoom-mode 1))
+
+(use-package pinentry
+  :demand t
+  :custom
+  (epg-pinentry-mode 'loopback)
+  :config
+  (pinentry-start))

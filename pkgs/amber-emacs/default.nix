@@ -168,4 +168,5 @@ in emacsWithPackages (epkgs:
     # Misc
     git-auto-commit-mode
     zoom
+    pinentry
   ])
