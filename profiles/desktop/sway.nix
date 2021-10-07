@@ -7,4 +7,6 @@
 
   profiles.login.greetd.command = "${pkgs.sway}/bin/sway";
   profiles.desktop.wayland.enable = true;
+
+  programs.dconf.enable = true;
 }
