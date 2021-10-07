@@ -1,4 +1,4 @@
-{ config }:
+{ config, pkgs }:
 
 {
   assertions = [{
@@ -11,7 +11,9 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-wlr ];
+    # FIXME: broken font
+    # gtkUsePortal = true;
   };
 
   environment.variables.XDG_SESSION_TYPE = "wayland";
