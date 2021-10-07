@@ -28,6 +28,9 @@
   (setq exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-initialize))
 
+;; HACK: Fix issue with browse-url and wayland
+(setenv "DISPLAY" ":0")
+
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'amber-keys)             ; must be loaded first
 
