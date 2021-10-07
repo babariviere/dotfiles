@@ -7,12 +7,19 @@
    `(fixed-pitch ((t ,fixed-pitch)))))
 
 (load-theme 'kaolin-ocean t)
-(custom-set-variables
+
+(deftheme amber)
+(enable-theme 'amber)
+(setq custom-enabled-themes
+	  (remq 'amber custom-enabled-themes))
+(custom-theme-set-variables
+ 'amber
  '(kaolin-git-gutter-solid t)
  '(kaolin-themes-git-gutter-solid t)
  ;; Fix warning about not being able to determine a suitable EmacsClient
  '(with-editor-emacsclient-executable "emacsclient")
 
+ '(indent-tabs-mode nil)
  '(tab-width 4)
  '(epg-pinentry-mode 'loopback))
 
