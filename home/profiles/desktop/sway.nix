@@ -1,4 +1,4 @@
-{ lib, pkgs }:
+{ config, lib, pkgs }:
 
 {
   profiles.desktop = {
@@ -119,6 +119,20 @@
         {
           command =
             "${pkgs.systemd}/bin/systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP";
+        }
+        {
+          command = let
+            inherit (pkgs) glib;
+            gnome-schema = "org.gnome.desktop.interface";
+          in ''
+            {
+              ${glib.bin}/bin/gsettings set ${gnome-schema} gtk-theme '${config.gtk.theme.name}'
+              ${glib.bin}/bin/gsettings set ${gnome-schema} icon-theme '${config.gtk.iconTheme.name}'
+              ${glib.bin}/bin/gsettings set ${gnome-schema} cursor-theme '${config.xsession.pointerCursor.name}'
+              ${glib.bin}/bin/gsettings set ${gnome-schema} font-name '${config.gtk.font.name}'
+            }
+          '';
+          always = true;
         }
       ];
     };

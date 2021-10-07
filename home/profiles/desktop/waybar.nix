@@ -79,11 +79,11 @@
       }
 
       #workspaces {
-          margin: 0 5px;
+          margin: 0 2px;
       }
 
       #workspaces button {
-          padding:    0 5px;
+          padding:    0 2px;
           color:      rgba(217, 216, 216, 0.4);
       }
 

@@ -218,10 +218,25 @@
 
     gtk = {
       enable = true;
-      iconTheme = {
-        name = "Paper-Mono-Dark";
-        package = pkgs.paper-icon-theme;
+      gtk3.extraConfig = { gtk-application-prefer-dark-theme = 1; };
+      font = {
+        package = pkgs.roboto;
+        name = "Roboto";
+        size = 10;
       };
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
+      };
+      theme = {
+        name = "Orchis-dark";
+        package = pkgs.orchis-theme;
+      };
+    };
+
+    xsession.pointerCursor = {
+      package = pkgs.numix-cursor-theme;
+      name = "Numix-Cursor";
     };
 
     home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
