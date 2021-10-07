@@ -341,6 +341,7 @@ Examples:
     "nc" '(org-capture :wk "capture")
 	"nC" '(org-roam-capture :wk "roam capture")
 	"no" '(org-clock-out :wk "clock out")
+	"nt" '(org-roam-dailies-goto-today :wk "today's note")
     "oA" '(amber/org-goto-agenda :wk "open agenda.org")
     "oi" '(amber/org-goto-inbox :wk "open inbox.org")
     "oI" '(amber/org-goto-tasks :wk "open tasks.org")))
