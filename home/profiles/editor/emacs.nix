@@ -1,6 +1,15 @@
 { config, lib, pkgs, ... }:
 
-let emacs = pkgs.amber-emacs;
+let
+  emacs = pkgs.amber-emacs;
+  org-protocol = pkgs.makeDesktopItem {
+    name = "org-protocol";
+    exec = "${emacs}/bin/emacsclient %u";
+    comment = "Org protocol";
+    desktopName = "org-protocol";
+    type = "Application";
+    mimeType = "x-scheme-handler/org-protocol";
+  };
 in lib.mkMerge [
   {
     assertions = [{
@@ -14,7 +23,7 @@ in lib.mkMerge [
         recursive = true;
       };
     };
-    home.packages = [ emacs pkgs.emacs-all-the-icons-fonts ]
+    home.packages = [ emacs pkgs.emacs-all-the-icons-fonts org-protocol ]
       ++ (lib.optionals pkgs.stdenv.isDarwin [ pkgs.emacs-client ]);
     programs.emacs.package = emacs;
     shell.aliases = { e = "${emacs}/bin/emacsclient"; };
