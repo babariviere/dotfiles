@@ -259,6 +259,8 @@
               .go
               flake.nix
               flake.lock
+              arion-compose.nix
+              arion-pkgs.nix
             '';
           in "${file}";
           user = {
