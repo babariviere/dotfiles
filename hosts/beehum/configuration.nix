@@ -124,6 +124,7 @@
     enable = true;
     enableOnBoot = true;
     autoPrune.enable = true;
+    storageDriver = "zfs";
   };
 
   services.openvpn.servers = {

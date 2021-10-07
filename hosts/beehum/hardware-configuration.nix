@@ -34,6 +34,11 @@
     fsType = "zfs";
   };
 
+  fileSystems."/var/lib/docker" = {
+    device = "tank/system/var/docker";
+    fsType = "zfs";
+  };
+
   fileSystems."/home/babariviere" = {
     device = "tank/user/babariviere";
     fsType = "zfs";
