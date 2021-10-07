@@ -214,6 +214,7 @@
       ccls
       clang-tools
       yaml-language-server
+      xdg_utils
     ];
 
     gtk = {
