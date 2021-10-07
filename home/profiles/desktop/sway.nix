@@ -140,4 +140,13 @@
       default_border pixel 2
     '';
   };
+
+  services.xsettingsd = {
+    enable = true;
+    settings = {
+      "Gtk/CursorThemeName" = config.xsession.pointerCursor.name;
+      "Net/IconThemeName" = config.gtk.iconTheme.name;
+      "Net/ThemeName" = config.gtk.theme.name;
+    };
+  };
 }
