@@ -1,17 +1,12 @@
-;;; The following lines added by ql:add-to-init-file:
-#-quicklisp
-(let ((quicklisp-init (merge-pathnames ".quicklisp/setup.lisp"
-                                       (user-homedir-pathname))))
-  (when (probe-file quicklisp-init)
-    (load quicklisp-init)))
+(clpm-client:activate-context "default" :activate-asdf-integration t)
 
 #-asdf (require :asdf)
-#-cffi (require :cffi)
+#-cffi (asdf:load-system :cffi)
 
-(if (member "--no-linedit" sb-ext:*posix-argv* :test 'equal)
-    (setf sb-ext:*posix-argv* 
-	  (remove "--no-linedit" sb-ext:*posix-argv* :test 'equal))
-    (when (interactive-stream-p *terminal-io*)
-      (require :sb-aclrepl)
-      (require :linedit)
-      (funcall (intern "INSTALL-REPL" :linedit) :wrap-current t :eof-quits t)))
+;; (if (member "--no-linedit" sb-ext:*posix-argv* :test 'equal)
+;;     (setf sb-ext:*posix-argv* 
+;; 	  (remove "--no-linedit" sb-ext:*posix-argv* :test 'equal))
+;;     (when (interactive-stream-p *terminal-io*)
+;;       (asdf:load-system :sb-aclrepl)
+;;       (asdf:load-system :linedit)
+;;       (funcall (intern "INSTALL-REPL" :linedit) :wrap-current t :eof-quits t)))

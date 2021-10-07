@@ -53,7 +53,7 @@
 
 (use-package sly
   :custom
-  (inferior-lisp-program "sbcl --no-linedit")
+  (inferior-lisp-program "sbcl --noinform --no-linedit")
   :general
   (amber/local-leader-keys lisp-mode-map
 	"" nil
