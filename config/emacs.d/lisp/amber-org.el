@@ -301,6 +301,7 @@ Examples:
   (org-edit-src-content-indentation 0)
   (org-src-preserve-indentation t)
   (org-src-tab-acts-natively t)
+  (org-capture-bookmark nil)
   (org-directory (expand-file-name "~/src/github.com/babariviere/notes/"))
   (org-todo-keywords '((sequence "TODO(t)" "NEXT(n!)" "|" "DONE(d!)")
 					   (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "MEETING(m)")
