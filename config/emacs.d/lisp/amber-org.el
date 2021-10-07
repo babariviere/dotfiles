@@ -303,7 +303,8 @@ Examples:
   (org-src-tab-acts-natively t)
   (org-directory (expand-file-name "~/src/github.com/babariviere/notes/"))
   (org-todo-keywords '((sequence "TODO(t)" "NEXT(n!)" "|" "DONE(d!)")
-					   (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "MEETING(m)")))
+					   (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "MEETING(m)")
+					   (sequence "REVIEW(r!)" "|" "DONE(d!)")))
   ;; TODO: better colors
   (org-todo-keyword-faces '(("TODO" . org-todo)
 							("NEXT" . org-warning)
