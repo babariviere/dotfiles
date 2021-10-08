@@ -28,8 +28,6 @@
   (setq exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-initialize))
 
-;; HACK: Fix issue with browse-url and wayland
-(setenv "DISPLAY" ":0")
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'amber-keys)             ; must be loaded first
@@ -109,3 +107,12 @@
   (epg-pinentry-mode 'loopback)
   :config
   (pinentry-start))
+
+;; HACK: Fix issue with browse-url and wayland
+(defun amber/enforce-display-env (&rest args)
+  "Enforce DISPLAY env to be correctly set.
+
+ARGS are the arguments passed to `browse-url`."
+  (setenv "DISPLAY" ":0"))
+
+(advice-add 'browse-url :before #'amber/enforce-display-env)
