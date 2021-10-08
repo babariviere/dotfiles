@@ -14,10 +14,9 @@
   ;; breaks sideline
   (lsp-eldoc-enable-hover nil)
   :general
-  ('normal
-   lsp-mode-map
-   "gd" #'lsp-find-type-definition
-   "K" #'lsp-describe-thing-at-point))
+  ('normal lsp-mode-map
+		   "gd" #'lsp-find-type-definition
+		   "K" #'lsp-describe-thing-at-point))
 
 (use-package lsp-ui
   :commands lsp-ui-mode)
