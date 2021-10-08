@@ -134,7 +134,16 @@
           '';
           always = true;
         }
-      ];
+      ] ++ (lib.optionals config.profiles.editor.emacs.enable [{
+        command = "emacs-scratch";
+      }]);
+
+      window.commands = [{
+        command = ''
+          floating enable, resize set 90 ppt 90 ppt, move position center, move to scratchpad
+        '';
+        criteria = { title = "emacs-scratchpad"; };
+      }];
     };
     extraConfig = ''
       default_border pixel 2

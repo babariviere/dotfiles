@@ -2,6 +2,10 @@
 
 let
   emacs = pkgs.amber-emacs;
+  emacs-scratchpad = pkgs.writeScriptBin "emacs-scratch" ''
+    ${emacs}/bin/emacsclient -c -n \
+        --eval '(progn (setq frame-title-format "emacs-scratchpad") (amber/org-goto-tasks))'
+  '';
   org-protocol = pkgs.makeDesktopItem {
     name = "org-protocol";
     exec = "${emacs}/bin/emacsclient %u";
@@ -23,7 +27,8 @@ in lib.mkMerge [
         recursive = true;
       };
     };
-    home.packages = [ emacs pkgs.emacs-all-the-icons-fonts org-protocol ]
+    home.packages =
+      [ emacs pkgs.emacs-all-the-icons-fonts org-protocol emacs-scratchpad ]
       ++ (lib.optionals pkgs.stdenv.isDarwin [ pkgs.emacs-client ]);
     programs.emacs.package = emacs;
     shell.aliases = { e = "${emacs}/bin/emacsclient"; };
