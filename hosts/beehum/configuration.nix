@@ -170,6 +170,7 @@
       dev = {
         common-lisp.enable = true;
         go.enable = true;
+        python.enable = true;
         nix.enable = true;
         rust.enable = true;
       };
@@ -208,7 +209,6 @@
       postgresql
       gcc
       yarn
-      poetry
       font-awesome
       gitlab-ci-lint
       jq

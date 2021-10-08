@@ -151,6 +151,11 @@ in emacsWithPackages (epkgs:
     perspective
     persp-projectile
 
+    # Python
+    python
+    poetry
+    lsp-python-ms
+
     # Smartparens
     smartparens
 

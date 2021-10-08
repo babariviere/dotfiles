@@ -56,6 +56,7 @@
 (require 'amber-go)
 (require 'amber-org)
 (require 'amber-nix)
+(require 'amber-python)
 (require 'amber-sql)
 
 (require 'use-package)
