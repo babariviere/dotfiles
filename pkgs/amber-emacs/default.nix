@@ -89,6 +89,13 @@ in emacsWithPackages (epkgs:
     lispy
     lispyville
 
+    # Cc
+    ccls
+    cmake-mode
+    demangle-mode
+    disaster
+    modern-cpp-font-lock
+
     # Company
     company
     company-box

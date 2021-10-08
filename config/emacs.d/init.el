@@ -47,6 +47,7 @@
 (require 'amber-flycheck)
 (require 'amber-persp)
 
+(require 'amber-cc)
 (require 'amber-common-lisp)
 (require 'amber-csharp)
 (require 'amber-data)

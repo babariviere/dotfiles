@@ -168,6 +168,7 @@
   home-manager.users.babariviere = { config, lib, pkgs, ... }: {
     profiles = {
       dev = {
+        cc.enable = true;
         common-lisp.enable = true;
         go.enable = true;
         python.enable = true;
@@ -196,7 +197,6 @@
     # TODO: remove this and split in profile
     home.packages = with pkgs; [
       firefox
-      conan
       rofi
       mako
       nixos-option
@@ -207,13 +207,10 @@
       docker-compose
       neovim
       postgresql
-      gcc
       yarn
       font-awesome
       gitlab-ci-lint
       jq
-      ccls
-      clang-tools
       yaml-language-server
       xdg_utils
     ];
