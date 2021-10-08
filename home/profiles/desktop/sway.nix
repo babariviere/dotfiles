@@ -94,12 +94,20 @@
       };
       modifier = "Mod4";
       terminal = "${pkgs.foot}/bin/foot";
-      keybindings = lib.mkOptionDefault {
+      keybindings = let
+        resize = pkgs.writeScript "resize" ''
+          visible=$(${pkgs.sway}/bin/swaymsg -t get_tree | ${pkgs.jq}/bin/jq '.nodes[].nodes[].floating_nodes[] | select(.name == "emacs-scratchpad") | .visible?')
+          if [ "$visible" = "true" ]; then
+            ${pkgs.sway}/bin/swaymsg '[title="emacs-scratchpad" floating]' resize set 90 ppt 90 ppt, move position center
+          fi
+        '';
+      in lib.mkOptionDefault {
         "Mod4+End" =
           "exec ${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --effect-blur 7x5 --effect-vignette 0.5:0.5 --grace 2 --fade-in 0.2";
         "Mod4+d" = ''
           exec ${pkgs.j4-dmenu-desktop}/bin/j4-dmenu-desktop --dmenu "${pkgs.rofi}/bin/rofi -dmenu -i -show-icons"
         '';
+        "Mod4+minus" = "scratchpad show, exec ${resize}";
         "Mod4+less" = "exec ${pkgs.mako}/bin/makoctl dismiss";
         "Mod4+greater" = "exec ${pkgs.mako}/bin/makoctl invoke";
         "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 2";
@@ -138,12 +146,23 @@
         command = "emacs-scratch";
       }]);
 
-      window.commands = [{
-        command = ''
-          floating enable, resize set 90 ppt 90 ppt, move position center, move to scratchpad
-        '';
-        criteria = { title = "emacs-scratchpad"; };
-      }];
+      window.commands = [
+        {
+          command = ''
+            floating enable, resize set 90 ppt 90 ppt, move position center, move to scratchpad
+          '';
+          criteria = { title = "emacs-scratchpad"; };
+        }
+        {
+          command = ''
+            resize set 90 ppt 90 ppt, move position center
+          '';
+          criteria = {
+            title = "emacs-scratchpad";
+            floating = true;
+          };
+        }
+      ];
     };
     extraConfig = ''
       default_border pixel 2
