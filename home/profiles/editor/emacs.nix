@@ -3,8 +3,9 @@
 let
   emacs = pkgs.amber-emacs;
   emacs-scratchpad = pkgs.writeScriptBin "emacs-scratch" ''
-    ${emacs}/bin/emacs -c -n \
-        --eval '(progn (setq frame-title-format "emacs-scratchpad") (amber/org-goto-tasks))'
+    #!/bin/sh
+    ${emacs}/bin/emacsclient -c -n \
+        --eval '(progn (set-frame-parameter nil (quote title) "emacs-scratchpad") (amber/org-goto-tasks))'
   '';
   org-protocol = pkgs.makeDesktopItem {
     name = "org-protocol";
