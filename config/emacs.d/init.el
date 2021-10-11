@@ -96,12 +96,12 @@
 									   (ignored . " ")))
   (diff-hl-margin-mode))
 
-(use-package zoom
-  :demand t
-  :custom
-  (zoom-size '(0.618 . 0.618))
-  :config
-  (zoom-mode 1))
+;; (use-package zoom
+;;   :demand t
+;;   :custom
+;;   (zoom-size '(0.618 . 0.618))
+;;   :config
+;;   (zoom-mode 1))
 
 (use-package pinentry
   :demand t
