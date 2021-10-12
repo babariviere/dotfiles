@@ -8,7 +8,8 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
+    # TODO: switch back to nix-community once my PR is merged.
+    home-manager.url = "github:babariviere/home-manager/fix/nixos-unstable";
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     flow.url = "github:babariviere/flow";
     utils.url = "github:numtide/flake-utils";
