@@ -40,7 +40,7 @@
 (defun amber/consult-ripgrep-folder ()
   "Run consult-ripgrep in folder."
   (interactive)
-  (consult-ripgrep (file-name-directory buffer-file-name)))
+  (consult-ripgrep default-directory))
 
 (defun amber/consult-ripgrep-project ()
   "Run consult-ripgrep in projectile-project-root."
