@@ -124,10 +124,7 @@
           command =
             "${pkgs.dbus}/bin/dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway";
         }
-        {
-          command =
-            "${pkgs.systemd}/bin/systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP";
-        }
+        { command = "${pkgs.systemd}/bin/systemctl --user import-environment"; }
         {
           command = let
             inherit (pkgs) glib;
