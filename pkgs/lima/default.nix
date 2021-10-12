@@ -11,7 +11,7 @@ buildGoModule rec {
     sha256 = "sha256-1952xGSfVFI2Fs5HLJKCyB6ZxKFf5uPKXIlctM/T+8o=";
   };
 
-  buildFlagsArray = [
+  ldflags = [
     "-ldflags=-s -w -X github.com/AkihiroSuda/lima/pkg/version.Version=${version}"
   ];
 
