@@ -213,6 +213,7 @@
       jq
       yaml-language-server
       xdg_utils
+      _1password-gui
     ];
 
     gtk = {
