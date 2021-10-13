@@ -2,7 +2,8 @@
   programs.mako = {
     enable = true;
     font = "MonoLisa 10";
-    defaultTimeout = 0;
+    # 10s
+    defaultTimeout = 10000;
     backgroundColor = "#282a36";
     borderColor = "#282a36";
     textColor = "#f8f8f2";
