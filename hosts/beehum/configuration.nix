@@ -155,6 +155,15 @@
     };
   };
 
+  ## Resilio
+
+  services.resilio = {
+    enable = true;
+    deviceName = config.networking.hostName;
+    enableWebUI = true;
+    httpListenAddr = "127.0.0.1";
+  };
+
   # User
   users.users.babariviere = {
     isNormalUser = true;
