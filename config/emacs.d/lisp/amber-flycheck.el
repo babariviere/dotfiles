@@ -27,8 +27,12 @@
 
 ;;; Code:
 
+(require 'use-package)
+
 (use-package flycheck
   :hook (after-init . global-flycheck-mode)
+  :custom
+  (flycheck-emacs-lisp-load-path 'inherit)
   :config
   ;; let diff have left fringe, flycheck can have right fringe
   (setq flycheck-indication-mode 'right-fringe)
