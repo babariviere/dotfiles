@@ -1,50 +1,33 @@
+;;; amber-company.el --- Company -*- lexical-binding: t -*-
+
+;; Author:
+;; Maintainer:
+;; Version: version
+;; Package-Requires: (dependencies)
+;; Homepage: homepage
+;; Keywords: keywords
+
+
+;; This file is not part of GNU Emacs
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+;;; Commentary:
+
+;; Add company support to Amber Emacs.
+
+;;; Code:
+
 (require 'use-package)
-
-;; Stolen from doom emacs. Maybe rework it for my own need.
-;; TODO: add general keyword to hook company backend
-(defvar amber/company-backend-alist
-  '((text-mode (:separate company-dabbrev company-yasnippet company-ispell))
-    (prog-mode (company-capf :with company-yasnippet))
-	(org-mode (:separate company-capf company-dabbrev company-yasnippet company-ispell))
-    (conf-mode company-capf company-dabbrev-code company-yasnippet)))
-
-(defun amber/company--backends ()
-  "Get list of all backends for the `major-mode'."
-  (let (backends)
-    (let ((mode major-mode)
-          (modes (list major-mode)))
-      (while (setq mode (get mode 'derived-mode-parent))
-        (push mode modes))
-      (dolist (mode modes)
-        (dolist (backend (append (cdr (assq mode amber/company-backend-alist))
-                                 (default-value 'company-backends)))
-          (push backend backends)))
-      (delete-dups
-       (append (cl-loop for (mode . backends) in amber/company-backend-alist
-                        if (or (eq major-mode mode) ; major modes
-                               (and (boundp mode)
-                                    (symbol-value mode))) ; minor modes
-                        append backends)
-               (nreverse backends))))))
-
-;; (let ((major-mode 'emacs-lisp-mode))
-;;   (amber/company--backends))
-
-(defun amber/company-init-backends ()
-  "Initialize backends for the buffer."
-  (or (memq major-mode '(fundamental-mode special-mode))
-	  buffer-read-only
-	  (setq-local company-backends (amber/company--backends))))
-
-(defun amber/set-company-backend (modes &rest backends)
-  "Set company BACKENDS for MODES."
-  (dolist (mode (if (listp modes) modes (list modes)))
-    (if (null (car backends))
-        (setq amber/company-backend-alist
-              (delq (assq mode amber/company-backend-alist)
-                    amber/company-backend-alist))
-      (setf (alist-get mode amber/company-backend-alist)
-            backends))))
 
 (use-package company
   :hook
@@ -52,7 +35,7 @@
   :custom
   (company-minimum-prefix-length 1)
   (company-idle-delay 0.0)
-  (company-backends '())
+  (company-backends '((company-capf :with company-yasnippet) company-dabbrev-code company-dabbrev company-ispell))
   (company-auto-commit nil)
   (company-tooltip-limit 14)
   (company-tooltip-align-annotations t)
@@ -65,10 +48,6 @@
   ;; domain-specific words with particular casing.
   (company-dabbrev-ignore-case nil)
   (company-dabbrev-downcase nil)
-  :config
-  (put 'amber/company-init-backends 'permanent-local-hook t)
-
-  (add-hook 'after-change-major-mode-hook #'amber/company-init-backends 'append)
   :general
   (:keymaps 'company-active-map
 			"C-j" #'company-select-next
@@ -86,4 +65,7 @@
   (setq company-box-backends-colors nil)
   (add-to-list 'company-box-frame-parameters '(tab-bar-lines . 0)))
 
+
 (provide 'amber-company)
+
+;;; amber-company.el ends here
