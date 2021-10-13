@@ -34,7 +34,6 @@
   (after-init . global-company-mode)
   :custom
   (company-minimum-prefix-length 1)
-  (company-idle-delay 0.0)
   (company-backends '((company-capf :with company-yasnippet) company-dabbrev-code company-dabbrev company-ispell))
   (company-auto-commit nil)
   (company-tooltip-limit 14)
@@ -64,7 +63,6 @@
   ;; remove that ugly green color for yasnippet completion
   (setq company-box-backends-colors nil)
   (add-to-list 'company-box-frame-parameters '(tab-bar-lines . 0)))
-
 
 (provide 'amber-company)
 
