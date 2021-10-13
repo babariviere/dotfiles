@@ -177,7 +177,8 @@
         };
         self' = self;
       in {
-        packages = lib.fix (self: self'.overlay self pkgs);
+        # packages = lib.fix (self: self'.overlay self pkgs);
+        packages = pkgs;
 
         devShell = pkgs.mkShell {
           buildInputs = [
