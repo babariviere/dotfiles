@@ -113,13 +113,18 @@ rec {
     };
   };
 
+  services.dbus.enable = true;
+  # TODO: temporary fix until https://github.com/NixOS/nixpkgs/pull/141328
+  systemd.services.prometheus-node-exporter.serviceConfig.RestrictAddressFamilies =
+    [ "AF_UNIX" ];
   services.prometheus = {
     enable = true;
     port = 9001;
     exporters = {
       node = {
         enable = true;
-        enabledCollectors = [ "systemd" ];
+        enabledCollectors = [ "cpu" "cpufreq" "processes" "systemd" ];
+        disabledCollectors = [ "rapl" ];
         port = 9002;
       };
       unbound = {
