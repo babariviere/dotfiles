@@ -28,9 +28,13 @@ in lib.mkMerge [
         recursive = true;
       };
     };
-    home.packages =
-      [ emacs pkgs.emacs-all-the-icons-fonts org-protocol emacs-scratchpad ]
-      ++ (lib.optionals pkgs.stdenv.isDarwin [ pkgs.emacs-client ]);
+    home.packages = [
+      emacs
+      pkgs.emacs-all-the-icons-fonts
+      org-protocol
+      emacs-scratchpad
+      pkgs.ispell
+    ] ++ (lib.optionals pkgs.stdenv.isDarwin [ pkgs.emacs-client ]);
     programs.emacs.package = emacs;
     shell.aliases = { e = "${emacs}/bin/emacsclient"; };
 
