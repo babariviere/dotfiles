@@ -468,8 +468,7 @@ Examples:
 				 (side . right)
 				 (slot . 0)
 				 (window-width . 0.33)
-				 (window-parameters . ((no-other-window . t)
-                                       (no-delete-other-windows . t)))))
+				 (window-parameters . ((no-delete-other-windows . t)))))
 
   (org-roam-db-autosync-mode 1)
   :general
