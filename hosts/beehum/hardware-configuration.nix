@@ -19,6 +19,13 @@
 
   networking.hostId = "99b75f29";
 
+  services.tlp = {
+    settings = {
+      START_CHARGE_THRESH_BAT0 = "75";
+      STOP_CHARGE_THRESH_BAT0 = "80";
+    };
+  };
+
   fileSystems."/" = {
     device = "tank/system";
     fsType = "zfs";
