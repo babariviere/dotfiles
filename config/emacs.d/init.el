@@ -45,7 +45,8 @@
 (require 'amber-vterm)
 (require 'amber-format)
 (require 'amber-flycheck)
-(require 'amber-persp)
+;; NOTE: Not sure I like it
+;; (require 'amber-persp)
 
 (require 'amber-cc)
 (require 'amber-common-lisp)
