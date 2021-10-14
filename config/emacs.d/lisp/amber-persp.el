@@ -27,6 +27,10 @@
 
 ;;; Code:
 
+(require 'use-package)
+;; NOTE: must be loaded after amber-keys to override SPC ,
+(require 'amber-keys)
+
 (use-package perspective
   :demand t
   :custom
