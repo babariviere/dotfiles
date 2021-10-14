@@ -178,6 +178,7 @@ in emacsWithPackages (epkgs:
     vterm
 
     # Misc
+    editorconfig
     git-auto-commit-mode
     zoom
     pinentry

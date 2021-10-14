@@ -119,3 +119,7 @@ ARGS are the arguments passed to `browse-url`."
   (setenv "DISPLAY" ":0"))
 
 (advice-add 'browse-url :before #'amber/enforce-display-env)
+
+(use-package editorconfig
+  :config
+  (editorconfig-mode 1))
