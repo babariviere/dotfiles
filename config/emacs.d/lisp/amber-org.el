@@ -487,7 +487,7 @@ Examples:
    '(("r" "Reference" plain
       "%?"
       :target (file+head "refs/${slug}.org"
-						 "#+TITLE: ${title}\n#+ROAM_REFS: ${refs}\n\n")
+						 "#+TITLE: ${title}\n\n")
       :unnarrowed t)))
   :init
   (make-directory (concat org-roam-directory org-reference-directory) t))
