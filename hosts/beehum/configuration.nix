@@ -94,6 +94,13 @@
     value = "1048576";
   }];
 
+  security.sudo = {
+    package = pkgs.sudo.override { withInsults = true; };
+    extraConfig = ''
+      Defaults insults
+    '';
+  };
+
   ## Wayland
 
   ## Virtualisation
