@@ -5,6 +5,7 @@ set -e
 pushd "$PROJECT_ROOT"
 
 nix flake update
+nix flake check || (git checkout flake.lock && exit 1)
 git add flake.lock
 git commit -m "chore: update flake.lock"
 git push
