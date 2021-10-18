@@ -61,7 +61,7 @@
     desktop.sway.enable = true;
     login.greetd.enable = true;
     media.pulseaudio.enable = true;
-    net.tailscale.enable = true;
+    net.tailscale.enable = false;
   };
 
   ## Display
@@ -73,15 +73,18 @@
 
   ## Nix
   # TODO: use network.nix
-  nix.distributedBuilds = true;
-  nix.buildMachines = [{
-    hostName = "100.100.28.13";
-    maxJobs = 8;
-    sshUser = "root";
-    system = "x86_64-linux";
-    sshKey = "/root/.ssh/id_ed25519";
-    supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-  }];
+  nix.distributedBuilds = false;
+  # nix.buildMachines = [{
+  #   hostName = "100.100.28.13";
+  #   maxJobs = 8;
+  #   sshUser = "root";
+  #   system = "x86_64-linux";
+  #   sshKey = "/root/.ssh/id_ed25519";
+  #   supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+  # }];
+  # nix.extraOptions = ''
+  #   builders-use-substitutes = true
+  # '';
 
   ## Audio
 
@@ -221,6 +224,9 @@
       yaml-language-server
       xdg_utils
       _1password-gui
+      grim
+      slurp
+      wl-clipboard
     ];
 
     gtk = {
