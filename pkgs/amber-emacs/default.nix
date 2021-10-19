@@ -146,7 +146,6 @@ in emacsWithPackages (epkgs:
     org-appear
     org-contrib
     org-edna
-    org-superstar
     evil-org
     org-roam
 

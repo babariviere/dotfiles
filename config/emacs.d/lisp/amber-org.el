@@ -500,11 +500,6 @@ Examples:
   (org-appear-autosubmarkers t)
   (org-appear-autoemphasis t))
 
-(use-package org-superstar
-  :hook (org-mode . org-superstar-mode)
-  :custom
-  (org-superstar-leading-bullet ?\s))
-
 (use-package evil-org
   :after org
   :hook (org-mode . evil-org-mode)
