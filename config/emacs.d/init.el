@@ -123,3 +123,5 @@ ARGS are the arguments passed to `browse-url`."
 (use-package editorconfig
   :config
   (editorconfig-mode 1))
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
