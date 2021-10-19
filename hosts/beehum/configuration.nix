@@ -227,6 +227,8 @@
       grim
       slurp
       wl-clipboard
+      zathura
+      texlive.combined.scheme-full
     ];
 
     gtk = {
