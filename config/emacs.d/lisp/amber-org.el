@@ -294,7 +294,7 @@ Examples:
   :demand t
   :custom
   (org-hide-emphasis-marker t)
-  (org-hide-leading-star t)
+  (org-hide-leading-stars t)
   (org-indent-mode-turns-on-hiding-stars nil)
   (org-startup-indented t)
   (org-confirm-babel-evaluate nil)
