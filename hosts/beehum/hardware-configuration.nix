@@ -41,6 +41,11 @@
     fsType = "zfs";
   };
 
+  # fileSystems."/gnu" = {
+  #   device = "tank/local/guix";
+  #   fsType = "zfs";
+  # };
+
   fileSystems."/var/lib/docker" = {
     device = "tank/system/var/docker";
     fsType = "zfs";

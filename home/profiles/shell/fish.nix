@@ -15,6 +15,9 @@
 
         ${flow} setup $HOME/src --path ${flow} fish | source
       '';
+    loginShellInit = ''
+      fenv source $HOME/.profile
+    '';
     plugins = [
       {
         name = "dracula";
