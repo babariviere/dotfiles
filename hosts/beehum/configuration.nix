@@ -229,6 +229,10 @@
       wl-clipboard
       zathura
       texlive.combined.scheme-full
+      plantuml
+      figlet
+      ditaa
+      openjdk
     ];
 
     gtk = {
