@@ -148,6 +148,7 @@ in emacsWithPackages (epkgs:
     org-edna
     evil-org
     org-roam
+    htmlize
 
     # Nix
     nix-mode

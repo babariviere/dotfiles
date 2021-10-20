@@ -19,8 +19,9 @@
  ;; Fix warning about not being able to determine a suitable EmacsClient
  '(with-editor-emacsclient-executable "emacsclient")
 
- '(indent-tabs-mode nil)
  '(tab-width 4))
+
+(setq-default indent-tabs-mode nil)
 
 (when (or (memq window-system '(mac ns x))
 		  (daemonp))

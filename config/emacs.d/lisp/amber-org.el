@@ -320,7 +320,9 @@ Examples:
   (org-log-into-drawer t)
   :config
   (advice-add #'org-return :after #'amber/org-src-fix-newline-and-indent-a)
+  (require 'org-tempo)
   (add-to-list 'org-structure-template-alist '("n" . "note"))
+  (require 'htmlize)
   :general
   ('normal org-mode-map
   		   "RET" #'amber/org-dwin-at-point
