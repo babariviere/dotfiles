@@ -16,8 +16,6 @@
   #:use-module (gnu packages vim)
   #:use-module (gnu packages wm)
   #:use-module (gnu packages xorg)
-  #:use-module (gnu services)
-  #:use-module (gnu services base)
   #:use-module (gnu services desktop)
   #:use-module (gnu services nix)
   #:use-module (gnu services pm)
@@ -34,17 +32,16 @@
    (service tlp-service-type)
    (modify-services
     %desktop-services
-    (guix-service-type
-     config =>
-     (guix-configuration
-      (inherit config)
-      (discover? #t)
-      (substitute-urls (append
-			(@@ (guix scripts substitute) %default-substitute-urls)
-			(list "https://mirror.brielmaier.net")))
-      (authorized-keys (append
-			%default-authorized-guix-keys
-			(list (local-file "mirror.brielmaier.net.pub")))))))))
+    (guix-service-type config =>
+		       (guix-configuration
+			(inherit config)
+			(discover? #t)
+			(substitute-urls (append
+					  (@@ (guix scripts substitute) %default-substitute-urls)
+					  (list "https://mirror.brielmaier.net")))
+			(authorized-keys (append
+					  %default-authorized-guix-keys
+					  (list (local-file "mirror.brielmaier.net.pub")))))))))
 
 (operating-system
  (host-name "dalshb")
