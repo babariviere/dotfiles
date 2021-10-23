@@ -156,7 +156,10 @@
 
 (define %sway-config
   `((include ,(file-append sway "/etc/sway/config"))
-    (bindsym $mod+Shift+e exec emacsclient -c --eval "(eshell)")))
+    ;; (bindsym $mod+Shift+e exec emacsclient -c --eval "(eshell)")
+    (output HDMI-A-1 scale 1.5 pos 0 0)
+    (output DP-2 scale 1.5 pos ,(inexact->exact (/ 3840 1.5)) 0)
+    (output eDP-1 pos ,(inexact->exact (/ 3840 2)) ,(inexact->exact (/ 2160 1.5)))))
 
 (home-environment
  (packages
