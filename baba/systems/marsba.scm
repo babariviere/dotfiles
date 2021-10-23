@@ -48,65 +48,68 @@
 					  %default-authorized-guix-keys
 					  (list (local-file "mirror.brielmaier.net.pub")))))))))
 
-(operating-system
- (host-name "marspa")
- (timezone "Europe/Paris")
- (locale "en_US.utf8")
+(define os
+  (operating-system
+   (host-name "marspa")
+   (timezone "Europe/Paris")
+   (locale "en_US.utf8")
 
- ;; Use the UEFI variant of GRUB with the EFI System
- ;; Partition mounted on /boot/efi.
- (bootloader (bootloader-configuration
-	      (bootloader grub-efi-bootloader)
-	      (targets '("/boot/efi"))))
+   ;; Use the UEFI variant of GRUB with the EFI System
+   ;; Partition mounted on /boot/efi.
+   (bootloader (bootloader-configuration
+		(bootloader grub-efi-bootloader)
+		(targets '("/boot/efi"))))
 
- (kernel linux)
- (kernel-loadable-modules (list acpi-call-linux-module))
- (kernel-arguments
-  (cons* (string-append "modprobe.blacklist="
-			(string-join %blacklist-modules
-				     ","))
-	 (delete "quiet" %default-kernel-arguments)))
- (firmware (list linux-firmware))
- (initrd microcode-initrd)
- ;; Assume the target root file system is labelled "my-root",
- ;; and the EFI System Partition has UUID 1234-ABCD.
- (file-systems (append
-		(list (file-system
-		       (device (uuid "d02d6b18-5f6a-4150-8669-aea28343e0b4"))
-		       (mount-point "/")
-		       (type "ext4"))
-		      (file-system
-		       (device (uuid "E523-A561" 'fat))
-		       (mount-point "/boot/efi")
-		       (type "vfat")))
-		%base-file-systems))
+   (kernel linux)
+   (kernel-loadable-modules (list acpi-call-linux-module))
+   (kernel-arguments
+    (cons* (string-append "modprobe.blacklist="
+			  (string-join %blacklist-modules
+				       ","))
+	   (delete "quiet" %default-kernel-arguments)))
+   (firmware (list linux-firmware))
+   (initrd microcode-initrd)
+   ;; Assume the target root file system is labelled "my-root",
+   ;; and the EFI System Partition has UUID 1234-ABCD.
+   (file-systems (append
+		  (list (file-system
+			 (device (uuid "d02d6b18-5f6a-4150-8669-aea28343e0b4"))
+			 (mount-point "/")
+			 (type "ext4"))
+			(file-system
+			 (device (uuid "E523-A561" 'fat))
+			 (mount-point "/boot/efi")
+			 (type "vfat")))
+		  %base-file-systems))
 
- (users (cons (user-account
-	       (name "babariviere")
-	       (group "users")
-	       (supplementary-groups '("wheel" "netdev"
-				       "audio" "video"))
-	       (shell (file-append fish "/bin/fish")))
-	      %base-user-accounts))
+   (users (cons (user-account
+		 (name "babariviere")
+		 (group "users")
+		 (supplementary-groups '("wheel" "netdev"
+					 "audio" "video"))
+		 (shell (file-append fish "/bin/fish")))
+		%base-user-accounts))
 
- ;; Add a bunch of window managers; we can choose one at
- ;; the log-in screen with F1.
- (packages (append (list
-		    ;; window managers
-		    sway dmenu
-		    ;; emacs
-		    ;; terminal emulator
-		    alacritty foot neovim
-		    ;; ssh
-		    openssh
-		    ;; for HTTPS access
-		    nss-certs)
-		   %base-packages))
+   ;; Add a bunch of window managers; we can choose one at
+   ;; the log-in screen with F1.
+   (packages (append (list
+		      ;; window managers
+		      sway dmenu
+		      ;; emacs
+		      ;; terminal emulator
+		      alacritty foot neovim
+		      ;; ssh
+		      openssh
+		      ;; for HTTPS access
+		      nss-certs)
+		     %base-packages))
 
- ;; Use the "desktop" services, which include the X11
- ;; log-in service, networking with NetworkManager, and more.
- (services services)
+   ;; Use the "desktop" services, which include the X11
+   ;; log-in service, networking with NetworkManager, and more.
+   (services services)
 
- ;; Allow resolution of '.local' host names with mDNS.
- (name-service-switch %mdns-host-lookup-nss))
+   ;; Allow resolution of '.local' host names with mDNS.
+   (name-service-switch %mdns-host-lookup-nss)))
+
+os
    
