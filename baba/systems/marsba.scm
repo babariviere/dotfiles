@@ -2,7 +2,7 @@
 ;; for a "desktop" setup without full-blown desktop
 ;; environments.
 
-(define-module (baba systems dalshb)
+(define-module (baba systems marspa)
   #:use-module (gnu)
   #:use-module (gnu packages bootloaders)
   #:use-module (gnu packages certs)
@@ -44,7 +44,7 @@
 					  (list (local-file "mirror.brielmaier.net.pub")))))))))
 
 (operating-system
- (host-name "dalshb")
+ (host-name "marspa")
  (timezone "Europe/Paris")
  (locale "en_US.utf8")
 

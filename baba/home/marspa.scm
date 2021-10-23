@@ -1,21 +1,21 @@
-(define-module (baba home dalshb))
-(use-modules (gnu home)
-	     (gnu home services)
-	     (gnu home services shells)
-	     (gnu home-services emacs)
-	     (gnu home-services gnupg)
-	     (gnu home-services version-control)
-	     (gnu home-services wm)
-	     (gnu packages admin)
-	     (gnu packages cmake)
-	     (gnu packages emacs)
-	     (gnu packages emacs-xyz)
-	     (gnu packages wm)
-	     (gnu services)
-	     (guix gexp)
-	     (guix packages)
-	     (baba packages emacs-xyz)
-	     (flat packages emacs))
+(define-module (baba home marspa)
+  #:use-module (gnu home)
+  #:use-module (gnu home services)
+  #:use-module (gnu home services shells)
+  #:use-module (gnu home-services emacs)
+  #:use-module (gnu home-services gnupg)
+  #:use-module (gnu home-services version-control)
+  #:use-module (gnu home-services wm)
+  #:use-module (gnu packages admin)
+  #:use-module (gnu packages cmake)
+  #:use-module (gnu packages emacs)
+  #:use-module (gnu packages emacs-xyz)
+  #:use-module (gnu packages wm)
+  #:use-module (gnu services)
+  #:use-module (guix gexp)
+  #:use-module (guix packages)
+  #:use-module (baba packages emacs-xyz)
+  #:use-module (flat packages emacs))
 
 ;; (define emacs-dash-patched
 ;;   (package
@@ -141,6 +141,7 @@
    
    ;; emacs-doom-themes
    emacs-kaolin-themes
+   emacs-modus-themes
    
    emacs-vterm
    
