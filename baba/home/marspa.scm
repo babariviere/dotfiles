@@ -159,7 +159,10 @@
     ;; (bindsym $mod+Shift+e exec emacsclient -c --eval "(eshell)")
     (output HDMI-A-1 res 2560x1440@60Hz pos 0 0)
     (output DP-2 res 2560x1440@60Hz pos 2560 0)
-    (output eDP-1 pos ,(inexact->exact (/ 3840 2)) 1440)))
+    (output eDP-1 pos ,(inexact->exact (/ 3840 2)) 1440)
+    (bindswitch lid:on output eDP-1 disable)
+    (bindswitch lid:off output eDP-1 enable)
+    (focus_follows_mouse no)))
 
 (home-environment
  (packages
