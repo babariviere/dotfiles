@@ -3,6 +3,7 @@
 ;; environments.
 
 (define-module (baba systems marspa)
+  #:use-module (srfi srfi-1)
   #:use-module (gnu)
   #:use-module (gnu packages bootloaders)
   #:use-module (gnu packages certs)
@@ -19,6 +20,7 @@
   #:use-module (gnu services desktop)
   #:use-module (gnu services nix)
   #:use-module (gnu services pm)
+  #:use-module (gnu services xorg)
   #:use-module (gnu system nss)
   #:use-module (nongnu packages linux)
   #:use-module (nongnu system linux-initrd))
@@ -31,7 +33,10 @@
    (service nix-service-type)
    (service tlp-service-type)
    (modify-services
-    %desktop-services
+    (remove (lambda (service)
+		   (member (service-kind service)
+			   (list gdm-service-type)))
+	    %desktop-services)
     (guix-service-type config =>
 		       (guix-configuration
 			(inherit config)
@@ -88,10 +93,10 @@
  ;; the log-in screen with F1.
  (packages (append (list
 		    ;; window managers
-		    i3-wm i3status dmenu
+		    sway dmenu
 		    ;; emacs
 		    ;; terminal emulator
-		    xterm alacritty neovim
+		    alacritty foot neovim
 		    ;; ssh
 		    openssh
 		    ;; for HTTPS access
