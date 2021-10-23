@@ -144,6 +144,9 @@
    emacs-modus-themes
    
    emacs-vterm
+
+   emacs-geiser
+   emacs-guix
    
    emacs-editorconfig
    emacs-git-auto-commit-mode
