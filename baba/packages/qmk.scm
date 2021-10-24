@@ -168,9 +168,9 @@
     (description "ctypes bindings for hidapi")
     (license license:expat)))
 
-(define-public python-qmk
+(define-public qmk
   (package
-    (name "python-qmk")
+    (name "qmk")
     (version "1.0.0")
     (source
       (origin
