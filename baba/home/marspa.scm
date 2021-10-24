@@ -10,6 +10,8 @@
   #:use-module (gnu packages cmake)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages emacs-xyz)
+  #:use-module (gnu packages gcc)
+  #:use-module (gnu packages sqlite)
   #:use-module (gnu packages wm)
   #:use-module (gnu services)
   #:use-module (guix gexp)
@@ -139,7 +141,7 @@
    emacs-yasnippet
    emacs-doom-snippets
    
-   ;; emacs-doom-themes
+   emacs-doom-themes
    emacs-kaolin-themes
    emacs-modus-themes
    
@@ -148,6 +150,9 @@
    emacs-geiser
    emacs-guix
    
+   emacs-emacsql-sqlite3
+   sqlite
+   gcc
    emacs-editorconfig
    emacs-git-auto-commit-mode
    emacs-zoom
