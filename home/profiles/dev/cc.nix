@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ ccls cmake conan gcc ninja ];
+  home.packages = with pkgs; [ ccls cmake gcc ninja ];
 }

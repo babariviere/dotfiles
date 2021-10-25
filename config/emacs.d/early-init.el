@@ -12,7 +12,7 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
-(add-hook 'prog-mode-hook #'display-line-numbers-mode)
+;; (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (column-number-mode)
 
 (defalias 'yes-or-no-p #'y-or-n-p)

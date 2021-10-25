@@ -18,6 +18,7 @@
   networking.hostName = "${config.meta.specie.code}";
   networking.domain = "home";
 
+  networking.nameservers = [ "1.1.1.1" ];
   networking.useDHCP = false;
   networking.usePredictableInterfaceNames = true;
   networking.useNetworkd = true;
@@ -265,6 +266,7 @@
       figlet
       ditaa
       openjdk
+      insomnia
     ];
 
     gtk = {

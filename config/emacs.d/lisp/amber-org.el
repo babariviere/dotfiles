@@ -346,6 +346,8 @@ Examples:
 	"nC" '(org-roam-capture :wk "roam capture")
 	"no" '(org-clock-out :wk "clock out")
 	"nt" '(org-roam-dailies-goto-today :wk "today's note")
+	"nT" '(org-roam-dailies-goto-tomorrow :wk "tomorrow's note")
+	"ny" '(org-roam-dailies-goto-yesterday :wk "yesterday's note")
     "oA" '(amber/org-goto-agenda :wk "open agenda.org")
     "oi" '(amber/org-goto-inbox :wk "open inbox.org")
     "oI" '(amber/org-goto-tasks :wk "open tasks.org")))
@@ -481,6 +483,9 @@ Examples:
 (use-package org-roam-dailies
   :after org-roam
   :custom
+  (org-roam-dailies-capture-templates
+   '(("d" "default" entry "%?" :target
+	  (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n" ("Recap")))))
   (org-roam-dailies-directory "journal/"))
 
 (use-package org-roam-protocol
