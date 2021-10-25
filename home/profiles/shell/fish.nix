@@ -6,13 +6,6 @@
     interactiveShellInit =
       let flow = "${inputs.flow.defaultPackage.${pkgs.system}}/bin/flow";
       in ''
-        set fish_cursor_default block
-        set fish_cursor_insert line
-        set fish_cursor_replace_one underscore
-        set fish_cursor_visual block
-        fish_vi_cursor
-        fish_vi_key_bindings
-
         ${flow} setup $HOME/src --path ${flow} fish | source
       '';
     loginShellInit = ''
