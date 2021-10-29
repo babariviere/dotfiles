@@ -24,12 +24,10 @@
 											 projectile-root-top-down-recurring))
   (projectile-ignored-project-function #'amber/project-ignored-p)
   :general
-  (projectile-mode-map
-   "C-c p" 'projectile-command-map)
   (amber/leader-keys
-    "SPC" '(projectile-find-file :which-key "find file in project")
-    "p" '(:ignore t :which-key "project")
-    "pi" '(projectile-invalidate-cache :wk "invalidate cache")
-    "pp" '(projectile-switch-project :wk "switch project")))
+    projectile-mode-map
+    "p" 'projectile-command-map)
+  (amber/leader-keys
+    "SPC" '(projectile-find-file :which-key "find file in project")))
 
 (provide 'amber-project)

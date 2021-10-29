@@ -7,6 +7,7 @@
       let flow = "${inputs.flow.defaultPackage.${pkgs.system}}/bin/flow";
       in ''
         ${flow} setup $HOME/src --path ${flow} fish | source
+        ${pkgs.direnv}/bin/direnv hook fish | source
       '';
     loginShellInit = ''
       fenv source $HOME/.profile

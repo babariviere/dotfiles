@@ -90,18 +90,18 @@
   :mode "\\.go\\'"
   :hook (go-mode . lsp)
   :general
-  (amber/local-leader-keys go-mode-map
-    "t" '(:ignore t :wk "test")
-    "ts" '(amber/go-test-single :wk "test single")
-    "ta" '(amber/go-test-all :wk "test all")
-    "tr" '(amber/go-test-rerun :wk "rerun test")
-    "tn" '(amber/go-test-nested :wk "test nested")))
+  (amber/leader-keys go-mode-map
+    "C-t" '(:ignore t :wk "test")
+    "C-t C-s" '(amber/go-test-single :wk "test single")
+    "C-t C-a" '(amber/go-test-all :wk "test all")
+    "C-t C-r" '(amber/go-test-rerun :wk "rerun test")
+    "C-t C-n" '(amber/go-test-nested :wk "test nested")))
 
 (use-package go-gen-test
   :general
-  (amber/local-leader-keys go-mode-map
-    "tg" '(go-gen-test-dwim :wk "generate tests")
-    "tG" '(go-gen-test-all :wk "generate all tests")))
+  (amber/leader-keys go-mode-map
+    "C-t C-g" '(go-gen-test-dwim :wk "generate tests")
+    "C-t C-G" '(go-gen-test-all :wk "generate all tests")))
 
 (provide 'amber-go)
 

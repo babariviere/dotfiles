@@ -6,7 +6,7 @@
    `(default ((t ,fixed-pitch)))
    `(fixed-pitch ((t ,fixed-pitch)))))
 
-(load-theme 'kaolin-ocean t)
+(load-theme 'modus-operandi t)
 
 (deftheme amber)
 (enable-theme 'amber)
@@ -64,12 +64,12 @@
 
 (require 'use-package)
 
-(use-package doom-modeline
-  :config
-  (doom-modeline-mode 1)
-  :custom
-  (doom-modeline-height 15)
-  (doom-modeline-buffer-file-name-style 'relative-from-project))
+;; (use-package doom-modeline
+;;   :config
+;;   (doom-modeline-mode 1)
+;;   :custom
+;;   (doom-modeline-height 15)
+;;   (doom-modeline-buffer-file-name-style 'relative-from-project))
 
 (use-package eldoc
   :hook (emacs-lisp-mode . eldoc-mode))
@@ -126,3 +126,10 @@ ARGS are the arguments passed to `browse-url`."
   (editorconfig-mode 1))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(use-package crux
+  :bind
+  (([remap move-beginning-of-line] . crux-move-beginning-of-line)
+   ([remap kill-whole-line] . crux-kill-whole-line)
+   ("<S-return>" . crux-smart-open-line)
+   ("<C-S-return>" . crux-smart-open-line-above)))

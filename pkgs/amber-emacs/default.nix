@@ -182,4 +182,5 @@ in emacsWithPackages (epkgs:
     git-auto-commit-mode
     zoom
     pinentry
+    crux
   ])

@@ -42,8 +42,8 @@
   :mode ("\\.gitlab-ci.yml\\'" . gitlab-ci-mode)
   :hook (gitlab-ci-mode . lsp)
   :general
-  (amber/local-leader-keys gitlab-ci-mode
-	"l" '(gitlab-ci-lint :wk "lint"))
+  (amber/leader-keys gitlab-ci-mode
+	"C-l" '(gitlab-ci-lint :wk "lint"))
   :init
   (require 'lsp-yaml)
   (add-to-list 'lsp-language-id-configuration '(gitlab-ci-mode . "spring-boot-properties-yaml"))

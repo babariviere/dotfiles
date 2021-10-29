@@ -327,19 +327,18 @@ Examples:
   ('normal org-mode-map
   		   "RET" #'amber/org-dwin-at-point
 		   [ret] #'amber/org-dwin-at-point)
-  (amber/local-leader-keys org-mode-map
-	"" nil
-    "a" '(:ignore t :wk "archive")
-    "at" '(amber/org-archive-subtree-as-completed :wk "archive task")
-    "c" '(:ignore t :wk "clock")
-    "ci" '(org-clock-in :wk "clock in")
-    "co" '(org-clock-out :wk "clock out")
-    "e" '(org-set-effort :wk "set effort")
-	"i" '(org-roam-node-insert :wk "insert node")
-	"l" '(org-insert-link :wk "insert link")
-    "p" '(org-priority :wk "set priority")
-	"P" '(org-set-property :wk "set property")
-    "t" '(amber/org-slow-todo :wk "select todo"))
+  ;; (amber/leader-keys org-mode-map
+  ;;   "C-a" '(:ignore t :wk "archive")
+  ;;   "C-a C-t" '(amber/org-archive-subtree-as-completed :wk "archive task")
+  ;;   "C-c" '(:ignore t :wk "clock")
+  ;;   "C-c C-i" '(org-clock-in :wk "clock in")
+  ;;   "C-c C-o" '(org-clock-out :wk "clock out")
+  ;;   "C-e" '(org-set-effort :wk "set effort")
+  ;;   "C-i" '(org-roam-node-insert :wk "insert node")
+  ;;   "C-l" '(org-insert-link :wk "insert link")
+  ;;   "C-p" '(org-priority :wk "set priority")
+  ;;   "C-P" '(org-set-property :wk "set property")
+  ;;   "C-t" '(amber/org-slow-todo :wk "select todo"))
   (amber/leader-keys
     "n" '(:ignore t :wk "notes")
     "nc" '(org-capture :wk "capture")
@@ -438,9 +437,10 @@ Examples:
   ;; We want to org-refile as the first item in the list (like a feed)
   (org-reverse-note-order t)
   (org-outline-path-complete-in-steps nil)
-  :general
-  (amber/local-leader-keys org-mode-map
-    "r" '(org-refile :wk "refile")))
+  ;; :general
+  ;; (amber/leader-keys org-mode-map
+  ;;   "r" '(org-refile :wk "refile"))
+  )
 
 (use-package org-clock
   :after org
@@ -508,12 +508,14 @@ Examples:
   (org-appear-autoemphasis t))
 
 (use-package evil-org
+  :disabled
   :after org
   :hook (org-mode . evil-org-mode)
   :config
   (evil-org-set-key-theme))
 
 (use-package evil-org-agenda
+  :disabled
   :after (evil-org org-agenda)
   :config
   (evil-org-agenda-set-keys))

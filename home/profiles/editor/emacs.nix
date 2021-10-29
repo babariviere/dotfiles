@@ -36,7 +36,7 @@ in lib.mkMerge [
       pkgs.ispell
     ] ++ (lib.optionals pkgs.stdenv.isDarwin [ pkgs.emacs-client ]);
     programs.emacs.package = emacs;
-    shell.aliases = { e = "${emacs}/bin/emacsclient"; };
+    shell.aliases = { e = "${emacs}/bin/emacsclient -nw"; };
 
     shell.env = {
       EDITOR = "${emacs}/bin/emacsclient -nw";

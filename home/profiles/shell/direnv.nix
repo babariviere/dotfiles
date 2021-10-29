@@ -14,8 +14,8 @@ in {
         enable = true;
         enableFlakes = true;
       };
-    } // (lib.optionalAttrs cfg.asdf {
+    } // {
       stdlib = builtins.readFile "${config.dotfiles.configDir}/direnvrc";
-    });
+    };
   };
 }

@@ -9,3 +9,7 @@ use_asdf() {
 
   source_env "$(asdf direnv _asdf_cached_envrc "$@")"
 }
+
+use_guix() {
+  eval "$(guix shell "$@" --search-paths)"
+}

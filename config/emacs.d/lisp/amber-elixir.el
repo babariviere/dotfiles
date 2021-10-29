@@ -43,28 +43,28 @@
       "K" nil
       :package 'alchemist))
   :general
-  (amber/local-leader-keys elixir-mode-map
-    "m" '(alchemist-mix :wk "mix")
-    "c" '(alchemist-mix-compile :wk "compile")
-    "i" '(alchemist-iex-project-run :wk "iex run")
-    "f" '(elixir-format :wk "format")
-    "e" '(:ignore t :wk "eval")
-    "ee" '(alchemist-iex-send-last-sexp :wk "eval sexp")
-    "er" '(alchemist-iex-send-region :wk "eval region")
-    "el" '(alchemist-iex-send-current-line :wk "eval line")
-    "eR" '(alchemist-iex-reload-module :wk "reload module")))
+  (amber/leader-keys elixir-mode-map
+    "C-m" '(alchemist-mix :wk "mix")
+    "C-c" '(alchemist-mix-compile :wk "compile")
+    "C-i" '(alchemist-iex-project-run :wk "iex run")
+    "C-f" '(elixir-format :wk "format")
+    "C-e" '(:ignore t :wk "eval")
+    "C-e C-e" '(alchemist-iex-send-last-sexp :wk "eval sexp")
+    "C-e C-r" '(alchemist-iex-send-region :wk "eval region")
+    "C-e C-l" '(alchemist-iex-send-current-line :wk "eval line")
+    "C-e C-R" '(alchemist-iex-reload-module :wk "reload module")))
 
 (use-package exunit
   :hook (elixir-mode . exunit-mode)
   :general
-  (amber/local-leader-keys elixir-mode-map
-    "t" '(:ignore t :wk "test")
-    "ta" '(exunit-verify-all :wk "verify all")
-    "tr" '(exunit-rerun :wk "rerun")
-    "ts" '(exunit-verify-single :wk "verify single")
-    "tT" '(exunit-toggle-file-and-test :wk "toggle test file")
-    "tt" '(exunit-toggle-file-and-test-other-window :wk "toggle test file (other)")
-    "tv" '(exunit-verify :wk "verify")))
+  (amber/leader-keys elixir-mode-map
+    "C-t" '(:ignore t :wk "test")
+    "C-t C-a" '(exunit-verify-all :wk "verify all")
+    "C-t C-r" '(exunit-rerun :wk "rerun")
+    "C-t C-s" '(exunit-verify-single :wk "verify single")
+    "C-t C-T" '(exunit-toggle-file-and-test :wk "toggle test file")
+    "C-t C-t" '(exunit-toggle-file-and-test-other-window :wk "toggle test file (other)")
+    "C-t C-v" '(exunit-verify :wk "verify")))
 
 (provide 'amber-elixir)
 

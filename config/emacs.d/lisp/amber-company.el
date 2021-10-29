@@ -34,7 +34,7 @@
   (after-init . global-company-mode)
   :custom
   (company-minimum-prefix-length 2)
-  (company-backends '((company-capf :with company-yasnippet) company-dabbrev-code company-dabbrev company-ispell))
+  (company-backends '((company-capf :with company-yasnippet) company-files company-dabbrev-code company-dabbrev company-ispell))
   (company-auto-commit nil)
   (company-tooltip-limit 14)
   (company-tooltip-align-annotations t)

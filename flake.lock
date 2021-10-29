@@ -197,16 +197,15 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1634934544,
-        "narHash": "sha256-m+RC6it1doMjq5U5e1B36thzOOBc1GF4tVLK2SNMvzg=",
-        "owner": "babariviere",
+        "lastModified": 1635123562,
+        "narHash": "sha256-kYuwQqHXDYxy5ijpm8SvCoPNx0br1TpoWeTIOEwOYvA=",
+        "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "65e63d62f0fb8d8af060ac2c2916e18c2eea9a72",
+        "rev": "da8a78eec9f7adb57f9e961d1da64805efacff37",
         "type": "github"
       },
       "original": {
-        "owner": "babariviere",
-        "ref": "fix/nixos-unstable",
+        "owner": "nix-community",
         "repo": "home-manager",
         "type": "github"
       }

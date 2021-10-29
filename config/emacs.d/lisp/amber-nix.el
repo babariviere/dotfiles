@@ -48,10 +48,10 @@
                      'js-mode))
   ;; (amber/set-company-backend 'nix-mode 'company-nixos-options)
   :general
-  (amber/local-leader-keys nix-mode-map
-    "f" '(nix-format-buffer :wk "format buffer")
-    "r" '(nix-repl-show :wk "repl")
-    "s" '(nix-shell :wk "nix-shell")))
+  (amber/leader-keys nix-mode-map
+    "C-f" '(nix-format-buffer :wk "format buffer")
+    "C-r" '(nix-repl-show :wk "repl")
+    "C-s" '(nix-shell :wk "nix-shell")))
 
 (use-package nix-drv-mode
   :mode "\\.drv\\'")

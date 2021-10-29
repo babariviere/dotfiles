@@ -34,11 +34,11 @@
 
 (use-package sql
   :general
-  (amber/local-leader-keys sql-mode-map
-    "e" '(:ignore t :wk "eval")
-    "ee" '(sql-send-paragraph :wk "eval")
-    "eb" '(sql-send-buffer :wk "eval buffer")
-    "er" '(sql-send-region :wk "eval region")))
+  (amber/leader-keys sql-mode-map
+    "C-e" '(:ignore t :wk "eval")
+    "C-e C-e" '(sql-send-paragraph :wk "eval")
+    "C-e C-b" '(sql-send-buffer :wk "eval buffer")
+    "C-e C-r" '(sql-send-region :wk "eval region")))
 
 (provide 'amber-sql)
 

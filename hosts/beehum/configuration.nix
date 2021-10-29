@@ -44,6 +44,7 @@
     networkConfig = {
       DHCP = "yes";
       IPv6PrivacyExtensions = "yes";
+      DNS = [ "1.1.1.1" ];
     };
   };
 
@@ -54,6 +55,7 @@
       EnableNetworkConfiguration = true;
       AddressRandomization = "once";
     };
+    Network = { NameResolvingService = "systemd"; };
   };
 
   ## Profiles
@@ -248,7 +250,6 @@
       slack
       foot
       docker-compose
-      neovim
       postgresql
       yarn
       font-awesome
@@ -267,6 +268,7 @@
       ditaa
       openjdk
       insomnia
+      httpie
     ];
 
     gtk = {

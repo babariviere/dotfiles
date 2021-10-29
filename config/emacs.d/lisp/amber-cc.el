@@ -37,8 +37,8 @@
 
 (use-package disaster
   :general
-  (amber/local-leader-keys 'normal c-mode-base-map
-	"d" '(disaster :wk "dissasemble")))
+  (amber/leader-keys c-mode-base-map
+	"C-d" '(disaster :wk "dissasemble")))
 
 (use-package demangle-mode
   :hook ((llvm-mode . demangle-mode)

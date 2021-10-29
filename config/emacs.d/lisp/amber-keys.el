@@ -12,32 +12,15 @@
 (use-package general
   :config
   (general-create-definer amber/leader-keys
-    :states '(normal insert motion visual emacs)
+    ;; :states '(normal insert motion visual emacs)
     :keymaps 'override
-    :prefix "SPC"
-    :non-normal-prefix "M-SPC")
-
-  (general-create-definer amber/local-leader-keys
-    :states '(normal insert motion visual emacs)
-    :keymaps 'override
-    :prefix ","
-    :non-normal-prefix "M-,")
-
-  ;; Required to avoid error with non-prefixed key. (official solution from general)
-  (amber/local-leader-keys
-    "" nil)
+    :prefix "C-c")                    ; switch everything to C-c
 
   (amber/leader-keys
     "." '(find-file :wk "find file")
-    "," '(switch-to-buffer :wk "switch to buffer")
-    "<" '(switch-to-buffer :wk "switch to buffer")
-    ":" '(execute-extended-command :wk "M-x")
-    ";"  '(eval-expression :which-key "eval expression")
     "b"  '(:ignore t :wk "buffer")
     "bk" '(kill-current-buffer :wk "kill buffer")
     "h"  '(:ignore t :which-key "help")
-    "hK" '(general-describe-keybindings :wk "describe keybindings")
-    "hF" '(describe-face :wk "describe face")
     "ht" '(load-theme :wk "choose theme")))
 
 (defun amber/window-split-and-follow ()
@@ -55,6 +38,7 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
     (call-interactively #'evil-window-vsplit)))
 
 (use-package evil
+  :disabled
   :custom
   (evil-want-integration t)
   (evil-want-keybinding nil)
@@ -84,6 +68,7 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
     "wV" '(amber/window-vsplit-and-follow :wk "split vertical (follow)")))
 
 (use-package evil-collection
+  :disabled
   :after evil
   :custom
   (evil-collection-key-blacklist '("SPC" "," "gd" "K"))
@@ -93,11 +78,13 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
   (evil-collection-init))
 
 (use-package evil-surround
+  :disabled
   :after evil
   :config
   (global-evil-surround-mode 1))
 
 (use-package evil-commentary
+  :disabled
   :after evil
   :config
   (evil-commentary-mode 1))
@@ -131,8 +118,8 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
     :keymap (let ((map (make-sparse-keymap)))
               (define-key map [remap undo] #'undo-fu-only-undo)
               (define-key map [remap redo] #'undo-fu-only-redo)
-              (define-key map (kbd "C-_")     #'undo-fu-only-undo)
-              (define-key map (kbd "M-_")     #'undo-fu-only-redo)
+              (define-key map (kbd "C-/")     #'undo-fu-only-undo)
+              (define-key map (kbd "M-/")     #'undo-fu-only-redo)
               (define-key map (kbd "C-M-_")   #'undo-fu-only-redo-all)
               (define-key map (kbd "C-x r u") #'undo-fu-session-save)
               (define-key map (kbd "C-x r U") #'undo-fu-session-recover)
