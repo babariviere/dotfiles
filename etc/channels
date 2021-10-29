@@ -1,5 +1,5 @@
 (cons* (channel
-	(name 'nonguix)
+        (name 'nonguix)
         (url "https://gitlab.com/nonguix/nonguix")
         ;; Enable signature verification:
         (introduction
@@ -16,14 +16,20 @@
           (openpgp-fingerprint
            "736A C00E 1254 378B A982  7AF6 9DBE 8265 81B6 4490"))))
        (channel
-	 (name 'baba)
-	 (url "file:///home/babariviere/guix"))
+        (name 'baba)
+        (url "https://github.com/babariviere/dotfiles")
+        (branch "guix")
+        (introduction
+         (make-channel-introduction
+          "78e60924c559697195eddafb5dc7f47a86a12d6e"
+          (openpgp-fingerprint
+           "261C A284 3452 FB01 F6DF  6CF4 F9B7 864F 2AB4 6F18"))))
        (channel
-	 (name 'rde)
-	 (url "https://git.sr.ht/~abcdw/rde")
-	 (introduction
-	  (make-channel-introduction
-	   "257cebd587b66e4d865b3537a9a88cccd7107c95"
-	   (openpgp-fingerprint
-	    "2841 9AC6 5038 7440 C7E9  2FFA 2208 D209 58C1 DEB0"))))
- %default-channels)
+        (name 'rde)
+        (url "https://git.sr.ht/~abcdw/rde")
+        (introduction
+         (make-channel-introduction
+          "257cebd587b66e4d865b3537a9a88cccd7107c95"
+          (openpgp-fingerprint
+           "2841 9AC6 5038 7440 C7E9  2FFA 2208 D209 58C1 DEB0"))))
+       %default-channels)
