@@ -162,6 +162,9 @@
 (define %sway-config
   `((include ,(file-append sway "/etc/sway/config"))
     ;; (bindsym $mod+Shift+e exec emacsclient -c --eval "(eshell)")
+    (input * ((xkb_layout "us")
+	      (xkb_variant "altgr-intl")
+	      (xkb_options "ctrl:nocaps")))
     (output HDMI-A-1 res 2560x1440@60Hz pos 0 0)
     (output DP-2 res 2560x1440@60Hz pos 2560 0)
     (output eDP-1 pos ,(inexact->exact (/ 3840 2)) 1440)

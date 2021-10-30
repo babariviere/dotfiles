@@ -66,6 +66,9 @@
 			(string-join %blacklist-modules
 				     ","))
 	 (delete "quiet" %default-kernel-arguments)))
+ (keyboard-layout (keyboard-layout
+		   "us" "altgr-intl"
+		   #:options '("ctrl:nocaps")))
  (firmware (list linux-firmware))
  (initrd microcode-initrd)
  ;; Assume the target root file system is labelled "my-root",
