@@ -6,12 +6,32 @@
    `(default ((t ,fixed-pitch)))
    `(fixed-pitch ((t ,fixed-pitch)))))
 
+(require 'modus-themes)
 (load-theme 'modus-operandi t)
+
+(setq modus-themes-scale-headings t)
+(setq mode-line-modes
+      (let ((recursive-edit-help-echo "Recursive edit, type C-M-c to get out"))
+	(list (propertize "%[" 'help-echo recursive-edit-help-echo)
+	      "("
+	      `(:propertize ("" mode-name)
+			    help-echo "Major mode\n\
+mouse-1: Display major mode menu\n\
+mouse-2: Show help for major mode\n\
+mouse-3: Toggle minor modes"
+			    mouse-face mode-line-highlight
+			    local-map ,mode-line-major-mode-keymap)
+	      '("" mode-line-process)
+	      ")"
+	      (propertize "%]" 'help-echo recursive-edit-help-echo)
+	      " ")))
+(setq-default header-line-format mode-line-format)
+(setq-default mode-line-format nil)
 
 (deftheme amber)
 (enable-theme 'amber)
 (setq custom-enabled-themes
-	  (remq 'amber custom-enabled-themes))
+      (remq 'amber custom-enabled-themes))
 (custom-theme-set-variables
  'amber
  '(kaolin-git-gutter-solid t)
@@ -19,12 +39,12 @@
  ;; Fix warning about not being able to determine a suitable EmacsClient
  '(with-editor-emacsclient-executable "emacsclient")
 
- '(tab-width 4))
-
-(setq-default indent-tabs-mode nil)
+ '(indent-tabs-mode nil)
+ '(tab-width 4)
+ '(window-divider-default-right-width 8))
 
 (when (or (memq window-system '(mac ns x))
-		  (daemonp))
+	  (daemonp))
   (require 'exec-path-from-shell)
   (setq exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-initialize))
@@ -83,7 +103,7 @@
 
 (use-package diff-hl
   :hook ((dired-mode . diff-hl-dired-mode-unless-remote)
-		 (prog-mode . diff-hl-mode)
+	 (prog-mode . diff-hl-mode)
          (magit-pre-refresh . diff-hl-magit-pre-refresh)
          (magit-post-refresh . diff-hl-magit-post-refresh))
   :config
@@ -91,11 +111,11 @@
   (define-fringe-bitmap 'amber/diff-hl-fringe [224]
     nil nil '(center repeated))
   (setq diff-hl-fringe-bmp-function (lambda (type pos) 'amber/diff-hl-fringe)
-		diff-hl-margin-symbols-alist '((insert . " ")
-									   (delete . " ")
-									   (change . " ")
-									   (unknown . " ")
-									   (ignored . " ")))
+	diff-hl-margin-symbols-alist '((insert . " ")
+				       (delete . " ")
+				       (change . " ")
+				       (unknown . " ")
+				       (ignored . " ")))
   (diff-hl-margin-mode))
 
 ;; (use-package zoom

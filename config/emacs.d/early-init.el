@@ -1,11 +1,8 @@
 ;; Early Init configuration
 
-(scroll-bar-mode -1)        ; Disable visible scrollbar
-(tool-bar-mode -1)          ; Disable the toolbar
-(tooltip-mode -1)           ; Disable tooltips
-(set-fringe-mode 4)         ; Give some breathing room
+;; (set-fringe-mode 4)
+					; Give some breathing room
 
-(menu-bar-mode -1)           ; Disable the menu bar
 (show-paren-mode 1)
 
 (setq custom-file (concat user-emacs-directory "custom.el"))
@@ -36,3 +33,14 @@
 (setq read-process-output-max (* 1024 1024))
 (require 'gcmh)
 (gcmh-mode 1)
+
+(setq-default fringes-outside-margins t)
+(setq-default left-margin-width 1)
+(setq-default right-margin-width 1)
+
+(setq use-dialog-box nil)
+(setq use-file-dialog nil)
+(push '(menu-bar-lines . 0) default-frame-alist)
+(push '(tool-bar-lines . 0) default-frame-alist)
+(push '(vertical-scroll-bars) default-frame-alist)
+(push '(internal-border-width . 8) default-frame-alist)
