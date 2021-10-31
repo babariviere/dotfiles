@@ -14,6 +14,7 @@
          (fennel-mode . lispy-mode)))
 
 (use-package lispyville
+  :disabled
   :hook (lispy-mode . lispyville-mode)
   :custom
   (lispyville-key-theme
