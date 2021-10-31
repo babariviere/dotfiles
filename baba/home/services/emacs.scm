@@ -140,16 +140,7 @@
    emacs-htmlize
    ))
 
-
-
-(define (construct-tree config-dir root-dir)
-  (match-lambda
-   ((name stat)
-    (list (string-append root-dir "/" name)
-	  (local-file (string-append config-dir "/" root-dir "/" name))))
-   ((name stat children ...)
-    (map (match-lambda ((name ...) config-dir (string-append root-dir "/" name))) children))))
-
+;; TODO: migrate this to a ~home-config-files-service-type~
 (define (emacs-files)
   (define config-root
     (string-append %channel-root "/etc"))
