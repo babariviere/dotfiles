@@ -31,7 +31,7 @@
 ;; 			(("byte-compile-error-on-warn t")
 ;; 			 "byte-compile-error-on-warn nil"))
 ;; 		     #t)))))))
-;; 
+;;
 ;; (define replace-broken-packages
 ;;   (package-input-rewriting `((,emacs-dash . ,emacs-dash-patched))) #:deep? #f)
 
@@ -52,9 +52,9 @@
    emacs-consult
    emacs-embark
    ;; emacs-embark-consult
-   
+
    emacs-projectile
-   
+
    emacs-evil
    emacs-evil-collection
    emacs-evil-surround
@@ -63,61 +63,61 @@
    emacs-undo-fu
    emacs-undo-fu-session
    emacs-eldoc
-   
+
    emacs-magit
    emacs-magit-todos
    emacs-forge
-   
+
    emacs-diredfl
    emacs-all-the-icons-dired
    emacs-diff-hl
-   
+
    emacs-sly
    emacs-sly-macrostep
    emacs-sly-repl-ansi-color
-   
+
    emacs-lispy
    emacs-lispyville
-   
+
    emacs-ccls
    emacs-cmake-mode
    emacs-demangle-mode
    emacs-disaster
    emacs-modern-cpp-font-lock
-   
+
    emacs-company
    emacs-company-box
-   
+
    emacs-csharp-mode
-   
+
    emacs-yaml-mode
    emacs-gitlab-ci-mode
-   
+
    emacs-envrc
-   
+
    emacs-eros
    emacs-highlight-quoted
    emacs-elisp-demos
    emacs-macrostep
-   
+
    emacs-elixir-mode
    emacs-alchemist
    emacs-exunit
-   
+
    emacs-fish-mode
-   
+
    emacs-flycheck
    emacs-flycheck-inline
-   
+
    ;; emacs-format-all
-   
+
    emacs-go-mode
    emacs-go-guru
-   
+
    emacs-lsp-mode
    emacs-lsp-ui
    emacs-consult-lsp
-   
+
    emacs-org
    emacs-org-appear
    emacs-org-contrib
@@ -125,38 +125,40 @@
    emacs-org-superstar
    emacs-evil-org
    emacs-org-roam
-   
+
    emacs-nix-mode
    emacs-nix-update
-   
+
    ;; emacs-perspective
    ;; emacs-persp-projectile
-   
+
    ;; emacs-python-mode
    emacs-poetry
    emacs-lsp-python-ms
-   
+
    emacs-smartparens
-   
+
    emacs-yasnippet
    emacs-doom-snippets
-   
+
    emacs-doom-themes
    emacs-kaolin-themes
    emacs-modus-themes
-   
+
    emacs-vterm
 
    emacs-geiser
    emacs-guix
-   
+
    emacs-emacsql-sqlite3
    sqlite
    gcc
    emacs-editorconfig
    emacs-git-auto-commit-mode
    emacs-zoom
-   ;; emacs-pinentry
+   emacs-pinentry
+   emacs-crux
+   emacs-htmlize
    ))
 
 (define %sway-config
@@ -216,4 +218,3 @@
 	(service home-sway-service-type
 		 (home-sway-configuration
 		  (config %sway-config))))))
-
