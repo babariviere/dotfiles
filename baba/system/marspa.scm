@@ -2,7 +2,7 @@
 ;; for a "desktop" setup without full-blown desktop
 ;; environments.
 
-(define-module (baba systems marspa)
+(define-module (baba system marspa)
   #:use-module (srfi srfi-1)
   #:use-module (gnu)
   #:use-module (gnu packages bootloaders)
