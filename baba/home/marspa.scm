@@ -55,10 +55,10 @@
 
    emacs-projectile
 
-   emacs-evil
-   emacs-evil-collection
-   emacs-evil-surround
-   emacs-evil-commentary
+   ;; emacs-evil
+   ;; emacs-evil-collection
+   ;; emacs-evil-surround
+   ;; emacs-evil-commentary
    emacs-general
    emacs-undo-fu
    emacs-undo-fu-session
@@ -77,7 +77,7 @@
    emacs-sly-repl-ansi-color
 
    emacs-lispy
-   emacs-lispyville
+   ;; emacs-lispyville
 
    emacs-ccls
    emacs-cmake-mode
@@ -123,7 +123,7 @@
    emacs-org-contrib
    emacs-org-edna
    emacs-org-superstar
-   emacs-evil-org
+   ;; emacs-evil-org
    emacs-org-roam
 
    emacs-nix-mode
