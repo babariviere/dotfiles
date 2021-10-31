@@ -28,6 +28,7 @@
 ;;; Code:
 
 (use-package format-all
+  :disabled
   :hook ((prog-mode . format-all-mode)
 	 (format-all-mode . format-all-ensure-formatter))
   :general
