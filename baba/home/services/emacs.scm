@@ -138,6 +138,9 @@
    emacs-pinentry
    emacs-crux
    emacs-htmlize
+
+   emacs-avy
+   emacs-ace-window
    ))
 
 ;; TODO: migrate this to a ~home-config-files-service-type~

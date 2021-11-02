@@ -158,3 +158,17 @@ ARGS are the arguments passed to `browse-url`."
   :custom
   (uniquify-buffer-name-style 'forward)
   (uniquify-separator "/"))
+
+(use-package ace-window
+  :custom
+  (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  (aw-scope 'frame)
+  :bind
+  ("C-x o" . ace-window))
+
+(use-package avy
+  :bind
+  ("C-;" . avy-goto-char)
+  ("C-'" . avy-goto-char-2)
+  ("M-g f" . avy-goto-line)
+  ("M-g w" . avy-goto-word-1))
