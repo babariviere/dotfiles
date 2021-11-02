@@ -60,10 +60,6 @@ in emacsWithPackages (epkgs:
     projectile
 
     # Keys
-    evil
-    evil-collection
-    evil-surround
-    evil-commentary
     general
     undo-fu
     undo-fu-session
@@ -87,7 +83,6 @@ in emacsWithPackages (epkgs:
 
     # Lisp
     lispy
-    lispyville
 
     # Cc
     ccls
@@ -146,7 +141,6 @@ in emacsWithPackages (epkgs:
     org-appear
     org-contrib
     org-edna
-    evil-org
     org-roam
     htmlize
 
@@ -174,7 +168,7 @@ in emacsWithPackages (epkgs:
     doom-themes
     kaolin-themes
     modus-themes
-    
+
     # vterm
     vterm
 
