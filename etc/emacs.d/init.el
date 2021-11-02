@@ -12,19 +12,19 @@
 (setq modus-themes-scale-headings t)
 (setq mode-line-modes
       (let ((recursive-edit-help-echo "Recursive edit, type C-M-c to get out"))
-	(list (propertize "%[" 'help-echo recursive-edit-help-echo)
-	      "("
-	      `(:propertize ("" mode-name)
-			    help-echo "Major mode\n\
+		(list (propertize "%[" 'help-echo recursive-edit-help-echo)
+			  "("
+			  `(:propertize ("" mode-name)
+							help-echo "Major mode\n\
 mouse-1: Display major mode menu\n\
 mouse-2: Show help for major mode\n\
 mouse-3: Toggle minor modes"
-			    mouse-face mode-line-highlight
-			    local-map ,mode-line-major-mode-keymap)
-	      '("" mode-line-process)
-	      ")"
-	      (propertize "%]" 'help-echo recursive-edit-help-echo)
-	      " ")))
+							mouse-face mode-line-highlight
+							local-map ,mode-line-major-mode-keymap)
+			  '("" mode-line-process)
+			  ")"
+			  (propertize "%]" 'help-echo recursive-edit-help-echo)
+			  " ")))
 (setq-default header-line-format mode-line-format)
 (setq-default mode-line-format nil)
 
@@ -44,7 +44,7 @@ mouse-3: Toggle minor modes"
  '(window-divider-default-right-width 8))
 
 (when (or (memq window-system '(mac ns x))
-	  (daemonp))
+		  (daemonp))
   (require 'exec-path-from-shell)
   (setq exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-initialize))
@@ -103,7 +103,7 @@ mouse-3: Toggle minor modes"
 
 (use-package diff-hl
   :hook ((dired-mode . diff-hl-dired-mode-unless-remote)
-	 (prog-mode . diff-hl-mode)
+		 (prog-mode . diff-hl-mode)
          (magit-pre-refresh . diff-hl-magit-pre-refresh)
          (magit-post-refresh . diff-hl-magit-post-refresh))
   :config
@@ -111,11 +111,11 @@ mouse-3: Toggle minor modes"
   (define-fringe-bitmap 'amber/diff-hl-fringe [224]
     nil nil '(center repeated))
   (setq diff-hl-fringe-bmp-function (lambda (type pos) 'amber/diff-hl-fringe)
-	diff-hl-margin-symbols-alist '((insert . " ")
-				       (delete . " ")
-				       (change . " ")
-				       (unknown . " ")
-				       (ignored . " ")))
+		diff-hl-margin-symbols-alist '((insert . " ")
+									   (delete . " ")
+									   (change . " ")
+									   (unknown . " ")
+									   (ignored . " ")))
   (diff-hl-margin-mode))
 
 ;; (use-package zoom
@@ -153,3 +153,8 @@ ARGS are the arguments passed to `browse-url`."
    ([remap kill-whole-line] . crux-kill-whole-line)
    ("<S-return>" . crux-smart-open-line)
    ("<C-S-return>" . crux-smart-open-line-above)))
+
+(use-package uniquify
+  :custom
+  (uniquify-buffer-name-style 'forward)
+  (uniquify-separator "/"))
