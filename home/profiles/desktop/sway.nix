@@ -1,6 +1,9 @@
 { config, lib, pkgs }:
 
-{
+let
+  lock =
+    "${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --effect-blur 7x5 --effect-vignette 0.5:0.5 --grace 2 --fade-in 0.2";
+in {
   profiles.desktop = {
     foot.enable = true;
     mako.enable = true;
@@ -102,8 +105,7 @@
           fi
         '';
       in lib.mkOptionDefault {
-        "Mod4+End" =
-          "exec ${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --effect-blur 7x5 --effect-vignette 0.5:0.5 --grace 2 --fade-in 0.2";
+        "Mod4+End" = "exec ${lock}";
         "Mod4+d" = ''
           exec ${pkgs.j4-dmenu-desktop}/bin/j4-dmenu-desktop --dmenu "${pkgs.rofi}/bin/rofi -dmenu -i -show-icons"
         '';
@@ -138,6 +140,14 @@
             }
           '';
           always = true;
+        }
+        {
+          command = ''
+            ${pkgs.swayidle}/bin/swayidle -w \
+              timeout 300 '${lock} -f' \
+              timeout 600 '${pkgs.sway}/bin/swaymsg "output * dpms off"' \
+              resume '${pkgs.sway}/bin/swaymsg "output * dpms on"'
+          '';
         }
       ] ++ (lib.optionals config.profiles.editor.emacs.enable [{
         command = "emacs-scratch";
