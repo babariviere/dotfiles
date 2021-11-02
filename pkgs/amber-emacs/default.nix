@@ -173,7 +173,8 @@ in emacsWithPackages (epkgs:
     # Themes
     doom-themes
     kaolin-themes
-
+    modus-themes
+    
     # vterm
     vterm
 
