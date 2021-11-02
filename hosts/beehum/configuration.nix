@@ -19,44 +19,49 @@
   networking.domain = "home";
 
   networking.nameservers = [ "1.1.1.1" ];
-  networking.useDHCP = false;
+  networking.wireless = {
+    enable = true;
+    interfaces = [ "wlp0s20f3" ];
+    allowAuxiliaryImperativeNetworks = true;
+  };
+  # networking.useDHCP = false;
   networking.usePredictableInterfaceNames = true;
-  networking.useNetworkd = true;
-  # networking.interfaces = {
-  #   enp4s0.useDHCP = true;
-  #   wlp0s20f3.useDHCP = true;
+  # networking.useNetworkd = true;
+  networking.interfaces = {
+    enp4s0.useDHCP = true;
+    wlp0s20f3.useDHCP = true;
+  };
+
+  # systemd.services."systemd-networkd-wait-online".serviceConfig.ExecStart = [
+  #   ""
+  #   "${config.systemd.package}/lib/systemd/systemd-networkd-wait-online --any"
+  # ];
+
+  # systemd.network.enable = true;
+  # systemd.network.links."00-wlp0s20f3" = {
+  #   enable = true;
+  #   matchConfig.MACAddress = "80:b6:55:ef:fd:a3";
+  #   linkConfig.Name = "wlp0s20f3";
   # };
 
-  systemd.services."systemd-networkd-wait-online".serviceConfig.ExecStart = [
-    ""
-    "${config.systemd.package}/lib/systemd/systemd-networkd-wait-online --any"
-  ];
+  # systemd.network.networks.wlp0s20f3 = {
+  #   name = "wlp0s20f3";
+  #   networkConfig = {
+  #     DHCP = "yes";
+  #     IPv6PrivacyExtensions = "yes";
+  #     DNS = [ "1.1.1.1" ];
+  #   };
+  # };
 
-  systemd.network.enable = true;
-  systemd.network.links."00-wlp0s20f3" = {
-    enable = true;
-    matchConfig.MACAddress = "80:b6:55:ef:fd:a3";
-    linkConfig.Name = "wlp0s20f3";
-  };
-
-  systemd.network.networks.wlp0s20f3 = {
-    name = "wlp0s20f3";
-    networkConfig = {
-      DHCP = "yes";
-      IPv6PrivacyExtensions = "yes";
-      DNS = [ "1.1.1.1" ];
-    };
-  };
-
-  networking.wireless.iwd.enable = true;
-  networking.wireless.iwd.settings = {
-    General = {
-      UseDefaultInterface = true;
-      EnableNetworkConfiguration = true;
-      AddressRandomization = "once";
-    };
-    Network = { NameResolvingService = "systemd"; };
-  };
+  # networking.wireless.iwd.enable = true;
+  # networking.wireless.iwd.settings = {
+  #   General = {
+  #     UseDefaultInterface = true;
+  #     EnableNetworkConfiguration = true;
+  #     AddressRandomization = "once";
+  #   };
+  #   Network = { NameResolvingService = "systemd"; };
+  # };
 
   ## Profiles
 
