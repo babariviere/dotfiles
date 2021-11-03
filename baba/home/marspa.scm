@@ -1,5 +1,6 @@
 (define-module (baba home marspa)
   #:use-module (baba home services emacs)
+  #:use-module (baba home services shells)
   #:use-module (gnu home)
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
@@ -18,22 +19,6 @@
   #:use-module (guix gexp)
   #:use-module (guix packages)
   #:use-module (flat packages emacs))
-
-;; (define emacs-dash-patched
-;;   (package
-;;     (inherit emacs-dash)
-;;     (arguments
-;;       `(#:phases
-;; 	(modify-phases %standard-phases
-;; 	  (add-after 'unpack 'modify-makefile
-;; 	    (lambda* (#:key outputs #:allow-other-keys)
-;; 		     (substitute* "Makefile"
-;; 			(("byte-compile-error-on-warn t")
-;; 			 "byte-compile-error-on-warn nil"))
-;; 		     #t)))))))
-;;
-;; (define replace-broken-packages
-;;   (package-input-rewriting `((,emacs-dash . ,emacs-dash-patched))) #:deep? #f)
 
 (define %sway-config
   `((include ,(file-append sway "/etc/sway/config"))
