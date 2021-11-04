@@ -3,8 +3,7 @@
 {
   programs.foot = {
     enable = true;
-    # Broken for me
-    server.enable = false;
+    server.enable = true;
     settings = {
       main = {
         term = "xterm-256color";
