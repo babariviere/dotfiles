@@ -1,5 +1,6 @@
 (define-module (baba home marspa)
   #:use-module (baba home services emacs)
+  #:use-module (baba home services foot)
   #:use-module (baba home services shells)
   #:use-module (gnu home)
   #:use-module (gnu home services)
@@ -75,4 +76,14 @@
 			      ((gpgSign . #t)))))))
 		(service home-sway-service-type
 			 (home-sway-configuration
-			  (config %sway-config)))))))
+			  (config %sway-config)))
+		(service home-foot-service-type
+			 (home-foot-configuration
+			  (config
+			   `((main
+			      ((term . "xterm-256color")
+			       (font . "MonoLisa:size=10")
+			       (dpi-aware . "no")
+			       ;; TODO: find a way to reference foot source
+			       (include . ,(file-append (package-source foot) "/themes/dracula"))
+			       ))))))))))
