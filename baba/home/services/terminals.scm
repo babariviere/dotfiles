@@ -1,4 +1,4 @@
-(define-module (baba home services foot)
+(define-module (baba home services terminals)
   #:use-module (gnu home services)
   #:use-module (gnu home-services-utils)
   #:use-module (gnu packages terminals)

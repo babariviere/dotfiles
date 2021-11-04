@@ -1,7 +1,7 @@
 (define-module (baba home marspa)
   #:use-module (baba home services emacs)
-  #:use-module (baba home services foot)
   #:use-module (baba home services shells)
+  #:use-module (baba home services terminals)
   #:use-module (gnu home)
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
