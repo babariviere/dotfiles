@@ -20,6 +20,7 @@
   #:use-module (gnu services desktop)
   #:use-module (gnu services nix)
   #:use-module (gnu services pm)
+  #:use-module (gnu services shepherd)
   #:use-module (gnu services xorg)
   #:use-module (gnu system nss)
   #:use-module (nongnu packages linux)
@@ -33,6 +34,15 @@
   (cons*
    (service nix-service-type)
    (service tlp-service-type)
+   (simple-service
+      'switch-tty-2-after-boot shepherd-root-service-type
+      (list (shepherd-service
+             (provision '(switch-tty))
+             (requirement '(virtual-terminal))
+             (start #~(lambda ()
+			(invoke #$(file-append kbd "/bin/chvt")
+				"2")))
+             (one-shot? #t))))
    (modify-services
     (remove (lambda (service)
 		   (member (service-kind service)
