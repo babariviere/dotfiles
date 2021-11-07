@@ -24,14 +24,87 @@
   #:use-module (flat packages emacs))
 
 (define %sway-config
-  `((include ,(file-append sway "/etc/sway/config"))
-    ;; (bindsym $mod+Shift+e exec emacsclient -c --eval "(eshell)")
+  `( ;; (bindsym $mod+Shift+e exec emacsclient -c --eval "(eshell)")
     (xwayland enable)
-    (set $term  ,(file-append foot "/bin/foot"))
+    (set $term ,(file-append foot "/bin/foot"))
     (set $menu ,(file-append rofi "/bin/rofi -modi drun -show drun"))
+
+    (set $mod Mod4)
+    (set $left h)
+    (set $down j)
+    (set $up k)
+    (set $right l)
+
+    (bindsym $mod+Return exec $term)
+    (bindsym $mod+Shift+q kill)
+    (bindsym $mod+d exec $menu)
+
+    (floating_modifier $mod normal)
+
+    (bindsym $mod+Shift+c reload)
+
+    (output * bg ,(file-append sway "/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png") fill)
+
+    (bindsym $mod+$left focus left)
+    (bindsym $mod+$down focus down)
+    (bindsym $mod+$up focus up)
+    (bindsym $mod+$right focus right)
+
+    ;; Move the focused window with the same, but add Shift
+    (bindsym $mod+Shift+$left move left)
+    (bindsym $mod+Shift+$down move down)
+    (bindsym $mod+Shift+$up move up)
+    (bindsym $mod+Shift+$right move right)
+
+    ;; Workspaces:
+
+    ;; Switch to workspace
+    (bindsym $mod+1 workspace number 1)
+    (bindsym $mod+2 workspace number 2)
+    (bindsym $mod+3 workspace number 3)
+    (bindsym $mod+4 workspace number 4)
+    (bindsym $mod+5 workspace number 5)
+    (bindsym $mod+6 workspace number 6)
+    (bindsym $mod+7 workspace number 7)
+    (bindsym $mod+8 workspace number 8)
+    (bindsym $mod+9 workspace number 9)
+    (bindsym $mod+0 workspace number 10)
+    ;; Move focused container to workspace
+    (bindsym $mod+Shift+1 move container to workspace number 1)
+    (bindsym $mod+Shift+2 move container to workspace number 2)
+    (bindsym $mod+Shift+3 move container to workspace number 3)
+    (bindsym $mod+Shift+4 move container to workspace number 4)
+    (bindsym $mod+Shift+5 move container to workspace number 5)
+    (bindsym $mod+Shift+6 move container to workspace number 6)
+    (bindsym $mod+Shift+7 move container to workspace number 7)
+    (bindsym $mod+Shift+8 move container to workspace number 8)
+    (bindsym $mod+Shift+9 move container to workspace number 9)
+    (bindsym $mod+Shift+0 move container to workspace number 10)
+
+    ;; Layout stuff:
+    (bindsym $mod+b splith)
+    (bindsym $mod+v splitv)
+
+    (bindsym $mod+f fullscreen)
+
+    (bindsym $mod+Shift+space floating toggle)
+    (bindsym $mod+space focus mode_toggle)
+
+    ;; Scratchpad:
+    (bindsym $mod+Shift+minus move scratchpad)
+    (bindsym $mod+minus move scratchpad)
+
+    ;; Bar:
+    (bar ((position top)
+	  (colors ((statusline "#ffffff")
+		   (background "#323232")))
+	  (status_command "while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done")))
+
+    ;; Input:
     (input * ((xkb_layout "us")
 	      (xkb_variant "altgr-intl")
 	      (xkb_options "ctrl:nocaps")))
+    ;; Output:
     (output HDMI-A-1 res 2560x1440@60Hz pos 0 0)
     (output DP-2 res 2560x1440@60Hz pos 2560 0)
     (output eDP-1 pos ,(inexact->exact (/ 3840 2)) 1440)
