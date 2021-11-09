@@ -274,6 +274,7 @@
       openjdk
       insomnia
       httpie
+      spotify
     ];
 
     gtk = {

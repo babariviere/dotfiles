@@ -176,9 +176,9 @@
         };
         self' = self;
       in {
-        packages = (lib.fix (self: self'.overlay self pkgs)) // {
-          inherit (pkgs) emacsGit;
-        };
+        # packages = (lib.fix (self: self'.overlay self pkgs)) // {
+        #   inherit (pkgs) emacsGit;
+        # };
 
         devShell = pkgs.mkShell {
           buildInputs = [
