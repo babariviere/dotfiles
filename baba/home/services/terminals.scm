@@ -67,6 +67,7 @@ boolean, number, symbol, or gexp). Provided term is:\n ~a") lst)))
 (define (add-foot-package config)
   (list (home-foot-configuration-package config)))
 
+;; TODO: add foot daemon
 (define home-foot-service-type
   (service-type
    (name 'home-foot)
