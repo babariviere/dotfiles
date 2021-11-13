@@ -157,4 +157,6 @@
 			      ((term . "xterm-256color")
 			       (font . "MonoLisa:size=10")
 			       (dpi-aware . "no")
-			       (include . ,(file-append (package-source foot) "/themes/dracula"))))))))))))
+			       ;; TODO: find a way to reference foot source
+			       (include . ,(file-append (package-source foot) "/themes/dracula"))
+			       ))))))))))
