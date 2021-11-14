@@ -1,6 +1,6 @@
 (define-module (baba home services emacs)
   #:use-module (baba)
-  #:use-module (baba packages emacs-xyz)
+  #:use-module (emacs packages melpa)
   #:use-module (flat packages emacs)
   #:use-module (gnu home services)
   #:use-module (gnu home-services emacs)
