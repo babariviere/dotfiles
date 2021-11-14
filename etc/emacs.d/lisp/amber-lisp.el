@@ -11,7 +11,9 @@
          (lfe-mode . lispy-mode)
          (dune-mode . lispy-mode)
          (clojure-mode . lispy-mode)
-         (fennel-mode . lispy-mode)))
+         (fennel-mode . lispy-mode))
+  :custom
+  (lispy-colon-p nil))
 
 (use-package lispyville
   :disabled
