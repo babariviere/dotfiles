@@ -61,7 +61,8 @@
    [remap switch-to-buffer]              #'consult-buffer
    [remap switch-to-buffer-other-window] #'consult-buffer-other-window
    [remap switch-to-buffer-other-frame]  #'consult-buffer-other-frame
-   [remap yank-pop]                      #'consult-yank-pop)
+   [remap yank-pop]                      #'consult-yank-pop
+   "C-s" #'consult-line)
   (amber/leader-keys
     "s" '(:ignore t :wk "search")
     "sb" '(consult-line :wk "search buffer")

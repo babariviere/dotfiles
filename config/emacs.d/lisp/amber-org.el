@@ -507,6 +507,34 @@ Examples:
   (org-appear-autosubmarkers t)
   (org-appear-autoemphasis t))
 
+(use-package ox-publish
+  :custom
+  (org-export-htmlize-output-type 'inline-css)
+  (org-html-htmlize-output-type 'css)
+  (org-publish-project-alist
+   `(("brain"
+      :base-directory ,(expand-file-name "brain" org-roam-directory)
+      :base-extension "org"
+      :publishing-directory ,(expand-file-name "html" org-roam-directory)
+      :recursive t
+      :publishing-function org-html-publish-to-html
+      :htmlized-source t
+
+      :html-doctype "html5"
+      :html-html5-fancy t
+      :html-validation-link nil
+
+      :html-head-include-scripts nil
+      :html-head-include-default-style nil
+      :html-head "<link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\"/>"
+
+      :auto-sitemap t
+      :sitemap-filename "sitemap.org"
+
+      :headline-levels 4
+      :auto-preamble t
+      :auto-postamble t))))
+
 (use-package evil-org
   :disabled
   :after org

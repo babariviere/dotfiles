@@ -6,11 +6,11 @@
    `(default ((t ,fixed-pitch)))
    `(fixed-pitch ((t ,fixed-pitch)))))
 
-;; (require 'modus-themes)
-;; (load-theme 'modus-operandi t)
+(require 'modus-themes)
+(load-theme 'modus-operandi t)
 
-(require 'kaolin-themes)
-(load-theme 'kaolin-valley-dark t)
+;; (require 'kaolin-themes)
+;; (load-theme 'kaolin-valley-dark t)
 
 (setq modus-themes-scale-headings t)
 (setq mode-line-modes

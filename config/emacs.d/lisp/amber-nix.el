@@ -34,14 +34,15 @@
   "Set default nix formatter for format-all."
   (setq-local format-all-formatters '(("Nix" nixfmt))))
 
-(defun amber/nix-init ()
-  "Init hook to initialize nix-mode."
-  (add-to-list 'company-backends 'company-nixos-options nil t))
+;; (defun amber/nix-init ()
+;;   "Init hook to initialize nix-mode."
+;;   (add-to-list 'company-backends 'company-nixos-options))
 
 (use-package nix-mode
   :mode "\\.nix\\'"
   :hook ((format-all-mode . amber/nix-set-formatter)
-		 (nix-mode . amber/nix-init))
+		 ;; (nix-mode . amber/nix-init)
+         )
   :init
   (add-to-list 'auto-mode-alist
                (cons "/flake\\.lock\\'"
