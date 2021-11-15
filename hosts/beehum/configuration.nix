@@ -275,6 +275,7 @@
       insomnia
       httpie
       spotify
+      htmlTidy
     ];
 
     gtk = {

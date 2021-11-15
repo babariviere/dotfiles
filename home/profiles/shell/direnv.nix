@@ -10,10 +10,7 @@ in {
   config = {
     programs.direnv = {
       enable = true;
-      nix-direnv = lib.mkIf cfg.nix {
-        enable = true;
-        enableFlakes = true;
-      };
+      nix-direnv = lib.mkIf cfg.nix { enable = true; };
     } // {
       stdlib = builtins.readFile "${config.dotfiles.configDir}/direnvrc";
     };
