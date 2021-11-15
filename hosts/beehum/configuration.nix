@@ -24,11 +24,11 @@
     interfaces = [ "wlp0s20f3" ];
     allowAuxiliaryImperativeNetworks = true;
   };
-  # networking.useDHCP = false;
+  networking.useDHCP = false;
   networking.usePredictableInterfaceNames = true;
   # networking.useNetworkd = true;
   networking.interfaces = {
-    enp4s0.useDHCP = true;
+    enp4s0.useDHCP = false;
     wlp0s20f3.useDHCP = true;
   };
 
