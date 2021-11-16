@@ -7,8 +7,6 @@
 
 (require 'use-package)
 
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
 (use-package general
   :config
   (general-create-definer amber/leader-keys
