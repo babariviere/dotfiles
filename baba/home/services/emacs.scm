@@ -130,7 +130,7 @@
 
 	emacs-smartparens
 
-	emacs-yasnippet
+	e:emacs-yasnippet
 	emacs-doom-snippets
 
 	emacs-doom-themes
