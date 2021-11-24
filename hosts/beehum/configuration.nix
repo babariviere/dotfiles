@@ -32,6 +32,19 @@
     wlp0s20f3.useDHCP = true;
   };
 
+  services.yggdrasil = {
+    enable = false;
+    config = {
+      Peers = [
+        "tls://fr2.servers.devices.cwinfo.net:23108"
+        "tls://cloudberry.fr1.servers.devices.cwinfo.net:54232"
+      ];
+      Listen = [ "tcp://0.0.0.0:0" ];
+    };
+  };
+
+  programs.ccache.enable = true;
+
   # systemd.services."systemd-networkd-wait-online".serviceConfig.ExecStart = [
   #   ""
   #   "${config.systemd.package}/lib/systemd/systemd-networkd-wait-online --any"
@@ -67,8 +80,9 @@
 
   profiles = {
     desktop.sway.enable = true;
+    desktop.wayland.enable = true;
     login.greetd.enable = true;
-    media.pulseaudio.enable = true;
+    media.pulseaudio.enable = false;
     net.tailscale.enable = false;
   };
 
@@ -294,11 +308,6 @@
         name = "Orchis-dark";
         package = pkgs.orchis-theme;
       };
-    };
-
-    xsession.pointerCursor = {
-      package = pkgs.numix-cursor-theme;
-      name = "Numix-Cursor";
     };
 
     home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];

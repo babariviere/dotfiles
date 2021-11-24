@@ -135,7 +135,6 @@ in {
             {
               ${glib.bin}/bin/gsettings set ${gnome-schema} gtk-theme '${config.gtk.theme.name}'
               ${glib.bin}/bin/gsettings set ${gnome-schema} icon-theme '${config.gtk.iconTheme.name}'
-              ${glib.bin}/bin/gsettings set ${gnome-schema} cursor-theme '${config.xsession.pointerCursor.name}'
               ${glib.bin}/bin/gsettings set ${gnome-schema} font-name '${config.gtk.font.name}'
             }
           '';
@@ -179,7 +178,6 @@ in {
   services.xsettingsd = {
     enable = true;
     settings = {
-      "Gtk/CursorThemeName" = config.xsession.pointerCursor.name;
       "Net/IconThemeName" = config.gtk.iconTheme.name;
       "Net/ThemeName" = config.gtk.theme.name;
     };

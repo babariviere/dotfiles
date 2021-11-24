@@ -42,11 +42,7 @@
   (lsp-ui-sideline-enable t)
   (lsp-ui-sideline-show-diagnostics t)
   ;; breaks sideline
-  (lsp-eldoc-enable-hover nil)
-  :general
-  ('motion lsp-mode-map
-		   "gd" #'lsp-find-type-definition
-		   "K" #'lsp-describe-thing-at-point))
+  (lsp-eldoc-enable-hover nil))
 
 (use-package lsp-ui
   :commands lsp-ui-mode)

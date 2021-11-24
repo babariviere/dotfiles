@@ -23,7 +23,7 @@
     };
 
     # Emacs
-    emacs.url = "github:nix-community/emacs-overlay";
+    emacs.url = "github:babariviere/emacs-overlay";
     emacs.inputs.nixpkgs.follows = "nixpkgs";
   };
 
