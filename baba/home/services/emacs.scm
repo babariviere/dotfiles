@@ -61,7 +61,7 @@
 	e:emacs-forge
 
 	emacs-diredfl
-	;; emacs-all-the-icons-dired
+	emacs-all-the-icons-dired
 	emacs-diff-hl
 
 	emacs-sly
