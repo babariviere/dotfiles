@@ -1,0 +1,8 @@
+* Dot
+** Hosts
+*** Gaia
+Personal programming machine. Used for experimentation with Guix.
+Will be the base of my next Guix machines. (as Gaia is mother of titans, this host is the mother of next Guix hosts)
+
+** Names
+- source :: https://en.wikipedia.org/wiki/List_of_Greek_mythological_figures
