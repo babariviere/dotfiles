@@ -2,7 +2,7 @@
 ;; for a "desktop" setup without full-blown desktop
 ;; environments.
 
-(define-module (baba system marspa)
+(define-module (baba system gaia)
   #:use-module (srfi srfi-1)
   #:use-module (gnu)
   #:use-module (gnu packages bootloaders)
@@ -25,7 +25,7 @@
   #:use-module (gnu system nss)
   #:use-module (nongnu packages linux)
   #:use-module (nongnu system linux-initrd)
-  #:export (%system/marspa))
+  #:export (%system/gaia))
 
 (define %blacklist-modules
   (list "pcspkr" "snd_pcsp"))
@@ -59,9 +59,9 @@
 					  %default-authorized-guix-keys
 					  (list (local-file "mirror.brielmaier.net.pub")))))))))
 
-(define %system/marspa
+(define %system/gaia
   (operating-system
-   (host-name "marspa")
+   (host-name "gaia")
    (timezone "Europe/Paris")
    (locale "en_US.utf8")
 
@@ -125,4 +125,4 @@
    ;; Allow resolution of '.local' host names with mDNS.
    (name-service-switch %mdns-host-lookup-nss)))
 
-%system/marspa
+%system/gaia

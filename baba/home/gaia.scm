@@ -1,4 +1,4 @@
-(define-module (baba home marspa)
+(define-module (baba home gaia)
   #:use-module (baba home services emacs)
   #:use-module (baba home services shells)
   #:use-module (baba home services terminals)
