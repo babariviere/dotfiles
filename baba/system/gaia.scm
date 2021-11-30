@@ -4,6 +4,7 @@
 
 (define-module (baba system gaia)
   #:use-module (srfi srfi-1)
+  #:use-module (baba)
   #:use-module (gnu)
   #:use-module (gnu packages bootloaders)
   #:use-module (gnu packages certs)
@@ -57,7 +58,7 @@
 					  (list "https://mirror.brielmaier.net")))
 			(authorized-keys (append
 					  %default-authorized-guix-keys
-					  (list (local-file "mirror.brielmaier.net.pub")))))))))
+					  (list (local-file (string-append %channel-root "/etc/keys/mirror.brielmaier.net.pub"))))))))))
 
 (define %system/gaia
   (operating-system
