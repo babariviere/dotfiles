@@ -469,14 +469,16 @@ Examples:
   :config
   (add-to-list 'display-buffer-alist
                '("\\*org-roam\\*"
-				 (display-buffer-in-side-window)
-				 (side . right)
-				 (slot . 0)
-				 (window-width . 0.33)
-				 (window-parameters . ((no-delete-other-windows . t)))))
+		 (display-buffer-in-side-window)
+		 (side . right)
+		 (slot . 0)
+		 (window-width . 0.33)
+		 (window-parameters . ((no-delete-other-windows . t)))))
 
   (org-roam-db-autosync-mode 1)
   :general
+  (org-mode-map
+   "C-c n i" 'org-roam-node-insert)
   (amber/leader-keys
     "nf" '(org-roam-node-find :wk "find note")))
 
