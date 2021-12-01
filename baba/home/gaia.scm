@@ -1,4 +1,5 @@
 (define-module (baba home gaia)
+  #:use-module (baba)
   #:use-module (baba home services emacs)
   #:use-module (baba home services shells)
   #:use-module (baba home services terminals)
@@ -122,6 +123,9 @@
 			  (guix-defaults? #t)))
 		(service home-fish-service-type
 			 (home-fish-configuration
+			  (config
+			   (list
+			    (local-file (string-append %channel-root "/etc/fish/config.fish"))))
 			  (abbreviations '(("gco" . "git checkout")
 					   ("gs" . "git status")
 					   ("gsr" . "sudo -E guix system reconfigure")
