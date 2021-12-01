@@ -29,7 +29,7 @@
   #:export (%system/gaia))
 
 (define %blacklist-modules
-  (list "pcspkr" "snd_pcsp"))
+  (list "pcspkr" "snd_pcsp" "nouveau"))
 
 (define services
   (cons*
