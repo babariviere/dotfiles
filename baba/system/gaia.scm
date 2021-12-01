@@ -101,7 +101,8 @@
 		 (name "babariviere")
 		 (group "users")
 		 (supplementary-groups '("wheel" "netdev"
-					 "audio" "video"))
+					 "audio" "video"
+					 "kvm"))
 		 (shell (file-append fish "/bin/fish")))
 		%base-user-accounts))
 
