@@ -20,15 +20,20 @@
 		(targets '("/dev/sda"))
 		(terminal-outputs '(console))))
    (file-systems (cons* (file-system
-			  (mount-point "/")
-			  (device (file-system-label "tank"))
-			  (type "btrfs")
-			  (options "subvol=system,compress=zstd"))
+			 (mount-point "/")
+			 (device (file-system-label "tank"))
+			 (type "btrfs")
+			 (options "subvol=system,compress=zstd"))
 			(file-system
-			  (mount-point "/gnu/store")
-			  (device (file-system-label "tank"))
-			  (type "btrfs")
-			  (options "subvol=system/gnu/store,compress-force=zstd,space_cache=v2"))
+			 (mount-point "/boot")
+			 (device "/dev/sda1")
+			 (type "ext4")
+			 (needed-for-boot? #t))
+			(file-system
+			 (mount-point "/gnu/store")
+			 (device (file-system-label "tank"))
+			 (type "btrfs")
+			 (options "subvol=system/gnu/store,compress-force=zstd,space_cache=v2"))
 			%base-file-systems))
    (services
     (append (list (service dhcp-client-service-type)
