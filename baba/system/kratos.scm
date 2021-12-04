@@ -9,7 +9,8 @@
   #:use-module (gnu services ssh)
   #:use-module (gnu system)
   #:use-module (gnu system file-systems)
-  #:use-module (guix gexp))
+  #:use-module (guix gexp)
+  #:export (%system/kratos))
 
 (define %system/kratos
   (operating-system
@@ -33,6 +34,14 @@
 			    (allow-empty-passwords? #f)
 			    ;; TODO: better system for ssh keys
 			    (authorized-keys `(("root" ,(local-file (string-append %channel-root "/etc/ssh/gaia.pub"))))))))
-	    %base-services))))
+	    (modify-services
+	     %base-services
+	     (guix-service-type config =>
+				(guix-configuration
+				 (inherit config)
+				 (discover? #t)
+				 (authorized-keys (append
+						   %default-authorized-guix-keys
+						   (list (local-file (string-append %channel-root "/etc/keys/gaia.pub"))))))))))))
 
 %system/kratos
