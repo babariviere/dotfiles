@@ -10,12 +10,14 @@
   #:use-module (gnu packages certs)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages emacs-xyz)
+  #:use-module (gnu packages java)
   #:use-module (gnu packages linux)
   #:use-module (gnu packages shells)
   #:use-module (gnu packages ssh)
   #:use-module (gnu packages suckless)
   #:use-module (gnu packages terminals)
   #:use-module (gnu packages vim)
+  #:use-module (gnu packages web)
   #:use-module (gnu packages wm)
   #:use-module (gnu packages xorg)
   #:use-module (gnu services desktop)
@@ -55,10 +57,11 @@
 			(discover? #t)
 			(substitute-urls (append
 					  (@@ (guix scripts substitute) %default-substitute-urls)
-					  (list "https://mirror.brielmaier.net")))
+					  (list "https://mirror.brielmaier.net" "https://ci.babariviere.com")))
 			(authorized-keys (append
 					  %default-authorized-guix-keys
-					  (list (local-file (string-append %channel-root "/etc/keys/mirror.brielmaier.net.pub"))))))))))
+					  (list (local-file (string-append %channel-root "/etc/keys/mirror.brielmaier.net.pub"))
+						(local-file (string-append %channel-root "/etc/keys/ci.babariviere.com.pub"))))))))))
 
 (define %system/gaia
   (operating-system
@@ -117,7 +120,10 @@
 		      ;; ssh
 		      openssh
 		      ;; for HTTPS access
-		      nss-certs)
+		      nss-certs
+		      ;; for hetzner kvm console
+		      icedtea icedtea-web
+		      )
 		     %base-packages))
 
    ;; Use the "desktop" services, which include the X11
