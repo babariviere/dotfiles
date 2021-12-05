@@ -12,7 +12,7 @@
         (name 'baba)
         (url "https://github.com/babariviere/dotfiles")
         (commit
-          "55e9d56c5394d82a35438f3dc8fffa2282171722")
+          "ebedfe10045b1b66b05a4617257c7ff5a8629510")
         (introduction
           (make-channel-introduction
             "78e60924c559697195eddafb5dc7f47a86a12d6e"
