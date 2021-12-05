@@ -1,0 +1,55 @@
+(list (channel
+        (name 'guix)
+        (url "https://git.savannah.gnu.org/git/guix.git")
+        (commit
+          "a3dea002c1734cf775c8beb1508f6d2ec0396e52")
+        (introduction
+          (make-channel-introduction
+            "9edb3f66fd807b096b48283debdcddccfea34bad"
+            (openpgp-fingerprint
+              "BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA"))))
+      (channel
+        (name 'baba)
+        (url "https://github.com/babariviere/dotfiles")
+        (commit
+          "55e9d56c5394d82a35438f3dc8fffa2282171722")
+        (introduction
+          (make-channel-introduction
+            "78e60924c559697195eddafb5dc7f47a86a12d6e"
+            (openpgp-fingerprint
+              "261C A284 3452 FB01 F6DF  6CF4 F9B7 864F 2AB4 6F18"))))
+      (channel
+        (name 'rde)
+        (url "https://git.sr.ht/~abcdw/rde")
+        (commit
+          "99ea7826248e38bf9c2693a8a1b772ce8eb9a6eb"))
+      (channel
+        (name 'flat)
+        (url "https://github.com/flatwhatson/guix-channel.git")
+        (commit
+          "565cc48edc6c547833aa64df7eca6dc04ceb55cb")
+        (introduction
+          (make-channel-introduction
+            "33f86a4b48205c0dc19d7c036c85393f0766f806"
+            (openpgp-fingerprint
+              "736A C00E 1254 378B A982  7AF6 9DBE 8265 81B6 4490"))))
+      (channel
+        (name 'nonguix)
+        (url "https://gitlab.com/nonguix/nonguix")
+        (commit
+          "971aa95535df085050a8baa224f900c54ecd1e62")
+        (introduction
+          (make-channel-introduction
+            "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
+            (openpgp-fingerprint
+              "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))
+      (channel
+        (name 'emacs)
+        (url "https://github.com/babariviere/guix-emacs")
+        (commit
+          "e733e79f3715404c87990329269abd73d0bbff9a")
+        (introduction
+          (make-channel-introduction
+            "72ca4ef5b572fea10a4589c37264fa35d4564783"
+            (openpgp-fingerprint
+              "261C A284 3452 FB01 F6DF  6CF4 F9B7 864F 2AB4 6F18")))))

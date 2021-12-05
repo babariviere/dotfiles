@@ -6,6 +6,7 @@
   #:use-module (srfi srfi-1)
   #:use-module (baba)
   #:use-module (gnu)
+  #:use-module (gnu packages)
   #:use-module (gnu packages bootloaders)
   #:use-module (gnu packages certs)
   #:use-module (gnu packages emacs)
@@ -123,6 +124,8 @@
 		      nss-certs
 		      ;; for hetzner kvm console
 		      icedtea icedtea-web
+		      ;; tools
+		      gnu-make
 		      )
 		     %base-packages))
 
