@@ -5,15 +5,25 @@
   #:use-module (gnu packages admin)
   #:use-module (gnu packages bootloaders)
   #:use-module (gnu packages certs)
+  #:use-module (gnu packages linux)
   #:use-module (gnu services)
+  #:use-module (gnu services admin)
   #:use-module (gnu services base)
+  #:use-module (gnu services certbot)
   #:use-module (gnu services cuirass)
   #:use-module (gnu services networking)
   #:use-module (gnu services ssh)
+  #:use-module (gnu services web)
   #:use-module (gnu system)
   #:use-module (gnu system file-systems)
   #:use-module (guix gexp)
   #:export (%system/kratos))
+
+
+(define %letsencrypt-dir "/etc/letsencrypt/live")
+(define %letsencrypt-acme-challenge (nginx-location-configuration
+				     (uri "/.well-known")
+				     (body '("root /srv/http;"))))
 
 (define %cuirass-port 32800)
 
@@ -37,50 +47,98 @@
 	      (url "https://github.com/flatwhatson/guix-channel.git"))
 	     %default-channels)))))
 
+(define %cuirass-server
+  (nginx-server-configuration
+   (server-name '("ci.babariviere.com"))
+   (listen '("443 ssl"))
+   (ssl-certificate (string-append %letsencrypt-dir "/babariviere.com/fullchain.pem"))
+   (ssl-certificate-key (string-append %letsencrypt-dir "/babariviere.com/privkey.pem"))
+   (locations (list
+	       %letsencrypt-acme-challenge
+	       (nginx-location-configuration
+		(uri "/")
+		(body (list (string-append "proxy_pass http://127.0.0.1:" (number->string %cuirass-port) ";"))))
+	       (nginx-location-configuration
+		(uri "/admin")
+		(body '("deny all;")))))))
+
+(define %nginx-configuration
+  (nginx-configuration
+   (server-blocks
+    (list
+     (nginx-server-configuration
+      (server-name '("babariviere.com" "www.babariviere.com"))
+      (ssl-certificate (string-append %letsencrypt-dir "/babariviere.com/fullchain.pem"))
+      (ssl-certificate-key (string-append %letsencrypt-dir "/babariviere.com/privkey.pem"))
+      (locations (list
+		  %letsencrypt-acme-challenge)))
+     %cuirass-server))))
+
+(define %nginx-deploy-hook
+  (program-file
+   "nginx-deploy-hook"
+   #~(let ((pid (call-with-input-file "/var/run/nginx/pid" read)))
+       (kill pid SIGHUP))))
+
 (define %system/kratos
   (operating-system
-   (host-name "kratos")
-   (timezone "Europe/Paris")
-   (bootloader (bootloader-configuration
-		(bootloader grub-bootloader)
-		(targets '("/dev/sda"))
-		(terminal-outputs '(console))))
-   (file-systems (cons* (file-system
-			 (mount-point "/")
-			 (device (file-system-label "root"))
-			 (type "btrfs")
-			 (options "subvol=system,compress=zstd"))
-			%base-file-systems))
-   (packages (append (list
-		      htop
-		      ;; for HTTPS access
-		      nss-certs
-		      )
-		     %base-packages))
-   (services
-    (append (list (service dhcp-client-service-type)
-		  (service openssh-service-type
-			   (openssh-configuration
-			    (permit-root-login 'prohibit-password)
-			    (allow-empty-passwords? #f)
-			    ;; TODO: better system for ssh keys
-			    (authorized-keys `(("root" ,(local-file (string-append %channel-root "/etc/ssh/gaia.pub")))))))
-		  ;; (service guix-publish-service-type
-		  ;; 	   (guix-publish-configuration
-		  ;; 	    ))
-		  (service cuirass-service-type
-			   (cuirass-configuration
-			    (specifications %cuirass-specs)
-			    (port %cuirass-port)
-			    (use-substitutes? #t))))
-	    (modify-services
-	     %base-services
-	     (guix-service-type config =>
-				(guix-configuration
-				 (inherit config)
-				 (discover? #f)
-				 (authorized-keys (append
-						   %default-authorized-guix-keys
-						   (list (local-file (string-append %channel-root "/etc/keys/gaia.pub"))))))))))))
+    (host-name "kratos")
+    (timezone "Europe/Paris")
+    (bootloader (bootloader-configuration
+		 (bootloader grub-bootloader)
+		 (targets '("/dev/sda"))
+		 (terminal-outputs '(console))))
+    (file-systems (cons* (file-system
+			   (mount-point "/")
+			   (device (file-system-label "root"))
+			   (type "btrfs")
+			   (options "subvol=system,compress=zstd"))
+			 %base-file-systems))
+    (packages (append (list
+		       htop
+		       btrfs-progs
+		       ;; for HTTPS access
+		       nss-certs
+		       )
+		      %base-packages))
+    (services
+     (append (list (service dhcp-client-service-type)
+		   (service openssh-service-type
+			    (openssh-configuration
+			     (permit-root-login 'prohibit-password)
+			     (allow-empty-passwords? #f)
+			     ;; TODO: better system for ssh keys
+			     (authorized-keys `(("root" ,(local-file (string-append %channel-root "/etc/ssh/gaia.pub")))))))
+		   ;; (service guix-publish-service-type
+		   ;; 	   (guix-publish-configuration
+		   ;; 	    ))
+		   (service cuirass-service-type
+			    (cuirass-configuration
+			     (specifications %cuirass-specs)
+			     (port %cuirass-port)
+			     (use-substitutes? #t)))
+		   (service certbot-service-type
+			    (certbot-configuration
+			     (email "bot@babariviere.com")
+			     (webroot "/srv/http")
+			     (certificates
+			      (list
+			       (certificate-configuration
+				(name "babariviere.com")
+				(domains '("babariviere.com" "www.babariviere.com" "ci.babariviere.com"))
+				(deploy-hook %nginx-deploy-hook))))))
+		   (service nginx-service-type
+			    %nginx-configuration)
+
+		   (service unattended-upgrade-service-type))
+	     (modify-services
+		 %base-services
+	       (guix-service-type config =>
+				  (guix-configuration
+				   (inherit config)
+				   (discover? #f)
+				   (authorized-keys (append
+						     %default-authorized-guix-keys
+						     (list (local-file (string-append %channel-root "/etc/keys/gaia.pub"))))))))))))
 
 %system/kratos
