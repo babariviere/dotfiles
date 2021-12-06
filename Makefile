@@ -2,6 +2,8 @@ systems := $(wildcard baba/system/*.scm)
 
 HOSTNAME := $(shell hostname)
 
+guix-lock := guix time-machine -C etc/channels --
+
 .PHONY: all
 all: install system home
 
@@ -18,12 +20,18 @@ upgrade: update install system home
 system: system/${HOSTNAME}
 
 system/%:
-	sudo -E guix time-machine -C etc/channels.lock -- system reconfigure -L . baba/system/$*.scm
+	sudo -E $(guix-lock) system reconfigure -L . baba/system/$*.scm
+
+build/system/%:
+	$(guix-lock) system build -L . baba/system/$*.scm
 
 home: home/${HOSTNAME}
 
 home/%:
-	guix time-machine -C etc/channels.lock -- home reconfigure -L . baba/home/$*.scm
+	$(guix-lock) home reconfigure -L . baba/home/$*.scm
+
+build/home/%:
+	$(guix-lock) home build -L . baba/home/$*.scm
 
 deploy/%:
-	guix time-machine -C etc/channels.lock -- deploy -L . baba/deployment/$*.scm
+	$(guix-lock) deploy -L . baba/deployment/$*.scm
