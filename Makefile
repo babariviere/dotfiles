@@ -18,9 +18,12 @@ upgrade: update install system home
 system: system/${HOSTNAME}
 
 system/%:
-	sudo -E guix time-machine -C etc/channels.lock -- system reconfigure -L . baba/$@.scm
+	sudo -E guix time-machine -C etc/channels.lock -- system reconfigure -L . baba/system/$*.scm
 
 home: home/${HOSTNAME}
 
 home/%:
-	guix time-machine -C etc/channels.lock -- home reconfigure -L . baba/$@.scm
+	guix time-machine -C etc/channels.lock -- home reconfigure -L . baba/home/$*.scm
+
+deploy/%:
+	guix time-machine -C etc/channels.lock -- deploy -L . baba/deployment/$*.scm
