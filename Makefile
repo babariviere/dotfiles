@@ -20,7 +20,9 @@ upgrade: update install system home
 system: system/${HOSTNAME}
 
 system/%:
-	sudo -E $(guix-lock) system reconfigure -L . baba/system/$*.scm
+	# not working
+	# sudo -E $(guix-lock) system reconfigure -L . baba/system/$*.scm
+	sudo -E guix system reconfigure -L . baba/system/$*.scm
 
 build/system/%:
 	$(guix-lock) system build -L . baba/system/$*.scm
