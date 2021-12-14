@@ -91,6 +91,7 @@ mouse-3: Toggle minor modes"
 (require 'amber-org)
 (require 'amber-nix)
 (require 'amber-python)
+(require 'amber-scheme)
 (require 'amber-sql)
 
 (require 'use-package)
