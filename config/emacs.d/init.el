@@ -83,6 +83,7 @@ mouse-3: Toggle minor modes"
 (require 'amber-org)
 (require 'amber-nix)
 (require 'amber-python)
+(require 'amber-scheme)
 (require 'amber-sql)
 
 (require 'use-package)
@@ -175,3 +176,5 @@ ARGS are the arguments passed to `browse-url`."
   ("C-'" . avy-goto-char-2)
   ("M-g f" . avy-goto-line)
   ("M-g w" . avy-goto-word-1))
+
+(global-unset-key (kbd "C-z"))

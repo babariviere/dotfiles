@@ -41,6 +41,7 @@
     [16 48 112 240 112 48 16] nil nil 'center))
 
 (use-package flycheck-inline
+  :disabled t
   :custom-face
   (flycheck-inline-info ((t (:inherit flycheck-error-list-info))))
   (flycheck-inline-error ((t (:inherit flycheck-error-list-error))))

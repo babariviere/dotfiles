@@ -240,6 +240,8 @@
        (not (eq 'visible (org-roam-buffer--visibility)))
        (org-roam-buffer-toggle)))
 
+(defun org-babel-execute:yaml (body params) body)
+
 ;;
 ;; Variables
 ;;

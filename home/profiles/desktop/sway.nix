@@ -88,10 +88,18 @@ in {
       in {
         eDP-1 = {
           pos = "0 0";
+          # pos = "0 1440";
           inherit bg;
         };
         HDMI-A-1 = {
           pos = "1920 0";
+          # pos = "0 0";
+          # res = "2560x1440@60Hz";
+          inherit bg;
+        };
+        DP-1 = {
+          pos = "2560 0";
+          res = "2560x1440@60Hz";
           inherit bg;
         };
       };
@@ -126,20 +134,22 @@ in {
           command =
             "${pkgs.dbus}/bin/dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway";
         }
-        { command = "${pkgs.systemd}/bin/systemctl --user import-environment"; }
         {
-          command = let
-            inherit (pkgs) glib;
-            gnome-schema = "org.gnome.desktop.interface";
-          in ''
-            {
-              ${glib.bin}/bin/gsettings set ${gnome-schema} gtk-theme '${config.gtk.theme.name}'
-              ${glib.bin}/bin/gsettings set ${gnome-schema} icon-theme '${config.gtk.iconTheme.name}'
-              ${glib.bin}/bin/gsettings set ${gnome-schema} font-name '${config.gtk.font.name}'
-            }
-          '';
-          always = true;
+          command = "${pkgs.systemd}/bin/systemctl --user import-environment";
         }
+        # {
+        #   command = let
+        #     inherit (pkgs) glib;
+        #     gnome-schema = "org.gnome.desktop.interface";
+        #   in ''
+        #     {
+        #       ${glib.bin}/bin/gsettings set ${gnome-schema} gtk-theme '${config.gtk.theme.name}'
+        #       ${glib.bin}/bin/gsettings set ${gnome-schema} icon-theme '${config.gtk.iconTheme.name}'
+        #       ${glib.bin}/bin/gsettings set ${gnome-schema} font-name '${config.gtk.font.name}'
+        #     }
+        #   '';
+        #   always = true;
+        # }
         {
           command = ''
             ${pkgs.swayidle}/bin/swayidle -w \
@@ -172,14 +182,16 @@ in {
     };
     extraConfig = ''
       default_border pixel 2
+      bindswitch lid:on output eDP-1 disable
+      bindswitch lid:off output eDP-1 enable
     '';
   };
 
-  services.xsettingsd = {
-    enable = true;
-    settings = {
-      "Net/IconThemeName" = config.gtk.iconTheme.name;
-      "Net/ThemeName" = config.gtk.theme.name;
-    };
-  };
+  # services.xsettingsd = {
+  #   enable = true;
+  #   settings = {
+  #     "Net/IconThemeName" = config.gtk.iconTheme.name;
+  #     "Net/ThemeName" = config.gtk.theme.name;
+  #   };
+  # };
 }

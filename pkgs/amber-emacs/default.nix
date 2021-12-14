@@ -178,4 +178,6 @@ in emacsWithPackages (epkgs:
     zoom
     pinentry
     crux
+
+    guix
   ])

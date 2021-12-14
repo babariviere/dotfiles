@@ -5,7 +5,7 @@
       layer = "top";
       position = "top";
       height = 30;
-      output = [ "eDP-1" "HDMI-A-1" ];
+      # output = [ ];
       modules-left = [ "sway/workspaces" "sway/mode" ];
       modules-center = [ "clock" ];
       modules-right = [ "tray" "pulseaudio" "network" "battery" ];
@@ -83,8 +83,9 @@
       }
 
       #workspaces button {
-          padding:    0 2px;
+          padding:    0 5px;
           color:      rgba(217, 216, 216, 0.4);
+          background: rgba(0, 0, 0, 0.0);
       }
 
       #workspaces button.visible {

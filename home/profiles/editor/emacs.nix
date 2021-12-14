@@ -7,14 +7,6 @@ let
     ${emacs}/bin/emacsclient -c -n \
         --eval '(progn (set-frame-parameter nil (quote title) "emacs-scratchpad") (amber/org-goto-tasks))'
   '';
-  org-protocol = pkgs.makeDesktopItem {
-    name = "org-protocol";
-    exec = "${emacs}/bin/emacsclient %u";
-    comment = "Org protocol";
-    desktopName = "org-protocol";
-    type = "Application";
-    mimeType = "x-scheme-handler/org-protocol";
-  };
 in lib.mkMerge [
   {
     assertions = [{
@@ -28,19 +20,23 @@ in lib.mkMerge [
         recursive = true;
       };
     };
-    home.packages = [
-      emacs
-      pkgs.emacs-all-the-icons-fonts
-      org-protocol
-      emacs-scratchpad
-      pkgs.ispell
-    ] ++ (lib.optionals pkgs.stdenv.isDarwin [ pkgs.emacs-client ]);
+    home.packages =
+      [ emacs pkgs.emacs-all-the-icons-fonts emacs-scratchpad pkgs.ispell ]
+      ++ (lib.optionals pkgs.stdenv.isDarwin [ pkgs.emacs-client ]);
     programs.emacs.package = emacs;
     shell.aliases = { e = "${emacs}/bin/emacsclient -nw"; };
 
     shell.env = {
       EDITOR = "${emacs}/bin/emacsclient -nw";
       VISUAL = "${emacs}/bin/emacsclient";
+    };
+
+    xdg.desktopEntries.org-protocol = {
+      name = "Org Protocol";
+      exec = "${emacs}/bin/emacsclient %u";
+      genericName = "org-protocol";
+      #type = "Application";
+      mimeType = [ "x-scheme-handler/org-protocol" ];
     };
 
     # Ensure all-the-icons-fonts will be installed

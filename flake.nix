@@ -25,6 +25,8 @@
     # Emacs
     emacs.url = "github:babariviere/emacs-overlay";
     emacs.inputs.nixpkgs.follows = "nixpkgs";
+
+    gomod2nix.url = "github:tweag/gomod2nix";
   };
 
   outputs = { self, darwin, nixpkgs, home-manager, utils, deploy, ... }@inputs:
@@ -36,13 +38,11 @@
         nix = {
           binaryCaches = [
             "https://cache.nixos.org"
-            "https://cache.ngi0.nixos.org/"
             "https://nix-community.cachix.org"
             "https://babariviere.cachix.org"
             # "http://nix-store.vercar.home"
           ];
           binaryCachePublicKeys = [
-            "cache.ngi0.nixos.org-1:KqH5CBLNSyX184S9BKZJo1LxrxJ9ltnY2uAs5c/f1MA="
             "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
             "babariviere.cachix.org-1:igoOZJyEAhWg3Rbavjim3yyDj7nIkGYe5327+G0diFw="
             # "vercar.home:1R/Q2IoFGQ5NqYGneOoxhrvkhgpdBrn87Po2uPM4wmI="
@@ -165,6 +165,7 @@
       overlays = {
         # neovim = inputs.neovim-nightly.overlay;
         emacs = inputs.emacs.overlay;
+        gomod = inputs.gomod2nix.overlay;
         # nix = inputs.nix.overlay;
         self = self.overlay;
       };

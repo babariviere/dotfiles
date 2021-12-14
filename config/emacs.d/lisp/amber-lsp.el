@@ -42,7 +42,8 @@
   (lsp-ui-sideline-enable t)
   (lsp-ui-sideline-show-diagnostics t)
   ;; breaks sideline
-  (lsp-eldoc-enable-hover nil))
+  (lsp-eldoc-enable-hover nil)
+  (lsp-keymap-prefix "C-c l"))
 
 (use-package lsp-ui
   :commands lsp-ui-mode)

@@ -155,7 +155,7 @@
   virtualisation.docker = {
     enable = true;
     enableOnBoot = true;
-    autoPrune.enable = true;
+    autoPrune.enable = false; # broken
     storageDriver = "zfs";
   };
 
@@ -290,6 +290,8 @@
       httpie
       spotify
       htmlTidy
+      wally-cli
+      gnumake
     ];
 
     gtk = {
@@ -300,14 +302,14 @@
         name = "Roboto";
         size = 10;
       };
-      iconTheme = {
-        name = "Papirus-Dark";
-        package = pkgs.papirus-icon-theme;
-      };
-      theme = {
-        name = "Orchis-dark";
-        package = pkgs.orchis-theme;
-      };
+      # iconTheme = {
+      #   name = "Papirus-Dark";
+      #   package = pkgs.papirus-icon-theme;
+      # };
+      # theme = {
+      #   name = "Orchis-dark";
+      #   package = pkgs.orchis-theme;
+      # };
     };
 
     home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
