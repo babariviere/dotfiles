@@ -2,7 +2,7 @@ systems := $(wildcard baba/system/*.scm)
 
 HOSTNAME := $(shell hostname)
 
-guix-lock := guix time-machine -C etc/channels --
+guix-lock := guix time-machine -C etc/channels.lock --
 
 .PHONY: all
 all: install system home
