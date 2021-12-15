@@ -75,7 +75,7 @@
         (sha256
           (base32 "0zz2z6dpdjdq5z8m8w8dfi8by0ih1zrdq0caxm1anwhxg2saxdhy"))))
     (build-system python-build-system)
-    (propagated-inputs `(("python-enum34" ,python2-enum34)))
+    (propagated-inputs (list python2-enum34))
     (arguments `(#:tests? #f))
     (home-page "https://github.com/manrajgrover/py-spinners")
     (synopsis "Spinners for terminals")
@@ -94,8 +94,7 @@
           (base32 "0mh5d0igw33libfmbsr1ri1p1y644p36nwaa2w6kzrd8w5pvq2yg"))))
     (build-system python-build-system)
     (propagated-inputs
-      `(("python-colorama" ,python-colorama)
-	("python-enum34" ,python2-enum34)))
+      (list python-colorama python2-enum34))
     (arguments
      `(#:tests? #f))
     (home-page "https://github.com/manrajgrover/py-log-symbols")
@@ -115,13 +114,12 @@
           (base32 "1mn97h370ggbc9vi6x8r6akd5q8i512y6kid2nvm67g93r9a6rvv"))))
     (build-system python-build-system)
     (propagated-inputs
-      `(("python-backports.shutil-get-terminal-size"
-         ,python-backports.shutil-get-terminal-size)
-        ("python-colorama" ,python-colorama)
-        ("python-log-symbols" ,python-log-symbols)
-        ("python-six" ,python-six)
-        ("python-spinners" ,python-spinners)
-        ("python-termcolor" ,python-termcolor)))
+      (list python-backports.shutil-get-terminal-size
+            python-colorama
+            python-log-symbols
+            python-six
+            python-spinners
+            python-termcolor))
     (arguments `(#:tests? #f))
     (home-page "https://github.com/manrajgrover/halo")
     (synopsis "Beautiful terminal spinners in Python")
@@ -140,11 +138,8 @@
           (base32 "0bbqgyzzcq7hpp8xypd188ga49zf9kv7qljbd29ms9kvl45d9j5j"))))
     (build-system python-build-system)
     (propagated-inputs
-      `(("python-appdirs" ,python-appdirs)
-        ("python-argcomplete" ,python-argcomplete)
-        ("python-colorama" ,python-colorama)
-        ("python-halo" ,python-halo)
-        ("python-spinners" ,python-spinners)))
+      (list python-appdirs python-argcomplete python-colorama python-halo
+            python-spinners))
     (home-page "https://milc.clueboard.co/")
     (synopsis "Opinionated Batteries-Included Python 3 CLI Framework.")
     (description "Opinionated Batteries-Included Python 3 CLI Framework.")
@@ -162,7 +157,10 @@
           (base32 "1h9zi0kyicy3na1azfsgb57ywxa8p62bq146pb44ncvsyf1066zn"))))
     (build-system python-build-system)
     (arguments
-     `(#:tests? #f))
+     `(#:phases
+       (modify-phases %standard-phases
+         (delete 'check)
+         (delete 'sanity-check))))
     (home-page "https://github.com/apmorton/pyhidapi")
     (synopsis "ctypes bindings for hidapi")
     (description "ctypes bindings for hidapi")
@@ -180,14 +178,14 @@
           (base32 "1jpr22k539yc1rhn69igvh0s7hrd40vkkgmrn0vwqj257k3ywqns"))))
     (build-system python-build-system)
     (propagated-inputs
-      `(("python-hid" ,python-hid)
-        ("python-hjson" ,python-hjson)
-        ("python-jsonschema" ,python-jsonschema)
-        ("python-milc" ,python-milc)
-        ("python-pygments" ,python-pygments)
-        ("python-pyusb" ,python-pyusb)
-        ("python-qmk-dotty-dict" ,python-qmk-dotty-dict)
-        ("python-setuptools" ,python-setuptools)))
+      (list python-hid
+            python-hjson
+            python-jsonschema
+            python-milc
+            python-pygments
+            python-pyusb
+            python-qmk-dotty-dict
+            python-setuptools))
     (inputs
      `(("setup.py" ,(plain-file "setup.py"
 				(string-join
@@ -207,4 +205,3 @@
     (synopsis "A program to help users work with QMK Firmware.")
     (description "A program to help users work with QMK Firmware.")
     (license license:expat)))
-
