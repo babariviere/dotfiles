@@ -9,7 +9,4 @@
 (use-package forge
   :after magit)
 
-(use-package magit-todos
-  :after magit)
-
 (provide 'amber-magit)
