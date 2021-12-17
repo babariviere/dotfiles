@@ -55,4 +55,8 @@ indentation."
 
 (add-hook 'scheme-mode-hook #'amber/scheme-set-indent)
 
+(use-package macrostep-geiser
+  :after geiser-mode
+  :hook (geiser-mode . macrostep-geiser-setup))
+
 (provide 'amber-scheme)

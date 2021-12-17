@@ -114,6 +114,7 @@
 	     emacs-highlight-quoted
 	     emacs-elisp-demos
 	     emacs-macrostep
+	     emacs-macrostep-geiser
 
 	     ;; emacs-elixir-mode
 	     ;; emacs-alchemist
@@ -165,6 +166,7 @@
 
 	     emacs-geiser
 	     emacs-guix
+	     emacs-geiser-guile
 
 	     emacs-emacsql-sqlite3
 	     sqlite
