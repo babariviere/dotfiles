@@ -30,6 +30,7 @@
      ("emacs-lsp-mode" . ,(const emacs-lsp-mode))
      ("emacs-markdown-mode" . ,(const emacs-markdown-mode))
      ("emacs-emacsql" . ,(const emacs-emacsql))
+     ("emacs-emacsql-sqlite" . ,(const emacs-emacsql-sqlite))
      ("emacs-yasnippet" . ,(const emacs-yasnippet))
      ("emacs-cider" . ,(const emacs-cider))
      ("emacs-org-contrib" . ,(const emacs-org-contrib)))))
