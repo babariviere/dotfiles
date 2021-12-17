@@ -9,6 +9,8 @@
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
+(guix-emacs-autoload-packages)
+
 (let ((fixed-pitch '(:family "MonoLisa" :height 90)))
   (custom-set-faces
    `(default ((t ,fixed-pitch)))
