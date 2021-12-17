@@ -7,6 +7,7 @@
   #:use-module (flat packages emacs)
   #:use-module (gnu home services)
   #:use-module (gnu home-services emacs)
+  #:use-module (gnu home services xdg)
   #:use-module (gnu packages cmake)
   #:use-module (gnu packages gcc)
   #:use-module (gnu packages sqlite)
@@ -215,4 +216,16 @@
 		  (xdg-flavor? #t)))
 	(simple-service 'emacs-init
 			home-files-service-type
-			(emacs-files))))
+			(emacs-files))
+	(simple-service 'emacs-org-protocol
+			home-xdg-mime-applications-service-type
+			(home-xdg-mime-applications-configuration
+			 (added '((x-scheme-handler/org-protocol . org-protocol.desktop)))
+			 (desktop-entries
+			  (list
+			   (xdg-desktop-entry
+			    (file "org-protocol")
+			    (name "Org Protocol")
+			    (type 'application)
+			    (config
+			     '((exec . "emacsclient %u"))))))))))
