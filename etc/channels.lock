@@ -2,7 +2,7 @@
         (name 'guix)
         (url "https://git.savannah.gnu.org/git/guix.git")
         (commit
-          "7303c3105a1f037215a0ca10570aff724f987600")
+          "4dd7cb90db950c7cee74bddeffbaaebc860e5d0a")
         (introduction
           (make-channel-introduction
             "9edb3f66fd807b096b48283debdcddccfea34bad"
@@ -12,7 +12,7 @@
         (name 'baba)
         (url "https://github.com/babariviere/dotfiles")
         (commit
-          "10303bf2a4135012b637dbd80f4d3adf6062a360")
+          "8322ebbce5dfaded47df861e773712a42d6dd240")
         (introduction
           (make-channel-introduction
             "78e60924c559697195eddafb5dc7f47a86a12d6e"
@@ -22,7 +22,7 @@
         (name 'rde)
         (url "https://git.sr.ht/~abcdw/rde")
         (commit
-          "2b6777e9573f00aed82e83cba34edf19979068ef"))
+          "06356d8d36dfd7ee002d276d5bf6469677139eb4"))
       (channel
         (name 'flat)
         (url "https://github.com/flatwhatson/guix-channel.git")
@@ -37,7 +37,7 @@
         (name 'nonguix)
         (url "https://gitlab.com/nonguix/nonguix")
         (commit
-          "21d41c8dd4ad3099c5440a2413d0045a3de8f21a")
+          "9445cbce7c98717f3c1cd985e19afea1b78872f0")
         (introduction
           (make-channel-introduction
             "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
@@ -47,7 +47,7 @@
         (name 'emacs)
         (url "https://github.com/babariviere/guix-emacs")
         (commit
-          "48d85c98cfa99ef8042b8758cfc7fe19c2c038dc")
+          "38ced4b58c6397cfe593939456372ceca2e82cfb")
         (introduction
           (make-channel-introduction
             "72ca4ef5b572fea10a4589c37264fa35d4564783"
