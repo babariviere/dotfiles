@@ -58,11 +58,13 @@
 			(discover? #t)
 			(substitute-urls (append
 					  (@@ (guix scripts substitute) %default-substitute-urls)
-					  (list "https://mirror.brielmaier.net" "https://ci.babariviere.com")))
+					  (list "https://mirror.brielmaier.net" "https://substitutes.nonguix.org" "https://ci.babariviere.com")))
 			(authorized-keys (append
 					  %default-authorized-guix-keys
-					  (list (local-file (string-append %channel-root "/etc/keys/mirror.brielmaier.net.pub"))
-						(local-file (string-append %channel-root "/etc/keys/ci.babariviere.com.pub"))))))))))
+					  (list
+                       (local-file (string-append %channel-root "/etc/keys/mirror.brielmaier.net.pub"))
+                       (local-file (string-append %channel-root "/etc/keys/substitutes.nonguix.org.pub"))
+					   (local-file (string-append %channel-root "/etc/keys/ci.babariviere.com.pub"))))))))))
 
 (define %system/gaia
   (operating-system
