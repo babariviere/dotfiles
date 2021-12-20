@@ -153,7 +153,7 @@
   #   dockerCompat = true;
   # };
   virtualisation.docker = {
-    enable = true;
+    enable = false;
     enableOnBoot = true;
     autoPrune.enable = false; # broken
     storageDriver = "zfs";
@@ -241,7 +241,7 @@
       };
       desktop.sway.enable = true;
       editor = {
-        emacs.enable = true;
+        emacs.enable = false;
         editorconfig.enable = true;
       };
       shell = {

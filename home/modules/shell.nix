@@ -36,7 +36,7 @@
       };
     }
     (lib.mkIf (!config.programs.bash.enable) {
-      home.file.".profile".source = pkgs.writeShellScript "profile" ''
+      home.file.".profile-nix".source = pkgs.writeShellScript "profile" ''
         . "${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh"
         ${sessionVarsStr}
         GUIX_PROFILE="$HOME/.guix-profile"

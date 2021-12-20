@@ -14,6 +14,10 @@ use_guix() {
   eval "$(guix shell "$@" --search-paths)"
 }
 
+use_lguix() {
+  eval "$(guix time-machine -C channels.lock -- shell "$@" --search-paths)"
+}
+
 
 layout_poetry() {
   if [[ ! -f pyproject.toml ]]; then
