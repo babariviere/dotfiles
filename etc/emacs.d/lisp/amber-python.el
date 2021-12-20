@@ -47,9 +47,9 @@
 
 (use-package poetry
   :after python
-  :hook (python-mode . poetry-tracking-mode)
   :init
-  (setq poetry-tracking-strategy 'switch-buffer))
+  (setq poetry-tracking-strategy 'switch-buffer)
+  (add-hook 'python-mode-hook #'poetry-tracking-mode))
 
 (use-package lsp-python-ms
   :init
