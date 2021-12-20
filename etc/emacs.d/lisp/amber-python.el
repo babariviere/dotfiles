@@ -46,7 +46,10 @@
   (python-shell-interpreter "python3"))
 
 (use-package poetry
-  :commands (poetry))
+  :after python
+  :hook (python-mode . poetry-tracking-mode)
+  :init
+  (setq poetry-tracking-strategy 'switch-buffer))
 
 (use-package lsp-python-ms
   :init
