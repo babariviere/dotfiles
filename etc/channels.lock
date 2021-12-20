@@ -12,7 +12,7 @@
         (name 'baba)
         (url "https://github.com/babariviere/dotfiles")
         (commit
-          "2a46dffef1b4ea59cd839894c8b32f17aa449b90")
+          "09488d831fb468aab31a3667fce5891ae92f361d")
         (introduction
           (make-channel-introduction
             "78e60924c559697195eddafb5dc7f47a86a12d6e"
@@ -47,7 +47,7 @@
         (name 'emacs)
         (url "https://github.com/babariviere/guix-emacs")
         (commit
-          "b7680abba45260e77889c8b1eb187de19ee784f8")
+          "dde5e5eb3bd8abe9e8272886bebdb65c23af3483")
         (introduction
           (make-channel-introduction
             "72ca4ef5b572fea10a4589c37264fa35d4564783"
