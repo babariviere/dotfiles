@@ -522,6 +522,10 @@ Examples:
   :config
   (evil-org-agenda-set-keys))
 
+(with-eval-after-load 'org
+  (require 'verb)
+  (define-key org-mode-map (kbd "C-c C-r") verb-command-map))
+
 (provide 'amber-org)
 
 ;;; amber-org.el ends here

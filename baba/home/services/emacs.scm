@@ -182,6 +182,8 @@
 
 	     emacs-avy
 	     emacs-ace-window
+
+         emacs-verb
 	     ))))
 
 ;; TODO: migrate this to a ~home-config-files-service-type~
