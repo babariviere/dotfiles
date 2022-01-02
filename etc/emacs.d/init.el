@@ -17,7 +17,39 @@
    `(fixed-pitch ((t ,fixed-pitch)))))
 
 (require 'modus-themes)
-(load-theme 'modus-operandi t)
+
+;; These colors are inspired by:
+;; https://github.com/rakr/vim-two-firewatch
+;; https://simurai.com/projects/2016/01/01/duotone-themes
+(custom-set-variables
+ '(modus-themes-mixed-fonts t)
+ '(modus-themes-italic-constructs t)
+ '(modus-themes-region nil)
+ '(modus-themes-links '(neutral-underline))
+ '(modus-themes-mode-line '(accented moody borderless))
+ '(modus-themes-operandi-color-overrides '((fg-main . "#000000")
+					   (bg-main . "#faf8f5")
+					   (bg-region . "#efdfff")
+					   (bg-inactive . "#e6e4e1")
+					   (bg-hl-line . "#e6e4e1")))
+ '(modus-themes-vivendi-color-overrides '((fg-main . "#fdf3ec")
+					  (bg-main . "#24242d")
+					  (bg-region . "#4f3d88")
+					  (bg-inactive . "#2f2f3b")
+					  (bg-hl-line . "#2f2f3b"))))
+
+(defun customize-modus-vivendi nil
+  (custom-set-variables
+   '(modus-themes-syntax '(yellow-comments alt-syntax faint green-strings))))
+
+(defun customize-modus-operandi nil
+  (custom-set-variables
+   '(modus-themes-syntax '(yellow-comments))))
+
+(advice-add 'modus-themes-load-vivendi :before 'customize-modus-vivendi)
+(advice-add 'modus-themes-load-operandi :before 'customize-modus-operandi)
+
+(modus-themes-load-operandi)
 
 ;; (require 'kaolin-themes)
 ;; (load-theme 'kaolin-valley-dark t)
