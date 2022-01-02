@@ -478,7 +478,10 @@ Examples:
   (org-roam-db-autosync-mode 1)
   :general
   (org-mode-map
-   "C-c n i" 'org-roam-node-insert)
+   "C-c n i" 'org-roam-node-insert
+   ;; https://twitter.com/ilemming/status/1461417366651342848
+   "[[" 'org-roam-node-insert
+   "[ SPC" (lambda () (interactive) (insert "[]") (backward-char)))
   (amber/leader-keys
     "nf" '(org-roam-node-find :wk "find note")))
 
