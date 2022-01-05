@@ -11,8 +11,10 @@
   #:use-module (gnu packages certs)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages emacs-xyz)
+  #:use-module (gnu packages fonts)
   #:use-module (gnu packages java)
   #:use-module (gnu packages linux)
+  #:use-module (gnu packages lisp)
   #:use-module (gnu packages shells)
   #:use-module (gnu packages ssh)
   #:use-module (gnu packages suckless)
@@ -25,6 +27,7 @@
   #:use-module (gnu services nix)
   #:use-module (gnu services pm)
   #:use-module (gnu services shepherd)
+  #:use-module (gnu packages xdisorg)
   #:use-module (gnu services xorg)
   #:use-module (gnu system nss)
   #:use-module (nongnu packages linux)
@@ -38,20 +41,10 @@
   (cons*
    (service nix-service-type)
    (service tlp-service-type)
-   (simple-service
-      'switch-tty-2-after-boot shepherd-root-service-type
-      (list (shepherd-service
-             (provision '(switch-tty))
-             (requirement '(virtual-terminal))
-             (start #~(lambda ()
-			(invoke #$(file-append kbd "/bin/chvt")
-				"2")))
-             (one-shot? #t))))
+   (set-xorg-configuration
+    (xorg-configuration))
    (modify-services
-    (remove (lambda (service)
-		   (member (service-kind service)
-			   (list gdm-service-type)))
-	    %desktop-services)
+    %desktop-services
     (guix-service-type config =>
 		       (guix-configuration
 			(inherit config)
@@ -116,9 +109,15 @@
    (packages (append (list
 		      ;; window managers
 		      sway dmenu
+
+		      ;; TODO: stumpwm service
+		      stumpwm
+		      `(,stumpwm "lib")
+		      sbcl-stumpwm-ttf-fonts
+		      sbcl
 		      ;; emacs
 		      ;; terminal emulator
-		      alacritty foot neovim
+		      alacritty foot xterm neovim
 		      ;; ssh
 		      openssh
 		      ;; for HTTPS access
@@ -127,7 +126,10 @@
 		      icedtea icedtea-web
 		      ;; tools
 		      gnu-make
-		      )
+
+		      ;; x11
+		      xrandr
+		      autorandr)
 		     %base-packages))
 
    ;; Use the "desktop" services, which include the X11
