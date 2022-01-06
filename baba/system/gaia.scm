@@ -9,6 +9,7 @@
   #:use-module (gnu packages)
   #:use-module (gnu packages bootloaders)
   #:use-module (gnu packages certs)
+  #:use-module (gnu packages compton)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages emacs-xyz)
   #:use-module (gnu packages fonts)
@@ -37,14 +38,52 @@
 (define %blacklist-modules
   (list "pcspkr" "snd_pcsp"))
 
+(define xorg.conf
+  "
+Section \"ServerLayout\"
+  Identifier \"layout\"
+  Screen 0 \"nouveau\"
+  Inactive \"iGPU\"
+EndSection
+
+Section \"Device\"
+  Identifier \"iGPU\"
+  Driver \"modesetting\"
+  Option \"DRI\" \"3\"
+  BusID \"PCI:0:2:0\"
+EndSection
+
+Section \"Screen\"
+  Identifier \"intel\"
+  Device \"iGPU\"
+EndSection
+
+Section \"Device\"
+  Identifier \"dGPU\"
+  Driver \"nouveau\"
+  BusID \"PCI:1:0:0\"
+EndSection
+
+Section \"Screen\"
+  Identifier \"nouveau\"
+  Device \"dGPU\"
+EndSection
+")
+
 (define services
   (cons*
    (service nix-service-type)
    (service tlp-service-type)
-   (set-xorg-configuration
-    (xorg-configuration))
+   (service slim-service-type (slim-configuration
+                               (display ":0")
+                               (vt "vt7")
+			       (xorg-configuration
+				(xorg-configuration
+				 (extra-config (list xorg.conf))))))
    (modify-services
-    %desktop-services
+    (remove (lambda (service)
+              (eq? (service-kind service) gdm-service-type))
+            %desktop-services)
     (guix-service-type config =>
 		       (guix-configuration
 			(inherit config)
@@ -129,7 +168,8 @@
 
 		      ;; x11
 		      xrandr
-		      autorandr)
+		      autorandr
+		      picom)
 		     %base-packages))
 
    ;; Use the "desktop" services, which include the X11
