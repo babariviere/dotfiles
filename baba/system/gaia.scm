@@ -40,27 +40,9 @@
 
 (define xorg.conf
   "
-Section \"ServerLayout\"
-  Identifier \"layout\"
-  Screen 0 \"nouveau\"
-  Inactive \"iGPU\"
-EndSection
-
-Section \"Device\"
-  Identifier \"iGPU\"
-  Driver \"modesetting\"
-  Option \"DRI\" \"3\"
-  BusID \"PCI:0:2:0\"
-EndSection
-
-Section \"Screen\"
-  Identifier \"intel\"
-  Device \"iGPU\"
-EndSection
-
 Section \"Device\"
   Identifier \"dGPU\"
-  Driver \"nouveau\"
+  Driver \"modesetting\"
   BusID \"PCI:1:0:0\"
 EndSection
 
