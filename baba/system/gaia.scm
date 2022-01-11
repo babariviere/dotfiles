@@ -16,6 +16,7 @@
   #:use-module (gnu packages java)
   #:use-module (gnu packages linux)
   #:use-module (gnu packages lisp)
+  #:use-module (gnu packages lisp-xyz)
   #:use-module (gnu packages shells)
   #:use-module (gnu packages ssh)
   #:use-module (gnu packages suckless)
@@ -132,19 +133,16 @@ EndSection
 		      sway dmenu
 
 		      ;; TODO: stumpwm service
-		      stumpwm
-		      `(,stumpwm "lib")
+		      ;; NOTE: how to remove them?
+		      stumpwm+slynk `(,stumpwm "lib")
 		      sbcl-stumpwm-ttf-fonts
 		      sbcl
-		      ;; emacs
 		      ;; terminal emulator
 		      alacritty foot xterm neovim
 		      ;; ssh
 		      openssh
 		      ;; for HTTPS access
 		      nss-certs
-		      ;; for hetzner kvm console
-		      icedtea icedtea-web
 		      ;; tools
 		      gnu-make
 
