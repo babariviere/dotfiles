@@ -6,11 +6,26 @@
 
 ;; (asdf:load-system :slynk)
 (require :asdf)
+
+;; Slynk
+
 (require :slynk)
 (defcommand stump-slynk-server () ()
   (slynk:create-server :port 4004
 		       :dont-close t))
 (stump-slynk-server)
+
+;; Fonts
+
+(add-to-load-path "~/.guix-home/profile/share/common-lisp/sbcl/stumpwm-ttf-fonts/")
+(load-module "ttf-fonts")
+(setf xft:*font-dirs* '("~/.local/share/fonts")
+      clx-truetype:+font-cache-filename+ "~/.local/share/fonts/font-cache.sexp")
+(xft:cache-fonts)
+
+(set-font (make-instance 'xft:font :family "MonoLisa" :subfamily "Regular" :size 10))
+
+;; Misc
 
 (setf *mouse-focus-policy* :click)
 
@@ -26,6 +41,7 @@
 (dolist (h (screen-heads (current-screen)))
   (enable-mode-line (current-screen) h t))
 
+;; Bindings / Commands
 
 (set-prefix-key (kbd "C-i"))
 
