@@ -25,7 +25,7 @@
 			      (lambda ()
 				(format #t
 					"#!/bin/sh~@
-                                         if [ -e \"$HOME/.profile\"]; then~@
+                                         if [ -e \"$HOME/.profile\" ]; then~@
                                            . \"$HOME/.profile\"~@
                                          fi~@
                                          ~a/bin/picom -b --config $HOME/.config/picom.conf"
