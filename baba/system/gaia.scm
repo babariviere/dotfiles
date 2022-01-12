@@ -132,11 +132,6 @@ EndSection
 		      ;; window managers
 		      sway dmenu
 
-		      ;; TODO: stumpwm service
-		      ;; NOTE: how to remove them?
-		      stumpwm+slynk `(,stumpwm "lib")
-		      sbcl-stumpwm-ttf-fonts
-		      sbcl
 		      ;; terminal emulator
 		      alacritty foot xterm neovim
 		      ;; ssh
