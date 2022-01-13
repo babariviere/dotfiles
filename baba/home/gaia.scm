@@ -99,14 +99,14 @@
 
     ;; Bar:
     (bar ((position top)
-	  (colors ((statusline "#ffffff")
-		   (background "#323232")))
-	  (status_command "while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done")))
+      (colors ((statusline "#ffffff")
+           (background "#323232")))
+      (status_command "while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done")))
 
     ;; Input:
     (input * ((xkb_layout "us")
-	      (xkb_variant "altgr-intl")
-	      (xkb_options "ctrl:nocaps")))
+          (xkb_variant "altgr-intl")
+          (xkb_options "ctrl:nocaps")))
     ;; Output:
     (output HDMI-A-1 res 2560x1440@60Hz pos 0 0)
     (output DP-2 res 2560x1440@60Hz pos 2560 0)
@@ -121,48 +121,48 @@
   (list htop isync notmuch))
  (services
   (append emacs-service
-	  stumpwm-service
-	  (list (service home-bash-service-type
-			 (home-bash-configuration
-			  (guix-defaults? #t)))
-		(service home-fish-service-type
-			 (home-fish-configuration
-			  (config
-			   (list
-			    (local-file (string-append %channel-root "/etc/fish/config.fish"))))
-			  (abbreviations '(("gco" . "git checkout")
-					   ("gs" . "git status")
-					   ("gsr" . "sudo -E guix system reconfigure")
-					   ("ghr" . "guix home reconfigure")))))
-		(service home-gnupg-service-type
-			 (home-gnupg-configuration
-			  (gpg-agent-config
-			   (home-gpg-agent-configuration
-			    ;; (pinentry-flavor 'emacs)
-			    (extra-config
-			     '((max-cache-ttl . 86400)))
-			    ))))
-		(service home-git-service-type
-			 (home-git-configuration
-			  (config
-			   `((user
-			      ((name . "Bastien Riviere")
-			       (email . "babathriviere@gmail.com")
-			       (signingKey . "F9B7864F2AB46F18")))
-			     (github
-			      ((user . "babariviere")))
-			     (remote
-			      ((pushDefault . "origin")))
-			     (commit
-			      ((gpgSign . #t)))))))
-		(service home-sway-service-type
-			 (home-sway-configuration
-			  (config %sway-config)))
-		(service home-foot-service-type
-			 (home-foot-configuration
-			  (config
-			   `((main
-			      ((term . "xterm-256color")
-			       (font . "MonoLisa:size=10")
-			       (dpi-aware . "no")
-			       (include . ,(file-append (package-source foot) "/themes/dracula"))))))))))))
+          stumpwm-service
+          (list (service home-bash-service-type
+                         (home-bash-configuration
+                          (guix-defaults? #t)))
+                (service home-fish-service-type
+                         (home-fish-configuration
+                          (config
+                           (list
+                            (local-file (string-append %channel-root "/etc/fish/config.fish"))))
+                          (abbreviations '(("gco" . "git checkout")
+                                           ("gs" . "git status")
+                                           ("gsr" . "sudo -E guix system reconfigure")
+                                           ("ghr" . "guix home reconfigure")))))
+                (service home-gnupg-service-type
+                         (home-gnupg-configuration
+                          (gpg-agent-config
+                           (home-gpg-agent-configuration
+                            ;; (pinentry-flavor 'emacs)
+                            (extra-config
+                             '((max-cache-ttl . 86400)))
+                            ))))
+                (service home-git-service-type
+                         (home-git-configuration
+                          (config
+                           `((user
+                              ((name . "Bastien Riviere")
+                               (email . "babathriviere@gmail.com")
+                               (signingKey . "F9B7864F2AB46F18")))
+                             (github
+                              ((user . "babariviere")))
+                             (remote
+                              ((pushDefault . "origin")))
+                             (commit
+                              ((gpgSign . #t)))))))
+                (service home-sway-service-type
+                         (home-sway-configuration
+                          (config %sway-config)))
+                (service home-foot-service-type
+                         (home-foot-configuration
+                          (config
+                           `((main
+                              ((term . "xterm-256color")
+                               (font . "MonoLisa:size=10")
+                               (dpi-aware . "no")
+                               (include . ,(file-append (package-source foot) "/themes/dracula"))))))))))))
