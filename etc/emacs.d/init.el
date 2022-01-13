@@ -1,5 +1,4 @@
 ;; Init configuration
-
 ;;; Code:
 
 (require 'package)
@@ -28,15 +27,15 @@
  '(modus-themes-links '(neutral-underline))
  '(modus-themes-mode-line '(accented moody borderless))
  '(modus-themes-operandi-color-overrides '((fg-main . "#000000")
-					   (bg-main . "#faf8f5")
-					   (bg-region . "#efdfff")
-					   (bg-inactive . "#e6e4e1")
-					   (bg-hl-line . "#e6e4e1")))
+					                       (bg-main . "#faf8f5")
+					                       (bg-region . "#efdfff")
+					                       (bg-inactive . "#e6e4e1")
+					                       (bg-hl-line . "#e6e4e1")))
  '(modus-themes-vivendi-color-overrides '((fg-main . "#fdf3ec")
-					  (bg-main . "#24242d")
-					  (bg-region . "#4f3d88")
-					  (bg-inactive . "#2f2f3b")
-					  (bg-hl-line . "#2f2f3b"))))
+					                      (bg-main . "#24242d")
+					                      (bg-region . "#4f3d88")
+					                      (bg-inactive . "#2f2f3b")
+					                      (bg-hl-line . "#2f2f3b"))))
 
 (defun customize-modus-vivendi nil
   (custom-set-variables
@@ -83,13 +82,13 @@ mouse-3: Toggle minor modes"
  '(kaolin-themes-git-gutter-solid t)
  ;; Fix warning about not being able to determine a suitable EmacsClient
  '(with-editor-emacsclient-executable "emacsclient")
-
- '(indent-tabs-mode nil)
- '(tab-width 4)
  '(window-divider-default-right-width 8))
 
+(setq-default indent-tabs-mode nil
+              tab-width 4)
+
 (when (or (memq window-system '(mac ns x))
-		  (daemonp))
+	      (daemonp))
   (require 'exec-path-from-shell)
   (setq exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-initialize))
