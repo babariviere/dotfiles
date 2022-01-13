@@ -33,7 +33,8 @@
      ("emacs-emacsql-sqlite" . ,(const emacs-emacsql-sqlite))
      ("emacs-yasnippet" . ,(const emacs-yasnippet))
      ("emacs-cider" . ,(const emacs-cider))
-     ("emacs-org-contrib" . ,(const emacs-org-contrib)))))
+     ("emacs-org-contrib" . ,(const emacs-org-contrib))
+     ("emacs-ht" . ,(const emacs-ht)))))
 
 (define %native-emacs emacs-native-comp)
 
@@ -184,6 +185,9 @@
 	     emacs-ace-window
 
          emacs-verb
+
+         emacs-slack
+         emacs-notmuch
 	     ))))
 
 ;; TODO: migrate this to a ~home-config-files-service-type~

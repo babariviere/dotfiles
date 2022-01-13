@@ -219,3 +219,7 @@ ARGS are the arguments passed to `browse-url`."
   ("M-g w" . avy-goto-word-1))
 
 (global-unset-key (kbd "C-z"))
+
+;; TODO: >:( You lazy f*cker
+(require 'notmuch)
+(require 'slack)
