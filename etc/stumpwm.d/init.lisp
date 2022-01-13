@@ -47,7 +47,7 @@
 
 (defcommand firefox () ()
   "Start Firefox or switch to it."
-  (run-or-raise "firefox" '(:class "Nightly")))
+  (run-or-raise "firefox" '(:class "(Nightly|Firefox)")))
 (define-key *root-map* (kbd "f") "firefox")
 (define-key *root-map* (kbd "C-a") "fselect")
 
