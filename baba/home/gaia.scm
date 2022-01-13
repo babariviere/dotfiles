@@ -16,6 +16,7 @@
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages emacs-xyz)
   #:use-module (gnu packages gcc)
+  #:use-module (gnu packages mail)
   #:use-module (gnu packages sqlite)
   #:use-module (gnu packages terminals)
   #:use-module (gnu packages wm)
@@ -114,9 +115,10 @@
     (bindswitch lid:off output eDP-1 enable)
     (focus_follows_mouse no)))
 
+;; TODO: make service for mbsync and notmuch
 (home-environment
  (packages
-  (list htop))
+  (list htop isync notmuch))
  (services
   (append emacs-service
 	  stumpwm-service
