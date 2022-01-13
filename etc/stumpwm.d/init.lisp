@@ -1,10 +1,5 @@
 (in-package :stumpwm)
 
-;; (eval-when (:compile-toplevel :load-toplevel :execute)
-;;   (require 'asdf)
-;;   (asdf:load-system :slynk))
-
-;; (asdf:load-system :slynk)
 (require :asdf)
 
 ;; Modules
