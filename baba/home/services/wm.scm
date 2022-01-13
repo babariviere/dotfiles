@@ -1,5 +1,6 @@
 (define-module (baba home services wm)
   #:use-module (baba)
+  #:use-module (baba packages wm)
   #:use-module (gnu home services)
   #:use-module (gnu packages compton)
   #:use-module (gnu packages lisp)
@@ -48,7 +49,13 @@
    (simple-service 'stumpwm-profile
 		           home-profile-service-type
 		           (list stump `(,stumpwm "lib")
-			             sbcl-stumpwm-ttf-fonts
+                         sbcl-stumpwm-battery-portable
+                         sbcl-stumpwm-cpu
+                         sbcl-stumpwm-net
+                         sbcl-stumpwm-mem
+                         sbcl-stumpwm-stumptray
+                         sbcl-stumpwm-ttf-fonts
+                         sbcl-stumpwm-wifi
 			             sbcl
 
                          ;; tools

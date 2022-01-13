@@ -7,17 +7,24 @@
 ;; (asdf:load-system :slynk)
 (require :asdf)
 
+;; Modules
+
+(dolist (module '("ttf-fonts" "stumptray" "battery-portable" "cpu" "mem" "net" "wifi"))
+  (add-to-load-path (format nil "~a/.guix-home/profile/share/common-lisp/sbcl/stumpwm-~a/"
+                            (uiop:getenv "HOME")
+                            module)))
+
 ;; Slynk
 
 (require :slynk)
 (defcommand stump-slynk-server () ()
-  (slynk:create-server :port 4004
-		       :dont-close t))
-(stump-slynk-server)
+  (slynk:create-server
+   :port 4004
+   :dont-close t))
+(ignore-errors (stump-slynk-server))
 
 ;; Fonts
 
-(add-to-load-path "~/.guix-home/profile/share/common-lisp/sbcl/stumpwm-ttf-fonts/")
 (load-module "ttf-fonts")
 (setf xft:*font-dirs* '("~/.local/share/fonts")
       clx-truetype:+font-cache-filename+ "~/.local/share/fonts/font-cache.sexp")
@@ -36,10 +43,34 @@
 
 (setq *input-window-gravity* :top)
 
-(setf *screen-mode-line-format* "[^B%n^b] %d %W")
+;; Modeline
+
+(setf *group-format* "%t"
+      *window-format* "%n: %30t"
+      *time-modeline-string* "%F %H:%M")
+
+(load-module "battery-portable")
+(load-module "cpu")
+(load-module "mem")
+(load-module "net")
+(load-module "wifi")
+
+(setf cpu::*cpu-modeline-fmt*        "%c"
+      cpu::*cpu-usage-modeline-fmt*  "CPU: ^[~A~2D%^]"
+      mem::*mem-modeline-fmt*        "%a%p"
+      wifi:*wifi-modeline-fmt*       "%e%P"
+      wifi:*use-colors*              nil
+      *hidden-window-color*          "^**")
+
+(setf *mode-line-border-width* 0
+      *mode-line-pad-x* 10
+      *screen-mode-line-format* "%g %W ^> %I | %l | %C | %M | %B | %d  ")
 
 (dolist (h (screen-heads (current-screen)))
   (enable-mode-line (current-screen) h t))
+
+(load-module "stumptray")
+(stumptray:stumptray)
 
 ;; Bindings / Commands
 
