@@ -80,6 +80,6 @@
 (define-key *root-map* (kbd "C-c") "exec alacritty")
 
 (define-key *root-map* (kbd "w") "windowlist")
-(define-key *root-map* (kbd "C-w") "windowlist")
+(define-key *root-map* (kbd "C-w") "pull-from-windowlist")
 
 (define-key *top-map* (kbd "s-End") "exec xlock -mode swarm")
