@@ -40,7 +40,8 @@
 
 ;; Modeline
 
-(setf *window-format* "%n: %30t"
+(setf *group-format* "%t"
+      *window-format* "%n: %c"
       *time-modeline-string* "%F %H:%M")
 
 (load-module "battery-portable")
@@ -58,7 +59,7 @@
 
 (setf *mode-line-border-width* 0
       *mode-line-pad-x* 10
-      *screen-mode-line-format* "%g %W ^> %I | %l | %C | %M | %B | %d  %T")
+      *screen-mode-line-format* "[^B%n^b] %W ^> %I | %l | %C | %M | %B | %d  %T")
 
 (dolist (h (screen-heads (current-screen)))
   (enable-mode-line (current-screen) h t))
