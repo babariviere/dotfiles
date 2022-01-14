@@ -4,7 +4,7 @@
 
 ;; Modules
 
-(dolist (module '("ttf-fonts" "stumptray" "battery-portable" "cpu" "mem" "net" "wifi"))
+(dolist (module '("ttf-fonts" "stumptray" "battery-portable" "cpu" "mem" "net" "notify" "wifi"))
   (add-to-load-path (format nil "~a/.guix-home/profile/share/common-lisp/sbcl/stumpwm-~a/"
                             (uiop:getenv "HOME")
                             module)))
@@ -66,6 +66,12 @@
 
 (load-module "stumptray")
 (stumptray:stumptray)
+
+;; Notifications
+
+(asdf:load-system :notify)
+(load-module "notify")
+(notify:notify-server-on)
 
 ;; Bindings / Commands
 
