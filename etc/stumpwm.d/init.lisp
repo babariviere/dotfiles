@@ -73,6 +73,9 @@
 (load-module "notify")
 (notify:notify-server-on)
 
+(setf notify:*notify-server-title-color* "^2"
+      notify:*notify-server-body-color* "^7")
+
 ;; Bindings / Commands
 
 (set-prefix-key (kbd "C-i"))
