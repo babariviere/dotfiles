@@ -17,7 +17,6 @@
 
 (define stumpwm-service
   (list
-   ;; NOTE: possible with .xsession since it's used by default with slim
    (simple-service 'stumpwm-xsession
 		           home-files-service-type
 		           `(("xsession"
