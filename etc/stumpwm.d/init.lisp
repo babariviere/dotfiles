@@ -74,8 +74,8 @@
 (load-module "notify")
 (notify:notify-server-on)
 
-(setf notify:*notify-server-title-color* "^2"
-      notify:*notify-server-body-color* "^7")
+(setf notify:*notify-server-title-color* "^20"
+      notify:*notify-server-body-color* "^70")
 
 ;; Bindings / Commands
 
