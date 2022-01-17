@@ -59,6 +59,7 @@
 
 (setf *mode-line-border-width* 0
       *mode-line-pad-x* 10
+      *mode-line-timeout* 2
       *screen-mode-line-format* "[^B%n^b] %W ^> %I | %l | %C | %M | %B | %d  %T")
 
 (dolist (h (screen-heads (current-screen)))
