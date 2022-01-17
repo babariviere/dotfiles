@@ -32,6 +32,7 @@
                                          if [ -e \"$HOME/.profile\" ]; then~@
                                          . \"$HOME/.profile\"~@
                                          fi~@
+                                         export GDK_CORE_DEVICE_EVENTS=1~@
                                          ~a/bin/picom -b --config $HOME/.config/picom.conf~@
                                          ~a/bin/stumpwm"
                                         #$picom
