@@ -4,6 +4,7 @@
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
   #:use-module (gnu packages compton)
+  #:use-module (gnu packages image)
   #:use-module (gnu packages lisp)
   #:use-module (gnu packages lisp-xyz)
   #:use-module (gnu packages terminals)
@@ -57,7 +58,8 @@
                          ;; tools
                          alacritty
                          autorandr
-                         picom))
+                         picom
+                         flameshot))
    (simple-service 'stumpwm-files
 		           home-files-service-type
 		           `(("stumpwm.d/init.lisp"
