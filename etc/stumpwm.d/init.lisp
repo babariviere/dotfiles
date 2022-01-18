@@ -12,11 +12,20 @@
 ;; Slynk
 
 (require :slynk)
-(defcommand stump-slynk-server () ()
+
+(defvar *slynk-port* 4004)
+
+(defcommand start-slynk () ()
   (slynk:create-server
-   :port 4004
+   :port *slynk-port*
    :dont-close t))
-(ignore-errors (stump-slynk-server))
+
+(defcommand stop-slynk () ()
+  (slynk:stop-server *slynk-port*))
+
+(ignore-errors (start-slynk))
+
+(add-hook *restart-hook* 'stop-slynk)
 
 ;; Fonts
 
