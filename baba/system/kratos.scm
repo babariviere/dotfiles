@@ -29,24 +29,34 @@
 (define %publish-port 32900)
 
 (define %cuirass-specs
-  #~(list (specification
-	   (name "emacs")
-	   (build '(channels emacs))
-	   (channels
-	    (cons*
-	     (channel
-	      (name 'emacs)
-	      (url "https://github.com/babariviere/guix-emacs"))
-	     %default-channels)))
-	  (specification
-	   (name "flat")
-	   (build '(channels flat))
-	   (channels
-	    (cons*
-	     (channel
-	      (name 'flat)
-	      (url "https://github.com/flatwhatson/guix-channel.git"))
-	     %default-channels)))))
+  #~(list
+     (specification
+	  (name "emacs")
+	  (build '(channels emacs))
+	  (channels
+	   (cons*
+	    (channel
+	     (name 'emacs)
+	     (url "https://github.com/babariviere/guix-emacs"))
+	    %default-channels)))
+     (specification
+      (name "baba")
+      (build '(channels baba))
+      (channels
+       (cons*
+        (channel
+         (name 'baba)
+         (url "https://github.com/babariviere/dotfiles"))
+        %default-channels)))
+	 (specification
+	  (name "flat")
+	  (build '(channels flat))
+	  (channels
+	   (cons*
+	    (channel
+	     (name 'flat)
+	     (url "https://github.com/flatwhatson/guix-channel.git"))
+	    %default-channels)))))
 
 
 (define (publish-locations url)
