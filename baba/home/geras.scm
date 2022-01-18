@@ -1,16 +1,25 @@
 (define-module (baba home geras)
   #:use-module (baba home services emacs)
   #:use-module (baba home services wm)
+  #:use-module (baba packages web-browsers)
   #:use-module (gnu home)
   #:use-module (gnu home services shells)
   #:use-module (gnu packages admin)
+  #:use-module (gnu packages gstreamer)
   #:use-module (gnu services)
   #:use-module (guix gexp))
 
 ;; TODO: extend service to source home-manager variables.
 (home-environment
  (packages
-  (list shepherd))
+  (list shepherd nyxt-next
+
+        ;; required for video (like youtube)
+        gst-plugins-bad
+        gst-plugins-base
+        gst-plugins-good
+        gst-plugins-ugly
+        gst-libav))
  (services
   (append emacs-service
           stumpwm-service
