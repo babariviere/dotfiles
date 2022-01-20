@@ -1,9 +1,9 @@
 (define-module (baba home services wm)
   #:use-module (baba)
+  #:use-module (baba packages compton)
   #:use-module (baba packages wm)
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
-  #:use-module (gnu packages compton)
   #:use-module (gnu packages image)
   #:use-module (gnu packages lisp)
   #:use-module (gnu packages lisp-xyz)
@@ -41,7 +41,7 @@ fi
 export GDK_CORE_DEVICE_EVENTS=1
 ~a/bin/picom -b --config $HOME/.config/picom.conf
 ~a/bin/stumpwm"
-                                        #$picom
+                                        #$picom-next
 					                    #$stump)))
 			                (chmod #$output #o555))))))
    (simple-service 'setup-sbcl
@@ -64,7 +64,7 @@ export GDK_CORE_DEVICE_EVENTS=1
                          ;; tools
                          alacritty
                          autorandr
-                         picom
+                         picom-next
                          flameshot))
    (simple-service 'stumpwm-files
 		           home-files-service-type
