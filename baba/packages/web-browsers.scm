@@ -13,16 +13,16 @@
 (define-public nyxt-next
   (package
    (inherit nyxt)
-   (version "dev")
+   (version "76fecd19103e1a01057a22e31306e0cca68aa102")
    (source
     (origin
      (method git-fetch)
      (uri (git-reference
            (url "https://github.com/atlas-engineer/nyxt")
-           (commit "2d678d04bd9bb45a80f6caf2ca1056719698313e")))
+           (commit version)))
      (sha256
       (base32
-       "0pqc4sh8ff1kb7jszk6l710h4rdna0acyk466rd09fy8vf2rhgrv"))
+       "131pv80lxaf36w1fhywwc4l14v8iig7v4mvyq97skpmjbswx3c9f"))
      (file-name (git-file-name "nyxt" version))))
    (inputs
     `(("cl-gopher" ,sbcl-cl-gopher)
