@@ -13,7 +13,7 @@
 (define-public nyxt-next
   (package
    (inherit nyxt)
-   (version "76fecd19103e1a01057a22e31306e0cca68aa102")
+   (version "37000e6cae435ec7453f3d3318afe9d588a546bf")
    (source
     (origin
      (method git-fetch)
@@ -22,7 +22,7 @@
            (commit version)))
      (sha256
       (base32
-       "131pv80lxaf36w1fhywwc4l14v8iig7v4mvyq97skpmjbswx3c9f"))
+       "0jv32z887cya4qymg28ggi91bh06hrsis2iwl637ad5ixh4x4bwv"))
      (file-name (git-file-name "nyxt" version))))
    (inputs
     `(("cl-gopher" ,sbcl-cl-gopher)
