@@ -80,7 +80,9 @@
   ;;   "t" '(:ignore t :wk "trace")
   ;;   "tt" '(sly-toggle-trace-fdefinition :wk "trace def")
   ;;   "tu" '(sly-untrace-all :wk "untrace all"))
-  )
+  :config
+  (setq lisp-indent-function 'sly-common-lisp-indent-function
+        sly-common-lisp-style-default "modern"))
 
 (use-package sly-repl-ansi-color
   :defer t
