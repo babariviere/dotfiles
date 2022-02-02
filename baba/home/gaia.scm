@@ -17,6 +17,7 @@
   #:use-module (gnu packages emacs-xyz)
   #:use-module (gnu packages gcc)
   #:use-module (gnu packages mail)
+  #:use-module (gnu packages rust-apps)
   #:use-module (gnu packages sqlite)
   #:use-module (gnu packages terminals)
   #:use-module (gnu packages wm)
@@ -118,7 +119,7 @@
 ;; TODO: make service for mbsync and notmuch
 (home-environment
  (packages
-  (list htop isync notmuch))
+  (list htop isync notmuch bat))
  (services
   (append emacs-service
           stumpwm-service
@@ -133,7 +134,8 @@
                           (abbreviations '(("gco" . "git checkout")
                                            ("gs" . "git status")
                                            ("gsr" . "sudo -E guix system reconfigure")
-                                           ("ghr" . "guix home reconfigure")))))
+                                           ("ghr" . "guix home reconfigure")
+                                           ("cat" . "bat -pp")))))
                 (service home-gnupg-service-type
                          (home-gnupg-configuration
                           (gpg-agent-config
