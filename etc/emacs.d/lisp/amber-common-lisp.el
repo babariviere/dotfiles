@@ -82,7 +82,7 @@
   ;;   "tu" '(sly-untrace-all :wk "untrace all"))
   :config
   (setq lisp-indent-function 'sly-common-lisp-indent-function
-        sly-common-lisp-style-default "modern"))
+        sly-common-lisp-style-default "sbcl"))
 
 (use-package sly-repl-ansi-color
   :defer t
