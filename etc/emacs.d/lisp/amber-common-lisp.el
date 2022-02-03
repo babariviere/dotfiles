@@ -51,15 +51,18 @@
 
 (add-to-list 'auto-mode-alist '("/sbclrc\\'" . common-lisp-mode))
 
-(defun amber/setup-sly ()
-  (setq-local lisp-indent-function 'sly-common-lisp-indent-function
-              sly-common-lisp-style-default "sbcl"))
+(defun amber/common-lisp-setup-indent ()
+  "Setup indentation for Common Lisp."
+  (setq-local lisp-indent-function 'sly-common-lisp-indent-function))
+
+(add-hook 'common-lisp-mode-hook #'amber/common-lisp-setup-indent)
 
 (use-package sly
   :custom
   (inferior-lisp-program "sbcl")
   (sly-complete-symbol-function 'sly-simple-completions)
-  :hook (sly-mode . amber/setup-sly))
+  :config
+  (setq sly-common-lisp-style-default "sbcl"))
 
 (use-package sly-repl-ansi-color
   :defer t
