@@ -3,7 +3,7 @@
 (use-package lispy
   :hook ((lisp-mode . lispy-mode)
          (emacs-lisp-mode . lispy-mode)
-	 (lisp-data-mode . lispy-mode)
+	     (lisp-data-mode . lispy-mode)
          (ielm-mode . lispy-mode)
          (scheme-mode . lispy-mode)
          (racket-mode . lispy-mode)
@@ -12,22 +12,7 @@
          (dune-mode . lispy-mode)
          (clojure-mode . lispy-mode)
          (fennel-mode . lispy-mode))
-  :custom
-  (lispy-colon-p nil))
-
-(use-package lispyville
-  :disabled
-  :hook (lispy-mode . lispyville-mode)
-  :custom
-  (lispyville-key-theme
-   '((operators normal)
-     c-w
-     (prettify insert)
-     (atom-movement t)
-     slurp/barf-lispy
-     additional
-     additional-insert))
   :config
-  (lispyville-set-key-theme))
+  (setq lispy-colon-p nil))
 
 (provide 'amber-lisp)
