@@ -51,38 +51,15 @@
 
 (add-to-list 'auto-mode-alist '("/sbclrc\\'" . common-lisp-mode))
 
+(defun amber/setup-sly ()
+  (setq-local lisp-indent-function 'sly-common-lisp-indent-function
+              sly-common-lisp-style-default "sbcl"))
+
 (use-package sly
   :custom
   (inferior-lisp-program "sbcl")
   (sly-complete-symbol-function 'sly-simple-completions)
-  ;; TODO: bindings if necessary
-  ;; :general
-  ;; (amber/leader-keys lisp-mode-map
-  ;;   "'" 'sly
-  ;;   "m" 'macrostep-expand
-  ;;   "c" '(:ignore t :wk "compile")
-  ;;   "cc" '(sly-compile-file :wk "compile file")
-  ;;   "cC" '(sly-compile-and-load-file :wk "compile+load file")
-  ;;   "cd" '(sly-compile-defun :wk "compile defun")
-  ;;   "cl" '(sly-load-file :wk "load file")
-  ;;   "cr" '(sly-compile-region :wk "compile region")
-  ;;   "e" '(:ignore t :wk "eval")
-  ;;   "eb" '(sly-eval-buffer :wk "eval buffer")
-  ;;   "ee" '(amber/common-lisp-sly-eval-last-sexp :wk "eval last")
-  ;;   "ed" '(amber/common-lisp-sly-eval-defun :wk "eval defun")
-  ;;   "eD" '(sly-undefine-function :wk "undef function")
-  ;;   "er" '(sly-eval-region :wk "eval region")
-  ;;   "r" '(:ignore t :wk "repl")
-  ;;   "rc" '(sly-mrepl-clear-repl :wk "clear repl")
-  ;;   "rq" '(sly-quit-lisp :wk "quit connection")
-  ;;   "rr" '(sly-restart-inferior-lisp :wk "restart connection")
-  ;;   "rs" '(sly-mrepl-sync :wk "sync repl")
-  ;;   "t" '(:ignore t :wk "trace")
-  ;;   "tt" '(sly-toggle-trace-fdefinition :wk "trace def")
-  ;;   "tu" '(sly-untrace-all :wk "untrace all"))
-  :config
-  (setq lisp-indent-function 'sly-common-lisp-indent-function
-        sly-common-lisp-style-default "sbcl"))
+  :hook (sly-mode . amber/setup-sly))
 
 (use-package sly-repl-ansi-color
   :defer t
