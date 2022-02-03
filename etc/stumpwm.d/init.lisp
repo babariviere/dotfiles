@@ -38,6 +38,8 @@
 
 ;; Misc
 
+(setq *ignore-wm-inc-hints* t)
+
 (setf *mouse-focus-policy* :click)
 
 (setq *message-window-gravity* :top
