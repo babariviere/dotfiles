@@ -39,11 +39,6 @@
       home.file.".profile-nix".source = pkgs.writeShellScript "profile" ''
         . "${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh"
         ${sessionVarsStr}
-        GUIX_PROFILE="$HOME/.guix-profile"
-        [ -f "$GUIX_PROFILE/etc/profile" ] && . "$GUIX_PROFILE/etc/profile"
-
-        _GUIX_PROFILE="$HOME/.config/guix/current"
-        export PATH="$_GUIX_PROFILE/bin''${PATH:+:}$PATH"
       '';
     })
   ];

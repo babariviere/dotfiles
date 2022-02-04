@@ -16,6 +16,8 @@
     gco = "git co";
     gs = "git s";
 
+    cat = "bat -pp";
+
     dup = "docker-compose up";
     ddn = "docker-compose down";
 

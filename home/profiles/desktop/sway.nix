@@ -87,14 +87,14 @@ in {
         bg = "${artworks}/wallpapers/nix-wallpaper-dracula.png fill";
       in {
         eDP-1 = {
-          pos = "0 0";
-          # pos = "0 1440";
+          # pos = "0 0";
+          pos = "0 1440";
           inherit bg;
         };
         HDMI-A-1 = {
-          pos = "1920 0";
-          # pos = "0 0";
-          # res = "2560x1440@60Hz";
+          # pos = "1920 0";
+          pos = "0 0";
+          res = "2560x1440@60Hz";
           inherit bg;
         };
         DP-1 = {

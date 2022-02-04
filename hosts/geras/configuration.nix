@@ -8,6 +8,7 @@
   time.timeZone = "Europe/Paris";
 
   ## Boot
+  boot.blacklistedKernelModules = [ "nouveau" ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.cleanTmpDir = true;
@@ -15,7 +16,7 @@
   ## Networking
 
   networking.hostId = "99b75f29";
-  networking.hostName = "${config.meta.specie.code}";
+  networking.hostName = "geras";
   networking.domain = "home";
 
   networking.nameservers = [ "1.1.1.1" ];
@@ -79,19 +80,38 @@
   ## Profiles
 
   profiles = {
-    desktop.sway.enable = true;
-    desktop.wayland.enable = true;
-    login.greetd.enable = true;
+    desktop.sway.enable = false;
+    desktop.wayland.enable = false;
+    login.greetd.enable = false;
     media.pulseaudio.enable = false;
+    media.pipewire.enable = true;
     net.tailscale.enable = false;
   };
+
+  programs.dconf.enable = true;
 
   ## Display
 
   # TODO: configuration
 
+  services.xserver.enable = true;
   services.xserver.layout = "us";
   services.xserver.xkbVariant = "altgr-intl";
+  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.defaultSession = "session";
+  services.xserver.displayManager.session = [
+    {
+      manage = "desktop";
+      name = "session";
+      start = ''exec $HOME/.xsession'';
+    }
+  ];
+  services.xserver.libinput = {
+    enable = true;
+    touchpad.tapping = false;
+    touchpad.scrollMethod = "twofinger";
+    touchpad.clickMethod = "clickfinger";
+  };
 
   ## Nix
   # TODO: use network.nix
@@ -153,38 +173,10 @@
   #   dockerCompat = true;
   # };
   virtualisation.docker = {
-    enable = false;
+    enable = true;
     enableOnBoot = true;
-    autoPrune.enable = false; # broken
+    autoPrune.enable = true;
     storageDriver = "zfs";
-  };
-
-  services.openvpn.servers = {
-    godzilla = {
-      config = ''
-        client
-        dev tun
-        proto tcp
-
-        resolv-retry infinite
-        nobind
-        persist-key
-        persist-tun
-        mute-replay-warnings
-        cipher AES-256-CBC
-        comp-lzo
-        verb 4
-
-        # Choose one
-        #remote 10.208.27.158 1194
-        remote 35.205.77.46 1194
-
-        # Configure the paths to your key files
-        ca /etc/openvpn/godzilla/ca.crt
-        cert /etc/openvpn/godzilla/client.crt
-        key /etc/openvpn/godzilla/client.key
-      '';
-    };
   };
 
   # Guix
@@ -203,14 +195,32 @@
   (map (pkgs.lib.fixedWidthNumber 2) (builtins.genList (n: n + 1) 10));
 
   users.extraGroups.guixbuild.name = "guixbuild";
+  environment.extraInit =
+    ''
+# _GUIX_PROFILE: `guix pull` profile
+_GUIX_PROFILE="$HOME/.config/guix/current"
+export PATH="$_GUIX_PROFILE/bin''${PATH:+:}$PATH"
+export INFOPATH="$_GUIX_PROFILE/share/info:$INFOPATH"
 
+# GUIX_PROFILE: User's default profile
+GUIX_PROFILE="$HOME/.guix-profile"
+if [ -L $GUIX_PROFILE ]; then
+  GUIX_LOCPATH="$GUIX_PROFILE/lib/locale"
+  export GUIX_LOCPATH
+
+  [ -f "$GUIX_PROFILE/etc/profile" ] && . "$GUIX_PROFILE/etc/profile"
+
+  # set XDG_DATA_DIRS to include Guix installations
+  export XDG_DATA_DIRS="$GUIX_PROFILE/share:''${XDG_DATA_DIRS:-/usr/local/share/:/usr/share/}"
+fi
+'';
   systemd.services.guix-daemon = {
     enable = true;
     description = "Build daemon for GNU Guix";
     serviceConfig = {
       ExecStart =
         "/var/guix/profiles/per-user/root/current-guix/bin/guix-daemon --build-users-group=guixbuild";
-      Environment = "GUIX_LOCPATH=/root/.guix-profile/lib/locale";
+      Environment = "GUIX_LOCPATH=/var/guix/profiles/per-user/root/guix-profile/lib/locale";
       RemainAfterExit = "yes";
       StandardOutput = "syslog";
       StandardError = "syslog";
@@ -219,11 +229,13 @@
     wantedBy = [ "multi-user.target" ];
   };
 
+  programs.adb.enable = true;
+
   # User
   users.users.babariviere = {
     isNormalUser = true;
     createHome = true;
-    extraGroups = [ "wheel" "docker" "podman" ];
+    extraGroups = [ "wheel" "docker" "podman" "adbusers" ];
     hashedPassword =
       "$6$hebDRrf7peavZ$fpakn/Inc7A9xAxL5RiZ3WHUcuznSWMC2chOb5bsInISVD3XQjxnark37vQfYY1v32mqkxTfr1Fzj1HUmKj7D1";
     shell = pkgs.fish;
@@ -233,13 +245,13 @@
     profiles = {
       dev = {
         cc.enable = true;
-        common-lisp.enable = true;
+        common-lisp.enable = false;
         go.enable = true;
         python.enable = true;
         nix.enable = true;
         rust.enable = true;
       };
-      desktop.sway.enable = true;
+      desktop.sway.enable = false;
       editor = {
         emacs.enable = false;
         editorconfig.enable = true;
@@ -264,7 +276,6 @@
       rofi
       mako
       nixos-option
-      nyxt
       discord
       slack
       foot
@@ -292,6 +303,9 @@
       htmlTidy
       wally-cli
       gnumake
+      nvtop
+      intel-gpu-tools
+      xlockmore
     ];
 
     gtk = {
