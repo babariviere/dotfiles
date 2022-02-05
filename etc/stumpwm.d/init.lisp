@@ -53,7 +53,7 @@
 
 (setf *group-format* "%t"
       *window-format* "%n: %c"
-      *time-modeline-string* "%F %H:%M")
+      *time-modeline-string* "%Y-%m-%e %H:%M")
 
 (load-module "battery-portable")
 (load-module "cpu")
