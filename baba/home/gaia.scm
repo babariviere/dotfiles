@@ -1,9 +1,9 @@
 (define-module (baba home gaia)
   #:use-module (baba)
   #:use-module (baba home services emacs)
-  #:use-module (baba home services shells)
   #:use-module (baba home services terminals)
   #:use-module (baba home services wm)
+  #:use-module (brycus home-service)
   #:use-module (gnu home)
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
@@ -136,6 +136,7 @@
                                            ("gsr" . "sudo -E guix system reconfigure")
                                            ("ghr" . "guix home reconfigure")
                                            ("cat" . "bat -pp")))))
+                (service home-brycus-fish-service-type)
                 (service home-gnupg-service-type
                          (home-gnupg-configuration
                           (gpg-agent-config
@@ -156,6 +157,8 @@
                              (remote
                               ((pushDefault . "origin")))
                              (commit
+                              ((gpgSign . #t)))
+                             (tag
                               ((gpgSign . #t)))))))
                 (service home-sway-service-type
                          (home-sway-configuration
