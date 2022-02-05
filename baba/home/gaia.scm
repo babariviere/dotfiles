@@ -18,6 +18,7 @@
   #:use-module (gnu packages gcc)
   #:use-module (gnu packages mail)
   #:use-module (gnu packages rust-apps)
+  #:use-module (gnu packages shellutils)
   #:use-module (gnu packages sqlite)
   #:use-module (gnu packages terminals)
   #:use-module (gnu packages wm)
@@ -119,7 +120,7 @@
 ;; TODO: make service for mbsync and notmuch
 (home-environment
  (packages
-  (list htop isync notmuch bat))
+  (list htop isync notmuch bat direnv))
  (services
   (append emacs-service
           stumpwm-service
