@@ -46,6 +46,7 @@
        (cons*
         (channel
          (name 'baba)
+         (branch "guix")
          (url "https://github.com/babariviere/dotfiles"))
         %default-channels)))
 	 (specification
