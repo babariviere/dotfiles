@@ -1,3 +1,7 @@
+;; Local Variables:
+;; sly-port: 4004
+;; End:
+
 (in-package :stumpwm)
 
 (require :asdf)
@@ -62,7 +66,7 @@
 (load-module "wifi")
 
 (setf cpu::*cpu-modeline-fmt*        "%c"
-      cpu::*cpu-usage-modeline-fmt*  "CPU: ^[~A~2D%^]"
+      ;; cpu::*cpu-usage-modeline-fmt*  "CPU: ^[~A~2D%^]"
       mem::*mem-modeline-fmt*        "%a%p"
       wifi:*wifi-modeline-fmt*       "%e%P"
       wifi:*use-colors*              nil
@@ -105,3 +109,8 @@
 (define-key *root-map* (kbd "C-w") "pull-from-windowlist")
 
 (define-key *top-map* (kbd "s-End") "exec xlock -mode swarm")
+
+(defcommand emacsclient () ()
+  "Start emacsclient or switch to it."
+  (run-or-raise "emacsclient -c" '(:class "Emacs")))
+(define-key *root-map* (kbd "e") "emacsclient")
