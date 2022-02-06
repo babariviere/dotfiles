@@ -3,6 +3,7 @@
   #:use-module (baba home services emacs)
   #:use-module (baba home services terminals)
   #:use-module (baba home services wm)
+  #:use-module (baba packages security)
   #:use-module (brycus home-service)
   #:use-module (gnu home)
   #:use-module (gnu home services)
@@ -120,7 +121,7 @@
 ;; TODO: make service for mbsync and notmuch
 (home-environment
  (packages
-  (list htop isync notmuch bat direnv))
+  (list htop isync notmuch bat direnv keychain))
  (services
   (append emacs-service
           stumpwm-service

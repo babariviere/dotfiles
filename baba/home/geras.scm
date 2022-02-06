@@ -1,6 +1,7 @@
 (define-module (baba home geras)
   #:use-module (baba home services emacs)
   #:use-module (baba home services wm)
+  #:use-module (baba packages security)
   #:use-module (baba packages web-browsers)
   #:use-module (gnu home)
   #:use-module (gnu home services shells)
@@ -19,7 +20,9 @@
         gst-plugins-base
         gst-plugins-good
         gst-plugins-ugly
-        gst-libav))
+        gst-libav
+
+        keychain))
  (services
   (append emacs-service
           stumpwm-service
