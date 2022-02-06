@@ -5,12 +5,19 @@
   (channel
    (name emacs)
    (url "https://github.com/babariviere/guix-emacs")
-   ;; (introduction
-   ;;  (make-channel-introduction
-   ;;   "72ca4ef5b572fea10a4589c37264fa35d4564783"
-   ;;   (openpgp-fingerprint
-   ;;    "261C A284 3452 FB01 F6DF  6CF4 F9B7 864F 2AB4 6F18")))
-   )
+   (introduction
+    (make-channel-introduction
+     "72ca4ef5b572fea10a4589c37264fa35d4564783"
+     (openpgp-fingerprint
+      "261C A284 3452 FB01 F6DF  6CF4 F9B7 864F 2AB4 6F18"))))
+  (channel
+   (name brycus)
+   (url "https://github.com/babariviere/brycus")
+   (introduction
+    (make-channel-introduction
+     "5a251f60223c38f647a3ae0d8920acbaac5f1e24"
+     (openpgp-fingerprint
+      "261C A284 3452 FB01 F6DF  6CF4 F9B7 864F 2AB4 6F18"))))
   (channel
    (name nonguix)
    (url "https://gitlab.com/nonguix/nonguix")
