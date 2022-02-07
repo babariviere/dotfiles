@@ -39,9 +39,7 @@ if test -z \"$DBUS_SESSION_BUS_ADDRESS\"; then
 fi
 
 export GDK_CORE_DEVICE_EVENTS=1
-~a/bin/picom -b --config $HOME/.config/picom.conf
 ~a/bin/stumpwm"
-                                        #$picom-next
 					                    #$stump)))
 			                (chmod #$output #o555))))))
    (simple-service 'setup-sbcl
