@@ -11,22 +11,23 @@
   #:use-module (guix utils))
 
 (define-public nyxt-next
-  (package
-   (inherit nyxt)
-   (version "fdbc9373d33acc76820506fb4b263c7678cde25f")
-   (source
-    (origin
-     (method git-fetch)
-     (uri (git-reference
-           (url "https://github.com/atlas-engineer/nyxt")
-           (commit version)))
-     (sha256
-      (base32
-       "1ykisvpvjz1s6yqxam3jllylsg8p6hlk42brcr4ri8vilkvijfnc"))
-     (file-name (git-file-name "nyxt" version))))
-   (inputs
-    `(("cl-gopher" ,sbcl-cl-gopher)
-      ("nhooks" ,sbcl-nhooks)
-      ("phos" ,sbcl-phos)
-      ("cl-tld" ,sbcl-cl-tld)
-      ,@(package-inputs nyxt)))))
+  (let ((commit "c89c0c5d8595426c71fee52a62ed4e86b2390a37"))
+    (package
+     (inherit nyxt)
+     (version (string-take commit 8))
+     (source
+      (origin
+       (method git-fetch)
+       (uri (git-reference
+             (url "https://github.com/atlas-engineer/nyxt")
+             (commit commit)))
+       (sha256
+        (base32
+         "1j81zr9g6jc4if27r0lqbcp29yi2ni86xbslcpqfc6jpmd6ffrjj"))
+       (file-name (git-file-name "nyxt" version))))
+     (inputs
+      `(("cl-gopher" ,sbcl-cl-gopher)
+        ("nhooks" ,sbcl-nhooks)
+        ("phos" ,sbcl-phos)
+        ("cl-tld" ,sbcl-cl-tld)
+        ,@(package-inputs nyxt))))))
