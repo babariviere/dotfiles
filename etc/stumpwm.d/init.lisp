@@ -75,7 +75,10 @@
 (setf *mode-line-border-width* 0
       *mode-line-pad-x* 10
       *mode-line-timeout* 2
-      *screen-mode-line-format* "[^B%n^b] %W ^> %I | %l | %C | %M | %B | %d  %T")
+      *screen-mode-line-format*
+      (list "[^B%n^b] %W ^> %I | %l | %C | %M | %B | "
+            '(:eval (string-right-trim '(#\Newline) (run-shell-command "pamixer --get-volume-human" t)))
+            " | %d  %T"))
 
 (dolist (h (screen-heads (current-screen)))
   (enable-mode-line (current-screen) h t))
