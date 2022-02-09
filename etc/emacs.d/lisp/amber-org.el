@@ -453,6 +453,22 @@ Examples:
   :after org
   :hook (org-mode . org-edna-mode))
 
+(defvar stuck-report-template
+  "#+title: ${title}
+#+status: OPEN
+
+* Describe issue
+
+%^{Describe issue here...}
+
+* What could be done
+
+%^{What could be done to fix it...}
+
+* Log
+
+* Result")
+
 (use-package org-roam
   :demand t
   :custom
@@ -460,8 +476,11 @@ Examples:
   (org-roam-completion-system 'default)
   (org-roam-directory org-directory)
   (org-roam-capture-templates
-   '(("d" "default" plain "%?" :target
+   `(("d" "default" plain "%?" :target
       (file+head "brain/${slug}.org" "#+title: ${title}\n")
+      :unnarrowed t)
+     ("S" "stuck report" entry "* [%H:%M] %?" :target
+      (file+head+olp "report/%<%Y%m%d%H%M%S>-${slug}.org" ,stuck-report-template ("Log"))
       :unnarrowed t)))
   :init
   (setq org-roam-v2-ack t)
@@ -469,11 +488,11 @@ Examples:
   :config
   (add-to-list 'display-buffer-alist
                '("\\*org-roam\\*"
-		 (display-buffer-in-side-window)
-		 (side . right)
-		 (slot . 0)
-		 (window-width . 0.33)
-		 (window-parameters . ((no-delete-other-windows . t)))))
+		         (display-buffer-in-side-window)
+		         (side . right)
+		         (slot . 0)
+		         (window-width . 0.33)
+		         (window-parameters . ((no-delete-other-windows . t)))))
 
   (org-roam-db-autosync-mode 1)
   :general
@@ -483,6 +502,7 @@ Examples:
    "[[" 'org-roam-node-insert
    "[ SPC" (lambda () (interactive) (insert "[]") (backward-char)))
   (amber/leader-keys
+    "ns" '(lambda () (interactive) (org-roam-capture nil "S"))
     "nf" '(org-roam-node-find :wk "find note")))
 
 (use-package org-roam-dailies
