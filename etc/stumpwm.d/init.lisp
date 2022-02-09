@@ -114,3 +114,19 @@
   "Start emacsclient or switch to it."
   (run-or-raise "emacsclient -c" '(:class "Emacs")))
 (define-key *root-map* (kbd "e") "emacsclient")
+
+(defcommand volume-up () ()
+  "Raise volume."
+  (run-shell-command "pamixer --increase 3"))
+
+(defcommand volume-down () ()
+  "Lower volume."
+  (run-shell-command "pamixer --decrease 3"))
+
+(defcommand volume-toggle-mute () ()
+  "Toggle mute."
+  (run-shell-command "pamixer --toggle-mute"))
+
+(define-key *top-map* (kbd "XF86AudioRaiseVolume") "volume-up")
+(define-key *top-map* (kbd "XF86AudioLowerVolume") "volume-down")
+(define-key *top-map* (kbd "XF86AudioMute") "volume-toggle-mute")

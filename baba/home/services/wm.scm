@@ -7,6 +7,7 @@
   #:use-module (gnu packages image)
   #:use-module (gnu packages lisp)
   #:use-module (gnu packages lisp-xyz)
+  #:use-module (gnu packages pulseaudio)
   #:use-module (gnu packages terminals)
   #:use-module (gnu packages wm)
   #:use-module (gnu packages xdisorg)
@@ -63,6 +64,7 @@ export GDK_CORE_DEVICE_EVENTS=1
                          alacritty
                          autorandr
                          picom-next
+                         pamixer
                          flameshot))
    (simple-service 'stumpwm-files
 		           home-files-service-type
