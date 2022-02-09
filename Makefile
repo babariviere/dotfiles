@@ -13,7 +13,8 @@ install:
 
 # Update lock file
 update:
-	guix time-machine -C etc/channels -- describe -f channels > etc/channels.lock
+	guix time-machine -C etc/channels -- describe -f channels > etc/channels.lock.2
+	mv etc/channels.lock.2 etc/channels.lock
 	$(guix-lock) upgrade
 
 upgrade: update install system home
