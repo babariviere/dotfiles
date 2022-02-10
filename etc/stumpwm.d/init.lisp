@@ -72,13 +72,34 @@
       wifi:*use-colors*              nil
       *hidden-window-color*          "^**")
 
+(defun get-current-volume ()
+  (parse-integer (run-shell-command "pamixer --get-volume" t)))
+
+(defun volume-muted-p ()
+  (string-equal (string-trim '(#\newline) (run-shell-command "pamixer --get-mute" t)) "true"))
+
+(defvar *current-volume* (get-current-volume))
+(defvar *volume-muted* (volume-muted-p))
+
+(defvar *volume-timer*
+  (run-with-timer
+   0 60
+   (lambda () (setq *current-volume* (get-current-volume)
+                    *volume-muted* (volume-muted-p)))))
+
+(defun format-volume (ml)
+  (declare (ignore ml))
+  (if *volume-muted*
+      "Volume: muted"
+      (format nil "Volume: ~A%" *current-volume*)))
+
+(add-screen-mode-line-formatter #\v #'format-volume)
+
 (setf *mode-line-border-width* 0
       *mode-line-pad-x* 10
       *mode-line-timeout* 2
       *screen-mode-line-format*
-      (list "[^B%n^b] %W ^> %I | %l | %C | %M | %B | "
-            '(:eval (string-right-trim '(#\Newline) (run-shell-command "pamixer --get-volume-human" t)))
-            " | %d  %T"))
+      (list "[^B%n^b] %W ^> %I | %l | %C | %M | %B | %v | %d  %T"))
 
 (dolist (h (screen-heads (current-screen)))
   (enable-mode-line (current-screen) h t))
@@ -120,14 +141,17 @@
 
 (defcommand volume-up () ()
   "Raise volume."
+  (setq *current-volume* (min (+ *current-volume* 3) 100))
   (run-shell-command "pamixer --increase 3"))
 
 (defcommand volume-down () ()
   "Lower volume."
+  (setq *current-volume* (max (- *current-volume* 3) 0))
   (run-shell-command "pamixer --decrease 3"))
 
 (defcommand volume-toggle-mute () ()
   "Toggle mute."
+  (setq *volume-muted* (not *volume-muted*))
   (run-shell-command "pamixer --toggle-mute"))
 
 (define-key *top-map* (kbd "XF86AudioRaiseVolume") "volume-up")
