@@ -74,7 +74,9 @@
   ("C-." '(embark-act :wk "act"))
   (amber/leader-keys
 	"a" '(embark-act :wk "actions")
-	"hb" '(embark-bindings :wk "describe bindings")))
+	"hb" '(embark-bindings :wk "describe bindings"))
+  :config
+  (setq prefix-help-command #'embark-prefix-help-command))
 
 (use-package embark-consult
   :after (embark consult)
