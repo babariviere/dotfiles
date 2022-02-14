@@ -79,144 +79,143 @@
 
 (define %elisp-packages
   (map rewrite-elisp-packages
-       (map use-native-emacs
-	    (list
-	     ;; emacs-doom-modeline
-	     emacs-helpful
-	     emacs-use-package
-	     emacs-which-key
-	     emacs-gcmh
-	     emacs-hl-todo
-	     emacs-git-gutter
-	     emacs-git-gutter-fringe
-	     emacs-exec-path-from-shell
-	     emacs-vertico
-	     emacs-marginalia
-	     emacs-orderless
-	     emacs-consult
-	     emacs-embark
-	     emacs-embark-consult
+       (list
+        ;; emacs-doom-modeline
+	    emacs-helpful
+	    emacs-use-package
+	    emacs-which-key
+	    emacs-gcmh
+	    emacs-hl-todo
+	    emacs-git-gutter
+	    emacs-git-gutter-fringe
+	    emacs-exec-path-from-shell
+	    emacs-vertico
+	    emacs-marginalia
+	    emacs-orderless
+	    emacs-consult
+	    emacs-embark
+	    emacs-embark-consult
 
-	     emacs-projectile
+	    emacs-projectile
 
-	     emacs-general
-	     emacs-undo-fu
-	     emacs-undo-fu-session
-	     emacs-eldoc
+	    emacs-general
+	    emacs-undo-fu
+	    emacs-undo-fu-session
+	    emacs-eldoc
 
-	     emacs-magit
-	     emacs-forge
+	    emacs-magit
+	    emacs-forge
 
-	     emacs-diredfl
-	     emacs-all-the-icons-dired
-	     emacs-diff-hl
+	    emacs-diredfl
+	    emacs-all-the-icons-dired
+	    emacs-diff-hl
 
-	     emacs-sly
-	     emacs-sly-macrostep
-	     emacs-sly-repl-ansi-color
+	    emacs-sly
+	    emacs-sly-macrostep
+	    emacs-sly-repl-ansi-color
 
-	     emacs-lispy
+	    emacs-lispy
 
-	     emacs-ccls
-	     emacs-cmake-mode
-	     emacs-demangle-mode
-	     emacs-disaster
-	     emacs-modern-cpp-font-lock
+	    emacs-ccls
+	    emacs-cmake-mode
+	    emacs-demangle-mode
+	    emacs-disaster
+	    emacs-modern-cpp-font-lock
 
-         ;; corfu
-         emacs-corfu
-         emacs-cape
-         emacs-kind-icon
-         emacs-corfu-doc
-         emacs-pcmpl-args
+        ;; corfu
+        emacs-corfu
+        emacs-cape
+        emacs-kind-icon
+        emacs-corfu-doc
+        emacs-pcmpl-args
 
-         ;; company
-	     emacs-company
-	     emacs-company-box
+        ;; company
+	    emacs-company
+	    emacs-company-box
 
-	     emacs-csharp-mode
+	    emacs-csharp-mode
 
-	     emacs-yaml-mode
-	     emacs-gitlab-ci-mode
+	    emacs-yaml-mode
+	    emacs-gitlab-ci-mode
 
-	     emacs-envrc
+	    emacs-envrc
 
-	     emacs-eros
-	     emacs-highlight-quoted
-	     emacs-elisp-demos
-	     emacs-macrostep
-	     emacs-macrostep-geiser
+	    emacs-eros
+	    emacs-highlight-quoted
+	    emacs-elisp-demos
+	    emacs-macrostep
+	    emacs-macrostep-geiser
 
-	     ;; emacs-elixir-mode
-	     ;; emacs-alchemist
-	     ;; emacs-exunit
+        ;; emacs-elixir-mode
+        ;; emacs-alchemist
+        ;; emacs-exunit
 
-	     emacs-fish-mode
+	    emacs-fish-mode
 
-	     emacs-flycheck
-	     emacs-flycheck-inline
+	    emacs-flycheck
+	    emacs-flycheck-inline
 
-	     ;; emacs-format-all
+        ;; emacs-format-all
 
-	     emacs-go-mode
-	     emacs-go-guru
+	    emacs-go-mode
+	    emacs-go-guru
 
-	     emacs-lsp-mode
-	     emacs-lsp-ui
-	     emacs-consult-lsp
+	    emacs-lsp-mode
+	    emacs-lsp-ui
+	    emacs-consult-lsp
 
-	     emacs-org
-	     emacs-org-appear
-	     emacs-org-contrib
-	     emacs-org-edna
-	     emacs-org-superstar
-	     ;; emacs-evil-org
-	     emacs-org-roam
+	    emacs-org
+	    emacs-org-appear
+	    emacs-org-contrib
+	    emacs-org-edna
+	    emacs-org-superstar
+        ;; emacs-evil-org
+	    emacs-org-roam
 
-	     emacs-nix-mode
-	     emacs-nix-update
+	    emacs-nix-mode
+	    emacs-nix-update
 
-	     ;; emacs-perspective
-	     ;; emacs-persp-projectile
+        ;; emacs-perspective
+        ;; emacs-persp-projectile
 
-	     emacs-python-mode
-	     emacs-poetry
-	     emacs-lsp-python-ms
+	    emacs-python-mode
+	    emacs-poetry
+	    emacs-lsp-python-ms
 
-	     emacs-smartparens
+	    emacs-smartparens
 
-	     emacs-yasnippet
-	     emacs-doom-snippets
+	    emacs-yasnippet
+	    emacs-doom-snippets
 
-	     emacs-doom-themes
-	     emacs-kaolin-themes
-	     emacs-modus-themes
-	     emacs-inkpot-theme
+	    emacs-doom-themes
+	    emacs-kaolin-themes
+	    emacs-modus-themes
+	    emacs-inkpot-theme
 
-	     emacs-vterm
+	    emacs-vterm
 
-	     emacs-geiser
-	     emacs-guix
-	     emacs-geiser-guile
+	    emacs-geiser
+	    emacs-guix
+	    emacs-geiser-guile
 
-	     emacs-emacsql-sqlite3
-	     sqlite
-	     gcc
-	     emacs-editorconfig
-	     emacs-git-auto-commit-mode
-	     emacs-zoom
-	     ;; emacs-pinentry
-	     emacs-crux
-	     emacs-htmlize
+	    emacs-emacsql-sqlite3
+	    sqlite
+	    gcc
+	    emacs-editorconfig
+	    emacs-git-auto-commit-mode
+	    emacs-zoom
+        ;; emacs-pinentry
+	    emacs-crux
+	    emacs-htmlize
 
-	     emacs-avy
-	     emacs-ace-window
+	    emacs-avy
+	    emacs-ace-window
 
-         emacs-verb
+        emacs-verb
 
-         emacs-slack
-         emacs-notmuch
-	     ))))
+        emacs-slack
+        emacs-notmuch
+	    )))
 
 ;; TODO: migrate this to a ~home-config-files-service-type~
 (define (emacs-files)
@@ -247,7 +246,7 @@
 		  (package %native-emacs)
 		  (elisp-packages %elisp-packages)
 		  (server-mode? #t)
-		  (rebuild-elisp-packages? #t)
+		  (rebuild-elisp-packages? #f)
 		  (xdg-flavor? #t)))
 	(simple-service 'emacs-init
 			home-files-service-type
