@@ -1,9 +1,9 @@
 (define-module (baba home services wm)
   #:use-module (baba)
-  #:use-module (baba packages compton)
   #:use-module (baba packages wm)
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
+  #:use-module (gnu packages compton)
   #:use-module (gnu packages image)
   #:use-module (gnu packages lisp)
   #:use-module (gnu packages lisp-xyz)
@@ -40,7 +40,9 @@ if test -z \"$DBUS_SESSION_BUS_ADDRESS\"; then
 fi
 
 export GDK_CORE_DEVICE_EVENTS=1
+~a/bin/picom -b --config $HOME/.config/picom.conf --experimental-backends
 ~a/bin/stumpwm"
+                                        #$picom
 					                    #$stump)))
 			                (chmod #$output #o555))))))
    (simple-service 'setup-sbcl
@@ -63,7 +65,7 @@ export GDK_CORE_DEVICE_EVENTS=1
                          ;; tools
                          alacritty
                          autorandr
-                         picom-next
+                         picom
                          pamixer
                          flameshot))
    (simple-service 'stumpwm-files
