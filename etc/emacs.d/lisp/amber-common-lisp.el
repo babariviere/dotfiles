@@ -64,8 +64,13 @@
   :config
   (setq sly-common-lisp-style-default "sbcl"))
 
+(use-package sly-asdf
+  :after sly
+  :config
+  (add-to-list 'sly-contribs 'sly-asdf 'append))
+
 (use-package sly-repl-ansi-color
-  :defer t
+  :after sly
   :init
   (add-to-list 'sly-contribs 'sly-repl-ansi-color))
 

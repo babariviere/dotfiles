@@ -111,6 +111,7 @@
 	    emacs-diff-hl
 
 	    emacs-sly
+        emacs-sly-asdf
 	    emacs-sly-macrostep
 	    emacs-sly-repl-ansi-color
 
