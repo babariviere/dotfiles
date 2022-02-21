@@ -64,6 +64,19 @@
   (setq company-box-backends-colors nil)
   (add-to-list 'company-box-frame-parameters '(tab-bar-lines . 0)))
 
+(defvar amber/company-completion-styles '(basic partial-completion orderless)
+  "Completion styles for company to use.")
+
+(defun amber/company-capf--candidates-around (fn &rest args)
+  "Highlight partial completion and change completion styles with company-capf.
+
+FN and ARGS are the function and arguments of company-capf."
+  (let ((orderless-match-faces [completions-common-part])
+        (completion-styles amber/company-completion-styles))
+    (apply fn args)))
+
+(advice-add 'company-capf--candidates :around #'amber/company-capf--candidates-around)
+
 (provide 'amber-company)
 
 ;;; amber-company.el ends here

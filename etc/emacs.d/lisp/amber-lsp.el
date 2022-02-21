@@ -32,10 +32,17 @@
 ;; TODO: look at the bug fixes in this file
 ;; https://github.com/hlissner/doom-emacs/blob/develop/modules/tools/lsp/%2Blsp.el
 
+(defun amber/lsp-mode-setup-completion ()
+  "Setup orderless for completion."
+  (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+        '(orderless)))
+
 (use-package lsp-mode
   :demand t
-  :hook ((lsp-mode . lsp-enable-which-key-integration))
+  :hook ((lsp-mode . lsp-enable-which-key-integration)
+         (lsp-completion-mode . amber/lsp-mode-setup-completion))
   :custom
+  (lsp-completion-provider :none) ;; We use corfu
   (lsp-enable-folding nil)
   (lsp-enable-on-type-formatting nil)
   (lsp-headerline-breadcrumb-enable nil)
