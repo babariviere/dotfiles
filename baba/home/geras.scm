@@ -7,6 +7,7 @@
   #:use-module (gnu home services shells)
   #:use-module (gnu packages admin)
   #:use-module (gnu packages gstreamer)
+  #:use-module (gnu packages pulseaudio)
   #:use-module (gnu services)
   #:use-module (guix gexp))
 
@@ -22,7 +23,9 @@
         gst-plugins-ugly
         gst-libav
 
-        keychain))
+        keychain
+
+        pavucontrol))
  (services
   (append emacs-service
           stumpwm-service
