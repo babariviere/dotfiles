@@ -6,16 +6,25 @@
     interactiveShellInit =
       let flow = "${inputs.flow.defaultPackage.${pkgs.system}}/bin/flow";
       in ''
-        ${flow} setup $HOME/src --path ${flow} fish | source
-        ${pkgs.direnv}/bin/direnv hook fish | source
+${flow} setup $HOME/src --path ${flow} fish | source
+${pkgs.direnv}/bin/direnv hook fish | source
 
-        function b
-           /home/babariviere/src/github.com/babariviere/brycus/brycus $argv
-        end
+function b -d "jump to a directory"
+  set -l _brycus_dir (/home/babariviere/src/github.com/babariviere/brycus/brycus query $argv)
+  set -l _brycus_status $status
+  if [ $_brycus_status = 0 ]; and [ "$_brycus_dir" != (pwd) ]
+    cd "$_brycus_dir"
+  end
+  return $_brycus_status
+end
 
-        function _brycus_add_directory --on-event fish_prompt
-			     /home/babariviere/src/github.com/babariviere/brycus/brycus add "$PWD" &
-        end
+function bq -d "query a directory"
+  /home/babariviere/src/github.com/babariviere/brycus/brycus query $argv
+end
+
+function _brycus_add_directory --on-event fish_prompt
+	/home/babariviere/src/github.com/babariviere/brycus/brycus add "$PWD" &
+end
       '';
     loginShellInit = ''
       fenv source $HOME/.profile

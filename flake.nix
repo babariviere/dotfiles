@@ -36,19 +36,22 @@
         home-manager.useGlobalPkgs = true;
 
         nix = {
-          binaryCaches = [
-            "https://cache.nixos.org"
-            "https://nix-community.cachix.org"
-            "https://babariviere.cachix.org"
-            "https://robotnix.cachix.org"
-            # "http://nix-store.vercar.home"
-          ];
-          binaryCachePublicKeys = [
-            "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-            "babariviere.cachix.org-1:igoOZJyEAhWg3Rbavjim3yyDj7nIkGYe5327+G0diFw="
-            "robotnix.cachix.org-1:+y88eX6KTvkJyernp1knbpttlaLTboVp4vq/b24BIv0="
-            # "vercar.home:1R/Q2IoFGQ5NqYGneOoxhrvkhgpdBrn87Po2uPM4wmI="
-          ];
+          settings = {
+            substituters = [
+              "https://cache.nixos.org"
+              "https://nix-community.cachix.org"
+              "https://babariviere.cachix.org"
+              "https://robotnix.cachix.org"
+              # "http://nix-store.vercar.home"
+            ];
+            trusted-public-keys = [
+              "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+              "babariviere.cachix.org-1:igoOZJyEAhWg3Rbavjim3yyDj7nIkGYe5327+G0diFw="
+              "robotnix.cachix.org-1:+y88eX6KTvkJyernp1knbpttlaLTboVp4vq/b24BIv0="
+              # "vercar.home:1R/Q2IoFGQ5NqYGneOoxhrvkhgpdBrn87Po2uPM4wmI="
+            ];
+            sandbox = "relaxed";
+          };
           extraOptions = ''
             experimental-features = nix-command flakes
             keep-outputs = true
@@ -64,7 +67,6 @@
             nixpkgs.flake = nixpkgs;
             dotfiles.flake = self;
           };
-          useSandbox = "relaxed";
         };
 
         nixpkgs = {

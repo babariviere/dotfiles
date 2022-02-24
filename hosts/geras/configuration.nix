@@ -8,7 +8,7 @@
   time.timeZone = "Europe/Paris";
 
   ## Boot
-  boot.blacklistedKernelModules = [ "nouveau" ];
+  # boot.blacklistedKernelModules = [ "nouveau" ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.cleanTmpDir = true;
@@ -32,6 +32,17 @@
     enp4s0.useDHCP = false;
     wlp0s20f3.useDHCP = true;
   };
+
+  hardware.bluetooth = {
+    enable = true;
+    settings = {
+      General = {
+        ControllerMode = "dual";
+      };
+    };
+  };
+
+  services.usbmuxd.enable = true;
 
   services.yggdrasil = {
     enable = false;
@@ -97,6 +108,7 @@
   services.xserver.enable = true;
   services.xserver.layout = "us";
   services.xserver.xkbVariant = "altgr-intl";
+  services.xserver.videoDrivers = [ "nouveau" "modesetting" ];
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.displayManager.defaultSession = "session";
   services.xserver.displayManager.session = [
@@ -197,11 +209,6 @@
   users.extraGroups.guixbuild.name = "guixbuild";
   environment.extraInit =
     ''
-# _GUIX_PROFILE: `guix pull` profile
-_GUIX_PROFILE="$HOME/.config/guix/current"
-export PATH="$_GUIX_PROFILE/bin''${PATH:+:}$PATH"
-export INFOPATH="$_GUIX_PROFILE/share/info:$INFOPATH"
-
 # GUIX_PROFILE: User's default profile
 GUIX_PROFILE="$HOME/.guix-profile"
 if [ -L $GUIX_PROFILE ]; then
@@ -213,6 +220,11 @@ if [ -L $GUIX_PROFILE ]; then
   # set XDG_DATA_DIRS to include Guix installations
   export XDG_DATA_DIRS="$GUIX_PROFILE/share:''${XDG_DATA_DIRS:-/usr/local/share/:/usr/share/}"
 fi
+
+# _GUIX_PROFILE: `guix pull` profile
+_GUIX_PROFILE="$HOME/.config/guix/current"
+export PATH="$_GUIX_PROFILE/bin''${PATH:+:}$PATH"
+export INFOPATH="$_GUIX_PROFILE/share/info:$INFOPATH"
 '';
   systemd.services.guix-daemon = {
     enable = true;
@@ -235,7 +247,7 @@ fi
   users.users.babariviere = {
     isNormalUser = true;
     createHome = true;
-    extraGroups = [ "wheel" "docker" "podman" "adbusers" ];
+    extraGroups = [ "wheel" "docker" "podman" "adbusers" "shadow" ];
     hashedPassword =
       "$6$hebDRrf7peavZ$fpakn/Inc7A9xAxL5RiZ3WHUcuznSWMC2chOb5bsInISVD3XQjxnark37vQfYY1v32mqkxTfr1Fzj1HUmKj7D1";
     shell = pkgs.fish;
@@ -264,7 +276,7 @@ fi
         };
         fish.enable = true;
         git.enable = true;
-        gh.enable = true;
+        gh.enable = false;
         tldr.enable = true;
         zsh.enable = true;
       };
@@ -350,8 +362,8 @@ fi
             '';
           in "${file}";
           user = {
-            email = "bastien.riviere@tanker.io";
-            signingKey = "ACFD416C8BFB251A";
+            email = "bastien.riviere@doctolib.com";
+            signingKey = "AAD667ECD29B732B";
           };
           gitlab.user = "bastien.riviere";
           commit.gpgSign = true;
