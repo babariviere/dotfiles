@@ -1,5 +1,6 @@
 (define-module (baba home gaia)
   #:use-module (baba)
+  #:use-module (baba home services browsers)
   #:use-module (baba home services emacs)
   #:use-module (baba home services terminals)
   #:use-module (baba home services wm)
@@ -124,6 +125,7 @@
   (list htop isync notmuch bat direnv keychain))
  (services
   (append emacs-service
+          nyxt-service
           stumpwm-service
           (list (service home-bash-service-type
                          (home-bash-configuration
