@@ -8,6 +8,5 @@
 
 (define-configuration buffer
   ((default-modes (append '(emacs-mode) %slot-default%))
-   (search-engines (append (mapcar (lambda (engine) (apply 'make-search-engine engine))
-                                   *search-engines*)
-                           %slot-default%))))
+   (search-engines (mapcar (lambda (engine) (apply 'make-search-engine engine))
+                           *search-engines*))))
