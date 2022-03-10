@@ -104,6 +104,7 @@
 	    emacs-eldoc
 
 	    emacs-magit
+        emacs-magit-section
 	    emacs-forge
 
 	    emacs-diredfl
