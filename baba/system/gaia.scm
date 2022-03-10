@@ -5,6 +5,7 @@
 (define-module (baba system gaia)
   #:use-module (srfi srfi-1)
   #:use-module (baba)
+  #:use-module (baba services virtualization)
   #:use-module (gnu)
   #:use-module (gnu packages)
   #:use-module (gnu packages bootloaders)
@@ -70,22 +71,23 @@ EndSection
              (web-interface? #t)
              (extensions
               (list cups-filters epson-inkjet-printer-escpr hplip-minimal))))
+   (service lxd-service-type)
    (modify-services
-    (remove (lambda (service)
-              (eq? (service-kind service) gdm-service-type))
-            %desktop-services)
-    (guix-service-type config =>
-                       (guix-configuration
-                        (inherit config)
-                        (discover? #t)
-                        (substitute-urls (append
-                                          (@@ (guix scripts substitute) %default-substitute-urls)
-                                          (list "https://substitutes.nonguix.org" "https://ci.babariviere.com")))
-                        (authorized-keys (append
-                                          %default-authorized-guix-keys
-                                          (list
-                                           (local-file (string-append %channel-root "/etc/keys/substitutes.nonguix.org.pub"))
-                                           (local-file (string-append %channel-root "/etc/keys/ci.babariviere.com.pub"))))))))))
+       (remove (lambda (service)
+                 (eq? (service-kind service) gdm-service-type))
+               %desktop-services)
+     (guix-service-type config =>
+                        (guix-configuration
+                         (inherit config)
+                         (discover? #t)
+                         (substitute-urls (append
+                                           (@@ (guix scripts substitute) %default-substitute-urls)
+                                           (list "https://substitutes.nonguix.org" "https://ci.babariviere.com")))
+                         (authorized-keys (append
+                                           %default-authorized-guix-keys
+                                           (list
+                                            (local-file (string-append %channel-root "/etc/keys/substitutes.nonguix.org.pub"))
+                                            (local-file (string-append %channel-root "/etc/keys/ci.babariviere.com.pub"))))))))))
 
 (define %system/gaia
   (operating-system
@@ -129,7 +131,7 @@ EndSection
                  (group "users")
                  (supplementary-groups '("wheel" "netdev"
                                          "audio" "video"
-                                         "kvm"
+                                         "kvm" "lxd"
                                          "lp" "lpadmin"))
                  (shell (file-append fish "/bin/fish")))
                 %base-user-accounts))
