@@ -18,6 +18,7 @@
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages emacs-xyz)
   #:use-module (gnu packages gcc)
+  #:use-module (gnu packages gnupg)
   #:use-module (gnu packages mail)
   #:use-module (gnu packages rust-apps)
   #:use-module (gnu packages shellutils)
@@ -122,7 +123,7 @@
 ;; TODO: make service for mbsync and notmuch
 (home-environment
  (packages
-  (list htop isync notmuch bat direnv keychain))
+  (list htop isync notmuch bat direnv keychain gnupg))
  (services
   (append emacs-service
           nyxt-service
@@ -141,14 +142,6 @@
                                            ("ghr" . "guix home reconfigure")
                                            ("cat" . "bat -pp")))))
                 (service home-brycus-fish-service-type)
-                (service home-gnupg-service-type
-                         (home-gnupg-configuration
-                          (gpg-agent-config
-                           (home-gpg-agent-configuration
-                            ;; (pinentry-flavor 'emacs)
-                            (extra-config
-                             '((max-cache-ttl . 86400)))
-                            ))))
                 (service home-git-service-type
                          (home-git-configuration
                           (config
