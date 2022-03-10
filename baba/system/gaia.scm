@@ -75,17 +75,17 @@ EndSection
               (eq? (service-kind service) gdm-service-type))
             %desktop-services)
     (guix-service-type config =>
-		       (guix-configuration
-			(inherit config)
-			(discover? #t)
-			(substitute-urls (append
-					  (@@ (guix scripts substitute) %default-substitute-urls)
-					  (list "https://substitutes.nonguix.org" "https://ci.babariviere.com")))
-			(authorized-keys (append
-					  %default-authorized-guix-keys
-					  (list
-					   (local-file (string-append %channel-root "/etc/keys/substitutes.nonguix.org.pub"))
-					   (local-file (string-append %channel-root "/etc/keys/ci.babariviere.com.pub"))))))))))
+		               (guix-configuration
+			            (inherit config)
+			            (discover? #t)
+			            (substitute-urls (append
+					                      (@@ (guix scripts substitute) %default-substitute-urls)
+					                      (list "https://substitutes.nonguix.org" "https://ci.babariviere.com")))
+			            (authorized-keys (append
+					                      %default-authorized-guix-keys
+					                      (list
+					                       (local-file (string-append %channel-root "/etc/keys/substitutes.nonguix.org.pub"))
+					                       (local-file (string-append %channel-root "/etc/keys/ci.babariviere.com.pub"))))))))))
 
 (define %system/gaia
   (operating-system
@@ -96,63 +96,64 @@ EndSection
    ;; Use the UEFI variant of GRUB with the EFI System
    ;; Partition mounted on /boot/efi.
    (bootloader (bootloader-configuration
-		(bootloader grub-efi-bootloader)
-		(targets '("/boot/efi"))))
+		        (bootloader grub-efi-bootloader)
+		        (targets '("/boot/efi"))))
 
    (kernel linux)
    (kernel-loadable-modules (list acpi-call-linux-module))
    (kernel-arguments
     (cons* (string-append "modprobe.blacklist="
-			  (string-join %blacklist-modules
-				       ","))
-	   (delete "quiet" %default-kernel-arguments)))
+			              (string-join %blacklist-modules
+				                       ","))
+	       (delete "quiet" %default-kernel-arguments)))
    (keyboard-layout (keyboard-layout
-		     "us" "altgr-intl"
-		     #:options '("ctrl:nocaps")))
+		             "us" "altgr-intl"
+		             #:options '("ctrl:nocaps")))
    (firmware (list linux-firmware))
    (initrd microcode-initrd)
    ;; Assume the target root file system is labelled "my-root",
    ;; and the EFI System Partition has UUID 1234-ABCD.
    (file-systems (append
-		  (list (file-system
-			 (device (uuid "d02d6b18-5f6a-4150-8669-aea28343e0b4"))
-			 (mount-point "/")
-			 (type "ext4"))
-			(file-system
-			 (device (uuid "E523-A561" 'fat))
-			 (mount-point "/boot/efi")
-			 (type "vfat")))
-		  %base-file-systems))
+		          (list (file-system
+			             (device (uuid "d02d6b18-5f6a-4150-8669-aea28343e0b4"))
+			             (mount-point "/")
+			             (type "ext4"))
+			            (file-system
+			             (device (uuid "E523-A561" 'fat))
+			             (mount-point "/boot/efi")
+			             (type "vfat")))
+		          %base-file-systems))
 
    (users (cons (user-account
-		 (name "babariviere")
-		 (group "users")
-		 (supplementary-groups '("wheel" "netdev"
-					 "audio" "video"
-					 "kvm"))
-		 (shell (file-append fish "/bin/fish")))
-		%base-user-accounts))
+		         (name "babariviere")
+		         (group "users")
+		         (supplementary-groups '("wheel" "netdev"
+					                     "audio" "video"
+					                     "kvm"
+                                         "lp" "lpadmin"))
+		         (shell (file-append fish "/bin/fish")))
+		        %base-user-accounts))
 
    ;; Add a bunch of window managers; we can choose one at
    ;; the log-in screen with F1.
    (packages (append (list
-		      ;; window managers
-		      sway dmenu
+		              ;; window managers
+		              sway dmenu
 
-		      ;; terminal emulator
-		      alacritty foot xterm neovim
-		      ;; ssh
-		      openssh
-		      ;; for HTTPS access
-		      nss-certs
-		      ;; tools
-		      gnu-make
+		              ;; terminal emulator
+		              alacritty foot xterm neovim
+		              ;; ssh
+		              openssh
+		              ;; for HTTPS access
+		              nss-certs
+		              ;; tools
+		              gnu-make
 
-		      ;; x11
-		      xrandr
-		      autorandr
-		      picom)
-		     %base-packages))
+		              ;; x11
+		              xrandr
+		              autorandr
+		              picom)
+		             %base-packages))
 
    ;; Use the "desktop" services, which include the X11
    ;; log-in service, networking with NetworkManager, and more.
