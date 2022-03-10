@@ -10,6 +10,7 @@
   #:use-module (gnu packages bootloaders)
   #:use-module (gnu packages certs)
   #:use-module (gnu packages compton)
+  #:use-module (gnu packages cups)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages emacs-xyz)
   #:use-module (gnu packages fonts)
@@ -25,6 +26,7 @@
   #:use-module (gnu packages web)
   #:use-module (gnu packages wm)
   #:use-module (gnu packages xorg)
+  #:use-module (gnu services cups)
   #:use-module (gnu services desktop)
   #:use-module (gnu services nix)
   #:use-module (gnu services pm)
@@ -60,9 +62,14 @@ EndSection
    (service slim-service-type (slim-configuration
                                (display ":0")
                                (vt "vt7")
-			       (xorg-configuration
-				(xorg-configuration
-				 (extra-config (list xorg.conf))))))
+			                   (xorg-configuration
+				                (xorg-configuration
+			                     (extra-config (list xorg.conf))))))
+   (service cups-service-type
+            (cups-configuration
+             (web-interface? #t)
+             (extensions
+              (list cups-filters epson-inkjet-printer-escpr hplip-minimal))))
    (modify-services
     (remove (lambda (service)
               (eq? (service-kind service) gdm-service-type))
