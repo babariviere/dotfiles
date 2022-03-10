@@ -1,5 +1,5 @@
 (define-module (baba services virtualization)
-  #:use-module (gnu packages virtualization)
+  #:use-module (baba packages virtualization)
   #:use-module (gnu services)
   #:use-module (gnu services base)
   #:use-module (gnu services configuration)
