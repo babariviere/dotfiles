@@ -59,7 +59,10 @@ EndSection
 (define services
   (cons*
    (service nix-service-type)
-   (service tlp-service-type)
+   (service tlp-service-type
+            (tlp-configuration
+             (start-charge-thresh-bat0 75)
+             (stop-charge-thresh-bat0 80)))
    (service slim-service-type (slim-configuration
                                (display ":0")
                                (vt "vt7")
