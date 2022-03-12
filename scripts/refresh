@@ -1,0 +1,18 @@
+;;; -*- mode: scheme; -*-
+(define-module (scripts refresh)
+  #:use-module (gnu packages)
+  #:use-module (guix discovery)
+  #:use-module (guix packages)
+  #:use-module (guix scripts refresh)
+  #:use-module (guix utils))
+
+(fold-module-public-variables* (lambda (module symbol variable result)
+                                 (let ((object (false-if-exception (variable-ref variable))))
+                                   (if (package? object)
+                                       (begin
+                                         (format #t "~a~%" object)
+                                         (false-if-exception (guix-refresh "-e" (format #f "(@ ~a ~a)" (module-name module) symbol) "-u"))
+                                         (cons object result))
+                                       result)))
+                               '()
+                               (scheme-modules "/home/babariviere/src/github.com/babariviere/dot/"))
