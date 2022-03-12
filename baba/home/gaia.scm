@@ -142,14 +142,19 @@
                                            ("ghr" . "guix home reconfigure")
                                            ("cat" . "bat -pp")))))
                 (service home-brycus-fish-service-type)
-                (service home-gnupg-service-type
-                         (home-gnupg-configuration
-                          (gpg-agent-config
-                           (home-gpg-agent-configuration
-                            ;; (pinentry-flavor 'emacs)
-                            (extra-config
-                             '((max-cache-ttl . 86400)))
-                            ))))
+                (simple-service 'gpg-agent-conf
+                                home-files-service-type
+                                `(("gnupg/gpg-agent.conf"
+                                   ,(computed-file
+                                     "gpg-agent.conf"
+                                     #~(begin
+                                         (use-modules (ice-9 format))
+                                         (with-output-to-file #$output
+                                           (lambda ()
+                                             (format #t "
+pinentry-program ~a/bin/pinentry
+max-cache-ttl 86400"
+                                                     #$pinentry-gtk2))))))))
                 (service home-git-service-type
                          (home-git-configuration
                           (config
