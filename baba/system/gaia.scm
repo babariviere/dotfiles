@@ -56,6 +56,28 @@ Section \"Screen\"
 EndSection
 ")
 
+(define libinput.conf
+  "
+Section \"InputClass\"
+    Identifier \"touchpad\"
+    Driver \"libinput\"
+    MatchDevicePath \"/dev/input/event*\"
+    MatchIsTouchpad \"on\"
+
+    Option \"Tapping\" \"off\"
+    Option \"ClickMethod\" \"clickfinger\"
+    Option \"DisableWhileTyping\" \"on\"
+    Option \"ScrollMethod\" \"twofinger\"
+EndSection
+
+Section \"InputClass\"
+    Identifier \"keyboard\"
+    Driver \"libinput\"
+    MatchDevicePath \"/dev/input/event*\"
+    MatchIsKeyboard \"on\"
+EndSection
+")
+
 (define services
   (cons*
    (service nix-service-type)
@@ -68,7 +90,7 @@ EndSection
                                (vt "vt7")
                                (xorg-configuration
                                 (xorg-configuration
-                                 (extra-config (list xorg.conf))))))
+                                 (extra-config (list xorg.conf libinput.conf))))))
    (service cups-service-type
             (cups-configuration
              (web-interface? #t)
