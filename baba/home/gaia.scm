@@ -142,6 +142,14 @@
                                            ("ghr" . "guix home reconfigure")
                                            ("cat" . "bat -pp")))))
                 (service home-brycus-fish-service-type)
+                (service home-gnupg-service-type
+                         (home-gnupg-configuration
+                          (gpg-agent-config
+                           (home-gpg-agent-configuration
+                            ;; (pinentry-flavor 'emacs)
+                            (extra-config
+                             '((max-cache-ttl . 86400)))
+                            ))))
                 (service home-git-service-type
                          (home-git-configuration
                           (config
