@@ -296,7 +296,7 @@ Examples:
   (org-hide-emphasis-marker t)
   (org-hide-leading-stars t)
   (org-indent-mode-turns-on-hiding-stars nil)
-  (org-startup-indented t)
+  (org-startup-indented nil)
   (org-confirm-babel-evaluate nil)
   (org-edit-src-content-indentation 0)
   (org-src-preserve-indentation t)
@@ -531,6 +531,12 @@ Examples:
   (org-appear-autolinks nil)
   (org-appear-autosubmarkers t)
   (org-appear-autoemphasis t))
+
+(use-package org-modern
+  :hook ((org-mode . org-modern-mode)
+         (org-agenda-finalize . org-modern-agenda))
+  :config
+  (setq org-modern-variable-pitch nil))
 
 (use-package evil-org
   :disabled

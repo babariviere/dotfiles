@@ -170,6 +170,7 @@
 	    emacs-org-appear
 	    emacs-org-contrib
 	    emacs-org-edna
+        emacs-org-modern
 	    emacs-org-superstar
         ;; emacs-evil-org
 	    emacs-org-roam
