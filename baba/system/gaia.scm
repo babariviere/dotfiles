@@ -97,22 +97,23 @@ EndSection
              (extensions
               (list cups-filters epson-inkjet-printer-escpr hplip-minimal))))
    (service lxd-service-type)
+   (bluetooth-service #:auto-enable? #t)
    (modify-services
-       (remove (lambda (service)
-                 (eq? (service-kind service) gdm-service-type))
-               %desktop-services)
-     (guix-service-type config =>
-                        (guix-configuration
-                         (inherit config)
-                         (discover? #t)
-                         (substitute-urls (append
-                                           (@@ (guix scripts substitute) %default-substitute-urls)
-                                           (list "https://substitutes.nonguix.org" "https://ci.babariviere.com")))
-                         (authorized-keys (append
-                                           %default-authorized-guix-keys
-                                           (list
-                                            (local-file (string-append %channel-root "/etc/keys/substitutes.nonguix.org.pub"))
-                                            (local-file (string-append %channel-root "/etc/keys/ci.babariviere.com.pub"))))))))))
+    (remove (lambda (service)
+              (eq? (service-kind service) gdm-service-type))
+            %desktop-services)
+    (guix-service-type config =>
+                       (guix-configuration
+                        (inherit config)
+                        (discover? #t)
+                        (substitute-urls (append
+                                          (@@ (guix scripts substitute) %default-substitute-urls)
+                                          (list "https://substitutes.nonguix.org" "https://ci.babariviere.com")))
+                        (authorized-keys (append
+                                          %default-authorized-guix-keys
+                                          (list
+                                           (local-file (string-append %channel-root "/etc/keys/substitutes.nonguix.org.pub"))
+                                           (local-file (string-append %channel-root "/etc/keys/ci.babariviere.com.pub"))))))))))
 
 (define %system/gaia
   (operating-system
@@ -179,7 +180,9 @@ EndSection
                       ;; x11
                       xrandr
                       autorandr
-                      picom)
+                      picom
+
+                      bluez)
                      %base-packages))
 
    ;; Use the "desktop" services, which include the X11
