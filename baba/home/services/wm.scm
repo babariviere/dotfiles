@@ -46,7 +46,8 @@ fi
 ~a/bin/stumpwm"
                                         #$picom
 					                    #$stump)))
-			                (chmod #$output #o555))))))
+			                (chmod #$output #o555))))
+                     ("config/picom.conf" ,(local-file (string-append %channel-root "/etc/picom.conf")))))
    (simple-service 'setup-sbcl
                    home-shell-profile-service-type
                    (list (plain-file "setup-sbcl"
