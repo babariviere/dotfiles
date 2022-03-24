@@ -31,6 +31,9 @@
 				                (format #t
 					                    "~
 #!/bin/sh
+
+export GDK_CORE_DEVICE_EVENTS=1
+
 if [ -e \"$HOME/.profile\" ]; then
   . \"$HOME/.profile\"
 fi
@@ -39,7 +42,6 @@ if test -z \"$DBUS_SESSION_BUS_ADDRESS\"; then
   eval `dbus-launch --sh-syntax`
 fi
 
-export GDK_CORE_DEVICE_EVENTS=1
 ~a/bin/picom -b --config $HOME/.config/picom.conf --experimental-backends
 ~a/bin/stumpwm"
                                         #$picom
