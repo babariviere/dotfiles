@@ -4,6 +4,7 @@
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
   #:use-module (gnu packages compton)
+  #:use-module (gnu packages gl)
   #:use-module (gnu packages gstreamer)
   #:use-module (gnu packages image)
   #:use-module (gnu packages lisp)
@@ -75,6 +76,7 @@ fi
                          flameshot
 
                          ;; hardware acceleration
+                         mesa
                          gstreamer
                          gst-plugins-bad
                          gst-plugins-base
