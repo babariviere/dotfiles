@@ -4,11 +4,13 @@
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
   #:use-module (gnu packages compton)
+  #:use-module (gnu packages gstreamer)
   #:use-module (gnu packages image)
   #:use-module (gnu packages lisp)
   #:use-module (gnu packages lisp-xyz)
   #:use-module (gnu packages pulseaudio)
   #:use-module (gnu packages terminals)
+  #:use-module (gnu packages video)
   #:use-module (gnu packages wm)
   #:use-module (gnu packages xdisorg)
   #:use-module (gnu services)
@@ -63,14 +65,25 @@ fi
                          sbcl-stumpwm-stumptray
                          sbcl-stumpwm-ttf-fonts
                          sbcl-stumpwm-wifi
-			             sbcl
+                         sbcl
 
                          ;; tools
                          alacritty
                          autorandr
                          picom
                          pamixer
-                         flameshot))
+                         flameshot
+
+                         ;; hardware acceleration
+                         gstreamer
+                         gst-plugins-bad
+                         gst-plugins-base
+                         gst-plugins-good
+                         gst-plugins-ugly
+                         gst-libav
+                         intel-vaapi-driver
+                         libva-utils
+                         ))
    (simple-service 'stumpwm-files
 		           home-files-service-type
 		           `(("stumpwm.d/init.lisp"
