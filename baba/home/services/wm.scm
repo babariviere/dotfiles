@@ -16,6 +16,7 @@
   #:use-module (gnu packages xdisorg)
   #:use-module (gnu services)
   #:use-module (guix gexp)
+  #:use-module (nongnu packages video)
   #:export (stumpwm-service))
 
 (define stump stumpwm+slynk)
@@ -36,6 +37,10 @@
 #!/bin/sh
 
 export GDK_CORE_DEVICE_EVENTS=1
+
+# required for firefox vaapi
+export MOZ_DISABLE_RDD_SANDBOX=1
+export MOZ_X11_EGL=1
 
 if [ -e \"$HOME/.profile\" ]; then
   . \"$HOME/.profile\"
@@ -83,8 +88,11 @@ fi
                          gst-plugins-good
                          gst-plugins-ugly
                          gst-libav
+                         intel-media-driver
                          intel-vaapi-driver
                          libva-utils
+                         libvdpau
+                         libvdpau-va-gl
                          ))
    (simple-service 'stumpwm-files
 		           home-files-service-type
