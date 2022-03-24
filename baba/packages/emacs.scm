@@ -59,7 +59,7 @@
                 `(cons* "NATIVE_FULL_AOT=1" ,flags)
                 flags))
            ((#:configure-flags flags)
-            `(cons* "--with-native-compilation" "--with-pgtk" "--with-json" ,flags))
+            `(cons* "--with-native-compilation" "--with-pgtk" "--with-json" "--with-xinput2" "--with-sqlite3" ,flags))
            ((#:phases phases)
             `(modify-phases ,phases
                ;; Add build-time library paths for libgccjit.
