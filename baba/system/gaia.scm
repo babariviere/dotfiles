@@ -14,6 +14,7 @@
   #:use-module (gnu packages cups)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages emacs-xyz)
+  #:use-module (gnu packages file-systems)
   #:use-module (gnu packages fonts)
   #:use-module (gnu packages java)
   #:use-module (gnu packages linux)
@@ -203,7 +204,12 @@ EndSection
                       autorandr
                       picom
 
-                      bluez)
+                      ;; bluetooth
+                      bluez
+
+                      ;; file system
+                      bcachefs-tools
+                      )
                      %base-packages))
 
    ;; Use the "desktop" services, which include the X11
