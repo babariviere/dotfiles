@@ -5,6 +5,7 @@
 (define-module (baba system gaia)
   #:use-module (srfi srfi-1)
   #:use-module (baba)
+  #:use-module (baba packages file-systems)
   #:use-module (baba services virtualization)
   #:use-module (gnu)
   #:use-module (gnu packages)
@@ -12,6 +13,7 @@
   #:use-module (gnu packages certs)
   #:use-module (gnu packages compton)
   #:use-module (gnu packages cups)
+  #:use-module (gnu packages disk)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages emacs-xyz)
   #:use-module (gnu packages file-systems)
@@ -169,6 +171,10 @@ EndSection
                          (mount-point "/")
                          (type "ext4"))
                         (file-system
+                         (mount-point "/data")
+                         (device (file-system-label "gaia"))
+                         (type "bcachefs"))
+                        (file-system
                          (device (uuid "E523-A561" 'fat))
                          (mount-point "/boot/efi")
                          (type "vfat")))
@@ -208,7 +214,7 @@ EndSection
                       bluez
 
                       ;; file system
-                      bcachefs-tools
+                      bcachefs-tools-git
                       )
                      %base-packages))
 
