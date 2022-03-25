@@ -27,6 +27,9 @@ system/%:
 build/system/%:
 	$(guix-lock) system build -L . baba/system/$*.scm
 
+build/install-iso:
+	$(guix-lock) system image -t iso9660 -L . baba/system/install.scm
+
 home: home/${HOSTNAME}
 
 home/%:
