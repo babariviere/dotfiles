@@ -5,6 +5,14 @@
   (vertico-cycle t)
   :init
   (vertico-mode 1)
+  :config
+  (defun minibuffer-format-candidate (orig cand prefix suffix index _start)
+    (let ((prefix (if (= vertico--index index)
+                      " > " "   ")))
+      (funcall orig cand prefix suffix index _start)))
+
+  (advice-add #'vertico--format-candidate
+              :around #'minibuffer-format-candidate)
   :general
   (:keymaps 'vertico-map
 			"C-j" 'vertico-next
