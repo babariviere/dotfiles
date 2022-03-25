@@ -118,7 +118,7 @@ EndSection
                                            (local-file (string-append %channel-root "/etc/keys/substitutes.nonguix.org.pub"))
                                            (local-file (string-append %channel-root "/etc/keys/ci.babariviere.com.pub"))))))))))
 
-(define linux-bcachefs
+(define-public linux-bcachefs
   (package
    (inherit ((@@ (gnu packages linux) make-linux-libre*)
              linux-libre-version
