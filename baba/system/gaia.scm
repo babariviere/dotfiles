@@ -134,7 +134,7 @@ EndSection
               (file-name (git-file-name "linux-bcachefs" linux-libre-version)))
              '("x86_64-linux" "i686-linux" "armhf-linux" "aarch64-linux")
              #:configuration-file (@@ (gnu packages linux) kernel-config)
-             #:extra-options (acons "CONFIG_BCACHE_FS" 'm (@@ (gnu packages linux) %default-extra-linux-options))))
+             #:extra-options (acons "CONFIG_BCACHEFS_FS" 'm (@@ (gnu packages linux) %default-extra-linux-options))))
    (name "linux-testing")))
 
 (define %system/gaia
