@@ -29,7 +29,8 @@
   #:use-module (gnu services)
   #:use-module (guix gexp)
   #:use-module (guix packages)
-  #:use-module (flat packages emacs))
+  #:use-module (flat packages emacs)
+  #:use-module (nongnu packages mozilla))
 
 (define %sway-config
   `( ;; (bindsym $mod+Shift+e exec emacsclient -c --eval "(eshell)")
@@ -123,7 +124,7 @@
 ;; TODO: make service for mbsync and notmuch
 (home-environment
  (packages
-  (list htop isync notmuch bat direnv keychain gnupg))
+  (list htop isync notmuch bat direnv keychain gnupg firefox))
  (services
   (append emacs-service
           nyxt-service
