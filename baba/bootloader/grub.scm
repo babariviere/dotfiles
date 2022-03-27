@@ -52,18 +52,31 @@
         (copy-file initrd pivot)
         (rename-file pivot target))))
 
-;; TODO: install kernel and initrd during configuration?
-;; Find a better way to get all kernels and initrds
 (define inplace-installer
   #~(lambda (bootloader efi-dir mount-point)
       (use-modules (ice-9 regex) (ice-9 textual-ports) (srfi srfi-1))
+
+      (define (recursive-readlink l)
+        (format #t "~A~%" (stat:type (lstat l)))
+        (if (eq? (stat:type (lstat l)) 'symlink)
+            (recursive-readlink (readlink l))
+            l))
       (when efi-dir
-        (let* ((cfg (call-with-input-file (string-append mount-point "/boot/grub/grub.cfg") get-string-all))
-               (gnu-paths (delete-duplicates (map match:substring (list-matches "\\/gnu\\/store\\/[[:graph:]]+" cfg))))
-               (kernels (filter (lambda (item) (string-contains item "bzImage")) gnu-paths))
-               (initrds (filter (lambda (item) (string-contains item "initrd")) gnu-paths)))
-          (map (lambda (image) (#$install-boot-kernel image mount-point)) kernels)
-          (map (lambda (image) (#$install-boot-initrd image mount-point)) initrds))
+        (let ((dir (opendir "/var/guix/profiles"))
+              (kernels '())
+              (initrds '()))
+          (do ((entry (readdir dir) (readdir dir)))
+              ((eof-object? entry))
+            (when (and (string-contains entry "system") (string-contains entry "link"))
+              (let ((initrd (recursive-readlink (string-append "/var/guix/profiles/" entry "/initrd")))
+                    (kernel (recursive-readlink (string-append "/var/guix/profiles/" entry "/kernel/bzImage"))))
+                (format #t "~a~%" kernel)
+                (set! kernels (cons kernel kernels))
+                (set! initrds (cons initrd initrds)))))
+          (closedir dir)
+
+          (map (lambda (image) (#$install-boot-kernel image mount-point)) (delete-duplicates kernels))
+          (map (lambda (image) (#$install-boot-initrd image mount-point)) (delete-duplicates initrds)))
         (#$(@@ (gnu bootloader grub) install-grub-efi) bootloader efi-dir mount-point))))
 
 (define grub-efi-inplace-bootloader
