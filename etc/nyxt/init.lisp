@@ -9,11 +9,20 @@
   (list '("spg" "https://startpage.com/do/search?query=~a" "https://startpage.com"))
   "Define my search engines. The last one will be used as default.")
 
+(defvar *amber/keymap* (make-keymap "amber/keymap"))
+(define-key *amber/keymap*
+  "M-j" 'nyxt/web-mode:follow-hint-new-buffer)
+
+(define-mode amber-keymap-mode ()
+  "Mode to define custom key bindings from *amber/keymap*."
+  ((keymap-scheme (keymap:make-scheme
+                   scheme:emacs *amber/keymap*))))
+
 (define-configuration browser
   ((session-restore-prompt :always-restore)))
 
 (define-configuration buffer
-  ((default-modes (append '(emacs-mode) %slot-default%))
+  ((default-modes (append '(amber-keymap-mode emacs-mode) %slot-default%))
    (search-engines (mapcar (lambda (engine) (apply 'make-search-engine engine))
                            *search-engines*))))
 
