@@ -27,8 +27,6 @@
 (defcommand stop-slynk () ()
   (slynk:stop-server *slynk-port*))
 
-(ignore-errors (start-slynk))
-
 (add-hook *restart-hook* 'stop-slynk)
 
 ;; Fonts
