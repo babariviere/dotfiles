@@ -16,4 +16,7 @@
   (setq lispy-colon-p nil)
   (add-hook 'lispy-mode-hook #'turn-off-smartparens-mode))
 
+(dolist (f '(define-key define-mode define-configuration define-command define-command-global))
+  (put f 'lisp-indent-function 'defun))
+
 (provide 'amber-lisp)
