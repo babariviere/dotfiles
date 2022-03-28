@@ -117,12 +117,11 @@ EndSection
                         (discover? #t)
                         (substitute-urls (append
                                           (@@ (guix scripts substitute) %default-substitute-urls)
-                                          (list "https://substitutes.nonguix.org" "https://ci.babariviere.com")))
+                                          (list "https://substitutes.nonguix.org")))
                         (authorized-keys (append
                                           %default-authorized-guix-keys
                                           (list
-                                           (local-file (string-append %channel-root "/etc/keys/substitutes.nonguix.org.pub"))
-                                           (local-file (string-append %channel-root "/etc/keys/ci.babariviere.com.pub"))))))))))
+                                           (local-file (string-append %channel-root "/etc/keys/substitutes.nonguix.org.pub"))))))))))
 
 (define* (gaia/initrd file-systems
                       #:key

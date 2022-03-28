@@ -8,7 +8,7 @@ Will be the base of my next Guix machines.
 
 Gaia is the mother of Titans, she is the base of the other systems, the one who have done the foundation.
 
-*** Kratos
+*** Kratos (dead, but will be revived)
 My server, used to build packages from my channels (and others, probably).
 
 - reference :: https://en.wikipedia.org/wiki/Kratos_(mythology)
