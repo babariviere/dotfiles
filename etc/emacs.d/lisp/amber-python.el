@@ -33,6 +33,7 @@
   :mode ("[./]flake8\\'" . conf-mode)
   :mode ("/Pipfile\\'" . conf-mode)
   :config
+  (define-key python-mode-map (kbd "DEL") nil) ; interferes with smartparens
   (sp-local-pair 'python-mode "'" nil
                  :unless '(sp-point-before-word-p
                            sp-point-after-word-p
