@@ -13,6 +13,7 @@
          (clojure-mode . lispy-mode)
          (fennel-mode . lispy-mode))
   :config
-  (setq lispy-colon-p nil))
+  (setq lispy-colon-p nil)
+  (add-hook 'lispy-mode-hook #'turn-off-smartparens-mode))
 
 (provide 'amber-lisp)
