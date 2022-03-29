@@ -511,6 +511,10 @@ Examples:
   :custom
   (org-roam-dailies-capture-templates
    '(("d" "default" entry "%?" :target
+	  (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n" ("Journal")))
+     ("p" "planning" entry "%?" :target
+	  (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n" ("Planning")))
+     ("r" "recap" entry "%?" :target
 	  (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n" ("Recap")))))
   (org-roam-dailies-directory "journal/"))
 
