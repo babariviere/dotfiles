@@ -347,6 +347,7 @@ Examples:
 	"nt" '(org-roam-dailies-goto-today :wk "today's note")
 	"nT" '(org-roam-dailies-goto-tomorrow :wk "tomorrow's note")
 	"ny" '(org-roam-dailies-goto-yesterday :wk "yesterday's note")
+    "ng" '(org-roam-dailies-goto-date :wk "goto date's note")
     "oA" '(amber/org-goto-agenda :wk "open agenda.org")
     "oi" '(amber/org-goto-inbox :wk "open inbox.org")
     "oI" '(amber/org-goto-tasks :wk "open tasks.org")))
