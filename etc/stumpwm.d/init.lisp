@@ -184,4 +184,5 @@
     ("C-M-k"     . "C-w")
     ("C-d"       . "Delete")
     ("M-DEL"     . "C-DEL")
-    ("C-g"       . "ESC"))))
+    ("C-g"       . "ESC")
+    ("C-h"       . "C-a"))))
