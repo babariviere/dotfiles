@@ -120,7 +120,7 @@
 
 (defcommand firefox () ()
   "Start Firefox or switch to it."
-  (run-or-raise "firefox" '(:class "(Nightly|Firefox)")))
+  (run-or-raise "firefox" '(:class "(Nightly|Firefox|firefox-default)")))
 (define-key *root-map* (kbd "f") "firefox")
 (define-key *root-map* (kbd "C-a") "fselect")
 
@@ -155,3 +155,33 @@
 (define-key *top-map* (kbd "XF86AudioRaiseVolume") "volume-up")
 (define-key *top-map* (kbd "XF86AudioLowerVolume") "volume-down")
 (define-key *top-map* (kbd "XF86AudioMute") "volume-toggle-mute")
+
+;; Remaps
+
+(define-remapped-keys
+ '(("(discord|Nightly|Firefox|firefox-default|Slack)"
+    ("C-a"       . "Home")
+    ("C-e"       . "End")
+    ("C-n"       . "Down")
+    ("C-p"       . "Up")
+    ("C-f"       . "Right")
+    ("C-b"       . "Left")
+    ("C-v"       . "Next")
+    ("M-v"       . "Prior")
+    ("M-w"       . "C-c")
+    ("C-w"       . "C-x")
+    ("C-y"       . "C-v")
+    ("M-<"       . "Home")
+    ("M->"       . "End")
+    ("C-M-b"     . "M-Left")
+    ("C-M-f"     . "M-Right")
+    ("M-f"       . "C-Right")
+    ("M-b"       . "C-Left")
+    ("C-s"       . "C-f")
+    ("C-j"       . "C-k")
+    ("C-/"       . "C-z")
+    ("C-k"       . ("C-S-End" "C-x"))
+    ("C-M-k"     . "C-w")
+    ("C-d"       . "Delete")
+    ("M-DEL"     . "C-DEL")
+    ("C-g"       . "ESC"))))
