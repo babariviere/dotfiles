@@ -473,7 +473,7 @@ Examples:
 (use-package org-roam
   :demand t
   :custom
-  (org-roam-completion-everywhere t)
+  (org-roam-completion-everywhere nil)
   (org-roam-completion-system 'default)
   (org-roam-directory org-directory)
   (org-roam-capture-templates
