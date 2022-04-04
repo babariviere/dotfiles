@@ -128,6 +128,8 @@ mouse-3: Toggle minor modes"
 (require 'amber-scheme)
 (require 'amber-sql)
 
+(require 'amber-elfeed)
+
 (require 'use-package)
 
 ;; (use-package doom-modeline

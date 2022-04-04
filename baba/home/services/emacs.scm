@@ -166,6 +166,10 @@
 	    emacs-lsp-ui
 	    emacs-consult-lsp
 
+        ;; elfeed
+        emacs-elfeed
+        emacs-elfeed-org
+
 	    emacs-org
 	    emacs-org-appear
 	    emacs-org-contrib
