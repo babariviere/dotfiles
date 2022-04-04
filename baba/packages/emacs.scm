@@ -121,7 +121,7 @@
    (emacs-with-native-comp emacs-next gcc-11 'full-aot)
    #:pkg-name "emacs-native-comp"
    #:pkg-version "29.0.50"
-   #:pkg-revision "199"
+   #:pkg-revision "200"
    #:git-repo "https://git.savannah.gnu.org/git/emacs.git"
-   #:git-commit "3f19a23c1f60757c54a0ec7d84c625d83766ee08"
-   #:checksum "1p8cmp66w3n5h255zqvqqafrbmxckgh0qhdaqx551warca969i9h"))
+   #:git-commit "773d4104a592fda4366d8db27d0307ee23de8bfe"
+   #:checksum "0cyvya129xpf6xfygz2xhfibpgak1gn8qdd7dcj9vvyq5ax95lga"))
