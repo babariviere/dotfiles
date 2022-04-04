@@ -541,7 +541,12 @@ Examples:
   :hook ((org-mode . org-modern-mode)
          (org-agenda-finalize . org-modern-agenda))
   :config
-  (setq org-modern-variable-pitch nil))
+  (setq org-modern-variable-pitch nil)
+
+  (define-fringe-bitmap 'org-modern--block-begin
+    (vconcat (make-vector 8 0) [#xFF] (make-vector 12 #x80)) nil nil 'top)
+  (define-fringe-bitmap 'org-modern--block-end
+    (vconcat (make-vector 12 #x80) [#xFF] (make-vector 8 0)) nil nil 'bottom))
 
 (use-package evil-org
   :disabled
