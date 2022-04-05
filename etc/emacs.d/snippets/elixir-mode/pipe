@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: pipe
-# key: p
-# condition: t
-# --
-|> $0
