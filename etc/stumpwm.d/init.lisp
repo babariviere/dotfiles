@@ -186,3 +186,5 @@
     ("M-DEL"     . "C-DEL")
     ("C-g"       . "ESC")
     ("C-h"       . "C-a"))))
+
+(run-shell-command "feh --bg-scale $HOME/Pictures/backgrounds")
