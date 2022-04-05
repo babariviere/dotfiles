@@ -10,10 +10,9 @@
 
 (guix-emacs-autoload-packages)
 
-(let ((fixed-pitch '(:family "MonoLisa" :height 90)))
-  (custom-set-faces
-   `(default ((t ,fixed-pitch)))
-   `(fixed-pitch ((t ,fixed-pitch)))))
+(custom-set-faces
+ `(default ((nil :family "MonoLisa" :height 90)))
+ `(fixed-pitch ((nil :family "MonoLisa"))))
 
 (require 'modus-themes)
 
