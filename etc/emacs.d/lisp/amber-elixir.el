@@ -37,34 +37,31 @@
 
 (use-package alchemist
   :hook (elixir-mode . alchemist-mode)
-  :config
-  (with-eval-after-load 'evil-collection
-    (general-def 'normal alchemist-mode-map
-      "K" nil
-      :package 'alchemist))
   :general
-  (amber/leader-keys elixir-mode-map
-    "C-m" '(alchemist-mix :wk "mix")
-    "C-c" '(alchemist-mix-compile :wk "compile")
-    "C-i" '(alchemist-iex-project-run :wk "iex run")
-    "C-f" '(elixir-format :wk "format")
-    "C-e" '(:ignore t :wk "eval")
-    "C-e C-e" '(alchemist-iex-send-last-sexp :wk "eval sexp")
-    "C-e C-r" '(alchemist-iex-send-region :wk "eval region")
-    "C-e C-l" '(alchemist-iex-send-current-line :wk "eval line")
-    "C-e C-R" '(alchemist-iex-reload-module :wk "reload module")))
+  ;; (amber/leader-keys elixir-mode-map
+  ;;   "C-m" '(alchemist-mix :wk "mix")
+  ;;   "C-c" '(alchemist-mix-compile :wk "compile")
+  ;;   "C-i" '(alchemist-iex-project-run :wk "iex run")
+  ;;   "C-f" '(elixir-format :wk "format")
+  ;;   "C-e" '(:ignore t :wk "eval")
+  ;;   "C-e C-e" '(alchemist-iex-send-last-sexp :wk "eval sexp")
+  ;;   "C-e C-r" '(alchemist-iex-send-region :wk "eval region")
+  ;;   "C-e C-l" '(alchemist-iex-send-current-line :wk "eval line")
+  ;;   "C-e C-R" '(alchemist-iex-reload-module :wk "reload module"))
+  )
 
 (use-package exunit
   :hook (elixir-mode . exunit-mode)
-  :general
-  (amber/leader-keys elixir-mode-map
-    "C-t" '(:ignore t :wk "test")
-    "C-t C-a" '(exunit-verify-all :wk "verify all")
-    "C-t C-r" '(exunit-rerun :wk "rerun")
-    "C-t C-s" '(exunit-verify-single :wk "verify single")
-    "C-t C-T" '(exunit-toggle-file-and-test :wk "toggle test file")
-    "C-t C-t" '(exunit-toggle-file-and-test-other-window :wk "toggle test file (other)")
-    "C-t C-v" '(exunit-verify :wk "verify")))
+  ;; :general
+  ;; (amber/leader-keys elixir-mode-map
+  ;;   "C-t" '(:ignore t :wk "test")
+  ;;   "C-t C-a" '(exunit-verify-all :wk "verify all")
+  ;;   "C-t C-r" '(exunit-rerun :wk "rerun")
+  ;;   "C-t C-s" '(exunit-verify-single :wk "verify single")
+  ;;   "C-t C-T" '(exunit-toggle-file-and-test :wk "toggle test file")
+  ;;   "C-t C-t" '(exunit-toggle-file-and-test-other-window :wk "toggle test file (other)")
+  ;;   "C-t C-v" '(exunit-verify :wk "verify"))
+  )
 
 (provide 'amber-elixir)
 

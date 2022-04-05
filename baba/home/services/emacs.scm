@@ -126,9 +126,9 @@
 	    emacs-macrostep
 	    emacs-macrostep-geiser
 
-        ;; emacs-elixir-mode
-        ;; emacs-alchemist
-        ;; emacs-exunit
+        emacs-elixir-mode
+        emacs-alchemist
+        emacs-exunit
 
 	    emacs-fish-mode
 
