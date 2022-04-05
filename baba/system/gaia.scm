@@ -92,6 +92,8 @@ EndSection
    (service nix-service-type)
    (service tlp-service-type
             (tlp-configuration
+             (cpu-scaling-max-freq-on-ac 4000000)
+             (cpu-scaling-max-freq-on-bat 4000000)
              (start-charge-thresh-bat0 75)
              (stop-charge-thresh-bat0 80)))
    (service slim-service-type (slim-configuration
