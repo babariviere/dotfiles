@@ -104,7 +104,7 @@ mouse-3: Toggle minor modes"
 ;; (require 'amber-company)
 (require 'amber-corfu)
 (require 'amber-lsp)
-;; (require 'amber-snippets)
+(require 'amber-snippets)
 (require 'amber-smartparens)
 (require 'amber-direnv)
 (require 'amber-vterm)

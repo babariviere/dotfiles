@@ -50,6 +50,7 @@
   (lsp-ui-sideline-show-diagnostics t)
   ;; breaks sideline
   (lsp-eldoc-enable-hover nil)
+  (lsp-enable-snippet nil)              ; only for yasnippet
   :general
   ('motion lsp-mode-map
 		   "gd" #'lsp-find-type-definition

@@ -19,31 +19,6 @@
   #:use-module (ice-9 match)
   #:export (emacs-service))
 
-;; TODO: remove once added
-(use-modules (guix git-download))
-(define emacs-corfu-doc
-  (package
-    (name "emacs-corfu-doc")
-    (version "0.1.0")
-    (source
-     (origin
-       (method git-fetch)
-       (uri (git-reference
-             (url "https://github.com/galeo/corfu-doc")
-             (commit
-              "45853ecb531e08d3b1ce5426bee6807e35c4fade")))
-       (sha256
-        (base32
-         "0japiqd5qb9h6q0gb7jib6sg6r9pxa4pbk8zajjbvlwdlsmf7nib"))))
-    (build-system melpa-build-system)
-    (arguments '(#:files ("corfu-doc.el")))
-    (propagated-inputs (list emacs-corfu))
-    (home-page "https://github.com/galeo/corfu-doc")
-    (synopsis "Documentation popup for Corfu")
-    (description
-     "Documentation at https://github.com/galeo/corfu-doc")
-    (license #f)))
-
 (define rewrite-elisp-packages
   (package-input-rewriting/spec
    `(("emacs-f" . ,(const emacs-f))
@@ -130,6 +105,9 @@
         emacs-kind-icon
         emacs-corfu-doc
         emacs-pcmpl-args
+
+        ;; snippets
+        emacs-tempel
 
         ;; company
 	    emacs-company
