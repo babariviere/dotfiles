@@ -29,6 +29,7 @@
 
 (use-package cape
   :init
+  ;; TODO: add them per buffer like tempel
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-tex)
   (add-to-list 'completion-at-point-functions #'cape-ispell)
