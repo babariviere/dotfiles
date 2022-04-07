@@ -7,6 +7,7 @@
   #:use-module (gnu packages gl)
   #:use-module (gnu packages gstreamer)
   #:use-module (gnu packages image)
+  #:use-module (gnu packages image-viewers)
   #:use-module (gnu packages lisp)
   #:use-module (gnu packages lisp-xyz)
   #:use-module (gnu packages pulseaudio)
@@ -79,6 +80,7 @@ fi
                          picom
                          pamixer
                          flameshot
+                         feh
 
                          ;; hardware acceleration
                          mesa
