@@ -54,7 +54,6 @@
 (define %elisp-packages
   (map rewrite-elisp-packages
        (list
-        ;; emacs-doom-modeline
 	    emacs-helpful
 	    emacs-use-package
 	    emacs-which-key
@@ -149,16 +148,12 @@
 	    emacs-org-edna
         emacs-org-modern
 	    emacs-org-superstar
-        ;; emacs-evil-org
 	    emacs-org-roam
 
 	    emacs-nix-mode
 	    emacs-nix-update
 
-        ;; emacs-perspective
-        ;; emacs-persp-projectile
-
-	    emacs-python-mode
+        emacs-python-mode
 	    emacs-poetry
 	    emacs-lsp-python-ms
 
@@ -181,7 +176,6 @@
 	    emacs-editorconfig
 	    emacs-git-auto-commit-mode
 	    emacs-zoom
-        ;; emacs-pinentry
 	    emacs-crux
 	    emacs-htmlize
 
