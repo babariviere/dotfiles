@@ -108,10 +108,6 @@
         ;; snippets
         emacs-tempel
 
-        ;; company
-	    emacs-company
-	    emacs-company-box
-
 	    emacs-csharp-mode
 
 	    emacs-yaml-mode
