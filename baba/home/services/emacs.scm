@@ -31,7 +31,6 @@
      ("emacs-markdown-mode" . ,(const emacs-markdown-mode))
      ("emacs-emacsql" . ,(const emacs-emacsql))
      ("emacs-emacsql-sqlite" . ,(const emacs-emacsql-sqlite))
-     ("emacs-yasnippet" . ,(const emacs-yasnippet))
      ("emacs-cider" . ,(const emacs-cider))
      ("emacs-org-contrib" . ,(const emacs-org-contrib))
      ("emacs-ht" . ,(const emacs-ht)))))
@@ -168,9 +167,6 @@
 	    emacs-lsp-python-ms
 
 	    emacs-smartparens
-
-	    emacs-yasnippet
-	    emacs-doom-snippets
 
 	    emacs-doom-themes
 	    emacs-kaolin-themes
