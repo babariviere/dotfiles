@@ -11,30 +11,20 @@
 (guix-emacs-autoload-packages)
 
 (custom-set-faces
- `(default ((nil :family "MonoLisa" :height 90)))
- `(fixed-pitch ((nil :family "MonoLisa"))))
+ `(default ((nil :family "Iosevka" :height 100 :width expanded)))
+ `(fixed-pitch ((nil :family "Iosevka")))
+ `(variable-pitch ((nil :family "FiraGO" :height 1.05)))
+ `(org-modern-symbol ((nil :family "Iosevka"))))
 
 (require 'modus-themes)
 
-;; These colors are inspired by:
-;; https://github.com/rakr/vim-two-firewatch
-;; https://simurai.com/projects/2016/01/01/duotone-themes
 (custom-set-variables
  '(modus-themes-mixed-fonts t)
  '(modus-themes-italic-constructs t)
  '(modus-themes-region nil)
  '(modus-themes-links '(neutral-underline))
  '(modus-themes-mode-line '(accented moody borderless))
- '(modus-themes-operandi-color-overrides '((fg-main . "#000000")
-					                       (bg-main . "#faf8f5")
-					                       (bg-region . "#efdfff")
-					                       (bg-inactive . "#e6e4e1")
-					                       (bg-hl-line . "#e6e4e1")))
- '(modus-themes-vivendi-color-overrides '((fg-main . "#fdf3ec")
-					                      (bg-main . "#24242d")
-					                      (bg-region . "#4f3d88")
-					                      (bg-inactive . "#2f2f3b")
-					                      (bg-hl-line . "#2f2f3b"))))
+ '(modus-themes-inhibit-reload t))
 
 (defun customize-modus-vivendi nil
   (custom-set-variables
@@ -47,7 +37,7 @@
 (advice-add 'modus-themes-load-vivendi :before 'customize-modus-vivendi)
 (advice-add 'modus-themes-load-operandi :before 'customize-modus-operandi)
 
-(modus-themes-load-operandi)
+(modus-themes-load-vivendi)
 
 ;; (require 'kaolin-themes)
 ;; (load-theme 'kaolin-valley-dark t)
