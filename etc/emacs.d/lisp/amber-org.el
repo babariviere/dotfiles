@@ -541,7 +541,25 @@ Examples:
   :hook ((org-mode . org-modern-mode)
          (org-agenda-finalize . org-modern-agenda))
   :config
-  (setq org-modern-variable-pitch nil)
+  (setq org-modern-variable-pitch nil
+        org-modern-label-border 1)
+
+  (defun amber/org-modern-face-tweaks ()
+    (modus-themes-with-colors
+      (custom-set-faces
+       `(org-modern-label ((,class :box (:line-width (-1 . ,org-modern-label-border) :color ,bg-main))))
+       `(org-modern-done ((,class :inherit org-modern-label :background ,bg-special-faint-mild :foreground ,green-alt-other)))
+       `(org-modern-priority ((,class :inherit (modus-themes-fixed-pitch org-modern-label) :height 0.9 :background ,bg-special-faint-calm :foreground ,magenta-alt-other)))
+       `(org-modern-statistics ((,class :inherit org-modern-label :background ,bg-special-faint-warm :foreground ,yellow-alt-other)))
+       `(org-modern-tag ((,class :inherit (modus-themes-fixed-pitch org-modern-label) :height 0.9 :background ,bg-special-faint-calm :foreground ,magenta)))
+       `(org-modern-todo ((,class :inherit (modus-themes-fixed-pitch org-modern-label) :height 0.9 :background ,bg-special-faint-warm :foreground ,red-alt-other)))
+       `(org-modern-date-active ((,class :inherit org-modern-label :background ,bg-alt :foreground ,fg-main)))
+       `(org-modern-date-inactive ((,class :inherit org-modern-date-active :foreground ,fg-dim)))
+       `(org-modern-time-active ((,class :inherit org-modern-label :background ,bg-active :foreground ,fg-main)))
+       `(org-modern-time-inactive ((,class :inherit org-modern-date-inactive))))))
+
+  (add-hook 'modus-themes-after-load-theme-hook #'amber/org-modern-face-tweaks)
+  (amber/org-modern-face-tweaks)
 
   (define-fringe-bitmap 'org-modern--block-begin
     (vconcat (make-vector 8 0) [#xFF] (make-vector 12 #x80)) nil nil 'top)

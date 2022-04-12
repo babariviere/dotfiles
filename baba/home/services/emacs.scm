@@ -185,6 +185,8 @@
 
         emacs-verb
 
+        emacs-mixed-pitch
+
         emacs-slack
         emacs-notmuch
 	    )))

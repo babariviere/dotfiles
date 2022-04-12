@@ -12,9 +12,9 @@
 
 (custom-set-faces
  `(default ((nil :family "Iosevka" :height 100 :width expanded)))
- `(fixed-pitch ((nil :family "Iosevka")))
- `(variable-pitch ((nil :family "FiraGO" :height 1.05)))
- `(org-modern-symbol ((nil :family "Iosevka"))))
+ `(fixed-pitch ((nil :family "Iosevka" :width expanded)))
+ `(variable-pitch ((nil :family "FiraGO" :height 1.05 :weight normal)))
+ `(org-modern-symbol ((nil :family "Iosevka" :width normal))))
 
 (require 'modus-themes)
 
@@ -209,6 +209,11 @@ ARGS are the arguments passed to `browse-url`."
   ("C-'" . avy-goto-char-2)
   ("M-g f" . avy-goto-line)
   ("M-g w" . avy-goto-word-1))
+
+(use-package mixed-pitch
+  :hook (org-mode . mixed-pitch-mode)
+  :config
+  (setq mixed-pitch-set-height 1))
 
 (global-unset-key (kbd "C-z"))
 
