@@ -69,4 +69,6 @@
                         add-font-config-file)
                        (service-extension
                         home-profile-service-type
-                        font-packages)))))
+                        font-packages)))
+                (description
+                 "Provides configuration file to setup default system fonts.")))
