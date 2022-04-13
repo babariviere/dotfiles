@@ -59,7 +59,7 @@ boolean, number, symbol, or gexp). Provided term is:\n ~a") lst)))
 
 
 (define (add-foot-configuration config)
-  `(("config/foot/foot.ini"
+  `(("foot/foot.ini"
      ,(mixed-text-file
        "foot.ini"
        (serialize-configuration config home-foot-configuration-fields)))))
@@ -73,7 +73,7 @@ boolean, number, symbol, or gexp). Provided term is:\n ~a") lst)))
    (name 'home-foot)
    (extensions
     (list (service-extension
-	   home-files-service-type
+	   home-xdg-configuration-files-service-type
 	   add-foot-configuration)
 	  (service-extension
 	   home-profile-service-type

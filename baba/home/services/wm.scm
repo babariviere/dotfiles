@@ -26,7 +26,7 @@
   (list
    (simple-service 'stumpwm-xsession
 		           home-files-service-type
-		           `(("xsession"
+		           `((".xsession"
 		              ,(computed-file
 			            "xsession"
 			            #~(begin
@@ -55,8 +55,10 @@ fi
 ~a/bin/stumpwm"
                                         #$picom
 					                    #$stump)))
-			                (chmod #$output #o555))))
-                     ("config/picom.conf" ,(local-file (string-append %channel-root "/etc/picom.conf")))))
+			                (chmod #$output #o555))))))
+   (simple-service 'picom-config
+                   home-xdg-configuration-files-service-type
+                   `(("picom.conf" ,(local-file (string-append %channel-root "/etc/picom.conf")))))
    (simple-service 'setup-sbcl
                    home-shell-profile-service-type
                    (list (plain-file "setup-sbcl"
@@ -98,6 +100,6 @@ fi
                          ))
    (simple-service 'stumpwm-files
 		           home-files-service-type
-		           `(("stumpwm.d/init.lisp"
+		           `((".stumpwm.d/init.lisp"
 		              ,(local-file
 			            (string-append %channel-root "/etc/stumpwm.d/init.lisp")))))))

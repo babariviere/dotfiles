@@ -201,7 +201,8 @@
   (define (enter? name stat result)
     #t)
   (define (leaf name stat result)
-    (cons `(,(string-drop name (+ (string-length config-root) 1)) ,(local-file name)) result))
+    ;; Trim %channel-root/etc/ from the path and prefix it with .
+    (cons `(,(string-append "." (string-drop name (+ (string-length config-root) 1))) ,(local-file name)) result))
 
   (define (down name stat result) result)
   (define (up name stat result) result)

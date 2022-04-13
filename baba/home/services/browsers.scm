@@ -8,8 +8,8 @@
 
 (define nyxt-service
   (list (simple-service 'nyxt-init
-                        home-files-service-type
-                        `(("config/nyxt/init.lisp"
+                        home-xdg-configuration-files-service-type
+                        `(("nyxt/init.lisp"
                            ,(local-file (string-append %channel-root "/etc/nyxt/init.lisp")))))
         (simple-service 'nyxt-profile
                         home-profile-service-type

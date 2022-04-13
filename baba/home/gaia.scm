@@ -145,7 +145,7 @@
                 (service home-brycus-fish-service-type)
                 (simple-service 'gpg-agent-conf
                                 home-files-service-type
-                                `(("gnupg/gpg-agent.conf"
+                                `((".gnupg/gpg-agent.conf"
                                    ,(computed-file
                                      "gpg-agent.conf"
                                      #~(begin
