@@ -3,7 +3,7 @@
         (url "https://git.savannah.gnu.org/git/guix.git")
         (branch "master")
         (commit
-          "9bd4ed3dded7b770f1989f6084d565f7086fdcd3")
+          "fc89b50b7bb2edbc38b20adf8c899934dedcb6c3")
         (introduction
           (make-channel-introduction
             "9edb3f66fd807b096b48283debdcddccfea34bad"
@@ -14,7 +14,7 @@
         (url "https://github.com/babariviere/dotfiles")
         (branch "guix")
         (commit
-          "5afeef79588c4b2a4bf19396d8445acff6ec61bc")
+          "9f5553b4e8be543bb3826ccb2997d072b40e518b")
         (introduction
           (make-channel-introduction
             "78e60924c559697195eddafb5dc7f47a86a12d6e"
@@ -25,13 +25,13 @@
         (url "https://git.sr.ht/~abcdw/rde")
         (branch "master")
         (commit
-          "766148ede072c881637ca04c5a822725a7be71dc"))
+          "e1fcd70bd14d503d9e4d901b5814e6d9769e1976"))
       (channel
         (name 'flat)
         (url "https://github.com/flatwhatson/guix-channel.git")
         (branch "master")
         (commit
-          "81bd9f00e7e4677a4deaeb05415c901528521ba9")
+          "f43c67e47f1ca83d045f35c31772c5e4eb64b2a2")
         (introduction
           (make-channel-introduction
             "33f86a4b48205c0dc19d7c036c85393f0766f806"
@@ -42,7 +42,7 @@
         (url "https://gitlab.com/nonguix/nonguix")
         (branch "master")
         (commit
-          "d3a550dbf2cd099a1e20ed5407c443e396b5d44b")
+          "dae8645813454a687b24846a8126bd758fbdc8c9")
         (introduction
           (make-channel-introduction
             "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
@@ -64,7 +64,7 @@
         (url "https://github.com/babariviere/guix-emacs")
         (branch "master")
         (commit
-          "7f1ef604aacb90dcca3c1ea0146ccad39d2b7ab2")
+          "30738f7395dc9fc14e2a6cb2884a4decdde283b8")
         (introduction
           (make-channel-introduction
             "72ca4ef5b572fea10a4589c37264fa35d4564783"
