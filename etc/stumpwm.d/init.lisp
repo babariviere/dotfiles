@@ -32,11 +32,11 @@
 ;; Fonts
 
 (load-module "ttf-fonts")
-(setf xft:*font-dirs* '("~/.local/share/fonts")
-      clx-truetype:+font-cache-filename+ "~/.local/share/fonts/font-cache.sexp")
+(setf xft:*font-dirs* '("~/.local/share/fonts" ".guix-home/profile/share/fonts/truetype/")
+      xft:+font-cache-filename+ "~/.local/share/fonts/font-cache.sexp")
 (xft:cache-fonts)
 
-(set-font (make-instance 'xft:font :family "MonoLisa" :subfamily "Regular" :size 10))
+(set-font (make-instance 'xft:font :family "Iosevka Extended" :subfamily "Regular" :size 11))
 
 ;; Misc
 
