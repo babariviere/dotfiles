@@ -229,7 +229,7 @@
 			            (emacs-files))
         (simple-service 'emacs-fonts
                         home-profile-service-type
-                        (list font-fira-go font-iosevka))
+                        (list font-fira-go font-iosevka font-iosevka-aile))
 	    (simple-service 'emacs-org-protocol
 			            home-xdg-mime-applications-service-type
 			            (home-xdg-mime-applications-configuration

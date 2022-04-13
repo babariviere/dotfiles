@@ -13,7 +13,7 @@
 (custom-set-faces
  `(default ((nil :family "Iosevka" :height 100 :width expanded)))
  `(fixed-pitch ((nil :family "Iosevka" :width expanded)))
- `(variable-pitch ((nil :family "FiraGO" :height 1.05 :weight normal)))
+ `(variable-pitch ((nil :family "Iosevka Aile" :height 1.05 :weight normal)))
  `(org-modern-symbol ((nil :family "Iosevka" :width normal))))
 
 (require 'modus-themes)
