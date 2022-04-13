@@ -1,6 +1,7 @@
 (define-module (baba home services emacs)
   #:use-module (baba)
   #:use-module (baba packages emacs)
+  #:use-module (baba packages fonts)
   #:use-module (gnu packages emacs-xyz)
   #:use-module ((gnu packages emacs-xyz) #:prefix e:)
   #:use-module (emacs build-system melpa)
