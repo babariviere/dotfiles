@@ -1,7 +1,9 @@
 (define-module (baba home geras)
+  #:use-module (baba home services fonts)
   #:use-module (baba home services browsers)
   #:use-module (baba home services emacs)
   #:use-module (baba home services wm)
+  #:use-module (baba packages fonts)
   #:use-module (baba packages security)
   #:use-module (gnu home)
   #:use-module (gnu home services shells)
@@ -23,4 +25,9 @@
            (simple-service 'setup-nix
                            home-shell-profile-service-type
                            (list (plain-file "setup-nix"
-                                             ". $HOME/.profile-nix")))))))
+                                             ". $HOME/.profile-nix")))
+           (service home-font-service-type
+                    (home-font-configuration
+                     (sans-serif (make-font-spec font-iosevka-aile "Iosevka Aile"))
+                     (serif (make-font-spec font-iosevka-etoile "Iosevka Etoile"))
+                     (monospace (make-font-spec font-iosevka "Iosevka Extended"))))))))
