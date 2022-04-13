@@ -13,8 +13,7 @@
 ;; TODO: extend service to source home-manager variables.
 (home-environment
  (packages
-  (list shepherd
-        keychain
+  (list keychain
         pavucontrol))
  (services
   (append emacs-service
@@ -24,4 +23,4 @@
            (simple-service 'setup-nix
                            home-shell-profile-service-type
                            (list (plain-file "setup-nix"
-											 ". $HOME/.profile-nix")))))))
+                                             ". $HOME/.profile-nix")))))))
