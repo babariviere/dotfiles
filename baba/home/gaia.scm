@@ -23,6 +23,7 @@
   #:use-module (gnu packages gcc)
   #:use-module (gnu packages gnupg)
   #:use-module (gnu packages mail)
+  #:use-module (gnu packages package-management)
   #:use-module (gnu packages rust-apps)
   #:use-module (gnu packages shellutils)
   #:use-module (gnu packages sqlite)
@@ -127,7 +128,7 @@
 ;; TODO: make service for mbsync and notmuch
 (home-environment
  (packages
-  (list htop isync notmuch bat direnv keychain gnupg firefox))
+  (list htop isync notmuch bat direnv keychain gnupg firefox flatpak))
  (services
   (append emacs-service
           nyxt-service
