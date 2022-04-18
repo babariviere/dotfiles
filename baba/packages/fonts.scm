@@ -1,5 +1,7 @@
 (define-module (baba packages fonts)
   #:use-module (guix download)
+  #:use-module (guix gexp)
+  #:use-module (guix git-download)
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (guix packages)
   #:use-module (guix build-system font)
@@ -186,3 +188,37 @@ programming.  Iosevka is completely generated from its source code.")
                            "/ttf-iosevka-etoile-" version ".zip"))
        (sha256
         (base32 "1gnim2kng5gd88jc2miz5dj3pmfm1bqxnq2mgfc2wdf967dzyr8j"))))))
+
+
+
+(define-public font-biosevka
+  (package
+   (name "font-biosevka")
+   (version "15.2.0")
+   (source
+    (origin
+     (method git-fetch)
+     (uri (git-reference
+           (url "https://github.com/babariviere/biosevka")
+           (commit (string-append "v" version))))
+     (file-name (git-file-name name version))
+     (sha256
+      (base32 "0hc6kmpkpzxhc09phx111gpv0vawwm69zxv6m211k2pzvvm15ify"))))
+   (build-system font-build-system)
+   (arguments
+    `(#:phases
+      (modify-phases %standard-phases
+                     (replace 'unpack
+                              (lambda* (#:key source #:allow-other-keys)
+                                (use-modules ((guix build gnu-build-system) #:prefix gnu:))
+                                (define gnu:unpack (assoc-ref gnu:%standard-phases 'unpack))
+                                (gnu:unpack #:source source)
+                                (chdir "dist/biosevka/ttf"))))))
+   (home-page "https://be5invis.github.io/Iosevka/")
+   (synopsis "Coders' typeface, built from code")
+   (description
+    "Iosevka is a slender monospace sans-serif or slab-serif typeface inspired
+by Pragmata Pro, M+, and PF DIN Mono, designed to be the ideal font for
+programming.  Iosevka is completely generated from its source code.")
+   (license (list license:silofl1.1 ;build artifacts (i.e., the fonts)
+                  license:bsd-3))))

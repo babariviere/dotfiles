@@ -11,10 +11,9 @@
 (guix-emacs-autoload-packages)
 
 (custom-set-faces
- `(default ((nil :family "Iosevka" :height 100 :width expanded)))
- `(fixed-pitch ((nil :family "Iosevka" :width expanded)))
- `(variable-pitch ((nil :family "Iosevka Aile" :height 1.05 :weight normal)))
- `(org-modern-symbol ((nil :family "Iosevka" :width normal))))
+ `(default ((nil :family "Biosevka" :height 105)))
+ `(fixed-pitch ((nil :family "Biosevka")))
+ `(variable-pitch ((nil :family "sans-serif" :height 1.05 :weight normal))))
 
 (require 'modus-themes)
 

@@ -36,7 +36,7 @@
       xft:+font-cache-filename+ "~/.local/share/fonts/font-cache.sexp")
 (xft:cache-fonts)
 
-(set-font (make-instance 'xft:font :family "Iosevka Extended" :subfamily "Regular" :size 11))
+(set-font (make-instance 'xft:font :family "Biosevka" :subfamily "Regular" :size 11))
 
 ;; Misc
 

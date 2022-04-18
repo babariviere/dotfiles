@@ -8,6 +8,7 @@
   #:use-module (gnu home)
   #:use-module (gnu home services shells)
   #:use-module (gnu packages admin)
+  #:use-module (gnu packages fonts)
   #:use-module (gnu packages pulseaudio)
   #:use-module (gnu services)
   #:use-module (guix gexp))
@@ -28,6 +29,6 @@
                                              ". $HOME/.profile-nix")))
            (service home-font-service-type
                     (home-font-configuration
-                     (sans-serif (make-font-spec font-iosevka-aile "Iosevka Aile"))
-                     (serif (make-font-spec font-iosevka-etoile "Iosevka Etoile"))
-                     (monospace (make-font-spec font-iosevka "Iosevka Extended"))))))))
+                     (sans-serif (make-font-spec font-abattis-cantarell "Cantarell"))
+                     (serif (make-font-spec font-liberation "Times New Roman"))
+                     (monospace (make-font-spec font-biosevka "Biosevka"))))))))
