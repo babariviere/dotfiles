@@ -203,7 +203,7 @@ programming.  Iosevka is completely generated from its source code.")
            (commit (string-append "v" version))))
      (file-name (git-file-name name version))
      (sha256
-      (base32 "0hc6kmpkpzxhc09phx111gpv0vawwm69zxv6m211k2pzvvm15ify"))))
+      (base32 "0s7jf2qxnzljlyyqdxgjgawigpkdyhhxlsibwl5gmi3q14szxds7"))))
    (build-system font-build-system)
    (arguments
     `(#:phases
