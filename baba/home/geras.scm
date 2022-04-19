@@ -12,14 +12,16 @@
   #:use-module (gnu packages package-management)
   #:use-module (gnu packages pulseaudio)
   #:use-module (gnu services)
-  #:use-module (guix gexp))
+  #:use-module (guix gexp)
+  #:use-module (nongnu packages mozilla))
 
 ;; TODO: extend service to source home-manager variables.
 (home-environment
  (packages
   (list keychain
         pavucontrol
-        flatpak))
+        flatpak
+        firefox))
  (services
   (append emacs-service
           nyxt-service
