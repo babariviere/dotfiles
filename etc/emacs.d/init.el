@@ -11,7 +11,7 @@
 (guix-emacs-autoload-packages)
 
 (custom-set-faces
- `(default ((nil :family "Biosevka" :height 105)))
+ `(default ((nil :family "Biosevka" :height 100)))
  `(fixed-pitch ((nil :family "Biosevka")))
  `(variable-pitch ((nil :family "sans-serif" :height 1.05 :weight normal))))
 
