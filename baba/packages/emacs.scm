@@ -36,67 +36,86 @@
   #:use-module (srfi srfi-1)
   #:use-module (srfi srfi-26))
 
+#|
+guix repl <<EOF
+(use-modules (guix base32)
+             (guix git)
+             (guix git-download)
+             (guix hash)
+             (guix packages)
+             (guix store)
+             (baba packages emacs))
+
+(let* ((source (package-source emacs-native-comp))
+       (url (git-reference-url (origin-uri source))))
+  (call-with-values (lambda () (update-cached-checkout url))
+    (lambda (path commit starting-commit?)
+      (let ((hash (file-hash* path)))
+        (format #t "commit: ~A~%hash: ~A~%" commit (bytevector->nix-base32-string hash))))))
+EOF
+|#
+
 (define emacs-with-native-comp
   (lambda* (emacs gcc #:optional full-aot)
     (let ((libgccjit (libgccjit-for-gcc gcc)))
       (package
-        (inherit emacs)
-        (source
-         (origin
-           (inherit (package-source emacs))
-           (patches
-            (append (search-patches "emacs-native-comp-exec-path.patch")
-                    (filter
-                     (lambda (f)
-                       (not (any (cut string-match <> f)
-                                 '("/emacs-exec-path\\.patch$"
-                                   "/emacs-ignore-empty-xim-styles\\.patch$"))))
-                     (origin-patches (package-source emacs)))))))
-        (arguments
-         (substitute-keyword-arguments (package-arguments emacs)
-           ((#:make-flags flags ''())
-            (if full-aot
-                `(cons* "NATIVE_FULL_AOT=1" ,flags)
-                flags))
-           ((#:configure-flags flags)
-            `(cons* "--with-native-compilation" "--with-json" "--with-xinput2" "--with-sqlite3" ,flags))
-           ((#:phases phases)
-            `(modify-phases ,phases
-               ;; Add build-time library paths for libgccjit.
-               (add-before 'configure 'set-libgccjit-path
-                 (lambda* (#:key inputs #:allow-other-keys)
-                   (let ((libgccjit-libdir
-                          (string-append (assoc-ref inputs "libgccjit")
-                                         "/lib/gcc/" %host-type "/"
-                                         ,(package-version libgccjit) "/")))
-                     (setenv "LIBRARY_PATH"
-                             (string-append libgccjit-libdir ":"
-                                            (getenv "LIBRARY_PATH"))))
-                   #t))
-               ;; Add runtime library paths for libgccjit.
-               (add-after 'unpack 'patch-driver-options
-                 (lambda* (#:key inputs #:allow-other-keys)
-                   (substitute* "lisp/emacs-lisp/comp.el"
-                     (("\\(defcustom native-comp-driver-options nil")
-                      (format
-                       #f "(defcustom native-comp-driver-options '(~s ~s ~s ~s)"
-                       (string-append
-                        "-B" (assoc-ref inputs "binutils") "/bin/")
-                       (string-append
-                        "-B" (assoc-ref inputs "glibc") "/lib/")
-                       (string-append
-                        "-B" (assoc-ref inputs "libgccjit") "/lib/")
-                       (string-append
-                        "-B" (assoc-ref inputs "libgccjit") "/lib/gcc/"))))
-                   #t))))))
-        (native-inputs
-         `(("gcc" ,gcc)
-           ,@(package-native-inputs emacs)))
-        (inputs
-         `(("glibc" ,glibc)
-           ("libgccjit" ,libgccjit)
-           ("libxcomposite" ,libxcomposite) ;; FIXME belongs upstream
-           ,@(package-inputs emacs)))))))
+       (inherit emacs)
+       (source
+        (origin
+         (inherit (package-source emacs))
+         (patches
+          (append (search-patches "emacs-native-comp-exec-path.patch")
+                  (filter
+                   (lambda (f)
+                     (not (any (cut string-match <> f)
+                               '("/emacs-exec-path\\.patch$"
+                                 "/emacs-ignore-empty-xim-styles\\.patch$"))))
+                   (origin-patches (package-source emacs)))))))
+       (arguments
+        (substitute-keyword-arguments (package-arguments emacs)
+                                      ((#:make-flags flags ''())
+                                       (if full-aot
+                                           `(cons* "NATIVE_FULL_AOT=1" ,flags)
+                                           flags))
+                                      ((#:configure-flags flags)
+                                       `(cons* "--with-native-compilation" "--with-json" "--with-xinput2" "--with-sqlite3" ,flags))
+                                      ((#:phases phases)
+                                       `(modify-phases ,phases
+                                                       ;; Add build-time library paths for libgccjit.
+                                                       (add-before 'configure 'set-libgccjit-path
+                                                                   (lambda* (#:key inputs #:allow-other-keys)
+                                                                     (let ((libgccjit-libdir
+                                                                            (string-append (assoc-ref inputs "libgccjit")
+                                                                                           "/lib/gcc/" %host-type "/"
+                                                                                           ,(package-version libgccjit) "/")))
+                                                                       (setenv "LIBRARY_PATH"
+                                                                               (string-append libgccjit-libdir ":"
+                                                                                              (getenv "LIBRARY_PATH"))))
+                                                                     #t))
+                                                       ;; Add runtime library paths for libgccjit.
+                                                       (add-after 'unpack 'patch-driver-options
+                                                                  (lambda* (#:key inputs #:allow-other-keys)
+                                                                    (substitute* "lisp/emacs-lisp/comp.el"
+                                                                                 (("\\(defcustom native-comp-driver-options nil")
+                                                                                  (format
+                                                                                   #f "(defcustom native-comp-driver-options '(~s ~s ~s ~s)"
+                                                                                   (string-append
+                                                                                    "-B" (assoc-ref inputs "binutils") "/bin/")
+                                                                                   (string-append
+                                                                                    "-B" (assoc-ref inputs "glibc") "/lib/")
+                                                                                   (string-append
+                                                                                    "-B" (assoc-ref inputs "libgccjit") "/lib/")
+                                                                                   (string-append
+                                                                                    "-B" (assoc-ref inputs "libgccjit") "/lib/gcc/"))))
+                                                                    #t))))))
+       (native-inputs
+        `(("gcc" ,gcc)
+          ,@(package-native-inputs emacs)))
+       (inputs
+        `(("glibc" ,glibc)
+          ("libgccjit" ,libgccjit)
+          ("libxcomposite" ,libxcomposite) ;; FIXME belongs upstream
+          ,@(package-inputs emacs)))))))
 
 (define emacs-from-git
   (lambda* (emacs #:key pkg-name pkg-version pkg-revision git-repo git-commit checksum)
@@ -121,7 +140,7 @@
    (emacs-with-native-comp emacs-next gcc-11 'full-aot)
    #:pkg-name "emacs-native-comp"
    #:pkg-version "29.0.50"
-   #:pkg-revision "201"
+   #:pkg-revision "202"
    #:git-repo "https://git.savannah.gnu.org/git/emacs.git"
-   #:git-commit "78784ccfadaee1c86207ecc360db7236285713f5"
-   #:checksum "04wm5x6xqihajbz8cjq8k1mbhla47za4sdxgcqpql0my9s0y7vk5"))
+   #:git-commit "7f2ef27f49e2ea22cf38b84efc8e927c0240f16d"
+   #:checksum "09qcbjb1gnc460y8c5myj14ln82mfcapmrrpcgypvwgj51j8yj0r"))
