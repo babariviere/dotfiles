@@ -54,7 +54,7 @@
 ;; Modeline
 
 (setf *group-format* "%t"
-      *window-format* "%n: %c"
+      *window-format* "^B %n ^b %20t "
       *time-modeline-string* "%Y-%m-%e %H:%M")
 
 (load-module "battery-portable")
