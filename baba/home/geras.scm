@@ -9,6 +9,7 @@
   #:use-module (gnu home services shells)
   #:use-module (gnu packages admin)
   #:use-module (gnu packages fonts)
+  #:use-module (gnu packages package-management)
   #:use-module (gnu packages pulseaudio)
   #:use-module (gnu services)
   #:use-module (guix gexp))
@@ -17,7 +18,8 @@
 (home-environment
  (packages
   (list keychain
-        pavucontrol))
+        pavucontrol
+        flatpak))
  (services
   (append emacs-service
           nyxt-service
