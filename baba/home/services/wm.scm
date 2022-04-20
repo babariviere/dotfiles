@@ -17,10 +17,15 @@
   #:use-module (gnu packages xdisorg)
   #:use-module (gnu services)
   #:use-module (guix gexp)
+  #:use-module (guix packages)
   #:use-module (nongnu packages video)
   #:export (stumpwm-service))
 
-(define stump stumpwm+slynk)
+(define latest-stumpwm
+  (package-input-rewriting
+   `((,stumpwm . ,stumpwm-next))))
+
+(define stump (latest-stumpwm stumpwm+slynk))
 
 (define stumpwm-service
   (list
@@ -65,39 +70,42 @@ fi
                                      "export SBCL_HOME=\"$HOME/.guix-home/profile/lib/sbcl\"")))
    (simple-service 'stumpwm-profile
 		           home-profile-service-type
-		           (list stump `(,stumpwm "lib")
-                         sbcl-stumpwm-battery-portable
-                         sbcl-stumpwm-cpu
-                         sbcl-stumpwm-mem
-                         sbcl-stumpwm-net
-                         sbcl-stumpwm-notify
-                         sbcl-stumpwm-stumptray
-                         sbcl-stumpwm-ttf-fonts
-                         sbcl-stumpwm-wifi
-                         sbcl
+                   (append
+		            (map latest-stumpwm (list sbcl-stumpwm-battery-portable
+                                              sbcl-stumpwm-cpu
+                                              sbcl-stumpwm-mem
+                                              sbcl-stumpwm-net
+                                              sbcl-stumpwm-notify
+                                              sbcl-stumpwm-stumptray
+                                              sbcl-stumpwm-ttf-fonts
+                                              sbcl-stumpwm-wifi
+                                              sbcl-stumpwm-prescient
+                                              sbcl))
+                    (list stump `(,stumpwm-next "lib")
+                          sbcl
 
-                         ;; tools
-                         alacritty
-                         autorandr
-                         picom
-                         pamixer
-                         flameshot
-                         feh
+                          ;; tools
+                          alacritty
+                          autorandr
+                          picom
+                          pamixer
+                          flameshot
+                          feh
 
-                         ;; hardware acceleration
-                         mesa
-                         gstreamer
-                         gst-plugins-bad
-                         gst-plugins-base
-                         gst-plugins-good
-                         gst-plugins-ugly
-                         gst-libav
-                         intel-media-driver
-                         intel-vaapi-driver
-                         libva-utils
-                         libvdpau
-                         libvdpau-va-gl
-                         ))
+                          ;; hardware acceleration
+                          mesa
+                          gstreamer
+                          gst-plugins-bad
+                          gst-plugins-base
+                          gst-plugins-good
+                          gst-plugins-ugly
+                          gst-libav
+                          intel-media-driver
+                          intel-vaapi-driver
+                          libva-utils
+                          libvdpau
+                          libvdpau-va-gl
+                          )))
    (simple-service 'stumpwm-files
 		           home-files-service-type
 		           `((".stumpwm.d/init.lisp"
