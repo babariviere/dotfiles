@@ -6,6 +6,7 @@
   #:use-module (baba packages fonts)
   #:use-module (baba packages security)
   #:use-module (gnu home)
+  #:use-module (gnu home services)
   #:use-module (gnu home services shells)
   #:use-module (gnu packages admin)
   #:use-module (gnu packages fonts)
@@ -35,4 +36,8 @@
                     (home-font-configuration
                      (sans-serif (make-font-spec font-abattis-cantarell "Cantarell"))
                      (serif (make-font-spec font-liberation "Times New Roman"))
-                     (monospace (make-font-spec font-biosevka "Biosevka"))))))))
+                     (monospace (make-font-spec font-biosevka "Biosevka"))))
+           (simple-service 'setup-flatpak
+                           home-environment-variables-service-type
+                           `(("XDG_DATA_DIRS" . "$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS")
+                             ("PATH" . "$HOME/.local/share/flatpak/exports/bin:$PATH")))))))
