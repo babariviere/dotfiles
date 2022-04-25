@@ -87,6 +87,10 @@ Section \"InputClass\"
 EndSection
 ")
 
+(define %keyboard-layout
+  (keyboard-layout
+   "us" "altgr-intl"))
+
 (define services
   (cons*
    (service nix-service-type)
@@ -164,9 +168,7 @@ EndSection
                            (string-join %blacklist-modules
                                         ","))
             (delete "quiet" %default-kernel-arguments)))
-    (keyboard-layout (keyboard-layout
-                      "us" "altgr-intl"
-                      #:options '("ctrl:nocaps")))
+    (keyboard-layout %keyboard-layout)
     (firmware (list linux-firmware))
     (initrd (lambda (file-systems . rest)
               (apply microcode-initrd file-systems
