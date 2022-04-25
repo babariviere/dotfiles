@@ -219,3 +219,5 @@ ARGS are the arguments passed to `browse-url`."
 ;; TODO: >:( You lazy f*cker
 (require 'notmuch)
 (require 'slack)
+
+(pixel-scroll-precision-mode)
