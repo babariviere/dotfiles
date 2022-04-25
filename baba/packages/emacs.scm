@@ -37,7 +37,7 @@
   #:use-module (srfi srfi-26))
 
 #|
-guix repl <<EOF
+guix repl -L . <<EOF
 (use-modules (guix base32)
              (guix git)
              (guix git-download)
@@ -140,7 +140,7 @@ EOF
    (emacs-with-native-comp emacs-next gcc-11 'full-aot)
    #:pkg-name "emacs-native-comp"
    #:pkg-version "29.0.50"
-   #:pkg-revision "202"
+   #:pkg-revision "203"
    #:git-repo "https://git.savannah.gnu.org/git/emacs.git"
-   #:git-commit "7f2ef27f49e2ea22cf38b84efc8e927c0240f16d"
-   #:checksum "09qcbjb1gnc460y8c5myj14ln82mfcapmrrpcgypvwgj51j8yj0r"))
+   #:git-commit "d932c402aa44c50af60085193b489bc1979cfbc3"
+   #:checksum "1xcliazj16p7f64bhj38gpj7q11ps3w7c2zr14gl21p9a3gakydk"))
