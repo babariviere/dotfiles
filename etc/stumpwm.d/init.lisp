@@ -105,7 +105,7 @@
 (load-module "stumptray")
 (stumptray:stumptray)
 
-(require :stumpwm-prescient)
+(asdf:load-system :stumpwm-prescient)
 (setf *input-refine-candidates-fn* 'stumpwm-prescient:refine-input)
 
 ;; Notifications
