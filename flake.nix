@@ -13,10 +13,6 @@
     flow.url = "github:babariviere/flow";
     utils.url = "github:numtide/flake-utils";
     deploy.url = "github:serokell/deploy-rs";
-    agenix.url = "github:ryantm/agenix";
-    agenix-cli.url = "github:cole-h/agenix-cli";
-    agenix-cli.inputs.nixpkgs.follows = "nixpkgs";
-    agenix-cli.inputs.mozilla.url = "github:mozilla/nixpkgs-mozilla";
     hosts-denylist = {
       url = "github:StevenBlack/hosts";
       flake = false;
@@ -116,7 +112,6 @@
             [ darwinConfiguration home-manager.darwinModules.home-manager ];
           linux.modules = [
             home-manager.nixosModules.home-manager
-            inputs.agenix.nixosModules.age
           ];
         };
       };
@@ -187,7 +182,6 @@
 
         devShell = pkgs.mkShell {
           buildInputs = [
-            inputs.agenix-cli.defaultPackage."${system}"
             deploy.defaultPackage."${system}"
           ];
         };
