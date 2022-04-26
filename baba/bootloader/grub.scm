@@ -57,7 +57,6 @@
       (use-modules (ice-9 regex) (ice-9 textual-ports) (srfi srfi-1))
 
       (define (recursive-readlink l)
-        (format #t "~A~%" (stat:type (lstat l)))
         (if (eq? (stat:type (lstat l)) 'symlink)
             (recursive-readlink (readlink l))
             l))
