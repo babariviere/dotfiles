@@ -79,8 +79,8 @@ and begin
   set --prepend fish_function_path "
                         #$fish-foreign-env
                         "/share/fish/functions
-  fenv source $HOME/.guix-home/setup-environment
-  $HOME/.guix-home/on-first-login
+  fenv source $HOME/.profile
+  set -e fish_function_path[1]
   set -g __fish_login_config_sourced 1
 end\n\n")
        (serialize-configuration

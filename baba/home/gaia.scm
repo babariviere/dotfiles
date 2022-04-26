@@ -11,6 +11,7 @@
   #:use-module (gnu home)
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
+  #:use-module (baba home services shells)
   #:use-module (gnu home-services emacs)
   #:use-module (gnu home-services gnupg)
   #:use-module (gnu home-services version-control)
@@ -140,7 +141,7 @@
                          (home-fish-configuration
                           (config
                            (list
-                            (local-file (string-append %channel-root "/etc/fish/config.fish"))))
+                            (local-file (etc-file "/fish/config.fish"))))
                           (abbreviations '(("gco" . "git checkout")
                                            ("gs" . "git status")
                                            ("gsr" . "sudo -E guix system reconfigure")
