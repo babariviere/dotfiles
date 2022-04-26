@@ -158,7 +158,8 @@
                                            (lambda ()
                                              (format #t "
 pinentry-program ~a/bin/pinentry
-max-cache-ttl 86400"
+max-cache-ttl 86400
+enable-ssh-support"
                                                      #$pinentry-gtk2))))))))
                 (service home-git-service-type
                          (home-git-configuration
