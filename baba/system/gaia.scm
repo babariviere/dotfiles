@@ -24,6 +24,7 @@
   #:use-module (gnu packages linux)
   #:use-module (gnu packages lisp)
   #:use-module (gnu packages lisp-xyz)
+  #:use-module (gnu packages security-token)
   #:use-module (gnu packages shells)
   #:use-module (gnu packages ssh)
   #:use-module (gnu packages suckless)
@@ -36,6 +37,7 @@
   #:use-module (gnu services desktop)
   #:use-module (gnu services nix)
   #:use-module (gnu services pm)
+  #:use-module (gnu services security-token)
   #:use-module (gnu services shepherd)
   #:use-module (gnu packages xdisorg)
   #:use-module (gnu services xorg)
@@ -112,6 +114,8 @@ EndSection
              (extensions
               (list cups-filters epson-inkjet-printer-escpr hplip-minimal))))
    (service lxd-service-type)
+   (service pcscd-service-type)
+   (udev-rules-service 'yubikey yubikey-personalization)
    (bluetooth-service #:auto-enable? #t)
    (modify-services
     (remove (lambda (service)
