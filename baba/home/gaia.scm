@@ -167,8 +167,8 @@ enable-ssh-support"
                           (config
                            `((user
                               ((name . "Bastien Riviere")
-                               (email . "babathriviere@gmail.com")
-                               (signingKey . "F9B7864F2AB46F18")))
+                               (email . "me@babariviere.com")
+                               (signingKey . "39035CC0B75D1142")))
                              (github
                               ((user . "babariviere")))
                              (remote
