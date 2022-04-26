@@ -12,4 +12,4 @@
 	 %load-path)))
 
 (define (etc-file path)
-  (string-append %channel-root path))
+  (string-append %channel-root "/etc" path))
