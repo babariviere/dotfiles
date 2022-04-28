@@ -1,4 +1,6 @@
 (authorizations
   (version 0)
   (("261C A284 3452 FB01 F6DF  6CF4 F9B7 864F 2AB4 6F18"
+    (name "babathriviere"))
+   ("763A FB06 26F9 D719 5075  1B15 4E5F 0839 249F 162E"
     (name "babariviere"))))
