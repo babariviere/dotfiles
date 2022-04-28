@@ -566,22 +566,23 @@ Examples:
   (define-fringe-bitmap 'org-modern--block-end
     (vconcat (make-vector 12 #x80) [#xFF] (make-vector 8 0)) nil nil 'bottom))
 
-(use-package evil-org
-  :disabled
-  :after org
-  :hook (org-mode . evil-org-mode)
-  :config
-  (evil-org-set-key-theme))
-
-(use-package evil-org-agenda
-  :disabled
-  :after (evil-org org-agenda)
-  :config
-  (evil-org-agenda-set-keys))
-
 (with-eval-after-load 'org
   (require 'verb)
   (define-key org-mode-map (kbd "C-c C-r") verb-command-map))
+
+(with-eval-after-load 'ox-latex
+  (add-to-list 'org-latex-classes
+               '("org-plain-latex"
+                 "\\documentclass{article}
+[NO-DEFAULT-PACKAGES]
+[PACKAGES]
+[EXTRA]"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
 
 (provide 'amber-org)
 
