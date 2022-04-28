@@ -78,7 +78,7 @@ EOF
                                            `(cons* "NATIVE_FULL_AOT=1" ,flags)
                                            flags))
                                       ((#:configure-flags flags)
-                                       `(cons* "--with-native-compilation" "--with-json" "--with-xinput2" "--with-sqlite3" ,flags))
+                                       `(cons* "--with-native-compilation" "--with-json" "--with-xinput2" "--with-sqlite3" "--with-x-toolkit=gtk3" "--with-xft" "--without-gsettings" "--without-gconf" ,flags))
                                       ((#:phases phases)
                                        `(modify-phases ,phases
                                                        ;; Add build-time library paths for libgccjit.
@@ -120,20 +120,23 @@ EOF
 (define emacs-from-git
   (lambda* (emacs #:key pkg-name pkg-version pkg-revision git-repo git-commit checksum)
     (package
-      (inherit emacs)
-      (name pkg-name)
-      (version (git-version pkg-version pkg-revision git-commit))
-      (source
-       (origin
-         (inherit (package-source emacs))
-         (method git-fetch)
-         (uri (git-reference
-               (url git-repo)
-               (commit git-commit)))
-         (sha256 (base32 checksum))
-         (file-name (git-file-name pkg-name pkg-version))))
-      (outputs
-       '("out" "debug")))))
+     (inherit emacs)
+     (name pkg-name)
+     (version (git-version pkg-version pkg-revision git-commit))
+     (source
+      (origin
+       (inherit (package-source emacs))
+       (method git-fetch)
+       (uri (git-reference
+             (url git-repo)
+             (commit git-commit)))
+       (sha256 (base32 checksum))
+       (file-name (git-file-name pkg-name pkg-version))))
+     (inputs
+      `(("libxi" ,libxi)
+        ,@(package-inputs emacs)))
+     (outputs
+      '("out" "debug")))))
 
 (define-public emacs-native-comp
   (emacs-from-git
