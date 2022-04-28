@@ -62,7 +62,7 @@
       ".DS_Store"
     ];
     includes = [{ path = "~/.gitconfig.local"; }];
-    userEmail = "babathriviere@gmail.com";
+    userEmail = "me@babariviere.com";
     userName = "Bastien Riviere";
   };
 }

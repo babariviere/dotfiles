@@ -343,7 +343,7 @@ export INFOPATH="$_GUIX_PROFILE/share/info:$INFOPATH"
     # TODO: refactor me
     programs.git = {
       extraConfig = {
-        user.signingKey = "F9B7864F2AB46F18";
+        user.signingKey = "39035CC0B75D1142";
         commit.gpgSign = true;
       };
       includes = [{
