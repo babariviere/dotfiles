@@ -12,6 +12,7 @@
   #:use-module (gnu packages cmake)
   #:use-module (gnu packages fonts)
   #:use-module (gnu packages gcc)
+  #:use-module (gnu packages python-xyz)
   #:use-module (gnu packages sqlite)
   #:use-module (gnu services)
   #:use-module (guix gexp)
@@ -190,6 +191,8 @@
 
         emacs-slack
         emacs-notmuch
+
+        python-pygments
 	    )))
 
 ;; TODO: migrate this to a ~home-config-files-service-type~
