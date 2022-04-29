@@ -3,7 +3,7 @@
         (url "https://git.savannah.gnu.org/git/guix.git")
         (branch "master")
         (commit
-          "1c3c00a8a19780290e35bf176691fbd93ac617ac")
+          "ca831dfa09a50201c7588124d67e5c381406b396")
         (introduction
           (make-channel-introduction
             "9edb3f66fd807b096b48283debdcddccfea34bad"
@@ -14,7 +14,7 @@
         (url "https://github.com/babariviere/dotfiles")
         (branch "guix")
         (commit
-          "6642c349d8805669e587c72705fe87479d6fa98a")
+          "b5761dd3fea69279650080cd3d48ae71ad10d593")
         (introduction
           (make-channel-introduction
             "78e60924c559697195eddafb5dc7f47a86a12d6e"
@@ -42,7 +42,7 @@
         (url "https://gitlab.com/nonguix/nonguix")
         (branch "master")
         (commit
-          "7f2b80515ff52efae16a1c9346e2778b0d59d03b")
+          "0763a1d43ba71e308248975af999175285430772")
         (introduction
           (make-channel-introduction
             "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
@@ -53,7 +53,7 @@
         (url "https://github.com/babariviere/brycus")
         (branch "master")
         (commit
-          "894d210b7a3accaab1ec86804e10801bc5e48f3f")
+          "314e861a382bc9ab509811594cdbae67e4ec1274")
         (introduction
           (make-channel-introduction
             "5a251f60223c38f647a3ae0d8920acbaac5f1e24"
@@ -64,7 +64,7 @@
         (url "https://github.com/babariviere/guix-emacs")
         (branch "master")
         (commit
-          "ee843a456d9ac56c7bc5759fbcad154fe5a561ee")
+          "3580baa952e5713bd27c961820e10f2a77e6a82b")
         (introduction
           (make-channel-introduction
             "72ca4ef5b572fea10a4589c37264fa35d4564783"
