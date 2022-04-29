@@ -314,7 +314,12 @@ have a configuration for gpg-agent."))
                         (make-socket-address AF_UNIX
                                              (format #f "/run/user/~d/gnupg/S.gpg-agent.extra" #$uid)
                                              #:socket-directory-permissions #o700)
-                        #:name "extra"))
+                        #:name "extra")
+                       (endpoint
+                        (make-socket-address AF_UNIX
+                                             (format #f "/run/user/~d/gnupg/S.gpg-agent.browser" #$uid)
+                                             #:socket-directory-permissions #o700)
+                        #:name "browser"))
                  (if #$(home-gpg-agent-configuration-ssh-agent? gpg-agent-config)
                      (list (endpoint
                             (make-socket-address AF_UNIX
