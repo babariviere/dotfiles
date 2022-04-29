@@ -13,6 +13,12 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.cleanTmpDir = true;
 
+  boot.extraModprobeConfig = ''
+    options kvm_intel nested=1
+    options kvm_intel emulate_invalid_guest_state=0
+    options kvm ignore_msrs=1
+  '';
+
   ## Networking
 
   networking.hostId = "99b75f29";
@@ -35,11 +41,7 @@
 
   hardware.bluetooth = {
     enable = true;
-    settings = {
-      General = {
-        ControllerMode = "dual";
-      };
-    };
+    settings = { General = { ControllerMode = "dual"; }; };
   };
 
   services.usbmuxd.enable = true;
@@ -54,6 +56,8 @@
       Listen = [ "tcp://0.0.0.0:0" ];
     };
   };
+
+  virtualisation.lxd.enable = true;
 
   programs.ccache.enable = true;
 
@@ -108,16 +112,16 @@
   services.xserver.enable = true;
   services.xserver.layout = "us";
   services.xserver.xkbVariant = "altgr-intl";
+  services.xserver.exportConfiguration = true;
   services.xserver.videoDrivers = [ "nouveau" "modesetting" ];
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.displayManager.defaultSession = "session";
-  services.xserver.displayManager.session = [
-    {
-      manage = "desktop";
-      name = "session";
-      start = ''exec $HOME/.xsession'';
-    }
-  ];
+  services.xserver.displayManager.session = [{
+    manage = "desktop";
+    name = "session";
+    start = "exec $HOME/.xsession";
+  }];
+  services.xserver.synaptics.enable = false;
   services.xserver.libinput = {
     enable = true;
     touchpad.tapping = false;
@@ -185,7 +189,7 @@
   #   dockerCompat = true;
   # };
   virtualisation.docker = {
-    enable = true;
+    enable = false;
     enableOnBoot = true;
     autoPrune.enable = true;
     storageDriver = "zfs";
@@ -198,7 +202,7 @@
         group = "guixbuild";
         extraGroups = [ "guixbuild" ];
         home = "/var/empty";
-        shell = pkgs.nologin;
+        shell = pkgs.shadow;
         description = "Guix build user ${i}";
         isSystemUser = true;
       };
@@ -207,32 +211,32 @@
   (map (pkgs.lib.fixedWidthNumber 2) (builtins.genList (n: n + 1) 10));
 
   users.extraGroups.guixbuild.name = "guixbuild";
-  environment.extraInit =
-    ''
-# GUIX_PROFILE: User's default profile
-GUIX_PROFILE="$HOME/.guix-profile"
-if [ -L $GUIX_PROFILE ]; then
-  GUIX_LOCPATH="$GUIX_PROFILE/lib/locale"
-  export GUIX_LOCPATH
+  environment.extraInit = ''
+    # GUIX_PROFILE: User's default profile
+    GUIX_PROFILE="$HOME/.guix-profile"
+    if [ -L $GUIX_PROFILE ]; then
+      GUIX_LOCPATH="$GUIX_PROFILE/lib/locale"
+      export GUIX_LOCPATH
 
-  [ -f "$GUIX_PROFILE/etc/profile" ] && . "$GUIX_PROFILE/etc/profile"
+      [ -f "$GUIX_PROFILE/etc/profile" ] && . "$GUIX_PROFILE/etc/profile"
 
-  # set XDG_DATA_DIRS to include Guix installations
-  export XDG_DATA_DIRS="$GUIX_PROFILE/share:''${XDG_DATA_DIRS:-/usr/local/share/:/usr/share/}"
-fi
+      # set XDG_DATA_DIRS to include Guix installations
+      export XDG_DATA_DIRS="$GUIX_PROFILE/share:''${XDG_DATA_DIRS:-/usr/local/share/:/usr/share/}"
+    fi
 
-# _GUIX_PROFILE: `guix pull` profile
-_GUIX_PROFILE="$HOME/.config/guix/current"
-export PATH="$_GUIX_PROFILE/bin''${PATH:+:}$PATH"
-export INFOPATH="$_GUIX_PROFILE/share/info:$INFOPATH"
-'';
+    # _GUIX_PROFILE: `guix pull` profile
+    _GUIX_PROFILE="$HOME/.config/guix/current"
+    export PATH="$_GUIX_PROFILE/bin''${PATH:+:}$PATH"
+    export INFOPATH="$_GUIX_PROFILE/share/info:$INFOPATH"
+  '';
   systemd.services.guix-daemon = {
     enable = true;
     description = "Build daemon for GNU Guix";
     serviceConfig = {
       ExecStart =
-        "/var/guix/profiles/per-user/root/current-guix/bin/guix-daemon --build-users-group=guixbuild";
-      Environment = "GUIX_LOCPATH=/var/guix/profiles/per-user/root/guix-profile/lib/locale";
+        "/var/guix/profiles/per-user/root/current-guix/bin/guix-daemon --build-users-group=guixbuild --substitute-urls 'https://substitutes.nonguix.org https://bordeaux.guix.gnu.org https://ci.guix.gnu.org'";
+      Environment =
+        "GUIX_LOCPATH=/var/guix/profiles/per-user/root/guix-profile/lib/locale";
       RemainAfterExit = "yes";
       StandardOutput = "syslog";
       StandardError = "syslog";
@@ -243,11 +247,15 @@ export INFOPATH="$_GUIX_PROFILE/share/info:$INFOPATH"
 
   programs.adb.enable = true;
 
+  services.udev.packages = [ pkgs.yubikey-personalization ];
+  services.pcscd.enable = true;
+
   # User
   users.users.babariviere = {
     isNormalUser = true;
     createHome = true;
-    extraGroups = [ "wheel" "docker" "podman" "adbusers" "shadow" ];
+    extraGroups =
+      [ "wheel" "docker" "podman" "adbusers" "shadow" "kvm" "libvirt" "lxd" "video" "input" ];
     hashedPassword =
       "$6$hebDRrf7peavZ$fpakn/Inc7A9xAxL5RiZ3WHUcuznSWMC2chOb5bsInISVD3XQjxnark37vQfYY1v32mqkxTfr1Fzj1HUmKj7D1";
     shell = pkgs.fish;
@@ -284,7 +292,6 @@ export INFOPATH="$_GUIX_PROFILE/share/info:$INFOPATH"
 
     # TODO: remove this and split in profile
     home.packages = with pkgs; [
-      firefox
       rofi
       mako
       nixos-option
@@ -312,7 +319,7 @@ export INFOPATH="$_GUIX_PROFILE/share/info:$INFOPATH"
       insomnia
       httpie
       spotify
-      htmlTidy
+      html-tidy
       wally-cli
       gnumake
       nvtop
@@ -375,6 +382,7 @@ export INFOPATH="$_GUIX_PROFILE/share/info:$INFOPATH"
 
     services.gpg-agent = {
       enable = true;
+      enableSshSupport = true;
       extraConfig = ''
         allow-emacs-pinentry
         allow-loopback-pinentry
