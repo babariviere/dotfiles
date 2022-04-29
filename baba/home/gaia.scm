@@ -11,9 +11,8 @@
   #:use-module (gnu home)
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
-  #:use-module (baba home services shells)
   #:use-module (gnu home-services emacs)
-  #:use-module (gnu home-services gnupg)
+  #:use-module (baba home services gnupg)
   #:use-module (gnu home-services version-control)
   #:use-module (gnu home-services wm)
   #:use-module (gnu packages admin)
@@ -148,20 +147,11 @@
                                            ("ghr" . "guix home reconfigure")
                                            ("cat" . "bat -pp")))))
                 (service home-brycus-fish-service-type)
-                (simple-service 'gpg-agent-conf
-                                home-files-service-type
-                                `((".gnupg/gpg-agent.conf"
-                                   ,(computed-file
-                                     "gpg-agent.conf"
-                                     #~(begin
-                                         (use-modules (ice-9 format))
-                                         (with-output-to-file #$output
-                                           (lambda ()
-                                             (format #t "
-pinentry-program ~a/bin/pinentry
-max-cache-ttl 86400
-enable-ssh-support"
-                                                     #$pinentry-gtk2))))))))
+                (service home-gnupg-service-type
+                         (home-gnupg-configuration
+                          (gpg-agent-config
+                           (home-gpg-agent-configuration
+                            (ssh-agent? #t)))))
                 (service home-git-service-type
                          (home-git-configuration
                           (config
