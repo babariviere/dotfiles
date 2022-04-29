@@ -570,6 +570,9 @@ Examples:
   (require 'verb)
   (define-key org-mode-map (kbd "C-c C-r") verb-command-map))
 
+(with-eval-after-load 'org
+  (setq org-plantuml-exec-mode 'plantuml))
+
 (with-eval-after-load 'ox-latex
   (add-to-list 'org-latex-classes
                '("org-plain-latex"
@@ -584,10 +587,10 @@ Examples:
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
   (setq org-latex-listings 'minted
-      org-latex-packages-alist '(("" "minted"))
-      org-latex-pdf-process
-      '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")))
+        org-latex-packages-alist '(("" "minted"))
+        org-latex-pdf-process
+        '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+          "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")))
 
 
 (provide 'amber-org)

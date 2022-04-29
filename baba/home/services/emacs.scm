@@ -14,6 +14,7 @@
   #:use-module (gnu packages gcc)
   #:use-module (gnu packages python-xyz)
   #:use-module (gnu packages sqlite)
+  #:use-module (gnu packages uml)
   #:use-module (gnu services)
   #:use-module (guix gexp)
   #:use-module (guix packages)
@@ -193,6 +194,9 @@
         emacs-notmuch
 
         python-pygments
+
+        emacs-plantuml-mode
+        plantuml
 	    )))
 
 ;; TODO: migrate this to a ~home-config-files-service-type~
