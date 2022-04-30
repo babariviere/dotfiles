@@ -227,7 +227,6 @@ EndSection
                        ;; x11
                        xrandr
                        autorandr
-                       picom
 
                        ;; bluetooth
                        bluez

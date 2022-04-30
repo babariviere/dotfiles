@@ -29,7 +29,7 @@
      (method git-fetch)
      (uri (git-reference
            (url "https://github.com/yshui/picom")
-           (commit "1e8fcd00a9fd47ea511058907f64e58e57965e77")))
+           (commit "5a2115033ee3d79b67a4d45ab33ce91785e9d904")))
      (sha256
-      (base32 "0zyqsaqprrkx8y1i9a3lnv8m8j1ckhc50aika9iqfhcjqqhpxnjh"))
+      (base32 "0lh3p3lkafkb2f0vqd5d99xr4wi47sgb57x65wa2cika8pz5sikv"))
      (file-name (git-file-name name version))))))

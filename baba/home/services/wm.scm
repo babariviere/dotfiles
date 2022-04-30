@@ -1,5 +1,6 @@
 (define-module (baba home services wm)
   #:use-module (baba)
+  #:use-module (baba packages compton)
   #:use-module (baba packages wm)
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
@@ -58,7 +59,7 @@ fi
 
 ~a/bin/picom -b --config $HOME/.config/picom.conf --experimental-backends
 ~a/bin/stumpwm"
-                                        #$picom
+                                        #$picom-next
 					                    #$stump)))
 			                (chmod #$output #o555))))))
    (simple-service 'picom-config
