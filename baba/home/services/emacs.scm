@@ -153,6 +153,7 @@
         emacs-org-modern
 	    emacs-org-superstar
 	    emacs-org-roam
+        emacs-org-roam-ui
 
 	    emacs-nix-mode
 	    emacs-nix-update
