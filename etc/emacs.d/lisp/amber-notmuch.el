@@ -38,8 +38,8 @@
         '(("a" notmuch-archive-tags "Archive")
           ("r" notmuch-show-mark-read-tags "Mark read")
           ("f" ("+flagged") "Flag (favorite)")
-          ("s" ("+spam") "Mark as spam")
-          ("d" ("+trash") "Trash"))))
+          ("s" ("+spam" "-inbox") "Mark as spam")
+          ("d" ("+trash" "-inbox" "-archive") "Trash"))))
 
 
 (let ((map global-map))
