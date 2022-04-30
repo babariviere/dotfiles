@@ -7,6 +7,7 @@
   #:use-module (baba home services wm)
   #:use-module (baba packages fonts)
   #:use-module (baba packages security)
+  #:use-module (baba packages tex)
   #:use-module (brycus home-service)
   #:use-module (gnu home)
   #:use-module (gnu home services)
@@ -30,6 +31,7 @@
   #:use-module (gnu packages shellutils)
   #:use-module (gnu packages sqlite)
   #:use-module (gnu packages terminals)
+  #:use-module (gnu packages tex)
   #:use-module (gnu packages wm)
   #:use-module (gnu packages xdisorg)
   #:use-module (gnu services)
@@ -235,7 +237,19 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
 ;; TODO: make service for mbsync and notmuch
 (home-environment
  (packages
-  (list htop notmuch bat direnv keychain gnupg firefox flatpak))
+  (list htop notmuch bat direnv keychain gnupg firefox flatpak
+
+        ;; latex
+        texlive-base texlive-bin texlive-latex-minted texlive-latex-kvoptions texlive-latex-fvextra texlive-etoolbox
+        texlive-latex-fancyvrb texlive-latex-upquote texlive-latex-lineno texlive-latex-ifplatform
+        texlive-latex-pdftexcmds texlive-latex-catchfile texlive-generic-etexcmds
+        texlive-generic-xstring texlive-latex-framed texlive-latex-float texlive-lm
+        texlive-amsfonts texlive-xcolor texlive-latex-colortbl
+        texlive-hyperref texlive-titling texlive-microtype
+        texlive-latex-hyphenat texlive-latex-ragged2e
+        texlive-latex-everysel texlive-latex-subfig
+        texlive-caption texlive-latex-geometry texlive-latex-titlesec
+        texlive-enumitem))
  (services
   (append emacs-service
           nyxt-service
