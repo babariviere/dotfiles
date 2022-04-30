@@ -31,7 +31,8 @@
       (let ((identities))
         (dolist (a (auth-source-search :port 993 :max 99))
           (push (format "%s <%s>" user-full-name (plist-get a :user)) identities))
-        identities))
+        identities)
+      notmuch-archive-tags '("-inbox" "+archive"))
 
 
 (let ((map global-map))

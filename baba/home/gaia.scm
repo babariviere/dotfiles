@@ -193,6 +193,44 @@
     (SyncState *)
     ,#~""))
 
+
+(define (notmuch-move-out-untagged-messages tag)
+  "If tag was removed -> move out of the related folder."
+  (format #f "for f in $(notmuch search --output=files \
+'path:/.*\\/~a/ and not tag:~a' | grep '/~a/'); \
+do mv -v $f \
+$(echo $f | sed 's;/~a/;/archive/;' | sed 's/,U=[0-9]*:/:/'); done"
+          tag tag tag tag))
+
+(define* (notmuch-move-in-tagged-messages
+          tag
+          #:key (exclude-dir "nothing-will-match-this"))
+  (format #f "for f in $(notmuch search --output=files \
+'not path:/.*\\/~a/ and tag:~a' | grep -v \"/~a/\"); \
+do mv -v $f \
+$(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
+          tag tag exclude-dir tag))
+
+(define notmuch-move-rules
+  (append
+   (map notmuch-move-out-untagged-messages '(inbox trash spam))
+   (map notmuch-move-in-tagged-messages '(archive trash spam))
+   (list (notmuch-move-in-tagged-messages 'inbox #:exclude-dir "archive"))))
+
+(define notmuch-tag-update
+  (list "notmuch tag +inbox -- path:/.*\\/inbox/"
+        "notmuch tag +draft -- path:/.*\\/drafts/"
+        "notmuch tag +archive -- path:/.*\\/archive/"
+        "notmuch tag +sent -- path:/.*\\/sent/"
+        "notmuch tag +trash -- path:/.*\\/trash/"
+        "notmuch tag +spam -- path:/.*\\/spam/"
+        "notmuch tag -inbox -- not path:/.*\\/inbox/ and tag:inbox"
+        "notmuch tag -inbox -- not path:/.*\\/archive/ and tag:archive"
+        "notmuch tag -trash -- not path:/.*\\/trash/ and tag:trash"
+        "notmuch tag -spam  -- not path:/.*\\/spam/  and tag:spam"
+        "notmuch tag -unread -new -- tag:replied"
+        "notmuch tag +unread -new -- tag:new"))
+
 ;; TODO: make service for mbsync and notmuch
 (home-environment
  (packages
@@ -286,4 +324,27 @@
                                                  fastmail-folder-mapping)))))
                 (simple-service 'isync-ensure-mail-dirs
                                 home-activation-service-type
-                                #~(map mkdir-p '#$(map (lambda (id) (string-append "~/.mail/" (symbol->string id))) '(prv-fm))))))))
+                                #~(map mkdir-p '#$(map (lambda (id) (string-append "~/.mail/" (symbol->string id))) '(prv-fm))))
+                (service home-notmuch-service-type
+                         (home-notmuch-configuration
+                          (pre-new
+                           (list
+                            (with-imported-modules
+                                '((guix build utils))
+                              #~(begin
+                                  (for-each system '#$notmuch-move-rules)))))
+                          (post-new
+                           (list
+                            (with-imported-modules
+                                '((guix build utils))
+                              #~(begin
+                                  (for-each system '#$notmuch-tag-update)))))
+                          (config
+                           `((user ((name . "Bastien Riviere")
+                                    (primary_email . "me@babariviere.com")
+                                    (other_email . ("babathriviere@gmail.com"))))
+                             (database ((path . ".mail")))
+                             (maildir ((synchronize_flags . true)))
+                             (search ((exclude_tags . (trash spam deleted))))
+                             (new ((tags . new)
+                                   (ignore . (.mbsyncstate .uidvalidity .mbsyncstate.new .mbsyncstate.journal))))))))))))
