@@ -10,6 +10,7 @@
   #:use-module (brycus home-service)
   #:use-module (gnu home)
   #:use-module (gnu home services)
+  #:use-module (gnu home services mcron)
   #:use-module (gnu home services shells)
   #:use-module (gnu home-services emacs)
   #:use-module (baba home services gnupg)
@@ -182,8 +183,8 @@
       ,#~""
       (MaildirStore ,(symbol-append id '-local))
       (Subfolders Verbatim)
-      (Path ,(string-append "~/.mail/" (symbol->string id) "/"))
-      (Inbox ,(string-append "~/.mail/" (symbol->string id) "/inbox"))
+      (Path ,(string-append (getenv "HOME") "/.mail/" (symbol->string id) "/"))
+      (Inbox ,(string-append (getenv "HOME") "/.mail/" (symbol->string id) "/inbox"))
       ,#~""
       ,@(isync-group-with-channels id folders-mapping))))
 
@@ -347,4 +348,11 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                              (maildir ((synchronize_flags . true)))
                              (search ((exclude_tags . (trash spam deleted))))
                              (new ((tags . new)
-                                   (ignore . (.mbsyncstate .uidvalidity .mbsyncstate.new .mbsyncstate.journal))))))))))))
+                                   (ignore . (.mbsyncstate .uidvalidity .mbsyncstate.new .mbsyncstate.journal))))))))
+                (service home-mcron-service-type)
+                (simple-service 'mcron-mail-sync
+                                home-mcron-service-type
+                                (list #~(job '(next-minute (range 0 60 5))
+                                             (lambda ()
+                                               (system* "mbsync" "-a")
+                                               (system* "notmuch" "new")))))))))
