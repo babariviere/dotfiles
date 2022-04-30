@@ -81,6 +81,10 @@ mouse-3: Toggle minor modes"
   (setq exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-initialize))
 
+(require 'auth-source)
+(setq auth-sources '("~/.authinfo.gpg")
+      user-full-name "Bastien Riviere"
+      user-mail-address "me@babariviere.com")
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'amber-keys)             ; must be loaded first
@@ -101,6 +105,7 @@ mouse-3: Toggle minor modes"
 (require 'amber-flycheck)
 ;; NOTE: Not sure I like it
 ;; (require 'amber-persp)
+(require 'amber-notmuch)
 
 (require 'amber-cc)
 (require 'amber-common-lisp)
@@ -217,7 +222,6 @@ ARGS are the arguments passed to `browse-url`."
 (global-unset-key (kbd "C-z"))
 
 ;; TODO: >:( You lazy f*cker
-(require 'notmuch)
 (require 'slack)
 
 (pixel-scroll-precision-mode)
