@@ -23,6 +23,7 @@
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages emacs-xyz)
   #:use-module (gnu packages fonts)
+  #:use-module (gnu packages freedesktop)
   #:use-module (gnu packages gcc)
   #:use-module (gnu packages gnupg)
   #:use-module (gnu packages mail)
@@ -237,7 +238,12 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
 ;; TODO: make service for mbsync and notmuch
 (home-environment
  (packages
-  (list htop notmuch bat direnv keychain gnupg firefox flatpak
+  (list htop notmuch bat direnv keychain gnupg firefox
+
+        ;; flatpak
+        flatpak
+        xdg-desktop-portal
+        xdg-desktop-portal-gtk
 
         ;; latex
         texlive-base texlive-bin texlive-latex-minted texlive-latex-kvoptions texlive-latex-fvextra texlive-etoolbox
@@ -329,7 +335,8 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                 (simple-service 'setup-flatpak
                                 home-environment-variables-service-type
                                 `(("XDG_DATA_DIRS" . "$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS")
-                                  ("PATH" . "$HOME/.local/share/flatpak/exports/bin:$PATH")))
+                                  ("PATH" . "$HOME/.local/share/flatpak/exports/bin:$PATH")
+                                  ("GTK_USE_PORTAL" . "1")))
                 (service home-isync-service-type
                          (home-isync-configuration
                           (config
