@@ -600,7 +600,9 @@ Examples:
         '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
           "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")))
 
-(setq org-export-with-broken-links t)
+(setq org-export-with-broken-links t
+      org-export-with-sub-superscripts '{}
+      org-use-sub-superscripts '{})
 
 (provide 'amber-org)
 
