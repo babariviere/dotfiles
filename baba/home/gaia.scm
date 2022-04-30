@@ -325,7 +325,7 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                                                  fastmail-folder-mapping)))))
                 (simple-service 'isync-ensure-mail-dirs
                                 home-activation-service-type
-                                #~(map mkdir-p '#$(map (lambda (id) (string-append "~/.mail/" (symbol->string id))) '(prv-fm))))
+                                #~(map mkdir-p '#$(map (lambda (id) (string-append (getenv "HOME") "/.mail/" (symbol->string id))) '(prv-fm))))
                 (service home-notmuch-service-type
                          (home-notmuch-configuration
                           (pre-new
