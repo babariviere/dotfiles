@@ -13,6 +13,7 @@
   #:use-module (gnu home services shells)
   #:use-module (gnu home-services emacs)
   #:use-module (baba home services gnupg)
+  #:use-module (gnu home-services mail)
   #:use-module (gnu home-services version-control)
   #:use-module (gnu home-services wm)
   #:use-module (gnu packages admin)
@@ -34,7 +35,8 @@
   #:use-module (guix gexp)
   #:use-module (guix packages)
   #:use-module (flat packages emacs)
-  #:use-module (nongnu packages mozilla))
+  #:use-module (nongnu packages mozilla)
+  #:use-module (srfi srfi-1))
 
 (define %sway-config
   `( ;; (bindsym $mod+Shift+e exec emacsclient -c --eval "(eshell)")
@@ -125,10 +127,76 @@
     (bindswitch lid:off output eDP-1 enable)
     (focus_follows_mouse no)))
 
+(define gmail-folder-mapping
+  '(("inbox"   . "INBOX")
+    ("sent"    . "[Gmail]/Sent Mail")
+    ("drafts"  . "[Gmail]/Drafts")
+    ("archive" . "[Gmail]/All Mail")
+    ("trash"   . "[Gmail]/Trash")
+    ("spam"    . "[Gmail]/Spam")))
+
+(define fastmail-folder-mapping
+  '(("inbox" . "INBOX")
+    ("sent" . "Sent")
+    ("drafts" . "Drafts")
+    ("archive" . "Archive")
+    ("trash" . "Trash")
+    ("spam" . "Spam")))
+
+(define (prep-str sym str)
+  (symbol-append sym '- (string->symbol str)))
+
+(define (isync-channel id local remote)
+  `((Channel ,(prep-str id local))
+    (Near ,(format #f ":~a-local:~a" id local))
+    (Far ,(format #f ":~a-remote:~a" id remote))
+    ,#~""))
+
+(define (isync-group-with-channels id isync-mapping)
+  (append
+   (append-map
+    (lambda (x) (isync-channel id (car x) (cdr x)))
+    isync-mapping)
+   `((Group ,(symbol-append id))
+     ,@(map
+        (lambda (x) (list 'Channel (prep-str id (car x))))
+        isync-mapping)
+     ,#~"")))
+
+(define (gpg-cmd id host field)
+  (string-append "gpg -q --for-your-eyes-only --no-tty -d ~/.authinfo.gpg | awk '/machine " host " id " (symbol->string id) "/ {print " field "}'"))
+
+;; Expected authinfo format:
+;; machine <host> id <id> login <mail> port 993 password <pwd>
+(define (mail-account id host folders-mapping)
+  (let ((user-cmd (gpg-cmd id host "$(NF-4)"))
+        (pass-cmd (gpg-cmd id host "$NF")))
+    `((IMAPAccount ,id)
+      (Host ,host)
+      (UserCmd ,user-cmd)
+      (PassCmd ,pass-cmd)
+      (SSLType IMAPS)
+      ,#~""
+      (IMAPStore ,(symbol-append id '-remote))
+      (Account ,id)
+      ,#~""
+      (MaildirStore ,(symbol-append id '-local))
+      (Subfolders Verbatim)
+      (Path ,(string-append "~/.mail/" (symbol->string id) "/"))
+      (Inbox ,(string-append "~/.mail/" (symbol->string id) "/inbox"))
+      ,#~""
+      ,@(isync-group-with-channels id folders-mapping))))
+
+(define default-isync-global-settings
+  `((Create Both)
+    (Expunge Both)
+    (SyncState *)
+    ,#~""))
+
 ;; TODO: make service for mbsync and notmuch
 (home-environment
  (packages
-  (list htop isync notmuch bat direnv keychain gnupg firefox flatpak))
+  (list htop notmuch bat direnv keychain gnupg firefox flatpak))
  (services
   (append emacs-service
           nyxt-service
@@ -208,4 +276,14 @@
                 (simple-service 'setup-flatpak
                                 home-environment-variables-service-type
                                 `(("XDG_DATA_DIRS" . "$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS")
-                                  ("PATH" . "$HOME/.local/share/flatpak/exports/bin:$PATH")))))))
+                                  ("PATH" . "$HOME/.local/share/flatpak/exports/bin:$PATH")))
+                (service home-isync-service-type
+                         (home-isync-configuration
+                          (config
+                           (append default-isync-global-settings
+                                   (mail-account 'prv-fm
+                                                 "imap.fastmail.com"
+                                                 fastmail-folder-mapping)))))
+                (simple-service 'isync-ensure-mail-dirs
+                                home-activation-service-type
+                                #~(map mkdir-p '#$(map (lambda (id) (string-append "~/.mail/" (symbol->string id))) '(prv-fm))))))))
