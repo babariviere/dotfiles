@@ -1,5 +1,6 @@
 (define-module (baba home services gnupg)
   #:use-module (gnu home services)
+  #:use-module (gnu home services shells)
   #:use-module (gnu home services shepherd)
   #:use-module (gnu home-services-utils)
   #:use-module (gnu packages)
@@ -329,6 +330,18 @@ have a configuration for gpg-agent."))
                      '()))))
       (stop #~(make-systemd-destructor))))))
 
+(define (home-gnupg-fish-service config)
+  (home-fish-extension
+   (config
+    (list
+     (plain-file
+      "gnupg.fish"
+      "status --is-interactive;
+and begin
+    set -x GPG_TTY (tty)
+    gpg-connect-agent updatestartuptty /bye > /dev/null
+end")))))
+
 (define (home-gnupg-profile-service config)
   (list (home-gnupg-configuration-package config)))
 
@@ -358,7 +371,10 @@ have a configuration for gpg-agent."))
                         home-gnupg-files-service)
                        (service-extension
                         home-profile-service-type
-                        home-gnupg-profile-service)))
+                        home-gnupg-profile-service)
+                       (service-extension
+                        home-fish-service-type
+                        home-gnupg-fish-service)))
                 (default-value (home-gnupg-configuration))
                 (description "Install and configure GnuPG, this
 includes the @command{gpg} and @command{gpg-agent} commands.")))
