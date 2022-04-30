@@ -32,7 +32,13 @@
         (dolist (a (auth-source-search :port 993 :max 99))
           (push (format "%s <%s>" user-full-name (plist-get a :user)) identities))
         identities)
-      notmuch-archive-tags '("-inbox" "+archive"))
+      notmuch-archive-tags '("-inbox" "+archive")
+      notmuch-tagging-keys
+      '(("a" notmuch-archive-tags "Archive")
+        ("r" notmuch-show-mark-read-tags "Mark read")
+        ("f" ("+flagged") "Flag (favorite)")
+        ("s" ("+spam") "Mark as spam")
+        ("d" ("+trash") "Trash")))
 
 
 (let ((map global-map))
