@@ -170,8 +170,7 @@
                                (with-fingerprint)
                                (require-cross-certification)
                                (no-symkey-cache)
-                               (use-agent)
-                               (throw-keyids)))))
+                               (use-agent)))))
                           (gpg-agent-config
                            (home-gpg-agent-configuration
                             (ssh-agent? #t)))))
