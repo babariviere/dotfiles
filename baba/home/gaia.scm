@@ -218,7 +218,7 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
 (define notmuch-move-rules
   (append
    (map notmuch-move-out-untagged-messages '(inbox trash spam))
-   (map notmuch-move-in-tagged-messages '(archive trash spam))
+   (map notmuch-move-in-tagged-messages '(trash spam))
    (list (notmuch-move-in-tagged-messages 'inbox #:exclude-dir "archive"))))
 
 (define notmuch-tag-update
@@ -232,6 +232,10 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
         "notmuch tag -archive -- not path:/.*\\/archive/ and tag:archive"
         "notmuch tag -trash -- not path:/.*\\/trash/ and tag:trash"
         "notmuch tag -spam  -- not path:/.*\\/spam/  and tag:spam"
+        ;; Fix gmail case where we have duplicate mails (since there is no proper archive folder)
+        "notmuch tag -archive -- tag:inbox and tag:archive"
+        ;; Gmail mark sent email as archive
+        "notmuch tag -archive -- tag:sent"
         "notmuch tag -unread -new -- tag:replied"
         "notmuch tag +unread -new -- tag:new"))
 
@@ -344,12 +348,9 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                                    (mail-account 'prv-fm
                                                  "imap.fastmail.com"
                                                  fastmail-folder-mapping)
-                                   ;; FIXME: Needs to fix email being duplicated between inbox and archive
-                                   ;; Maybe use lieer as in this blog? https://sqrtminusone.xyz/posts/2021-02-27-gmail/
-                                   ;; (mail-account 'prv-gm
-                                   ;;               "imap.gmail.com"
-                                   ;;               gmail-folder-mapping)
-                                   ))))
+                                   (mail-account 'prv-gm
+                                                 "imap.gmail.com"
+                                                 gmail-folder-mapping)))))
                 (simple-service 'isync-ensure-mail-dirs
                                 home-activation-service-type
                                 #~(map mkdir-p '#$(map (lambda (id) (string-append (getenv "HOME") "/.mail/" (symbol->string id))) '(prv-fm))))
