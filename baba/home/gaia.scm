@@ -229,7 +229,7 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
         "notmuch tag +trash -- path:/.*\\/trash/"
         "notmuch tag +spam -- path:/.*\\/spam/"
         "notmuch tag -inbox -- not path:/.*\\/inbox/ and tag:inbox"
-        "notmuch tag -inbox -- not path:/.*\\/archive/ and tag:archive"
+        "notmuch tag -archive -- not path:/.*\\/archive/ and tag:archive"
         "notmuch tag -trash -- not path:/.*\\/trash/ and tag:trash"
         "notmuch tag -spam  -- not path:/.*\\/spam/  and tag:spam"
         "notmuch tag -unread -new -- tag:replied"
@@ -343,7 +343,13 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                            (append default-isync-global-settings
                                    (mail-account 'prv-fm
                                                  "imap.fastmail.com"
-                                                 fastmail-folder-mapping)))))
+                                                 fastmail-folder-mapping)
+                                   ;; FIXME: Needs to fix email being duplicated between inbox and archive
+                                   ;; Maybe use lieer as in this blog? https://sqrtminusone.xyz/posts/2021-02-27-gmail/
+                                   ;; (mail-account 'prv-gm
+                                   ;;               "imap.gmail.com"
+                                   ;;               gmail-folder-mapping)
+                                   ))))
                 (simple-service 'isync-ensure-mail-dirs
                                 home-activation-service-type
                                 #~(map mkdir-p '#$(map (lambda (id) (string-append (getenv "HOME") "/.mail/" (symbol->string id))) '(prv-fm))))
@@ -365,7 +371,7 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                            `((user ((name . "Bastien Riviere")
                                     (primary_email . "me@babariviere.com")
                                     (other_email . ("babathriviere@gmail.com"))))
-                             (database ((path . ".mail")))
+                             (database ((path . ,(string-append (getenv "HOME") "/.mail"))))
                              (maildir ((synchronize_flags . true)))
                              (search ((exclude_tags . (trash spam deleted))))
                              (new ((tags . new)
