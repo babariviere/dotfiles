@@ -575,16 +575,13 @@ Examples:
     (vconcat (make-vector 12 #x80) [#xFF] (make-vector 8 0)) nil nil 'bottom))
 
 (with-eval-after-load 'org
+  (require 'ox-latex)
   (require 'verb)
+
   (define-key org-mode-map (kbd "C-c C-r") verb-command-map)
   (add-to-list 'org-latex-minted-langs '(verb "Text"))
-  (add-to-list 'org-latex-minted-langs '(ob-verb-reponse "HTTP")))
+  (add-to-list 'org-latex-minted-langs '(ob-verb-reponse "HTTP"))
 
-(with-eval-after-load 'org
-  (setq org-plantuml-exec-mode 'plantuml))
-
-(with-eval-after-load 'org
-  (require 'ox-latex)
   (add-to-list 'org-latex-classes
                '("org-plain-latex"
                  "\\documentclass{article}
@@ -601,11 +598,15 @@ Examples:
         org-latex-packages-alist '(("" "minted"))
         org-latex-pdf-process
         '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-          "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")))
+          "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
-(setq org-export-with-broken-links t
-      org-export-with-sub-superscripts '{}
-      org-use-sub-superscripts '{})
+  (setq org-plantuml-exec-mode 'plantuml)
+
+
+  (setq org-export-with-broken-links t
+        org-export-with-sub-superscripts '{}
+        org-use-sub-superscripts '{}))
+
 
 (provide 'amber-org)
 
