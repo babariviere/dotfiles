@@ -583,7 +583,8 @@ Examples:
 (with-eval-after-load 'org
   (setq org-plantuml-exec-mode 'plantuml))
 
-(with-eval-after-load 'ox-latex
+(with-eval-after-load 'org
+  (require 'ox-latex)
   (add-to-list 'org-latex-classes
                '("org-plain-latex"
                  "\\documentclass{article}
