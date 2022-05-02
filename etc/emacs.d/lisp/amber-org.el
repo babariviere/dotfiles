@@ -576,7 +576,9 @@ Examples:
 
 (with-eval-after-load 'org
   (require 'verb)
-  (define-key org-mode-map (kbd "C-c C-r") verb-command-map))
+  (define-key org-mode-map (kbd "C-c C-r") verb-command-map)
+  (add-to-list 'org-latex-minted-langs '(verb "Text"))
+  (add-to-list 'org-latex-minted-langs '(ob-verb-reponse "HTTP")))
 
 (with-eval-after-load 'org
   (setq org-plantuml-exec-mode 'plantuml))
