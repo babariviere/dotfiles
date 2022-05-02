@@ -9,6 +9,7 @@
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
   #:use-module (gnu packages admin)
+  #:use-module (gnu packages compression)
   #:use-module (gnu packages fonts)
   #:use-module (gnu packages package-management)
   #:use-module (gnu packages pulseaudio)
@@ -22,7 +23,8 @@
   (list keychain
         pavucontrol
         flatpak
-        firefox))
+        firefox
+        unzip))
  (services
   (append emacs-service
           nyxt-service
