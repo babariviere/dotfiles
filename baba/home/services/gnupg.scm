@@ -20,6 +20,7 @@
 	        home-gnupg-configuration
             home-gpg-configuration
             home-gpg-agent-configuration
+            home-scdaemon-configuration
 
             ssh-key?
             ssh-keys-list?
@@ -133,6 +134,7 @@
 ;; Dummy procedures, the real logic is handled in `home-gnupg-files-service'.
 (define (serialize-home-gpg-configuration field-name val) "")
 (define (serialize-home-gpg-agent-configuration field-name val) "")
+(define (serialize-home-scdaemon-configuration field-name val) "")
 (define (serialize-extra-options field-name val) "")
 (define extra-options? list?)
 
@@ -221,6 +223,28 @@ pinentry-invisible-char @@
    "Extra content for the @code{gpg-agent.conf} file, useful if you already
 have a configuration for gpg-agent."))
 
+(define-configuration home-scdaemon-configuration
+  (extra-config
+   (alist '())
+   "Association list of key-value pair configuration.  The following configuration:
+@lisp
+(extra-config
+  '((disable-ccid . #f)
+    (reader-port . \"Yubikey\")))
+@end lisp
+
+would yield:
+
+@example
+disable-ccid
+reader-port Yubikey
+@end example")
+  (extra-content
+   (string-or-gexp "")
+   "Extra content for the @code{scdaemon.conf} file, useful if you already
+have a configuration for gpg."))
+
+
 ;; TODO: Add homedir option?
 (define-configuration home-gnupg-configuration
   (package
@@ -231,7 +255,10 @@ have a configuration for gpg-agent."))
    "Configuration for the @code{gpg} executable")
   (gpg-agent-config
    (home-gpg-agent-configuration (home-gpg-agent-configuration))
-   "Configuration for the @code{gpg-agent}"))
+   "Configuration for the @code{gpg-agent}")
+  (scdaemon-config
+   (home-scdaemon-configuration (home-scdaemon-configuration))
+   "Configuration for the @code{scdaemon}"))
 
 (define (home-gnupg-environment-variables-service config)
   "Add SSH_AUTH_SOCK variable to user's environment."
@@ -271,6 +298,15 @@ have a configuration for gpg-agent."))
    (home-gpg-configuration-extra-content
     (home-gnupg-configuration-gpg-config config))))
 
+(define (home-scdaemon-file config)
+  (mixed-text-file
+   "gnupg-scdaemon.conf"
+   (serialize-configuration
+    (home-gnupg-configuration-scdaemon-config config)
+    home-scdaemon-configuration-fields)
+   (home-scdaemon-configuration-extra-content
+    (home-gnupg-configuration-scdaemon-config config))))
+
 (define (home-gnupg-files-service config)
   ;; Don't create file if empty
   (filter (compose not null?)
@@ -283,7 +319,9 @@ have a configuration for gpg-agent."))
                  `(".gnupg/sshcontrol"
                    ,(home-gpg-sshcontrol-file config)))
             (".gnupg/gpg.conf"
-             ,(home-gpg-file config)))))
+             ,(home-gpg-file config))
+            (".gnupg/scdaemon.conf"
+             ,(home-scdaemon-file config)))))
 
 (define (home-gnupg-shepherd-service config)
   (let ((package (home-gnupg-configuration-package config))
