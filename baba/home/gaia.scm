@@ -29,6 +29,7 @@
   #:use-module (gnu packages mail)
   #:use-module (gnu packages package-management)
   #:use-module (gnu packages rust-apps)
+  #:use-module (gnu packages security-token)
   #:use-module (gnu packages shellutils)
   #:use-module (gnu packages sqlite)
   #:use-module (gnu packages terminals)
@@ -304,7 +305,26 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                                (use-agent)))))
                           (gpg-agent-config
                            (home-gpg-agent-configuration
-                            (ssh-agent? #t)))))
+                            (ssh-agent? #t)
+                            (extra-config
+                             `((log-file . ,(string-append
+                                             (or (getenv "XDG_LOG_HOME")
+                                                 (string-append
+                                                  (getenv "HOME")
+                                                  "/.local/var/log"))
+                                             "/gpg-agent.log"))))))
+                          (scdaemon-config
+                           (home-scdaemon-configuration
+                            (extra-config
+                             `((disable-ccid . #t)
+                               (reader-port . "Yubico Yubi")
+                               (log-file . ,(string-append
+                                             (or (getenv "XDG_LOG_HOME")
+                                                 (string-append
+                                                  (getenv "HOME")
+                                                  "/.local/var/log"))
+                                             "/scdaemon.log"))
+                               (debug-ccid-driver . #t)))))))
                 (service home-git-service-type
                          (home-git-configuration
                           (config
