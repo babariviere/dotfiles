@@ -275,7 +275,7 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                         (source
                          (origin
                            (inherit (package-source shepherd-0.9))
-                           (patches (append (list (get-patch "shepherd-0.9-listen-fdnames.patch"))
+                           (patches (append (list (get-patch "shepherd-0.9-listen-fdnames.patch") (get-patch "debug.patch"))
                                             (origin-patches (package-source shepherd-0.9))))))))))
            (service home-bash-service-type
                     (home-bash-configuration
