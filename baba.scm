@@ -1,6 +1,6 @@
 (define-module (baba)
   #:use-module (srfi srfi-1)
-  #:export (%channel-root etc-file))
+  #:export (%channel-root etc-file get-patch))
 
 (define %channel-root
   (canonicalize-path
@@ -13,3 +13,6 @@
 
 (define (etc-file path)
   (string-append %channel-root "/etc" path))
+
+(define (get-patch name)
+  (string-append %channel-root "/patches/" name))

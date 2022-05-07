@@ -1,0 +1,43 @@
+From fdabd4ee6d43e32cbf9bd85282ff66138ce652b9 Mon Sep 17 00:00:00 2001
+From: Bastien Riviere <me@babariviere.com>
+Date: Sat, 7 May 2022 01:08:28 +0200
+Subject: [PATCH] service: systemd: use correct format for LISTEN_FDNAMES
+
+As in the documentation, LISTEN_FDNAMES is expected to be a "colon-separated
+list of names".
+This patch add the missing delimiter when joining to LISTEN_FDNAMES.
+
+This fixes issues with services, like gpg-agent, which produces this kind of
+error:
+
+> [gpg-agent] Fatal: number of items in LISTEN_FDNAMES (1) does not match LISTEN_FDS (4) in --supervised mode
+---
+ modules/shepherd/service.scm | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/modules/shepherd/service.scm b/modules/shepherd/service.scm
+index 81bd667..f343938 100644
+--- a/modules/shepherd/service.scm
++++ b/modules/shepherd/service.scm
+@@ -352,7 +352,7 @@ wire."
+ (define-method (running? (obj <service>))
+   (and (service-running-value obj) #t))
+ 
+-;; Return a list of all actions implemented by OBJ. 
++;; Return a list of all actions implemented by OBJ.
+ (define-method (action-list (obj <service>))
+   (map action-name (slot-ref obj 'actions)))
+ 
+@@ -1594,7 +1594,8 @@ This must be paired with @code{make-systemd-destructor}."
+                                            (number->string (length sockets)))
+                             (string-append "LISTEN_FDNAMES="
+                                            (string-join
+-                                            (map endpoint-name endpoints)))))
++                                            (map endpoint-name endpoints)
++                                            ":"))))
+            (running   sockets))
+       (spawn-fiber
+        (lambda ()
+-- 
+me@babariviere.com
+
