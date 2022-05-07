@@ -331,7 +331,9 @@ have a configuration for gpg."))
                                       '(ssh-agent))))
         (uid (getuid))
         (gid (getgid))
-        (gpg-agent-config (home-gnupg-configuration-gpg-agent-config config)))
+        (gpg-agent-config (home-gnupg-configuration-gpg-agent-config config))
+        (homedir (or (getenv "GNUPGHOME")
+                     (string-append (getenv "HOME") "/.gnupg"))))
     (list
      (shepherd-service
       (documentation "Run and control gpg-agent.")
@@ -365,7 +367,9 @@ have a configuration for gpg."))
                                                  (format #f "/run/user/~d/gnupg/S.gpg-agent.ssh" #$uid)
                                                  #:socket-directory-permissions #o700)
                             #:name "ssh"))
-                     '()))))
+                     '()))
+                #:environment-variables
+                (list (string-append "GNUPGHOME=" #$homedir))))
       (stop #~(make-systemd-destructor))))))
 
 (define (home-gnupg-fish-service config)
