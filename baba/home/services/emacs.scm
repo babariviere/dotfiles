@@ -111,7 +111,10 @@
         ;; snippets
         emacs-tempel
 
+        ;; csharp
 	    emacs-csharp-mode
+        emacs-csproj-mode
+        emacs-sharper
 
 	    emacs-yaml-mode
 	    emacs-gitlab-ci-mode

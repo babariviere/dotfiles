@@ -32,6 +32,13 @@
 (use-package csharp-mode
   :mode "\\.cs\\'")
 
+(use-package csproj-mode)
+
+(use-package sharper
+  :demand t
+  :bind
+  ("C-c n" . sharper-main-transient))
+
 (provide 'amber-csharp)
 
 ;;; amber-csharp.el ends here
