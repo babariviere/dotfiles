@@ -23,9 +23,11 @@
 
 ;;; Commentary:
 
-;; Add support for csharp to amber emacs.
+;; Add support for csharp to Amber Emacs.
 
 ;;; Code:
+
+(require 'use-package)
 
 (use-package csharp-mode
   :mode "\\.cs\\'")
