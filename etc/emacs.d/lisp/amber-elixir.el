@@ -37,6 +37,14 @@
 
 (use-package alchemist
   :hook (elixir-mode . alchemist-mode)
+  :config
+  (add-hook 'elixir-mode-hook
+            (lambda ()
+              (setq indent-tabs-mode nil
+                    tab-width 2)))
+  ;; format on save
+  (add-hook 'elixir-mode-hook
+            (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
   :general
   ;; (amber/leader-keys elixir-mode-map
   ;;   "C-m" '(alchemist-mix :wk "mix")
