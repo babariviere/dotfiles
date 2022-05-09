@@ -149,6 +149,11 @@ building different types of applications.")
          ("etc" "share/omnisharp/")
          ("lib" "share/omnisharp/")
          ("omnisharp" "share/omnisharp/"))
+       #:modules ((nonguix build binary-build-system)
+                  (guix build utils)
+                  (ice-9 ftw)
+                  (ice-9 regex)
+                  (srfi srfi-26))
        #:phases
        (modify-phases %standard-phases
          (add-after 'unpack 'fix-wrapper
@@ -161,9 +166,19 @@ building different types of applications.")
          (add-before 'patchelf 'patchelf-writable
            (lambda _
              (for-each make-file-writable
-                       '("bin/mono" "lib/libmono-native.so")))))))
+                       '("bin/mono" "lib/libmono-native.so"))))
+         (add-after 'install 'dotnet-sdk
+           (lambda* (#:key inputs outputs #:allow-other-keys)
+             (let* ((out (assoc-ref outputs "out"))
+                    (dotnet (assoc-ref inputs "dotnet")))
+               (wrap-program (string-append out "/bin/omnisharp")
+                 `("DOTNET_ROOT" = (,dotnet))
+                 `("MSBuildSDKsPath" = (,(string-append dotnet "/share/dotnet/sdk/" ,(package-version dotnet-lts) "/Sdks")))
+                 `("PATH" prefix (,(string-append dotnet "/bin")))
+                 `("MSBuildEnableWorkloadResolver" = ("false")))))))))
     (inputs
-     `(("gcc:lib" ,gcc "lib")
+     `(("dotnet" ,dotnet-lts)
+       ("gcc:lib" ,gcc "lib")
        ("mit-krb5" ,mit-krb5)
        ("zlib" ,zlib)))
     (home-page "https://github.com/OmniSharp/omnisharp-roslyn")
