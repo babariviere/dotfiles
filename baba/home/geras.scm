@@ -29,6 +29,7 @@
         unzip
 
         dotnet-lts
+        omnisharp
         node-lts))
  (services
   (append emacs-service

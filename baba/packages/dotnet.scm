@@ -122,3 +122,54 @@
       (description "@code{.NET} is a cross-platform developer platform for
 building different types of applications.")
       (license license:expat))))
+
+(define-public omnisharp
+  (package
+    (name "omnisharp")
+    (version "1.38.2")
+    (source
+     (origin
+       (method url-fetch/tarbomb)
+       (uri
+        (string-append "https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v"
+                       version "/omnisharp-linux-x64.tar.gz"))
+       (sha256
+        (base32
+         "0yv1sqzdpdxjywvvb5i2ik42gazwy0nsjhqqvypdm2aldvnqaby8"))))
+    (build-system binary-build-system)
+    (arguments
+     `(#:patchelf-plan
+       `(("bin/mono"
+          ("gcc:lib" "zlib"))
+         ("lib/libmono-native.so"
+          ("mit-krb5")))
+       #:install-plan
+       `(("run" "bin/omnisharp-wrapper")
+         ("bin" "share/omnisharp/")
+         ("etc" "share/omnisharp/")
+         ("lib" "share/omnisharp/")
+         ("omnisharp" "share/omnisharp/"))
+       #:phases
+       (modify-phases %standard-phases
+         (add-after 'unpack 'fix-wrapper
+           (lambda* (#:key outputs #:allow-other-keys)
+             (substitute* "run"
+               (("base_dir=.*")
+                (string-append "base_dir="
+                               (assoc-ref outputs "out") "/share/omnisharp\n"))
+               (("chmod.*") ""))))
+         (add-before 'patchelf 'patchelf-writable
+           (lambda _
+             (for-each make-file-writable
+                       '("bin/mono" "lib/libmono-native.so")))))))
+    (inputs
+     `(("gcc:lib" ,gcc "lib")
+       ("mit-krb5" ,mit-krb5)
+       ("zlib" ,zlib)))
+    (home-page "https://github.com/OmniSharp/omnisharp-roslyn")
+    (supported-systems '("x86_64-linux"))
+    (synopsis "Implementation of Language Server Protocol based on Roslyn workspaces")
+    (description "OmniSharp is a @code{.NET} development platform based on
+Roslyn workspaces.  It provides project dependencies and C# language services to
+various IDEs and plugins.")
+    (license license:expat)))
