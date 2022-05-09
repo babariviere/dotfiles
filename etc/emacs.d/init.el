@@ -225,3 +225,4 @@ ARGS are the arguments passed to `browse-url`."
 (require 'slack)
 
 (pixel-scroll-precision-mode)
+(auto-insert-mode)
