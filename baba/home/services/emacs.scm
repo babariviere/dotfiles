@@ -110,6 +110,7 @@
 
         ;; snippets
         emacs-tempel
+        emacs-yasnippet
 
         ;; csharp
 	    emacs-csharp-mode

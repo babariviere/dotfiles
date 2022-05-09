@@ -43,5 +43,9 @@
   (add-hook 'prog-mode-hook 'tempel-setup-capf)
   (add-hook 'text-mode-hook 'tempel-setup-capf))
 
+;; Use yasnippet only for lsp-mode
+(use-package yasnippet
+  :hook (lsp-mode . yas-minor-mode))
+
 (provide 'amber-snippets)
 ;;; amber-snippets.el ends here
