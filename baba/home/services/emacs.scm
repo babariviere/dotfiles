@@ -162,9 +162,11 @@
 	    emacs-nix-mode
 	    emacs-nix-update
 
+        ;; python
         emacs-python-mode
 	    emacs-poetry
-	    emacs-lsp-python-ms
+        emacs-blacken
+	    emacs-lsp-pyright
 
 	    emacs-smartparens
 

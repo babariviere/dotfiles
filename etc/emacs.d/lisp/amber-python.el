@@ -52,12 +52,13 @@
   (setq poetry-tracking-strategy 'switch-buffer)
   (add-hook 'python-mode-hook #'poetry-tracking-mode))
 
-(use-package lsp-python-ms
-  :init
-  (setq lsp-python-ms-executable (executable-find "python-language-server"))
+(use-package blacken
+  :commands blacken-mode blacken-buffer)
+
+(use-package lsp-pyright
   :hook (python-mode . (lambda ()
-						 (require 'lsp-python-ms)
-						 (lsp))))
+                         (require 'lsp-pyright)
+                         (lsp))))
 
 (provide 'amber-python)
 
