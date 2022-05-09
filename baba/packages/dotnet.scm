@@ -144,7 +144,7 @@ building different types of applications.")
          ("lib/libmono-native.so"
           ("mit-krb5")))
        #:install-plan
-       `(("run" "bin/omnisharp-wrapper")
+       `(("run" "bin/omnisharp")
          ("bin" "share/omnisharp/")
          ("etc" "share/omnisharp/")
          ("lib" "share/omnisharp/")

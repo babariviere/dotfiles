@@ -31,7 +31,9 @@
 
 (use-package csharp-mode
   :mode "\\.cs\\'"
-  :hook (csharp-mode . lsp))
+  :hook (csharp-mode . lsp)
+  :config
+  (setq lsp-csharp-server-path (executable-find "omnisharp")))
 
 (use-package csproj-mode)
 
