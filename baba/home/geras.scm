@@ -11,6 +11,7 @@
   #:use-module (gnu packages admin)
   #:use-module (gnu packages compression)
   #:use-module (gnu packages fonts)
+  #:use-module (gnu packages node)
   #:use-module (gnu packages package-management)
   #:use-module (gnu packages pulseaudio)
   #:use-module (gnu services)
@@ -24,7 +25,9 @@
         pavucontrol
         flatpak
         firefox
-        unzip))
+        unzip
+
+        node-lts))
  (services
   (append emacs-service
           nyxt-service
