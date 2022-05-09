@@ -58,7 +58,7 @@
               false; # FIXME: enable only on local machines, on server it's useful
             options = "-d --delete-older-than 7d";
           };
-          package = pkgs.hiPrio pkgs.nixUnstable;
+          package = pkgs.hiPrio pkgs.nixFlakes;
           registry = {
             nixpkgs.flake = nixpkgs;
             dotfiles.flake = self;
