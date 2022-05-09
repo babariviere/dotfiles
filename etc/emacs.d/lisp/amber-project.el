@@ -6,10 +6,10 @@
     (equal filename ".git")))
 
 (use-package projectile
-  :after general
+  :init
+  (projectile-mode 1)
   :config
   (delete "default.nix" projectile-project-root-files)
-  (projectile-mode 1)
   :custom
   (projectile-completion-system 'auto)
   (projectile-switch-project-action #'projectile-dired)
@@ -23,11 +23,8 @@
 											 projectile-root-bottom-up
 											 projectile-root-top-down-recurring))
   (projectile-ignored-project-function #'amber/project-ignored-p)
-  :general
-  (amber/leader-keys
-    projectile-mode-map
-    "p" 'projectile-command-map)
-  (amber/leader-keys
-    "SPC" '(projectile-find-file :which-key "find file in project")))
+  :bind (:map projectile-mode-map
+              ("C-c p" . projectile-command-map)
+              ("C-c SPC" . projectile-find-file)))
 
 (provide 'amber-project)
