@@ -30,7 +30,8 @@
 (require 'use-package)
 
 (use-package csharp-mode
-  :mode "\\.cs\\'")
+  :mode "\\.cs\\'"
+  :hook (csharp . lsp))
 
 (use-package csproj-mode)
 
