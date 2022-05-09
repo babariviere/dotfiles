@@ -3,6 +3,7 @@
   #:use-module (baba home services browsers)
   #:use-module (baba home services emacs)
   #:use-module (baba home services wm)
+  #:use-module (baba packages dotnet)
   #:use-module (baba packages fonts)
   #:use-module (baba packages security)
   #:use-module (gnu home)
@@ -27,6 +28,7 @@
         firefox
         unzip
 
+        dotnet-lts
         node-lts))
  (services
   (append emacs-service
@@ -37,6 +39,9 @@
                            home-shell-profile-service-type
                            (list (plain-file "setup-nix"
                                              ". $HOME/.profile-nix")))
+           (simple-service 'setup-dotnet
+                           home-environment-variables-service-type
+                           `(("PATH" . "$HOME/.dotnet/tools:$PATH")))
            (service home-font-service-type
                     (home-font-configuration
                      (sans-serif (make-font-spec font-abattis-cantarell "Cantarell"))
