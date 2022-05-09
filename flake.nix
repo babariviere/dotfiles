@@ -12,7 +12,6 @@
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     flow.url = "github:babariviere/flow";
     utils.url = "github:numtide/flake-utils";
-    deploy.url = "github:serokell/deploy-rs";
     hosts-denylist = {
       url = "github:StevenBlack/hosts";
       flake = false;
@@ -25,7 +24,7 @@
     gomod2nix.url = "github:tweag/gomod2nix";
   };
 
-  outputs = { self, darwin, nixpkgs, home-manager, utils, deploy, ... }@inputs:
+  outputs = { self, darwin, nixpkgs, home-manager, utils, ... }@inputs:
     let
       configuration = { config, pkgs, system, ... }: {
         home-manager.useUserPackages = true;
@@ -124,10 +123,6 @@
         #   specialArgs = { inherit inputs lib; };
         # };
 
-        vercar = {
-          system = "x86_64-linux";
-          modules = [ ./hosts/vercar/configuration.nix ];
-        };
 
         geras = {
           system = "x86_64-linux";
@@ -143,20 +138,6 @@
       # Expose the package set, including overlays, for convenience.
       # darwinPackages = self.darwinConfigurations."ochatt".pkgs;
 
-      deploy.nodes = {
-        vercar = {
-          hostname = "100.100.28.13";
-          profiles.system = {
-            user = "root";
-            sshUser = "root";
-            path = deploy.lib.x86_64-linux.activate.nixos
-              self.nixosConfigurations.vercar;
-          };
-        };
-      };
-
-      checks = builtins.mapAttrs
-        (system: deployLib: deployLib.deployChecks self.deploy) deploy.lib;
       # lib = lib.my;
 
       overlay = import ./pkgs;
@@ -179,12 +160,6 @@
         # packages = (lib.fix (self: self'.overlay self pkgs)) // {
         #   inherit (pkgs) emacsGit;
         # };
-
-        devShell = pkgs.mkShell {
-          buildInputs = [
-            deploy.defaultPackage."${system}"
-          ];
-        };
 
         apps = {
           amber-emacs = {
