@@ -31,7 +31,7 @@
 
 (use-package csharp-mode
   :mode "\\.cs\\'"
-  :hook (csharp . lsp))
+  :hook (csharp-mode . lsp))
 
 (use-package csproj-mode)
 
