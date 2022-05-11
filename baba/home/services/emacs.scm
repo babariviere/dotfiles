@@ -168,10 +168,7 @@
 
 	    emacs-smartparens
 
-	    emacs-doom-themes
-	    emacs-kaolin-themes
 	    emacs-modus-themes
-	    emacs-inkpot-theme
 
 	    emacs-vterm
 
