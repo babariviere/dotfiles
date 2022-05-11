@@ -73,9 +73,7 @@
 	    emacs-embark
 	    emacs-embark-consult
 
-	    emacs-projectile
-
-	    emacs-general
+        emacs-general
 	    emacs-undo-fu
 	    emacs-undo-fu-session
 	    emacs-eldoc

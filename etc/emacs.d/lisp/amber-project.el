@@ -1,30 +1,39 @@
-(require 'use-package)
+;;; amber-project.el --- Project support for Amber   -*- lexical-binding: t; -*-
 
-(defun amber/project-ignored-p (project-root)
-  "Return non-nil if PROJECT-ROOT must be ignored from project list."
-  (let ((filename (f-filename project-root)))
-    (equal filename ".git")))
+;; Copyright (C) 2022  Bastien Riviere
 
-(use-package projectile
-  :init
-  (projectile-mode 1)
-  :config
-  (delete "default.nix" projectile-project-root-files)
-  :custom
-  (projectile-completion-system 'auto)
-  (projectile-switch-project-action #'projectile-dired)
-  (projectile-globally-ignored-files '(".DS_Store" "TAGS"))
-  ;; Run `projectile-discover-projects-in-search-path` manually instead.
-  (projectile-auto-discover nil)
-  (projectile-track-known-projects-automatically nil)
-  (projectile-project-search-path '(("~/src" . 3)))
-  (projectile-project-root-files-functions '(projectile-root-local
-											 projectile-root-top-down
-											 projectile-root-bottom-up
-											 projectile-root-top-down-recurring))
-  (projectile-ignored-project-function #'amber/project-ignored-p)
-  :bind (:map projectile-mode-map
-              ("C-c p" . projectile-command-map)
-              ("C-c SPC" . projectile-find-file)))
+;; Author: Bastien Riviere(require 'use-package) <me@babariviere.com>
+;; Keywords: files, tools
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; Add support for projects in Amber Emacs.
+
+;;; Code:
+
+(require 'project)
+
+(global-set-key (kbd "C-c SPC") #'project-find-file)
+
+(defun amber-project/root (&optional path)
+  "Return project root or PATH / `default-directory' if there is no current project."
+  (car (last (project-current nil
+                              (or path
+                                  default-directory)))))
 
 (provide 'amber-project)
+
+;;; amber-project.el ends here
