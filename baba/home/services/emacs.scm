@@ -65,6 +65,8 @@
 	    emacs-git-gutter
 	    emacs-git-gutter-fringe
 	    emacs-exec-path-from-shell
+
+        ;; completion
 	    emacs-vertico
 	    emacs-marginalia
 	    emacs-orderless
@@ -77,21 +79,26 @@
 	    emacs-undo-fu-session
 	    emacs-eldoc
 
+        ;; magit
 	    emacs-magit
         emacs-magit-section
 	    emacs-forge
 
+        ;; dired
 	    emacs-diredfl
 	    emacs-all-the-icons-dired
 	    emacs-diff-hl
 
+        ;; common lisp
 	    emacs-sly
         emacs-sly-asdf
 	    emacs-sly-macrostep
 	    emacs-sly-repl-ansi-color
 
+        ;; lisp
 	    emacs-lispy
 
+        ;; c/c++
 	    emacs-ccls
 	    emacs-cmake-mode
 	    emacs-demangle-mode
@@ -114,37 +121,40 @@
         emacs-csproj-mode
         emacs-sharper
 
+        ;; yaml
 	    emacs-yaml-mode
 	    emacs-gitlab-ci-mode
 
+        ;; direnv
 	    emacs-envrc
 
+        ;; emacs lisp
 	    emacs-eros
 	    emacs-highlight-quoted
 	    emacs-elisp-demos
 	    emacs-macrostep
 	    emacs-macrostep-geiser
 
+        ;; elixir
         emacs-elixir-mode
         emacs-alchemist
         emacs-exunit
 
+        ;; fish
 	    emacs-fish-mode
 
-	    emacs-flycheck
-	    emacs-flycheck-inline
-
-        ;; emacs-format-all
-
+        ;; go
 	    emacs-go-mode
 	    emacs-go-guru
 
+        ;; lsp
 	    emacs-eglot
 
         ;; elfeed
         emacs-elfeed
         emacs-elfeed-org
 
+        ;; org-mode
 	    emacs-org
 	    emacs-org-appear
 	    emacs-org-contrib
@@ -154,6 +164,7 @@
 	    emacs-org-roam
         emacs-org-roam-ui
 
+        ;; nix
 	    emacs-nix-mode
 	    emacs-nix-update
 
@@ -162,16 +173,21 @@
 	    emacs-poetry
         emacs-blacken
 
+        ;; parens
 	    emacs-smartparens
 
+        ;; themes
 	    emacs-modus-themes
 
+        ;; shell
 	    emacs-vterm
 
+        ;; scheme
 	    emacs-geiser
 	    emacs-guix
 	    emacs-geiser-guile
 
+        ;; misc
 	    emacs-emacsql-sqlite3
 	    sqlite
 	    gcc
@@ -181,18 +197,22 @@
 	    emacs-crux
 	    emacs-htmlize
 
+        ;; navigation
 	    emacs-avy
 	    emacs-ace-window
 
+        ;; http
         emacs-verb
 
+        ;; font
         emacs-mixed-pitch
 
+        ;; services
         emacs-slack
         emacs-notmuch
 
+        ;; dependencies
         python-pygments
-
         emacs-plantuml-mode
         plantuml
 	    )))
