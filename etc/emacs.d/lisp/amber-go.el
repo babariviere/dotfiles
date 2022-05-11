@@ -88,7 +88,7 @@
 
 (use-package go-mode
   :mode "\\.go\\'"
-  :hook (go-mode . lsp)
+  :hook (go-mode . eglot-ensure)
   :general
   (amber/leader-keys go-mode-map
     "C-t" '(:ignore t :wk "test")

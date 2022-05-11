@@ -45,7 +45,7 @@
 
 ;; Use yasnippet only for lsp-mode
 (use-package yasnippet
-  :hook (lsp-mode . yas-minor-mode))
+  :hook (eglot-mode . yas-minor-mode))
 
 (provide 'amber-snippets)
 ;;; amber-snippets.el ends here

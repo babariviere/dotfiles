@@ -33,7 +33,7 @@
 (require 'use-package)
 
 (use-package elixir-mode
-  :hook ((elixir-mode . lsp)))
+  :hook ((elixir-mode . eglot-ensure)))
 
 (use-package alchemist
   :hook (elixir-mode . alchemist-mode)

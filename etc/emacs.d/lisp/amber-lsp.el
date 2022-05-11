@@ -27,42 +27,15 @@
 
 ;;; Code:
 
-(require 'use-package)
+(require 'eglot)
 
-;; TODO: look at the bug fixes in this file
-;; https://github.com/hlissner/doom-emacs/blob/develop/modules/tools/lsp/%2Blsp.el
-
-(defun amber/lsp-mode-setup-completion ()
-  "Setup orderless for completion."
-  (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
-        '(orderless)))
-
-(use-package lsp-mode
-  :demand t
-  :hook ((lsp-mode . lsp-enable-which-key-integration)
-         (lsp-completion-mode . amber/lsp-mode-setup-completion))
-  :custom
-  (lsp-completion-provider :none) ;; We use corfu
-  (lsp-enable-folding nil)
-  (lsp-enable-on-type-formatting nil)
-  (lsp-headerline-breadcrumb-enable nil)
-  (lsp-ui-sideline-enable t)
-  (lsp-ui-sideline-show-diagnostics t)
-  ;; breaks sideline
-  (lsp-eldoc-enable-hover nil)
-  (lsp-enable-snippet t)              ; only for yasnippet
-  :general
-  ('motion lsp-mode-map
-		   "gd" #'lsp-find-type-definition
-		   "K" #'lsp-describe-thing-at-point))
-
-(use-package lsp-ui
-  :commands lsp-ui-mode)
-
-(use-package consult-lsp
-  :general
-  (lsp-mode-map
-   [remap xref-find-apropos] #'consult-lsp-symbols))
+(define-key eglot-mode-map (kbd "C-c l R") 'eglot-reconnect)
+(define-key eglot-mode-map (kbd "C-c l S") 'eglot-shutdown)
+(define-key eglot-mode-map (kbd "C-c l a") 'eglot-code-actions)
+(define-key eglot-mode-map (kbd "C-c l f") 'eglot-format)
+(define-key eglot-mode-map (kbd "C-c l h") 'eglot)
+(define-key eglot-mode-map (kbd "C-c l o") 'eglot-code-action-organize)
+(define-key eglot-mode-map (kbd "C-c l r") 'eglot-rename)
 
 (provide 'amber-lsp)
 

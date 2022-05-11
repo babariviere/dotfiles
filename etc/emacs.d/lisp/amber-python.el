@@ -32,6 +32,7 @@
 (use-package python
   :mode ("[./]flake8\\'" . conf-mode)
   :mode ("/Pipfile\\'" . conf-mode)
+  :hook (python-mode . eglot-ensure)
   :config
   (define-key python-mode-map (kbd "DEL") nil) ; interferes with smartparens
   (sp-local-pair 'python-mode "'" nil
@@ -54,11 +55,6 @@
 
 (use-package blacken
   :commands blacken-mode blacken-buffer)
-
-(use-package lsp-pyright
-  :hook (python-mode . (lambda ()
-                         (require 'lsp-pyright)
-                         (lsp))))
 
 (provide 'amber-python)
 

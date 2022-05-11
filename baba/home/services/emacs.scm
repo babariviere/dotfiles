@@ -31,7 +31,6 @@
      ("emacs-dash" . ,(const emacs-dash))
      ("emacs-hydra" . ,(const emacs-hydra))
      ("emacs-flycheck" . ,(const emacs-flycheck))
-     ("emacs-lsp-mode" . ,(const emacs-lsp-mode))
      ("emacs-markdown-mode" . ,(const emacs-markdown-mode))
      ("emacs-emacsql" . ,(const emacs-emacsql))
      ("emacs-emacsql-sqlite" . ,(const emacs-emacsql-sqlite))
@@ -140,9 +139,7 @@
 	    emacs-go-mode
 	    emacs-go-guru
 
-	    emacs-lsp-mode
-	    emacs-lsp-ui
-	    emacs-consult-lsp
+	    emacs-eglot
 
         ;; elfeed
         emacs-elfeed
@@ -164,7 +161,6 @@
         emacs-python-mode
 	    emacs-poetry
         emacs-blacken
-	    emacs-lsp-pyright
 
 	    emacs-smartparens
 
