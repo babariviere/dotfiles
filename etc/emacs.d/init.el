@@ -159,20 +159,6 @@ mouse-3: Toggle minor modes"
 									   (ignored . " ")))
   (diff-hl-margin-mode))
 
-;; (use-package zoom
-;;   :demand t
-;;   :custom
-;;   (zoom-size '(0.618 . 0.618))
-;;   :config
-;;   (zoom-mode 1))
-
-(use-package pinentry
-  :demand t
-  :custom
-  (epg-pinentry-mode 'loopback)
-  :config
-  (pinentry-start))
-
 ;; HACK: Fix issue with browse-url and wayland
 (defun amber/enforce-display-env (&rest args)
   "Enforce DISPLAY env to be correctly set.
