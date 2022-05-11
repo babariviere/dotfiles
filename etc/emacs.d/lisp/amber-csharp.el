@@ -38,9 +38,10 @@
 (use-package csproj-mode)
 
 (use-package sharper
-  :demand t
+  :after csharp-mode
   :bind
-  ("C-c n" . sharper-main-transient))
+  (:map csharp-mode-map
+        ("C-c C-n" . sharper-main-transient)))
 
 (provide 'amber-csharp)
 
