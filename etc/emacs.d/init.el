@@ -102,7 +102,7 @@ mouse-3: Toggle minor modes"
 (require 'amber-direnv)
 (require 'amber-vterm)
 (require 'amber-format)
-(require 'amber-flycheck)
+(require 'amber-check)
 ;; NOTE: Not sure I like it
 ;; (require 'amber-persp)
 (require 'amber-notmuch)

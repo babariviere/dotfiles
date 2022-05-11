@@ -23,22 +23,11 @@
 
 ;;; Commentary:
 
-;; Add support for flycheck to amber emacs.
+;; Add support for flycheck to Amber Emacs.
 
 ;;; Code:
 
 (require 'use-package)
-
-(use-package flycheck
-  :hook (after-init . global-flycheck-mode)
-  :custom
-  (flycheck-emacs-lisp-load-path 'inherit)
-  :config
-  ;; let diff have left fringe, flycheck can have right fringe
-  (setq flycheck-indication-mode 'right-fringe)
-  ;; A non-descript, left-pointing arrow
-  (define-fringe-bitmap 'flycheck-fringe-bitmap-double-arrow
-    [16 48 112 240 112 48 16] nil nil 'center))
 
 (use-package flycheck-inline
   :custom-face
