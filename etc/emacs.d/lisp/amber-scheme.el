@@ -192,10 +192,13 @@ indentation."
 (put 'with-http-server 'scheme-indent-function 1)
 
 (require 'geiser)
+(require 'geiser-mode)
 (require 'geiser-guile)
 (when (executable-find "guix")
   (add-to-list 'geiser-guile-load-path
                (expand-file-name "~/.config/guix/current/share/guile/site/3.0")))
+
+(setq geiser-mode-company-p nil)
 
 (use-package macrostep-geiser
   :after geiser-mode
