@@ -215,7 +215,7 @@ EndSection
                    (list (file-system
                           (mount-point "/")
                           (device "/dev/nvme1n1p3")
-                          (check? #f) ; FIXME: enable check when we have found a solution to override bcachefs version
+                          (check? #f) ; NOTE: it works BUT it increases boot time to ~30s, should only be used for servers
                           (needed-for-boot? #t)
                           (type "bcachefs"))
                          (file-system
