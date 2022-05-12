@@ -3,29 +3,34 @@
         (url "https://git.savannah.gnu.org/git/guix.git")
         (branch "master")
         (commit
-          "d24ad3949127a938cad306f0524c120afe5e2e4f")
+          "93baba64753d4f8543b38a3a6092b7a71b79b246")
         (introduction
           (make-channel-introduction
             "9edb3f66fd807b096b48283debdcddccfea34bad"
             (openpgp-fingerprint
               "BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA"))))
       (channel
-        (name 'baba)
-        (url "https://github.com/babariviere/dotfiles")
-        (branch "guix")
-        (commit
-          "566e1b7bd8f2f285fd9636a74c0949adb5be5ded")
-        (introduction
-          (make-channel-introduction
-            "78e60924c559697195eddafb5dc7f47a86a12d6e"
-            (openpgp-fingerprint
-              "261C A284 3452 FB01 F6DF  6CF4 F9B7 864F 2AB4 6F18"))))
-      (channel
         (name 'rde)
         (url "https://git.sr.ht/~abcdw/rde")
         (branch "master")
         (commit
-          "ab6931cc1d05c8ab95a1b6c4ab34d0051f7419d7"))
+          "ab6931cc1d05c8ab95a1b6c4ab34d0051f7419d7")
+        (introduction
+          (make-channel-introduction
+            "257cebd587b66e4d865b3537a9a88cccd7107c95"
+            (openpgp-fingerprint
+              "2841 9AC6 5038 7440 C7E9  2FFA 2208 D209 58C1 DEB0"))))
+      (channel
+        (name 'baba-pkgs)
+        (url "https://github.com/babariviere/guix-packages")
+        (branch "master")
+        (commit
+          "c599484d935c1704ace8222b92a613b8f8833ab0")
+        (introduction
+          (make-channel-introduction
+            "c599484d935c1704ace8222b92a613b8f8833ab0"
+            (openpgp-fingerprint
+              "261C A284 3452 FB01 F6DF  6CF4 F9B7 864F 2AB4 6F18"))))
       (channel
         (name 'flat)
         (url "https://github.com/flatwhatson/guix-channel.git")
@@ -64,7 +69,7 @@
         (url "https://github.com/babariviere/guix-emacs")
         (branch "master")
         (commit
-          "e308663914f0ee0736ad5f9509a6f364702884a7")
+          "3ecd9af2b9a9c80c965f7795a39b7024eebb7e6b")
         (introduction
           (make-channel-introduction
             "72ca4ef5b572fea10a4589c37264fa35d4564783"

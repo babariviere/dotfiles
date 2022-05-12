@@ -33,12 +33,11 @@
     (openpgp-fingerprint
      "736A C00E 1254 378B A982  7AF6 9DBE 8265 81B6 4490"))))
  (channel
-  (name 'baba)
-  (url "https://github.com/babariviere/dotfiles")
-  (branch "guix")
+  (name 'baba-pkgs)
+  (url "https://github.com/babariviere/guix-packages")
   (introduction
    (make-channel-introduction
-    "78e60924c559697195eddafb5dc7f47a86a12d6e"
+    "c599484d935c1704ace8222b92a613b8f8833ab0"
     (openpgp-fingerprint
      "261C A284 3452 FB01 F6DF  6CF4 F9B7 864F 2AB4 6F18"))))
  (channel
