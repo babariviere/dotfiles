@@ -379,9 +379,10 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                               (mail-account 'prv-fm
                                             "imap.fastmail.com"
                                             fastmail-folder-mapping)
-                              (mail-account 'prv-gm
-                                            "imap.gmail.com"
-                                            gmail-folder-mapping)))))
+                              ;; (mail-account 'prv-gm
+                              ;;               "imap.gmail.com"
+                              ;;               gmail-folder-mapping)
+                              ))))
            (simple-service 'isync-ensure-mail-dirs
                            home-activation-service-type
                            #~(map mkdir-p '#$(map (lambda (id) (string-append (getenv "HOME") "/.mail/" (symbol->string id))) '(prv-fm))))
