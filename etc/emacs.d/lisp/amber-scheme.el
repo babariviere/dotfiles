@@ -193,8 +193,9 @@ indentation."
 
 (require 'geiser)
 (require 'geiser-guile)
-(add-to-list 'geiser-guile-load-path
-             (expand-file-name "~/.config/guix/current/share/guile/site/3.0"))
+(when (executable-find "guix")
+  (add-to-list 'geiser-guile-load-path
+               (expand-file-name "~/.config/guix/current/share/guile/site/3.0")))
 
 (use-package macrostep-geiser
   :after geiser-mode
