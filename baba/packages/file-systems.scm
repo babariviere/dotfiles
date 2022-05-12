@@ -10,7 +10,26 @@
   #:use-module (srfi srfi-1)
   #:export (bcachefs-initrd))
 
-(define bcachefs-commit "f3cdace86c8b60a4efaced23b2d31c16dc610da9")
+#|
+guix repl -L . <<EOF
+(use-modules (guix base32)
+             (guix git)
+             (guix git-download)
+             (guix hash)
+             (guix packages)
+             (guix store)
+             (baba packages file-systems))
+
+(let* ((source (package-source bcachefs-tools-git))
+       (url (git-reference-url (origin-uri source))))
+  (call-with-values (lambda () (update-cached-checkout url))
+    (lambda (path commit starting-commit?)
+      (let ((hash (file-hash* path)))
+        (format #t "commit: ~A~%hash: ~A~%" commit (bytevector->nix-base32-string hash))))))
+EOF
+|#
+
+(define bcachefs-commit "0766bee8fdf3973953fd3184f63dfe2a0760c08d")
 (define bcachefs-version (git-version "0.1" "15" bcachefs-commit))
 (define bcachefs-source
   (origin
@@ -19,7 +38,7 @@
          (url "https://evilpiepirate.org/git/bcachefs-tools.git")
          (commit bcachefs-commit)))
    (sha256
-    (base32 "1hg4cjrs4yr0mx3mmm1jls93w1skpq5wzp2dzx9rq4w5il2xmx19"))
+    (base32 "14lgdbfxly7rv329vagprsa0mimkqm84qrvrqvmnikwwkvnyb0dr"))
    (file-name (git-file-name "bcachefs-tools" bcachefs-version))))
 
 (define-public bcachefs-tools-git
