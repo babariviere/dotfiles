@@ -1,3 +1,31 @@
+;;; amber-scheme.el --- Scheme support for Amber Emacs  -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2022  Bastien Riviere
+
+;; Author: Bastien Riviere(defun amber/scheme-indent-function (indent-point state) <me@babariviere.com>
+;; Keywords: languages
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; Scheme support for Amber Emacs
+
+;;; Code:
+
+(require 'use-package)
+
 (defun amber/scheme-indent-function (indent-point state)
   "Scheme mode function for the value of the variable `lisp-indent-function'.
 This behaves like the function `lisp-indent-function', except that:
@@ -163,8 +191,15 @@ indentation."
 
 (put 'with-http-server 'scheme-indent-function 1)
 
+(require 'geiser)
+(require 'geiser-guile)
+(add-to-list 'geiser-guile-load-path
+             (expand-file-name "~/.config/guix/current/share/guile/site/3.0"))
+
 (use-package macrostep-geiser
   :after geiser-mode
   :hook (geiser-mode . macrostep-geiser-setup))
 
 (provide 'amber-scheme)
+
+;;; amber-scheme.el ends here
