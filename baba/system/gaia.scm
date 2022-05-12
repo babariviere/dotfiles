@@ -35,6 +35,7 @@
   #:use-module (gnu packages xorg)
   #:use-module (gnu services cups)
   #:use-module (gnu services desktop)
+  #:use-module (gnu services linux)
   #:use-module (gnu services nix)
   #:use-module (gnu services pm)
   #:use-module (gnu services security-token)
@@ -45,24 +46,30 @@
   #:use-module (guix gexp)
   #:use-module (guix git-download)
   #:use-module (guix packages)
+  #:use-module (guix transformations)
   #:use-module (guix utils)
   #:use-module (nongnu packages linux)
+  #:use-module (nongnu packages nvidia)
   #:use-module (nongnu system linux-initrd)
   #:export (%system/gaia))
 
 (define %blacklist-modules
-  (list "pcspkr" "snd_pcsp"))
+  (list "pcspkr" "snd_pcsp" "nouveau"))
 
 (define xorg.conf
   "
 Section \"Device\"
   Identifier \"dGPU\"
-  Driver \"modesetting\"
+  Driver \"nvidia\"
   BusID \"PCI:1:0:0\"
+  # Option \"ConnectedMonitor\" \"DFP\"
+  Option \"RegistryDwords\" \"EnableBrightnessControl=1\"
+  Option \"DPI\" \"96 x 96\"
+  Option \"UseEdidDpi\" \"FALSE\"
 EndSection
 
 Section \"Screen\"
-  Identifier \"nouveau\"
+  Identifier \"nvidia\"
   Device \"dGPU\"
 EndSection
 ")
@@ -93,6 +100,21 @@ EndSection
   (keyboard-layout
    "us" "altgr-intl"))
 
+(define gaia/linux
+  linux-bcachefs)
+
+
+(define transform-mesa
+  (options->transformation
+   '((with-graft . "mesa=nvda"))))
+
+(define nvidia
+  (package
+    (inherit nvidia-driver)
+    (arguments
+     (substitute-keyword-arguments (package-arguments nvidia-driver)
+       ((#:linux _) gaia/linux)))))
+
 (define services
   (cons*
    (service nix-service-type)
@@ -102,11 +124,19 @@ EndSection
              (cpu-scaling-max-freq-on-bat 4000000)
              (start-charge-thresh-bat0 75)
              (stop-charge-thresh-bat0 80)))
+   (simple-service 'nvidia-udev udev-service-type (list nvidia))
+   (service kernel-module-loader-service-type
+            '("ipmi_devintf"
+              "nvidia"
+              "nvidia_modeset"
+              "nvidia_uvm"))
    (service slim-service-type (slim-configuration
                                (display ":0")
                                (vt "vt7")
                                (xorg-configuration
                                 (xorg-configuration
+                                 (modules (cons* nvidia %default-xorg-modules))
+                                 (server (transform-mesa xorg-server))
                                  (extra-config (list xorg.conf libinput.conf))))))
    (service cups-service-type
             (cups-configuration
@@ -118,20 +148,20 @@ EndSection
    (udev-rules-service 'yubikey yubikey-personalization)
    (bluetooth-service #:auto-enable? #t)
    (modify-services
-    (remove (lambda (service)
-              (eq? (service-kind service) gdm-service-type))
-            %desktop-services)
-    (guix-service-type config =>
-                       (guix-configuration
-                        (inherit config)
-                        (discover? #t)
-                        (substitute-urls (append
-                                          (@@ (guix scripts substitute) %default-substitute-urls)
-                                          (list "https://substitutes.nonguix.org")))
-                        (authorized-keys (append
-                                          %default-authorized-guix-keys
-                                          (list
-                                           (local-file (string-append %channel-root "/etc/keys/substitutes.nonguix.org.pub"))))))))))
+       (remove (lambda (service)
+                 (eq? (service-kind service) gdm-service-type))
+               %desktop-services)
+     (guix-service-type config =>
+                        (guix-configuration
+                         (inherit config)
+                         (discover? #t)
+                         (substitute-urls (append
+                                           (@@ (guix scripts substitute) %default-substitute-urls)
+                                           (list "https://substitutes.nonguix.org")))
+                         (authorized-keys (append
+                                           %default-authorized-guix-keys
+                                           (list
+                                            (local-file (string-append %channel-root "/etc/keys/substitutes.nonguix.org.pub"))))))))))
 
 (define* (gaia/initrd file-systems
                       #:key
@@ -165,8 +195,8 @@ EndSection
                  (bootloader grub-efi-inplace-bootloader)
                  (targets '("/boot/efi"))))
 
-    (kernel linux-bcachefs)
-    (kernel-loadable-modules (list acpi-call-linux-module))
+    (kernel gaia/linux)
+    (kernel-loadable-modules (list acpi-call-linux-module nvidia))
     (kernel-arguments
      (cons* (string-append "modprobe.blacklist="
                            (string-join %blacklist-modules
