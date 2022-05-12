@@ -238,8 +238,7 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
         "notmuch tag -archive -- tag:inbox and tag:archive"
         ;; Gmail mark sent email as archive
         "notmuch tag -archive -- tag:sent"
-        "notmuch tag -unread -new -- tag:replied"
-        "notmuch tag +unread -new -- tag:new"))
+        "notmuch tag -unread -new -- tag:replied"))
 
 ;; TODO: make service for mbsync and notmuch
 (home-environment
