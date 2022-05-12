@@ -5,7 +5,7 @@
   #:use-module (guix packages))
 
 #|
-guix repl <<EOF
+guix repl -L . <<EOF
 (use-modules (guix base32)
              (guix git)
              (guix git-download)
