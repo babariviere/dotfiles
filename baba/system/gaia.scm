@@ -8,6 +8,7 @@
   #:use-module (baba bootloader grub)
   #:use-module (baba packages linux)
   #:use-module (baba packages file-systems)
+  #:use-module (baba services tailscale)
   #:use-module (baba services virtualization)
   #:use-module (gnu)
   #:use-module (gnu packages)
@@ -144,6 +145,7 @@ EndSection
              (extensions
               (list cups-filters epson-inkjet-printer-escpr hplip-minimal))))
    (service lxd-service-type)
+   (service tailscale-service-type)
    (service pcscd-service-type)
    (udev-rules-service 'yubikey yubikey-personalization)
    (bluetooth-service #:auto-enable? #t)
