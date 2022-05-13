@@ -44,6 +44,9 @@
     settings = { General = { ControllerMode = "dual"; }; };
   };
 
+  hardware.opengl.enable = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+
   services.usbmuxd.enable = true;
 
   services.yggdrasil = {
@@ -113,7 +116,7 @@
   services.xserver.layout = "us";
   services.xserver.xkbVariant = "altgr-intl";
   services.xserver.exportConfiguration = true;
-  services.xserver.videoDrivers = [ "nouveau" "modesetting" ];
+  services.xserver.videoDrivers = [ "nvidia" "modesetting" ];
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.displayManager.defaultSession = "session";
   services.xserver.displayManager.session = [{
@@ -267,7 +270,7 @@
         cc.enable = true;
         common-lisp.enable = false;
         go.enable = true;
-        python.enable = true;
+        python.enable = false;
         nix.enable = true;
         rust.enable = true;
       };
