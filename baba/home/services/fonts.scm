@@ -1,5 +1,6 @@
 (define-module (baba home services fonts)
   #:use-module (gnu home services)
+  #:use-module (gnu services)
   #:use-module (gnu services configuration)
   #:use-module (guix gexp)
   #:use-module (guix records)
