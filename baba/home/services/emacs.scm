@@ -5,6 +5,7 @@
   #:use-module (gnu packages emacs-xyz)
   #:use-module ((gnu packages emacs-xyz) #:prefix e:)
   #:use-module (emacs build-system melpa)
+  #:use-module (emacs packages elpa)
   #:use-module (emacs packages melpa)
   #:use-module (gnu home services)
   #:use-module (gnu home-services emacs)
@@ -77,6 +78,7 @@
         emacs-general
 	    emacs-undo-fu
 	    emacs-undo-fu-session
+        emacs-vundo
 	    emacs-eldoc
 
         ;; magit
