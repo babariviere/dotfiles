@@ -39,7 +39,7 @@
    (make-channel-introduction
     "c599484d935c1704ace8222b92a613b8f8833ab0"
     (openpgp-fingerprint
-     "261C A284 3452 FB01 F6DF  6CF4 F9B7 864F 2AB4 6F18"))))
+     "763A FB06 26F9 D719 5075  1B15 4E5F 0839 249F 162E"))))
  (channel
   (name 'rde)
   (url "https://git.sr.ht/~abcdw/rde")
