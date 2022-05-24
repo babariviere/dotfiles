@@ -170,7 +170,7 @@
      ,#~"")))
 
 (define (gpg-cmd id host field)
-  (string-append "gpg -q --for-your-eyes-only --no-tty -d ~/.authinfo.gpg | awk '/machine " host " id " (symbol->string id) "/ {print " field "}'"))
+  (string-append "gpg -q --pinentry-mode loopback --for-your-eyes-only --no-tty -d ~/.authinfo.gpg | awk '/machine " host " id " (symbol->string id) "/ {print " field "}'"))
 
 ;; Expected authinfo format:
 ;; machine <host> id <id> login <mail> port 993 password <pwd>
