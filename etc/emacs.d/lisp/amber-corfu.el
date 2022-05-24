@@ -8,6 +8,8 @@
   (corfu-auto t)
   (corfu-quit-at-boundary t)
   (corfu-quit-no-match t)
+  (corfu-on-exact-match nil)
+  (corfu-preview-current t)
   :init
   (corfu-global-mode)
   :config
