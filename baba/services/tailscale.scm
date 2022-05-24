@@ -28,4 +28,5 @@
                              (const (list tailscale iptables)))
           (service-extension shepherd-root-service-type
                              tailscaled-shepherd-service)))
-   (default-value #f)))
+   (default-value #f)
+   (description "Start tailscaled daemon to connect to the private network.")))

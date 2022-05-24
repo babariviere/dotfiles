@@ -100,4 +100,5 @@
                              (const %lxd-accounts))
           (service-extension file-system-service-type
                              (const (list %lxd-cgroup)))))
-   (default-value (lxd-configuration))))
+   (default-value (lxd-configuration))
+   (description "Start the lxd daemon to manage containers.")))
