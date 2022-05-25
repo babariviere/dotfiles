@@ -6,6 +6,7 @@
   #:use-module (baba packages dotnet)
   #:use-module (baba packages fonts)
   #:use-module (baba packages security)
+  #:use-module (brycus package)
   #:use-module (gnu home)
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
@@ -30,7 +31,9 @@
 
         dotnet-lts
         omnisharp
-        node-lts))
+        node-lts
+
+        brycus))
  (services
   (append emacs-service
           nyxt-service
