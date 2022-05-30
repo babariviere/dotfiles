@@ -33,16 +33,6 @@
   :mode ("[./]flake8\\'" . conf-mode)
   :mode ("/Pipfile\\'" . conf-mode)
   :hook (python-mode . eglot-ensure)
-  :config
-  (define-key python-mode-map (kbd "DEL") nil) ; interferes with smartparens
-  (sp-local-pair 'python-mode "'" nil
-                 :unless '(sp-point-before-word-p
-                           sp-point-after-word-p
-                           sp-point-before-same-p))
-  :general
-  (python-mode-map
-   ;; interferes with smartparens
-   "DEL" nil)
   :custom
   (python-indent-guess-indent-offset-verbose nil)
   (python-shell-interpreter "python3"))
