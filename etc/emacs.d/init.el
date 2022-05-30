@@ -210,5 +210,10 @@ ARGS are the arguments passed to `browse-url`."
 ;; TODO: >:( You lazy f*cker
 (require 'slack)
 
+(require 'ediff)
+(setq ediff-diff-options "-w"
+      ediff-split-window-function 'split-window-horizontally
+      ediff-window-setup-function 'ediff-setup-windows-plain)
+
 (pixel-scroll-precision-mode)
 (auto-insert-mode)
