@@ -111,6 +111,7 @@ mouse-3: Toggle minor modes"
 (require 'amber-common-lisp)
 (require 'amber-csharp)
 (require 'amber-data)
+(require 'amber-docker)
 (require 'amber-elisp)
 (require 'amber-elixir)
 (require 'amber-fish)

@@ -130,6 +130,10 @@
         ;; direnv
 	    emacs-envrc
 
+        ;; docker
+        emacs-docker
+        emacs-dockerfile-mode
+
         ;; emacs lisp
 	    emacs-eros
 	    emacs-highlight-quoted
