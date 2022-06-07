@@ -5,11 +5,13 @@
 
 (use-package corfu
   :custom
+  (corfu-cycle nil)
   (corfu-auto t)
-  (corfu-quit-at-boundary t)
-  (corfu-quit-no-match t)
+  (corfu-quit-at-boundary nil)
+  (corfu-quit-no-match nil)
   (corfu-on-exact-match nil)
-  (corfu-preview-current t)
+  (corfu-preview-current nil)
+  (corfu-echo-documentation nil)        ; we have corfu-doc
   :init
   (corfu-global-mode)
   :config
