@@ -13,7 +13,7 @@
   (corfu-preview-current nil)
   (corfu-echo-documentation nil)        ; we have corfu-doc
   :init
-  (corfu-global-mode)
+  (global-corfu-mode)
   :config
   (add-hook 'eshell-mode-hook
             (lambda ()
