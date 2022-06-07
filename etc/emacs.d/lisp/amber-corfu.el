@@ -46,7 +46,9 @@
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 (use-package corfu-doc
-  :hook (corfu-mode . corfu-doc-mode))
+  :hook (corfu-mode . corfu-doc-mode)
+  :config
+  (setq corfu-doc-delay 0.3))
 
 (require 'pcmpl-args)
 
