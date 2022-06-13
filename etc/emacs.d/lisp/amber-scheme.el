@@ -199,6 +199,8 @@ indentation."
                (expand-file-name "~/.config/guix/current/share/guile/site/3.0")))
 
 (setq geiser-mode-company-p nil)
+(advice-add 'geiser-completion--for-filename :override (lambda () nil))
+(advice-add 'geiser-capf--for-filename :override (lambda () nil))
 
 (use-package macrostep-geiser
   :after geiser-mode
