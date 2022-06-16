@@ -1,10 +1,12 @@
 (define-module (baba home geras)
+  #:use-module (baba home services elixir)
   #:use-module (baba home services fonts)
   #:use-module (baba home services browsers)
   #:use-module (baba home services emacs)
   #:use-module (baba home services wm)
   #:use-module (baba packages dotnet)
   #:use-module (baba packages fonts)
+  #:use-module (baba packages pingu)
   #:use-module (baba packages security)
   #:use-module (brycus package)
   #:use-module (gnu home)
@@ -33,11 +35,14 @@
         omnisharp
         node-lts
 
-        brycus))
+        brycus
+
+        pingu))
  (services
   (append emacs-service
           nyxt-service
           stumpwm-service
+          home-elixir-service
           (list
            (simple-service 'setup-nix
                            home-shell-profile-service-type

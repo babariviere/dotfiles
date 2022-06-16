@@ -1,11 +1,13 @@
 (define-module (baba home gaia)
   #:use-module (baba)
   #:use-module (baba home services browsers)
+  #:use-module (baba home services elixir)
   #:use-module (baba home services emacs)
   #:use-module (baba home services fonts)
   #:use-module (baba home services terminals)
   #:use-module (baba home services wm)
   #:use-module (baba packages fonts)
+  #:use-module (baba packages pingu)
   #:use-module (baba packages security)
   #:use-module (baba packages tex)
   #:use-module (brycus home-service)
@@ -252,6 +254,8 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
 
         xclip
 
+        pingu
+
         ;; latex
         texlive-base texlive-bin texlive-latex-minted texlive-latex-kvoptions texlive-latex-fvextra texlive-etoolbox
         texlive-latex-fancyvrb texlive-latex-upquote texlive-latex-lineno texlive-latex-ifplatform
@@ -267,6 +271,7 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
   (append emacs-service
           nyxt-service
           stumpwm-service
+          home-elixir-service
           (list
            (service home-shepherd-service-type
                     (home-shepherd-configuration
