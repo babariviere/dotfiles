@@ -5,13 +5,11 @@
 
 (use-package corfu
   :custom
-  (corfu-cycle nil)
+  (corfu-cycle t)
   (corfu-auto t)
-  (corfu-quit-at-boundary nil)
-  (corfu-quit-no-match nil)
-  (corfu-on-exact-match nil)
-  (corfu-preview-current nil)
-  (corfu-echo-documentation nil)        ; we have corfu-doc
+  (corfu-auto-prefix 2)
+  (corfu-auto-delay 0.0)
+  (corfu-echo-documentation 0.25)
   :init
   (global-corfu-mode)
   :config
@@ -21,36 +19,33 @@
                           corfu-quit-no-match t
                           corfu-auto nil
                           tab-always-indent 'complete)
-              (corfu-mode)))
+              (corfu-mode))))
 
 
-  ;; Silence the pcomplete capf, no errors or messages!
-  (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-silent)
+(require 'cape)
 
-  ;; Ensure that pcomplete does not write to the buffer
-  ;; and behaves as a pure `completion-at-point-function'.
-  (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-purify))
+(add-to-list 'completion-at-point-functions #'cape-file)
+(add-to-list 'completion-at-point-functions #'cape-tex)
+(add-to-list 'completion-at-point-functions #'cape-ispell)
+(add-to-list 'completion-at-point-functions #'cape-symbol)
+(add-to-list 'completion-at-point-functions #'cape-dabbrev)
 
-(use-package cape
-  :init
-  ;; TODO: add them per buffer like tempel
-  (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-tex)
-  (add-to-list 'completion-at-point-functions #'cape-ispell)
-  (add-to-list 'completion-at-point-functions #'cape-symbol)
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev))
+;; Silence the pcomplete capf, no errors or messages!
+(advice-add 'pcomplete-completions-at-point :around #'cape-wrap-silent)
+
+;; Ensure that pcomplete does not write to the buffer
+;; and behaves as a pure `completion-at-point-function'.
+(advice-add 'pcomplete-completions-at-point :around #'cape-wrap-purify)
 
 (use-package kind-icon
   :after corfu
   :custom
+  (kind-icon-use-icons t)
   (kind-icon-default-face 'corfu-default)
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
-(use-package corfu-doc
-  :hook (corfu-mode . corfu-doc-mode)
-  :config
-  (setq corfu-doc-delay 0.3))
+(add-hook 'corfu-mode-hook #'corfu-doc-mode)
 
 (require 'pcmpl-args)
 
