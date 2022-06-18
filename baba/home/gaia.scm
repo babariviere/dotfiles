@@ -273,6 +273,16 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
           stumpwm-service
           home-elixir-service
           (list
+           (service home-shepherd-service-type
+                    (home-shepherd-configuration
+                     (shepherd
+                      (package
+                        (inherit shepherd-0.9)
+                        (source
+                         (origin
+                           (inherit (package-source shepherd-0.9))
+                           (patches (append (list (get-patch "shepherd-0.9-listen-fdnames.patch") (get-patch "debug.patch"))
+                                            (origin-patches (package-source shepherd-0.9))))))))))
            (service home-bash-service-type
                     (home-bash-configuration
                      (guix-defaults? #t)))
@@ -349,7 +359,7 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                           (include . ,(file-append (package-source foot) "/themes/dracula"))))))))
            (service home-font-service-type
                     (home-font-configuration
-                     (sans-serif (make-font-spec font-inter "Inter"))
+                     (sans-serif (make-font-spec font-abattis-cantarell "Cantarell"))
                      (serif (make-font-spec font-liberation "Times New Roman"))
                      (monospace (make-font-spec font-biosevka "Biosevka"))))
            (simple-service 'setup-flatpak
