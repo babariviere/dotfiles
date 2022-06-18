@@ -53,7 +53,7 @@
                            `(("PATH" . "$HOME/.dotnet/tools:$PATH")))
            (service home-font-service-type
                     (home-font-configuration
-                     (sans-serif (make-font-spec font-abattis-cantarell "Cantarell"))
+                     (sans-serif (make-font-spec font-inter "Inter"))
                      (serif (make-font-spec font-liberation "Times New Roman"))
                      (monospace (make-font-spec font-biosevka "Biosevka"))))
            (simple-service 'setup-flatpak
