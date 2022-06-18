@@ -55,25 +55,7 @@
   #:export (%system/gaia))
 
 (define %blacklist-modules
-  (list "pcspkr" "snd_pcsp" "nouveau"))
-
-(define xorg.conf
-  "
-Section \"Device\"
-  Identifier \"dGPU\"
-  Driver \"nvidia\"
-  BusID \"PCI:1:0:0\"
-  # Option \"ConnectedMonitor\" \"DFP\"
-  Option \"RegistryDwords\" \"EnableBrightnessControl=1\"
-  Option \"DPI\" \"96 x 96\"
-  Option \"UseEdidDpi\" \"FALSE\"
-EndSection
-
-Section \"Screen\"
-  Identifier \"nvidia\"
-  Device \"dGPU\"
-EndSection
-")
+  (list "pcspkr" "snd_pcsp"))
 
 (define libinput.conf
   "
@@ -104,18 +86,6 @@ EndSection
 (define gaia/linux
   linux-bcachefs)
 
-
-(define transform-mesa
-  (options->transformation
-   '((with-graft . "mesa=nvda"))))
-
-(define nvidia
-  (package
-    (inherit nvidia-driver)
-    (arguments
-     (substitute-keyword-arguments (package-arguments nvidia-driver)
-       ((#:linux _) gaia/linux)))))
-
 (define services
   (cons*
    (service nix-service-type)
@@ -125,20 +95,12 @@ EndSection
              (cpu-scaling-max-freq-on-bat 4000000)
              (start-charge-thresh-bat0 75)
              (stop-charge-thresh-bat0 80)))
-   (simple-service 'nvidia-udev udev-service-type (list nvidia))
-   (service kernel-module-loader-service-type
-            '("ipmi_devintf"
-              "nvidia"
-              "nvidia_modeset"
-              "nvidia_uvm"))
    (service slim-service-type (slim-configuration
                                (display ":0")
                                (vt "vt7")
                                (xorg-configuration
                                 (xorg-configuration
-                                 (modules (cons* nvidia %default-xorg-modules))
-                                 (server (transform-mesa xorg-server))
-                                 (extra-config (list xorg.conf libinput.conf))))))
+                                 (extra-config (list libinput.conf))))))
    (service cups-service-type
             (cups-configuration
              (web-interface? #t)
@@ -198,7 +160,7 @@ EndSection
                  (targets '("/boot/efi"))))
 
     (kernel gaia/linux)
-    (kernel-loadable-modules (list acpi-call-linux-module nvidia))
+    (kernel-loadable-modules (list acpi-call-linux-module))
     (kernel-arguments
      (cons* (string-append "modprobe.blacklist="
                            (string-join %blacklist-modules
