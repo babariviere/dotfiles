@@ -107,7 +107,6 @@ EndSection
              (extensions
               (list cups-filters epson-inkjet-printer-escpr hplip-minimal))))
    (service lxd-service-type)
-   (service tailscale-service-type)
    (service pcscd-service-type)
    (udev-rules-service 'yubikey yubikey-personalization)
    (bluetooth-service #:auto-enable? #t)
