@@ -15,6 +15,7 @@
   #:use-module (gnu packages admin)
   #:use-module (gnu packages compression)
   #:use-module (gnu packages fonts)
+  #:use-module (gnu packages freedesktop)
   #:use-module (gnu packages node)
   #:use-module (gnu packages package-management)
   #:use-module (gnu packages pulseaudio)
@@ -27,7 +28,7 @@
  (packages
   (list keychain
         pavucontrol
-        flatpak
+
         firefox
         unzip
 
@@ -55,8 +56,4 @@
                     (home-font-configuration
                      (sans-serif (make-font-spec font-abattis-cantarell "Cantarell"))
                      (serif (make-font-spec font-liberation "Times New Roman"))
-                     (monospace (make-font-spec font-biosevka "Biosevka"))))
-           (simple-service 'setup-flatpak
-                           home-environment-variables-service-type
-                           `(("XDG_DATA_DIRS" . "$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS")
-                             ("PATH" . "$HOME/.local/share/flatpak/exports/bin:$PATH")))))))
+                     (monospace (make-font-spec font-biosevka "Biosevka"))))))))
