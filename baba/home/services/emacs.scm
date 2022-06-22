@@ -141,6 +141,9 @@
 	    emacs-macrostep
 	    emacs-macrostep-geiser
 
+        ;; erlang
+        emacs-erlang
+
         ;; elixir
         emacs-elixir-mode
         emacs-alchemist
