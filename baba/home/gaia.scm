@@ -273,16 +273,6 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
           stumpwm-service
           home-elixir-service
           (list
-           (service home-shepherd-service-type
-                    (home-shepherd-configuration
-                     (shepherd
-                      (package
-                        (inherit shepherd-0.9)
-                        (source
-                         (origin
-                           (inherit (package-source shepherd-0.9))
-                           (patches (append (list (get-patch "shepherd-0.9-listen-fdnames.patch") (get-patch "debug.patch"))
-                                            (origin-patches (package-source shepherd-0.9))))))))))
            (service home-bash-service-type
                     (home-bash-configuration
                      (guix-defaults? #t)))
@@ -405,6 +395,9 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                         (new ((tags . new)
                               (ignore . (.mbsyncstate .uidvalidity .mbsyncstate.new .mbsyncstate.journal))))))))
            (service home-mcron-service-type)
+           (simple-service 'direnv-config
+                           home-xdg-configuration-files-service-type
+                           `(("direnv/lib/use_asdf.sh" ,(local-file (string-append %channel-root "/etc/direnv/lib/use_asdf.sh")))))
            (simple-service 'mcron-mail-sync
                            home-mcron-service-type
                            (list #~(job '(next-minute (range 0 60 5))
