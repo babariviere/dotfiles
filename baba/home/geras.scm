@@ -1,4 +1,5 @@
 (define-module (baba home geras)
+  #:use-module (baba)
   #:use-module (baba home services elixir)
   #:use-module (baba home services fonts)
   #:use-module (baba home services browsers)
@@ -52,6 +53,9 @@
            (simple-service 'setup-dotnet
                            home-environment-variables-service-type
                            `(("PATH" . "$HOME/.dotnet/tools:$PATH")))
+           (simple-service 'direnv-config
+                           home-xdg-configuration-files-service-type
+                           `(("direnv/lib/use_asdf.sh" ,(local-file (string-append %channel-root "/etc/direnv/lib/use_asdf.sh")))))
            (service home-font-service-type
                     (home-font-configuration
                      (sans-serif (make-font-spec font-abattis-cantarell "Cantarell"))
