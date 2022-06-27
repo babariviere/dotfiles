@@ -31,6 +31,7 @@
 ;;; Code:
 
 (require 'use-package)
+(require 'org)
 
 ;;
 ;; Functions
@@ -38,7 +39,7 @@
 
 ;; A slightly modified version of doom's one.
 ;; Source: https://github.com/hlissner/doom-emacs/blob/bf8495b4122701fb30cb6cea37281dc8f3bedcd0/modules/lang/org/autoload/org.el#L125
-(defun amber/org-dwin-at-point (&optional arg)
+(defun amber-org/dwin-at-point (&optional arg)
   "Do-what-I-mean at point (org mode)."
   (interactive "P")
   (if (button-at (point))
@@ -124,15 +125,15 @@
 		 (let ((match (and (org-at-item-checkbox-p) (match-string 1))))
 		   (org-toggle-checkbox (if (equal match "[ ]") '(16)))))))))
 
-(defun amber/org-slow-todo ()
+(defun amber-org/slow-todo ()
   "Launch org-todo with fast-mode disabled."
   (interactive)
   (let ((org-use-fast-todo-selection 'auto))
     (org-todo)))
 
-(defun amber/org-babel-lazy-load-h ()
+(defun amber-org/babel-lazy-load-h ()
   "Load babel libraries lazily when babel blocks are executed."
-  (defun amber/org--babel-lazy-load (lang &optional async)
+  (defun amber-org/-babel-lazy-load (lang &optional async)
     (cl-check-type lang (or symbol null))
     (unless (cdr (assq lang org-babel-load-languages))
       (when async
@@ -143,20 +144,20 @@
                  (require lang nil t))
         (add-to-list 'org-babel-load-languages (cons lang t)))))
 
-  (defun amber/org--export-lazy-load-library-h ()
+  (defun amber-org/-export-lazy-load-library-h ()
     "Lazy load a babel package when a block is executed during exporting."
-    (amber/org--babel-lazy-load-library-a (org-babel-get-src-block-info)))
+    (amber-org/-babel-lazy-load-library-a (org-babel-get-src-block-info)))
 
-  (advice-add 'org-babel-exp-src-block :before #'amber/org--export-lazy-load-library-h)
+  (advice-add 'org-babel-exp-src-block :before #'amber-org/-export-lazy-load-library-h)
 
-  (defun amber/org--src-lazy-load-library-a (lang)
+  (defun amber-org/-src-lazy-load-library-a (lang)
     "Lazy load a babel package to ensure syntax highlighting."
     (or (cdr (assoc lang org-src-lang-modes))
-		(amber/org--babel-lazy-load lang)))
+		(amber-org/-babel-lazy-load lang)))
 
-  (advice-add 'org-src--get-lang-mode :before #'amber/org--src-lazy-load-library-a)
+  (advice-add 'org-src--get-lang-mode :before #'amber-org/-src-lazy-load-library-a)
 
-  (defun amber/org--babel-lazy-load-library-a (info)
+  (defun amber-org/-babel-lazy-load-library-a (info)
     "Load babel libraries lazily when babel blocks are executed."
     (let* ((lang (nth 0 info))
            (lang (cond ((symbolp lang) lang)
@@ -165,16 +166,16 @@
            ;; (lang (or (cdr (assq lang +org-babel-mode-alist))
            ;;           lang))
 		   )
-      (amber/org--babel-lazy-load
+      (amber-org/-babel-lazy-load
        lang (and (not (assq :sync (nth 2 info)))
                  (assq :async (nth 2 info))))
       t))
 
-  (advice-add 'org-babel-confirm-evaluate :after-while #'amber/org--babel-lazy-load-library-a)
+  (advice-add 'org-babel-confirm-evaluate :after-while #'amber-org/-babel-lazy-load-library-a)
 
   (advice-add #'org-babel-do-load-languages :override #'ignore))
 
-(defun amber/org-src-fix-newline-and-indent-a (&optional indent _arg _interactive)
+(defun amber-org/src-fix-newline-and-indent-a (&optional indent _arg _interactive)
   "Mimic `newline-and-indent` in src blocks."
   (when (and indent
 			 org-src-tab-acts-natively
@@ -182,7 +183,7 @@
     (org-babel-do-in-edit-buffer
      (call-interactively #'indent-for-tab-command))))
 
-(defun amber/org-archive-subtree-as-completed ()
+(defun amber-org/archive-subtree-as-completed ()
   "Archive subtree into the daily file and mark it as completed if not done."
   (interactive)
   (let ((todo (org-get-todo-state))
@@ -208,7 +209,7 @@
 				   (file-truename (buffer-file-name)))
 	  (org-refile nil nil (list "Tasks" today-file nil pos)))))
 
-(defun amber/org-archive-if-done ()
+(defun amber-org/archive-if-done ()
   "Archive task if it's marked as done."
   (let (parent-context)
 	(save-excursion
@@ -217,28 +218,65 @@
 	(when (and (string-prefix-p org-directory (buffer-file-name))
 			   (equal (org-get-todo-state) "DONE")
 			   (not (org-element-property :todo-type parent-context)))
-	  (amber/org-archive-subtree-as-completed))))
+	  (amber-org/archive-subtree-as-completed))))
 
-(defun amber/org-goto-inbox ()
+(defun amber-org/goto-inbox ()
   "Goto inbox file."
   (interactive)
   (find-file (expand-file-name org-inbox-file org-directory)))
 
-(defun amber/org-goto-agenda ()
-  "Goto agenda file."
-  (interactive)
-  (find-file (expand-file-name org-agenda-file org-directory)))
-
-(defun amber/org-goto-tasks ()
+(defun amber-org/goto-tasks ()
   "Goto tasks file."
   (interactive)
   (find-file (expand-file-name org-tasks-file org-directory)))
 
-(defun amber/org-roam-toggle-buffer ()
+(defun amber-org/roam-toggle-buffer ()
   "Toggle org-roam buffer if not visible."
   (and (not org-roam-capture--node)
        (not (eq 'visible (org-roam-buffer--visibility)))
        (org-roam-buffer-toggle)))
+
+
+(defun org-focus-private ()
+  "Focus on private agenda."
+  (interactive)
+  (setq org-agenda-files (list (concat org-directory org-private-file))))
+
+(defun org-focus-work ()
+  "Focus on work agenda."
+  (interactive)
+  (setq org-agenda-files (list (concat org-directory org-work-file))))
+
+(defun org-focus-all ()
+  "Focus on every agenda."
+  (interactive)
+  (setq org-agenda-files (list (concat org-directory org-private-file)
+                               (concat org-directory org-work-file))))
+
+
+(defun amber-org/yank-id-link ()
+  "Copy an ID link to killring.  It will create an ID if there is none."
+  (interactive)
+  (when (eq major-mode 'org-agenda-mode) ; if we are in agenda, goto target
+    (org-agenda-show)
+    (org-agenda-goto))
+  (when (eq major-mode 'org-mode)
+    (let* ((tmp-head (nth 4 (org-heading-components)))
+           (tmp-id (org-id-get-create))
+           (tmp-link (format "[[id:%s][%s]]" tmp-id tmp-head)))
+      (kill-new tmp-link)
+      (message "Copied %s to killring" tmp-link))))
+
+(defun amber-org/reset-checkbox-state-maybe ()
+  "Reset all checkboxes in an entry if the `RESET_CHECK_BOXES' property is set."
+  (interactive "*")
+  (if (org-entry-get (point) "RESET_CHECK_BOXES")
+      (org-reset-checkbox-state-subtree)))
+
+(defun amber-org/checklist ()
+  (when (member org-state org-done-keywords) ;; org-state dynamically bound in org.el/org-todo
+    (amber-org/reset-checkbox-state-maybe)))
+
 
 ;;
 ;; Variables
@@ -251,22 +289,22 @@
   :type 'file
   :group 'amber-org)
 
-(defcustom org-agenda-file "agenda.org"
-  "File to use for agenda.
-Contains non-actionnable tasks and/or tasks related to people.
-Examples:
-- a meeting
-- a recuring event (haircut, cleaning, ...)
-- call someone"
-  :type 'file
-  :group 'amber-org)
-
 (defcustom org-tasks-file "tasks.org"
   "File to use for all actionnable tasks.  They are mostly programming tasks.
 Examples:
 - work on project task
 - customize Emacs org mode
 - do a PR review"
+  :type 'file
+  :group 'amber-org)
+
+(defcustom org-private-file "private.org"
+  "File to use for all private actionnable tasks."
+  :type 'file
+  :group 'amber-org)
+
+(defcustom org-work-file "work.org"
+  "File to use for all work actionnable tasks."
   :type 'file
   :group 'amber-org)
 
@@ -289,8 +327,8 @@ Examples:
 
 (use-package org
   :hook ((org-mode . visual-line-mode)
-		 (org-mode . amber/org-babel-lazy-load-h)
-		 (org-after-todo-state-change . amber/org-archive-if-done))
+		 (org-mode . amber-org/babel-lazy-load-h)
+		 (org-after-todo-state-change . amber-org/archive-if-done))
   :demand t
   :custom
   (org-hide-emphasis-marker t)
@@ -302,6 +340,12 @@ Examples:
   (org-src-preserve-indentation t)
   (org-src-tab-acts-natively t)
   (org-capture-bookmark nil)
+  (org-enforce-todo-checkbox-dependencies t)
+  (org-enforce-todo-dependencies t)
+  (org-log-into-drawer "LOGBOOK")
+  (org-log-reschedule 'time)
+  (org-track-ordered-property-with-tag t)
+  (org-use-property-inheritance t)
   (org-directory (expand-file-name "~/src/github.com/babariviere/notes/"))
   (org-todo-keywords '((sequence "TODO(t)" "NEXT(n!)" "|" "DONE(d!)")
 					   (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "MEETING(m)")
@@ -319,17 +363,17 @@ Examples:
   (org-log-done 'time)
   (org-log-into-drawer t)
   :config
-  (advice-add #'org-return :after #'amber/org-src-fix-newline-and-indent-a)
+  (advice-add #'org-return :after #'amber-org/src-fix-newline-and-indent-a)
   (require 'org-tempo)
   (add-to-list 'org-structure-template-alist '("n" . "note"))
   (require 'htmlize)
   :general
   ('normal org-mode-map
-  		   "RET" #'amber/org-dwin-at-point
-		   [ret] #'amber/org-dwin-at-point)
+  		   "RET" #'amber-org/dwin-at-point
+		   [ret] #'amber-org/dwin-at-point)
   ;; (amber/leader-keys org-mode-map
   ;;   "C-a" '(:ignore t :wk "archive")
-  ;;   "C-a C-t" '(amber/org-archive-subtree-as-completed :wk "archive task")
+  ;;   "C-a C-t" '(amber-org/archive-subtree-as-completed :wk "archive task")
   ;;   "C-c" '(:ignore t :wk "clock")
   ;;   "C-c C-i" '(org-clock-in :wk "clock in")
   ;;   "C-c C-o" '(org-clock-out :wk "clock out")
@@ -338,7 +382,7 @@ Examples:
   ;;   "C-l" '(org-insert-link :wk "insert link")
   ;;   "C-p" '(org-priority :wk "set priority")
   ;;   "C-P" '(org-set-property :wk "set property")
-  ;;   "C-t" '(amber/org-slow-todo :wk "select todo"))
+  ;;   "C-t" '(amber-org/slow-todo :wk "select todo"))
   (amber/leader-keys
     "n" '(:ignore t :wk "notes")
     "nc" '(org-capture :wk "capture")
@@ -348,36 +392,34 @@ Examples:
 	"nT" '(org-roam-dailies-goto-tomorrow :wk "tomorrow's note")
 	"ny" '(org-roam-dailies-goto-yesterday :wk "yesterday's note")
     "ng" '(org-roam-dailies-goto-date :wk "goto date's note")
-    "oA" '(amber/org-goto-agenda :wk "open agenda.org")
-    "oi" '(amber/org-goto-inbox :wk "open inbox.org")
-    "oI" '(amber/org-goto-tasks :wk "open tasks.org")))
+    "oi" '(amber-org/goto-inbox :wk "open inbox.org")
+    "oI" '(amber-org/goto-tasks :wk "open tasks.org")))
 
-(use-package org-capture
-  :after org
-  :custom
-  ;; TODO: template must be able to accept parameters from org-roam files
-  ;; Examples:
-  ;; - you can add people to meetings
-  ;;
-  (org-capture-templates
-   `(("i" "Inbox" entry (file ,(concat org-directory org-inbox-file))
-      "* %?\n:PROPERTIES:\n:CREATED: %U\n:END:"
-      :clock-in t :clock-resume t :empty-lines 1)
-     ("t" "Task" entry (file ,(concat org-directory org-inbox-file))
-      "* TODO %?\n:PROPERTIES:\n:CREATED: %U\n:END:"
-      :clock-in t :clock-resume t :empty-lines 1)
-     ("m" "Meeting" entry (file ,(concat org-directory org-agenda-file))
-      "* MEETING [%<%Y-%m-%d %a>] %^{Subject}\n:PROPERTIES:\n:CREATED: %U\n:END:\n\nParticipants:%^{Participants}\nNotes:\n%?"
-      :clock-in t :clock-resume t :empty-lines 1)
-     ("p" "PR Review" entry (file+headline ,(concat org-directory org-tasks-file) "Pull requests")
-      "* REVIEW gh:%?\n:PROPERTIES:\n:CREATED: %U\n:END:"))))
+(define-key org-mode-map (kbd "C-c y") #'amber-org/yank-id-link)
 
-;; TODO: define org-link gh:owner/repo#pr + define org-protocol to handle it
+(add-hook 'org-after-todo-state-change-hook 'amber-org/checklist)
+
+
+(require 'org-capture)
+(setq org-capture-templates
+      `(("G" "Define a goal" entry (file+headline ,org-inbox-file "Inbox") (file ,(concat org-directory "/template/goal.org")) :empty-lines-after 2)
+        ("N" "NEXT entry" entry (file+headline ,org-inbox-file "Inbox") (file ,(concat org-directory "/template/next.org")) :empty-lines-before 1)
+        ("T" "TODO entry" entry (file+headline ,org-inbox-file "Inbox") (file ,(concat org-directory "/template/todo.org")) :empty-lines-before 1)
+        ("W" "WAITING entry" entry (file+headline ,org-inbox-file "Inbox") (file ,(concat org-directory "/template/waiting.org")) :empty-lines-before 1)
+        ("S" "SOMEDAY entry" entry (file+headline ,org-inbox-file "Inbox") (file ,(concat org-directory "/template/someday.org")) :empty-lines-before 1)
+        ("P" "PROJ entry" entry (file+headline ,org-inbox-file "Inbox") (file ,(concat org-directory "/template/proj.org")) :empty-lines-before 1)
+        ("B" "Book on the to-read-list" entry (file+headline ,(concat org-directory "private.org") "Books to read") (file ,(concat org-directory "/template/book.org")) :empty-lines-after 2)
+        ("p" "Create a daily plan")
+        ("pP" "Daily plan private" plain (file+olp+datetree ,(concat org-directory "plan-private.org")) (file ,(concat org-directory "/template/dailyplan.org")) :immediate-finish t)
+        ("pW" "Daily plan work" plain (file+olp+datetree ,(concat org-directory "plan-work.org")) (file ,(concat org-directory "/template/dailyplan.org")) :immediate-finish t)
+        ("j" "Journal entry")
+        ("jP" "Journal entry private" entry (file+olp+datetree ,(concat org-directory "journal-private.org")) "** %^{Heading}")
+        ("jW" "Journal entry work" entry (file+olp+datetree ,(concat org-directory "journal-work.org")) "** %^{Heading}")))
 
 (use-package org-protocol
   :after org)
 
-(defun amber/org-agenda-view ()
+(defun amber-org/agenda-view ()
   "Open default `org-agenda` view."
   (interactive)
   (org-agenda nil "g"))
@@ -385,48 +427,52 @@ Examples:
 (use-package org-agenda
   :after org
   :demand t
-  ;; :hook (after-init . amber/org-agenda-view)
+  ;; :hook (after-init . amber-org/agenda-view)
   :custom
   (org-agenda-files (mapcar (-partial #'concat org-directory)
-							(list org-inbox-file org-agenda-file org-tasks-file)))
+							(list org-tasks-file org-private-file org-work-file)))
   (org-agenda-window-setup 'other-window)
   (org-agenda-custom-commands
-   '(("g" "GTD"
-	  ((agenda ""
-			   ((org-agenda-skip-function
-				 '(org-agenda-skip-entry-if 'deadline))
-				(org-deadline-warning-days 0)
-				(org-agenda-span 'day)))
-	   (todo "NEXT"
-			 ((org-agenda-skip-function
-			   '(org-agenda-skip-entry-if 'deadline))
-			  (org-agenda-prefix-format "  %-8:c [%-4e] ")
-			  (org-agenda-overriding-header "\nTasks\n")))
-	   (todo "WAITING"
-			 ((org-agenda-skip-function
-			   '(org-agenda-skip-entry-if 'deadline))
-			  (org-agenda-prefix-format "  %-8:c ")
-			  (org-agenda-overriding-header "\nWaitings\n")))
-	   (todo "MEETING"
-			 ((org-agenda-skip-function
-			   '(org-agenda-skip-entry-if 'deadline))
-			  (org-agenda-prefix-format "  %-8:c ")
-			  (org-agenda-overriding-header "\nMeetings\n")))
-	   ;; (agenda ""
-	   ;; 		   ((org-agenda-entry-types '(:deadlines))
-	   ;; 			(org-agenda-format-date "")
-	   ;; 			(org-deadline-warning-days 7)
-	   ;; 			(org-agenda-span 'day)
-	   ;; 			(org-agenda-time-grid nil)
-	   ;; 			(org-agenda-skip-function
-	   ;; 			 '(org-agenda-skip-entry-if 'notregexp "\\* NEXT"))
-	   ;; 			(org-agenda-overriding-header "\nDeadlines")))
-	   (tags-todo "inbox"
-				  ((org-agenda-prefix-format "  %?-12t% s")
-				   (org-agenda-overriding-header "\nInbox\n")))))))
+   '(("A" . "Agendas")
+     ("AT" "Daily overview"
+      ((tags-todo "URGENT"
+		          ((org-agenda-overriding-header "Urgent Tasks")))
+       (tags-todo "RADAR"
+		          ((org-agenda-overriding-header "On my radar")))
+       (tags-todo "PHONE+TODO=\"NEXT\""
+		          ((org-agenda-overriding-header "Phone Calls")))
+       (tags-todo "Depth=\"Deep\"/NEXT"
+                  ((org-agenda-overriding-header "Next Actions requiring deep work")))
+       (agenda "" ((org-agenda-overriding-header "Today")
+		           (org-agenda-span 1)
+		           (org-agenda-sorting-strategy
+                    '(time-up priority-down))))
+       nil nil))
+     ("AW" "Weekly overview" agenda ""
+      ((org-agenda-overriding-header "Weekly overview")))
+     ("AM" "Monthly overview" agenda ""
+      ((org-agenda-overriding-header "Monthly overview"))
+      (org-agenda-span 'month)
+      (org-deadline-warning-days 0)
+      (org-agenda-sorting-strategy '(time-up priority-down tag-up)))
+     ("W" . "Weekly Review Helper")
+     ("Wn" "New tasks" tags "NEW"
+      ((org-agenda-overriding-header "NEW Tasks")))
+     ("Wd" "Check DELEGATED tasks" todo "DELEGATED"
+      ((org-agenda-overriding-header "DELEGATED tasks")))
+     ("Ww" "Check WAITING tasks" todo "WAITING"
+      ((org-agenda-overriding-header "WAITING tasks")))
+     ("Ws" "Check SOMEDAY tasks" todo "SOMEDAY"
+      ((org-agenda-overriding-header "SOMEDAY tasks")))
+     ("Wf" "Check finished tasks" todo "DONE|CANCELLED|FORWARDED"
+      ((org-agenda-overriding-header "Finished tasks")))
+     ("WP" "Planing Todos (unscheduled) only" todo "TODO|NEXT"
+      ((org-agenda-overriding-header "Today planning")
+       (org-agenda-skip-function
+	    '(org-agenda-skip-entry-if 'scheduled 'deadline))))))
   :general
   (amber/leader-keys
-    "oa" '(amber/org-agenda-view :wk "open agenda")))
+    "oa" '(amber-org/agenda-view :wk "open agenda")))
 
 ;; TODO: use hydra for refiling as in http://www.howardism.org/Technical/Emacs/getting-more-boxes-done.html
 (use-package org-refile
@@ -435,6 +481,7 @@ Examples:
   (org-refile-targets '((nil :maxlevel . 3)
 						(org-agenda-files :maxlevel . 3)))
   (org-refile-use-outline-path 'file)
+  (org-refile-allow-creating-parent-nodes 'confirm)
   ;; We want to org-refile as the first item in the list (like a feed)
   (org-reverse-note-order t)
   (org-outline-path-complete-in-steps nil)
