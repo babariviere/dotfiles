@@ -212,9 +212,6 @@
         ;; http
         emacs-verb
 
-        ;; font
-        emacs-mixed-pitch
-
         ;; services
         emacs-slack
         emacs-notmuch

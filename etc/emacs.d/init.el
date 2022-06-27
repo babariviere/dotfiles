@@ -203,11 +203,6 @@ ARGS are the arguments passed to `browse-url`."
   ("M-g f" . avy-goto-line)
   ("M-g w" . avy-goto-word-1))
 
-(use-package mixed-pitch
-  :hook (org-mode . mixed-pitch-mode)
-  :config
-  (setq mixed-pitch-set-height 1))
-
 (global-unset-key (kbd "C-z"))
 
 ;; TODO: >:( You lazy f*cker
