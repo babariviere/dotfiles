@@ -168,7 +168,6 @@
 	    emacs-org-appear
 	    emacs-org-contrib
 	    emacs-org-edna
-        emacs-org-modern
 	    emacs-org-superstar
 	    emacs-org-roam
         emacs-org-roam-ui
