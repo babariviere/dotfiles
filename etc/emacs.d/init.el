@@ -13,7 +13,8 @@
 (custom-set-faces
  `(default ((nil :family "Biosevka" :height 100)))
  `(fixed-pitch ((nil :family "Biosevka")))
- `(variable-pitch ((nil :family "Cantarell" :height 1.05 :weight normal))))
+ `(variable-pitch ((nil :family "Cantarell" :height 1.05 :weight normal)))
+ `(org-modern-symbol ((nil :family "Iosevka"))))
 
 (require 'modus-themes)
 
