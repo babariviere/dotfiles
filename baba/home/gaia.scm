@@ -320,7 +320,18 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                                             (string-append
                                              (getenv "HOME")
                                              "/.local/var/log"))
-                                        "/gpg-agent.log"))))))))
+                                        "/gpg-agent.log"))))))
+                     (scdaemon-config
+                      (home-scdaemon-configuration
+                       (extra-config
+                        `((disable-ccid . #t)
+                          (reader-port . "Yubico Yubi")
+                          (log-file . ,(string-append
+                                        (or (getenv "XDG_LOG_HOME")
+                                            (string-append
+                                             (getenv "HOME")
+                                             "/.local/var/log"))
+                                        "/scdaemon.log"))))))))
            (service home-git-service-type
                     (home-git-configuration
                      (config
