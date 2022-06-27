@@ -333,8 +333,8 @@ Examples:
   :custom
   (org-hide-emphasis-marker t)
   (org-hide-leading-stars t)
-  (org-indent-mode-turns-on-hiding-stars nil)
-  (org-startup-indented nil)
+  (org-indent-mode-turns-on-hiding-stars t)
+  (org-startup-indented t)
   (org-confirm-babel-evaluate nil)
   (org-edit-src-content-indentation 0)
   (org-src-preserve-indentation t)
