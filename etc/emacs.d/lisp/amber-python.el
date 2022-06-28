@@ -38,10 +38,7 @@
   (python-shell-interpreter "python3"))
 
 (use-package poetry
-  :after python
-  :init
-  (setq poetry-tracking-strategy 'switch-buffer)
-  (add-hook 'python-mode-hook #'poetry-tracking-mode))
+  :after python)
 
 (use-package blacken
   :commands blacken-mode blacken-buffer)
