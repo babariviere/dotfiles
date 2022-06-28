@@ -416,6 +416,9 @@ Examples:
         ("jP" "Journal entry private" entry (file+olp+datetree ,(concat org-directory "journal-private.org")) "** %^{Heading}")
         ("jW" "Journal entry work" entry (file+olp+datetree ,(concat org-directory "journal-work.org")) "** %^{Heading}")))
 
+(require 'org-superstar)
+(add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
+
 (use-package org-protocol
   :after org)
 
