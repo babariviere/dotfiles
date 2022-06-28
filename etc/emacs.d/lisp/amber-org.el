@@ -327,8 +327,7 @@ Examples:
 
 (use-package org
   :hook ((org-mode . visual-line-mode)
-		 (org-mode . amber-org/babel-lazy-load-h)
-		 (org-after-todo-state-change . amber-org/archive-if-done))
+		 (org-mode . amber-org/babel-lazy-load-h))
   :demand t
   :custom
   (org-hide-emphasis-marker t)
