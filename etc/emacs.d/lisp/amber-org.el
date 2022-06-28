@@ -484,8 +484,7 @@ Examples:
 						(org-agenda-files :maxlevel . 3)))
   (org-refile-use-outline-path 'file)
   (org-refile-allow-creating-parent-nodes 'confirm)
-  ;; We want to org-refile as the first item in the list (like a feed)
-  (org-reverse-note-order t)
+  (org-reverse-note-order nil)
   (org-outline-path-complete-in-steps nil)
   ;; :general
   ;; (amber/leader-keys org-mode-map
