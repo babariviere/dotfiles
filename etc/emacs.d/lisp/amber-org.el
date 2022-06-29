@@ -225,11 +225,6 @@
   (interactive)
   (find-file (expand-file-name org-inbox-file org-directory)))
 
-(defun amber-org/goto-tasks ()
-  "Goto tasks file."
-  (interactive)
-  (find-file (expand-file-name org-tasks-file org-directory)))
-
 (defun amber-org/roam-toggle-buffer ()
   "Toggle org-roam buffer if not visible."
   (and (not org-roam-capture--node)
@@ -286,15 +281,6 @@
 
 (defcustom org-inbox-file "inbox.org"
   "File to use for inbox."
-  :type 'file
-  :group 'amber-org)
-
-(defcustom org-tasks-file "tasks.org"
-  "File to use for all actionnable tasks.  They are mostly programming tasks.
-Examples:
-- work on project task
-- customize Emacs org mode
-- do a PR review"
   :type 'file
   :group 'amber-org)
 
@@ -391,8 +377,7 @@ Examples:
 	"nT" '(org-roam-dailies-goto-tomorrow :wk "tomorrow's note")
 	"ny" '(org-roam-dailies-goto-yesterday :wk "yesterday's note")
     "ng" '(org-roam-dailies-goto-date :wk "goto date's note")
-    "oi" '(amber-org/goto-inbox :wk "open inbox.org")
-    "oI" '(amber-org/goto-tasks :wk "open tasks.org")))
+    "oi" '(amber-org/goto-inbox :wk "open inbox.org")))
 
 (define-key org-mode-map (kbd "C-c y") #'amber-org/yank-id-link)
 
@@ -427,7 +412,7 @@ Examples:
   ;; :hook (after-init . amber-org/agenda-view)
   :custom
   (org-agenda-files (mapcar (-partial #'concat org-directory)
-							(list org-tasks-file org-private-file org-work-file)))
+							(list org-private-file org-work-file)))
   (org-agenda-window-setup 'other-window)
   (org-agenda-custom-commands
    '(("A" . "Agendas")
