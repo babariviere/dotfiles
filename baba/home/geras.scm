@@ -20,6 +20,7 @@
   #:use-module (gnu packages node)
   #:use-module (gnu packages package-management)
   #:use-module (gnu packages pulseaudio)
+  #:use-module (gnu packages wm)
   #:use-module (gnu services)
   #:use-module (guix gexp)
   #:use-module (nongnu packages mozilla))
@@ -46,6 +47,7 @@
           stumpwm-service
           home-elixir-service
           home-picom-service
+          (home-xsession-service stumpwm "stumpwm")
           (list
            (simple-service 'setup-nix
                            home-shell-profile-service-type

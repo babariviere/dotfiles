@@ -20,7 +20,7 @@
   #:use-module (guix gexp)
   #:use-module (guix packages)
   #:use-module (nongnu packages video)
-  #:export (home-picom-service stumpwm-service))
+  #:export (home-picom-service stumpwm-service home-xsession-service))
 
 (define home-picom-service
   (list (simple-service 'picom-config
@@ -38,38 +38,6 @@
 
 (define stumpwm-service
   (list
-   (simple-service 'stumpwm-xsession
-		           home-files-service-type
-		           `((".xsession"
-		              ,(computed-file
-			            "xsession"
-			            #~(begin
-			                (use-modules (ice-9 format))
-			                (with-output-to-file #$output
-			                  (lambda ()
-				                (format #t
-					                    "~
-#!/bin/sh
-
-export GDK_CORE_DEVICE_EVENTS=1
-
-# required for firefox vaapi
-export MOZ_DISABLE_RDD_SANDBOX=1
-export MOZ_X11_EGL=1
-
-if [ -e \"$HOME/.profile\" ]; then
-  . \"$HOME/.profile\"
-fi
-
-if test -z \"$DBUS_SESSION_BUS_ADDRESS\"; then
-  eval `dbus-launch --sh-syntax`
-fi
-
-~a/bin/picom -b --config $HOME/.config/picom.conf --experimental-backends
-~a/bin/stumpwm"
-                                        #$picom-next
-					                    #$stump)))
-			                (chmod #$output #o555))))))
    (simple-service 'setup-sbcl
                    home-shell-profile-service-type
                    (list (plain-file "setup-sbcl"
@@ -119,3 +87,37 @@ fi
 
 (define home-xmonad-service
   (list ))
+
+(define (home-xsession-service program-pkg program-cli)
+  (list (simple-service 'xsession
+		                home-files-service-type
+		                `((".xsession"
+		                   ,(computed-file
+			                 "xsession"
+			                 #~(begin
+			                     (use-modules (ice-9 format))
+			                     (with-output-to-file #$output
+			                       (lambda ()
+				                     (format #t
+					                         "~
+#!/bin/sh
+
+export GDK_CORE_DEVICE_EVENTS=1
+
+# required for firefox vaapi
+export MOZ_DISABLE_RDD_SANDBOX=1
+export MOZ_X11_EGL=1
+
+if [ -e \"$HOME/.profile\" ]; then
+  . \"$HOME/.profile\"
+fi
+
+if test -z \"$DBUS_SESSION_BUS_ADDRESS\"; then
+  eval `dbus-launch --sh-syntax`
+fi
+
+~a/bin/picom -b --config $HOME/.config/picom.conf --experimental-backends
+~a/bin/~a"
+                                             #$picom-next
+					                         #$program-pkg #$program-cli)))
+			                     (chmod #$output #o555))))))))
