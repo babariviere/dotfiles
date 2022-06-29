@@ -412,19 +412,14 @@ Examples:
         ("pP" "Daily plan private" plain (file+olp+datetree ,(concat org-directory "plan-private.org")) (file ,(concat org-directory "/template/dailyplan.org")) :immediate-finish t)
         ("pW" "Daily plan work" plain (file+olp+datetree ,(concat org-directory "plan-work.org")) (file ,(concat org-directory "/template/dailyplan.org")) :immediate-finish t)
         ("j" "Journal entry")
-        ("jP" "Journal entry private" entry (file+olp+datetree ,(concat org-directory "journal-private.org")) "** %^{Heading}")
-        ("jW" "Journal entry work" entry (file+olp+datetree ,(concat org-directory "journal-work.org")) "** %^{Heading}")))
+        ("jP" "Journal entry private" entry (file+olp+datetree ,(concat org-directory "journal-private.org")) "** %U - %^{Heading}")
+        ("jW" "Journal entry work" entry (file+olp+datetree ,(concat org-directory "journal-work.org")) "** %U - %^{Heading}")))
 
 (require 'org-superstar)
 (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
 
 (use-package org-protocol
   :after org)
-
-(defun amber-org/agenda-view ()
-  "Open default `org-agenda` view."
-  (interactive)
-  (org-agenda nil "g"))
 
 (use-package org-agenda
   :after org
@@ -471,10 +466,7 @@ Examples:
      ("WP" "Planing Todos (unscheduled) only" todo "TODO|NEXT"
       ((org-agenda-overriding-header "Today planning")
        (org-agenda-skip-function
-	    '(org-agenda-skip-entry-if 'scheduled 'deadline))))))
-  :general
-  (amber/leader-keys
-    "oa" '(amber-org/agenda-view :wk "open agenda")))
+	    '(org-agenda-skip-entry-if 'scheduled 'deadline)))))))
 
 ;; TODO: use hydra for refiling as in http://www.howardism.org/Technical/Emacs/getting-more-boxes-done.html
 (use-package org-refile
