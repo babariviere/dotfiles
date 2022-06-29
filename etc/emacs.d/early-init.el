@@ -18,8 +18,8 @@
 
 (let* ((cache-dir (or (getenv "XDG_CACHE_HOME")
                       (concat (getenv "HOME") "/.cache")))
-       (auto-save-dir (concat cache-dir "/emacs/autosave"))
-       (backup-dir (concat cache-dir "/emacs/backup")))
+       (auto-save-dir (concat cache-dir "/emacs/autosave/"))
+       (backup-dir (concat cache-dir "/emacs/backup/")))
   (make-directory auto-save-dir t)
   (make-directory backup-dir t)
   (setq auto-save-list-file-prefix auto-save-dir
