@@ -23,9 +23,12 @@
   #:export (home-picom-service stumpwm-service))
 
 (define home-picom-service
-   (simple-service 'picom-config
-                   home-xdg-configuration-files-service-type
-                   `(("picom.conf" ,(local-file (string-append %channel-root "/etc/picom.conf"))))))
+  (list (simple-service 'picom-config
+                        home-xdg-configuration-files-service-type
+                        `(("picom.conf" ,(local-file (string-append %channel-root "/etc/picom.conf")))))
+        (simple-service 'picom-profile
+                        home-profile-service-type
+                        (list picom))))
 
 (define latest-stumpwm
   (package-input-rewriting
@@ -90,7 +93,6 @@ fi
                           ;; tools
                           alacritty
                           autorandr
-                          picom
                           pamixer
                           flameshot
                           feh
@@ -114,3 +116,6 @@ fi
 		           `((".stumpwm.d/init.lisp"
 		              ,(local-file
 			            (string-append %channel-root "/etc/stumpwm.d/init.lisp")))))))
+
+(define home-xmonad-service
+  (list ))
