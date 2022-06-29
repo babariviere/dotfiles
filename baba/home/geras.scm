@@ -47,6 +47,7 @@
           stumpwm-service
           home-elixir-service
           home-picom-service
+          home-xmonad-service
           (home-xsession-service stumpwm "stumpwm")
           (list
            (simple-service 'setup-nix

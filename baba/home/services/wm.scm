@@ -5,13 +5,19 @@
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
   #:use-module (gnu packages compton)
+  #:use-module (gnu packages commencement)
   #:use-module (gnu packages gl)
   #:use-module (gnu packages gstreamer)
+  #:use-module (gnu packages haskell-apps)
+  #:use-module (gnu packages haskell-xyz)
+  #:use-module (gnu packages haskell)
   #:use-module (gnu packages image)
   #:use-module (gnu packages image-viewers)
   #:use-module (gnu packages lisp)
   #:use-module (gnu packages lisp-xyz)
+  #:use-module (gnu packages ncurses)
   #:use-module (gnu packages pulseaudio)
+  #:use-module (gnu packages suckless)
   #:use-module (gnu packages terminals)
   #:use-module (gnu packages video)
   #:use-module (gnu packages wm)
@@ -20,7 +26,7 @@
   #:use-module (guix gexp)
   #:use-module (guix packages)
   #:use-module (nongnu packages video)
-  #:export (home-picom-service stumpwm-service home-xsession-service))
+  #:export (home-picom-service stumpwm-service home-xsession-service home-xmonad-service))
 
 (define home-picom-service
   (list (simple-service 'picom-config
@@ -86,7 +92,53 @@
 			            (string-append %channel-root "/etc/stumpwm.d/init.lisp")))))))
 
 (define home-xmonad-service
-  (list ))
+  (list (simple-service 'xmonad-profile
+                        home-profile-service-type
+                        (list xmonad-next
+                              ghc-xmonad-contrib-next
+                              xmobar
+                              ghc-hindent
+                              ghc-hasktags
+                              hlint
+                              ghc
+                              dmenu
+                              rofi
+                              gcc-toolchain
+                              ncurses
+
+
+                              ;; tools
+                              alacritty
+                              autorandr
+                              pamixer
+                              flameshot
+                              feh
+
+                              ;; hardware acceleration
+                              mesa
+                              gstreamer
+                              gst-plugins-bad
+                              gst-plugins-base
+                              gst-plugins-good
+                              gst-plugins-ugly
+                              gst-libav
+                              intel-media-driver
+                              intel-vaapi-driver
+                              libva-utils
+                              libvdpau
+                              libvdpau-va-gl))
+        (simple-service 'xmonad-files
+                        home-xdg-configuration-files-service-type
+                        `(("xmonad/xmonad.hs"
+                           ,(local-file
+                             (string-append %channel-root "/etc/xmonad/xmonad.hs")))
+                          ("xmobar/xmobarrc"
+                           ,(local-file
+                             (string-append %channel-root "/etc/xmobar/xmobarrc")))))
+        (simple-service 'xmonad-recompile
+                        home-run-on-change-service-type
+                        `(("files/.config/xmonad/xmonad.hs"
+                           ,#~(system* #$(file-append xmonad "bin/xmonad") "--recompile"))))))
 
 (define (home-xsession-service program-pkg program-cli)
   (list (simple-service 'xsession
