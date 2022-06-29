@@ -20,7 +20,12 @@
   #:use-module (guix gexp)
   #:use-module (guix packages)
   #:use-module (nongnu packages video)
-  #:export (stumpwm-service))
+  #:export (home-picom-service stumpwm-service))
+
+(define home-picom-service
+   (simple-service 'picom-config
+                   home-xdg-configuration-files-service-type
+                   `(("picom.conf" ,(local-file (string-append %channel-root "/etc/picom.conf"))))))
 
 (define latest-stumpwm
   (package-input-rewriting
@@ -62,9 +67,6 @@ fi
                                         #$picom-next
 					                    #$stump)))
 			                (chmod #$output #o555))))))
-   (simple-service 'picom-config
-                   home-xdg-configuration-files-service-type
-                   `(("picom.conf" ,(local-file (string-append %channel-root "/etc/picom.conf")))))
    (simple-service 'setup-sbcl
                    home-shell-profile-service-type
                    (list (plain-file "setup-sbcl"

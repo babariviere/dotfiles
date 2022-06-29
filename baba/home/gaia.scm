@@ -273,6 +273,7 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
           stumpwm-service
           home-elixir-service
           (list
+           home-picom-service
            (service home-bash-service-type
                     (home-bash-configuration
                      (guix-defaults? #t)))

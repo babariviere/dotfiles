@@ -46,6 +46,7 @@
           stumpwm-service
           home-elixir-service
           (list
+           home-picom-service
            (simple-service 'setup-nix
                            home-shell-profile-service-type
                            (list (plain-file "setup-nix"
