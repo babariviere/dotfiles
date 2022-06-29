@@ -13,6 +13,7 @@
   #:use-module (gnu packages haskell)
   #:use-module (gnu packages image)
   #:use-module (gnu packages image-viewers)
+  #:use-module (gnu packages linux)
   #:use-module (gnu packages lisp)
   #:use-module (gnu packages lisp-xyz)
   #:use-module (gnu packages ncurses)
@@ -113,6 +114,7 @@
                               pamixer
                               flameshot
                               feh
+                              alsa-utils
 
                               ;; hardware acceleration
                               mesa

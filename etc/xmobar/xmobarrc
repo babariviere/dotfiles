@@ -4,7 +4,7 @@ Config { overrideRedirect = False
        , fgColor  = "#ffffff"
        , position = TopW L 95
        , allDesktops = True
-       , commands = [ Run Weather "EGPF"
+       , commands = [ Run Weather "LFPG"
                         [ "--template", "<weather> <tempC>°C"
                         , "-L", "0"
                         , "-H", "25"
@@ -31,5 +31,5 @@ Config { overrideRedirect = False
                     ]
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "%XMonadLog% }{ %alsa:default:Master% | %cpu% | %memory% * %swap% | %EGPF% | %date% "
+       , template = "%XMonadLog% }{ %alsa:default:Master% | %cpu% | %memory% * %swap% | %LFPG% | %date% "
        }
