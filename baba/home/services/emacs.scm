@@ -156,6 +156,10 @@
 	    emacs-go-mode
 	    emacs-go-guru
 
+        ;; haskell
+        emacs-haskell-mode
+        emacs-hindent
+
         ;; lsp
 	    emacs-eglot
 

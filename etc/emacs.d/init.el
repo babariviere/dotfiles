@@ -118,6 +118,7 @@ mouse-3: Toggle minor modes"
 (require 'amber-elixir)
 (require 'amber-fish)
 (require 'amber-go)
+(require 'amber-haskell)
 (require 'amber-org)
 (require 'amber-nix)
 (require 'amber-python)
