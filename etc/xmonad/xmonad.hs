@@ -64,5 +64,6 @@ myConfig = def
   , manageHook = myManageHook
   , terminal   = "alacritty"
   }
-  `additionalKeysP`
-    []
+  `additionalKeys`
+    [ ((modMask, xK_p), spawn "rofi -show drun")
+    ]

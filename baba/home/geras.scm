@@ -48,7 +48,7 @@
           home-elixir-service
           home-picom-service
           home-xmonad-service
-          (home-xsession-service stumpwm "stumpwm")
+          (home-xsession-service xmonad-next "xmonad")
           (list
            (simple-service 'setup-nix
                            home-shell-profile-service-type

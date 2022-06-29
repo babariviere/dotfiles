@@ -138,7 +138,7 @@
         (simple-service 'xmonad-recompile
                         home-run-on-change-service-type
                         `(("files/.config/xmonad/xmonad.hs"
-                           ,#~(system* #$(file-append xmonad "bin/xmonad") "--recompile"))))))
+                           ,#~(system* #$(file-append xmonad "/bin/xmonad") "--recompile"))))))
 
 (define (home-xsession-service program-pkg program-cli)
   (list (simple-service 'xsession
