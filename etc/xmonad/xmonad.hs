@@ -23,10 +23,13 @@ myLayout = tiled ||| Mirror tiled ||| Full
 myManageHook :: ManageHook
 myManageHook = composeAll [isDialog --> doFloat]
 
+myStartupHook = do
+  spawn "feh --bg-scale $HOME/Pictures/backgrounds"
+
 myKeys = [((myModMask, xK_p), spawn "rofi -show drun")]
 
-myXmobarPP :: PP
-myXmobarPP =
+myXmobarPP :: ScreenId -> PP
+myXmobarPP sid =
   def
     { ppSep = magenta " • "
     , ppTitleSanitize = xmobarStrip
@@ -35,7 +38,7 @@ myXmobarPP =
     , ppHiddenNoWindows = lowWhite . wrap " " ""
     , ppUrgent = red . wrap (yellow "!") (yellow "!")
     , ppOrder = \[ws, l, _, wins] -> [ws, l, wins]
-    , ppExtras = [logTitles formatFocused formatUnfocused]
+    , ppExtras = [(logTitlesOnScreen sid) formatFocused formatUnfocused]
     }
   where
     formatFocused = wrap (white "[") (white "]") . magenta . ppWindow
@@ -53,13 +56,20 @@ myXmobarPP =
     blue, lowWhite, magenta, red, white, yellow :: String -> String
     magenta = xmobarColor "#ff79c6" ""
     blue = xmobarColor "#bd93f9" ""
-    white = xmobarColor "#f8f8f2" ""
+    white = xmobarColor "#ffffff" ""
     yellow = xmobarColor "#f1fa8c" ""
     red = xmobarColor "#ff5555" ""
     lowWhite = xmobarColor "#bbbbbb" ""
 
 barSpawner :: ScreenId -> IO StatusBarConfig
-barSpawner (S sid) = pure $ statusBarProp ("xmobar -x " <> show sid <> " ~/.config/xmobar/xmobarrc") $ pure myXmobarPP
+barSpawner screen@(S sid)
+  | sid < 2 =
+    pure $
+    statusBarPropTo
+      ("_XMONAD_LOG_" <> show sid)
+      ("xmobar -x " <> show sid <> " ~/.config/xmobar/xmobarrc" <> show sid) $
+    pure (myXmobarPP screen)
+  | otherwise = mempty
 
 main :: IO ()
 main =
@@ -72,8 +82,11 @@ main =
 myConfig =
   def
     { modMask = myModMask
+
     , layoutHook = myLayout
     , manageHook = myManageHook
+    , startupHook = myStartupHook
+
     , focusFollowsMouse = False
     , clickJustFocuses = False
     , terminal = "alacritty"

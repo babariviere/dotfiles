@@ -2,7 +2,7 @@ Config { overrideRedirect = False
        , font     = "xft:Biosevka-9"
        , bgColor  = "#000000"
        , fgColor  = "#ffffff"
-       , position = TopW L 95
+       , position = TopW L 100
        , allDesktops = True
        , commands = [ Run Weather "LFPG"
                         [ "--template", "<weather> <tempC>°C"
@@ -27,9 +27,9 @@ Config { overrideRedirect = False
                     , Run Memory ["--template", "Mem: <usedratio>%"] 10
                     , Run Swap [] 10
                     , Run Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
-                    , Run XMonadLog
+                    , Run XPropertyLog "_XMONAD_LOG_1"
                     ]
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "%XMonadLog% }{ %alsa:default:Master% | %cpu% | %memory% * %swap% | %LFPG% | %date% "
+       , template = "%_XMONAD_LOG_1% }{ %alsa:default:Master% | %cpu% | %memory% * %swap% | %LFPG% | %date% "
        }

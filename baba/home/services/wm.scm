@@ -134,9 +134,12 @@
                         `(("xmonad/xmonad.hs"
                            ,(local-file
                              (string-append %channel-root "/etc/xmonad/xmonad.hs")))
-                          ("xmobar/xmobarrc"
+                          ("xmobar/xmobarrc0"
                            ,(local-file
-                             (string-append %channel-root "/etc/xmobar/xmobarrc")))))
+                             (string-append %channel-root "/etc/xmobar/xmobarrc0")))
+                          ("xmobar/xmobarrc1"
+                           ,(local-file
+                             (string-append %channel-root "/etc/xmobar/xmobarrc1")))))
         (simple-service 'xmonad-recompile
                         home-run-on-change-service-type
                         `(("files/.config/xmonad/xmonad.hs"
