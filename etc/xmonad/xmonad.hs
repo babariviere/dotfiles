@@ -24,12 +24,15 @@ myManageHook :: ManageHook
 myManageHook = composeAll [isDialog --> doFloat]
 
 myStartupHook = do
-  spawn "killall trayer"
+  spawn "pkill trayer"
 
   spawn "feh --bg-scale $HOME/Pictures/backgrounds"
   spawn "sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --tint 0x000000 --height 20 --transparent true --alpha 0"
 
-myKeys = [((myModMask, xK_p), spawn "rofi -show drun")]
+myKeys =
+  [ ((myModMask,               xK_p), spawn "rofi -show drun")
+  , ((myModMask .|. shiftMask, xK_p), spawn "rofi -show run")
+  ]
 
 myXmobarPP :: ScreenId -> PP
 myXmobarPP sid =
