@@ -264,11 +264,17 @@
         (simple-service 'emacs-fonts
                         home-profile-service-type
                         (list font-fira-go font-iosevka font-iosevka-aile))
+        ;; move firefox protocol
 	    (simple-service 'emacs-org-protocol
 			            home-xdg-mime-applications-service-type
 			            (home-xdg-mime-applications-configuration
 			             (added '((x-scheme-handler/org-protocol . org-protocol.desktop)))
-			             (desktop-entries
+                         (default '((text/html . org.mozilla.firefox.desktop)
+                                    (x-scheme-handler/http . org.mozilla.firefox.desktop)
+                                    (x-scheme-handler/https . org.mozilla.firefox.desktop)
+                                    (x-scheme-handler/about . org.mozilla.firefox.desktop)
+                                    (x-scheme-handler/unknown . org.mozilla.firefox.desktop)))
+                         (desktop-entries
 			              (list
 			               (xdg-desktop-entry
 			                (file "org-protocol")

@@ -31,7 +31,6 @@
   (list keychain
         pavucontrol
 
-        firefox
         unzip
 
         dotnet-lts
