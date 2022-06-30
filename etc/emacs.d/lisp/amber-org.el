@@ -337,7 +337,7 @@
   ;; TODO: better colors
   (org-todo-keyword-faces '(("TODO" . org-todo)
 							("NEXT" . org-warning)
-							("REVIEW" . (:foreground "SteelBlue2" :weight bold))
+							("REPEAT" . (:foreground "SteelBlue2" :weight bold))
 							("DONE" . org-done)
 							("WAITING" . org-warning)
 							("HOLD" . org-warning)
