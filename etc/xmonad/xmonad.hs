@@ -73,7 +73,7 @@ myXmobarPP sid =
     , ppHiddenNoWindows = lowWhite . wrap " " ""
     , ppUrgent = red . wrap (yellow "!") (yellow "!")
     , ppOrder = \[ws, _, _, l, wins] -> [ws, l, wins]
-    , ppExtras = [(logLayoutOnScreen sid), (logTitlesOnScreen sid) formatFocused formatUnfocused]
+    , ppExtras = [logLayoutOnScreen sid, logTitlesOnScreen sid formatFocused formatUnfocused]
     }
   where
     formatFocused = wrap (white "[") (white "]") . magenta . ppWindow
@@ -118,7 +118,7 @@ myConfig =
   def
     { modMask = myModMask
 
-    , layoutHook = smartBorders $ myLayout
+    , layoutHook = smartBorders myLayout
     , manageHook = myManageHook
     , startupHook = myStartupHook
 
