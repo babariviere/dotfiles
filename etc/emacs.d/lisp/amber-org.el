@@ -332,9 +332,8 @@
   (org-track-ordered-property-with-tag t)
   (org-use-property-inheritance t)
   (org-directory (expand-file-name "~/src/github.com/babariviere/notes/"))
-  (org-todo-keywords '((sequence "TODO(t)" "NEXT(n!)" "|" "DONE(d!)")
-					   (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "MEETING(m)")
-					   (sequence "REVIEW(r!)" "|" "DONE(d!)")))
+  (org-todo-keywords '((sequence "NEXT(n@/!)" "TODO(t@/!)" "WAITING(w@/!)" "SOMEDAY(s@/!)" "PROJ(p)" "|" "DONE(d@)" "CANCELLED(c@)")
+					   (sequence "REPEAT(r)" "|" "DONE(d!)")))
   ;; TODO: better colors
   (org-todo-keyword-faces '(("TODO" . org-todo)
 							("NEXT" . org-warning)
