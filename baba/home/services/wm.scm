@@ -24,6 +24,7 @@
   #:use-module (gnu packages wm)
   #:use-module (gnu packages xdisorg)
   #:use-module (gnu services)
+  #:use-module (guix build-system trivial)
   #:use-module (guix gexp)
   #:use-module (guix packages)
   #:use-module (nongnu packages video)
@@ -92,6 +93,26 @@
 		              ,(local-file
 			            (string-append %channel-root "/etc/stumpwm.d/init.lisp")))))))
 
+(define trayer-padding
+  (package
+    (name "trayer-padding")
+    (version "0.0")
+    (source (local-file (string-append %channel-root "/etc/xmobar/trayer-padding.sh")))
+    (build-system trivial-build-system)
+    (arguments
+     `(#:modules ((guix build utils))
+       #:builder ,#~(begin
+                     (use-modules (guix build utils))
+                     (let ((out (string-append #$output "/bin"))
+                           (source #$source))
+                       (mkdir-p out)
+                       (copy-file source (string-append out "/trayer-padding.sh"))
+                       (chmod (string-append out "/trayer-padding.sh") #o755)))))
+    (synopsis #f)
+    (description #f)
+    (license #f)
+    (home-page #f)))
+
 (define home-xmonad-service
   (list (simple-service 'xmonad-profile
                         home-profile-service-type
@@ -106,6 +127,8 @@
                               rofi
                               gcc-toolchain
                               ncurses
+                              trayer-srg
+                              trayer-padding
 
 
                               ;; tools
