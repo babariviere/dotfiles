@@ -15,6 +15,8 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 
+import XMonad.Layout.TwoPane
+
 import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
 import XMonad.Util.Run
@@ -23,7 +25,7 @@ import XMonad.Util.Ungrab
 myModMask = mod4Mask
 myTerminal = "alacritty"
 
-myLayout = tiled ||| Mirror tiled ||| Full
+myLayout = tiled ||| TwoPane delta ratio ||| Full
   where
     tiled = Tall nmaster delta ratio
     nmaster = 1
