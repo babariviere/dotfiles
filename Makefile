@@ -40,6 +40,3 @@ build/home/%:
 
 deploy/%:
 	$(guix-lock) deploy -L . baba/deployment/$*.scm
-
-wallpaper:
-	@./scripts/download-wallpaper.sh
