@@ -1,5 +1,13 @@
 import XMonad
 
+import qualified XMonad.StackSet as W
+
+import XMonad.Actions.EasyMotion
+  ( ChordKeys(..)
+  , EasyMotionConfig(..)
+  , selectWindow
+  )
+
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageHelpers
@@ -34,6 +42,7 @@ myKeys =
   [ ((myModMask,               xK_p), spawn "rofi -show drun")
   , ((myModMask .|. shiftMask, xK_p), spawn "rofi -show run")
   , ((myModMask,               xK_t), spawn myTerminal)
+  , ((myModMask,               xK_a), selectWindow def{sKeys = AnyKeys [xK_a, xK_r, xK_s, xK_t, xK_g]} >>= (`whenJust` windows . W.focusWindow))
   ]
 
 myXmobarPP :: ScreenId -> PP
