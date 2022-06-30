@@ -43,13 +43,18 @@ myKeys =
   [ ((myModMask,               xK_p), spawn "rofi -show drun")
   , ((myModMask .|. shiftMask, xK_p), spawn "rofi -show run")
   , ((myModMask,               xK_t), spawn myTerminal)
+  -- focus
+  , ((myModMask,               xK_n), windows W.focusDown) -- focus next window
+  , ((myModMask,               xK_p), windows W.focusUp)   -- focus previous window
   , ((myModMask,               xK_a), selectWindow emConf >>= (`whenJust` windows . W.focusWindow))
   ]
   where
-    emConf = def{ sKeys = AnyKeys [xK_a, xK_r, xK_s, xK_t, xK_g]
-                , overlayF = proportional 0.1
-                , emFont = "xft:Biosevka-25"
-                }
+    emConf =
+      def
+        { sKeys = AnyKeys [xK_a, xK_r, xK_s, xK_t, xK_g]
+        , overlayF = proportional 0.1
+        , emFont = "xft:Biosevka-25"
+        }
 
 myXmobarPP :: ScreenId -> PP
 myXmobarPP sid =
