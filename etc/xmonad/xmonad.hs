@@ -15,6 +15,7 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 
+import XMonad.Layout.NoBorders
 import XMonad.Layout.TwoPane
 
 import XMonad.Util.EZConfig
@@ -37,6 +38,7 @@ myManageHook =
   composeAll
     [ isDialog --> doFloat
     , stringProperty "WM_WINDOW_ROLE" =? "PictureInPicture" --> doFloat
+    , isFullscreen --> doFullFloat
     ]
 
 myStartupHook = do
@@ -46,8 +48,8 @@ myStartupHook = do
   spawn "sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --tint 0x000000 --height 20 --transparent true --alpha 0"
 
 myKeys =
-  [ ((myModMask,               xK_p), spawn "rofi -show drun")
-  , ((myModMask .|. shiftMask, xK_p), spawn "rofi -show run")
+  [ ((myModMask,               xK_d), spawn "rofi -show drun")
+  , ((myModMask .|. shiftMask, xK_d), spawn "rofi -show run")
   -- focus
   , ((myModMask,               xK_n), windows W.focusDown) -- focus next window
   , ((myModMask,               xK_p), windows W.focusUp)   -- focus previous window
@@ -70,8 +72,8 @@ myXmobarPP sid =
     , ppHidden = white . wrap " " ""
     , ppHiddenNoWindows = lowWhite . wrap " " ""
     , ppUrgent = red . wrap (yellow "!") (yellow "!")
-    , ppOrder = \[ws, l, _, wins] -> [ws, l, wins]
-    , ppExtras = [(logTitlesOnScreen sid) formatFocused formatUnfocused]
+    , ppOrder = \[ws, _, _, l, wins] -> [ws, l, wins]
+    , ppExtras = [(logLayoutOnScreen sid), (logTitlesOnScreen sid) formatFocused formatUnfocused]
     }
   where
     formatFocused = wrap (white "[") (white "]") . magenta . ppWindow
@@ -116,7 +118,7 @@ myConfig =
   def
     { modMask = myModMask
 
-    , layoutHook = myLayout
+    , layoutHook = smartBorders $ myLayout
     , manageHook = myManageHook
     , startupHook = myStartupHook
 
