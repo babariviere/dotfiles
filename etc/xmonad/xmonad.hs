@@ -33,7 +33,11 @@ myLayout = tiled ||| TwoPane delta ratio ||| Full
     delta = 3 / 100
 
 myManageHook :: ManageHook
-myManageHook = composeAll [isDialog --> doFloat]
+myManageHook =
+  composeAll
+    [ isDialog --> doFloat
+    , stringProperty "WM_WINDOW_ROLE" =? "PictureInPicture" --> doFloat
+    ]
 
 myStartupHook = do
   spawn "pkill trayer"
@@ -44,7 +48,6 @@ myStartupHook = do
 myKeys =
   [ ((myModMask,               xK_p), spawn "rofi -show drun")
   , ((myModMask .|. shiftMask, xK_p), spawn "rofi -show run")
-  , ((myModMask,               xK_t), spawn myTerminal)
   -- focus
   , ((myModMask,               xK_n), windows W.focusDown) -- focus next window
   , ((myModMask,               xK_p), windows W.focusUp)   -- focus previous window
