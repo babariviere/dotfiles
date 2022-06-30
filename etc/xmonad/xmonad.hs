@@ -5,6 +5,7 @@ import qualified XMonad.StackSet as W
 import XMonad.Actions.EasyMotion
   ( ChordKeys(..)
   , EasyMotionConfig(..)
+  , proportional
   , selectWindow
   )
 
@@ -42,8 +43,13 @@ myKeys =
   [ ((myModMask,               xK_p), spawn "rofi -show drun")
   , ((myModMask .|. shiftMask, xK_p), spawn "rofi -show run")
   , ((myModMask,               xK_t), spawn myTerminal)
-  , ((myModMask,               xK_a), selectWindow def{sKeys = AnyKeys [xK_a, xK_r, xK_s, xK_t, xK_g]} >>= (`whenJust` windows . W.focusWindow))
+  , ((myModMask,               xK_a), selectWindow emConf >>= (`whenJust` windows . W.focusWindow))
   ]
+  where
+    emConf = def{ sKeys = AnyKeys [xK_a, xK_r, xK_s, xK_t, xK_g]
+                , overlayF = proportional 0.1
+                , emFont = "xft:Biosevka-25"
+                }
 
 myXmobarPP :: ScreenId -> PP
 myXmobarPP sid =
