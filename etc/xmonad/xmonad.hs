@@ -12,6 +12,7 @@ import XMonad.Util.Run
 import XMonad.Util.Ungrab
 
 myModMask = mod4Mask
+myTerminal = "alacritty"
 
 myLayout = tiled ||| Mirror tiled ||| Full
   where
@@ -32,6 +33,7 @@ myStartupHook = do
 myKeys =
   [ ((myModMask,               xK_p), spawn "rofi -show drun")
   , ((myModMask .|. shiftMask, xK_p), spawn "rofi -show run")
+  , ((myModMask,               xK_t), spawn myTerminal)
   ]
 
 myXmobarPP :: ScreenId -> PP
@@ -95,5 +97,5 @@ myConfig =
 
     , focusFollowsMouse = False
     , clickJustFocuses = False
-    , terminal = "alacritty"
+    , terminal = myTerminal
     } `additionalKeys` myKeys
