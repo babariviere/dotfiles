@@ -332,17 +332,6 @@
   (org-track-ordered-property-with-tag t)
   (org-use-property-inheritance t)
   (org-directory (expand-file-name "~/src/github.com/babariviere/notes/"))
-  (org-todo-keywords '((sequence "NEXT(n@/!)" "TODO(t@/!)" "WAITING(w@/!)" "SOMEDAY(s@/!)" "PROJ(p)" "|" "DONE(d@)" "CANCELLED(c@)")
-					   (sequence "REPEAT(r)" "|" "DONE(d!)")))
-  ;; TODO: better colors
-  (org-todo-keyword-faces '(("TODO" . org-todo)
-							("NEXT" . org-warning)
-							("REPEAT" . (:foreground "SteelBlue2" :weight bold))
-							("DONE" . org-done)
-							("WAITING" . org-warning)
-							("HOLD" . org-warning)
-							("CANCELLED" . org-archived)
-							("MEETING" . org-warning)))
   (org-global-properties '(("Effort_ALL" . "0:05 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00")))
   (org-log-done 'time)
   (org-log-into-drawer t)
@@ -377,6 +366,30 @@
 	"ny" '(org-roam-dailies-goto-yesterday :wk "yesterday's note")
     "ng" '(org-roam-dailies-goto-date :wk "goto date's note")
     "oi" '(amber-org/goto-inbox :wk "open inbox.org")))
+
+;; Define org todo keywords
+(setq org-todo-keywords
+ '((sequence "NEXT(n@/!)" "TODO(t@/!)" "WAITING(w@/!)"
+             "SOMEDAY(s@/!)" "DELEGATED(D@/!)" "PROJ(p)"
+             "|" "DONE(d@)" "CANCELLED(c@)")
+   (sequence "REPEAT(r)" "|" "DONE(d!)")))
+
+(defun amber-org/todo-custom-faces ()
+  "Set faces for org todo keywords."
+  (setq org-todo-keyword-faces
+        `(("NEXT" :foreground ,(modus-themes-color 'orange-intense) :weight bold)
+          ("TODO" :foreground ,(modus-themes-color 'red))
+          ("WAITING" :foreground ,(modus-themes-color 'yellow))
+          ("SOMEDAY" :foreground ,(modus-themes-color 'cyan-faint))
+          ("DELEGATED" :foreground ,(modus-themes-color 'magenta-faint))
+          ("PROJ" :foreground ,(modus-themes-color 'blue) :weight bold)
+          ("REPEAT" :foreground ,(modus-themes-color 'blue-alt-other) :weight bold)
+		  ("DONE" :foreground ,(modus-themes-color 'green))
+          ("ACHIEVED" :foreground ,(modus-themes-color 'green))
+		  ("CANCELLED" :foreground ,(modus-themes-color 'fg-inactive))
+          ("MISSED" :foreground ,(modus-themes-color 'red-nuanced-fg)))))
+(amber-org/todo-custom-faces)
+(add-hook 'modus-themes-after-load-theme-hook #'amber-org/todo-custom-faces)
 
 (define-key org-mode-map (kbd "C-c y") #'amber-org/yank-id-link)
 
