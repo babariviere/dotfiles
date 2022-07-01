@@ -53,6 +53,8 @@ myKeys =
   -- focus
   , ((myModMask,               xK_n), windows W.focusDown) -- focus next window
   , ((myModMask,               xK_p), windows W.focusUp)   -- focus previous window
+  , ((myModMask .|. shiftMask, xK_n), windows W.swapDown) -- focus next window
+  , ((myModMask .|. shiftMask, xK_p), windows W.swapUp)   -- focus previous window
   , ((myModMask,               xK_a), selectWindow emConf >>= (`whenJust` windows . W.focusWindow))
   ]
   where
