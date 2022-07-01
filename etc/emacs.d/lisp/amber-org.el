@@ -382,6 +382,8 @@
 
 (add-hook 'org-after-todo-state-change-hook 'amber-org/checklist)
 
+(add-to-list 'org-modules 'org-habit t)
+
 
 (require 'org-capture)
 (setq org-capture-templates
