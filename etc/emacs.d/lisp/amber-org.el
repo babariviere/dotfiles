@@ -369,9 +369,9 @@
 
 ;; Define org todo keywords
 (setq org-todo-keywords
- '((sequence "NEXT(n@/!)" "TODO(t@/!)" "WAITING(w@/!)"
+ '((sequence "NEXT(n!)" "TODO(t@/!)" "WAITING(w@/!)"
              "SOMEDAY(s@/!)" "DELEGATED(D@/!)" "PROJ(p)"
-             "|" "DONE(d@)" "CANCELLED(c@)")
+             "|" "DONE(d)" "CANCELLED(c@)")
    (sequence "REPEAT(r)" "|" "DONE(d!)")))
 
 (defun amber-org/todo-custom-faces ()
