@@ -23,6 +23,7 @@
   #:use-module (gnu packages video)
   #:use-module (gnu packages wm)
   #:use-module (gnu packages xdisorg)
+  #:use-module (gnu packages xorg)
   #:use-module (gnu services)
   #:use-module (guix build-system trivial)
   #:use-module (guix gexp)
@@ -128,6 +129,7 @@
                               gcc-toolchain
                               ncurses
                               trayer-srg
+                              xprop     ; for trayer-padding, TODO: add it as a dep
                               trayer-padding
 
 
