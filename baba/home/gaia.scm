@@ -273,7 +273,8 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
           stumpwm-service
           home-elixir-service
           home-picom-service
-          (home-xsession-service stumpwm "stumpwm")
+          home-xmonad-service
+          (home-xsession-service xmonad-next "xmonad")
           (list
            (service home-bash-service-type
                     (home-bash-configuration
