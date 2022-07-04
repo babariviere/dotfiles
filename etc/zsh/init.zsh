@@ -1,6 +1,7 @@
 # -*- mode: sh; sh-shell: zsh; -*-
 
 bindkey -e
+eval $(env TERM=xterm256-color dircolors)
 
 # prompt
 autoload -Uz vcs_info
