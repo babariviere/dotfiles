@@ -158,45 +158,6 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
              (guix build-system gnu)
              ((guix licenses) #:prefix license:))
 ;; TODO: move me to packages
-(define-public zsh-autocomplete
-  (package
-    (name "zsh-autocomplete")
-    (version "22.01.21")
-    (source (origin
-              (method git-fetch)
-              (uri (git-reference
-                    (url "https://github.com/marlonrichert/zsh-autocomplete")
-                    (commit version)))
-              (file-name (git-file-name name version))
-              (sha256
-               (base32
-                "12y0zg06hqkkz5snzf1gp07fv8ds4fxar99bk6p9i0i3id6y4k7r"))))
-    (build-system gnu-build-system)
-    (arguments
-     '(#:phases
-       (modify-phases %standard-phases
-         (delete 'configure)
-         (delete 'check)
-         (delete 'build)
-         (replace 'install
-           (lambda* (#:key outputs #:allow-other-keys)
-             (let* ((out (assoc-ref outputs "out"))
-                    (zsh-plugins
-                     (string-append out "/share/zsh/plugins/zsh-autocomplete"))
-                    (scripts (string-append zsh-plugins "/scripts"))
-                    (functions (string-append zsh-plugins "/functions")))
-               (mkdir-p zsh-plugins)
-               (copy-file "zsh-autocomplete.plugin.zsh" (string-append zsh-plugins "/zsh-autocomplete.zsh"))
-               (mkdir-p scripts)
-               (copy-recursively "scripts" scripts)
-               (mkdir-p functions)
-               (copy-recursively "functions" functions)
-               #t))))))
-    (home-page "https://github.com/marlonrichert/zsh-autocomplete")
-    (synopsis "Autocomplete for zsh")
-    (description
-     "zsh-autocomplete adds real-time type-ahead autocompletion to Zsh. Find as you type, then press Tab to insert the top completion, ShiftTab to insert the bottom one, or ↓/PgDn to select another completion.")
-    (license license:expat)))
 
 (define-public zsh-completions
   (package
@@ -235,19 +196,19 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
      "This projects aims at gathering/developing new completion scripts that are not available in Zsh yet. The scripts may be contributed to the Zsh project when stable enough.")
     (license license:expat)))
 
-(define-public zcolors
+(define-public zsh-z
   (package
-    (name "zcolors")
-    (version "f999c622")
+    (name "zsh-z")
+    (version "aaafebcd97424c570ee247e2aeb3da30444299cd")
     (source (origin
               (method git-fetch)
               (uri (git-reference
-                    (url "https://github.com/marlonrichert/zcolors")
-                    (commit "f999c622204281f74c048acbeb0c44709967a0c3")))
+                    (url "https://github.com/agkozak/zsh-z")
+                    (commit version)))
               (file-name (git-file-name name version))
               (sha256
                (base32
-                "1h90vjjn24vkg51gair2dd51wa1dqr0lh02wa54q47ajhvk01mp8"))))
+                "147rwiqn5xs0vx7pkqvl1480s7fv7f5879cq6k42pn74jawzhspm"))))
     (build-system gnu-build-system)
     (arguments
      '(#:phases
@@ -259,17 +220,16 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
            (lambda* (#:key outputs #:allow-other-keys)
              (let* ((out (assoc-ref outputs "out"))
                     (zsh-plugins
-                     (string-append out "/share/zsh/plugins/zcolors"))
-                    (functions (string-append zsh-plugins "/functions")))
+                     (string-append out "/share/zsh/plugins/zsh-z"))
+                    (src (string-append zsh-plugins "/src")))
                (mkdir-p zsh-plugins)
-               (copy-file "zcolors.plugin.zsh" (string-append zsh-plugins "/zcolors.zsh"))
-               (mkdir-p functions)
-               (copy-recursively "functions" functions)
+               (copy-file "zsh-z.plugin.zsh" (string-append zsh-plugins "/zsh-z.zsh"))
+               (copy-file "_zshz" (string-append zsh-plugins "/_zshz"))
                #t))))))
-    (home-page "https://github.com/marlonrichert/zcolors")
-    (synopsis "Z Colors uses your $LS_COLORS to generate a coherent theme for Git and your Zsh prompt, command line and completions. ")
+    (home-page "https://github.com/agkozak/zsh-z")
+    (synopsis "Jump quickly to directories that you have visited \"frecently.\" A native Zsh port of z.sh with added features. ")
     (description
-     "Use your Gnu $LS_COLORS or BSD $LSCOLORS to generate a coherent theme for git, less, grep, and your Zsh prompt, completions and command line. Don't know how to or don't feel like customizing your colors? No worries: Z Colors comes with an excellent default theme, too.")
+     "Jump quickly to directories that you have visited \"frecently.\" A native Zsh port of z.sh with added features. ")
     (license license:expat)))
 
 
@@ -326,12 +286,14 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                       (append
                        (list
                         (local-file (etc-file "/zsh/init.zsh"))
+                        (local-file (etc-file "/zsh/completion.zsh"))
+                        (local-file (etc-file "/zsh/prompt.zsh"))
                         (local-file (etc-file "/zsh/config.zsh")))
                        (map (lambda (p)
                               (let ((x (package-name p)))
                                 (mixed-text-file (format #f "zsh-load-~a" x)
                                                  "source " p "/share/zsh/plugins/" x "/" x ".zsh")))
-                            (list zsh-autocomplete zsh-autosuggestions zsh-completions zsh-syntax-highlighting zcolors))
+                            (list zsh-autosuggestions zsh-completions zsh-syntax-highlighting zsh-z))
                        (list
                         (local-file (etc-file "/zsh/fini.zsh")))))))
            (service home-brycus-fish-service-type)
