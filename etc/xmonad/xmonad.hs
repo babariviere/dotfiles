@@ -59,6 +59,12 @@ myKeys =
 
   , ((myModMask,               xK_End), spawn "xlock -mode swarm")
   ]
+  ++
+  -- mod-{z,x,c} %! Switch to physical/Xinerama screens 1, 2, or 3
+  -- mod-shift-{z,x,c} %! Move client to screen 1, 2, or 3
+  [((m .|. myModMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
+     | (key, sc) <- zip [xK_z, xK_x, xK_c] [0..]
+     , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
   where
     emConf =
       def
