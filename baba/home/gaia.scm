@@ -185,7 +185,8 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                      (string-append out "/share/zsh/plugins/zsh-autocomplete"))
                     (scripts (string-append zsh-plugins "/scripts"))
                     (functions (string-append zsh-plugins "/functions")))
-               (install-file "zsh-autocomplete.plugin.zsh" (string-append zsh-plugins "/zsh-autocomplete.zsh"))
+               (mkdir-p zsh-plugins)
+               (copy-file "zsh-autocomplete.plugin.zsh" (string-append zsh-plugins "/zsh-autocomplete.zsh"))
                (mkdir-p scripts)
                (copy-recursively "scripts" scripts)
                (mkdir-p functions)
@@ -249,7 +250,8 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                      (zshrc
                       (append
                        (list
-                        (local-file (etc-file "/zsh/init.zsh")))
+                        (local-file (etc-file "/zsh/init.zsh"))
+                        (local-file (etc-file "/zsh/config.zsh")))
                        (map (lambda (p)
                               (let ((x (package-name p)))
                                 (mixed-text-file (format #f "zsh-load-~a" x)

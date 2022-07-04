@@ -1,5 +1,7 @@
 # -*- mode: sh; sh-shell: zsh; -*-
 
+bindkey -e
+
 # prompt
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
