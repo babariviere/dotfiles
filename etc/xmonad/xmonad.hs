@@ -48,8 +48,11 @@ myStartupHook = do
   spawn "sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --tint 0x000000 --height 20 --transparent true --alpha 0 --monitor primary"
 
 myKeys =
+  -- launching and killing programs
   [ ((myModMask,               xK_d), spawn "rofi -show drun")
   , ((myModMask .|. shiftMask, xK_d), spawn "rofi -show run")
+  , ((myModMask .|. shiftMask, xK_k), kill) -- %! Close the focused window
+
   -- focus
   , ((myModMask,               xK_n), windows W.focusDown) -- focus next window
   , ((myModMask,               xK_p), windows W.focusUp)   -- focus previous window
