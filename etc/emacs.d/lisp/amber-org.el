@@ -411,8 +411,8 @@
         ("pP" "Daily plan private" plain (file+olp+datetree ,(concat org-directory "plan-private.org")) (file ,(concat org-directory "/template/dailyplan.org")) :immediate-finish t)
         ("pW" "Daily plan work" plain (file+olp+datetree ,(concat org-directory "plan-work.org")) (file ,(concat org-directory "/template/dailyplan.org")) :immediate-finish t)
         ("j" "Journal entry")
-        ("jP" "Journal entry private" entry (file+olp+datetree ,(concat org-directory "journal-private.org")) "** %U - %^{Heading}")
-        ("jW" "Journal entry work" entry (file+olp+datetree ,(concat org-directory "journal-work.org")) "** %U - %^{Heading}")))
+        ("jP" "Journal entry private" entry (file+olp+datetree ,(concat org-directory "journal-private.org")) "** %U - %^{Heading}\n%?")
+        ("jW" "Journal entry work" entry (file+olp+datetree ,(concat org-directory "journal-work.org")) "** %U - %^{Heading}\n%?")))
 
 (require 'org-superstar)
 (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
