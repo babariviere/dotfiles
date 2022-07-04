@@ -199,7 +199,7 @@ EndSection
                                           "audio" "video"
                                           "kvm" "lxd"
                                           "lp" "lpadmin"))
-                  (shell (file-append fish "/bin/fish")))
+                  (shell (file-append zsh "/bin/zsh")))
                  %base-user-accounts))
 
     ;; Add a bunch of window managers; we can choose one at

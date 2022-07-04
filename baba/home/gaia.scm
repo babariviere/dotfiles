@@ -19,6 +19,7 @@
   #:use-module (gnu home-services emacs)
   #:use-module (baba home services gnupg)
   #:use-module (gnu home-services mail)
+  #:use-module (gnu home-services shellutils)
   #:use-module (gnu home-services version-control)
   #:use-module (gnu home-services wm)
   #:use-module (gnu packages admin)
@@ -45,95 +46,6 @@
   #:use-module (flat packages emacs)
   #:use-module (nongnu packages mozilla)
   #:use-module (srfi srfi-1))
-
-(define %sway-config
-  `( ;; (bindsym $mod+Shift+e exec emacsclient -c --eval "(eshell)")
-    (xwayland enable)
-    (set $term ,(file-append foot "/bin/foot"))
-    (set $menu ,(file-append rofi "/bin/rofi -modi drun -show drun"))
-
-    (set $mod Mod4)
-    (set $left h)
-    (set $down j)
-    (set $up k)
-    (set $right l)
-
-    (bindsym $mod+Return exec $term)
-    (bindsym $mod+Shift+q kill)
-    (bindsym $mod+d exec $menu)
-
-    (floating_modifier $mod normal)
-
-    (bindsym $mod+Shift+c reload)
-
-    (output * bg ,(file-append sway "/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png") fill)
-
-    (bindsym $mod+$left focus left)
-    (bindsym $mod+$down focus down)
-    (bindsym $mod+$up focus up)
-    (bindsym $mod+$right focus right)
-
-    ;; Move the focused window with the same, but add Shift
-    (bindsym $mod+Shift+$left move left)
-    (bindsym $mod+Shift+$down move down)
-    (bindsym $mod+Shift+$up move up)
-    (bindsym $mod+Shift+$right move right)
-
-    ;; Workspaces:
-
-    ;; Switch to workspace
-    (bindsym $mod+1 workspace number 1)
-    (bindsym $mod+2 workspace number 2)
-    (bindsym $mod+3 workspace number 3)
-    (bindsym $mod+4 workspace number 4)
-    (bindsym $mod+5 workspace number 5)
-    (bindsym $mod+6 workspace number 6)
-    (bindsym $mod+7 workspace number 7)
-    (bindsym $mod+8 workspace number 8)
-    (bindsym $mod+9 workspace number 9)
-    (bindsym $mod+0 workspace number 10)
-    ;; Move focused container to workspace
-    (bindsym $mod+Shift+1 move container to workspace number 1)
-    (bindsym $mod+Shift+2 move container to workspace number 2)
-    (bindsym $mod+Shift+3 move container to workspace number 3)
-    (bindsym $mod+Shift+4 move container to workspace number 4)
-    (bindsym $mod+Shift+5 move container to workspace number 5)
-    (bindsym $mod+Shift+6 move container to workspace number 6)
-    (bindsym $mod+Shift+7 move container to workspace number 7)
-    (bindsym $mod+Shift+8 move container to workspace number 8)
-    (bindsym $mod+Shift+9 move container to workspace number 9)
-    (bindsym $mod+Shift+0 move container to workspace number 10)
-
-    ;; Layout stuff:
-    (bindsym $mod+b splith)
-    (bindsym $mod+v splitv)
-
-    (bindsym $mod+f fullscreen)
-
-    (bindsym $mod+Shift+space floating toggle)
-    (bindsym $mod+space focus mode_toggle)
-
-    ;; Scratchpad:
-    (bindsym $mod+Shift+minus move scratchpad)
-    (bindsym $mod+minus move scratchpad)
-
-    ;; Bar:
-    (bar ((position top)
-      (colors ((statusline "#ffffff")
-           (background "#323232")))
-      (status_command "while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done")))
-
-    ;; Input:
-    (input * ((xkb_layout "us")
-          (xkb_variant "altgr-intl")
-          (xkb_options "ctrl:nocaps")))
-    ;; Output:
-    (output HDMI-A-1 res 2560x1440@60Hz pos 0 0)
-    (output DP-2 res 2560x1440@60Hz pos 2560 0)
-    (output eDP-1 pos ,(inexact->exact (/ 3840 2)) 1440)
-    (bindswitch lid:on output eDP-1 disable)
-    (bindswitch lid:off output eDP-1 enable)
-    (focus_follows_mouse no)))
 
 (define gmail-folder-mapping
   '(("inbox"   . "INBOX")
@@ -242,6 +154,49 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
         "notmuch tag -archive -- tag:sent"
         "notmuch tag -unread -new -- tag:replied"))
 
+(use-modules (guix git-download)
+             (guix build-system gnu)
+             ((guix licenses) #:prefix license:))
+;; TODO: move me to packages
+(define-public zsh-autocomplete
+  (package
+    (name "zsh-autocomplete")
+    (version "22.01.21")
+    (source (origin
+              (method git-fetch)
+              (uri (git-reference
+                    (url "https://github.com/marlonrichert/zsh-autocomplete")
+                    (commit version)))
+              (file-name (git-file-name name version))
+              (sha256
+               (base32
+                "12y0zg06hqkkz5snzf1gp07fv8ds4fxar99bk6p9i0i3id6y4k7r"))))
+    (build-system gnu-build-system)
+    (arguments
+     '(#:phases
+       (modify-phases %standard-phases
+         (delete 'configure)
+         (delete 'check)
+         (delete 'build)
+         (replace 'install
+           (lambda* (#:key outputs #:allow-other-keys)
+             (let* ((out (assoc-ref outputs "out"))
+                    (zsh-plugins
+                     (string-append out "/share/zsh/plugins/zsh-autocomplete"))
+                    (scripts (string-append zsh-plugins "/scripts"))
+                    (functions (string-append zsh-plugins "/functions")))
+               (install-file "zsh-autocomplete.plugin.zsh" (string-append zsh-plugins "/zsh-autocomplete.zsh"))
+               (mkdir-p scripts)
+               (copy-recursively "scripts" scripts)
+               (mkdir-p functions)
+               (copy-recursively "functions" functions)
+               #t))))))
+    (home-page "https://github.com/marlonrichert/zsh-autocomplete")
+    (synopsis "Autocomplete for zsh")
+    (description
+     "zsh-autocomplete adds real-time type-ahead autocompletion to Zsh. Find as you type, then press Tab to insert the top completion, ShiftTab to insert the bottom one, or ↓/PgDn to select another completion.")
+    (license license:expat)))
+
 ;; TODO: make service for mbsync and notmuch
 (home-environment
  (packages
@@ -289,6 +244,17 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                                       ("gsr" . "sudo -E guix system reconfigure")
                                       ("ghr" . "guix home reconfigure")
                                       ("cat" . "bat -pp")))))
+           (service home-zsh-service-type
+                    (home-zsh-configuration
+                     (zshrc
+                      (append
+                       (list
+                        (local-file (etc-file "/zsh/init.zsh")))
+                       (map (lambda (p)
+                              (let ((x (package-name p)))
+                                (mixed-text-file (format #f "zsh-load-~a" x)
+                                                 "source " p "/share/zsh/plugins/" x "/" x ".zsh")))
+                            (list zsh-autocomplete zsh-autosuggestions zsh-syntax-highlighting))))))
            (service home-brycus-fish-service-type)
            (service home-gnupg-service-type
                     (home-gnupg-configuration
@@ -350,17 +316,6 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                          ((gpgSign . #t)))
                         (tag
                          ((gpgSign . #t)))))))
-           (service home-sway-service-type
-                    (home-sway-configuration
-                     (config %sway-config)))
-           (service home-foot-service-type
-                    (home-foot-configuration
-                     (config
-                      `((main
-                         ((term . "xterm-256color")
-                          (font . "MonoLisa:size=10")
-                          (dpi-aware . "no")
-                          (include . ,(file-append (package-source foot) "/themes/dracula"))))))))
            (service home-font-service-type
                     (home-font-configuration
                      (sans-serif (make-font-spec font-abattis-cantarell "Cantarell"))
