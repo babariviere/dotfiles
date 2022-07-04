@@ -56,6 +56,8 @@ myKeys =
   , ((myModMask .|. shiftMask, xK_n), windows W.swapDown) -- focus next window
   , ((myModMask .|. shiftMask, xK_p), windows W.swapUp)   -- focus previous window
   , ((myModMask,               xK_a), selectWindow emConf >>= (`whenJust` windows . W.focusWindow))
+
+  , ((myModMask,               xK_End), spawn "xlock -mode swarm")
   ]
   where
     emConf =
