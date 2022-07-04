@@ -45,7 +45,7 @@ myStartupHook = do
   spawn "pkill trayer"
 
   spawn "feh --bg-scale $HOME/Pictures/backgrounds"
-  spawn "sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --tint 0x000000 --height 20 --transparent true --alpha 0"
+  spawn "sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --tint 0x000000 --height 20 --transparent true --alpha 0 --monitor primary"
 
 myKeys =
   [ ((myModMask,               xK_d), spawn "rofi -show drun")
