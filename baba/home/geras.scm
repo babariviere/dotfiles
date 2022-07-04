@@ -20,6 +20,7 @@
   #:use-module (gnu packages node)
   #:use-module (gnu packages package-management)
   #:use-module (gnu packages pulseaudio)
+  #:use-module (gnu packages spice)
   #:use-module (gnu packages wm)
   #:use-module (gnu services)
   #:use-module (guix gexp)
@@ -38,8 +39,8 @@
         node-lts
 
         brycus
-
-        pingu))
+        pingu
+        virt-viewer))
  (services
   (append emacs-service
           nyxt-service
