@@ -33,3 +33,9 @@ eval "$(direnv hook zsh)"
 ZSH_AUTOSUGGEST_MANUAL_REBIND=true
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+# aliases
+alias ls='ls --color=auto'
+alias cat='bat -pp'
+alias gco='git checkout'
+alias gs='git status'
