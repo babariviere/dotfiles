@@ -198,6 +198,81 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
      "zsh-autocomplete adds real-time type-ahead autocompletion to Zsh. Find as you type, then press Tab to insert the top completion, ShiftTab to insert the bottom one, or ↓/PgDn to select another completion.")
     (license license:expat)))
 
+(define-public zsh-completions
+  (package
+    (name "zsh-completions")
+    (version "0.34.0")
+    (source (origin
+              (method git-fetch)
+              (uri (git-reference
+                    (url "https://github.com/zsh-users/zsh-completions")
+                    (commit version)))
+              (file-name (git-file-name name version))
+              (sha256
+               (base32
+                "0jjgvzj3v31yibjmq50s80s3sqi4d91yin45pvn3fpnihcrinam9"))))
+    (build-system gnu-build-system)
+    (arguments
+     '(#:phases
+       (modify-phases %standard-phases
+         (delete 'configure)
+         (delete 'check)
+         (delete 'build)
+         (replace 'install
+           (lambda* (#:key outputs #:allow-other-keys)
+             (let* ((out (assoc-ref outputs "out"))
+                    (zsh-plugins
+                     (string-append out "/share/zsh/plugins/zsh-completions"))
+                    (src (string-append zsh-plugins "/src")))
+               (mkdir-p zsh-plugins)
+               (copy-file "zsh-completions.plugin.zsh" (string-append zsh-plugins "/zsh-completions.zsh"))
+               (mkdir-p src)
+               (copy-recursively "src" src)
+               #t))))))
+    (home-page "https://github.com/zsh-users/zsh-completions")
+    (synopsis "Additional completion definitions for Zsh.")
+    (description
+     "This projects aims at gathering/developing new completion scripts that are not available in Zsh yet. The scripts may be contributed to the Zsh project when stable enough.")
+    (license license:expat)))
+
+(define-public zcolors
+  (package
+    (name "zcolors")
+    (version "f999c622")
+    (source (origin
+              (method git-fetch)
+              (uri (git-reference
+                    (url "https://github.com/marlonrichert/zcolors")
+                    (commit "f999c622204281f74c048acbeb0c44709967a0c3")))
+              (file-name (git-file-name name version))
+              (sha256
+               (base32
+                "1h90vjjn24vkg51gair2dd51wa1dqr0lh02wa54q47ajhvk01mp8"))))
+    (build-system gnu-build-system)
+    (arguments
+     '(#:phases
+       (modify-phases %standard-phases
+         (delete 'configure)
+         (delete 'check)
+         (delete 'build)
+         (replace 'install
+           (lambda* (#:key outputs #:allow-other-keys)
+             (let* ((out (assoc-ref outputs "out"))
+                    (zsh-plugins
+                     (string-append out "/share/zsh/plugins/zcolors"))
+                    (functions (string-append zsh-plugins "/functions")))
+               (mkdir-p zsh-plugins)
+               (copy-file "zcolors.plugin.zsh" (string-append zsh-plugins "/zcolors.zsh"))
+               (mkdir-p functions)
+               (copy-recursively "functions" functions)
+               #t))))))
+    (home-page "https://github.com/marlonrichert/zcolors")
+    (synopsis "Z Colors uses your $LS_COLORS to generate a coherent theme for Git and your Zsh prompt, command line and completions. ")
+    (description
+     "Use your Gnu $LS_COLORS or BSD $LSCOLORS to generate a coherent theme for git, less, grep, and your Zsh prompt, completions and command line. Don't know how to or don't feel like customizing your colors? No worries: Z Colors comes with an excellent default theme, too.")
+    (license license:expat)))
+
+
 ;; TODO: make service for mbsync and notmuch
 (home-environment
  (packages
@@ -256,7 +331,9 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                               (let ((x (package-name p)))
                                 (mixed-text-file (format #f "zsh-load-~a" x)
                                                  "source " p "/share/zsh/plugins/" x "/" x ".zsh")))
-                            (list zsh-autocomplete zsh-autosuggestions zsh-syntax-highlighting))))))
+                            (list zsh-autocomplete zsh-autosuggestions zsh-completions zsh-syntax-highlighting zcolors))
+                       (list
+                        (local-file (etc-file "/zsh/fini.zsh")))))))
            (service home-brycus-fish-service-type)
            (service home-gnupg-service-type
                     (home-gnupg-configuration

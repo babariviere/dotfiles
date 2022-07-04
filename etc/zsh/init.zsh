@@ -36,6 +36,11 @@ ZSH_AUTOSUGGEST_MANUAL_REBIND=true
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
+# autocomplete
+zstyle ':autocomplete:*' min-delay 0.25
+zstyle ':autocomplete:*' min-input 2
+zstyle ':autocomplete:*' widget-style menu-complete
+
 # aliases
 alias ls='ls --color=auto'
 alias cat='bat -pp'
