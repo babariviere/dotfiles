@@ -4,6 +4,7 @@
   #:use-module (baba home services elixir)
   #:use-module (baba home services emacs)
   #:use-module (baba home services fonts)
+  #:use-module (baba home services shells)
   #:use-module (baba home services terminals)
   #:use-module (baba home services wm)
   #:use-module (baba packages fonts)
@@ -159,79 +160,6 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
              ((guix licenses) #:prefix license:))
 ;; TODO: move me to packages
 
-(define-public zsh-completions
-  (package
-    (name "zsh-completions")
-    (version "0.34.0")
-    (source (origin
-              (method git-fetch)
-              (uri (git-reference
-                    (url "https://github.com/zsh-users/zsh-completions")
-                    (commit version)))
-              (file-name (git-file-name name version))
-              (sha256
-               (base32
-                "0jjgvzj3v31yibjmq50s80s3sqi4d91yin45pvn3fpnihcrinam9"))))
-    (build-system gnu-build-system)
-    (arguments
-     '(#:phases
-       (modify-phases %standard-phases
-         (delete 'configure)
-         (delete 'check)
-         (delete 'build)
-         (replace 'install
-           (lambda* (#:key outputs #:allow-other-keys)
-             (let* ((out (assoc-ref outputs "out"))
-                    (zsh-plugins
-                     (string-append out "/share/zsh/plugins/zsh-completions"))
-                    (src (string-append zsh-plugins "/src")))
-               (mkdir-p zsh-plugins)
-               (copy-file "zsh-completions.plugin.zsh" (string-append zsh-plugins "/zsh-completions.zsh"))
-               (mkdir-p src)
-               (copy-recursively "src" src)
-               #t))))))
-    (home-page "https://github.com/zsh-users/zsh-completions")
-    (synopsis "Additional completion definitions for Zsh.")
-    (description
-     "This projects aims at gathering/developing new completion scripts that are not available in Zsh yet. The scripts may be contributed to the Zsh project when stable enough.")
-    (license license:expat)))
-
-(define-public zsh-z
-  (package
-    (name "zsh-z")
-    (version "aaafebcd97424c570ee247e2aeb3da30444299cd")
-    (source (origin
-              (method git-fetch)
-              (uri (git-reference
-                    (url "https://github.com/agkozak/zsh-z")
-                    (commit version)))
-              (file-name (git-file-name name version))
-              (sha256
-               (base32
-                "147rwiqn5xs0vx7pkqvl1480s7fv7f5879cq6k42pn74jawzhspm"))))
-    (build-system gnu-build-system)
-    (arguments
-     '(#:phases
-       (modify-phases %standard-phases
-         (delete 'configure)
-         (delete 'check)
-         (delete 'build)
-         (replace 'install
-           (lambda* (#:key outputs #:allow-other-keys)
-             (let* ((out (assoc-ref outputs "out"))
-                    (zsh-plugins
-                     (string-append out "/share/zsh/plugins/zsh-z"))
-                    (src (string-append zsh-plugins "/src")))
-               (mkdir-p zsh-plugins)
-               (copy-file "zsh-z.plugin.zsh" (string-append zsh-plugins "/zsh-z.zsh"))
-               (copy-file "_zshz" (string-append zsh-plugins "/_zshz"))
-               #t))))))
-    (home-page "https://github.com/agkozak/zsh-z")
-    (synopsis "Jump quickly to directories that you have visited \"frecently.\" A native Zsh port of z.sh with added features. ")
-    (description
-     "Jump quickly to directories that you have visited \"frecently.\" A native Zsh port of z.sh with added features. ")
-    (license license:expat)))
-
 
 ;; TODO: make service for mbsync and notmuch
 (home-environment
@@ -266,6 +194,7 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
           home-picom-service
           home-xmonad-service
           (home-xsession-service xmonad-next "xmonad")
+          home-zsh-profile
           (list
            (service home-bash-service-type
                     (home-bash-configuration
@@ -280,22 +209,6 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                                       ("gsr" . "sudo -E guix system reconfigure")
                                       ("ghr" . "guix home reconfigure")
                                       ("cat" . "bat -pp")))))
-           (service home-zsh-service-type
-                    (home-zsh-configuration
-                     (zshrc
-                      (append
-                       (list
-                        (local-file (etc-file "/zsh/init.zsh"))
-                        (local-file (etc-file "/zsh/completion.zsh"))
-                        (local-file (etc-file "/zsh/prompt.zsh"))
-                        (local-file (etc-file "/zsh/config.zsh")))
-                       (map (lambda (p)
-                              (let ((x (package-name p)))
-                                (mixed-text-file (format #f "zsh-load-~a" x)
-                                                 "source " p "/share/zsh/plugins/" x "/" x ".zsh")))
-                            (list zsh-autosuggestions zsh-completions zsh-syntax-highlighting zsh-z))
-                       (list
-                        (local-file (etc-file "/zsh/fini.zsh")))))))
            (service home-brycus-fish-service-type)
            (service home-gnupg-service-type
                     (home-gnupg-configuration

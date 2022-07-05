@@ -1,9 +1,10 @@
 (define-module (baba home geras)
   #:use-module (baba)
-  #:use-module (baba home services elixir)
-  #:use-module (baba home services fonts)
   #:use-module (baba home services browsers)
+  #:use-module (baba home services elixir)
   #:use-module (baba home services emacs)
+  #:use-module (baba home services fonts)
+  #:use-module (baba home services shells)
   #:use-module (baba home services wm)
   #:use-module (baba packages dotnet)
   #:use-module (baba packages fonts)
@@ -49,6 +50,7 @@
           home-picom-service
           home-xmonad-service
           (home-xsession-service xmonad-next "xmonad")
+          home-zsh-profile
           (list
            (simple-service 'setup-nix
                            home-shell-profile-service-type
