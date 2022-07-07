@@ -124,12 +124,13 @@
                               ghc-hasktags
                               hlint
                               ghc
+                              hoogle
                               dmenu
                               rofi
                               gcc-toolchain
                               ncurses
                               trayer-srg
-                              xprop     ; for trayer-padding, TODO: add it as a dep
+                              xprop ; for trayer-padding, TODO: add it as a dep
                               trayer-padding
 
 
