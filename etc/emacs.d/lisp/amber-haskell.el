@@ -52,5 +52,15 @@
     (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
     (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)))
 
+(defun amber-haskell/project-try-stack (dir)
+  "Find super-directory of DIR containing stack.yaml file."
+  (when-let (root (locate-dominating-file dir "stack.yaml"))
+    (cons 'stack root)))
+
+(cl-defmethod project-root ((project (head stack)))
+  (cdr project))
+
+(add-hook 'project-find-functions #'amber-haskell/project-try-stack)
+
 (provide 'amber-haskell)
 ;;; amber-haskell.el ends here
