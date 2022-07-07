@@ -392,6 +392,8 @@
 (add-hook 'modus-themes-after-load-theme-hook #'amber-org/todo-custom-faces)
 
 (define-key org-mode-map (kbd "C-c y") #'amber-org/yank-id-link)
+(with-eval-after-load 'org-agenda
+  (define-key org-agenda-mode-map (kbd "C-c y") #'amber-org/yank-id-link))
 
 (add-hook 'org-after-todo-state-change-hook 'amber-org/checklist)
 
