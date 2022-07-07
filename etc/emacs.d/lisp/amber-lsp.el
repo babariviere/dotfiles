@@ -37,6 +37,8 @@
 (define-key eglot-mode-map (kbd "C-c l o") 'eglot-code-action-organize)
 (define-key eglot-mode-map (kbd "C-c l r") 'eglot-rename)
 
+(setq eglot-autoshutdown t)
+
 ;; Replace HOME from container by our current home if a file is not found during xref.
 (eval-after-load "xref"
   '(defun xref-make-file-location (file line column)
