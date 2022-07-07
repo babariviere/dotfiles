@@ -25,8 +25,13 @@
 ;;; Code:
 
 (require 'haskell-mode)
+(require 'haskell-interactive-mode)
+(require 'haskell-process)
 (require 'hindent)
 (add-hook 'haskell-mode-hook #'hindent-mode)
+(add-hook 'haskell-mode-hook #'interactive-haskell-mode)
+(add-hook 'haskell-mode-hook #'haskell-auto-insert-module-template)
+(add-hook 'haskell-mode-hook #'haskell-decl-scan-mode)
 
 (let ((my-cabal-path (expand-file-name "~/.cabal/bin")))
   (setenv "PATH" (concat my-cabal-path path-separator (getenv "PATH")))
@@ -36,21 +41,6 @@
       haskell-process-suggest-remove-import-lines t
       haskell-process-auto-import-loaded-modules t
       haskell-process-log t)
-
-(eval-after-load 'haskell-mode
-  (lambda ()
-    (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
-    (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
-    (define-key haskell-mode-map (kbd "C-c C-n C-t") 'haskell-process-do-type)
-    (define-key haskell-mode-map (kbd "C-c C-n C-i") 'haskell-process-do-info)
-    (define-key haskell-mode-map (kbd "C-c C-n C-c") 'haskell-process-cabal-build)
-    (define-key haskell-mode-map (kbd "C-c C-n c") 'haskell-process-cabal)))
-(eval-after-load 'haskell-cabal
-  (lambda ()
-    (define-key haskell-cabal-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
-    (define-key haskell-cabal-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
-    (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
-    (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)))
 
 (defun amber-haskell/project-try-stack (dir)
   "Find super-directory of DIR containing stack.yaml file."
