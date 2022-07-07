@@ -9,7 +9,6 @@ import XMonad.Actions.EasyMotion
   , selectWindow
   )
 
-import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.StatusBar
@@ -20,12 +19,15 @@ import XMonad.Layout.TwoPane
 
 import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
-import XMonad.Util.Run
-import XMonad.Util.Ungrab
+import qualified XMonad.Layout.LayoutModifier
 
+myModMask :: KeyMask
 myModMask = mod4Mask
+
+myTerminal :: String
 myTerminal = "alacritty"
 
+myLayout :: Choose Tall (Choose TwoPane Full) a
 myLayout = tiled ||| TwoPane delta ratio ||| Full
   where
     tiled = Tall nmaster delta ratio
@@ -41,12 +43,14 @@ myManageHook =
     , isFullscreen --> doFullFloat
     ]
 
+myStartupHook :: X ()
 myStartupHook = do
   spawn "pkill trayer"
 
   spawn "feh --bg-scale $HOME/Pictures/backgrounds"
   spawn "sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --tint 0x000000 --height 20 --transparent true --alpha 0 --monitor primary"
 
+myKeys :: [((KeyMask, KeySym), X ())]
 myKeys =
   -- launching and killing programs
   [ ((myModMask,               xK_d), spawn "rofi -show drun")
@@ -72,7 +76,7 @@ myKeys =
     emConf =
       def
         { sKeys = AnyKeys [xK_a, xK_r, xK_s, xK_t, xK_g]
-        , overlayF = proportional 0.1
+        , overlayF = proportional (0.1 :: Double)
         , emFont = "xft:Biosevka-25"
         }
 
@@ -127,6 +131,9 @@ main =
   . dynamicEasySBs barSpawner
   $ myConfig
 
+myConfig :: XConfig
+  (XMonad.Layout.LayoutModifier.ModifiedLayout
+     SmartBorder (Choose Tall (Choose TwoPane Full)))
 myConfig =
   def
     { modMask = myModMask
