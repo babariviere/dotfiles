@@ -37,6 +37,13 @@
 (define-key eglot-mode-map (kbd "C-c l o") 'eglot-code-action-organize)
 (define-key eglot-mode-map (kbd "C-c l r") 'eglot-rename)
 
+;; Replace HOME from container by our current home if a file is not found during xref.
+(eval-after-load "xref"
+  '(defun xref-make-file-location (file line column)
+     (if (not (file-exists-p file))
+         (make-instance 'xref-file-location :file (format "%s/%s" (getenv "HOME") (string-trim file "/.+/.+/")) :line line :column column)
+       (make-instance 'xref-file-location :file file :line line :column column))))
+
 (provide 'amber-lsp)
 
 ;;; amber-lsp.el ends here
