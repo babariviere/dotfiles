@@ -107,6 +107,9 @@
 	    emacs-disaster
 	    emacs-modern-cpp-font-lock
 
+        ;; check
+        emacs-flymake-diagnostic-at-point
+
         ;; corfu
         emacs-corfu
         emacs-cape
