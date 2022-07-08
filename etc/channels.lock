@@ -3,7 +3,7 @@
         (url "https://git.savannah.gnu.org/git/guix.git")
         (branch "master")
         (commit
-          "02ca41d9019d28c8493d13286d10ec9fb2a752a1")
+          "114b40ed675d0543058b5bdea86e561eff7c6b6e")
         (introduction
           (make-channel-introduction
             "9edb3f66fd807b096b48283debdcddccfea34bad"
@@ -14,7 +14,7 @@
         (url "https://git.sr.ht/~abcdw/rde")
         (branch "master")
         (commit
-          "0e51ba97c6bc71c58477d2d3c1e1031f2d95bf9d")
+          "6cbb13d9e43e748cc9f3c373a97fe15188569e70")
         (introduction
           (make-channel-introduction
             "257cebd587b66e4d865b3537a9a88cccd7107c95"
@@ -36,7 +36,7 @@
         (url "https://github.com/flatwhatson/guix-channel.git")
         (branch "master")
         (commit
-          "657da22f0229b978b7bf4e4d476f59f17f6a175f")
+          "d95204cc50de4c3a7abcbff86cfec7d5eed43a7e")
         (introduction
           (make-channel-introduction
             "33f86a4b48205c0dc19d7c036c85393f0766f806"
@@ -69,7 +69,7 @@
         (url "https://github.com/babariviere/guix-emacs")
         (branch "master")
         (commit
-          "fd732671ef8f3c6de8fafea21499d67acee05983")
+          "fd09aa827bd38788b34ac00f3fb5ff446eb33b16")
         (introduction
           (make-channel-introduction
             "72ca4ef5b572fea10a4589c37264fa35d4564783"
