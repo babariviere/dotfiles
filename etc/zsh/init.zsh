@@ -19,3 +19,5 @@ alias gs='git status'
 
 # z
 ZSHZ_CASE=ignore
+
+export PATH="$HOME/.local/bin:$PATH"
