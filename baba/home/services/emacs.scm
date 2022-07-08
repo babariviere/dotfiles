@@ -126,8 +126,9 @@
         emacs-csproj-mode
         emacs-sharper
 
-        ;; yaml
-	    emacs-yaml-mode
+        ;; data
+        emacs-json-mode
+        emacs-yaml-mode
 	    emacs-gitlab-ci-mode
 
         ;; direnv
