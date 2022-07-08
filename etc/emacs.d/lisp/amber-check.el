@@ -32,7 +32,7 @@
 
 (add-hook 'prog-mode-hook #'flymake-mode)
 
-(eval-after-load 'flymake
+(with-eval-after-load 'flymake
   (require 'flymake-diagnostic-at-point)
   (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
 
