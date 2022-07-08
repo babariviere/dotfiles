@@ -48,6 +48,7 @@
     (cons 'stack root)))
 
 (cl-defmethod project-root ((project (head stack)))
+  "Return PROJECT root."
   (cdr project))
 
 (add-hook 'project-find-functions #'amber-haskell/project-try-stack)
