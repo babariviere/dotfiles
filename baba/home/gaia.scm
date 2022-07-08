@@ -11,7 +11,6 @@
   #:use-module (baba packages pingu)
   #:use-module (baba packages security)
   #:use-module (baba packages tex)
-  #:use-module (brycus home-service)
   #:use-module (gnu home)
   #:use-module (gnu home services)
   #:use-module (gnu home services mcron)
@@ -209,7 +208,6 @@ $(echo $f | sed 's;/[[:alnum:]]*/cur/;/~a/cur/;' | sed 's/,U=[0-9]*:/:/'); done"
                                       ("gsr" . "sudo -E guix system reconfigure")
                                       ("ghr" . "guix home reconfigure")
                                       ("cat" . "bat -pp")))))
-           (service home-brycus-fish-service-type)
            (service home-gnupg-service-type
                     (home-gnupg-configuration
                      (gpg-config
