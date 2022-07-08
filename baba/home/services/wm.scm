@@ -27,6 +27,7 @@
   #:use-module (gnu services)
   #:use-module (guix build-system trivial)
   #:use-module (guix gexp)
+  #:use-module (guix modules)
   #:use-module (guix packages)
   #:use-module (nongnu packages video)
   #:export (home-picom-service stumpwm-service home-xsession-service home-xmonad-service))
@@ -114,6 +115,18 @@
     (license #f)
     (home-page #f)))
 
+(define xmonad-activation
+  (with-imported-modules (source-module-closure
+                          '((gnu build activation)))
+    #~(begin
+        (use-modules (gnu build activation))
+
+        (let* ((home (getenv "HOME"))
+               (dot-xmonad (string-append home "/.config/xmonad"))
+               (source-xmonad #$(etc-file "/xmonad/xmonad.hs")))
+          (mkdir-p dot-xmonad)
+          (symlink source-xmonad (string-append dot-xmonad "/xmonad.hs"))))))
+
 (define home-xmonad-service
   (list (simple-service 'xmonad-profile
                         home-profile-service-type
@@ -155,17 +168,17 @@
                               libva-utils
                               libvdpau
                               libvdpau-va-gl))
-        (simple-service 'xmonad-files
+        (simple-service 'xmobar-files
                         home-xdg-configuration-files-service-type
-                        `(("xmonad/xmonad.hs"
-                           ,(local-file
-                             (string-append %channel-root "/etc/xmonad/xmonad.hs")))
-                          ("xmobar/xmobarrc0"
+                        `(("xmobar/xmobarrc0"
                            ,(local-file
                              (string-append %channel-root "/etc/xmobar/xmobarrc0")))
                           ("xmobar/xmobarrc1"
                            ,(local-file
                              (string-append %channel-root "/etc/xmobar/xmobarrc1")))))
+        (simple-service 'xmonad-activation
+                        home-activation-service-type
+                        xmonad-activation)
         (simple-service 'xmonad-recompile
                         home-run-on-change-service-type
                         `(("files/.config/xmonad/xmonad.hs"
