@@ -37,7 +37,7 @@
   (setenv "PATH" (concat my-cabal-path path-separator (getenv "PATH")))
   (add-to-list 'exec-path my-cabal-path))
 
-(setq haskell-tags-on-save t
+(setq haskell-tags-on-save nil
       haskell-process-suggest-remove-import-lines t
       haskell-process-auto-import-loaded-modules t
       haskell-process-log t)
