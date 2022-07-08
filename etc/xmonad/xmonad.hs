@@ -17,6 +17,9 @@ import XMonad.Hooks.StatusBar.PP
 import XMonad.Layout.NoBorders
 import XMonad.Layout.TwoPane
 
+import XMonad.Prompt
+import XMonad.Prompt.Ssh
+
 import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
 import qualified XMonad.Layout.LayoutModifier
@@ -26,6 +29,9 @@ myModMask = mod4Mask
 
 myTerminal :: String
 myTerminal = "alacritty"
+
+myFont :: Int -> String
+myFont size = "xft:Biosevka-" ++ show size
 
 myLayout :: Choose Tall (Choose TwoPane Full) a
 myLayout = tiled ||| TwoPane delta ratio ||| Full
@@ -64,6 +70,9 @@ myKeys =
   , ((myModMask .|. shiftMask, xK_p), windows W.swapUp)   -- focus previous window
   , ((myModMask,               xK_a), selectWindow emConf >>= (`whenJust` windows . W.focusWindow))
 
+  -- prompt
+  , ((myModMask .|. shiftMask, xK_s), sshPrompt promptConf)
+
   , ((myModMask,               xK_End), spawn "xlock -mode swarm")
   ]
   ++
@@ -77,8 +86,19 @@ myKeys =
       def
         { sKeys = AnyKeys [xK_a, xK_r, xK_s, xK_t, xK_g]
         , overlayF = proportional (0.1 :: Double)
-        , emFont = "xft:Biosevka-25"
+        , emFont = myFont 25
         }
+    promptConf =
+      def
+      { font = myFont 12
+      , bgColor = "#000000"
+      , fgColor = "#ffffff"
+      , bgHLight = "#ffffff"
+      , fgHLight = "#000000"
+      , promptBorderWidth = 2
+      , height = 30
+      , position = Top
+      }
 
 myXmobarPP :: ScreenId -> PP
 myXmobarPP sid =
