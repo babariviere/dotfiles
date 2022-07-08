@@ -211,6 +211,7 @@
 	    emacs-zoom
 	    emacs-crux
 	    emacs-htmlize
+        emacs-diminish
 
         ;; navigation
 	    emacs-avy

@@ -6,13 +6,14 @@
 ;;; Code:
 
 (require 'use-package)
+(require 'diminish)
 
 (use-package general
   :config
   (general-create-definer amber/leader-keys
     ;; :states '(normal insert motion visual emacs)
     :keymaps 'override
-    :prefix "C-c")                    ; switch everything to C-c
+    :prefix "C-c")                      ; switch everything to C-c
 
   (amber/leader-keys
     "." '(find-file :wk "find file")
@@ -23,7 +24,9 @@
 
 (use-package which-key
   :demand
-  :config (which-key-mode 1)
+  :config
+  (which-key-mode 1)
+  (diminish 'which-key-mode)
   :custom
   (which-key-idle-delay 1))
 

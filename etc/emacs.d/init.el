@@ -55,6 +55,13 @@ mouse-3: Toggle minor modes"
 							mouse-face mode-line-highlight
 							local-map ,mode-line-major-mode-keymap)
 			  '("" mode-line-process)
+              `(:propertize ("" minor-mode-alist)
+			                mouse-face mode-line-highlight
+			                help-echo "Minor mode\n\
+mouse-1: Display minor mode menu\n\
+mouse-2: Show help for minor mode\n\
+mouse-3: Toggle minor modes"
+			                local-map ,mode-line-minor-mode-keymap)
 			  ")"
 			  (propertize "%]" 'help-echo recursive-edit-help-echo)
 			  " ")))
@@ -128,6 +135,7 @@ mouse-3: Toggle minor modes"
 (require 'amber-elfeed)
 
 (require 'use-package)
+(require 'diminish)
 
 ;; (use-package doom-modeline
 ;;   :config
@@ -137,7 +145,9 @@ mouse-3: Toggle minor modes"
 ;;   (doom-modeline-buffer-file-name-style 'relative-from-project))
 
 (use-package eldoc
-  :hook (emacs-lisp-mode . eldoc-mode))
+  :hook (emacs-lisp-mode . eldoc-mode)
+  :config
+  (diminish 'eldoc-mode))
 
 ;; TODO: customize keyword faces
 (use-package hl-todo
@@ -174,7 +184,8 @@ ARGS are the arguments passed to `browse-url`."
 
 (use-package editorconfig
   :config
-  (editorconfig-mode 1))
+  (editorconfig-mode 1)
+  (diminish 'editorconfig-mode))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -216,3 +227,5 @@ ARGS are the arguments passed to `browse-url`."
 
 (pixel-scroll-precision-mode)
 (auto-insert-mode)
+(diminish 'auto-revert-mode)
+(diminish 'gcmh-mode)

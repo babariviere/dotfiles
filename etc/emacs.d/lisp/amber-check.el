@@ -31,6 +31,7 @@
 (define-key flymake-mode-map (kbd "C-c ! p") #'flymake-goto-prev-error)
 
 (add-hook 'prog-mode-hook #'flymake-mode)
+(setq elisp-flymake-byte-compile-load-path load-path)
 
 (with-eval-after-load 'flymake
   (require 'flymake-diagnostic-at-point)
