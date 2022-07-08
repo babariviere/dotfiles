@@ -178,11 +178,7 @@
                              (string-append %channel-root "/etc/xmobar/xmobarrc1")))))
         (simple-service 'xmonad-activation
                         home-activation-service-type
-                        xmonad-activation)
-        (simple-service 'xmonad-recompile
-                        home-run-on-change-service-type
-                        `(("files/.config/xmonad/xmonad.hs"
-                           ,#~(system* #$(file-append xmonad "/bin/xmonad") "--recompile"))))))
+                        xmonad-activation)))
 
 (define (home-xsession-service program-pkg program-cli)
   (list (simple-service 'xsession
