@@ -495,22 +495,6 @@
   :after org
   :hook (org-mode . org-edna-mode))
 
-(defvar stuck-report-template
-  "#+title: ${title}
-#+status: OPEN
-
-* Describe issue
-
-%^{Describe issue here...}
-
-* What could be done
-
-%^{What could be done to fix it...}
-
-* Log
-
-* Result")
-
 (use-package org-roam
   :demand t
   :custom
@@ -520,9 +504,6 @@
   (org-roam-capture-templates
    `(("d" "default" plain "%?" :target
       (file+head "brain/${slug}.org" "#+title: ${title}\n")
-      :unnarrowed t)
-     ("S" "stuck report" entry "* [%H:%M] %?" :target
-      (file+head+olp "report/%<%Y%m%d%H%M%S>-${slug}.org" ,stuck-report-template ("Log"))
       :unnarrowed t)))
   :init
   (setq org-roam-v2-ack t)
