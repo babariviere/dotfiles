@@ -1,0 +1,8 @@
+* A yet again, new dotfiles...
+
+* Older dotfiles
+- https://github.com/babariviere/dotfiles/tree/archive/v1
+- https://github.com/babariviere/dotfiles/tree/archive/v2-nixos
+- https://github.com/babariviere/dotfiles/tree/archive/v3-macos
+- https://github.com/babariviere/dotfiles/tree/archive/develop
+- https://github.com/babariviere/dotfiles/tree/guix
