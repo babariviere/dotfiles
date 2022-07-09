@@ -125,6 +125,7 @@
                (dot-xmonad (string-append home "/.config/xmonad"))
                (source-xmonad #$(etc-file "/xmonad/xmonad.hs")))
           (mkdir-p dot-xmonad)
+          (delete-file (string-append dot-xmonad "/xmonad.hs"))
           (symlink source-xmonad (string-append dot-xmonad "/xmonad.hs"))))))
 
 (define home-xmonad-service
