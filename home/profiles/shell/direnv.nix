@@ -11,8 +11,9 @@ in {
     programs.direnv = {
       enable = true;
       nix-direnv = lib.mkIf cfg.nix { enable = true; };
-    } // {
-      stdlib = builtins.readFile "${config.dotfiles.configDir}/direnvrc";
     };
+
+    xdg.configFile."direnv/lib/use_asdf.sh".source =
+      lib.mkIf cfg.asdf "${config.dotfiles.configDir}/direnv/lib/use_asdf.sh";
   };
 }

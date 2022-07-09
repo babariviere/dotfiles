@@ -1,8 +1,10 @@
-{ config, pkgs, system, ... }:
+{ config, inputs, lib, pkgs, self, system, ... }:
 
 {
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
+
+  environment.pathsToLink = [ "/share/fish" "/share/zsh" ];
 
   nix = {
     settings = {
@@ -29,7 +31,7 @@
     };
     package = pkgs.hiPrio pkgs.nixFlakes;
     registry = {
-      nixpkgs.flake = nixpkgs;
+      nixpkgs.flake = inputs.nixpkgs;
       dotfiles.flake = self;
     };
   };

@@ -2,7 +2,7 @@ final: prev:
 
 {
   cat-with-cat = prev.callPackage ./cat-with-cat { };
-  amber-emacs = prev.callPackage ./amber-emacs { emacs = prev.emacsGcc; };
+  amber-emacs = prev.callPackage ./amber-emacs { emacs = prev.emacsGitNativeComp; };
   lima = prev.callPackage ./lima { };
   # FIXME: unable to patch
   # nixUnstable = prev.callPackage ./nix { nix = prev.nixUnstable; };

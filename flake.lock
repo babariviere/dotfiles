@@ -41,16 +41,22 @@
       }
     },
     "emacs": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "lastModified": 1637749029,
-        "narHash": "sha256-jKFsFXLR8RtsXVqtDZ0Trsi+J5TCe8/qrk4fmsBT+58=",
-        "owner": "babariviere",
+        "lastModified": 1657390826,
+        "narHash": "sha256-yZNR8u0/Bkd+snEJDww3wheFB+GaVYD6znqxMi4QDoY=",
+        "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "827fecb88202d8bee9eb94b50b7aa80a4495bffa",
+        "rev": "f6ea0808082826283775ca329aa63a2315b6e155",
         "type": "github"
       },
       "original": {
-        "owner": "babariviere",
+        "owner": "nix-community",
         "repo": "emacs-overlay",
         "type": "github"
       }
@@ -68,6 +74,21 @@
       "original": {
         "owner": "edolstra",
         "repo": "flake-compat",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1656928814,
+        "narHash": "sha256-RIFfgBuKz6Hp89yRr7+NR5tzIAbn52h8vT6vXkYjZoM=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "7e2a3b3dfd9af950a856d66b0a7d01e3c18aa249",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
         "type": "github"
       }
     },

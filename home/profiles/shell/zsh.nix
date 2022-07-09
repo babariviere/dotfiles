@@ -8,19 +8,18 @@
     enableCompletion = true;
 
     autocd = true;
-    defaultKeymap = "viins";
+    defaultKeymap = "emacs";
     history = {
       expireDuplicatesFirst = true;
       share = false;
     };
 
-    initExtra = let
-      flow = "${inputs.flow.defaultPackage.${pkgs.system}}/bin/flow";
-      base = builtins.readFile "${config.dotfiles.configDir}/zshrc";
-    in ''
-      ${base}
-      eval "$(${flow} setup $HOME/src --path ${flow} zsh)"
-    '';
+    initExtraFirst = let
+      files = map (f: "${config.dotfiles.configDir}/zsh/${f}")
+        ["init.zsh" "completion.zsh" "prompt.zsh" "config.zsh" "fini.zsh"];
+      configs = map builtins.readFile files;
+    in
+      lib.concatStringsSep "\n" configs;
 
     completionInit = ''
       autoload -Uz compinit
@@ -40,6 +39,10 @@
         file = "zsh-history-substring-search.zsh";
         src =
           "${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search";
+      }
+      {
+        name = "zsh-z";
+        src = "${pkgs.zsh-z}/share/zsh-z";
       }
     ];
   };

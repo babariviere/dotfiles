@@ -12,7 +12,7 @@
     deploy.url = "github:serokell/deploy-rs";
 
     # Emacs
-    emacs.url = "github:babariviere/emacs-overlay";
+    emacs.url = "github:nix-community/emacs-overlay";
     emacs.inputs.nixpkgs.follows = "nixpkgs";
   };
 

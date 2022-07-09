@@ -105,5 +105,6 @@
     };
 
     home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
+    home.stateVersion = "22.05";
   };
 }
