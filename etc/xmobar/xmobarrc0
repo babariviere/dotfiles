@@ -1,0 +1,38 @@
+Config { overrideRedirect = False
+       , font     = "xft:Biosevka-9"
+       , bgColor  = "#000000"
+       , fgColor  = "#ffffff"
+       , position = TopW L 100
+       , lowerOnStart = True
+       , allDesktops = True
+       , commands = [ Run Weather "LFPG"
+                        [ "--template", "<weather> <tempC>°C"
+                        , "-L", "0"
+                        , "-H", "25"
+                        , "--low"   , "lightblue"
+                        , "--normal", "#f8f8f2"
+                        , "--high"  , "red"
+                        ] 36000
+                    , Run Cpu
+                        [ "-L", "3"
+                        , "-H", "50"
+                        , "--high"  , "red"
+                        , "--normal", "green"
+                        ] 10
+                    , Run Alsa "default" "Master"
+                        [ "--template", "<volumestatus>"
+                        , "--suffix"  , "True"
+                        , "--"
+                        , "--on", ""
+                        ]
+                    , Run Memory ["--template", "Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
+                      -- Script that dynamically adjusts xmobar padding depending on number of trayer icons.
+                    , Run Com "trayer-padding.sh" [] "trayerpad" 2
+                    , Run XPropertyLog "_XMONAD_LOG_0"
+                    ]
+       , sepChar  = "%"
+       , alignSep = "}{"
+       , template = "%_XMONAD_LOG_0% }{ %alsa:default:Master% | %cpu% | %memory% * %swap% | %LFPG% | %date% %trayerpad%"
+       }
