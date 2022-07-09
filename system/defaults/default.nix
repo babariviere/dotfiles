@@ -1,0 +1,46 @@
+{ config, pkgs, system, ... }:
+
+{
+  home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs = true;
+
+  nix = {
+    settings = {
+      substituters = [
+        "https://cache.nixos.org"
+        "https://nix-community.cachix.org"
+        "https://babariviere.cachix.org"
+      ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "babariviere.cachix.org-1:igoOZJyEAhWg3Rbavjim3yyDj7nIkGYe5327+G0diFw="
+      ];
+      sandbox = "relaxed";
+    };
+    extraOptions = ''
+            experimental-features = nix-command flakes
+            keep-outputs = true
+            keep-derivations = true
+          '';
+    gc = {
+      automatic =
+        false; # FIXME: enable only on local machines, on server it's useful
+      options = "-d --delete-older-than 7d";
+    };
+    package = pkgs.hiPrio pkgs.nixFlakes;
+    registry = {
+      nixpkgs.flake = nixpkgs;
+      dotfiles.flake = self;
+    };
+  };
+
+  networking.useDHCP = lib.mkDefault false;
+
+  nixpkgs = {
+    overlays = lib.attrValues self.overlays;
+    config.allowUnfree = true;
+  };
+
+  system.configurationRevision = with inputs; mkIf (self ? rev) self.rev;
+  system.stateVersion = "22.05";
+}
