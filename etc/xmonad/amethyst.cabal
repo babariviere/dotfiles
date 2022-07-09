@@ -1,0 +1,34 @@
+cabal-version:      2.4
+name:               amethyst
+version:            0.1.0.0
+
+-- A short (one-line) description of the package.
+-- synopsis:
+
+-- A longer description of the package.
+-- description:
+
+-- A URL where users can report bugs.
+-- bug-reports:
+
+-- The license under which the package is released.
+-- license:
+author:             Bastien Riviere
+maintainer:         me@babariviere.com
+
+-- A copyright notice.
+-- copyright:
+-- category:
+-- extra-source-files: CHANGELOG.md
+
+executable amethyst
+    main-is:          xmonad.hs
+
+    -- Modules included in this executable, other than Main.
+    -- other-modules:
+
+    -- LANGUAGE extensions used by modules in this package.
+    -- other-extensions:
+    ghc-options: -Wall -Werror -fno-warn-missing-signatures
+    build-depends:    base ^>=4.14.3.0, xmonad, xmonad-contrib
+    default-language: Haskell2010
