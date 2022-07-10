@@ -8,7 +8,7 @@
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
-(guix-emacs-autoload-packages)
+;; (guix-emacs-autoload-packages)
 
 (custom-set-faces
  `(default ((nil :family "Biosevka" :height 100)))
