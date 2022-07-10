@@ -37,7 +37,7 @@ in lib.mkMerge [
       enable = true;
       package = emacs;
       client.enable = true;
-      socketActivation.enable = true;
+      startWithUserSession = true;
     };
   })
 ]
