@@ -4,8 +4,11 @@
   home.username = "babariviere";
   home.homeDirectory = "/home/babariviere";
 
+  targets.genericLinux.enable = true;
+  programs.bash.enable = true;
   profiles = {
     desktop.alacritty.enable = true;
+    dev.haskell.enable = true;
     editor.emacs.enable = true;
     shell = {
       common.enable = true;

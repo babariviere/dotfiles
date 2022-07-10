@@ -65,6 +65,7 @@
     profiles = {
       dev = {
         cc.enable = true;
+        haskell.enable = true;
         nix.enable = true;
       };
       desktop = {
