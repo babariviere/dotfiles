@@ -3,6 +3,7 @@
 {
   profiles.desktop = {
     alacritty.enable = true;
+    picom.enable = true;
     xmobar.enable = true;
   };
 
