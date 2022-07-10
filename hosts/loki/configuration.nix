@@ -84,6 +84,7 @@
         };
         git.enable = true;
         niv.enable = true;
+        ssh.enable = true;
         tldr.enable = true;
         zsh.enable = true;
       };

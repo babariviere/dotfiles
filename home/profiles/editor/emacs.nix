@@ -11,7 +11,7 @@ in lib.mkMerge [
       };
     };
     home.packages =
-      [ emacs pkgs.emacs-all-the-icons-fonts ]
+      [ emacs pkgs.emacs-all-the-icons-fonts pkgs.ripgrep ]
       ++ (lib.optionals pkgs.stdenv.isDarwin [ pkgs.emacs-client ]);
     programs.emacs.package = emacs;
     shell.aliases = { e = "${emacs}/bin/emacsclient -nw"; };
