@@ -2,6 +2,7 @@
 
 {
   home.packages = [
+    pkgs.alsa-utils
     pkgs.trayer
   ];
 

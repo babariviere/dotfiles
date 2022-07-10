@@ -29,7 +29,7 @@ Config { overrideRedirect = False
                     , Run Swap [] 10
                     , Run Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
                       -- Script that dynamically adjusts xmobar padding depending on number of trayer icons.
-                    , Run Com "trayer-padding.sh" [] "trayerpad" 2
+                    , Run Com ".config/xmobar/trayer-padding.sh" [] "trayerpad" 2
                     , Run XPropertyLog "_XMONAD_LOG_0"
                     ]
        , sepChar  = "%"
