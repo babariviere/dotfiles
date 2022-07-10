@@ -2,7 +2,6 @@
 
 {
   programs.zsh = {
-    # TODO: write configuration here
     enable = true;
     enableAutosuggestions = true;
     enableCompletion = true;
