@@ -9,40 +9,72 @@
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p1-gen3
   ];
 
-  boot.initrd.availableKernelModules =
-    [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.kernelParams = [
     "mitigations=off" # NOTE: do not enable this for servers.
+    "psmouse.synaptics_intertouch=0"
   ];
   boot.extraModulePackages = [ ];
   boot.initrd.supportedFilesystems = [ "zfs" ];
   boot.supportedFilesystems = [ "zfs" ];
 
+  services.zfs = {
+    trim.enable = true;
+    autoScrub.enable = true;
+    autoScrub.pools = [ "tank" ];
+  };
+
   networking.hostId = "a82cef24";
 
-  fileSystems."/" = {
-    device = "tank/system";
-    fsType = "zfs";
-  };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/E523-A561";
-    fsType = "vfat";
-  };
+  fileSystems."/" =
+    { device = "tank/system";
+      fsType = "zfs"; options = [ "zfsutil" ];
+    };
 
-  fileSystems."/nix" = {
-    device = "tank/local/nix";
-    fsType = "zfs";
-  };
+  fileSystems."/nix" =
+    { device = "tank/system/nix";
+      fsType = "zfs"; options = [ "zfsutil" ];
+    };
 
-  fileSystems."/home/babariviere" = {
-    device = "tank/user/babariviere";
-    fsType = "zfs";
-  };
+  fileSystems."/home" =
+    { device = "tank/user/home";
+      fsType = "zfs"; options = [ "zfsutil" ];
+    };
 
-  swapDevices = [ ];
+  fileSystems."/home/babariviere" =
+    { device = "tank/user/home/babariviere";
+      fsType = "zfs"; options = [ "zfsutil" ];
+    };
+
+  fileSystems."/var" =
+    { device = "tank/var";
+      fsType = "zfs"; options = [ "zfsutil" ];
+    };
+
+  fileSystems."/var/lib" =
+    { device = "tank/var/lib";
+      fsType = "zfs"; options = [ "zfsutil" ];
+    };
+
+  fileSystems."/var/lib/docker" =
+    { device = "tank/var/lib/docker";
+      fsType = "zfs"; options = [ "zfsutil" ];
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/7BEA-B7D6";
+      fsType = "vfat";
+    };
+
+  swapDevices =
+    [ { device = "/dev/disk/by-id/nvme-Samsung_SSD_960_EVO_500GB_S3X4NB0K423111B-part2";
+        randomEncryption = true;
+      }
+    ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

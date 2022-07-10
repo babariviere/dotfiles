@@ -23,7 +23,7 @@
   ## Hardware
 
   hardware.bluetooth = {
-    enable = true;
+    enable = false;
     settings = { General = { ControllerMode = "dual"; }; };
   };
 
@@ -38,10 +38,11 @@
 
   profiles = {
     desktop = {
-      xmonad.enable = true;
-      tlp.enable = true;
+      flatpak.enable = true;
       libinput.enable = true;
       nvidia.enable = true;
+      tlp.enable = true;
+      xmonad.enable = true;
     };
     media.pipewire.enable = true;
   };
@@ -83,6 +84,11 @@
         zsh.enable = true;
       };
     };
+
+    home.packages = with pkgs; [
+      firefox
+      _1password-gui
+    ];
 
     # TODO: move me to my own profile
     programs.git = {
