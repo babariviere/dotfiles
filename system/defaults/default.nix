@@ -12,10 +12,12 @@
         "https://cache.nixos.org"
         "https://nix-community.cachix.org"
         "https://babariviere.cachix.org"
+        "https://cache.iog.io"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "babariviere.cachix.org-1:igoOZJyEAhWg3Rbavjim3yyDj7nIkGYe5327+G0diFw="
+        "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
       ];
       sandbox = "relaxed";
     };
