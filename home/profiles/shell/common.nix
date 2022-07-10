@@ -10,7 +10,6 @@
   };
   programs.fzf.enable = true;
   programs.nix-index.enable = true;
-  programs.ssh.enable = true;
 
   shell.aliases = {
     gco = "git co";

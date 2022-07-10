@@ -1,6 +1,8 @@
 { config, inputs, lib, pkgs, ... }:
 
 {
+  home.packages = with pkgs; [ bat ];
+
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;

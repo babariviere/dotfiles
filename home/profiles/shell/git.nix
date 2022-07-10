@@ -8,7 +8,6 @@
     pkgs.git-open
     pkgs.git-trim
     pkgs.gitleaks
-    pkgs.github-cli
   ];
 
   programs.git = {
