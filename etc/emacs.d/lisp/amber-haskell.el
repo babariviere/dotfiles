@@ -52,6 +52,7 @@
   (cdr project))
 
 (add-hook 'project-find-functions #'amber-haskell/project-try-stack)
+(add-hook 'haskell-mode-hook #'eglot-ensure)
 
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
