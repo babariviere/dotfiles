@@ -83,6 +83,7 @@
           asdf = true;
         };
         git.enable = true;
+        niv.enable = true;
         tldr.enable = true;
         zsh.enable = true;
       };
