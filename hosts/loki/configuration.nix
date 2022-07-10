@@ -67,7 +67,10 @@
         cc.enable = true;
         nix.enable = true;
       };
-      desktop.xmonad.enable = true;
+      desktop = {
+        discord.enable = true;
+        xmonad.enable = true;
+      };
       editor = {
         emacs.enable = true;
         editorconfig.enable = true;
