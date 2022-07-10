@@ -53,5 +53,9 @@
 
 (add-hook 'project-find-functions #'amber-haskell/project-try-stack)
 
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               `(haskell-mode . ("haskell-language-server" "--lsp"))))
+
 (provide 'amber-haskell)
 ;;; amber-haskell.el ends here
