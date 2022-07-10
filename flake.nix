@@ -48,6 +48,11 @@
           system = "x86_64-linux";
           modules = [ ./hosts/loki/configuration.nix ];
         };
+
+	nanna = {
+	  system = "home";
+	  modules = [ ./hosts/nanna/home.nix ];
+	};
       };
 
       home = {

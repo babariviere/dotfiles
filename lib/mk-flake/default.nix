@@ -16,7 +16,7 @@ let
   };
 
   mkHome = import ./mk-home.nix {
-    inherit inputs home;
+    inherit inputs home lib self;
   };
 
   isLinux = _n: v: builtins.elem v.system lib.platforms.linux;
