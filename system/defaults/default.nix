@@ -20,10 +20,11 @@
       sandbox = "relaxed";
     };
     extraOptions = ''
-            experimental-features = nix-command flakes
-            keep-outputs = true
-            keep-derivations = true
-          '';
+      experimental-features = nix-command flakes
+      keep-outputs = true
+      keep-derivations = true
+      pure-eval = false
+    '';
     gc = {
       automatic =
         false; # FIXME: enable only on local machines, on server it's useful
@@ -36,13 +37,16 @@
     };
   };
 
-  networking.useDHCP = lib.mkDefault false;
+  environment.systemPackages = with pkgs;
+    [ git emacs wget curl ];
+
+  networking.useDHCP = lib.mkDefault true;
 
   nixpkgs = {
     overlays = lib.attrValues self.overlays;
     config.allowUnfree = true;
   };
 
-  system.configurationRevision = with inputs; mkIf (self ? rev) self.rev;
+  system.configurationRevision = with inputs; lib.mkIf (self ? rev) self.rev;
   system.stateVersion = "22.05";
 }
