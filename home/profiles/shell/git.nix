@@ -52,7 +52,6 @@
       remote.pushDefault = "origin";
     };
     ignores = [
-      ".envrc"
       ".lsp"
       ".rebel_readline_history"
       ".projectile"
