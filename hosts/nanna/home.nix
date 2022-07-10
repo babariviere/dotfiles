@@ -6,6 +6,13 @@
 
   targets.genericLinux.enable = true;
   programs.bash.enable = true;
+  programs.git = {
+    extraConfig = {
+      user.signingKey = "39035CC0B75D1142";
+      commit.gpgSign = true;
+    };
+  };
+
   profiles = {
     desktop.alacritty.enable = true;
     dev.haskell.enable = true;
