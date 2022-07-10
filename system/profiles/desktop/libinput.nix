@@ -5,5 +5,6 @@
     touchpad.tapping = false;
     touchpad.scrollMethod = "twofinger";
     touchpad.clickMethod = "clickfinger";
+    touchpad.disableWhileTyping = true;
   };
 }
