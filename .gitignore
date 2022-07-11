@@ -6,3 +6,5 @@ etc/xmonad/.stack-work/
 etc/xmonad/TAGS
 etc/xmonad/xmonad/
 etc/xmonad/xmonad-contrib/
+
+/hosts/buri/ssh.conf

@@ -49,10 +49,15 @@
           modules = [ ./hosts/loki/configuration.nix ];
         };
 
-	nanna = {
-	  system = "home";
-	  modules = [ ./hosts/nanna/home.nix ];
-	};
+        buri = {
+          system = "x86_64-linux";
+          modules = [ ./hosts/buri/configuration.nix ];
+        };
+
+	      nanna = {
+	        system = "home";
+	        modules = [ ./hosts/nanna/home.nix ];
+	      };
       };
 
       home = {
