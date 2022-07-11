@@ -24,6 +24,7 @@
     drs = "darwin-rebuild switch --flake . --keep-going";
 
     nrs = "nixos-rebuild switch --flake . --keep-going -L --use-remote-sudo";
+    hrs = "home-manager switch --flake .#$HOSTNAME";
 
     wk = "watch kubectl";
     # FIXME: move me to kube profile
