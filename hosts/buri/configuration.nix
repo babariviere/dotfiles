@@ -310,6 +310,9 @@
       nvtop
       intel-gpu-tools
       xlockmore
+      thunderbird
+      flameshot
+      discord
     ];
 
     gtk = {
