@@ -26,10 +26,27 @@
       };
       git.enable = true;
       niv.enable = true;
+      ssh.enable = true;
       zsh.enable = true;
     };
   };
 
+  programs.gpg = {
+    enable = true;
+    scdaemonSettings = {
+      disable-ccid = true;
+    };
+  };
+
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+    extraConfig = ''
+        allow-emacs-pinentry
+        allow-loopback-pinentry
+      '';
+    defaultCacheTtl = 1800;
+  };
   home.stateVersion = "22.05";
   programs.home-manager.enable = true;
 }
