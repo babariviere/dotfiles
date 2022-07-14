@@ -8,3 +8,5 @@ etc/xmonad/xmonad/
 etc/xmonad/xmonad-contrib/
 
 /hosts/buri/ssh.conf
+
+/.direnv
