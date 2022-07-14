@@ -1,0 +1,10 @@
+keys:
+  - &admin 74AA 9AB4 E6FF 872B 3C5A  CB3E 3903 5CC0 B75D 1142
+  - &server_hoenir age16ujvf3tczrq9jmg7hm0dk5mufy09gcqjfcdtn3v0h6gmdj6am3dqfp5lka
+creation_rules:
+  - path_regex: secrets/hoenir.yaml$
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *server_hoenir

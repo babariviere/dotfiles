@@ -10,6 +10,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     utils.url = "github:numtide/flake-utils";
     deploy.url = "github:serokell/deploy-rs";
+    sops.url = "github:Mic92/sops-nix";
 
     # Emacs
     emacs.url = "github:nix-community/emacs-overlay";
@@ -56,7 +57,7 @@
 
         hoenir = {
           system = "x86_64-linux";
-          modules = [ ./hosts/hoenir/configuration.nix ];
+          modules = [ ./hosts/hoenir/configuration.nix inputs.sops.nixosModules.sops ];
         };
 
 	      nanna = {
@@ -108,6 +109,7 @@
         devShell = pkgs.mkShell {
           buildInputs = [
             deploy.defaultPackage."${system}"
+            pkgs.sops
           ];
         };
 

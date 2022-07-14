@@ -23,6 +23,26 @@
       fsType = "zfs"; options = [ "zfsutil" ];
     };
 
+  fileSystems."/var/lib" =
+    { device = "tank/var/lib";
+      fsType = "zfs"; options = [ "zfsutil" ];
+    };
+
+  fileSystems."/var/lib/postgresql" =
+    { device = "tank/var/lib/postgresql";
+      fsType = "zfs"; options = [ "zfsutil" ];
+    };
+
+  fileSystems."/var/lib/gitea" =
+    { device = "tank/var/lib/gitea";
+      fsType = "zfs"; options = [ "zfsutil" ];
+    };
+
+  fileSystems."/var/lib/acme" =
+    { device = "tank/var/lib/acme";
+      fsType = "zfs"; options = [ "zfsutil" ];
+    };
+
   fileSystems."/nix" =
     { device = "tank/system/nix";
       fsType = "zfs"; options = [ "zfsutil" ];

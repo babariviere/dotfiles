@@ -1,5 +1,12 @@
 { config, pkgs, ... }:
-{
+
+let
+  domain = "babariviere.com";
+  gitea = {
+    domain = "git.${domain}";
+    port = 22327;
+  };
+in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -32,6 +39,70 @@
   services.openssh.permitRootLogin = "prohibit-password";
   users.users.root.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILhjq6MU3v5OZWhy0kz6XW2z+D2+CRRx1zsdq0eur3p+"];
   services.openssh.enable = true;
+
+  # Secrets
+  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  sops.defaultSopsFile = ../../secrets/hoenir.yaml;
+  sops.secrets."gitea/db_password" = {
+    owner = config.systemd.services.gitea.serviceConfig.User;
+  };
+
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
+
+  services.gitea = {
+    enable = true;
+    appName = "Hoenir: Gitea service";
+    database = {
+      type = "postgres";
+      passwordFile = config.sops.secrets."gitea/db_password".path;
+    };
+    domain = gitea.domain;
+    rootUrl = "https://${gitea.domain}";
+    httpPort = gitea.port;
+    # Use `gitea admin user create --username ... --random-password --email ... --admin` as gitea user
+    disableRegistration = true;
+    settings = {
+      repository = {
+        DISABLE_HTTP_GIT = true;
+      };
+      service = {
+        REQUIRE_SIGNIN_VIEW = true;
+      };
+    };
+  };
+
+  services.postgresql = {
+    enable = true;                # Ensure postgresql is enabled
+    authentication = ''
+     local gitea all ident map=gitea-users
+    '';
+    identMap = ''
+     gitea-users gitea gitea
+    '';
+  };
+
+  services.nginx = {
+    enable = true;
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+    virtualHosts = {
+      ${gitea.domain} = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/".proxyPass = "http://localhost:${toString gitea.port}/";
+      };
+    };
+  };
+
+  security.acme = {
+    acceptTerms = true;
+    defaults = {
+      email = "me@${domain}";
+    };
+  };
+
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
