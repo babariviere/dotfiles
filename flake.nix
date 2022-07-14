@@ -54,6 +54,11 @@
           modules = [ ./hosts/buri/configuration.nix ];
         };
 
+        hoenir = {
+          system = "x86_64-linux";
+          modules = [ ./hosts/hoenir/configuration.nix ];
+        };
+
 	      nanna = {
 	        system = "home";
 	        modules = [ ./hosts/nanna/home.nix ];
@@ -68,7 +73,16 @@
       # Expose the package set, including overlays, for convenience.
       # darwinPackages = self.darwinConfigurations."ochatt".pkgs;
 
-      deploy.nodes = {};
+      deploy.nodes = {
+        hoenir = {
+          hostname = "136.243.153.163";
+          profiles.system = {
+            user = "root";
+            sshUser = "root";
+            path = deploy.lib.x86_64-linux.activate.nixos self.nixosConfigurations.hoenir;
+          };
+        };
+      };
 
       checks = builtins.mapAttrs
         (system: deployLib: deployLib.deployChecks self.deploy) deploy.lib;
